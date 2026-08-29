@@ -1,0 +1,4 @@
+interface:
+  display_name: "Performance Profiler"
+  short_description: "Measure and improve app, web, API, and native performance."
+  default_prompt: "Profile this performance issue, identify the bottleneck, and recommend the smallest evidence-backed fix."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Motion Animation Engineer"
+  short_description: "Design and verify useful app or web motion."
+  default_prompt: "Review this feature and recommend the right motion approach, states, accessibility behavior, and validation."

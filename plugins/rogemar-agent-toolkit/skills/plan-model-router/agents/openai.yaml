@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan Model Router"
+  short_description: "Recommend model and reasoning per planned coding increment."
+  default_prompt: "Assess this coding plan and recommend the lowest-risk model and reasoning level for each PR."

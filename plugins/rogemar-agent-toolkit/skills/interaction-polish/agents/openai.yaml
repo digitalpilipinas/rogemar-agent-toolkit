@@ -1,0 +1,7 @@
+interface:
+  display_name: "Interaction Polish"
+  short_description: "Gestures, states, microcopy, delight"
+  default_prompt: "Use $interaction-polish to refine this interaction for premium product feel."
+
+policy:
+  allow_implicit_invocation: true

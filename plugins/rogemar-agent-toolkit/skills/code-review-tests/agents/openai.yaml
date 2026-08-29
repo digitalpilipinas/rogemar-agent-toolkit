@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Review + Tests"
+  short_description: "Review diffs and propose focused tests"
+  default_prompt: "Use $code-review-tests to review this change and identify focused tests."

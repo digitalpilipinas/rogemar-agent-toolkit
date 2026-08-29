@@ -1,0 +1,7 @@
+interface:
+  display_name: "Design System Steward"
+  short_description: "Tokens, components, themes, consistency"
+  default_prompt: "Use $design-system-steward to align this UI with the design system."
+
+policy:
+  allow_implicit_invocation: true

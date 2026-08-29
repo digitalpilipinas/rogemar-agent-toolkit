@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deliver Approved Programme"
+  short_description: "Execute approved programmes through verified merge"
+  default_prompt: "Use $deliver-approved-programme with my approved plan and compact controls for database scope, main delivery, external review, simulator QA, and physical-device QA."

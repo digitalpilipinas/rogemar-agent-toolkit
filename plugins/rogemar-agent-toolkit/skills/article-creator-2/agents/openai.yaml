@@ -1,0 +1,7 @@
+interface:
+  display_name: "Article Creator 2"
+  short_description: "Research, draft, design, and export"
+  default_prompt: "Use $article-creator-2 to create an article with research, citations, visuals, and an export-ready draft."
+
+policy:
+  allow_implicit_invocation: true

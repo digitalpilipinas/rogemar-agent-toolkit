@@ -1,0 +1,4 @@
+interface:
+  display_name: "Accessibility Auditor"
+  short_description: "Review and improve accessibility across UI states."
+  default_prompt: "Audit this UI or feature for accessibility risks, fixes, and validation evidence."

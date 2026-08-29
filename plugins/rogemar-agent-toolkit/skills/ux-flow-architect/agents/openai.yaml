@@ -1,0 +1,7 @@
+interface:
+  display_name: "UX Flow Architect"
+  short_description: "Journeys, flows, IA, and onboarding"
+  default_prompt: "Use $ux-flow-architect to design this user flow."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "capture_policy": "signal-gated",
+  "promotion_policy": "review-required",
+  "storage_policy": "structured-summaries-only",
+  "candidate_store": ".codex/project-learning/candidates.jsonl",
+  "state_directory": ".codex/project-learning/state",
+  "queue_directory": ".codex/project-learning/state/queue",
+  "accepted_ledger": "docs/project-learning/lessons.md",
+  "review_reminder": {
+    "pending_count": 5,
+    "milestones": true
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "rogemar-agent-toolkit",
+  "version": "0.1.0",
+  "description": "Portable, versioned engineering and delivery skills for Codex and compatible agent harnesses.",
+  "author": {
+    "name": "Rogemar"
+  },
+  "license": "Proprietary",
+  "keywords": [
+    "agent-skills",
+    "codex",
+    "cursor",
+    "engineering-workflows"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Rogemar Agent Toolkit",
+    "shortDescription": "Reusable engineering and delivery skills.",
+    "longDescription": "A private, versioned collection of project-agnostic engineering, planning, review, testing, design, release, and agent-coordination skills.",
+    "developerName": "Rogemar",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Choose the smallest effective workflow for this task.",
+      "Create a repository-grounded implementation plan.",
+      "Review this change with proportional evidence."
+    ]
+  }
+}

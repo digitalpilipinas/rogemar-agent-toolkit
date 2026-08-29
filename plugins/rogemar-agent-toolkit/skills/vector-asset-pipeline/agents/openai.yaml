@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vector Asset Pipeline"
+  short_description: "Create, optimize, and verify SVG and icon assets."
+  default_prompt: "Review or create this vector asset pipeline with theming, accessibility, provenance, and render checks."

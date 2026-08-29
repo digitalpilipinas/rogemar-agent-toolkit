@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Map"
+  short_description: "Map repositories before targeted coding"
+  default_prompt: "Use $agent-map to locate relevant files and callers before changing unfamiliar code."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO Content Strategy"
+  short_description: "Competitor-backed SEO briefs and outlines"
+  default_prompt: "Use $seo-content-strategy to create an SEO brief and outline for this topic."

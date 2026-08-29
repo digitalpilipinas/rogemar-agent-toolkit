@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workflow Orchestrator"
+  short_description: "Route coding work through evidence-based lifecycle stages"
+  default_prompt: "Use the Workflow Orchestrator to classify this coding task, select the smallest effective skills, define handoffs, and verify evidence."

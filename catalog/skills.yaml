@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "package": {
+    "name": "rogemar-agent-toolkit",
+    "version": "0.1.0",
+    "default_profile": "all",
+    "supported_platforms": ["macos", "linux", "wsl"],
+    "verified_harnesses": ["codex", "cursor"]
+  },
+  "vendored_defaults": {
+    "mode": "vendored",
+    "maintainer": "Rogemar",
+    "targets": ["agent-skills", "codex", "cursor"],
+    "compatibility": ["macos", "linux", "wsl"],
+    "source_policy": "approved local user-level snapshot",
+    "license_policy": "preserve bundled license; otherwise private proprietary"
+  },
+  "vendored": [
+    {"name": "accessibility-auditor", "source": "~/.agents/skills/accessibility-auditor"},
+    {"name": "activity-schema-guardian", "source": "~/.agents/skills/activity-schema-guardian"},
+    {"name": "agent-collaboration-terminal", "source": "~/.agents/skills/agent-collaboration-terminal"},
+    {"name": "agent-map", "source": "~/.codex/skills/agent-map"},
+    {"name": "article-creator-2", "source": "~/.agents/skills/article-creator-2"},
+    {"name": "bug-triage", "source": "~/.agents/skills/bug-triage"},
+    {"name": "cloudflare-deploy", "source": "~/.agents/skills/cloudflare-deploy", "license_evidence": "LICENSE.txt"},
+    {"name": "code-review-and-quality", "source": "~/.agents/skills/code-review-and-quality"},
+    {"name": "code-review-tests", "source": "~/.agents/skills/code-review-tests"},
+    {"name": "codex-capability-maintainer", "source": "~/.agents/skills/codex-capability-maintainer"},
+    {"name": "create-plan", "source": "~/.agents/skills/create-plan", "license_evidence": "LICENSE.txt"},
+    {"name": "csv-analytics-reporter", "source": "~/.agents/skills/csv-analytics-reporter"},
+    {"name": "deliver-approved-programme", "source": "~/.codex/skills/deliver-approved-programme"},
+    {"name": "deploy-checklist", "source": "~/.agents/skills/deploy-checklist"},
+    {"name": "design-system-steward", "source": "~/.agents/skills/design-system-steward"},
+    {"name": "develop-web-game", "source": "~/.agents/skills/develop-web-game", "license_evidence": "LICENSE.txt"},
+    {"name": "dream-team", "source": "~/.agents/skills/dream-team"},
+    {"name": "figma", "source": "~/.agents/skills/figma", "license_evidence": "LICENSE.txt"},
+    {"name": "first-time-right-delivery", "source": "~/.agents/skills/first-time-right-delivery"},
+    {"name": "gh-address-comments", "source": "~/.agents/skills/gh-address-comments", "license_evidence": "LICENSE.txt"},
+    {"name": "gh-fix-ci", "source": "~/.agents/skills/gh-fix-ci", "license_evidence": "LICENSE.txt"},
+    {"name": "hatch-pet", "source": "~/.agents/skills/hatch-pet", "license_evidence": "LICENSE.txt"},
+    {"name": "interaction-polish", "source": "~/.agents/skills/interaction-polish"},
+    {"name": "knowledge-base-answering", "source": "~/.agents/skills/knowledge-base-answering"},
+    {"name": "linear", "source": "~/.agents/skills/linear", "license_evidence": "LICENSE.txt"},
+    {"name": "meeting-notes-task-extractor", "source": "~/.agents/skills/meeting-notes-task-extractor"},
+    {"name": "mobile-release-manager", "source": "~/.agents/skills/mobile-release-manager"},
+    {"name": "motion-animation-engineer", "source": "~/.agents/skills/motion-animation-engineer"},
+    {"name": "netlify-deploy", "source": "~/.agents/skills/netlify-deploy", "license_evidence": "LICENSE.txt"},
+    {"name": "offline-sync-auditor", "source": "~/.agents/skills/offline-sync-auditor"},
+    {"name": "pdf", "source": "~/.agents/skills/pdf", "license_evidence": "LICENSE.txt"},
+    {"name": "performance-profiler", "source": "~/.agents/skills/performance-profiler"},
+    {"name": "plan-model-router", "source": "~/.agents/skills/plan-model-router"},
+    {"name": "playwright", "source": "~/.agents/skills/playwright", "license_evidence": "LICENSE.txt"},
+    {"name": "privacy-safety-review", "source": "~/.agents/skills/privacy-safety-review"},
+    {"name": "project-learning", "source": "~/.codex/skills/project-learning"},
+    {"name": "research-synthesizer", "source": "~/.agents/skills/research-synthesizer"},
+    {"name": "screenshot", "source": "~/.agents/skills/screenshot", "license_evidence": "LICENSE.txt"},
+    {"name": "security-best-practices", "source": "~/.agents/skills/security-best-practices", "license_evidence": "LICENSE.txt"},
+    {"name": "seo-content-strategy", "source": "~/.agents/skills/seo-content-strategy"},
+    {"name": "social-content-factory", "source": "~/.agents/skills/social-content-factory"},
+    {"name": "sora", "source": "~/.agents/skills/sora", "license_evidence": "LICENSE.txt"},
+    {"name": "speech", "source": "~/.agents/skills/speech", "license_evidence": "LICENSE.txt"},
+    {"name": "supabase", "source": "~/.agents/skills/supabase", "upstream_repository": "https://github.com/supabase/agent-skills"},
+    {"name": "supabase-guardian", "source": "~/.agents/skills/supabase-guardian"},
+    {"name": "test-architecture-engineer", "source": "~/.agents/skills/test-architecture-engineer"},
+    {"name": "transcribe", "source": "~/.agents/skills/transcribe", "license_evidence": "LICENSE.txt"},
+    {"name": "ux-flow-architect", "source": "~/.agents/skills/ux-flow-architect"},
+    {"name": "vector-asset-pipeline", "source": "~/.agents/skills/vector-asset-pipeline"},
+    {"name": "vercel-deploy", "source": "~/.agents/skills/vercel-deploy", "license_evidence": "LICENSE.txt", "author": "Vercel", "upstream_repository": "https://github.com/vercel-labs/agent-skills"},
+    {"name": "visual-qa", "source": "~/.agents/skills/visual-qa"},
+    {"name": "workflow-orchestrator", "source": "~/.agents/skills/workflow-orchestrator"}
+  ],
+  "external_skill_groups": [
+    {
+      "name": "codex-system-skills",
+      "mode": "runtime-system",
+      "source": "Codex runtime",
+      "members": ["imagegen", "openai-docs", "plugin-creator", "review-agent", "skill-creator", "skill-installer"]
+    },
+    {
+      "name": "coderabbit-skills",
+      "mode": "external-plugin",
+      "source": "CodeRabbit installation",
+      "repository": "https://github.com/coderabbitai/skills",
+      "install_latest": "npx skills add coderabbitai/skills",
+      "members": ["autofix", "code-review"]
+    },
+    {
+      "name": "argent-skills",
+      "mode": "external-plugin",
+      "source": "Argent installation",
+      "repository": "https://github.com/software-mansion/argent",
+      "install_latest": "npx @swmansion/argent@latest init --local",
+      "members": [
+        "argent-android-emulator-setup", "argent-create-flow", "argent-device-interact",
+        "argent-ios-simulator-setup", "argent-lens", "argent-metro-debugger",
+        "argent-native-profiler", "argent-qa-flows", "argent-react-native-app-workflow",
+        "argent-react-native-optimization", "argent-react-native-profiler",
+        "argent-screen-recording", "argent-screenshot-diff", "argent-settings-permissions",
+        "argent-test-ui-flow", "argent-tv-interact"
+      ]
+    },
+    {
+      "name": "unlazy",
+      "mode": "external-git-skill",
+      "source": "https://github.com/Leonxlnx/unlazy",
+      "repository": "https://github.com/Leonxlnx/unlazy",
+      "install_latest": "npx skills add Leonxlnx/unlazy",
+      "version": "2.0.0",
+      "members": ["unlazy"]
+    },
+    {
+      "name": "pstack",
+      "mode": "external-cursor-plugin",
+      "source": "Cursor plugin repository",
+      "repository": "https://github.com/cursor/plugins/tree/main/pstack",
+      "install_latest": "/add-plugin pstack",
+      "status": "not-installed-locally",
+      "members": [
+        "poteto-mode", "how", "why", "recall", "blast-radius", "architect",
+        "arena", "swarm", "interrogate", "automate-me", "make-bot-ui",
+        "setup-pstack", "reflect", "teach", "tdd", "no-comments",
+        "typescript-best-practices", "figure-it-out", "show-me-your-work",
+        "create-verification-skill", "maintain-verification-skill", "unslop",
+        "bro", "technical-writing"
+      ],
+      "notes": "Cursor-specific plugin; its pstack README lists 22 playbooks and points to cursor-team-kit for deslop, control-cli, and control-ui. It is not copied into the portable bundle."
+    }
+  ],
+  "upstream_repositories": [
+    {
+      "id": "openai-plugins",
+      "author": "OpenAI",
+      "repository": "https://github.com/openai/plugins",
+      "represented_by": "Codex system skills, licensed standard skills, and openai-* plugin dependencies",
+      "install_latest": "Use the current Codex built-in marketplace",
+      "update_policy": "runtime-managed; openai/skills is deprecated in favor of openai/plugins"
+    },
+    {
+      "id": "supabase-agent-skills",
+      "author": "Supabase",
+      "repository": "https://github.com/supabase/agent-skills",
+      "represented_by": "vendored supabase skill and runtime plugin family",
+      "install_latest": "npx skills add supabase/agent-skills",
+      "update_policy": "review and re-lock before replacing the vendored snapshot"
+    },
+    {
+      "id": "coderabbit-skills",
+      "author": "CodeRabbit",
+      "repository": "https://github.com/coderabbitai/skills",
+      "represented_by": "external code-review and autofix skills",
+      "install_latest": "npx skills add coderabbitai/skills",
+      "update_policy": "external; CodeRabbit CLI and authentication remain separate"
+    },
+    {
+      "id": "argent",
+      "author": "Software Mansion",
+      "repository": "https://github.com/software-mansion/argent",
+      "represented_by": "external argent-* skill group and MCP runtime",
+      "install_latest": "npx @swmansion/argent@latest init --local",
+      "update_policy": "external project-local install; review generated MCP and skill files"
+    },
+    {
+      "id": "unlazy",
+      "author": "Leonxlnx",
+      "repository": "https://github.com/Leonxlnx/unlazy",
+      "represented_by": "external unlazy skill",
+      "install_latest": "npx skills add Leonxlnx/unlazy",
+      "update_policy": "external; keep separately versioned"
+    },
+    {
+      "id": "pstack",
+      "author": "poteto / Cursor",
+      "repository": "https://github.com/cursor/plugins/tree/main/pstack",
+      "represented_by": "Cursor pstack plugin, /poteto-mode, /setup-pstack, playbooks, and principles",
+      "install_latest": "/add-plugin pstack",
+      "update_policy": "Cursor-managed; keep outside the portable bundle unless separately reviewed for licensing and harness compatibility"
+    },
+    {
+      "id": "goalbuddy",
+      "author": "tolibear",
+      "repository": "https://github.com/tolibear/goalbuddy",
+      "represented_by": "goalbuddy plugin and goal-prep skill",
+      "install_latest": "npx goalbuddy@latest",
+      "update_policy": "external plugin; use npx goalbuddy update after installation"
+    },
+    {
+      "id": "remotion-skills",
+      "author": "Remotion",
+      "repository": "https://github.com/remotion-dev/skills",
+      "represented_by": "remotion plugin dependency and upstream skill family",
+      "install_latest": "npx skills add remotion-dev/skills",
+      "update_policy": "external; install into the target harness or project"
+    },
+    {
+      "id": "vercel-agent-skills",
+      "author": "Vercel",
+      "repository": "https://github.com/vercel-labs/agent-skills",
+      "represented_by": "vendored vercel-deploy skill",
+      "install_latest": "npx skills add vercel-labs/agent-skills --skill vercel-deploy",
+      "update_policy": "review the Vercel license and diff before replacing the vendored snapshot"
+    }
+  ],
+  "external_packages": [
+    {"id": "junie-supervisor-for-codex@rg-codex-local", "version": "0.1.2"},
+    {"id": "documents@openai-primary-runtime", "version": "26.826.12353"},
+    {"id": "pdf@openai-primary-runtime", "version": "26.826.12353"},
+    {"id": "spreadsheets@openai-primary-runtime", "version": "26.826.12353"},
+    {"id": "presentations@openai-primary-runtime", "version": "26.826.12353"},
+    {"id": "template-creator@openai-primary-runtime", "version": "26.826.12353"},
+    {"id": "codex-app-tools@openai-bundled", "version": "0.1.3"},
+    {"id": "sites@openai-bundled", "version": "0.1.46"},
+    {"id": "browser@openai-bundled", "version": "26.825.32147"},
+    {"id": "chrome@openai-bundled", "version": "26.825.32147"},
+    {"id": "computer-use@openai-bundled", "version": "1.0.1000901"},
+    {"id": "visualize@openai-bundled", "version": "1.0.23"},
+    {"id": "goalbuddy@goalbuddy", "version": "0.4.3"},
+    {"id": "figma@openai-curated", "version": "11c74d6b"},
+    {"id": "game-studio@openai-curated", "version": "11c74d6b"},
+    {"id": "github@openai-curated", "version": "11c74d6b"},
+    {"id": "sentry@openai-curated", "version": "11c74d6b"},
+    {"id": "build-web-apps@openai-curated", "version": "11c74d6b"},
+    {"id": "build-web-data-visualization@openai-curated", "version": "11c74d6b"},
+    {"id": "test-android-apps@openai-curated", "version": "11c74d6b"},
+    {"id": "expo@openai-curated", "version": "11c74d6b"},
+    {"id": "remotion@openai-curated", "version": "11c74d6b"},
+    {"id": "codex-security@openai-curated", "version": "11c74d6b"},
+    {"id": "agent-collaboration-for-codex@agent-collaboration-local", "version": "0.5.3+codex.20260816000000"}
+  ]
+}

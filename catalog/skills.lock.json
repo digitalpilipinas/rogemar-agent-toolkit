@@ -1,0 +1,486 @@
+{
+  "external_dependencies": {
+    "packages": [
+      {
+        "id": "junie-supervisor-for-codex@rg-codex-local",
+        "version": "0.1.2"
+      },
+      {
+        "id": "documents@openai-primary-runtime",
+        "version": "26.826.12353"
+      },
+      {
+        "id": "pdf@openai-primary-runtime",
+        "version": "26.826.12353"
+      },
+      {
+        "id": "spreadsheets@openai-primary-runtime",
+        "version": "26.826.12353"
+      },
+      {
+        "id": "presentations@openai-primary-runtime",
+        "version": "26.826.12353"
+      },
+      {
+        "id": "template-creator@openai-primary-runtime",
+        "version": "26.826.12353"
+      },
+      {
+        "id": "codex-app-tools@openai-bundled",
+        "version": "0.1.3"
+      },
+      {
+        "id": "sites@openai-bundled",
+        "version": "0.1.46"
+      },
+      {
+        "id": "browser@openai-bundled",
+        "version": "26.825.32147"
+      },
+      {
+        "id": "chrome@openai-bundled",
+        "version": "26.825.32147"
+      },
+      {
+        "id": "computer-use@openai-bundled",
+        "version": "1.0.1000901"
+      },
+      {
+        "id": "visualize@openai-bundled",
+        "version": "1.0.23"
+      },
+      {
+        "id": "goalbuddy@goalbuddy",
+        "version": "0.4.3"
+      },
+      {
+        "id": "figma@openai-curated",
+        "version": "11c74d6b"
+      },
+      {
+        "id": "game-studio@openai-curated",
+        "version": "11c74d6b"
+      },
+      {
+        "id": "github@openai-curated",
+        "version": "11c74d6b"
+      },
+      {
+        "id": "sentry@openai-curated",
+        "version": "11c74d6b"
+      },
+      {
+        "id": "build-web-apps@openai-curated",
+        "version": "11c74d6b"
+      },
+      {
+        "id": "build-web-data-visualization@openai-curated",
+        "version": "11c74d6b"
+      },
+      {
+        "id": "test-android-apps@openai-curated",
+        "version": "11c74d6b"
+      },
+      {
+        "id": "expo@openai-curated",
+        "version": "11c74d6b"
+      },
+      {
+        "id": "remotion@openai-curated",
+        "version": "11c74d6b"
+      },
+      {
+        "id": "codex-security@openai-curated",
+        "version": "11c74d6b"
+      },
+      {
+        "id": "agent-collaboration-for-codex@agent-collaboration-local",
+        "version": "0.5.3+codex.20260816000000"
+      }
+    ],
+    "skill_groups": [
+      {
+        "members": [
+          "imagegen",
+          "openai-docs",
+          "plugin-creator",
+          "review-agent",
+          "skill-creator",
+          "skill-installer"
+        ],
+        "mode": "runtime-system",
+        "name": "codex-system-skills",
+        "source": "Codex runtime"
+      },
+      {
+        "install_latest": "npx skills add coderabbitai/skills",
+        "members": [
+          "autofix",
+          "code-review"
+        ],
+        "mode": "external-plugin",
+        "name": "coderabbit-skills",
+        "repository": "https://github.com/coderabbitai/skills",
+        "source": "CodeRabbit installation"
+      },
+      {
+        "install_latest": "npx @swmansion/argent@latest init --local",
+        "members": [
+          "argent-android-emulator-setup",
+          "argent-create-flow",
+          "argent-device-interact",
+          "argent-ios-simulator-setup",
+          "argent-lens",
+          "argent-metro-debugger",
+          "argent-native-profiler",
+          "argent-qa-flows",
+          "argent-react-native-app-workflow",
+          "argent-react-native-optimization",
+          "argent-react-native-profiler",
+          "argent-screen-recording",
+          "argent-screenshot-diff",
+          "argent-settings-permissions",
+          "argent-test-ui-flow",
+          "argent-tv-interact"
+        ],
+        "mode": "external-plugin",
+        "name": "argent-skills",
+        "repository": "https://github.com/software-mansion/argent",
+        "source": "Argent installation"
+      },
+      {
+        "install_latest": "npx skills add Leonxlnx/unlazy",
+        "members": [
+          "unlazy"
+        ],
+        "mode": "external-git-skill",
+        "name": "unlazy",
+        "repository": "https://github.com/Leonxlnx/unlazy",
+        "source": "https://github.com/Leonxlnx/unlazy",
+        "version": "2.0.0"
+      },
+      {
+        "install_latest": "/add-plugin pstack",
+        "members": [
+          "poteto-mode",
+          "how",
+          "why",
+          "recall",
+          "blast-radius",
+          "architect",
+          "arena",
+          "swarm",
+          "interrogate",
+          "automate-me",
+          "make-bot-ui",
+          "setup-pstack",
+          "reflect",
+          "teach",
+          "tdd",
+          "no-comments",
+          "typescript-best-practices",
+          "figure-it-out",
+          "show-me-your-work",
+          "create-verification-skill",
+          "maintain-verification-skill",
+          "unslop",
+          "bro",
+          "technical-writing"
+        ],
+        "mode": "external-cursor-plugin",
+        "name": "pstack",
+        "notes": "Cursor-specific plugin; its pstack README lists 22 playbooks and points to cursor-team-kit for deslop, control-cli, and control-ui. It is not copied into the portable bundle.",
+        "repository": "https://github.com/cursor/plugins/tree/main/pstack",
+        "source": "Cursor plugin repository",
+        "status": "not-installed-locally"
+      }
+    ],
+    "upstream_repositories": [
+      {
+        "author": "OpenAI",
+        "id": "openai-plugins",
+        "install_latest": "Use the current Codex built-in marketplace",
+        "repository": "https://github.com/openai/plugins",
+        "represented_by": "Codex system skills, licensed standard skills, and openai-* plugin dependencies",
+        "update_policy": "runtime-managed; openai/skills is deprecated in favor of openai/plugins"
+      },
+      {
+        "author": "Supabase",
+        "id": "supabase-agent-skills",
+        "install_latest": "npx skills add supabase/agent-skills",
+        "repository": "https://github.com/supabase/agent-skills",
+        "represented_by": "vendored supabase skill and runtime plugin family",
+        "update_policy": "review and re-lock before replacing the vendored snapshot"
+      },
+      {
+        "author": "CodeRabbit",
+        "id": "coderabbit-skills",
+        "install_latest": "npx skills add coderabbitai/skills",
+        "repository": "https://github.com/coderabbitai/skills",
+        "represented_by": "external code-review and autofix skills",
+        "update_policy": "external; CodeRabbit CLI and authentication remain separate"
+      },
+      {
+        "author": "Software Mansion",
+        "id": "argent",
+        "install_latest": "npx @swmansion/argent@latest init --local",
+        "repository": "https://github.com/software-mansion/argent",
+        "represented_by": "external argent-* skill group and MCP runtime",
+        "update_policy": "external project-local install; review generated MCP and skill files"
+      },
+      {
+        "author": "Leonxlnx",
+        "id": "unlazy",
+        "install_latest": "npx skills add Leonxlnx/unlazy",
+        "repository": "https://github.com/Leonxlnx/unlazy",
+        "represented_by": "external unlazy skill",
+        "update_policy": "external; keep separately versioned"
+      },
+      {
+        "author": "poteto / Cursor",
+        "id": "pstack",
+        "install_latest": "/add-plugin pstack",
+        "repository": "https://github.com/cursor/plugins/tree/main/pstack",
+        "represented_by": "Cursor pstack plugin, /poteto-mode, /setup-pstack, playbooks, and principles",
+        "update_policy": "Cursor-managed; keep outside the portable bundle unless separately reviewed for licensing and harness compatibility"
+      },
+      {
+        "author": "tolibear",
+        "id": "goalbuddy",
+        "install_latest": "npx goalbuddy@latest",
+        "repository": "https://github.com/tolibear/goalbuddy",
+        "represented_by": "goalbuddy plugin and goal-prep skill",
+        "update_policy": "external plugin; use npx goalbuddy update after installation"
+      },
+      {
+        "author": "Remotion",
+        "id": "remotion-skills",
+        "install_latest": "npx skills add remotion-dev/skills",
+        "repository": "https://github.com/remotion-dev/skills",
+        "represented_by": "remotion plugin dependency and upstream skill family",
+        "update_policy": "external; install into the target harness or project"
+      },
+      {
+        "author": "Vercel",
+        "id": "vercel-agent-skills",
+        "install_latest": "npx skills add vercel-labs/agent-skills --skill vercel-deploy",
+        "repository": "https://github.com/vercel-labs/agent-skills",
+        "represented_by": "vendored vercel-deploy skill",
+        "update_policy": "review the Vercel license and diff before replacing the vendored snapshot"
+      }
+    ]
+  },
+  "package": "rogemar-agent-toolkit",
+  "schema_version": 1,
+  "skills": {
+    "accessibility-auditor": {
+      "file_count": 2,
+      "sha256": "852bfa931fb1d55bf51961b0e5dd097d61530985fde497bde6a79c9052d4b20f"
+    },
+    "activity-schema-guardian": {
+      "file_count": 2,
+      "sha256": "783fdc721aa05f8ea377400bcfbc80d4428ad769360239867915c0ccf333c205"
+    },
+    "agent-collaboration-terminal": {
+      "file_count": 8,
+      "sha256": "01f2e79a215f285263ce0e387c400fe6ed9f36e351c275616a7e73caa5727375"
+    },
+    "agent-map": {
+      "file_count": 3,
+      "sha256": "d3150097d3edd5a8ab20a1ea23368e9d84f5c52ed7be43be08ffe045f57ae170"
+    },
+    "article-creator-2": {
+      "file_count": 2,
+      "sha256": "68a25e61295ca1580461c14c2263b8aa2f6da52a40395aa5134eba066e4a8b83"
+    },
+    "bug-triage": {
+      "file_count": 2,
+      "sha256": "669336b65b996f96c67625cd3187d8d4d8cc7592b98943424b86aa9d77479ba4"
+    },
+    "cloudflare-deploy": {
+      "file_count": 312,
+      "sha256": "17f60031b4e15153401ce26eb635b4be51cb05fd0a114e601ae835aec2080756"
+    },
+    "code-review-and-quality": {
+      "file_count": 1,
+      "sha256": "57574227c803c4a1a5132ff44ecd9c3110cfa96290e89204459b8f3441a0b463"
+    },
+    "code-review-tests": {
+      "file_count": 2,
+      "sha256": "a039e392814703b142daa6e1be0c82e2ab4b37a0a102c0adbc2e5462f104522c"
+    },
+    "codex-capability-maintainer": {
+      "file_count": 2,
+      "sha256": "1e17b3795d75f4bbddae9647303c81d86e9abe66b2675269b2dbfcb6ed87349d"
+    },
+    "create-plan": {
+      "file_count": 4,
+      "sha256": "7ea0797f85e4deefedb9810422a7b52adcbd3d3719ee8c83552aa5f56e4f9843"
+    },
+    "csv-analytics-reporter": {
+      "file_count": 2,
+      "sha256": "70dad946129dcb171f8bd2fb52fc92d1dc001163d221208eb7fc8b0f76e63e82"
+    },
+    "deliver-approved-programme": {
+      "file_count": 5,
+      "sha256": "061a470c1bd839d73480640d19cd02c7c38d733c7b42d9add375600284d63cfb"
+    },
+    "deploy-checklist": {
+      "file_count": 2,
+      "sha256": "0038a6e290d8d027fbc3f6220e5e31d4736b19fec5a7682cc9b79ddd3e4d47ac"
+    },
+    "design-system-steward": {
+      "file_count": 2,
+      "sha256": "eb48cd6646aeae7e9a40b3f56e70b7269f468a1f0a649a6a94a91d5689caca29"
+    },
+    "develop-web-game": {
+      "file_count": 7,
+      "sha256": "16dfa45b9bc76acd8f7ec160afef3c0860559050f49ab993284895d8b4240b7c"
+    },
+    "dream-team": {
+      "file_count": 7,
+      "sha256": "9b6f6fdcd178ce3ccf00710d435443721de694950ecd4357d781edb549cf6101"
+    },
+    "figma": {
+      "file_count": 8,
+      "sha256": "68484fd30e8f3de16389d6abe02732da62561f5cb7c971900d83085b3cb68c44"
+    },
+    "first-time-right-delivery": {
+      "file_count": 2,
+      "sha256": "be421e2cdd9e8870dd2dd8cbb5b594c33376b4b40aeedc219648b55de4d8d38e"
+    },
+    "gh-address-comments": {
+      "file_count": 6,
+      "sha256": "aa731bf3dcb9a80f4f7114d5fb77b1bc09d1a8e74dcb720d5f59fb11ec32a27f"
+    },
+    "gh-fix-ci": {
+      "file_count": 6,
+      "sha256": "62f11c1083d3de2e01efd6200ff2f8c184548edbf4ae5f436a1a4c739502de38"
+    },
+    "hatch-pet": {
+      "file_count": 29,
+      "sha256": "016a80e28f3e0a8fab7d28829513828a45f1b9aef8ef8885e4ac62dca1200b4a"
+    },
+    "interaction-polish": {
+      "file_count": 2,
+      "sha256": "5b7cdf554a504c516a1e8efef8175dabbe9a5372e35fff4e85c5146dd70163c8"
+    },
+    "knowledge-base-answering": {
+      "file_count": 2,
+      "sha256": "9123f1ca8c20832587fc2e05513d86fadcdbe30f11b32bf3f5cd83ac71f1c86b"
+    },
+    "linear": {
+      "file_count": 5,
+      "sha256": "4d24c4e5d82bd461273789650b43a8c8e71928aa6640458d7f79f752d7ea2bc2"
+    },
+    "meeting-notes-task-extractor": {
+      "file_count": 2,
+      "sha256": "c69e89ecd66e5d8cdf5bb20a07e4fd8add51a314296427882285a69c3a04ef4c"
+    },
+    "mobile-release-manager": {
+      "file_count": 2,
+      "sha256": "8ef823d937ce31c4aa71afaf7abe98cec5f269acb1b6e3fea6a945c7b7194822"
+    },
+    "motion-animation-engineer": {
+      "file_count": 2,
+      "sha256": "d030e35a0b2995e8f1d430050264a303e0cc0b8d881df39b3179ca590b49c20c"
+    },
+    "netlify-deploy": {
+      "file_count": 8,
+      "sha256": "93ae5c66070276650fe18bab65423c044a06d2bb3b8adbcf755a78bb3b8eed68"
+    },
+    "offline-sync-auditor": {
+      "file_count": 2,
+      "sha256": "ca1e456d07cfcad4f50e3a26e9a15e45bb1fa9e807f95219886528cc82a70705"
+    },
+    "pdf": {
+      "file_count": 4,
+      "sha256": "034ea16db1577fba19db716c05dfa049ca605114dd238c9b74850796ad2adf86"
+    },
+    "performance-profiler": {
+      "file_count": 2,
+      "sha256": "addd7281670b390db410fa0eeb035f1476c06733d9c0d7a96575815c5cdaa233"
+    },
+    "plan-model-router": {
+      "file_count": 4,
+      "sha256": "1d045d92c87ccca6296a41e1abd1558f5da78c194abcdab7ea5488fdeffc3dcb"
+    },
+    "playwright": {
+      "file_count": 9,
+      "sha256": "10516b85b8e71ab85667c408a8f9f4e28c285a0f762a877964fa07cbcdda31b8"
+    },
+    "privacy-safety-review": {
+      "file_count": 2,
+      "sha256": "7a17e04ec437554bd9cf7c78033d5b295798ea6022f83da3e21c0152cde9796d"
+    },
+    "project-learning": {
+      "file_count": 13,
+      "sha256": "880f022fb24cd7c2e0da81828d5ffe5be79a2b32a56cc1826fb3dcba17d1d3bd"
+    },
+    "research-synthesizer": {
+      "file_count": 2,
+      "sha256": "4080bab383fa441913caddb3eb481fd06e42d3dabe24bc4eb58f6c4336cd35c7"
+    },
+    "screenshot": {
+      "file_count": 11,
+      "sha256": "9c5ac885e307dbb85aea5353a04fabc91ad238fae378d5069ba4dfe01eec3339"
+    },
+    "security-best-practices": {
+      "file_count": 13,
+      "sha256": "dcc9a97597801b537d669588b30a338e8a0269d169f6e8348bf6f6b204e00b0c"
+    },
+    "seo-content-strategy": {
+      "file_count": 2,
+      "sha256": "2d219d59a139f20fa5e0f79103f9ba3b24b887ae5b362ac2833fb09be72c5f9a"
+    },
+    "social-content-factory": {
+      "file_count": 2,
+      "sha256": "6bbe7075250da914d4c27f65df3457900c82d52e9a27f910bf671d553907034c"
+    },
+    "sora": {
+      "file_count": 14,
+      "sha256": "d181fe4d102857e391cf9e20fec455a7c2c441ca5a26f05a9fba96f0ba909348"
+    },
+    "speech": {
+      "file_count": 16,
+      "sha256": "875ceee2fb8302d3602ff1314e78f05a66b9f6f5f441c2f54656276ce22c43dc"
+    },
+    "supabase": {
+      "file_count": 4,
+      "sha256": "d6e8f87e28d5777405ed6f6d6033224cf330b9b705a702457596017ffba2c9f8"
+    },
+    "supabase-guardian": {
+      "file_count": 2,
+      "sha256": "b8d4af5ab8dfad08354149d6433931078ccb1ad78f784e77e0129dc03730403a"
+    },
+    "test-architecture-engineer": {
+      "file_count": 2,
+      "sha256": "f8b2b54a173db70a4cf56c9864a384be7861ca6ac4ff114a021437513e71b755"
+    },
+    "transcribe": {
+      "file_count": 7,
+      "sha256": "79b2e228221ce7f95dbdac179e7845f0152b4695d4ac74292b4eea58a83bf9de"
+    },
+    "ux-flow-architect": {
+      "file_count": 2,
+      "sha256": "85e263de97ea379c7570405fb32185d4a50bc38e41e232796a1a737f3968fc66"
+    },
+    "vector-asset-pipeline": {
+      "file_count": 2,
+      "sha256": "563d5684d80f341a884e0427eab47dc9fa26a336a24a3302a39dd24a767477f2"
+    },
+    "vercel-deploy": {
+      "file_count": 6,
+      "sha256": "2b959cc07e730e52d36f5c2347d4bcafc48ea8939bb2a824b42e4032ff55a998"
+    },
+    "visual-qa": {
+      "file_count": 2,
+      "sha256": "170a802b448cfea8ef49fac25e869fbf959ee5454e7a81e295c5c672780cbad7"
+    },
+    "workflow-orchestrator": {
+      "file_count": 4,
+      "sha256": "74f3434aa876eb4f67facbdc59389c2daad0a330c2aaca98e12074f44d6079fc"
+    }
+  },
+  "version": "0.1.0"
+}

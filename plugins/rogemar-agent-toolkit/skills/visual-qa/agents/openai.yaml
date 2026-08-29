@@ -1,0 +1,7 @@
+interface:
+  display_name: "Visual QA"
+  short_description: "Screenshot and responsive UI review"
+  default_prompt: "Use $visual-qa to visually review this UI change."
+
+policy:
+  allow_implicit_invocation: true

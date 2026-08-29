@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bug Triage"
+  short_description: "Turn logs into prioritized fixes"
+  default_prompt: "Use $bug-triage to inspect these errors and propose the most likely fixes."

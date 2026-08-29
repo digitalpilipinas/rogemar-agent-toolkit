@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test Architecture Engineer"
+  short_description: "Design risk-based test plans and evidence matrices."
+  default_prompt: "Create a risk-based test matrix for this PR or feature and identify the minimum sufficient validation."

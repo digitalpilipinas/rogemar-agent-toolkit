@@ -1,0 +1,7 @@
+interface:
+  display_name: "Offline Sync Auditor"
+  short_description: "Drafts, outbox, cache, and sync QA"
+  default_prompt: "Use $offline-sync-auditor to review this offline sync flow."
+
+policy:
+  allow_implicit_invocation: true

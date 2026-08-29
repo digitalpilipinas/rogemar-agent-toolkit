@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Synthesizer"
+  short_description: "Deep research with citations and decisions"
+  default_prompt: "Use $research-synthesizer to research this topic and return a cited synthesis."

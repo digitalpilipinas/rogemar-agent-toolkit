@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dream Team"
+  short_description: "Activate Dream Team personas and response standards"
+  default_prompt: "Use Dream Team routing to select the smallest effective capabilities and add a plain-language recap when useful."

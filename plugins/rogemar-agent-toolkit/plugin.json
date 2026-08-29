@@ -1,0 +1,16 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "rogemar-agent-toolkit",
+  "version": "0.1.0",
+  "description": "Portable, versioned engineering and delivery skills for compatible agent harnesses.",
+  "author": {
+    "name": "Rogemar"
+  },
+  "license": "Proprietary",
+  "keywords": [
+    "agent-skills",
+    "codex",
+    "cursor",
+    "engineering-workflows"
+  ]
+}

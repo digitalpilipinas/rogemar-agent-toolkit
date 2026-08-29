@@ -1,0 +1,7 @@
+interface:
+  display_name: "Privacy Safety Review"
+  short_description: "Privacy-safe product and data review"
+  default_prompt: "Use $privacy-safety-review to review this surface for privacy, safety, and honesty."
+
+policy:
+  allow_implicit_invocation: true

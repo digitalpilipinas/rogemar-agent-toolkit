@@ -1,0 +1,6 @@
+interface:
+  display_name: "Project Learning"
+  short_description: "Capture and curate project-specific lessons"
+  default_prompt: "Use $project-learning to initialize, review, adapt, or manage continuous project learning."
+policy:
+  allow_implicit_invocation: true

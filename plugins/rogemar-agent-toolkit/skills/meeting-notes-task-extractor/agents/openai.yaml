@@ -1,0 +1,4 @@
+interface:
+  display_name: "Meeting Task Extractor"
+  short_description: "Summarize meetings and extract owners"
+  default_prompt: "Use $meeting-notes-task-extractor to summarize this transcript and extract tasks."

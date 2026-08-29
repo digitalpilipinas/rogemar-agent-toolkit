@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Capability Maintainer"
+  short_description: "Audit skills, MCPs, plugins, and secrets"
+  default_prompt: "Use $codex-capability-maintainer to audit and improve this Codex setup."

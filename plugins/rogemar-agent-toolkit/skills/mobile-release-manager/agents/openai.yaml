@@ -1,0 +1,7 @@
+interface:
+  display_name: "Mobile Release Manager"
+  short_description: "Mobile build, store, and release checks"
+  default_prompt: "Use $mobile-release-manager to prepare this mobile release."
+
+policy:
+  allow_implicit_invocation: true

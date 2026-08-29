@@ -1,0 +1,7 @@
+interface:
+  display_name: "Supabase Guardian"
+  short_description: "RLS, RPC, auth, and storage review"
+  default_prompt: "Use $supabase-guardian to audit this Supabase change."
+
+policy:
+  allow_implicit_invocation: true

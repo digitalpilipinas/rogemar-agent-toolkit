@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deploy Checklist"
+  short_description: "Release notes, risks, and test plans"
+  default_prompt: "Use $deploy-checklist to prepare a release checklist for this branch."

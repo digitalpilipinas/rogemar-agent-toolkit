@@ -1,0 +1,31 @@
+name: Validate toolkit
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ["3.9", "3.11"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Verify bundle
+        run: python3 scripts/toolkit.py verify
+      - name: Verify README inventory
+        run: python3 scripts/inventory_readme.py --check
+      - name: Run tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Build release archives
+        run: python3 scripts/toolkit.py package

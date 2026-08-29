@@ -1,0 +1,4 @@
+interface:
+  display_name: "CSV Analytics Reporter"
+  short_description: "Analyze CSVs and explain the numbers"
+  default_prompt: "Use $csv-analytics-reporter to analyze this CSV and report the key findings."

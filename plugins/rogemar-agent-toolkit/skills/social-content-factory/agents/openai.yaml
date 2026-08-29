@@ -1,0 +1,4 @@
+interface:
+  display_name: "Social Content Factory"
+  short_description: "Turn long content into social campaigns"
+  default_prompt: "Use $social-content-factory to turn this article into social posts and carousel copy."

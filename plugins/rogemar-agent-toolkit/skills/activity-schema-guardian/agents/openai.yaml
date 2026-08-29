@@ -1,0 +1,7 @@
+interface:
+  display_name: "Activity Schema Guardian"
+  short_description: "Activity and event schema safety"
+  default_prompt: "Use $activity-schema-guardian to review this schema change."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Collaboration Terminal"
+  short_description: "Coordinate Grok, Antigravity, Cursor, Junie, and Codex CLI runs"
+  default_prompt: "Use $agent-collaboration-terminal to prepare exact native CLI prompts, open visible provider terminals when requested, monitor Markdown artifacts, and validate parallel or sequential provider work."

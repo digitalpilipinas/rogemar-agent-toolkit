@@ -1,0 +1,4 @@
+interface:
+  display_name: "Knowledge Base Answering"
+  short_description: "Answer from scoped docs with citations"
+  default_prompt: "Use $knowledge-base-answering to answer from this document set with citations."
