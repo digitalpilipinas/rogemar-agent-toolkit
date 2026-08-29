@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import hashlib
 import json
 import subprocess
 import sys
@@ -43,6 +44,33 @@ class ToolkitTests(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("inventory is current", result.stdout)
+
+    def test_runtime_inventory_and_navigation_are_documented(self) -> None:
+        catalog = json.loads(
+            (REPOSITORY_ROOT / "catalog" / "skills.yaml").read_text(encoding="utf-8")
+        )
+        groups = {entry["name"]: entry for entry in catalog["external_skill_groups"]}
+        for name in (
+            "cursor-builtins",
+            "cursor-team-kit",
+            "antigravity-builtins",
+            "grok-bundled",
+            "junie-native",
+            "command-code-runtime",
+            "codex-router-skills",
+        ):
+            self.assertIn(name, groups)
+        self.assertEqual(groups["pstack"]["status"].split(";", 1)[0], "audit-observed")
+        self.assertEqual(len(groups["pstack"]["members"]), 44)
+        runtimes = {entry["id"] for entry in catalog["runtime_integrations"]}
+        self.assertTrue(
+            {"cursor", "antigravity-gemini", "grok-build", "junie", "command-code", "codex-router"}.issubset(runtimes)
+        )
+        readme = (REPOSITORY_ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("## Table of contents", readme)
+        self.assertIn("```mermaid", readme)
+        self.assertIn("### Harness and provider runtimes", readme)
+        self.assertNotRegex(readme, r"(?:~\/|/Users/|/home/|EVERSO|Choice & Cosmos)")
 
     def test_project_install_records_managed_state(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -118,6 +146,13 @@ class ToolkitTests(unittest.TestCase):
             checksums = (Path(temporary) / "SHA256SUMS").read_text(encoding="utf-8")
             self.assertIn(archives[0].name, checksums)
             self.assertIn(archives[1].name, checksums)
+            expected = {}
+            for line in checksums.splitlines():
+                digest, filename = line.split("  ", 1)
+                expected[filename] = digest
+            for archive in archives:
+                digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+                self.assertEqual(expected.get(archive.name), digest)
             self.assertIn("agent-plugin", output)
             self.assertIn("codex-marketplace", output)
             portable = next(path for path in archives if "agent-plugin" in path.name)

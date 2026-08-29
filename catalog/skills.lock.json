@@ -2,7 +2,13 @@
   "external_dependencies": {
     "packages": [
       {
+        "id": "grok-supervisor-for-codex@grok-supervisor-local",
+        "status": "cataloged; installation and activation unverified",
+        "version": "0.1.2"
+      },
+      {
         "id": "junie-supervisor-for-codex@rg-codex-local",
+        "status": "cataloged; installation and activation unverified",
         "version": "0.1.2"
       },
       {
@@ -98,8 +104,98 @@
         "version": "0.5.3+codex.20260816000000"
       }
     ],
+    "runtime_integrations": [
+      {
+        "author": "Cursor",
+        "id": "cursor",
+        "license_status": "Mixed; verify each runtime/plugin publisher",
+        "name": "Cursor",
+        "purpose": "First-class Cursor harness for project-local Agent Skills, native skills, and marketplace plugins.",
+        "repository": "https://github.com/cursor/plugins",
+        "status": "audit-observed; fresh activation unverified",
+        "surfaces": [
+          "Cursor project .agents/skills",
+          "Cursor native skill store",
+          "Cursor plugin marketplace"
+        ],
+        "version": "runtime-managed"
+      },
+      {
+        "author": "Google / Antigravity",
+        "id": "antigravity-gemini",
+        "license_status": "Mixed; verify Google and extension terms",
+        "name": "Antigravity / Gemini",
+        "purpose": "Gemini-compatible harness with built-in skills, configured skills, and extension plugins.",
+        "status": "audit-observed; CLI/IDE activation unverified",
+        "surfaces": [
+          "Antigravity CLI built-ins",
+          "Antigravity IDE built-ins",
+          "Gemini configured skills",
+          "Gemini extension plugins"
+        ],
+        "version": "runtime-managed; version unverified"
+      },
+      {
+        "author": "xAI / Grok Build",
+        "id": "grok-build",
+        "license_status": "Mixed; verify xAI and plugin publisher terms",
+        "name": "Grok Build",
+        "purpose": "Grok's native bundled skills and installed plugin families; credentials and sessions remain provider-owned.",
+        "status": "audit-observed; bundle and plugin activation unverified",
+        "surfaces": [
+          "Grok bundled skill runtime",
+          "Grok installed plugin runtime"
+        ],
+        "version": "1.0.5"
+      },
+      {
+        "author": "JetBrains",
+        "id": "junie",
+        "license_status": "Runtime-owned; verify JetBrains terms",
+        "name": "JetBrains Junie",
+        "purpose": "Junie CLI/IDE runtime and its native project skill family; the Codex supervisor remains a separate package.",
+        "repository": "https://github.com/JetBrains/junie",
+        "status": "audit-observed; native skill activation unverified",
+        "surfaces": [
+          "Junie CLI/IDE runtime",
+          "Junie native project skills"
+        ],
+        "version": "2929.5 label; runtime executable unverified"
+      },
+      {
+        "author": "Command Code",
+        "id": "command-code",
+        "license_status": "UNLICENSED (package metadata)",
+        "name": "Command Code",
+        "purpose": "Model/provider routing and shared skill links; no independent redistributable Command Code skill payload was found.",
+        "repository": "https://commandcode.ai/docs",
+        "status": "audit-observed; provider integration only",
+        "surfaces": [
+          "Command Code provider runtime",
+          "Shared Agent Skills directory"
+        ],
+        "version": "1.38.2 label; runtime version unverified"
+      },
+      {
+        "author": "duolahypercho",
+        "id": "codex-router",
+        "license_status": "Not declared in local package metadata; verify upstream",
+        "name": "Codex Router",
+        "purpose": "Model-router application and companion skills for Codex threads, browser, computer use, and media.",
+        "repository": "https://github.com/duolahypercho/codex-router",
+        "status": "audit-observed; external skill activation unverified",
+        "surfaces": [
+          "Codex Router companion-skill repository",
+          "Codex user-skill installation target"
+        ],
+        "version": "0.4.0-beta.3"
+      }
+    ],
     "skill_groups": [
       {
+        "author": "OpenAI",
+        "install_latest": "Use the current Codex built-in marketplace",
+        "license_status": "Runtime-owned; verify OpenAI terms",
         "members": [
           "imagegen",
           "openai-docs",
@@ -110,21 +206,30 @@
         ],
         "mode": "runtime-system",
         "name": "codex-system-skills",
+        "purpose": "Codex-provided system skills and capability-maintenance helpers; availability is controlled by the Codex runtime.",
+        "redistribution_status": "Runtime-managed; not vendored",
+        "repository": "https://github.com/openai/plugins",
         "source": "Codex runtime"
       },
       {
+        "author": "CodeRabbit",
         "install_latest": "npx skills add coderabbitai/skills",
+        "license_status": "Not declared locally; verify CodeRabbit terms",
         "members": [
           "autofix",
           "code-review"
         ],
         "mode": "external-plugin",
         "name": "coderabbit-skills",
+        "purpose": "CodeRabbit code review and guarded pull-request autofix workflows.",
+        "redistribution_status": "External install; not vendored",
         "repository": "https://github.com/coderabbitai/skills",
         "source": "CodeRabbit installation"
       },
       {
+        "author": "Software Mansion",
         "install_latest": "npx @swmansion/argent@latest init --local",
+        "license_status": "Not declared locally; verify Software Mansion terms",
         "members": [
           "argent-android-emulator-setup",
           "argent-create-flow",
@@ -145,54 +250,440 @@
         ],
         "mode": "external-plugin",
         "name": "argent-skills",
+        "purpose": "Mobile, TV, browser, flow, profiling, screenshot, and debugging workflows from Argent.",
+        "redistribution_status": "External install; not vendored",
         "repository": "https://github.com/software-mansion/argent",
         "source": "Argent installation"
       },
       {
+        "author": "Leonxlnx",
         "install_latest": "npx skills add Leonxlnx/unlazy",
+        "license_status": "Not declared locally; verify upstream terms",
         "members": [
           "unlazy"
         ],
         "mode": "external-git-skill",
         "name": "unlazy",
+        "purpose": "Depth-tree execution discipline and gate-based completion checks.",
+        "redistribution_status": "External install; not vendored",
         "repository": "https://github.com/Leonxlnx/unlazy",
         "source": "https://github.com/Leonxlnx/unlazy",
         "version": "2.0.0"
       },
       {
+        "author": "Lauren Tan (poteto persona)",
         "install_latest": "/add-plugin pstack",
+        "license_status": "MIT (upstream manifest)",
         "members": [
-          "poteto-mode",
-          "how",
-          "why",
-          "recall",
-          "blast-radius",
           "architect",
           "arena",
-          "swarm",
-          "interrogate",
           "automate-me",
-          "make-bot-ui",
-          "setup-pstack",
-          "reflect",
-          "teach",
-          "tdd",
-          "no-comments",
-          "typescript-best-practices",
-          "figure-it-out",
-          "show-me-your-work",
-          "create-verification-skill",
-          "maintain-verification-skill",
-          "unslop",
+          "blast-radius",
           "bro",
-          "technical-writing"
+          "create-verification-skill",
+          "figure-it-out",
+          "how",
+          "interrogate",
+          "maintain-verification-skill",
+          "no-comments",
+          "poteto-mode",
+          "principle-boundary-discipline",
+          "principle-build-the-lever",
+          "principle-encode-lessons-in-structure",
+          "principle-exhaust-the-design-space",
+          "principle-experience-first",
+          "principle-fix-root-causes",
+          "principle-foundational-thinking",
+          "principle-guard-the-context-window",
+          "principle-laziness-protocol",
+          "principle-make-operations-idempotent",
+          "principle-migrate-callers-then-delete-legacy-apis",
+          "principle-minimize-reader-load",
+          "principle-model-the-domain",
+          "principle-never-block-on-the-human",
+          "principle-outcome-oriented-execution",
+          "principle-prove-it-works",
+          "principle-redesign-from-first-principles",
+          "principle-separate-before-serializing-shared-state",
+          "principle-sequence-verifiable-units",
+          "principle-subtract-before-you-add",
+          "principle-type-system-discipline",
+          "recall",
+          "reflect",
+          "setup-pstack",
+          "show-me-your-work",
+          "swarm",
+          "tdd",
+          "teach",
+          "technical-writing",
+          "typescript-best-practices",
+          "unslop",
+          "why"
         ],
         "mode": "external-cursor-plugin",
         "name": "pstack",
-        "notes": "Cursor-specific plugin; its pstack README lists 22 playbooks and points to cursor-team-kit for deslop, control-cli, and control-ui. It is not copied into the portable bundle.",
+        "notes": "The audit recorded 44 SKILL.md files and 22 playbooks. It is intentionally not copied into the portable bundle; the cached version may be newer than the active version.",
+        "purpose": "Cursor-native /poteto-mode and /setup-pstack playbooks, principles, quality practices, and companion skills.",
+        "redistribution_status": "Not vendored; Cursor-managed install",
         "repository": "https://github.com/cursor/plugins/tree/main/pstack",
         "source": "Cursor plugin repository",
-        "status": "not-installed-locally"
+        "status": "audit-observed; activation-unverified; Cursor-managed",
+        "version": "0.14.2 local; 0.14.5 cached"
+      },
+      {
+        "author": "Cursor",
+        "install_latest": "Use the Cursor runtime; built-ins sync through Cursor",
+        "license_status": "Runtime-owned; verify Cursor terms",
+        "members": [
+          "automate",
+          "autopilot",
+          "canvas",
+          "create-hook",
+          "create-rule",
+          "create-skill",
+          "create-subagent",
+          "deploy-with-vercel",
+          "goal",
+          "loop",
+          "migrate-to-skills",
+          "new-repo",
+          "onboard",
+          "origin",
+          "rename-chat",
+          "review",
+          "review-bugbot",
+          "review-security",
+          "sdk",
+          "share",
+          "shell",
+          "split-to-prs",
+          "statusline",
+          "update-cli-config",
+          "update-cursor-settings"
+        ],
+        "mode": "runtime-system",
+        "name": "cursor-builtins",
+        "notes": "Catalog observation captured from a Cursor-managed built-in manifest; runtime-managed and not vendored.",
+        "purpose": "Cursor first-party skills synchronized by the harness, including project setup, review, automation, shell, SDK, and chat workflows.",
+        "redistribution_status": "Runtime-managed; not vendored",
+        "repository": "https://github.com/cursor/plugins",
+        "source": "Cursor runtime",
+        "status": "audit-observed; activation managed by Cursor"
+      },
+      {
+        "author": "Cursor",
+        "install_latest": "Use the Cursor plugin marketplace and add cursor-team-kit",
+        "license_status": "MIT (upstream manifest)",
+        "members": [
+          "check-compiler-errors",
+          "control-cli",
+          "control-ui",
+          "deslop",
+          "fix-ci",
+          "fix-merge-conflicts",
+          "get-pr-comments",
+          "loop-on-ci",
+          "make-pr-easy-to-review",
+          "new-branch-and-pr",
+          "pr-review-canvas",
+          "review-and-ship",
+          "run-smoke-tests",
+          "thermo-nuclear-code-quality-review",
+          "verify-this",
+          "weekly-review",
+          "what-did-i-get-done",
+          "workflow-from-chats"
+        ],
+        "mode": "external-cursor-plugin",
+        "name": "cursor-team-kit",
+        "notes": "pstack references this plugin for deslop, control-cli, and control-ui.",
+        "purpose": "Cursor team workflows for CI, code review, shipping, control-cli, control-ui, cleanup, reliability, and work summaries.",
+        "redistribution_status": "Not vendored; Cursor-managed install",
+        "repository": "https://github.com/cursor/plugins",
+        "source": "Cursor plugin cache",
+        "status": "audit-observed; cache present; activation-unverified",
+        "version": "1.2.0"
+      },
+      {
+        "author": "Mixed publishers",
+        "install_latest": "Use the Cursor plugin marketplace; activation must be verified in Cursor",
+        "license_status": "Mixed; verify each publisher's terms",
+        "members": [
+          "appwrite-plugin",
+          "browse",
+          "browser-use",
+          "buildkite",
+          "canva",
+          "cli-for-agent",
+          "cloudflare",
+          "coderabbit",
+          "context-dev",
+          "convex",
+          "create-plugin",
+          "cursor-sdk",
+          "firebase",
+          "github",
+          "gmail",
+          "google-calendar",
+          "google-drive",
+          "granola",
+          "hostinger-connector",
+          "link",
+          "merge-agent-handler",
+          "mobbin",
+          "playwright",
+          "pr-review-canvas",
+          "resend",
+          "revenuecat",
+          "revenuecat-play-billing",
+          "stripe",
+          "supabase",
+          "webflow",
+          "x"
+        ],
+        "mode": "external-cursor-plugin",
+        "name": "cursor-cached-plugins",
+        "notes": "Cache presence is not proof of enabled or authenticated capability. pstack and cursor-team-kit are listed separately.",
+        "purpose": "Additional Cursor marketplace plugin families recorded by the audit; skill payloads remain provider-managed.",
+        "redistribution_status": "Not vendored; provider-managed cache",
+        "repository": "https://github.com/cursor/plugins",
+        "source": "Cursor public plugin cache",
+        "status": "audit-observed; cache present; activation-unverified"
+      },
+      {
+        "author": "Project maintainers",
+        "install_latest": "Copy or link from the owning project only",
+        "license_status": "Owned by each project; verify locally",
+        "members": [
+          "project-local-verification-overlays"
+        ],
+        "mode": "project-local-overlay",
+        "name": "project-local-overlays",
+        "notes": "Project-specific names, policy, hooks, and validation context stay with their owning repositories and are not copied into this catalog.",
+        "purpose": "Repository-specific Cursor skills that must remain with their owning project policy and validation context.",
+        "redistribution_status": "Excluded from this repository",
+        "source": "Local project repositories",
+        "status": "project-owned; not portable"
+      },
+      {
+        "author": "Google Antigravity",
+        "install_latest": "Install the Antigravity CLI or IDE runtime",
+        "license_status": "Runtime-owned; verify Google terms",
+        "members": [
+          "agy-customizations",
+          "antigravity-guide",
+          "generative_ui",
+          "migrate-workflows",
+          "permissioned-github"
+        ],
+        "mode": "runtime-system",
+        "name": "antigravity-builtins",
+        "notes": "Catalog observation covers the CLI, IDE, and built-in Antigravity surfaces without copying provider files.",
+        "purpose": "Antigravity first-party guidance, customization, workflow migration, generative UI, and permissioned GitHub skills.",
+        "redistribution_status": "Runtime-managed; not vendored",
+        "source": "Antigravity/Gemini runtime",
+        "status": "audit-observed; duplicated across CLI and IDE surfaces"
+      },
+      {
+        "author": "Mixed local and extension authors",
+        "install_latest": "Enable through the Antigravity/Gemini runtime",
+        "license_status": "Mixed or not declared locally; verify each owner",
+        "members": [
+          "accidental-data-loss-prevention",
+          "autofix",
+          "bigquery-ai-ml",
+          "bigquery-bigframes",
+          "bigquery-data-transfer-service",
+          "bigquery-graph",
+          "bigquery-sql",
+          "building-data-apps",
+          "code-review",
+          "data-autocleaning",
+          "dataform-bigquery",
+          "dbt-bigquery",
+          "discovering-gcp-data-assets",
+          "enforcing-resource-attribution",
+          "federate-lakehouse-catalog",
+          "gcloud-auth-verification",
+          "gcp-composer-troubleshooting",
+          "gcp-data-pipelines",
+          "gcp-dataflow",
+          "gcp-managed-airflow-dag-authoring",
+          "gcp-managed-airflow-migrations",
+          "gcp-managed-airflow-recommendations",
+          "gcp-pipeline-orchestration",
+          "gcp-pipeline-resource-provisioning",
+          "gcp-spark",
+          "gcs-security-assessment",
+          "google-cloud-storage-basics",
+          "managing-python-dependencies",
+          "ml-best-practices",
+          "notebook-guidance",
+          "skill-repair",
+          "codex-primary-runtime"
+        ],
+        "mode": "runtime-system",
+        "name": "gemini-config-extras",
+        "notes": "The audit counted 82 configured directories: 47 overlap the vendored tree and 32 additional runtime names are listed here; three project-local overlays remain excluded.",
+        "purpose": "Additional Gemini-configured data, GCP, ML, and skill-maintenance workflows not present in the portable tree.",
+        "redistribution_status": "Runtime-managed; not vendored",
+        "source": "Gemini configuration",
+        "status": "audit-observed; activation-unverified"
+      },
+      {
+        "author": "Mixed publishers; see upstream repository table",
+        "install_latest": "Install and authenticate each plugin through the target Gemini-compatible runtime",
+        "license_status": "Mixed; some manifests have no local license metadata",
+        "members": [
+          "android-cli-plugin",
+          "chrome-devtools-plugin",
+          "project-local-extension-family",
+          "firebase",
+          "flutter",
+          "google-antigravity-sdk",
+          "google_maps_platform",
+          "googlecloudtools.datacloud_telemetry",
+          "modern-web-guidance-plugin",
+          "science",
+          "superpowers"
+        ],
+        "mode": "external-plugin",
+        "name": "gemini-plugin-families",
+        "notes": "The audit counted 11 plugin families and approximately 95 skill files. Unattributed manifests remain provenance-unknown.",
+        "purpose": "Google, Android, Firebase, Flutter, science, maps, web-guidance, and extension families that supply additional skills.",
+        "redistribution_status": "Runtime-managed; not vendored",
+        "source": "Gemini/Antigravity plugin configuration",
+        "status": "audit-observed; activation-unverified"
+      },
+      {
+        "author": "xAI / Grok Build",
+        "install_latest": "Install Grok Build and use its bundled skill runtime",
+        "license_status": "Runtime-owned; verify xAI terms",
+        "members": [
+          "build-with-ai",
+          "code-review",
+          "create-skill",
+          "create-workflow",
+          "design",
+          "docx",
+          "execute-plan",
+          "game-animation-frames",
+          "game-asset-core",
+          "game-character-consistency",
+          "game-tilesets",
+          "game-ui-icons",
+          "imagine",
+          "implement",
+          "pdf",
+          "pptx",
+          "pr-babysit",
+          "resume-claude",
+          "resume-codex",
+          "resume-cursor",
+          "review",
+          "skill-design-principles"
+        ],
+        "mode": "runtime-system",
+        "name": "grok-bundled",
+        "notes": "The audit counted 22 bundled skills; only pdf overlaps the portable toolkit.",
+        "purpose": "Grok Build's bundled planning, implementation, review, design, document, presentation, and game-asset workflows.",
+        "redistribution_status": "Runtime-managed; not vendored",
+        "source": "Grok Build runtime",
+        "status": "audit-observed; activation-unverified",
+        "version": "public-2026-08-20-r2"
+      },
+      {
+        "author": "Mixed publishers; see upstream repository table",
+        "install_latest": "Install each plugin through Grok Build using its author-supported source",
+        "license_status": "Mixed; verify each publisher's terms",
+        "members": [
+          "exa-grok-plugin",
+          "firecrawl-grok-plugin",
+          "plugin-grok",
+          "chrome-devtools-mcp",
+          "cloudflare",
+          "superpowers",
+          "vercel-plugin"
+        ],
+        "mode": "external-plugin",
+        "name": "grok-installed-plugin-families",
+        "notes": "The audit counted seven plugin families with 86 direct skill entries and 97 skill files including nested upstream/support files.",
+        "purpose": "Search, crawling, observability, browser debugging, Cloudflare, Superpowers, and Vercel workflows exposed to Grok Build.",
+        "redistribution_status": "Runtime-managed; not vendored",
+        "source": "Grok Build installed plugins",
+        "status": "audit-observed; activation-unverified"
+      },
+      {
+        "author": "JetBrains",
+        "install_latest": "Install Junie through JetBrains and verify its CLI skill runtime",
+        "license_status": "Runtime-owned; verify JetBrains terms",
+        "members": [
+          "demo-setup",
+          "junie-cli-docs",
+          "junie-native-project-skills"
+        ],
+        "mode": "runtime-system",
+        "name": "junie-native",
+        "notes": "The audit recorded shared and project-local Junie skill surfaces; project-specific overlays remain with their owning repositories.",
+        "purpose": "Junie-native project and CLI guidance skills that remain owned by the Junie runtime.",
+        "redistribution_status": "Runtime-managed; not vendored",
+        "repository": "https://github.com/JetBrains/junie",
+        "source": "JetBrains Junie runtime",
+        "status": "audit-observed; native skill activation-unverified",
+        "version": "2929.5 label; runtime executable unverified"
+      },
+      {
+        "author": "Command Code",
+        "install_latest": "Install Command Code from its supported distribution",
+        "license_status": "UNLICENSED (package metadata)",
+        "members": [
+          "argent-android-emulator-setup",
+          "argent-create-flow",
+          "argent-device-interact",
+          "argent-ios-simulator-setup",
+          "argent-lens",
+          "argent-metro-debugger",
+          "argent-native-profiler",
+          "argent-qa-flows",
+          "argent-react-native-app-workflow",
+          "argent-react-native-optimization",
+          "argent-react-native-profiler",
+          "argent-screen-recording",
+          "argent-screenshot-diff",
+          "argent-settings-permissions",
+          "argent-test-ui-flow",
+          "argent-tv-interact",
+          "code-review-and-quality"
+        ],
+        "mode": "runtime-integration",
+        "name": "command-code-runtime",
+        "notes": "The audit found 17 shared skill links (16 Argent skills plus code-review-and-quality). The package declares UNLICENSED and no public source repository.",
+        "purpose": "Command Code model/provider routing and shared skill discovery; not an independent portable skill source.",
+        "redistribution_status": "Excluded; no redistribution authority",
+        "repository": "https://commandcode.ai/docs",
+        "source": "Command Code",
+        "status": "audit-observed; runtime integration only",
+        "version": "1.38.2 label; package runtime unverified"
+      },
+      {
+        "author": "duolahypercho",
+        "install_latest": "Follow the codex-router repository's documented installation",
+        "license_status": "Not declared in local package metadata; verify upstream",
+        "members": [
+          "codex-app-threads",
+          "codex-computer-use",
+          "codex-in-app-browser",
+          "codex-router",
+          "codex-router-media"
+        ],
+        "mode": "external-git-skill",
+        "name": "codex-router-skills",
+        "purpose": "Model routing, Codex app threads, computer use, in-app browser, and media integration skills.",
+        "redistribution_status": "Not vendored; follow upstream terms",
+        "repository": "https://github.com/duolahypercho/codex-router",
+        "source": "Codex Router repository",
+        "status": "audit-observed; external integration",
+        "version": "0.4.0-beta.3"
       }
     ],
     "upstream_repositories": [
@@ -200,6 +691,7 @@
         "author": "OpenAI",
         "id": "openai-plugins",
         "install_latest": "Use the current Codex built-in marketplace",
+        "license_status": "Not verified locally; consult upstream repository",
         "repository": "https://github.com/openai/plugins",
         "represented_by": "Codex system skills, licensed standard skills, and openai-* plugin dependencies",
         "update_policy": "runtime-managed; openai/skills is deprecated in favor of openai/plugins"
@@ -208,6 +700,7 @@
         "author": "Supabase",
         "id": "supabase-agent-skills",
         "install_latest": "npx skills add supabase/agent-skills",
+        "license_status": "Not verified locally; consult upstream repository",
         "repository": "https://github.com/supabase/agent-skills",
         "represented_by": "vendored supabase skill and runtime plugin family",
         "update_policy": "review and re-lock before replacing the vendored snapshot"
@@ -216,6 +709,7 @@
         "author": "CodeRabbit",
         "id": "coderabbit-skills",
         "install_latest": "npx skills add coderabbitai/skills",
+        "license_status": "Not verified locally; consult upstream repository",
         "repository": "https://github.com/coderabbitai/skills",
         "represented_by": "external code-review and autofix skills",
         "update_policy": "external; CodeRabbit CLI and authentication remain separate"
@@ -224,6 +718,7 @@
         "author": "Software Mansion",
         "id": "argent",
         "install_latest": "npx @swmansion/argent@latest init --local",
+        "license_status": "Not verified locally; consult upstream repository",
         "repository": "https://github.com/software-mansion/argent",
         "represented_by": "external argent-* skill group and MCP runtime",
         "update_policy": "external project-local install; review generated MCP and skill files"
@@ -232,6 +727,7 @@
         "author": "Leonxlnx",
         "id": "unlazy",
         "install_latest": "npx skills add Leonxlnx/unlazy",
+        "license_status": "Not verified locally; consult upstream repository",
         "repository": "https://github.com/Leonxlnx/unlazy",
         "represented_by": "external unlazy skill",
         "update_policy": "external; keep separately versioned"
@@ -240,6 +736,7 @@
         "author": "poteto / Cursor",
         "id": "pstack",
         "install_latest": "/add-plugin pstack",
+        "license_status": "MIT in upstream manifest; verify current terms",
         "repository": "https://github.com/cursor/plugins/tree/main/pstack",
         "represented_by": "Cursor pstack plugin, /poteto-mode, /setup-pstack, playbooks, and principles",
         "update_policy": "Cursor-managed; keep outside the portable bundle unless separately reviewed for licensing and harness compatibility"
@@ -248,6 +745,7 @@
         "author": "tolibear",
         "id": "goalbuddy",
         "install_latest": "npx goalbuddy@latest",
+        "license_status": "Not verified locally; consult upstream repository",
         "repository": "https://github.com/tolibear/goalbuddy",
         "represented_by": "goalbuddy plugin and goal-prep skill",
         "update_policy": "external plugin; use npx goalbuddy update after installation"
@@ -256,6 +754,7 @@
         "author": "Remotion",
         "id": "remotion-skills",
         "install_latest": "npx skills add remotion-dev/skills",
+        "license_status": "Not verified locally; consult upstream repository",
         "repository": "https://github.com/remotion-dev/skills",
         "represented_by": "remotion plugin dependency and upstream skill family",
         "update_policy": "external; install into the target harness or project"
@@ -264,9 +763,109 @@
         "author": "Vercel",
         "id": "vercel-agent-skills",
         "install_latest": "npx skills add vercel-labs/agent-skills --skill vercel-deploy",
+        "license_status": "Not verified locally; consult upstream repository",
         "repository": "https://github.com/vercel-labs/agent-skills",
         "represented_by": "vendored vercel-deploy skill",
         "update_policy": "review the Vercel license and diff before replacing the vendored snapshot"
+      },
+      {
+        "author": "Cursor",
+        "id": "cursor-plugins",
+        "install_latest": "Use the Cursor plugin marketplace or the built-in runtime",
+        "license_status": "Not verified locally; consult upstream repository",
+        "repository": "https://github.com/cursor/plugins",
+        "represented_by": "Cursor built-ins, pstack, cursor-team-kit, and cached marketplace plugin families",
+        "update_policy": "runtime-managed; record version and activation evidence without copying cache contents"
+      },
+      {
+        "author": "Chrome DevTools Team",
+        "id": "chrome-devtools-mcp",
+        "install_latest": "Follow the Chrome DevTools MCP repository's installation instructions",
+        "license_status": "Not verified locally; consult upstream repository",
+        "repository": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+        "represented_by": "Cursor, Gemini, and Grok Chrome DevTools plugin families",
+        "update_policy": "external; verify plugin permissions and runtime compatibility"
+      },
+      {
+        "author": "Google",
+        "id": "modern-web-guidance",
+        "install_latest": "Follow the repository's documented Gemini/Antigravity installation",
+        "license_status": "Not verified locally; consult upstream repository",
+        "repository": "https://github.com/GoogleChrome/modern-web-guidance",
+        "represented_by": "Gemini/Antigravity modern-web-guidance plugin",
+        "update_policy": "external; keep runtime-managed"
+      },
+      {
+        "author": "Google DeepMind",
+        "id": "science-skills",
+        "install_latest": "Follow the repository's documented installation",
+        "license_status": "Not verified locally; consult upstream repository",
+        "repository": "https://github.com/google-deepmind/science-skills",
+        "represented_by": "Gemini/Antigravity science plugin",
+        "update_policy": "external; preserve credential and data-source boundaries"
+      },
+      {
+        "author": "Exa",
+        "id": "exa-grok-plugin",
+        "install_latest": "Follow the repository's Grok Build installation",
+        "license_status": "Not verified locally; consult upstream repository",
+        "repository": "https://github.com/exa-labs/exa-grok-plugin",
+        "represented_by": "Grok Build exa-search plugin family",
+        "update_policy": "external; authentication remains provider-owned"
+      },
+      {
+        "author": "Firecrawl",
+        "id": "firecrawl-grok-plugin",
+        "install_latest": "Follow the repository's Grok Build installation",
+        "license_status": "Not verified locally; consult upstream repository",
+        "repository": "https://github.com/firecrawl/firecrawl-grok-plugin",
+        "represented_by": "Grok Build Firecrawl plugin family",
+        "update_policy": "external; authentication remains provider-owned"
+      },
+      {
+        "author": "Sentry",
+        "id": "plugin-grok",
+        "install_latest": "Follow the repository's Grok Build installation",
+        "license_status": "Not verified locally; consult upstream repository",
+        "repository": "https://github.com/getsentry/plugin-grok",
+        "represented_by": "Grok Build Sentry plugin family",
+        "update_policy": "external; Sentry organization and tokens remain separate"
+      },
+      {
+        "author": "Jesse Vincent / obra",
+        "id": "superpowers",
+        "install_latest": "Follow the repository's documented installation",
+        "license_status": "Not verified locally; consult upstream repository",
+        "repository": "https://github.com/obra/superpowers",
+        "represented_by": "Cursor/Gemini/Grok Superpowers plugin family",
+        "update_policy": "external; validate harness-specific adapters"
+      },
+      {
+        "author": "Vercel",
+        "id": "vercel-plugin",
+        "install_latest": "Follow the repository's Grok Build installation",
+        "license_status": "Not verified locally; consult upstream repository",
+        "repository": "https://github.com/vercel/vercel-plugin",
+        "represented_by": "Grok Build Vercel plugin family",
+        "update_policy": "external; Vercel credentials remain separate"
+      },
+      {
+        "author": "JetBrains",
+        "id": "junie",
+        "install_latest": "Install Junie through JetBrains",
+        "license_status": "Not verified locally; consult upstream repository",
+        "repository": "https://github.com/JetBrains/junie",
+        "represented_by": "Junie native runtime and supervisor compatibility reference",
+        "update_policy": "runtime-managed; do not repackage the IDE plugin as a Codex plugin"
+      },
+      {
+        "author": "duolahypercho",
+        "id": "codex-router",
+        "install_latest": "Follow the repository's documented installation",
+        "license_status": "Not verified locally; consult upstream repository",
+        "repository": "https://github.com/duolahypercho/codex-router",
+        "represented_by": "codex-router companion skill family",
+        "update_policy": "external; preserve router credentials and local provider configuration"
       }
     ]
   },
@@ -482,5 +1081,5 @@
       "sha256": "74f3434aa876eb4f67facbdc59389c2daad0a330c2aaca98e12074f44d6079fc"
     }
   },
-  "version": "0.1.0"
+  "version": "0.2.0"
 }

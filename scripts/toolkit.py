@@ -158,6 +158,7 @@ def build_lock() -> dict[str, Any]:
         "skills": skills,
         "external_dependencies": {
             "skill_groups": catalog.get("external_skill_groups", []),
+            "runtime_integrations": catalog.get("runtime_integrations", []),
             "upstream_repositories": catalog.get("upstream_repositories", []),
             "packages": catalog.get("external_packages", []),
         },
@@ -288,6 +289,36 @@ def structural_errors(check_lock: bool = True) -> list[str]:
                 "duplicate upstream repository ids: " + ", ".join(duplicate_upstreams)
             )
 
+    runtime_integrations = catalog.get("runtime_integrations", [])
+    if not isinstance(runtime_integrations, list) or not all(
+        isinstance(item, dict) for item in runtime_integrations
+    ):
+        errors.append("catalog runtime_integrations must be an array of objects")
+    else:
+        runtime_ids = [item.get("id") for item in runtime_integrations]
+        invalid_ids = [str(item) for item in runtime_ids if not isinstance(item, str) or not item]
+        if invalid_ids:
+            errors.append("each runtime integration requires a non-empty id")
+        required_runtime_fields = ("name", "version", "status", "purpose")
+        for runtime in runtime_integrations:
+            runtime_id = str(runtime.get("id") or "runtime")
+            for field in required_runtime_fields:
+                value = runtime.get(field)
+                if not isinstance(value, str) or not value.strip():
+                    errors.append(f"{runtime_id}: runtime integration requires {field}")
+            surfaces = runtime.get("surfaces", [])
+            if not isinstance(surfaces, list) or any(
+                not isinstance(surface, str) or not surface.strip() for surface in surfaces
+            ):
+                errors.append(f"{runtime_id}: runtime integration surfaces must be strings")
+        duplicate_runtime_ids = sorted(
+            {str(item) for item in runtime_ids if runtime_ids.count(item) > 1}
+        )
+        if duplicate_runtime_ids:
+            errors.append(
+                "duplicate runtime integration ids: " + ", ".join(duplicate_runtime_ids)
+            )
+
     if check_lock:
         try:
             expected = build_lock()
@@ -318,7 +349,8 @@ def command_verify(_args: argparse.Namespace) -> int:
         return 1
     print(
         f"Verified {PACKAGE_NAME} {package_version()}: "
-        f"{len(vendored_names())} vendored skills, README inventory, manifests, licenses, paths, and lockfile."
+        f"{len(vendored_names())} vendored skills, README markers, manifests, "
+        f"portability/secret checks, and lockfile."
     )
     return 0
 
@@ -330,11 +362,15 @@ def command_inventory(_args: argparse.Namespace) -> int:
     groups = catalog.get("external_skill_groups", [])
     packages = catalog.get("external_packages", [])
     upstreams = catalog.get("upstream_repositories", [])
+    runtimes = catalog.get("runtime_integrations", [])
     print(f"External skill groups: {len(groups)}")
     print(f"External plugin packages: {len(packages)}")
     print(f"Documented upstream repositories: {len(upstreams)}")
+    print(f"Runtime integrations: {len(runtimes)}")
     for group in groups:
         print(f"  dependency: {group.get('name')} ({group.get('mode')})")
+    for runtime in runtimes:
+        print(f"  runtime: {runtime.get('id')} ({runtime.get('status')})")
     return 0
 
 
@@ -378,6 +414,11 @@ def command_doctor(_args: argparse.Namespace) -> int:
         package_id = str(package.get("id", ""))
         ready = plugin_list_ready and package_id in installed_plugins
         print(f"external {package_id}: {'detected' if ready else 'not detected'}")
+    for runtime in catalog.get("runtime_integrations", []):
+        runtime_id = str(runtime.get("id", "unknown"))
+        status = str(runtime.get("status", "runtime-managed"))
+        version = str(runtime.get("version", "unversioned"))
+        print(f"runtime {runtime_id}: {version} (catalog observation; {status})")
     print("connector authentication: not inspected (intentionally out of scope)")
     return 0 if verify_ok and sys.version_info >= (3, 9) else 1
 

@@ -86,6 +86,15 @@ def link(label: str, url: str | None) -> str:
     return f"[{label}]({url})" if url else "—"
 
 
+def members_cell(members: list[Any]) -> str:
+    """Keep large runtime inventories readable while retaining every name."""
+
+    rendered = "<br>".join(f"`{md(str(member))}`" for member in members)
+    if len(members) <= 20:
+        return rendered
+    return f"<details><summary>{len(members)} members</summary>{rendered}</details>"
+
+
 def upstream_by_id(catalog: dict[str, Any]) -> dict[str, dict[str, Any]]:
     return {
         str(item.get("id")): item
@@ -98,8 +107,8 @@ def vendored_section(catalog: dict[str, Any]) -> list[str]:
     rows: list[str] = [
         f"### Vendored portable skills ({len(catalog.get('vendored', []))})",
         "",
-        "| Skill | Purpose | Declared author / provenance | Source and upstream |",
-        "| --- | --- | --- | --- |",
+        "| Skill | Purpose | Declared author / provenance | Source and upstream | License / redistribution |",
+        "| --- | --- | --- | --- | --- |",
     ]
     upstreams = upstream_by_id(catalog)
     for entry in sorted(catalog.get("vendored", []), key=lambda item: str(item.get("name"))):
@@ -116,9 +125,17 @@ def vendored_section(catalog: dict[str, Any]) -> list[str]:
             source = f"{local}; {link('upstream', str(repository))}"
         else:
             source = local
+        evidence = entry.get("license_evidence")
+        if evidence:
+            license_info = f"Evidence: `{md(str(evidence))}`; review terms before redistribution"
+        else:
+            license_info = str(
+                entry.get("license_status")
+                or "Not declared in snapshot; review before redistribution"
+            )
         rows.append(
             f"| {link(f'`{name}`', f'plugins/rogemar-agent-toolkit/skills/{name}/SKILL.md')} "
-            f"| {md(purpose)} | {md(author)} | {source} |"
+            f"| {md(purpose)} | {md(author)} | {source} | {md(license_info)} |"
         )
     return rows
 
@@ -142,24 +159,73 @@ def external_groups_section(catalog: dict[str, Any]) -> list[str]:
         "",
         "These names are part of the supported capability inventory but are not copied by the portable installer.",
         "",
-        "| Skill group and members | Purpose | Author / status | Canonical source and latest install |",
-        "| --- | --- | --- | --- |",
+        "| Skill group and members | Purpose | Author / status | License / redistribution | Canonical source and latest install |",
+        "| --- | --- | --- | --- | --- |",
     ]
     upstreams = upstream_by_id(catalog)
     for group in sorted(catalog.get("external_skill_groups", []), key=lambda item: str(item.get("name"))):
         name = str(group.get("name"))
-        members = "<br>".join(f"`{member}`" for member in group.get("members", []))
+        members = members_cell(list(group.get("members", [])))
         upstream = upstreams.get(name) or upstreams.get(GROUP_UPSTREAM_IDS.get(name, ""), {})
-        author = str((upstream or {}).get("author") or group.get("source") or "Runtime-managed")
+        author = str(
+            group.get("author")
+            or (upstream or {}).get("author")
+            or group.get("source")
+            or "Runtime-managed"
+        )
         status = str(group.get("status") or group.get("mode") or "runtime-managed")
+        if group.get("version"):
+            status += f"<br>version {md(str(group['version']))}"
         repository = group.get("repository") or (upstream or {}).get("repository")
         install = group.get("install_latest") or (upstream or {}).get("install_latest")
         source = link("repository", str(repository)) if repository else "No public repository declared"
         if install:
             source += f"; `{md(str(install))}`"
+        notes = group.get("notes")
+        if notes:
+            source += f"<br>{md(str(notes))}"
+        license_status = str(
+            group.get("license_status")
+            or (upstream or {}).get("license_status")
+            or "Not declared locally; verify owner terms"
+        )
+        redistribution = str(
+            group.get("redistribution_status")
+            or "Not vendored; owner-managed"
+        )
         rows.append(
-            f"| **`{name}`**<br>{members} | {GROUP_PURPOSES.get(name, 'External skill group')} "
-            f"| {md(author)}<br>{md(status)} | {source} |"
+            f"| **`{name}`**<br>{members} | {md(str(group.get('purpose') or GROUP_PURPOSES.get(name, 'External skill group')))} "
+            f"| {md(author)}<br>{md(status)} | {md(license_status)}<br>{md(redistribution)} | {source} |"
+        )
+    return rows
+
+
+def runtime_integrations_section(catalog: dict[str, Any]) -> list[str]:
+    integrations = catalog.get("runtime_integrations", [])
+    if not integrations:
+        return []
+    rows: list[str] = [
+        "### Harness and provider runtimes",
+        "",
+        "These runtimes are catalog-audited and remain outside the portable skill archive. Their status is evidence captured during a bounded audit, not a live probe or a promise that a fresh VM or cloud worker has the same installation.",
+        "",
+        "| Runtime | Version / catalog status | Purpose and safe boundary | Author / license | Discovery surface | Documentation |",
+        "| --- | --- | --- | --- | --- | --- |",
+    ]
+    for runtime in sorted(integrations, key=lambda item: str(item.get("id"))):
+        name = str(runtime.get("name") or runtime.get("id"))
+        version = str(runtime.get("version") or "unversioned")
+        status = str(runtime.get("status") or "runtime-managed")
+        purpose = str(runtime.get("purpose") or "Runtime-managed integration")
+        author = str(runtime.get("author") or "Runtime owner not declared")
+        license_status = str(runtime.get("license_status") or "Not declared locally; verify owner terms")
+        surfaces = "<br>".join(
+            f"`{md(str(surface))}`" for surface in runtime.get("surfaces", [])
+        ) or "—"
+        repository = runtime.get("repository")
+        documentation = link("documentation", str(repository)) if repository else "No public documentation declared"
+        rows.append(
+            f"| **`{md(name)}`** | {md(version)}<br>{md(status)} | {md(purpose)} | {md(author)}<br>{md(license_status)} | {surfaces} | {documentation} |"
         )
     return rows
 
@@ -168,7 +234,7 @@ def package_section(catalog: dict[str, Any]) -> list[str]:
     rows: list[str] = [
         "### Runtime plugin packages",
         "",
-        "These pinned package references preserve the active local capability set. The toolkit records them for diagnosis and provenance; it does not install, authenticate, or copy them.",
+        "These pinned package references record the capability audit and provenance. The toolkit does not install, authenticate, or copy them.",
         "",
         "| Package (pinned version) | Purpose | Author / source | Latest path |",
         "| --- | --- | --- | --- |",
@@ -196,6 +262,8 @@ def package_section(catalog: dict[str, Any]) -> list[str]:
             source = "No public source declared"
             latest = "Install through the target harness"
         purpose = f"Provides the `{base}` runtime skill/tool family."
+        if package.get("status"):
+            purpose += f"<br>{md(str(package['status']))}"
         rows.append(
             f"| `{package_id}` ({package.get('version', 'unpinned')}) | {purpose} | {author}<br>{source} | `{latest}` |"
         )
@@ -208,6 +276,8 @@ def generated_inventory(catalog: dict[str, Any]) -> str:
         *vendored_section(catalog),
         "",
         *external_groups_section(catalog),
+        "",
+        *runtime_integrations_section(catalog),
         "",
         *package_section(catalog),
     ]
