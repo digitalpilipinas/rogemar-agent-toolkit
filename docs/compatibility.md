@@ -1,78 +1,49 @@
 # Compatibility and evidence boundary
 
-## Verified targets for version 0.2
+The installer targets Python 3.9+ on macOS, Linux and WSL. It copies selected complete skill trees and resolves declared hard skill dependencies. File placement is testable separately from whether a running agent discovers or executes a skill.
 
-- Static package validation on macOS.
-- Project and user installation logic on macOS and Linux/WSL-compatible Python.
-- Codex plugin structure through `.codex-plugin/plugin.json`.
-- Cursor/Agent Skills structure through `.agents/skills` and the portable
-  Agent Plugins manifest.
+## Harness adapters
 
-Runtime discovery in a fresh Codex task, Cursor UI discovery, Codex workspace
-GitHub import, and a Linux/WSL host remain separate smoke-test evidence. Do not
-claim them passed until they are actually performed in those environments.
+| Harness | Project root | User root | Runtime evidence |
+| --- | --- | --- | --- |
+| agent-skills | `.agents/skills` | `.agents/skills` | Fresh-session discovery required |
+| codex | `.agents/skills` | `.agents/skills` | Fresh-session discovery required |
+| cursor | `.cursor/skills` | `.cursor/skills` | Fresh-session discovery required |
+| gemini | `.gemini/skills` | `.gemini/skills` | Fresh-session discovery required |
+| antigravity | `.agent/skills` | `.gemini/antigravity/skills` | Fresh-session discovery required |
+| grok-build | `.grok/skills` | `.grok/skills` | Fresh-session discovery required |
+| junie | `.junie/skills` | `.junie/skills` | Fresh-session discovery required |
+| command-code | `.commandcode/skills` | `.commandcode/skills` | Fresh-session discovery required |
+| z-code | `.zcode/skills` | `.zcode/skills` | Fresh-session discovery required |
+| claude | `.claude/skills` | `.claude/skills` | Fresh-session discovery required |
 
-The catalog also records audit-observed Antigravity/Gemini, Grok Build, Junie,
-Command Code, and codex-router runtime surfaces. “Audit-observed” describes
-catalog evidence captured during a bounded local audit; it is not a live probe
-and does not prove that a fresh VM, cloud worker, or newly authenticated account
-has the same capabilities.
+Codex places native-only entries in `.codex/skills`; its portable methods live once in `.agents/skills`. The complete 45-skill Forge family remains Codex-specific, including its own model routing. Cursor uses native PStack when installed. Generic engineering methods can run sequentially with the selected harness's current model and tools; no invented selector or subagent is required.
 
-## Functional parity
+These paths combine official format support and the local inventory's observed user layouts. They are delivery adapters, not certification of every harness version. For a harness whose installed version differs, use its documented skill import path and verify discovery; do not copy into runtime builtin/plugin cache directories. Use only one primary managed installation per shared root. Project overlays are never inferred from global skills.
 
-Vendored skills are installed from this repository. System skills, third-party
-skills, marketplace plugins, MCP servers, apps, and credentials remain owned by
-their source runtime. `doctor` reports their observed availability but does not
-install, enable, authenticate, or copy them.
+## Evidence levels
 
-A skill that references a tool can be discovered even when the tool is absent.
-That state is degraded, not functionally ready. Provider permissions and
-workspace policies remain authoritative.
+- Local catalogue, content, packaging and installer tests verify static structure and simulated target layouts.
+- Independent instruction walkthroughs cover Gemini sequential engineering, Codex native Forge, and Cursor review ownership; they do not execute those runtimes.
+- OpenDesign command-adapter tests verify resolution, literal argv, read-only doctor and native exit codes. A pinned resource import verifies complete file delivery separately.
+- Fresh Codex/Cursor/Gemini/Grok/Junie/ZCode/Command Code sessions, clean Linux/WSL hosts, authenticated providers and rendered app/device behavior require separate smoke evidence.
+- A dependency's presence, CLI success or cached plugin version does not prove it is enabled, callable or authenticated.
 
-The root README links each currently represented public upstream and gives its
-author-supported latest-install command. Those mutable latest installs are an
-operator choice; they do not replace the toolkit's pinned lockfile. Refreshing
-a vendored upstream requires a license/diff review followed by lock regeneration
-and validation.
+## OpenDesign and platform limits
 
-## Cursor, pstack, Team Kit, and GoalBuddy
+OpenDesign keeps its real project/run, scenario admission, snapshots, critique and connector mechanisms. It needs Node 24.x, the pinned pnpm/build lock, native SQLite/PTY/media packages, and the chosen provider. Headless project/HTML workflows are source-supported. PDF/image/PPTX need the Electron renderer; its absence is an unsupported dependency path. The Docker source omits agent CLIs and template copies; selected resource import does not provision a whole runnable image. See [design integration](design-integration.md).
 
-GoalBuddy is represented as an external, runtime-managed dependency from
-[tolibear/goalbuddy](https://github.com/tolibear/goalbuddy). It is recorded in
-the catalog and reported by `doctor` as an external dependency when the local
-Codex plugin catalog is available;
-the toolkit does not vendor or authenticate it.
+Argent is a full external 16-skill family. Methods may be read without MCP; device actions require its supported tool server and device runtime. iOS simulators require a Mac/Xcode host. Android requires the matching SDK/JDK and a usable device or emulator; ordinary cloud containers may lack virtualization. Web checks need a supported browser driver. Expo's current upstream entry names differ from the recorded local cache and are updated by its owner. Codex Security remains a separate optional provider.
 
-Cursor's `pstack` is represented as a separate external Cursor plugin from
-[cursor/plugins/tree/main/pstack](https://github.com/cursor/plugins/tree/main/pstack).
-Install it in Cursor with `/add-plugin pstack`. It is not installed in the
-current Codex environment and is intentionally not copied into `.agents/skills`:
-its playbooks, principles, and Cursor-specific runtime behavior do not provide
-portable cross-harness parity by themselves. The pstack upstream also points
-to `cursor-team-kit` for additional `deslop`, `control-cli`, and `control-ui`
-capabilities; those are separate dependencies and are not silently included.
+## Provenance and updates
 
-The bounded audit recorded a local pstack package labeled `0.14.2` and a cache
-label `0.14.5`; the catalog records both without treating either label as
-proof of Cursor activation. Cursor's first-party `skills-cursor` directory,
-Cursor Team Kit, and other marketplace cache entries are runtime-managed.
-Cache presence is not proof of enablement or authentication.
+Runtime-managed system skills, proprietary plugin caches, credentials, histories and project-only overlays are not vendored. The complete canonical inventory includes licensed source snapshots and owner-maintained methods; keep each upstream notice. Changing a pinned source requires review, a new lock and relevant validation. The optional resource importer reads pinned Git objects rather than the source working tree.
 
-## External runtimes and provider integrations
+## Checked discovery references
 
-Antigravity/Gemini, Grok Build, Junie, Command Code, and codex-router are
-documented as runtime integrations or external skill groups. The toolkit does
-not copy their binaries, provider homes, credentials, sessions, histories,
-chat databases, or proprietary/unlicensed payloads. The
-`agent-collaboration-terminal` skill can coordinate compatible providers, but
-it does not make a missing provider runtime or credential available.
+- [Cursor skill locations and cloud copying](https://cursor.com/docs/skills): project `.agents/skills` or `.cursor/skills`; personal shared skills are not automatically copied into remote workers. Install project skills or bake them into the worker image.
+- [Gemini discovery tiers](https://geminicli.com/docs/cli/skills/): native and `.agents/skills` aliases are supported; the shared alias wins within a tier.
+- [Junie skill locations](https://junie.jetbrains.com/docs/agent-skills.html): project and user `.junie/skills`.
+- [Command Code skill locations](https://commandcode.ai/docs/skills): native and shared paths are supported, with native precedence.
 
-Junie remains an IDE/CLI runtime with a separate Codex supervisor package. Do
-not treat an IntelliJ plugin archive or Junie CLI ACP documentation as proof of
-a direct Codex ACP bridge; verify the target protocol and package format first.
-
-## Project overlays
-
-Repository-specific `AGENTS.md`, hooks, credentials, database policy, release
-rules, and project learning stay in their project repositories. They are not
-silently injected by this toolkit.
+These documentation checks were made on 2026-09-07. Grok/ZCode user directories are local observations; their fresh remote discovery remains unverified.

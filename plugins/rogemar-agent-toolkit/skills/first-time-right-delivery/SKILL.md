@@ -1,78 +1,70 @@
 ---
 name: first-time-right-delivery
-description: Use for planning, building, reviewing, testing, or shipping any non-trivial coding change when the goal is to avoid missed requirements and rework. Applies project-agnostic evidence gates, cross-functional review lenses, negative testing, staged delivery checks, and honest readiness reporting.
+description: Keep requirements, implementation, and acceptance evidence aligned during a non-trivial software change. Use when missed behavior, compatibility, or premature readiness claims are a material risk; supplement the current plan and review without creating another workflow.
 ---
 
 # First-Time-Right Delivery
 
-Use this skill as a cross-project delivery-quality discipline. Read the target
-repository's instructions, product specification, scripts, and CI workflow
-before relying on any checklist below. `workflow-orchestrator` alone owns
-delegation and writer selection; this skill defines evidence expectations and
-must not be interpreted as a main-agent-only writing policy.
+Apply evidence discipline inside the current task. `create-plan` can own a needed
+plan, `code-review-and-quality` can own the review, and the selected orchestrator
+owns coordination. This skill contributes acceptance checks; it does not start
+a second plan, board, review, or model-routing process.
 
-## Planning playbook
+## Before changing behavior
 
-1. Inspect current branch, diff, nearby implementation, test conventions, CI,
-   deployment constraints, and existing work before proposing a change.
-2. Separate locked requirements from assumptions and open decisions. Do not
-   silently redesign the product to fill a missing fact.
-3. Build a requirement-to-evidence matrix: user behaviour, UI/state, authority
-   or backend path, data/compatibility, positive proof, negative proof, and
-   rollback/disable path.
-4. Divide work into independently deployable increments with real dependency
-   order. State what blocks each increment.
-5. Select only applicable review lenses: strategy/scope, evidence/research,
-   UX/accessibility, copy/truthfulness, technical integration, QA, and
-   privacy/security.
-6. Invoke `plan-model-router` when the plan has multiple PRs, increments or
-   implementation phases, materially different risk levels, or an explicit
-   model-routing request. Skip routing overhead for routine, single-track
-   changes. Treat profiles as advisory and retain validation and independent
-   review; reassess if the actual diff materially exceeds the planned scope or
-   risk.
+- Read the repository instructions, current changes, relevant requirements,
+  implementation patterns, and verification commands. Preserve unrelated work.
+- Separate locked requirements, discoverable facts, assumptions, and material
+  owner decisions. State what observable result completes the request.
+- Connect each important requirement to a check. Use an existing acceptance list;
+  use a matrix only when multiple contracts make it easier to audit. Add authority,
+  compatibility, failure, or recovery details only where they matter.
+- Sequence coherent increments by their real dependencies. An increment needs
+  a reviewable result and a useful check; it need not be its own deployment or
+  commit. If delegated, preserve explicit ownership, allowed scope, isolation,
+  and required verification under the active harness's policy.
 
-## Execution playbook
+## During implementation
 
-1. Implement the complete contract across UI, API, persistence, access control,
-   cache/offline state, configuration, observability, and tests as applicable.
-2. Keep identity, authorization, ownership, entitlements, quotas, and sensitive
-   derived state authoritative on the trusted server boundary.
-3. Preserve documented compatibility; test legacy/current inputs and make data
-   migrations scoped, retry-safe, and reversible or safely disableable.
-4. Treat empty, loading, error, retry, offline, disabled, and unavailable states
-   as product behaviour, not late polish. Do not fabricate data.
-5. Request an independent counterexample review before delivery. Test whether
-   malformed, legacy, unauthorized, concurrent, disabled, or private inputs
-   violate the intended contract.
+- Complete the behavior across the affected UI, API, persistence, access control,
+  cache/offline state, configuration, and tests as applicable. Avoid completing
+  only the visible path while leaving a required consumer or failure state out.
+- Keep security-sensitive decisions at their trusted authority boundary; do not
+  accept a client-supplied override of server-owned identity or permissions.
+- Preserve supported inputs, clients, and persisted data. For data transitions,
+  verify partial completion, safe retries, and recovery or disable behavior.
+- Include the applicable loading, empty, error, denied, unavailable, retry, or
+  offline states in acceptance. Never fabricate success data to fill a gap.
+- Reconcile changed scope or new evidence with the existing plan. Resolve only
+  the dependent work when a material product choice remains open.
 
-## Delivery playbook
+## Before claiming completion
 
-1. Run the target repository's relevant lint, type, test, migration, build,
-   security, and smoke checks against final content.
-2. Reinspect staged files, run whitespace and secret checks, and preserve
-   unrelated/local-only work.
-3. Commit only when the change is deployable by itself and the user has
-   authorized the commit. Include scope, risk/compatibility, validation, and
-   deferred QA in the delivery record.
-4. Verify the remote commit and CI after an authorized push. Keep local checks,
-   CI, staging/production, and physical-device/manual QA distinct in reports.
+1. Compare the actual final diff and results with the original outcome. Check
+   omitted requirements as well as defective code. Use the active review's test
+   and counterexample pass; do not duplicate it here.
+2. Run the relevant repository checks against final content. Verify the surface
+   affected: an original repro for a bug, runtime behavior for an interaction,
+   supported cases for compatibility, or a comparable baseline for a performance
+   claim. A low-impact edit may need only a direct check.
+3. Seek independent review when it adds meaningful evidence or a project gate
+   requires it. Use the selected runtime's permitted capabilities; model choice
+   never substitutes for validation. Disclose unavailable independent evidence
+   and keep any required gate unmet.
+4. State what is implemented, verified, blocked, or explicitly deferred. Keep
+   local tests, CI, staging/production, external review, and manual/device checks
+   distinct. Report a required check that could not run without calling it passed.
 
-## Stop conditions
+## Delivery boundary
 
-Stop rather than skipping ahead when the requested work lacks a required prior
-contract/migration, an unresolved product decision would change scope, or a
-required validation proves the current increment unsafe. A user-approved
-deferred manual/device check is a recorded deferral, never a pass.
+Release work applies only when authorized. Before a commit or publication,
+reinspect the selected files and applicable secret, whitespace, and project
+checks. Preserve unrelated and local-only material. After an authorized push or
+deployment, verify the remote revision and the corresponding CI or runtime
+evidence before claiming that phase complete.
 
-## Delegation boundary
-
-Defer worker selection and permissions to `workflow-orchestrator`. The main
-agent may implement directly, and an approved plan or explicit owner
-authorization may assign bounded project-local implementation, tests, or
-documentation to Workers. Apply this skill's evidence requirements equally to
-every writer. Use read-only explorers, counterexample reviewers, or validation
-analysts for independent evidence streams; do not turn those reviewer roles
-into implicit write permission. Keep concurrent writers on proven-disjoint
-scopes and isolated worktrees, and return scope conflicts, ambiguous product
-decisions, or ceiling-constrained work to the main agent.
+Pause dependent work when a required prior contract is absent, a material owner
+decision changes the scope, or verification shows the increment unsafe. Continue
+independent authorized work. An explicitly accepted deferral remains a deferral;
+neither a plan, a worker receipt, nor this skill grants additional external-action
+authority.

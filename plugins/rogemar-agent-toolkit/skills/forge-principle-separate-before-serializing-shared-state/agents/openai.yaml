@@ -1,0 +1,3 @@
+interface:
+  display_name: "Forge Principle Separate Before Serializing Shared State"
+  short_description: "Codex engineering: principle separate before serializing shared "

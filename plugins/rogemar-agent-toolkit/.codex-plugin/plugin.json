@@ -1,6 +1,6 @@
 {
   "name": "rogemar-agent-toolkit",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Portable, versioned engineering and delivery skills for Codex and compatible agent harnesses.",
   "author": {
     "name": "Rogemar"
@@ -16,7 +16,7 @@
   "interface": {
     "displayName": "Rogemar Agent Toolkit",
     "shortDescription": "Reusable engineering and delivery skills.",
-    "longDescription": "A private, versioned collection of project-agnostic engineering, planning, review, testing, design, release, and agent-coordination skills.",
+    "longDescription": "Versioned shared methods with optional engineering, design and platform packs.",
     "developerName": "Rogemar",
     "category": "Developer Tools",
     "capabilities": [

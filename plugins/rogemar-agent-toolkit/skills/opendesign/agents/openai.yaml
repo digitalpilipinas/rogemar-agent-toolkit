@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenDesign"
+  short_description: "Native OpenDesign workflows and runtime checks"
+  default_prompt: "Use $opendesign to complete the requested design workflow using its configured native runtime."

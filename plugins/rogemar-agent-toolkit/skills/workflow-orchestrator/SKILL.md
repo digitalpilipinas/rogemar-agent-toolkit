@@ -24,6 +24,16 @@ required, which installed capabilities apply, and when the task should pause.
    main agent to repeat work that an authorized worker can complete safely.
 5. Separate facts, assumptions, decisions, open questions, and evidence.
 
+## Shared methods and native harness bindings
+
+Use the shared `engineering-playbooks` method for substantive engineering work when installed. In Codex, prefer the complete installed `codex-forge` implementation of that method. In Cursor, prefer native PStack when installed. Other harnesses execute the same playbook with their own exposed models and tools. Select one execution owner; do not run the native and portable workflows twice.
+
+This orchestrator alone dispatches specialists and workers. Each playbook supplies methods and bounded hints. For Codex workers, use installed `plan-model-router` at materially different packages or dispatch boundaries, preserving its runtime contract and parent ceilings. Other harnesses use their actual model controls and inherit the parent when controls or identity are unavailable. Never import Codex or Cursor model names into another harness or invent a selector. Record requested and observed profiles only when delegation is material; unavailable identity remains Unverified.
+
+`create-plan` owns planning. `code-review-and-quality` owns the independent review and may request focused `code-review-tests` evidence. CodeRabbit and harness-native reviewers are separate evidence providers; consolidate findings by root cause without relabeling their verdicts. They are required only when the approved acceptance contract requires them.
+
+For a programme, use `integrated-workflow` if installed; otherwise preserve the approved plan and gates directly. Missing optional packs do not block adequate in-scope work. Keep trivial direct work proportional.
+
 ## Capability preflight
 
 For non-trivial work—and always before choosing a manual, CLI, or other
@@ -38,7 +48,7 @@ tool routes. The user does not need to name ordinary helpful capabilities.
   available without a matching skill, while an installed plugin may expose no
   callable tool. Do not load an entire family or activate overlapping routes.
 - Limit automatic discovery to capabilities already installed or surfaced in
-  the current Codex environment. Installed marketplace plugins participate like
+  the active harness environment. Installed marketplace plugins participate like
   any other installed plugin; do not search the external marketplace or suggest
   a new installation unless the owner separately asks for that discovery.
 - Distinguish installed or advertised from usable. Before relying on a live
@@ -81,7 +91,7 @@ Choose a surfaced custom-agent type for its behavioral and permission contract,
 not as a permanent model assignment. Role intent may be explorer, investigator,
 implementation worker, debugger, reviewer, architect, or bounded experiment
 worker; the main agent normally synthesizes. Use the role guidance in
-`plan-model-router` when a profile is needed.
+the active harness's profile controls when a profile is needed; Codex uses installed `plan-model-router`.
 
 - Automatically delegate safe, independent, read-heavy work when it justifies
   its overhead. Treat an approved plan or explicit user instruction to use
@@ -163,7 +173,7 @@ As applicable, define:
 - Compatibility with existing inputs, persisted data, APIs, and clients.
 - Accessibility, privacy, performance, observability, and rollback needs.
 
-Use `create-plan` for the plan artifact. Use `plan-model-router` only for
+Use `create-plan` for the plan artifact. In Codex, use installed `plan-model-router` only for
 multi-PR, sprint, phased, materially mixed-risk work, or an explicit routing
 request. Planning remains read-only.
 
@@ -182,7 +192,7 @@ ones; do not duplicate implementation that an assigned worker is completing.
 Use the cheapest check that can fail for the right reason. Route to:
 
 - `bug-triage` for ranked hypotheses and reproduction.
-- `code-review-tests` for diff or pull-request review.
+- `code-review-and-quality` for diff or pull-request review; add `code-review-tests` only for focused test evidence.
 - `test-architecture-engineer` when deciding sufficient test layers.
 - `accessibility-auditor`, `visual-qa`, or `performance-profiler` when those
   risks are applicable.

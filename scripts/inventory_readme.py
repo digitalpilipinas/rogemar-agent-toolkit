@@ -105,10 +105,10 @@ def upstream_by_id(catalog: dict[str, Any]) -> dict[str, dict[str, Any]]:
 
 def vendored_section(catalog: dict[str, Any]) -> list[str]:
     rows: list[str] = [
-        f"### Vendored portable skills ({len(catalog.get('vendored', []))})",
+        f"### Canonical skills ({len(catalog.get('vendored', []))})",
         "",
-        "| Skill | Purpose | Declared author / provenance | Source and upstream | License / redistribution |",
-        "| --- | --- | --- | --- | --- |",
+        "| Skill | Purpose | Targets | Declared author / provenance | Source and upstream | License / redistribution |",
+        "| --- | --- | --- | --- | --- | --- |",
     ]
     upstreams = upstream_by_id(catalog)
     for entry in sorted(catalog.get("vendored", []), key=lambda item: str(item.get("name"))):
@@ -135,7 +135,7 @@ def vendored_section(catalog: dict[str, Any]) -> list[str]:
             )
         rows.append(
             f"| {link(f'`{name}`', f'plugins/rogemar-agent-toolkit/skills/{name}/SKILL.md')} "
-            f"| {md(purpose)} | {md(author)} | {source} | {md(license_info)} |"
+            f"| {md(purpose)} | {md(', '.join(entry.get('targets', ['portable'])))} | {md(author)} | {source} | {md(license_info)} |"
         )
     return rows
 

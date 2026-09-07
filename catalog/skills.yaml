@@ -1,73 +1,974 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "package": {
     "name": "rogemar-agent-toolkit",
-    "version": "0.2.0",
-    "default_profile": "all",
-    "supported_platforms": ["macos", "linux", "wsl"],
-    "verified_harnesses": ["codex", "cursor"]
+    "version": "1.0.0",
+    "default_profile": "core",
+    "supported_platforms": [
+      "macos",
+      "linux",
+      "wsl"
+    ],
+    "validation_scope": "Static structure and sandboxed installer tests; fresh host runtime discovery is a separate check."
   },
   "vendored_defaults": {
     "mode": "vendored",
     "maintainer": "Rogemar",
-    "targets": ["agent-skills", "codex", "cursor"],
-    "compatibility": ["macos", "linux", "wsl"],
+    "targets": [
+      "agent-skills",
+      "codex",
+      "cursor",
+      "gemini",
+      "antigravity",
+      "grok-build",
+      "junie",
+      "command-code",
+      "z-code",
+      "claude"
+    ],
+    "compatibility": [
+      "macos",
+      "linux",
+      "wsl"
+    ],
     "source_policy": "approved local user-level snapshot",
     "license_policy": "preserve bundled license; otherwise private proprietary"
   },
   "vendored": [
-    {"name": "accessibility-auditor", "source": "approved local user-level snapshot"},
-    {"name": "activity-schema-guardian", "source": "approved local user-level snapshot"},
-    {"name": "agent-collaboration-terminal", "source": "approved local user-level snapshot"},
-    {"name": "agent-map", "source": "approved local Codex snapshot"},
-    {"name": "article-creator-2", "source": "approved local user-level snapshot"},
-    {"name": "bug-triage", "source": "approved local user-level snapshot"},
-    {"name": "cloudflare-deploy", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "code-review-and-quality", "source": "approved local user-level snapshot"},
-    {"name": "code-review-tests", "source": "approved local user-level snapshot"},
-    {"name": "codex-capability-maintainer", "source": "approved local user-level snapshot"},
-    {"name": "create-plan", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "csv-analytics-reporter", "source": "approved local user-level snapshot"},
-    {"name": "deliver-approved-programme", "source": "approved local Codex snapshot"},
-    {"name": "deploy-checklist", "source": "approved local user-level snapshot"},
-    {"name": "design-system-steward", "source": "approved local user-level snapshot"},
-    {"name": "develop-web-game", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "dream-team", "source": "approved local user-level snapshot"},
-    {"name": "figma", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "first-time-right-delivery", "source": "approved local user-level snapshot"},
-    {"name": "gh-address-comments", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "gh-fix-ci", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "hatch-pet", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "interaction-polish", "source": "approved local user-level snapshot"},
-    {"name": "knowledge-base-answering", "source": "approved local user-level snapshot"},
-    {"name": "linear", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "meeting-notes-task-extractor", "source": "approved local user-level snapshot"},
-    {"name": "mobile-release-manager", "source": "approved local user-level snapshot"},
-    {"name": "motion-animation-engineer", "source": "approved local user-level snapshot"},
-    {"name": "netlify-deploy", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "offline-sync-auditor", "source": "approved local user-level snapshot"},
-    {"name": "pdf", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "performance-profiler", "source": "approved local user-level snapshot"},
-    {"name": "plan-model-router", "source": "approved local user-level snapshot"},
-    {"name": "playwright", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "privacy-safety-review", "source": "approved local user-level snapshot"},
-    {"name": "project-learning", "source": "approved local Codex snapshot"},
-    {"name": "research-synthesizer", "source": "approved local user-level snapshot"},
-    {"name": "screenshot", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "security-best-practices", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "seo-content-strategy", "source": "approved local user-level snapshot"},
-    {"name": "social-content-factory", "source": "approved local user-level snapshot"},
-    {"name": "sora", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "speech", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "supabase", "source": "approved local user-level snapshot", "upstream_repository": "https://github.com/supabase/agent-skills"},
-    {"name": "supabase-guardian", "source": "approved local user-level snapshot"},
-    {"name": "test-architecture-engineer", "source": "approved local user-level snapshot"},
-    {"name": "transcribe", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt"},
-    {"name": "ux-flow-architect", "source": "approved local user-level snapshot"},
-    {"name": "vector-asset-pipeline", "source": "approved local user-level snapshot"},
-    {"name": "vercel-deploy", "source": "approved local user-level snapshot", "license_evidence": "LICENSE.txt", "author": "Vercel", "upstream_repository": "https://github.com/vercel-labs/agent-skills"},
-    {"name": "visual-qa", "source": "approved local user-level snapshot"},
-    {"name": "workflow-orchestrator", "source": "approved local user-level snapshot"}
+    {
+      "name": "accessibility-auditor",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "activity-schema-guardian",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "agent-collaboration-terminal",
+      "source": "approved local user-level snapshot",
+      "targets": [
+        "codex"
+      ]
+    },
+    {
+      "name": "agent-map",
+      "source": "approved local Codex snapshot"
+    },
+    {
+      "name": "article-creator-2",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "bug-triage",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "cloudflare-deploy",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "code-review-and-quality",
+      "source": "approved local user-level snapshot",
+      "requires": [
+        "code-review-tests"
+      ]
+    },
+    {
+      "name": "code-review-tests",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "codex-capability-maintainer",
+      "source": "approved local user-level snapshot",
+      "targets": [
+        "codex"
+      ]
+    },
+    {
+      "name": "codex-forge",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "workflow-orchestrator",
+        "plan-model-router"
+      ]
+    },
+    {
+      "name": "create-plan",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "csv-analytics-reporter",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "deliver-approved-programme",
+      "source": "local compatibility entry for integrated-workflow",
+      "requires": [
+        "integrated-workflow"
+      ],
+      "deprecated_alias_of": "integrated-workflow"
+    },
+    {
+      "name": "deploy-checklist",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "design-brief",
+      "source": "reviewed portable adaptation, 2026-09-07",
+      "author": "Rogemar; upstream notices preserved",
+      "upstream_repository": "https://github.com/digitalpilipinas/open-design",
+      "license": "Apache-2.0; per-reference notices preserved",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "design-system-steward",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "develop-web-game",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "dream-team",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "engineering-playbooks",
+      "source": "reviewed portable adaptation, 2026-09-07",
+      "author": "Rogemar; upstream notices preserved",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "workflow-orchestrator"
+      ]
+    },
+    {
+      "name": "figma",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "first-time-right-delivery",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "forge-architect",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-arena",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-automate-me",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-blast-radius",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-bro",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-create-verification-skill",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-figure-it-out",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-how",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-interrogate",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-maintain-verification-skill",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-make-bot-ui",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-no-comments",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-boundary-discipline",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-build-the-lever",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-encode-lessons-in-structure",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-exhaust-the-design-space",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-experience-first",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-fix-root-causes",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-foundational-thinking",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-guard-the-context-window",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-laziness-protocol",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-make-operations-idempotent",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-migrate-callers-then-delete-legacy-apis",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-minimize-reader-load",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-model-the-domain",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-never-block-on-the-human",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-outcome-oriented-execution",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-prove-it-works",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-redesign-from-first-principles",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-separate-before-serializing-shared-state",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-sequence-verifiable-units",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-subtract-before-you-add",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-type-system-discipline",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-recall",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-reflect",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-setup",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-show-me-your-work",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-swarm",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-tdd",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-teach",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-technical-writing",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-typescript-best-practices",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-unslop",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-why",
+      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "frontend-design",
+      "source": "reviewed portable adaptation, 2026-09-07",
+      "author": "Rogemar; upstream notices preserved",
+      "upstream_repository": "https://github.com/digitalpilipinas/open-design",
+      "license": "Apache-2.0; per-reference notices preserved",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "gh-address-comments",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "gh-fix-ci",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "hatch-pet",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ]
+    },
+    {
+      "name": "integrated-workflow",
+      "source": "renamed approved local Codex snapshot",
+      "requires": [
+        "workflow-orchestrator",
+        "create-plan",
+        "first-time-right-delivery",
+        "code-review-and-quality"
+      ]
+    },
+    {
+      "name": "interaction-polish",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "knowledge-base-answering",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "linear",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "meeting-notes-task-extractor",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "mobile-release-manager",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "motion-animation-engineer",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "netlify-deploy",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "offline-sync-auditor",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "opendesign",
+      "source": "reviewed portable adaptation, 2026-09-07",
+      "author": "Rogemar; upstream notices preserved",
+      "upstream_repository": "https://github.com/digitalpilipinas/open-design",
+      "license": "Apache-2.0; per-reference notices preserved",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "pdf",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "performance-profiler",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "plan-model-router",
+      "source": "approved local user-level snapshot",
+      "targets": [
+        "codex"
+      ]
+    },
+    {
+      "name": "playwright",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "privacy-safety-review",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "project-learning",
+      "source": "approved local Codex snapshot",
+      "targets": [
+        "codex"
+      ]
+    },
+    {
+      "name": "reference-design-contract",
+      "source": "reviewed portable adaptation, 2026-09-07",
+      "author": "Rogemar; upstream notices preserved",
+      "upstream_repository": "https://github.com/digitalpilipinas/open-design",
+      "license": "Apache-2.0; per-reference notices preserved",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "research-synthesizer",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "screenshot",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "security-best-practices",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "seo-content-strategy",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "social-content-factory",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "sora",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "speech",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "supabase",
+      "source": "approved local user-level snapshot",
+      "upstream_repository": "https://github.com/supabase/agent-skills"
+    },
+    {
+      "name": "supabase-guardian",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "test-architecture-engineer",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "transcribe",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "ux-flow-architect",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "vector-asset-pipeline",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "vercel-deploy",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt",
+      "author": "Vercel",
+      "upstream_repository": "https://github.com/vercel-labs/agent-skills"
+    },
+    {
+      "name": "visual-qa",
+      "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "workflow-orchestrator",
+      "source": "approved local user-level snapshot"
+    }
   ],
   "external_skill_groups": [
     {
@@ -80,7 +981,14 @@
       "install_latest": "Use the current Codex built-in marketplace",
       "license_status": "Runtime-owned; verify OpenAI terms",
       "redistribution_status": "Runtime-managed; not vendored",
-      "members": ["imagegen", "openai-docs", "plugin-creator", "review-agent", "skill-creator", "skill-installer"]
+      "members": [
+        "imagegen",
+        "openai-docs",
+        "plugin-creator",
+        "review-agent",
+        "skill-creator",
+        "skill-installer"
+      ]
     },
     {
       "name": "coderabbit-skills",
@@ -92,7 +1000,10 @@
       "author": "CodeRabbit",
       "license_status": "Not declared locally; verify CodeRabbit terms",
       "redistribution_status": "External install; not vendored",
-      "members": ["autofix", "code-review"]
+      "members": [
+        "autofix",
+        "code-review"
+      ]
     },
     {
       "name": "argent-skills",
@@ -105,12 +1016,22 @@
       "license_status": "Not declared locally; verify Software Mansion terms",
       "redistribution_status": "External install; not vendored",
       "members": [
-        "argent-android-emulator-setup", "argent-create-flow", "argent-device-interact",
-        "argent-ios-simulator-setup", "argent-lens", "argent-metro-debugger",
-        "argent-native-profiler", "argent-qa-flows", "argent-react-native-app-workflow",
-        "argent-react-native-optimization", "argent-react-native-profiler",
-        "argent-screen-recording", "argent-screenshot-diff", "argent-settings-permissions",
-        "argent-test-ui-flow", "argent-tv-interact"
+        "argent-android-emulator-setup",
+        "argent-create-flow",
+        "argent-device-interact",
+        "argent-ios-simulator-setup",
+        "argent-lens",
+        "argent-metro-debugger",
+        "argent-native-profiler",
+        "argent-qa-flows",
+        "argent-react-native-app-workflow",
+        "argent-react-native-optimization",
+        "argent-react-native-profiler",
+        "argent-screen-recording",
+        "argent-screenshot-diff",
+        "argent-settings-permissions",
+        "argent-test-ui-flow",
+        "argent-tv-interact"
       ]
     },
     {
@@ -124,7 +1045,9 @@
       "author": "Leonxlnx",
       "license_status": "Not declared locally; verify upstream terms",
       "redistribution_status": "External install; not vendored",
-      "members": ["unlazy"]
+      "members": [
+        "unlazy"
+      ]
     },
     {
       "name": "pstack",
@@ -140,20 +1063,50 @@
       "redistribution_status": "Not vendored; Cursor-managed install",
       "notes": "The audit recorded 44 SKILL.md files and 22 playbooks. It is intentionally not copied into the portable bundle; the cached version may be newer than the active version.",
       "members": [
-        "architect", "arena", "automate-me", "blast-radius", "bro", "create-verification-skill",
-        "figure-it-out", "how", "interrogate", "maintain-verification-skill", "no-comments",
-        "poteto-mode", "principle-boundary-discipline", "principle-build-the-lever",
-        "principle-encode-lessons-in-structure", "principle-exhaust-the-design-space",
-        "principle-experience-first", "principle-fix-root-causes", "principle-foundational-thinking",
-        "principle-guard-the-context-window", "principle-laziness-protocol",
-        "principle-make-operations-idempotent", "principle-migrate-callers-then-delete-legacy-apis",
-        "principle-minimize-reader-load", "principle-model-the-domain", "principle-never-block-on-the-human",
-        "principle-outcome-oriented-execution", "principle-prove-it-works",
-        "principle-redesign-from-first-principles", "principle-separate-before-serializing-shared-state",
-        "principle-sequence-verifiable-units", "principle-subtract-before-you-add",
-        "principle-type-system-discipline", "recall", "reflect", "setup-pstack",
-        "show-me-your-work", "swarm", "tdd", "teach", "technical-writing",
-        "typescript-best-practices", "unslop", "why"
+        "architect",
+        "arena",
+        "automate-me",
+        "blast-radius",
+        "bro",
+        "create-verification-skill",
+        "figure-it-out",
+        "how",
+        "interrogate",
+        "maintain-verification-skill",
+        "no-comments",
+        "poteto-mode",
+        "principle-boundary-discipline",
+        "principle-build-the-lever",
+        "principle-encode-lessons-in-structure",
+        "principle-exhaust-the-design-space",
+        "principle-experience-first",
+        "principle-fix-root-causes",
+        "principle-foundational-thinking",
+        "principle-guard-the-context-window",
+        "principle-laziness-protocol",
+        "principle-make-operations-idempotent",
+        "principle-migrate-callers-then-delete-legacy-apis",
+        "principle-minimize-reader-load",
+        "principle-model-the-domain",
+        "principle-never-block-on-the-human",
+        "principle-outcome-oriented-execution",
+        "principle-prove-it-works",
+        "principle-redesign-from-first-principles",
+        "principle-separate-before-serializing-shared-state",
+        "principle-sequence-verifiable-units",
+        "principle-subtract-before-you-add",
+        "principle-type-system-discipline",
+        "recall",
+        "reflect",
+        "setup-pstack",
+        "show-me-your-work",
+        "swarm",
+        "tdd",
+        "teach",
+        "technical-writing",
+        "typescript-best-practices",
+        "unslop",
+        "why"
       ]
     },
     {
@@ -169,11 +1122,31 @@
       "redistribution_status": "Runtime-managed; not vendored",
       "notes": "Catalog observation captured from a Cursor-managed built-in manifest; runtime-managed and not vendored.",
       "members": [
-        "automate", "autopilot", "canvas", "create-hook", "create-rule", "create-skill",
-        "create-subagent", "deploy-with-vercel", "goal", "loop", "migrate-to-skills",
-        "new-repo", "onboard", "origin", "rename-chat", "review", "review-bugbot",
-        "review-security", "sdk", "share", "shell", "split-to-prs", "statusline",
-        "update-cli-config", "update-cursor-settings"
+        "automate",
+        "autopilot",
+        "canvas",
+        "create-hook",
+        "create-rule",
+        "create-skill",
+        "create-subagent",
+        "deploy-with-vercel",
+        "goal",
+        "loop",
+        "migrate-to-skills",
+        "new-repo",
+        "onboard",
+        "origin",
+        "rename-chat",
+        "review",
+        "review-bugbot",
+        "review-security",
+        "sdk",
+        "share",
+        "shell",
+        "split-to-prs",
+        "statusline",
+        "update-cli-config",
+        "update-cursor-settings"
       ]
     },
     {
@@ -190,11 +1163,24 @@
       "redistribution_status": "Not vendored; Cursor-managed install",
       "notes": "pstack references this plugin for deslop, control-cli, and control-ui.",
       "members": [
-        "check-compiler-errors", "control-cli", "control-ui", "deslop", "fix-ci",
-        "fix-merge-conflicts", "get-pr-comments", "loop-on-ci", "make-pr-easy-to-review",
-        "new-branch-and-pr", "pr-review-canvas", "review-and-ship", "run-smoke-tests",
-        "thermo-nuclear-code-quality-review", "verify-this", "weekly-review",
-        "what-did-i-get-done", "workflow-from-chats"
+        "check-compiler-errors",
+        "control-cli",
+        "control-ui",
+        "deslop",
+        "fix-ci",
+        "fix-merge-conflicts",
+        "get-pr-comments",
+        "loop-on-ci",
+        "make-pr-easy-to-review",
+        "new-branch-and-pr",
+        "pr-review-canvas",
+        "review-and-ship",
+        "run-smoke-tests",
+        "thermo-nuclear-code-quality-review",
+        "verify-this",
+        "weekly-review",
+        "what-did-i-get-done",
+        "workflow-from-chats"
       ]
     },
     {
@@ -210,12 +1196,37 @@
       "redistribution_status": "Not vendored; provider-managed cache",
       "notes": "Cache presence is not proof of enabled or authenticated capability. pstack and cursor-team-kit are listed separately.",
       "members": [
-        "appwrite-plugin", "browse", "browser-use", "buildkite", "canva", "cli-for-agent",
-        "cloudflare", "coderabbit", "context-dev", "convex", "create-plugin", "cursor-sdk",
-        "firebase", "github", "gmail", "google-calendar", "google-drive", "granola",
-        "hostinger-connector", "link", "merge-agent-handler", "mobbin", "playwright",
-        "pr-review-canvas", "resend", "revenuecat", "revenuecat-play-billing", "stripe",
-        "supabase", "webflow", "x"
+        "appwrite-plugin",
+        "browse",
+        "browser-use",
+        "buildkite",
+        "canva",
+        "cli-for-agent",
+        "cloudflare",
+        "coderabbit",
+        "context-dev",
+        "convex",
+        "create-plugin",
+        "cursor-sdk",
+        "firebase",
+        "github",
+        "gmail",
+        "google-calendar",
+        "google-drive",
+        "granola",
+        "hostinger-connector",
+        "link",
+        "merge-agent-handler",
+        "mobbin",
+        "playwright",
+        "pr-review-canvas",
+        "resend",
+        "revenuecat",
+        "revenuecat-play-billing",
+        "stripe",
+        "supabase",
+        "webflow",
+        "x"
       ]
     },
     {
@@ -229,7 +1240,9 @@
       "license_status": "Owned by each project; verify locally",
       "redistribution_status": "Excluded from this repository",
       "notes": "Project-specific names, policy, hooks, and validation context stay with their owning repositories and are not copied into this catalog.",
-      "members": ["project-local-verification-overlays"]
+      "members": [
+        "project-local-verification-overlays"
+      ]
     },
     {
       "name": "antigravity-builtins",
@@ -242,7 +1255,13 @@
       "license_status": "Runtime-owned; verify Google terms",
       "redistribution_status": "Runtime-managed; not vendored",
       "notes": "Catalog observation covers the CLI, IDE, and built-in Antigravity surfaces without copying provider files.",
-      "members": ["agy-customizations", "antigravity-guide", "generative_ui", "migrate-workflows", "permissioned-github"]
+      "members": [
+        "agy-customizations",
+        "antigravity-guide",
+        "generative_ui",
+        "migrate-workflows",
+        "permissioned-github"
+      ]
     },
     {
       "name": "gemini-config-extras",
@@ -256,16 +1275,38 @@
       "redistribution_status": "Runtime-managed; not vendored",
       "notes": "The audit counted 82 configured directories: 47 overlap the vendored tree and 32 additional runtime names are listed here; three project-local overlays remain excluded.",
       "members": [
-        "accidental-data-loss-prevention", "autofix", "bigquery-ai-ml", "bigquery-bigframes",
-        "bigquery-data-transfer-service", "bigquery-graph", "bigquery-sql", "building-data-apps",
-        "code-review", "data-autocleaning", "dataform-bigquery", "dbt-bigquery",
-        "discovering-gcp-data-assets", "enforcing-resource-attribution", "federate-lakehouse-catalog",
-        "gcloud-auth-verification", "gcp-composer-troubleshooting", "gcp-data-pipelines",
-        "gcp-dataflow", "gcp-managed-airflow-dag-authoring", "gcp-managed-airflow-migrations",
-        "gcp-managed-airflow-recommendations", "gcp-pipeline-orchestration",
-        "gcp-pipeline-resource-provisioning", "gcp-spark", "gcs-security-assessment",
-        "google-cloud-storage-basics", "managing-python-dependencies", "ml-best-practices",
-        "notebook-guidance", "skill-repair", "codex-primary-runtime"
+        "accidental-data-loss-prevention",
+        "autofix",
+        "bigquery-ai-ml",
+        "bigquery-bigframes",
+        "bigquery-data-transfer-service",
+        "bigquery-graph",
+        "bigquery-sql",
+        "building-data-apps",
+        "code-review",
+        "data-autocleaning",
+        "dataform-bigquery",
+        "dbt-bigquery",
+        "discovering-gcp-data-assets",
+        "enforcing-resource-attribution",
+        "federate-lakehouse-catalog",
+        "gcloud-auth-verification",
+        "gcp-composer-troubleshooting",
+        "gcp-data-pipelines",
+        "gcp-dataflow",
+        "gcp-managed-airflow-dag-authoring",
+        "gcp-managed-airflow-migrations",
+        "gcp-managed-airflow-recommendations",
+        "gcp-pipeline-orchestration",
+        "gcp-pipeline-resource-provisioning",
+        "gcp-spark",
+        "gcs-security-assessment",
+        "google-cloud-storage-basics",
+        "managing-python-dependencies",
+        "ml-best-practices",
+        "notebook-guidance",
+        "skill-repair",
+        "codex-primary-runtime"
       ]
     },
     {
@@ -280,9 +1321,17 @@
       "redistribution_status": "Runtime-managed; not vendored",
       "notes": "The audit counted 11 plugin families and approximately 95 skill files. Unattributed manifests remain provenance-unknown.",
       "members": [
-        "android-cli-plugin", "chrome-devtools-plugin", "project-local-extension-family", "firebase",
-        "flutter", "google-antigravity-sdk", "google_maps_platform",
-        "googlecloudtools.datacloud_telemetry", "modern-web-guidance-plugin", "science", "superpowers"
+        "android-cli-plugin",
+        "chrome-devtools-plugin",
+        "project-local-extension-family",
+        "firebase",
+        "flutter",
+        "google-antigravity-sdk",
+        "google_maps_platform",
+        "googlecloudtools.datacloud_telemetry",
+        "modern-web-guidance-plugin",
+        "science",
+        "superpowers"
       ]
     },
     {
@@ -298,10 +1347,28 @@
       "redistribution_status": "Runtime-managed; not vendored",
       "notes": "The audit counted 22 bundled skills; only pdf overlaps the portable toolkit.",
       "members": [
-        "build-with-ai", "code-review", "create-skill", "create-workflow", "design", "docx",
-        "execute-plan", "game-animation-frames", "game-asset-core", "game-character-consistency",
-        "game-tilesets", "game-ui-icons", "imagine", "implement", "pdf", "pptx", "pr-babysit",
-        "resume-claude", "resume-codex", "resume-cursor", "review", "skill-design-principles"
+        "build-with-ai",
+        "code-review",
+        "create-skill",
+        "create-workflow",
+        "design",
+        "docx",
+        "execute-plan",
+        "game-animation-frames",
+        "game-asset-core",
+        "game-character-consistency",
+        "game-tilesets",
+        "game-ui-icons",
+        "imagine",
+        "implement",
+        "pdf",
+        "pptx",
+        "pr-babysit",
+        "resume-claude",
+        "resume-codex",
+        "resume-cursor",
+        "review",
+        "skill-design-principles"
       ]
     },
     {
@@ -315,7 +1382,15 @@
       "license_status": "Mixed; verify each publisher's terms",
       "redistribution_status": "Runtime-managed; not vendored",
       "notes": "The audit counted seven plugin families with 86 direct skill entries and 97 skill files including nested upstream/support files.",
-      "members": ["exa-grok-plugin", "firecrawl-grok-plugin", "plugin-grok", "chrome-devtools-mcp", "cloudflare", "superpowers", "vercel-plugin"]
+      "members": [
+        "exa-grok-plugin",
+        "firecrawl-grok-plugin",
+        "plugin-grok",
+        "chrome-devtools-mcp",
+        "cloudflare",
+        "superpowers",
+        "vercel-plugin"
+      ]
     },
     {
       "name": "junie-native",
@@ -330,7 +1405,11 @@
       "license_status": "Runtime-owned; verify JetBrains terms",
       "redistribution_status": "Runtime-managed; not vendored",
       "notes": "The audit recorded shared and project-local Junie skill surfaces; project-specific overlays remain with their owning repositories.",
-      "members": ["demo-setup", "junie-cli-docs", "junie-native-project-skills"]
+      "members": [
+        "demo-setup",
+        "junie-cli-docs",
+        "junie-native-project-skills"
+      ]
     },
     {
       "name": "command-code-runtime",
@@ -346,12 +1425,23 @@
       "redistribution_status": "Excluded; no redistribution authority",
       "notes": "The audit found 17 shared skill links (16 Argent skills plus code-review-and-quality). The package declares UNLICENSED and no public source repository.",
       "members": [
-        "argent-android-emulator-setup", "argent-create-flow", "argent-device-interact",
-        "argent-ios-simulator-setup", "argent-lens", "argent-metro-debugger",
-        "argent-native-profiler", "argent-qa-flows", "argent-react-native-app-workflow",
-        "argent-react-native-optimization", "argent-react-native-profiler", "argent-screen-recording",
-        "argent-screenshot-diff", "argent-settings-permissions", "argent-test-ui-flow",
-        "argent-tv-interact", "code-review-and-quality"
+        "argent-android-emulator-setup",
+        "argent-create-flow",
+        "argent-device-interact",
+        "argent-ios-simulator-setup",
+        "argent-lens",
+        "argent-metro-debugger",
+        "argent-native-profiler",
+        "argent-qa-flows",
+        "argent-react-native-app-workflow",
+        "argent-react-native-optimization",
+        "argent-react-native-profiler",
+        "argent-screen-recording",
+        "argent-screenshot-diff",
+        "argent-settings-permissions",
+        "argent-test-ui-flow",
+        "argent-tv-interact",
+        "code-review-and-quality"
       ]
     },
     {
@@ -366,7 +1456,13 @@
       "author": "duolahypercho",
       "license_status": "Not declared in local package metadata; verify upstream",
       "redistribution_status": "Not vendored; follow upstream terms",
-      "members": ["codex-app-threads", "codex-computer-use", "codex-in-app-browser", "codex-router", "codex-router-media"]
+      "members": [
+        "codex-app-threads",
+        "codex-computer-use",
+        "codex-in-app-browser",
+        "codex-router",
+        "codex-router-media"
+      ]
     }
   ],
   "runtime_integrations": [
@@ -379,7 +1475,11 @@
       "repository": "https://github.com/cursor/plugins",
       "author": "Cursor",
       "license_status": "Mixed; verify each runtime/plugin publisher",
-      "surfaces": ["Cursor project .agents/skills", "Cursor native skill store", "Cursor plugin marketplace"]
+      "surfaces": [
+        "Cursor project .agents/skills",
+        "Cursor native skill store",
+        "Cursor plugin marketplace"
+      ]
     },
     {
       "id": "antigravity-gemini",
@@ -389,7 +1489,12 @@
       "purpose": "Gemini-compatible harness with built-in skills, configured skills, and extension plugins.",
       "author": "Google / Antigravity",
       "license_status": "Mixed; verify Google and extension terms",
-      "surfaces": ["Antigravity CLI built-ins", "Antigravity IDE built-ins", "Gemini configured skills", "Gemini extension plugins"]
+      "surfaces": [
+        "Antigravity CLI built-ins",
+        "Antigravity IDE built-ins",
+        "Gemini configured skills",
+        "Gemini extension plugins"
+      ]
     },
     {
       "id": "grok-build",
@@ -399,7 +1504,10 @@
       "purpose": "Grok's native bundled skills and installed plugin families; credentials and sessions remain provider-owned.",
       "author": "xAI / Grok Build",
       "license_status": "Mixed; verify xAI and plugin publisher terms",
-      "surfaces": ["Grok bundled skill runtime", "Grok installed plugin runtime"]
+      "surfaces": [
+        "Grok bundled skill runtime",
+        "Grok installed plugin runtime"
+      ]
     },
     {
       "id": "junie",
@@ -410,7 +1518,10 @@
       "repository": "https://github.com/JetBrains/junie",
       "author": "JetBrains",
       "license_status": "Runtime-owned; verify JetBrains terms",
-      "surfaces": ["Junie CLI/IDE runtime", "Junie native project skills"]
+      "surfaces": [
+        "Junie CLI/IDE runtime",
+        "Junie native project skills"
+      ]
     },
     {
       "id": "command-code",
@@ -421,7 +1532,10 @@
       "repository": "https://commandcode.ai/docs",
       "author": "Command Code",
       "license_status": "UNLICENSED (package metadata)",
-      "surfaces": ["Command Code provider runtime", "Shared Agent Skills directory"]
+      "surfaces": [
+        "Command Code provider runtime",
+        "Shared Agent Skills directory"
+      ]
     },
     {
       "id": "codex-router",
@@ -432,13 +1546,16 @@
       "repository": "https://github.com/duolahypercho/codex-router",
       "author": "duolahypercho",
       "license_status": "Not declared in local package metadata; verify upstream",
-      "surfaces": ["Codex Router companion-skill repository", "Codex user-skill installation target"]
+      "surfaces": [
+        "Codex Router companion-skill repository",
+        "Codex user-skill installation target"
+      ]
     }
   ],
   "upstream_repositories": [
     {
-     "id": "openai-plugins",
-     "author": "OpenAI",
+      "id": "openai-plugins",
+      "author": "OpenAI",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/openai/plugins",
       "represented_by": "Codex system skills, licensed standard skills, and openai-* plugin dependencies",
@@ -446,8 +1563,8 @@
       "update_policy": "runtime-managed; openai/skills is deprecated in favor of openai/plugins"
     },
     {
-     "id": "supabase-agent-skills",
-     "author": "Supabase",
+      "id": "supabase-agent-skills",
+      "author": "Supabase",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/supabase/agent-skills",
       "represented_by": "vendored supabase skill and runtime plugin family",
@@ -455,8 +1572,8 @@
       "update_policy": "review and re-lock before replacing the vendored snapshot"
     },
     {
-     "id": "coderabbit-skills",
-     "author": "CodeRabbit",
+      "id": "coderabbit-skills",
+      "author": "CodeRabbit",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/coderabbitai/skills",
       "represented_by": "external code-review and autofix skills",
@@ -464,8 +1581,8 @@
       "update_policy": "external; CodeRabbit CLI and authentication remain separate"
     },
     {
-     "id": "argent",
-     "author": "Software Mansion",
+      "id": "argent",
+      "author": "Software Mansion",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/software-mansion/argent",
       "represented_by": "external argent-* skill group and MCP runtime",
@@ -473,8 +1590,8 @@
       "update_policy": "external project-local install; review generated MCP and skill files"
     },
     {
-     "id": "unlazy",
-     "author": "Leonxlnx",
+      "id": "unlazy",
+      "author": "Leonxlnx",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/Leonxlnx/unlazy",
       "represented_by": "external unlazy skill",
@@ -482,8 +1599,8 @@
       "update_policy": "external; keep separately versioned"
     },
     {
-     "id": "pstack",
-     "author": "poteto / Cursor",
+      "id": "pstack",
+      "author": "poteto / Cursor",
       "license_status": "MIT in upstream manifest; verify current terms",
       "repository": "https://github.com/cursor/plugins/tree/main/pstack",
       "represented_by": "Cursor pstack plugin, /poteto-mode, /setup-pstack, playbooks, and principles",
@@ -491,8 +1608,8 @@
       "update_policy": "Cursor-managed; keep outside the portable bundle unless separately reviewed for licensing and harness compatibility"
     },
     {
-     "id": "goalbuddy",
-     "author": "tolibear",
+      "id": "goalbuddy",
+      "author": "tolibear",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/tolibear/goalbuddy",
       "represented_by": "goalbuddy plugin and goal-prep skill",
@@ -500,8 +1617,8 @@
       "update_policy": "external plugin; use npx goalbuddy update after installation"
     },
     {
-     "id": "remotion-skills",
-     "author": "Remotion",
+      "id": "remotion-skills",
+      "author": "Remotion",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/remotion-dev/skills",
       "represented_by": "remotion plugin dependency and upstream skill family",
@@ -509,8 +1626,8 @@
       "update_policy": "external; install into the target harness or project"
     },
     {
-     "id": "vercel-agent-skills",
-     "author": "Vercel",
+      "id": "vercel-agent-skills",
+      "author": "Vercel",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/vercel-labs/agent-skills",
       "represented_by": "vendored vercel-deploy skill",
@@ -518,8 +1635,8 @@
       "update_policy": "review the Vercel license and diff before replacing the vendored snapshot"
     },
     {
-     "id": "cursor-plugins",
-     "author": "Cursor",
+      "id": "cursor-plugins",
+      "author": "Cursor",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/cursor/plugins",
       "represented_by": "Cursor built-ins, pstack, cursor-team-kit, and cached marketplace plugin families",
@@ -527,8 +1644,8 @@
       "update_policy": "runtime-managed; record version and activation evidence without copying cache contents"
     },
     {
-     "id": "chrome-devtools-mcp",
-     "author": "Chrome DevTools Team",
+      "id": "chrome-devtools-mcp",
+      "author": "Chrome DevTools Team",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
       "represented_by": "Cursor, Gemini, and Grok Chrome DevTools plugin families",
@@ -536,8 +1653,8 @@
       "update_policy": "external; verify plugin permissions and runtime compatibility"
     },
     {
-     "id": "modern-web-guidance",
-     "author": "Google",
+      "id": "modern-web-guidance",
+      "author": "Google",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/GoogleChrome/modern-web-guidance",
       "represented_by": "Gemini/Antigravity modern-web-guidance plugin",
@@ -545,8 +1662,8 @@
       "update_policy": "external; keep runtime-managed"
     },
     {
-     "id": "science-skills",
-     "author": "Google DeepMind",
+      "id": "science-skills",
+      "author": "Google DeepMind",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/google-deepmind/science-skills",
       "represented_by": "Gemini/Antigravity science plugin",
@@ -554,8 +1671,8 @@
       "update_policy": "external; preserve credential and data-source boundaries"
     },
     {
-     "id": "exa-grok-plugin",
-     "author": "Exa",
+      "id": "exa-grok-plugin",
+      "author": "Exa",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/exa-labs/exa-grok-plugin",
       "represented_by": "Grok Build exa-search plugin family",
@@ -563,8 +1680,8 @@
       "update_policy": "external; authentication remains provider-owned"
     },
     {
-     "id": "firecrawl-grok-plugin",
-     "author": "Firecrawl",
+      "id": "firecrawl-grok-plugin",
+      "author": "Firecrawl",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/firecrawl/firecrawl-grok-plugin",
       "represented_by": "Grok Build Firecrawl plugin family",
@@ -572,8 +1689,8 @@
       "update_policy": "external; authentication remains provider-owned"
     },
     {
-     "id": "plugin-grok",
-     "author": "Sentry",
+      "id": "plugin-grok",
+      "author": "Sentry",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/getsentry/plugin-grok",
       "represented_by": "Grok Build Sentry plugin family",
@@ -581,8 +1698,8 @@
       "update_policy": "external; Sentry organization and tokens remain separate"
     },
     {
-     "id": "superpowers",
-     "author": "Jesse Vincent / obra",
+      "id": "superpowers",
+      "author": "Jesse Vincent / obra",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/obra/superpowers",
       "represented_by": "Cursor/Gemini/Grok Superpowers plugin family",
@@ -590,8 +1707,8 @@
       "update_policy": "external; validate harness-specific adapters"
     },
     {
-     "id": "vercel-plugin",
-     "author": "Vercel",
+      "id": "vercel-plugin",
+      "author": "Vercel",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/vercel/vercel-plugin",
       "represented_by": "Grok Build Vercel plugin family",
@@ -599,8 +1716,8 @@
       "update_policy": "external; Vercel credentials remain separate"
     },
     {
-     "id": "junie",
-     "author": "JetBrains",
+      "id": "junie",
+      "author": "JetBrains",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/JetBrains/junie",
       "represented_by": "Junie native runtime and supervisor compatibility reference",
@@ -608,40 +1725,797 @@
       "update_policy": "runtime-managed; do not repackage the IDE plugin as a Codex plugin"
     },
     {
-     "id": "codex-router",
-     "author": "duolahypercho",
+      "id": "codex-router",
+      "author": "duolahypercho",
       "license_status": "Not verified locally; consult upstream repository",
       "repository": "https://github.com/duolahypercho/codex-router",
       "represented_by": "codex-router companion skill family",
       "install_latest": "Follow the repository's documented installation",
       "update_policy": "external; preserve router credentials and local provider configuration"
+    },
+    {
+      "id": "open-design",
+      "author": "OpenDesign and per-skill upstream authors",
+      "license_status": "Apache-2.0 root; preserve each bundled upstream notice",
+      "repository": "https://github.com/digitalpilipinas/open-design",
+      "represented_by": "portable design methods, full native adapter and pinned optional resource library",
+      "install_latest": "Use the upstream application/source setup instructions; review before moving the pinned resource revision."
+    },
+    {
+      "id": "expo-skills",
+      "author": "Expo",
+      "license_status": "External upstream; verify current license before vendoring",
+      "repository": "https://github.com/expo/skills",
+      "represented_by": "optional Expo pack",
+      "install_latest": "npx skills add expo/skills"
     }
   ],
   "external_packages": [
-    {"id": "grok-supervisor-for-codex@grok-supervisor-local", "version": "0.1.2", "status": "cataloged; installation and activation unverified"},
-    {"id": "junie-supervisor-for-codex@rg-codex-local", "version": "0.1.2", "status": "cataloged; installation and activation unverified"},
-    {"id": "documents@openai-primary-runtime", "version": "26.826.12353"},
-    {"id": "pdf@openai-primary-runtime", "version": "26.826.12353"},
-    {"id": "spreadsheets@openai-primary-runtime", "version": "26.826.12353"},
-    {"id": "presentations@openai-primary-runtime", "version": "26.826.12353"},
-    {"id": "template-creator@openai-primary-runtime", "version": "26.826.12353"},
-    {"id": "codex-app-tools@openai-bundled", "version": "0.1.3"},
-    {"id": "sites@openai-bundled", "version": "0.1.46"},
-    {"id": "browser@openai-bundled", "version": "26.825.32147"},
-    {"id": "chrome@openai-bundled", "version": "26.825.32147"},
-    {"id": "computer-use@openai-bundled", "version": "1.0.1000901"},
-    {"id": "visualize@openai-bundled", "version": "1.0.23"},
-    {"id": "goalbuddy@goalbuddy", "version": "0.4.3"},
-    {"id": "figma@openai-curated", "version": "11c74d6b"},
-    {"id": "game-studio@openai-curated", "version": "11c74d6b"},
-    {"id": "github@openai-curated", "version": "11c74d6b"},
-    {"id": "sentry@openai-curated", "version": "11c74d6b"},
-    {"id": "build-web-apps@openai-curated", "version": "11c74d6b"},
-    {"id": "build-web-data-visualization@openai-curated", "version": "11c74d6b"},
-    {"id": "test-android-apps@openai-curated", "version": "11c74d6b"},
-    {"id": "expo@openai-curated", "version": "11c74d6b"},
-    {"id": "remotion@openai-curated", "version": "11c74d6b"},
-    {"id": "codex-security@openai-curated", "version": "11c74d6b"},
-    {"id": "agent-collaboration-for-codex@agent-collaboration-local", "version": "0.5.3+codex.20260816000000"}
-  ]
+    {
+      "id": "grok-supervisor-for-codex@grok-supervisor-local",
+      "version": "0.1.2",
+      "status": "cataloged; installation and activation unverified"
+    },
+    {
+      "id": "junie-supervisor-for-codex@rg-codex-local",
+      "version": "0.1.2",
+      "status": "cataloged; installation and activation unverified"
+    },
+    {
+      "id": "documents@openai-primary-runtime",
+      "version": "26.826.12353"
+    },
+    {
+      "id": "pdf@openai-primary-runtime",
+      "version": "26.826.12353"
+    },
+    {
+      "id": "spreadsheets@openai-primary-runtime",
+      "version": "26.826.12353"
+    },
+    {
+      "id": "presentations@openai-primary-runtime",
+      "version": "26.826.12353"
+    },
+    {
+      "id": "template-creator@openai-primary-runtime",
+      "version": "26.826.12353"
+    },
+    {
+      "id": "codex-app-tools@openai-bundled",
+      "version": "0.1.3"
+    },
+    {
+      "id": "sites@openai-bundled",
+      "version": "0.1.46"
+    },
+    {
+      "id": "browser@openai-bundled",
+      "version": "26.825.32147"
+    },
+    {
+      "id": "chrome@openai-bundled",
+      "version": "26.825.32147"
+    },
+    {
+      "id": "computer-use@openai-bundled",
+      "version": "1.0.1000901"
+    },
+    {
+      "id": "visualize@openai-bundled",
+      "version": "1.0.23"
+    },
+    {
+      "id": "goalbuddy@goalbuddy",
+      "version": "0.4.3"
+    },
+    {
+      "id": "figma@openai-curated",
+      "version": "11c74d6b"
+    },
+    {
+      "id": "game-studio@openai-curated",
+      "version": "11c74d6b"
+    },
+    {
+      "id": "github@openai-curated",
+      "version": "11c74d6b"
+    },
+    {
+      "id": "sentry@openai-curated",
+      "version": "11c74d6b"
+    },
+    {
+      "id": "build-web-apps@openai-curated",
+      "version": "11c74d6b"
+    },
+    {
+      "id": "build-web-data-visualization@openai-curated",
+      "version": "11c74d6b"
+    },
+    {
+      "id": "test-android-apps@openai-curated",
+      "version": "11c74d6b"
+    },
+    {
+      "id": "expo@openai-curated",
+      "version": "11c74d6b"
+    },
+    {
+      "id": "remotion@openai-curated",
+      "version": "11c74d6b"
+    },
+    {
+      "id": "codex-security@openai-curated",
+      "version": "11c74d6b"
+    },
+    {
+      "id": "agent-collaboration-for-codex@agent-collaboration-local",
+      "version": "0.5.3+codex.20260816000000"
+    }
+  ],
+  "harnesses": {
+    "agent-skills": {
+      "project": ".agents",
+      "user": ".agents",
+      "runtime_status": "requires fresh-session discovery; file placement is not runtime activation"
+    },
+    "codex": {
+      "project": ".agents",
+      "user": ".agents",
+      "runtime_status": "requires fresh-session discovery; file placement is not runtime activation"
+    },
+    "cursor": {
+      "project": ".cursor",
+      "user": ".cursor",
+      "runtime_status": "requires fresh-session discovery; file placement is not runtime activation"
+    },
+    "gemini": {
+      "project": ".gemini",
+      "user": ".gemini",
+      "runtime_status": "requires fresh-session discovery; file placement is not runtime activation"
+    },
+    "antigravity": {
+      "project": ".agent",
+      "user": ".gemini/antigravity",
+      "runtime_status": "requires fresh-session discovery; file placement is not runtime activation"
+    },
+    "grok-build": {
+      "project": ".grok",
+      "user": ".grok",
+      "runtime_status": "requires fresh-session discovery; file placement is not runtime activation"
+    },
+    "junie": {
+      "project": ".junie",
+      "user": ".junie",
+      "runtime_status": "requires fresh-session discovery; file placement is not runtime activation"
+    },
+    "command-code": {
+      "project": ".commandcode",
+      "user": ".commandcode",
+      "runtime_status": "requires fresh-session discovery; file placement is not runtime activation"
+    },
+    "z-code": {
+      "project": ".zcode",
+      "user": ".zcode",
+      "runtime_status": "requires fresh-session discovery; file placement is not runtime activation"
+    },
+    "claude": {
+      "project": ".claude",
+      "user": ".claude",
+      "runtime_status": "requires fresh-session discovery; file placement is not runtime activation"
+    }
+  },
+  "packs": {
+    "core": {
+      "description": "Six shared owners for planning, execution discipline, diagnosis and review.",
+      "skills": [
+        "workflow-orchestrator",
+        "create-plan",
+        "first-time-right-delivery",
+        "bug-triage",
+        "code-review-and-quality",
+        "code-review-tests"
+      ]
+    },
+    "engineering": {
+      "description": "All 23 shared engineering playbooks, approved delivery, testing and performance; native Forge for Codex or PStack for Cursor.",
+      "skills": [
+        "engineering-playbooks",
+        "integrated-workflow",
+        "test-architecture-engineer",
+        "performance-profiler",
+        "agent-map",
+        "codex-forge",
+        "forge-architect",
+        "forge-arena",
+        "forge-automate-me",
+        "forge-blast-radius",
+        "forge-bro",
+        "forge-create-verification-skill",
+        "forge-figure-it-out",
+        "forge-how",
+        "forge-interrogate",
+        "forge-maintain-verification-skill",
+        "forge-make-bot-ui",
+        "forge-no-comments",
+        "forge-principle-boundary-discipline",
+        "forge-principle-build-the-lever",
+        "forge-principle-encode-lessons-in-structure",
+        "forge-principle-exhaust-the-design-space",
+        "forge-principle-experience-first",
+        "forge-principle-fix-root-causes",
+        "forge-principle-foundational-thinking",
+        "forge-principle-guard-the-context-window",
+        "forge-principle-laziness-protocol",
+        "forge-principle-make-operations-idempotent",
+        "forge-principle-migrate-callers-then-delete-legacy-apis",
+        "forge-principle-minimize-reader-load",
+        "forge-principle-model-the-domain",
+        "forge-principle-never-block-on-the-human",
+        "forge-principle-outcome-oriented-execution",
+        "forge-principle-prove-it-works",
+        "forge-principle-redesign-from-first-principles",
+        "forge-principle-separate-before-serializing-shared-state",
+        "forge-principle-sequence-verifiable-units",
+        "forge-principle-subtract-before-you-add",
+        "forge-principle-type-system-discipline",
+        "forge-recall",
+        "forge-reflect",
+        "forge-setup",
+        "forge-show-me-your-work",
+        "forge-swarm",
+        "forge-tdd",
+        "forge-teach",
+        "forge-technical-writing",
+        "forge-typescript-best-practices",
+        "forge-unslop",
+        "forge-why"
+      ],
+      "external": [
+        "pstack"
+      ]
+    },
+    "design": {
+      "description": "Design brief, reference fidelity, UI/UX, frontend implementation, Taste, polish, motion and visual verification.",
+      "skills": [
+        "design-brief",
+        "reference-design-contract",
+        "frontend-design",
+        "ux-flow-architect",
+        "design-system-steward",
+        "interaction-polish",
+        "motion-animation-engineer",
+        "accessibility-auditor",
+        "visual-qa",
+        "vector-asset-pipeline"
+      ]
+    },
+    "opendesign": {
+      "description": "Full native OpenDesign workflow adapter with app and lane dependencies.",
+      "skills": [
+        "opendesign",
+        "design-brief",
+        "reference-design-contract",
+        "frontend-design"
+      ],
+      "external": [
+        "opendesign-runtime"
+      ]
+    },
+    "opendesign-library": {
+      "description": "Optional pinned templates, style systems and craft references; imported as resources, not hundreds of global triggers.",
+      "skills": [],
+      "external": [
+        "opendesign-library"
+      ]
+    },
+    "web": {
+      "description": "Browser verification and web implementation helpers.",
+      "skills": [
+        "playwright",
+        "screenshot",
+        "develop-web-game",
+        "accessibility-auditor",
+        "visual-qa"
+      ],
+      "external": [
+        "browser-control"
+      ]
+    },
+    "mobile": {
+      "description": "Cross-platform lifecycle and data compatibility; choose runtime packs for actual device evidence.",
+      "skills": [
+        "mobile-release-manager",
+        "offline-sync-auditor",
+        "activity-schema-guardian"
+      ],
+      "external": [
+        "argent"
+      ]
+    },
+    "argent": {
+      "description": "The complete 16-skill Argent family, installed and updated by its owner.",
+      "skills": [],
+      "external": [
+        "argent"
+      ]
+    },
+    "expo": {
+      "description": "Expo skills including routing, builds, deployment, native UI and upgrades.",
+      "skills": [],
+      "external": [
+        "expo"
+      ]
+    },
+    "ios": {
+      "description": "iOS build and QA dependencies; macOS/Xcode are required for local simulators.",
+      "skills": [
+        "mobile-release-manager"
+      ],
+      "external": [
+        "argent",
+        "ios-toolchain"
+      ]
+    },
+    "android": {
+      "description": "Android build and QA dependencies; local or remotely reachable device runtime required.",
+      "skills": [
+        "mobile-release-manager"
+      ],
+      "external": [
+        "argent",
+        "android-toolchain"
+      ]
+    },
+    "security": {
+      "description": "Portable security and privacy review, with optional separate Codex Security provider.",
+      "skills": [
+        "security-best-practices",
+        "privacy-safety-review"
+      ],
+      "external": [
+        "codex-security"
+      ]
+    },
+    "data": {
+      "description": "Database and data-analysis helpers.",
+      "skills": [
+        "supabase",
+        "supabase-guardian",
+        "csv-analytics-reporter"
+      ],
+      "external": [
+        "supabase",
+        "convex"
+      ]
+    },
+    "research": {
+      "description": "Source-grounded research and knowledge synthesis.",
+      "skills": [
+        "research-synthesizer",
+        "knowledge-base-answering"
+      ]
+    },
+    "content": {
+      "description": "Writing, documents, media and publishing preparation.",
+      "skills": [
+        "article-creator-2",
+        "meeting-notes-task-extractor",
+        "pdf",
+        "seo-content-strategy",
+        "social-content-factory",
+        "sora",
+        "speech",
+        "transcribe"
+      ]
+    },
+    "release": {
+      "description": "Release planning and host-specific deployment adapters.",
+      "skills": [
+        "deploy-checklist",
+        "gh-address-comments",
+        "gh-fix-ci",
+        "cloudflare-deploy",
+        "netlify-deploy",
+        "vercel-deploy"
+      ],
+      "external": [
+        "hosting-clis"
+      ]
+    },
+    "codex": {
+      "description": "Codex-specific model routing and capability maintenance.",
+      "skills": [
+        "codex-capability-maintainer",
+        "plan-model-router",
+        "hatch-pet"
+      ]
+    },
+    "external-agents": {
+      "description": "Explicitly authorized external provider coordination.",
+      "skills": [
+        "agent-collaboration-terminal"
+      ],
+      "external": [
+        "external-providers"
+      ]
+    },
+    "compatibility": {
+      "description": "Legacy entry points and optional project/connector helpers; not default routing owners.",
+      "skills": [
+        "deliver-approved-programme",
+        "dream-team",
+        "project-learning",
+        "figma",
+        "linear"
+      ],
+      "external": [
+        "coderabbit"
+      ]
+    }
+  },
+  "profiles": {
+    "core": [
+      "core"
+    ],
+    "all": [
+      "core",
+      "engineering",
+      "design",
+      "opendesign",
+      "opendesign-library",
+      "web",
+      "mobile",
+      "argent",
+      "expo",
+      "ios",
+      "android",
+      "security",
+      "data",
+      "research",
+      "content",
+      "release",
+      "codex",
+      "external-agents",
+      "compatibility"
+    ]
+  },
+  "dependencies": {
+    "pstack": {
+      "name": "PStack",
+      "kind": "native-plugin",
+      "purpose": "Complete Cursor-native engineering workflow.",
+      "targets": [
+        "cursor"
+      ],
+      "install": "/add-plugin pstack",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+      "repository": "https://github.com/cursor/plugins/tree/main/pstack",
+      "skill_group": "pstack"
+    },
+    "coderabbit": {
+      "name": "CodeRabbit",
+      "kind": "review-provider",
+      "purpose": "Independent provider review; do not replace or rename its own workflow.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ],
+      "install": "Install the CodeRabbit integration supported by the active harness.",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+      "skill_group": "coderabbit-skills",
+      "repository": "https://github.com/coderabbitai/skills"
+    },
+    "argent": {
+      "name": "Argent",
+      "kind": "skills-and-runtime",
+      "purpose": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ],
+      "install": "npx @swmansion/argent@latest init -y",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+      "members": [
+        "argent-android-emulator-setup",
+        "argent-create-flow",
+        "argent-device-interact",
+        "argent-ios-simulator-setup",
+        "argent-lens",
+        "argent-metro-debugger",
+        "argent-native-profiler",
+        "argent-qa-flows",
+        "argent-react-native-app-workflow",
+        "argent-react-native-optimization",
+        "argent-react-native-profiler",
+        "argent-screen-recording",
+        "argent-screenshot-diff",
+        "argent-settings-permissions",
+        "argent-test-ui-flow",
+        "argent-tv-interact"
+      ],
+      "repository": "https://github.com/software-mansion/argent",
+      "capabilities": [
+        "ios",
+        "android",
+        "chromium",
+        "tv",
+        "flows",
+        "profiling",
+        "permissions",
+        "visual-comparison"
+      ]
+    },
+    "expo": {
+      "name": "Expo",
+      "kind": "skills",
+      "purpose": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ],
+      "install": "npx skills@latest add expo/skills --skill '*'",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+      "repository": "https://github.com/expo/skills",
+      "members": [
+        "expo-overview",
+        "expo-project-structure",
+        "expo-router",
+        "expo-animation",
+        "expo-native-ui",
+        "expo-design-system",
+        "expo-ui",
+        "expo-data-fetching",
+        "expo-dom",
+        "expo-web-to-native",
+        "expo-module",
+        "expo-brownfield",
+        "expo-dev-client",
+        "expo-examples",
+        "expo-app-clip",
+        "expo-upgrade",
+        "expo-skill-feedback",
+        "eas-app-stores",
+        "eas-hosting",
+        "eas-workflows",
+        "eas-observe",
+        "eas-update"
+      ],
+      "native_adapter": "codex-expo-run-actions remains owned by the Codex Expo plugin",
+      "install_by_harness": {
+        "codex": "codex plugin add expo@openai-curated",
+        "claude": "claude plugin install expo@claude-plugins-official"
+      },
+      "inventory_evidence": "Current upstream README checked 2026-09-07; older local cache names are retained only as audit history."
+    },
+    "codex-security": {
+      "name": "Codex Security",
+      "kind": "review-provider",
+      "purpose": "Optional Codex Security app; distinct from portable security review.",
+      "targets": [
+        "codex"
+      ],
+      "install": "Install Codex Security from the active Codex marketplace.",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it."
+    },
+    "ios-toolchain": {
+      "name": "iOS toolchain",
+      "kind": "toolchain",
+      "purpose": "Xcode, SDK and simulator/device capability. Linux/cloud can use source analysis or an explicitly configured remote Mac.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ],
+      "install": "Install and configure the project-supported Xcode and iOS runtime on macOS.",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it."
+    },
+    "android-toolchain": {
+      "name": "Android toolchain",
+      "kind": "toolchain",
+      "purpose": "JDK/Android SDK plus device or accelerated emulator for runtime checks.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ],
+      "install": "Use the project-supported JDK and Android SDK; provision a device or compatible emulator.",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it."
+    },
+    "browser-control": {
+      "name": "Browser control",
+      "kind": "runtime",
+      "purpose": "An exposed browser driver or project-native browser test runner.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ],
+      "install": "Use the existing harness browser control or repository-supported Playwright. Argent is optional for its supported runtimes.",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it."
+    },
+    "supabase": {
+      "name": "Supabase",
+      "kind": "skills-and-runtime",
+      "purpose": "Portable SQL methods; CLI/MCP and account access only for requested live actions.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ],
+      "install": "npx skills add supabase/agent-skills",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+      "repository": "https://github.com/supabase/agent-skills"
+    },
+    "convex": {
+      "name": "Convex",
+      "kind": "native-plugin",
+      "purpose": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ],
+      "install": "Install the current official Convex integration for the active harness.",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it."
+    },
+    "hosting-clis": {
+      "name": "Hosting providers",
+      "kind": "runtime",
+      "purpose": "Deploy only to the requested provider with explicit task authority and credentials.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ],
+      "install": "Use the selected provider official CLI or surfaced connector; do not install all hosts.",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it."
+    },
+    "external-providers": {
+      "name": "External agent providers",
+      "kind": "runtime",
+      "purpose": "Optional independent execution within supplied scope; provider identity/credits stay native.",
+      "targets": [
+        "codex"
+      ],
+      "install": "Configure only explicitly requested provider CLIs.",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it."
+    },
+    "opendesign-runtime": {
+      "name": "OpenDesign",
+      "kind": "application",
+      "purpose": "Full Import/Create/Export/Share/Deploy/Refine/Extend workflow; native application remains the execution owner.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ],
+      "install": "Install OpenDesign or build the pinned source according to its README; configure the opendesign adapter.",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+      "repository": "https://github.com/digitalpilipinas/open-design",
+      "commit": "ff2cc80f336f94786128113eddbbb9e3719fecc8",
+      "version": "0.21.1",
+      "runtime_requirements": {
+        "source": "Node.js 24+, pnpm and native build tools; run the pinned source build before its CLI",
+        "native_modules": [
+          "better-sqlite3",
+          "node-pty"
+        ],
+        "media": [
+          "FFmpeg",
+          "hyperframes 0.8.1"
+        ],
+        "generation": "supported agent CLI/provider, configured by operator",
+        "desktop_exports": "Electron renderer required for PDF/image/PPTX; bare daemon returns unsupported",
+        "headless": "HTML/project CLI support; MCP bridge is only its published tool subset",
+        "cloud": "No agent CLI or credentials are included by the Docker image; mount optional templates separately."
+      }
+    },
+    "opendesign-library": {
+      "name": "OpenDesign library",
+      "kind": "resources",
+      "purpose": "Preserve complete template/style/craft directories as optional on-demand resources.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ],
+      "install": "python3 scripts/toolkit.py resources --source <pinned-open-design-checkout> --destination <library-directory>",
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+      "repository": "https://github.com/digitalpilipinas/open-design",
+      "commit": "ff2cc80f336f94786128113eddbbb9e3719fecc8",
+      "paths": [
+        "design-templates",
+        "design-systems",
+        "craft",
+        "LICENSE"
+      ],
+      "resource_counts": {
+        "templates": 114,
+        "design_systems": 152,
+        "craft": 11
+      }
+    }
+  }
 }

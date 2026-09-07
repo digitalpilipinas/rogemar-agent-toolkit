@@ -1,13 +1,13 @@
 ---
 name: plan-model-router
-description: Use when a coding plan contains PRs, sprints, or implementation increments and the user wants an advisory recommendation of the lowest completed-task-cost GPT-5.6 model and reasoning level that preserves the required quality. Produces per-increment execution profiles with evidence, validation, and escalation triggers; it does not replace planning, review, or testing.
+description: Route Codex models and reasoning for plans, execution packages, and bounded subagents, including Astra, Sol, Terra, and Luna when surfaced. Preserve the manually selected parent as the default and ceiling; recommend justified task-specific worker profiles with validation and escalation evidence.
 ---
 
 # Plan Model Router
 
-This skill is intentionally narrow: assess an existing plan or PR list. Do not
-rewrite the product plan, implement code, or claim a model tier guarantees
-quality.
+Assess an existing plan, active execution package, or worker assignment. Do not
+rewrite the product plan, implement the product, spawn workers, or claim that a
+model tier guarantees quality. `workflow-orchestrator` owns dispatch.
 
 Do not auto-activate it for a routine single-track change. Use it when the user
 explicitly asks for model/cost routing or when multiple PRs, sprints, phases,
@@ -17,9 +17,11 @@ when the user wants that recommendation.
 
 ## Policy
 
-Use one portfolio policy: **quality-anchored cost optimization**. Formal
-multi-PR planning uses the appropriate high-quality Sol profile; each execution
-PR then receives the lowest sufficient available model and reasoning level.
+Use one portfolio policy: **quality-anchored cost optimization**. The owner's
+manually selected main model and reasoning effort are the active defaults and
+hard ceilings. This includes Astra when the owner selects it. Workers inherit
+that profile unless the task justifies an available, sufficient lower profile.
+Recommendations never change the parent, its settings, or its backend.
 
 ## Workflow
 
@@ -40,8 +42,10 @@ PR then receives the lowest sufficient available model and reasoning level.
    verification cost, and rollback difficulty. State any score that reaches 2.
 5. Choose the lowest *completed-task-cost* profile that can meet the quality
    bar. Prefer Luna when execution of a known answer is the work; Terra when
-   implementation needs engineering judgment; and Sol when discovering the
-   correct answer, resolving ambiguity, or managing critical risk is the work.
+   implementation needs engineering judgment; Sol for substantial ambiguity
+   and risk; and Astra for the most demanding unresolved work when exposed and
+   permitted by the parent ceilings. These are task-fit hints, not an automatic
+   upgrade ladder or verified price claims.
 6. Choose effort for the problem shape: low/medium for narrow established work,
    high/xhigh for non-trivial or uncertain work, max for one hard sequential
    problem, and ultra only for deliberately separable parallel workstreams.
@@ -50,7 +54,7 @@ PR then receives the lowest sufficient available model and reasoning level.
    precise model and reasoning level, risk reason, cost rationale, required
    validation, and evidence-based escalation trigger. For a formal multi-PR
    plan, use the quality-anchored planning default in `routing-profiles.md`,
-   then produce the complete execution profile for every PR. Each complete
+then produce the complete execution profile for every PR. Each complete
    profile must name the precise model and reasoning level, risk score and
    reason, why lower cost is sufficient or not, required specialist skills,
    acceptance criteria, invariants, non-goals, dependencies, non-negotiable
@@ -67,14 +71,15 @@ PR then receives the lowest sufficient available model and reasoning level.
 
 ## Default routing
 
-Read [routing-profiles.md](references/routing-profiles.md). Start lower and
-escalate with evidence; never lower required validation because a stronger model
-was selected.
+Read [routing-profiles.md](references/routing-profiles.md) for task-fit guidance.
+For execution, Forge setup preferences, or a worker assignment, read
+[runtime-routing.md](references/runtime-routing.md). Inherit the selected
+parent by default, justify each departure, and preserve required validation.
 
 ## Sub-agent routing with a parent ceiling
 
-When delegated workers are used, route each worker independently instead of
-copying the parent profile. Capture the parent model and reasoning effort as
+When delegated workers are used, evaluate each worker independently, starting
+from parent inheritance. Capture the active parent model and reasoning effort as
 `parent_model_ceiling` and `parent_reasoning_ceiling` before spawning.
 
 Filter every candidate worker profile against both ceilings and the active
@@ -84,11 +89,11 @@ parent. If the worker's required profile exceeds the ceiling, use the strongest
 permitted profile, mark the assignment `ceiling-constrained`, and return any
 unresolved reasoning to the main agent or Rogemar.
 
-Custom-agent roles select behavior and permissions; they do not guarantee a
-model or effort. Record the role's desired profile separately from the
-effective profile chosen after ceiling and runtime checks. Do not upgrade a
-lower-tier role to `max` by default, and do not let a fixed role configuration
-bypass the parent effort ceiling.
+Custom-agent configuration can override explicit spawn settings. Inspect it
+before dispatch; use an unpinned equivalent role or keep work with the parent
+when an override violates either ceiling. Record desired, requested, and
+observed effective settings separately. Do not claim the observed profile from
+configuration, an accepted request, or the worker's self-description alone.
 
 Use the role and risk guidance in [subagent-routing.md](references/subagent-routing.md).
 The main agent remains the quality anchor and must reconcile worker evidence

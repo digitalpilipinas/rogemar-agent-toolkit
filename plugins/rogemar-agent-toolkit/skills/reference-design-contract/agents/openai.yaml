@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reference Design Contract"
+  short_description: "Translate references into a reusable design contract"
+  default_prompt: "Use $reference-design-contract to turn these references into a grounded visual contract and build handoff."

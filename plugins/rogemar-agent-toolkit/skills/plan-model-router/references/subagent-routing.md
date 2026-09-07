@@ -6,7 +6,8 @@ ceilings for all delegated workers.
 
 ## Ceiling algorithm
 
-1. Capture the parent model, active backend, and reasoning effort before the
+1. Begin with inheritance of the manually selected active parent. Capture its
+   model, active backend, and reasoning effort before the
    first worker is spawned.
 2. Inspect the runtime model catalog and supported reasoning levels.
 3. Normalize aliases such as `light` to `low` and `extra high` to `xhigh`.
@@ -20,9 +21,10 @@ ceilings for all delegated workers.
 8. Return unresolved work to the main agent. Do not silently select a stronger
    model, change backend, or invent availability.
 
-Treat any custom-agent model or effort setting as a desired profile. The
-effective profile is the selected runtime-supported profile after this filter;
-it must satisfy both ceilings even when the desired agent type is lower-tier.
+Inspect custom-agent settings before applying this filter: pinned model/effort
+values can override spawn arguments. Reject an unsafe override and select an
+unpinned equivalent role or return the work to the main agent. Never describe
+a requested profile as the observed runtime profile without metadata evidence.
 
 The conservative fallback when model ordering or availability cannot be
 verified is the exact parent model with an effort no higher than the parent.

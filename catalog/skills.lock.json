@@ -866,220 +866,2306 @@
         "repository": "https://github.com/duolahypercho/codex-router",
         "represented_by": "codex-router companion skill family",
         "update_policy": "external; preserve router credentials and local provider configuration"
+      },
+      {
+        "author": "OpenDesign and per-skill upstream authors",
+        "id": "open-design",
+        "install_latest": "Use the upstream application/source setup instructions; review before moving the pinned resource revision.",
+        "license_status": "Apache-2.0 root; preserve each bundled upstream notice",
+        "repository": "https://github.com/digitalpilipinas/open-design",
+        "represented_by": "portable design methods, full native adapter and pinned optional resource library"
+      },
+      {
+        "author": "Expo",
+        "id": "expo-skills",
+        "install_latest": "npx skills add expo/skills",
+        "license_status": "External upstream; verify current license before vendoring",
+        "repository": "https://github.com/expo/skills",
+        "represented_by": "optional Expo pack"
       }
     ]
   },
+  "hash_format": "sha256:path-nul-executable-nul-content-nul",
   "package": "rogemar-agent-toolkit",
-  "schema_version": 1,
+  "schema_version": 2,
+  "selection": {
+    "dependencies": {
+      "android-toolchain": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "install": "Use the project-supported JDK and Android SDK; provision a device or compatible emulator.",
+        "kind": "toolchain",
+        "name": "Android toolchain",
+        "purpose": "JDK/Android SDK plus device or accelerated emulator for runtime checks.",
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "gemini",
+          "antigravity",
+          "grok-build",
+          "junie",
+          "command-code",
+          "z-code",
+          "claude"
+        ]
+      },
+      "argent": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "capabilities": [
+          "ios",
+          "android",
+          "chromium",
+          "tv",
+          "flows",
+          "profiling",
+          "permissions",
+          "visual-comparison"
+        ],
+        "install": "npx @swmansion/argent@latest init -y",
+        "kind": "skills-and-runtime",
+        "members": [
+          "argent-android-emulator-setup",
+          "argent-create-flow",
+          "argent-device-interact",
+          "argent-ios-simulator-setup",
+          "argent-lens",
+          "argent-metro-debugger",
+          "argent-native-profiler",
+          "argent-qa-flows",
+          "argent-react-native-app-workflow",
+          "argent-react-native-optimization",
+          "argent-react-native-profiler",
+          "argent-screen-recording",
+          "argent-screenshot-diff",
+          "argent-settings-permissions",
+          "argent-test-ui-flow",
+          "argent-tv-interact"
+        ],
+        "name": "Argent",
+        "purpose": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
+        "repository": "https://github.com/software-mansion/argent",
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "gemini",
+          "antigravity",
+          "grok-build",
+          "junie",
+          "command-code",
+          "z-code",
+          "claude"
+        ]
+      },
+      "browser-control": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "install": "Use the existing harness browser control or repository-supported Playwright. Argent is optional for its supported runtimes.",
+        "kind": "runtime",
+        "name": "Browser control",
+        "purpose": "An exposed browser driver or project-native browser test runner.",
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "gemini",
+          "antigravity",
+          "grok-build",
+          "junie",
+          "command-code",
+          "z-code",
+          "claude"
+        ]
+      },
+      "coderabbit": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "install": "Install the CodeRabbit integration supported by the active harness.",
+        "kind": "review-provider",
+        "name": "CodeRabbit",
+        "purpose": "Independent provider review; do not replace or rename its own workflow.",
+        "repository": "https://github.com/coderabbitai/skills",
+        "skill_group": "coderabbit-skills",
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "gemini",
+          "antigravity",
+          "grok-build",
+          "junie",
+          "command-code",
+          "z-code",
+          "claude"
+        ]
+      },
+      "codex-security": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "install": "Install Codex Security from the active Codex marketplace.",
+        "kind": "review-provider",
+        "name": "Codex Security",
+        "purpose": "Optional Codex Security app; distinct from portable security review.",
+        "targets": [
+          "codex"
+        ]
+      },
+      "convex": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "install": "Install the current official Convex integration for the active harness.",
+        "kind": "native-plugin",
+        "name": "Convex",
+        "purpose": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "gemini",
+          "antigravity",
+          "grok-build",
+          "junie",
+          "command-code",
+          "z-code",
+          "claude"
+        ]
+      },
+      "expo": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "install": "npx skills@latest add expo/skills --skill '*'",
+        "install_by_harness": {
+          "claude": "claude plugin install expo@claude-plugins-official",
+          "codex": "codex plugin add expo@openai-curated"
+        },
+        "inventory_evidence": "Current upstream README checked 2026-09-07; older local cache names are retained only as audit history.",
+        "kind": "skills",
+        "members": [
+          "expo-overview",
+          "expo-project-structure",
+          "expo-router",
+          "expo-animation",
+          "expo-native-ui",
+          "expo-design-system",
+          "expo-ui",
+          "expo-data-fetching",
+          "expo-dom",
+          "expo-web-to-native",
+          "expo-module",
+          "expo-brownfield",
+          "expo-dev-client",
+          "expo-examples",
+          "expo-app-clip",
+          "expo-upgrade",
+          "expo-skill-feedback",
+          "eas-app-stores",
+          "eas-hosting",
+          "eas-workflows",
+          "eas-observe",
+          "eas-update"
+        ],
+        "name": "Expo",
+        "native_adapter": "codex-expo-run-actions remains owned by the Codex Expo plugin",
+        "purpose": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
+        "repository": "https://github.com/expo/skills",
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "gemini",
+          "antigravity",
+          "grok-build",
+          "junie",
+          "command-code",
+          "z-code",
+          "claude"
+        ]
+      },
+      "external-providers": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "install": "Configure only explicitly requested provider CLIs.",
+        "kind": "runtime",
+        "name": "External agent providers",
+        "purpose": "Optional independent execution within supplied scope; provider identity/credits stay native.",
+        "targets": [
+          "codex"
+        ]
+      },
+      "hosting-clis": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "install": "Use the selected provider official CLI or surfaced connector; do not install all hosts.",
+        "kind": "runtime",
+        "name": "Hosting providers",
+        "purpose": "Deploy only to the requested provider with explicit task authority and credentials.",
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "gemini",
+          "antigravity",
+          "grok-build",
+          "junie",
+          "command-code",
+          "z-code",
+          "claude"
+        ]
+      },
+      "ios-toolchain": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "install": "Install and configure the project-supported Xcode and iOS runtime on macOS.",
+        "kind": "toolchain",
+        "name": "iOS toolchain",
+        "purpose": "Xcode, SDK and simulator/device capability. Linux/cloud can use source analysis or an explicitly configured remote Mac.",
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "gemini",
+          "antigravity",
+          "grok-build",
+          "junie",
+          "command-code",
+          "z-code",
+          "claude"
+        ]
+      },
+      "opendesign-library": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "commit": "ff2cc80f336f94786128113eddbbb9e3719fecc8",
+        "install": "python3 scripts/toolkit.py resources --source <pinned-open-design-checkout> --destination <library-directory>",
+        "kind": "resources",
+        "name": "OpenDesign library",
+        "paths": [
+          "design-templates",
+          "design-systems",
+          "craft",
+          "LICENSE"
+        ],
+        "purpose": "Preserve complete template/style/craft directories as optional on-demand resources.",
+        "repository": "https://github.com/digitalpilipinas/open-design",
+        "resource_counts": {
+          "craft": 11,
+          "design_systems": 152,
+          "templates": 114
+        },
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "gemini",
+          "antigravity",
+          "grok-build",
+          "junie",
+          "command-code",
+          "z-code",
+          "claude"
+        ]
+      },
+      "opendesign-runtime": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "commit": "ff2cc80f336f94786128113eddbbb9e3719fecc8",
+        "install": "Install OpenDesign or build the pinned source according to its README; configure the opendesign adapter.",
+        "kind": "application",
+        "name": "OpenDesign",
+        "purpose": "Full Import/Create/Export/Share/Deploy/Refine/Extend workflow; native application remains the execution owner.",
+        "repository": "https://github.com/digitalpilipinas/open-design",
+        "runtime_requirements": {
+          "cloud": "No agent CLI or credentials are included by the Docker image; mount optional templates separately.",
+          "desktop_exports": "Electron renderer required for PDF/image/PPTX; bare daemon returns unsupported",
+          "generation": "supported agent CLI/provider, configured by operator",
+          "headless": "HTML/project CLI support; MCP bridge is only its published tool subset",
+          "media": [
+            "FFmpeg",
+            "hyperframes 0.8.1"
+          ],
+          "native_modules": [
+            "better-sqlite3",
+            "node-pty"
+          ],
+          "source": "Node.js 24+, pnpm and native build tools; run the pinned source build before its CLI"
+        },
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "gemini",
+          "antigravity",
+          "grok-build",
+          "junie",
+          "command-code",
+          "z-code",
+          "claude"
+        ],
+        "version": "0.21.1"
+      },
+      "pstack": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "install": "/add-plugin pstack",
+        "kind": "native-plugin",
+        "name": "PStack",
+        "purpose": "Complete Cursor-native engineering workflow.",
+        "repository": "https://github.com/cursor/plugins/tree/main/pstack",
+        "skill_group": "pstack",
+        "targets": [
+          "cursor"
+        ]
+      },
+      "supabase": {
+        "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "install": "npx skills add supabase/agent-skills",
+        "kind": "skills-and-runtime",
+        "name": "Supabase",
+        "purpose": "Portable SQL methods; CLI/MCP and account access only for requested live actions.",
+        "repository": "https://github.com/supabase/agent-skills",
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "gemini",
+          "antigravity",
+          "grok-build",
+          "junie",
+          "command-code",
+          "z-code",
+          "claude"
+        ]
+      }
+    },
+    "harnesses": {
+      "agent-skills": {
+        "project": ".agents",
+        "runtime_status": "requires fresh-session discovery; file placement is not runtime activation",
+        "user": ".agents"
+      },
+      "antigravity": {
+        "project": ".agent",
+        "runtime_status": "requires fresh-session discovery; file placement is not runtime activation",
+        "user": ".gemini/antigravity"
+      },
+      "claude": {
+        "project": ".claude",
+        "runtime_status": "requires fresh-session discovery; file placement is not runtime activation",
+        "user": ".claude"
+      },
+      "codex": {
+        "project": ".agents",
+        "runtime_status": "requires fresh-session discovery; file placement is not runtime activation",
+        "user": ".agents"
+      },
+      "command-code": {
+        "project": ".commandcode",
+        "runtime_status": "requires fresh-session discovery; file placement is not runtime activation",
+        "user": ".commandcode"
+      },
+      "cursor": {
+        "project": ".cursor",
+        "runtime_status": "requires fresh-session discovery; file placement is not runtime activation",
+        "user": ".cursor"
+      },
+      "gemini": {
+        "project": ".gemini",
+        "runtime_status": "requires fresh-session discovery; file placement is not runtime activation",
+        "user": ".gemini"
+      },
+      "grok-build": {
+        "project": ".grok",
+        "runtime_status": "requires fresh-session discovery; file placement is not runtime activation",
+        "user": ".grok"
+      },
+      "junie": {
+        "project": ".junie",
+        "runtime_status": "requires fresh-session discovery; file placement is not runtime activation",
+        "user": ".junie"
+      },
+      "z-code": {
+        "project": ".zcode",
+        "runtime_status": "requires fresh-session discovery; file placement is not runtime activation",
+        "user": ".zcode"
+      }
+    },
+    "packs": {
+      "android": {
+        "description": "Android build and QA dependencies; local or remotely reachable device runtime required.",
+        "external": [
+          "argent",
+          "android-toolchain"
+        ],
+        "skills": [
+          "mobile-release-manager"
+        ]
+      },
+      "argent": {
+        "description": "The complete 16-skill Argent family, installed and updated by its owner.",
+        "external": [
+          "argent"
+        ],
+        "skills": []
+      },
+      "codex": {
+        "description": "Codex-specific model routing and capability maintenance.",
+        "skills": [
+          "codex-capability-maintainer",
+          "plan-model-router",
+          "hatch-pet"
+        ]
+      },
+      "compatibility": {
+        "description": "Legacy entry points and optional project/connector helpers; not default routing owners.",
+        "external": [
+          "coderabbit"
+        ],
+        "skills": [
+          "deliver-approved-programme",
+          "dream-team",
+          "project-learning",
+          "figma",
+          "linear"
+        ]
+      },
+      "content": {
+        "description": "Writing, documents, media and publishing preparation.",
+        "skills": [
+          "article-creator-2",
+          "meeting-notes-task-extractor",
+          "pdf",
+          "seo-content-strategy",
+          "social-content-factory",
+          "sora",
+          "speech",
+          "transcribe"
+        ]
+      },
+      "core": {
+        "description": "Six shared owners for planning, execution discipline, diagnosis and review.",
+        "skills": [
+          "workflow-orchestrator",
+          "create-plan",
+          "first-time-right-delivery",
+          "bug-triage",
+          "code-review-and-quality",
+          "code-review-tests"
+        ]
+      },
+      "data": {
+        "description": "Database and data-analysis helpers.",
+        "external": [
+          "supabase",
+          "convex"
+        ],
+        "skills": [
+          "supabase",
+          "supabase-guardian",
+          "csv-analytics-reporter"
+        ]
+      },
+      "design": {
+        "description": "Design brief, reference fidelity, UI/UX, frontend implementation, Taste, polish, motion and visual verification.",
+        "skills": [
+          "design-brief",
+          "reference-design-contract",
+          "frontend-design",
+          "ux-flow-architect",
+          "design-system-steward",
+          "interaction-polish",
+          "motion-animation-engineer",
+          "accessibility-auditor",
+          "visual-qa",
+          "vector-asset-pipeline"
+        ]
+      },
+      "engineering": {
+        "description": "All 23 shared engineering playbooks, approved delivery, testing and performance; native Forge for Codex or PStack for Cursor.",
+        "external": [
+          "pstack"
+        ],
+        "skills": [
+          "engineering-playbooks",
+          "integrated-workflow",
+          "test-architecture-engineer",
+          "performance-profiler",
+          "agent-map",
+          "codex-forge",
+          "forge-architect",
+          "forge-arena",
+          "forge-automate-me",
+          "forge-blast-radius",
+          "forge-bro",
+          "forge-create-verification-skill",
+          "forge-figure-it-out",
+          "forge-how",
+          "forge-interrogate",
+          "forge-maintain-verification-skill",
+          "forge-make-bot-ui",
+          "forge-no-comments",
+          "forge-principle-boundary-discipline",
+          "forge-principle-build-the-lever",
+          "forge-principle-encode-lessons-in-structure",
+          "forge-principle-exhaust-the-design-space",
+          "forge-principle-experience-first",
+          "forge-principle-fix-root-causes",
+          "forge-principle-foundational-thinking",
+          "forge-principle-guard-the-context-window",
+          "forge-principle-laziness-protocol",
+          "forge-principle-make-operations-idempotent",
+          "forge-principle-migrate-callers-then-delete-legacy-apis",
+          "forge-principle-minimize-reader-load",
+          "forge-principle-model-the-domain",
+          "forge-principle-never-block-on-the-human",
+          "forge-principle-outcome-oriented-execution",
+          "forge-principle-prove-it-works",
+          "forge-principle-redesign-from-first-principles",
+          "forge-principle-separate-before-serializing-shared-state",
+          "forge-principle-sequence-verifiable-units",
+          "forge-principle-subtract-before-you-add",
+          "forge-principle-type-system-discipline",
+          "forge-recall",
+          "forge-reflect",
+          "forge-setup",
+          "forge-show-me-your-work",
+          "forge-swarm",
+          "forge-tdd",
+          "forge-teach",
+          "forge-technical-writing",
+          "forge-typescript-best-practices",
+          "forge-unslop",
+          "forge-why"
+        ]
+      },
+      "expo": {
+        "description": "Expo skills including routing, builds, deployment, native UI and upgrades.",
+        "external": [
+          "expo"
+        ],
+        "skills": []
+      },
+      "external-agents": {
+        "description": "Explicitly authorized external provider coordination.",
+        "external": [
+          "external-providers"
+        ],
+        "skills": [
+          "agent-collaboration-terminal"
+        ]
+      },
+      "ios": {
+        "description": "iOS build and QA dependencies; macOS/Xcode are required for local simulators.",
+        "external": [
+          "argent",
+          "ios-toolchain"
+        ],
+        "skills": [
+          "mobile-release-manager"
+        ]
+      },
+      "mobile": {
+        "description": "Cross-platform lifecycle and data compatibility; choose runtime packs for actual device evidence.",
+        "external": [
+          "argent"
+        ],
+        "skills": [
+          "mobile-release-manager",
+          "offline-sync-auditor",
+          "activity-schema-guardian"
+        ]
+      },
+      "opendesign": {
+        "description": "Full native OpenDesign workflow adapter with app and lane dependencies.",
+        "external": [
+          "opendesign-runtime"
+        ],
+        "skills": [
+          "opendesign",
+          "design-brief",
+          "reference-design-contract",
+          "frontend-design"
+        ]
+      },
+      "opendesign-library": {
+        "description": "Optional pinned templates, style systems and craft references; imported as resources, not hundreds of global triggers.",
+        "external": [
+          "opendesign-library"
+        ],
+        "skills": []
+      },
+      "release": {
+        "description": "Release planning and host-specific deployment adapters.",
+        "external": [
+          "hosting-clis"
+        ],
+        "skills": [
+          "deploy-checklist",
+          "gh-address-comments",
+          "gh-fix-ci",
+          "cloudflare-deploy",
+          "netlify-deploy",
+          "vercel-deploy"
+        ]
+      },
+      "research": {
+        "description": "Source-grounded research and knowledge synthesis.",
+        "skills": [
+          "research-synthesizer",
+          "knowledge-base-answering"
+        ]
+      },
+      "security": {
+        "description": "Portable security and privacy review, with optional separate Codex Security provider.",
+        "external": [
+          "codex-security"
+        ],
+        "skills": [
+          "security-best-practices",
+          "privacy-safety-review"
+        ]
+      },
+      "web": {
+        "description": "Browser verification and web implementation helpers.",
+        "external": [
+          "browser-control"
+        ],
+        "skills": [
+          "playwright",
+          "screenshot",
+          "develop-web-game",
+          "accessibility-auditor",
+          "visual-qa"
+        ]
+      }
+    },
+    "profiles": {
+      "all": [
+        "core",
+        "engineering",
+        "design",
+        "opendesign",
+        "opendesign-library",
+        "web",
+        "mobile",
+        "argent",
+        "expo",
+        "ios",
+        "android",
+        "security",
+        "data",
+        "research",
+        "content",
+        "release",
+        "codex",
+        "external-agents",
+        "compatibility"
+      ],
+      "core": [
+        "core"
+      ]
+    }
+  },
+  "skill_contracts": {
+    "accessibility-auditor": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "activity-schema-guardian": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "agent-collaboration-terminal": {
+      "requires": [],
+      "targets": [
+        "codex"
+      ]
+    },
+    "agent-map": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "article-creator-2": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "bug-triage": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "cloudflare-deploy": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "code-review-and-quality": {
+      "requires": [
+        "code-review-tests"
+      ],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "code-review-tests": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "codex-capability-maintainer": {
+      "requires": [],
+      "targets": [
+        "codex"
+      ]
+    },
+    "codex-forge": {
+      "requires": [
+        "workflow-orchestrator",
+        "plan-model-router"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "create-plan": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "csv-analytics-reporter": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "deliver-approved-programme": {
+      "requires": [
+        "integrated-workflow"
+      ],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "deploy-checklist": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "design-brief": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "design-system-steward": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "develop-web-game": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "dream-team": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "engineering-playbooks": {
+      "requires": [
+        "workflow-orchestrator"
+      ],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "figma": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "first-time-right-delivery": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "forge-architect": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-arena": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-automate-me": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-blast-radius": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-bro": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-create-verification-skill": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-figure-it-out": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-how": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-interrogate": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-maintain-verification-skill": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-make-bot-ui": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-no-comments": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-boundary-discipline": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-build-the-lever": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-encode-lessons-in-structure": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-exhaust-the-design-space": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-experience-first": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-fix-root-causes": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-foundational-thinking": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-guard-the-context-window": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-laziness-protocol": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-make-operations-idempotent": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-migrate-callers-then-delete-legacy-apis": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-minimize-reader-load": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-model-the-domain": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-never-block-on-the-human": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-outcome-oriented-execution": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-prove-it-works": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-redesign-from-first-principles": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-separate-before-serializing-shared-state": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-sequence-verifiable-units": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-subtract-before-you-add": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-type-system-discipline": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-recall": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-reflect": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-setup": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-show-me-your-work": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-swarm": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-tdd": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-teach": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-technical-writing": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-typescript-best-practices": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-unslop": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-why": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "frontend-design": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "gh-address-comments": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "gh-fix-ci": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "hatch-pet": {
+      "requires": [],
+      "targets": [
+        "codex"
+      ]
+    },
+    "integrated-workflow": {
+      "requires": [
+        "workflow-orchestrator",
+        "create-plan",
+        "first-time-right-delivery",
+        "code-review-and-quality"
+      ],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "interaction-polish": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "knowledge-base-answering": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "linear": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "meeting-notes-task-extractor": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "mobile-release-manager": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "motion-animation-engineer": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "netlify-deploy": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "offline-sync-auditor": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "opendesign": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "pdf": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "performance-profiler": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "plan-model-router": {
+      "requires": [],
+      "targets": [
+        "codex"
+      ]
+    },
+    "playwright": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "privacy-safety-review": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "project-learning": {
+      "requires": [],
+      "targets": [
+        "codex"
+      ]
+    },
+    "reference-design-contract": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "research-synthesizer": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "screenshot": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "security-best-practices": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "seo-content-strategy": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "social-content-factory": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "sora": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "speech": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "supabase": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "supabase-guardian": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "test-architecture-engineer": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "transcribe": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "ux-flow-architect": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "vector-asset-pipeline": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "vercel-deploy": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "visual-qa": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "workflow-orchestrator": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    }
+  },
   "skills": {
     "accessibility-auditor": {
       "file_count": 2,
-      "sha256": "852bfa931fb1d55bf51961b0e5dd097d61530985fde497bde6a79c9052d4b20f"
+      "sha256": "166c7f9813b94e2199dd565b5c807d9e273b5697ac05a425090d6d1a4ea39b5c"
     },
     "activity-schema-guardian": {
       "file_count": 2,
-      "sha256": "783fdc721aa05f8ea377400bcfbc80d4428ad769360239867915c0ccf333c205"
+      "sha256": "9b2f92d863daca86d5ab375ef3e8eb8963e9dc571b6ad198088456eba4d8649b"
     },
     "agent-collaboration-terminal": {
       "file_count": 8,
-      "sha256": "01f2e79a215f285263ce0e387c400fe6ed9f36e351c275616a7e73caa5727375"
+      "sha256": "9f62c522b4573d56fc4263574317fb7cb194c54059a4c864028851a2f1c60539"
     },
     "agent-map": {
       "file_count": 3,
-      "sha256": "d3150097d3edd5a8ab20a1ea23368e9d84f5c52ed7be43be08ffe045f57ae170"
+      "sha256": "2bd9b4cd1b131ed146d221218db3271310428a074a3eb6ac8fc7387c4580dc9c"
     },
     "article-creator-2": {
       "file_count": 2,
-      "sha256": "68a25e61295ca1580461c14c2263b8aa2f6da52a40395aa5134eba066e4a8b83"
+      "sha256": "4c7bd4bc06f263fabf9a6dcd125f584c721695da20233b0f2f44e53a0f386ac3"
     },
     "bug-triage": {
       "file_count": 2,
-      "sha256": "669336b65b996f96c67625cd3187d8d4d8cc7592b98943424b86aa9d77479ba4"
+      "sha256": "42db4fa3377e5a97a30ba30e128781eb45563f7d534a7e43e4fd7e5ddd5d13af"
     },
     "cloudflare-deploy": {
       "file_count": 312,
-      "sha256": "17f60031b4e15153401ce26eb635b4be51cb05fd0a114e601ae835aec2080756"
+      "sha256": "237132091641445ca12450b005b7bee8390772db63fd53b29df4b885e2215109"
     },
     "code-review-and-quality": {
       "file_count": 1,
-      "sha256": "57574227c803c4a1a5132ff44ecd9c3110cfa96290e89204459b8f3441a0b463"
+      "sha256": "8fcddcf6c2b7b910e2065f57e38540fb5179a5d091312da071ed545c05672d98"
     },
     "code-review-tests": {
       "file_count": 2,
-      "sha256": "a039e392814703b142daa6e1be0c82e2ab4b37a0a102c0adbc2e5462f104522c"
+      "sha256": "332a9eae8184ee84f6f0cf9d0b8d01fe2bb4747fe70b46e931f24775f99c882c"
     },
     "codex-capability-maintainer": {
       "file_count": 2,
-      "sha256": "1e17b3795d75f4bbddae9647303c81d86e9abe66b2675269b2dbfcb6ed87349d"
+      "sha256": "db9801b30f1c72e9d1b980bbcab5d6a878389e3ee13cce19cab70395b711aea9"
+    },
+    "codex-forge": {
+      "file_count": 67,
+      "sha256": "b99e3821d98c3cc26f39b3900b9029b5f075b7fb0755678706b3f222dfc4b3d3"
     },
     "create-plan": {
       "file_count": 4,
-      "sha256": "7ea0797f85e4deefedb9810422a7b52adcbd3d3719ee8c83552aa5f56e4f9843"
+      "sha256": "127994557f0a24ae11b0a9b8bb491a5198787f07a2720454acf6bfe5d1e4899d"
     },
     "csv-analytics-reporter": {
       "file_count": 2,
-      "sha256": "70dad946129dcb171f8bd2fb52fc92d1dc001163d221208eb7fc8b0f76e63e82"
+      "sha256": "8ea8f95c02862d9d280becdd51e1d00753237e8243461405f0e7ee190e25c33e"
     },
     "deliver-approved-programme": {
-      "file_count": 5,
-      "sha256": "061a470c1bd839d73480640d19cd02c7c38d733c7b42d9add375600284d63cfb"
+      "file_count": 2,
+      "sha256": "f72e8065994fec6b19d992e4fdfb841daf94cdcbf54468c5f6808c98bd2af0dd"
     },
     "deploy-checklist": {
       "file_count": 2,
-      "sha256": "0038a6e290d8d027fbc3f6220e5e31d4736b19fec5a7682cc9b79ddd3e4d47ac"
+      "sha256": "75e2178a597efcc713b85cab268707ffea2827035d20314d09cafd58e287c9f2"
+    },
+    "design-brief": {
+      "file_count": 4,
+      "sha256": "dcc1f6d8c5b48f2f075f308b29aa77cb13bef3371335d3d043fdf6798b556743"
     },
     "design-system-steward": {
       "file_count": 2,
-      "sha256": "eb48cd6646aeae7e9a40b3f56e70b7269f468a1f0a649a6a94a91d5689caca29"
+      "sha256": "df9fa9f69f5ab834d6ff7bc5e0d887457222e61e9abc96f6e3199dea29b239e1"
     },
     "develop-web-game": {
       "file_count": 7,
-      "sha256": "16dfa45b9bc76acd8f7ec160afef3c0860559050f49ab993284895d8b4240b7c"
+      "sha256": "71187f91470ebe8de60fb776f9212d9cabc34a46a395f28e06cba8334688733f"
     },
     "dream-team": {
       "file_count": 7,
-      "sha256": "9b6f6fdcd178ce3ccf00710d435443721de694950ecd4357d781edb549cf6101"
+      "sha256": "88b075048cf393c80c5327da1c07ec227eb6151c22cd9a856e1e418e0e472ce0"
+    },
+    "engineering-playbooks": {
+      "file_count": 48,
+      "sha256": "2a2806f0e181b6719748b7a65d6d4f21a00030d282a4513e6248001328cc31c4"
     },
     "figma": {
       "file_count": 8,
-      "sha256": "68484fd30e8f3de16389d6abe02732da62561f5cb7c971900d83085b3cb68c44"
+      "sha256": "fab4f6767fa430803cba9bfbcca63738166e25853467cf29aaa22dfad8dc3a61"
     },
     "first-time-right-delivery": {
       "file_count": 2,
-      "sha256": "be421e2cdd9e8870dd2dd8cbb5b594c33376b4b40aeedc219648b55de4d8d38e"
+      "sha256": "2ccc6de39ce156a5f02593daf94b1273aee219317bc331fa455db3c3909d5629"
+    },
+    "forge-architect": {
+      "file_count": 6,
+      "sha256": "0be0d7e851871d053247998ced516e870c9d62b98261aeefa7b5a283c34eb636"
+    },
+    "forge-arena": {
+      "file_count": 3,
+      "sha256": "09b19dea42baf9a1dcae64ce0bd1ef706739e94a0be11de83bd97e254e19e6a0"
+    },
+    "forge-automate-me": {
+      "file_count": 3,
+      "sha256": "bc9c67c02071d0c0af74c440fd221fe08289e929464c23300ae7ed7cf92e874d"
+    },
+    "forge-blast-radius": {
+      "file_count": 3,
+      "sha256": "9f631a4f997c3a370205252e66ccdc31be32f5982e73bff002811efa4944c4c9"
+    },
+    "forge-bro": {
+      "file_count": 3,
+      "sha256": "78fd156a223571e596e2c908b157bb6ded457e91db981d74eb0d25f6c5f88b96"
+    },
+    "forge-create-verification-skill": {
+      "file_count": 6,
+      "sha256": "247eb3f268fdfac91e7400d1ef90320ea465a325d5c19777d94762405931181f"
+    },
+    "forge-figure-it-out": {
+      "file_count": 3,
+      "sha256": "4f32aa0b0f7e806b6f10db11a7512994a34544475784b7406e8f900f9d2eb3a9"
+    },
+    "forge-how": {
+      "file_count": 7,
+      "sha256": "5a3f09cc62e5f7996796ccdf6720537fcd7d997a4032fe66682892afd7655bf8"
+    },
+    "forge-interrogate": {
+      "file_count": 7,
+      "sha256": "8a9679b5be2b8f1b46205e775aeb4f56c3a23ccca16a57851cb3336e949478a9"
+    },
+    "forge-maintain-verification-skill": {
+      "file_count": 3,
+      "sha256": "1d3d4d6d82ffb80d38f6e6d848c680a0cae5e161d2dbf25ad61f14c5cbc8aa64"
+    },
+    "forge-make-bot-ui": {
+      "file_count": 3,
+      "sha256": "1acd727b2114940471d0ea90727c3186b5b1f0082c24688fb5ed7c53a46f30a5"
+    },
+    "forge-no-comments": {
+      "file_count": 3,
+      "sha256": "139ac56ce33094b4fd8fbf371277147d8dd4f89123302f42bcf5f58800268079"
+    },
+    "forge-principle-boundary-discipline": {
+      "file_count": 3,
+      "sha256": "e600232c560bab25c14f7942524f221830c7ffa28b7d9d42b2a081b991ed5270"
+    },
+    "forge-principle-build-the-lever": {
+      "file_count": 3,
+      "sha256": "5a371acb2f7be230668f93f2a0e463b723e0c644bbff158cacfca4607cbd2c55"
+    },
+    "forge-principle-encode-lessons-in-structure": {
+      "file_count": 3,
+      "sha256": "43a05a7e19c5905149e8d91c579d374363e61a38a26752a47df3a90fdee3ede0"
+    },
+    "forge-principle-exhaust-the-design-space": {
+      "file_count": 3,
+      "sha256": "a66381bfbdec5371df59ffe229e8b55ab7b8807273db1c2f0a70b22a6fe975bf"
+    },
+    "forge-principle-experience-first": {
+      "file_count": 3,
+      "sha256": "171d6f1f19c080ccaa2119b0f93bac3ee58f0185ef8d275bafbfa22596ac5bd3"
+    },
+    "forge-principle-fix-root-causes": {
+      "file_count": 3,
+      "sha256": "26fa19c19b5bf8cdcb897475320fa209affdeb792f236625d70ada736d88304d"
+    },
+    "forge-principle-foundational-thinking": {
+      "file_count": 3,
+      "sha256": "b21d94e8b80af1f1903a61fc83667fad4d765e6a307e9ee4b16abd8dd5867b80"
+    },
+    "forge-principle-guard-the-context-window": {
+      "file_count": 3,
+      "sha256": "8312176b4767dd6e1cd18410d4c16d555d3c5f7aa2d8063ce781a7d4bb11920e"
+    },
+    "forge-principle-laziness-protocol": {
+      "file_count": 3,
+      "sha256": "08ba1f934d6a5e5c280fee3cfab311214cef7a5ca939f447dffa3fe47875736e"
+    },
+    "forge-principle-make-operations-idempotent": {
+      "file_count": 3,
+      "sha256": "2ad665624a34ee169a5747f4a4d5867521713797d8b79eb7698b7da24bd18d4b"
+    },
+    "forge-principle-migrate-callers-then-delete-legacy-apis": {
+      "file_count": 3,
+      "sha256": "2f2980d0ab68053c0771b46f94f4b863c5fc2570f10b52168aa4d87b9c85cc9b"
+    },
+    "forge-principle-minimize-reader-load": {
+      "file_count": 3,
+      "sha256": "6cde0e1ad355d425318cf015709e621721819a924cd1c14c7515e02c4af44b78"
+    },
+    "forge-principle-model-the-domain": {
+      "file_count": 3,
+      "sha256": "b638deb49f980aba28471192bef7c9f19fa4dd4b0bb52c851f74d21fb9ad19da"
+    },
+    "forge-principle-never-block-on-the-human": {
+      "file_count": 3,
+      "sha256": "d84b7b6afc4d2af1de9756ec140237d8aa2bcca1afe5a84de9135cd8be5de151"
+    },
+    "forge-principle-outcome-oriented-execution": {
+      "file_count": 3,
+      "sha256": "5538fbd4d6dfa699eb0a8f652b487090c2eef1ddfbf964497e0335d6bb72753d"
+    },
+    "forge-principle-prove-it-works": {
+      "file_count": 3,
+      "sha256": "4e3d17986071226842bf100eebfd6baed88f2b5c8885268b4ebd1f4fabbb7767"
+    },
+    "forge-principle-redesign-from-first-principles": {
+      "file_count": 3,
+      "sha256": "21ebe4780bfdc6c058b45ccdb407d8b02408c459ffed6d823ed23c663abd0575"
+    },
+    "forge-principle-separate-before-serializing-shared-state": {
+      "file_count": 3,
+      "sha256": "f34d75ae72bc53c4b3371a150c8f01eaa803aa5ad2d9bb12de759634cb5ae345"
+    },
+    "forge-principle-sequence-verifiable-units": {
+      "file_count": 3,
+      "sha256": "03384271d8e70b718ce976d1cec35e03aad3cf9cfd53a361c97360ee7fd3dbb2"
+    },
+    "forge-principle-subtract-before-you-add": {
+      "file_count": 3,
+      "sha256": "1aec7c419aad90bb43a3c770b76614a24d8294fb661b501dc44955e1453073fa"
+    },
+    "forge-principle-type-system-discipline": {
+      "file_count": 3,
+      "sha256": "4effcbe28d3dfb8ab949a4c2c478221c8acfa1505423b72f4a30ceedf153e6a1"
+    },
+    "forge-recall": {
+      "file_count": 3,
+      "sha256": "030b00473c307eefd3bd83b146535461e615f7b1de314ff90c41f33458afe7b5"
+    },
+    "forge-reflect": {
+      "file_count": 7,
+      "sha256": "684cede633effc2bf0e5f1691c89637151f31e2d443feb8be8122a2c9a1e24e6"
+    },
+    "forge-setup": {
+      "file_count": 3,
+      "sha256": "4a1da63f1badd768e9a1348c1bfad35d92d6645aa23044c364e3b953cab5829c"
+    },
+    "forge-show-me-your-work": {
+      "file_count": 5,
+      "sha256": "c6c9da92da7e7368457bc34de577d2d34a2a36ff17871d42594c7f710cd10dde"
+    },
+    "forge-swarm": {
+      "file_count": 3,
+      "sha256": "f1b04b84bc01ccd84e893072ffe477daacb1f604013af2ea53150d628b9dfba3"
+    },
+    "forge-tdd": {
+      "file_count": 3,
+      "sha256": "bf6b9c4b792e494b302dbf2d5de79de3db2af6891defed9093c2b7c285694e11"
+    },
+    "forge-teach": {
+      "file_count": 3,
+      "sha256": "2d8539e1f59e16991aca2e0f152a22e1df13819dad3cd945e7d8808d03bf7e71"
+    },
+    "forge-technical-writing": {
+      "file_count": 3,
+      "sha256": "93e059860b5549bed3d221d71d31a5b52b2f2ca491230c056843c73dbe56d488"
+    },
+    "forge-typescript-best-practices": {
+      "file_count": 4,
+      "sha256": "87e436cddf04fe1019ed4dda84987ae4f2237dd11c5799072e6b3c0e34072469"
+    },
+    "forge-unslop": {
+      "file_count": 3,
+      "sha256": "ddbd42e5c519cef76113c46adec67c8350f8212c0c602cc9ca0840e7e8ab27a5"
+    },
+    "forge-why": {
+      "file_count": 15,
+      "sha256": "00372abf1317ff7f2d02e7f1b063549b6c244d5924eabbdfb9904dc722076b26"
+    },
+    "frontend-design": {
+      "file_count": 6,
+      "sha256": "b8ebf6c6927a8745f0daf1a7ceedc40392d21f0e30c48876563c467da9402ad1"
     },
     "gh-address-comments": {
       "file_count": 6,
-      "sha256": "aa731bf3dcb9a80f4f7114d5fb77b1bc09d1a8e74dcb720d5f59fb11ec32a27f"
+      "sha256": "cfd85f4249bd0efca1c210c346c18373ff7346ee902287403e5a43f508679307"
     },
     "gh-fix-ci": {
       "file_count": 6,
-      "sha256": "62f11c1083d3de2e01efd6200ff2f8c184548edbf4ae5f436a1a4c739502de38"
+      "sha256": "fe2d9612db03dedf0320569593e89e03bba9d1403f2b52486c8c37c227b99bbc"
     },
     "hatch-pet": {
       "file_count": 29,
-      "sha256": "016a80e28f3e0a8fab7d28829513828a45f1b9aef8ef8885e4ac62dca1200b4a"
+      "sha256": "2f011b9660a5393827c266b79fe5a6d7a4ce4b298125218409ab45e86f96f140"
+    },
+    "integrated-workflow": {
+      "file_count": 5,
+      "sha256": "2c3c92a6a1f4aa5f5eaf8879acb9c89b2ee7a99e9b7ed0d24a7e3157d4fcd398"
     },
     "interaction-polish": {
-      "file_count": 2,
-      "sha256": "5b7cdf554a504c516a1e8efef8175dabbe9a5372e35fff4e85c5146dd70163c8"
+      "file_count": 4,
+      "sha256": "66b4c64ba674e881b5eaa78899722b1b578f888c40524e36b07d2e982f0d9739"
     },
     "knowledge-base-answering": {
       "file_count": 2,
-      "sha256": "9123f1ca8c20832587fc2e05513d86fadcdbe30f11b32bf3f5cd83ac71f1c86b"
+      "sha256": "153f91666a40680ec741a06a4e86bf942329b81a5b3804da50baba657b2f06bd"
     },
     "linear": {
       "file_count": 5,
-      "sha256": "4d24c4e5d82bd461273789650b43a8c8e71928aa6640458d7f79f752d7ea2bc2"
+      "sha256": "c04f0554c0e9b78f2d49d5efe9ca09a585f7dc1b0e3da988f8a1fd9c4bdae8c6"
     },
     "meeting-notes-task-extractor": {
       "file_count": 2,
-      "sha256": "c69e89ecd66e5d8cdf5bb20a07e4fd8add51a314296427882285a69c3a04ef4c"
+      "sha256": "55ab2dedf1e12872307f0972e470656e5588b3dc823b3fa378f9f0118a72b534"
     },
     "mobile-release-manager": {
       "file_count": 2,
-      "sha256": "8ef823d937ce31c4aa71afaf7abe98cec5f269acb1b6e3fea6a945c7b7194822"
+      "sha256": "c12aa58a5193b24dfe9124a65bc648cf3471e95c4e0f76b0e6c202c1440b5194"
     },
     "motion-animation-engineer": {
-      "file_count": 2,
-      "sha256": "d030e35a0b2995e8f1d430050264a303e0cc0b8d881df39b3179ca590b49c20c"
+      "file_count": 4,
+      "sha256": "9d2e9d77661d9f7d60f83cf8a9c91f97154fd7f636f64e8656b512922bd76874"
     },
     "netlify-deploy": {
       "file_count": 8,
-      "sha256": "93ae5c66070276650fe18bab65423c044a06d2bb3b8adbcf755a78bb3b8eed68"
+      "sha256": "4317ee034defafca887edb0d54c5fda92b7eb802fe0e8b870d5b2939ecbb2ede"
     },
     "offline-sync-auditor": {
       "file_count": 2,
-      "sha256": "ca1e456d07cfcad4f50e3a26e9a15e45bb1fa9e807f95219886528cc82a70705"
+      "sha256": "e0db0d6873f585362b7d5834cb08fee08f01c81d1b78566de1cd1966ed24319e"
+    },
+    "opendesign": {
+      "file_count": 7,
+      "sha256": "24f00664f7b95eff626b5c64192875a5f83ebcdd649e216b99dc032f71397677"
     },
     "pdf": {
       "file_count": 4,
-      "sha256": "034ea16db1577fba19db716c05dfa049ca605114dd238c9b74850796ad2adf86"
+      "sha256": "7e598d6109774b9a4a598ea19963eb956d25f6822074ec95467684ba6fadf932"
     },
     "performance-profiler": {
       "file_count": 2,
-      "sha256": "addd7281670b390db410fa0eeb035f1476c06733d9c0d7a96575815c5cdaa233"
+      "sha256": "da143ea70c6e44c476a3fc4deffa9b543a0f42e8cccee19530696821ba91ab70"
     },
     "plan-model-router": {
-      "file_count": 4,
-      "sha256": "1d045d92c87ccca6296a41e1abd1558f5da78c194abcdab7ea5488fdeffc3dcb"
+      "file_count": 6,
+      "sha256": "d5cf5f054676d11854baaab397165bac886862ed73cee9e5b918074b3eea3ca6"
     },
     "playwright": {
       "file_count": 9,
-      "sha256": "10516b85b8e71ab85667c408a8f9f4e28c285a0f762a877964fa07cbcdda31b8"
+      "sha256": "ae3e53f3beebb2c1d5c123c1912cd2a804383339a13e073ff99ef98167918a34"
     },
     "privacy-safety-review": {
       "file_count": 2,
-      "sha256": "7a17e04ec437554bd9cf7c78033d5b295798ea6022f83da3e21c0152cde9796d"
+      "sha256": "2c481a79b7db67d3b82455f5b2e311854aad20408991bc23635e4940aeeecf23"
     },
     "project-learning": {
       "file_count": 13,
-      "sha256": "880f022fb24cd7c2e0da81828d5ffe5be79a2b32a56cc1826fb3dcba17d1d3bd"
+      "sha256": "06ee51f24b4cb072fbd7c27cc50b3e72a4bc8fa756b1f79c84c11ce25e3db22e"
+    },
+    "reference-design-contract": {
+      "file_count": 5,
+      "sha256": "4e9f45d26fe877df19c6f71dd54062d44572d6c34bd2dcdccdb6863e59a48588"
     },
     "research-synthesizer": {
       "file_count": 2,
-      "sha256": "4080bab383fa441913caddb3eb481fd06e42d3dabe24bc4eb58f6c4336cd35c7"
+      "sha256": "cd5607dc56462af716a1fc209e65b64fa4f92c646551eeff2a86c0b31ecc218d"
     },
     "screenshot": {
       "file_count": 11,
-      "sha256": "9c5ac885e307dbb85aea5353a04fabc91ad238fae378d5069ba4dfe01eec3339"
+      "sha256": "d1ca7b1adb08e1841847da4bc2205ccad1fcf4f4af0ce610a8a1361945ef412c"
     },
     "security-best-practices": {
       "file_count": 13,
-      "sha256": "dcc9a97597801b537d669588b30a338e8a0269d169f6e8348bf6f6b204e00b0c"
+      "sha256": "894411f374007c06e897af33fdc65d3f5f54e0ead9ee62b90f708697c25fef9e"
     },
     "seo-content-strategy": {
       "file_count": 2,
-      "sha256": "2d219d59a139f20fa5e0f79103f9ba3b24b887ae5b362ac2833fb09be72c5f9a"
+      "sha256": "7dfce9cffb1ac69ae088c51a2690e0a07285e0cea6f0d1eb0d748ff848ba0de7"
     },
     "social-content-factory": {
       "file_count": 2,
-      "sha256": "6bbe7075250da914d4c27f65df3457900c82d52e9a27f910bf671d553907034c"
+      "sha256": "edb8229e45f7abc78907fa9aa8dd9510477862e66d2acb8db2f511d5afd60a3e"
     },
     "sora": {
       "file_count": 14,
-      "sha256": "d181fe4d102857e391cf9e20fec455a7c2c441ca5a26f05a9fba96f0ba909348"
+      "sha256": "844ccce47f656246d37a591eabc48bdf255d4f8d260be81846bb27f91e698ac6"
     },
     "speech": {
       "file_count": 16,
-      "sha256": "875ceee2fb8302d3602ff1314e78f05a66b9f6f5f441c2f54656276ce22c43dc"
+      "sha256": "85c44eb0baa5ecb510ec1ffbcf9afd0c0f6c79d0b596b7edf47e03d3367ee0bb"
     },
     "supabase": {
       "file_count": 4,
-      "sha256": "d6e8f87e28d5777405ed6f6d6033224cf330b9b705a702457596017ffba2c9f8"
+      "sha256": "a9cd631d1580ba7858e81596b54349cfd311cb745364e6b220bcd7e939544c5b"
     },
     "supabase-guardian": {
       "file_count": 2,
-      "sha256": "b8d4af5ab8dfad08354149d6433931078ccb1ad78f784e77e0129dc03730403a"
+      "sha256": "36aca2463421a22b9836d961e6ea066fc5ac4c2a0af5d941dfdca01e8f1bfa03"
     },
     "test-architecture-engineer": {
       "file_count": 2,
-      "sha256": "f8b2b54a173db70a4cf56c9864a384be7861ca6ac4ff114a021437513e71b755"
+      "sha256": "8af0ac8047a5e5ef713f415a22a9f25d87d1dbc9d24b8e1f28c5fd5c76a7ad78"
     },
     "transcribe": {
       "file_count": 7,
-      "sha256": "79b2e228221ce7f95dbdac179e7845f0152b4695d4ac74292b4eea58a83bf9de"
+      "sha256": "ae0e0230f429b62ec61bea4a11a389802b943ed6cf6b2e43c7974a6dc6038764"
     },
     "ux-flow-architect": {
       "file_count": 2,
-      "sha256": "85e263de97ea379c7570405fb32185d4a50bc38e41e232796a1a737f3968fc66"
+      "sha256": "fe1b1b471f74038ed12f3a0106274b8704b887dd2b1588916ff2e184bd17bf80"
     },
     "vector-asset-pipeline": {
       "file_count": 2,
-      "sha256": "563d5684d80f341a884e0427eab47dc9fa26a336a24a3302a39dd24a767477f2"
+      "sha256": "39bd20f4431c17b655881db1d3d8d3c2369adbf86b818f0437b96df735caf8d1"
     },
     "vercel-deploy": {
       "file_count": 6,
-      "sha256": "2b959cc07e730e52d36f5c2347d4bcafc48ea8939bb2a824b42e4032ff55a998"
+      "sha256": "4a282a8fcc39beca69fd8a4798e10078e42362ffea51f462781f59f33dacfbe9"
     },
     "visual-qa": {
       "file_count": 2,
-      "sha256": "170a802b448cfea8ef49fac25e869fbf959ee5454e7a81e295c5c672780cbad7"
+      "sha256": "4f6e4f6de44a67dd2d28e4cb80c498481baa6f5035f59661756108ce78cf4e32"
     },
     "workflow-orchestrator": {
       "file_count": 4,
-      "sha256": "74f3434aa876eb4f67facbdc59389c2daad0a330c2aaca98e12074f44d6079fc"
+      "sha256": "d94c81e0871997721aa7eb5a652d99b6b765c0c98586e15feda32b39bfa4d840"
     }
   },
-  "version": "0.2.0"
+  "version": "1.0.0"
 }

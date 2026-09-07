@@ -5,6 +5,14 @@ description: Use for interaction polish across apps and websites involving gestu
 
 # Interaction Polish
 
+Own the bounded post-implementation polish pass; keep the current coordinator,
+brief and finding record. For an existing web artifact, read
+[design-polish.md](references/design-polish.md) for the adapted OpenDesign /
+Impeccable audit, critique, polish and hardening method. Review-only requests
+produce findings; implementation requests permit the scoped fixes. Motion
+implementation or specialized motion review belongs to
+`motion-animation-engineer` when that skill is available.
+
 ## Workflow
 
 1. Identify the exact moment being polished: start, choose, submit, sync, recover, share, celebrate, return, or cancel.

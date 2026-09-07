@@ -1,4 +1,4 @@
 interface:
-  display_name: "Code Review + Tests"
-  short_description: "Review diffs and propose focused tests"
-  default_prompt: "Use $code-review-tests to review this change and identify focused tests."
+  display_name: "Review Test Evidence"
+  short_description: "Check regression and counterexample evidence"
+  default_prompt: "Use $code-review-tests to check test evidence and contribute findings to this review."

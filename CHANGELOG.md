@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.0
+
+- Default to six shared core skills; add explicit packs, harness filtering and hard-dependency resolution.
+- Preserve complete Codex Forge and native Cursor PStack boundaries; add 23 portable engineering playbooks.
+- Consolidate proportional planning and five-axis independent review with separate CodeRabbit evidence.
+- Integrate licensed OpenDesign, frontend/Taste, UI/UX, polish and motion methods; add full native adapter and pinned optional resource import.
+- Declare complete Argent, current Expo, iOS/Android/web and security dependencies without automatically installing runtimes.
+- Add managed drift checks, exact-copy adoption, recoverable removals/rollback, and selected release artifacts with provenance.
+- Installation state schema and default selection change; legacy updates require an explicit harness. Native/cloud readiness is verified separately.
+
 All notable changes to the private toolkit are documented here. Versions follow
 Semantic Versioning.
 

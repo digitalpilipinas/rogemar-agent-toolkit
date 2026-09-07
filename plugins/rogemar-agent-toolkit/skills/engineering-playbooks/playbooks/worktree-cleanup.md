@@ -1,0 +1,11 @@
+# Worktree and simulator cleanup
+
+Audit first; delete only an explicitly authorized, verified set of paths. The audit is read-only and never labels a tree safe to delete.
+
+1. Record available disk space when reclamation is the goal. List the repository worktrees and inspect local refs, status and the supplied target ref using Git or a verified native audit helper. Report evidence at capture time; do not fetch or mine conversations implicitly.
+2. Review every worktree returned by Git, including the primary checkout. Protect primary, locked/prunable, unavailable, unmerged, and any tracked, untracked or ignored contents. Clean merged secondary trees are `review-merged`, not deletion-authorized. Spaces and detached heads are handled without shell word splitting.
+3. Establish current use through an exposed task tool, exact user-supplied mapping or explicit confirmation for the candidate set. Do not infer inactivity from age, branch name, absent sidebar entry, or transcript timestamps. Unknown or active use is held.
+4. Prepare a concrete list with absolute path, commit, target, content status and usage evidence. Untracked and ignored files can contain private or irreplaceable work. Preserve them unless the user specifically authorizes their loss or a verified backup. Approval already supplied for exact clean paths need not be requested again.
+5. Immediately before an authorized deletion, re-check HEAD, target, status, lock and usage. Use Git's normal worktree removal for an unchanged clean candidate. If removal fails, stop and report the actual obstruction; do not escalate automatically to force removal or recursive deletion. Never remove the primary checkout through this flow.
+6. Treat simulator devices, runtimes, build products and package caches as separate candidate sets with their own usage and data evidence. Do not run blanket simulator deletion or clear application support directories as a side effect of worktree cleanup. Use exposed native tooling only within specifically authorized scope.
+7. Re-list worktrees and measure disk space after actual removals. Report removed, held, failed and space reclaimed from observed measurements. No deletion occurs merely because an audit or cleanup skill was invoked.

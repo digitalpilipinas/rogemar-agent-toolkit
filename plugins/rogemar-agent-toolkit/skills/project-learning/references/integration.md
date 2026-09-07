@@ -5,7 +5,7 @@
 Project learning is a post-task evidence consumer and curator. It is not a planner, implementer, reviewer, release manager, or orchestrator.
 
 - `workflow-orchestrator` remains the only lifecycle and delegation owner.
-- `first-time-right-delivery` and `deliver-approved-programme` may produce evidence that capture summarizes, but they do not persist lessons.
+- `first-time-right-delivery` and `integrated-workflow` may produce evidence that capture summarizes, but they do not persist lessons.
 - `create-plan` remains read-only. The Stop hook skips `permission_mode: plan` and explicit no-write requests.
 - Capture cannot edit product files, task plans, delivery status, existing skills, global AGENTS.md, or Codex memory.
 - A normal task agent may include a task-local `Learning note:` in its own final response when the current task establishes a verified reusable rule. That note is communication only; it does not create, approve, or activate a project lesson.

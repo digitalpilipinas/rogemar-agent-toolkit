@@ -1,0 +1,3 @@
+# Inactive automation intent template
+
+This copied recipe is not user authorization. No jobs are registered by the Forge installation. Before activation, the user must specify the target repository, immutable source-thread identity, allowed data and external actions, deduplication store, configured scheduler, routing policy and stop conditions. Keep setup, triage and reproduction configuration ownership separate. Workers receive no Slack credentials and cannot send Slack messages. Fixes may open only authorized draft PRs; never merge. Silence after a veto window is not consent to edits, commits, pushes, messages or PR creation. A verified Codex adapter is required; Cursor automation instructions in historical examples are not callable Codex APIs.

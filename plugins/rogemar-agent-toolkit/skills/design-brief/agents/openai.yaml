@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Brief"
+  short_description: "Turn design intent into a concise buildable brief"
+  default_prompt: "Use $design-brief to clarify the visual direction and acceptance evidence for this artifact."

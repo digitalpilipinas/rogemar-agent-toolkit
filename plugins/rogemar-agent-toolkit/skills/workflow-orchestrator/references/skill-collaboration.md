@@ -57,7 +57,7 @@ the orchestrator remains responsible for ordering, deduplication, permissions,
 budgets, model ceilings, and reconciliation.
 
 A role profile is a desired routing input, not a fixed override. The
-orchestrator selects a surfaced agent type, then `plan-model-router` computes
+orchestrator selects a surfaced agent type, then the active harness profile policy computes (Codex uses `plan-model-router`)
 an effective profile no stronger than the parent model or effort. If that
 profile cannot meet the evidence burden, the work returns to the main agent.
 
@@ -78,3 +78,11 @@ Every delegated result should state:
 
 Workers must not claim overall readiness, authorize release, expand scope, or
 silently continue after a ceiling, permission, or evidence boundary is hit.
+
+## Forge requests
+
+Every Forge companion and playbook uses this handoff contract, including
+comparison panels and autonomous programme recipes. A named step suggests a
+specialist or bounded Worker; it never dispatches independently. Resolve the
+profile through the active harness controls at execution time (Codex uses `plan-model-router`), starting with the owner's
+selected parent and inspecting role overrides before claiming ceiling compliance.
