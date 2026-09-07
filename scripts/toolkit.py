@@ -735,7 +735,9 @@ def install_selection(args: argparse.Namespace, state: dict | None) -> dict[str,
     args.harness = args.harness or (state or {}).get("harness", "agent-skills")
     if state and state.get("harness", args.harness) != args.harness:
         raise ToolkitError("this shared installation has another primary harness; use a separate project or migrate it explicitly")
-    profile = args.profile or (state or {}).get("profile", "core")
+    if args.profile is not None and args.pack is None:
+        args.pack = []  # An explicit profile starts a new selection.
+    profile = args.profile if args.profile is not None else (state or {}).get("profile", "core")
     packs = args.pack if args.pack is not None else (state or {}).get("requested_packs", [])
     return resolve_selection(args.harness, profile, packs)
 

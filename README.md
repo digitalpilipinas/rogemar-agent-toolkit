@@ -78,7 +78,9 @@ python3 scripts/toolkit.py install --harness codex --target project --project-ro
 python3 scripts/toolkit.py install --harness gemini --target project --project-root /path/to/project --pack engineering
 ```
 
-Use `--target user` for personal installation. The `agent-skills` and Codex portable layouts use `.agents/skills`; Codex-specific entries use `.codex/skills`. Other harnesses use the layout recorded in the catalog. Choose one primary shared installation per project/home; do not install the same pack through a plugin and personal directories simultaneously. Existing installations preserve their profile and pack selection on upgrade. `--profile all` is an explicit full selection, still filtered by harness. Development-only `--link` installs are not portable VM images.
+Use `--target user` for personal installation. The `agent-skills` and Codex portable layouts use `.agents/skills`; Codex-specific entries use `.codex/skills`. Other harnesses use the layout recorded in the catalog. Choose one primary shared installation per project/home; do not install the same pack through a plugin and personal directories simultaneously. `--profile all` is an explicit full selection, still filtered by harness. Development-only `--link` installs are not portable VM images.
+
+An upgrade with neither selection option preserves the saved selection. An explicit `--profile core` starts from core and clears saved optional packs; add `--pack` options to select the extras you want to keep. Removed managed skills remain recoverable through rollback.
 
 The generated [pack membership table](#pack-membership) lists every pack and its complete direct skill membership. The [dependency table](#pack-dependencies) includes full Expo and Argent member lists, native installation routes, OpenDesign resources and runtime requirements. These tables use the catalog directly, so adding a dependency cannot silently omit it from the README.
 

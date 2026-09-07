@@ -77,11 +77,21 @@ class SelectionInstallTests(unittest.TestCase):
             self.assertTrue(native.exists())
             self.assertFalse((Path(project) / '.agents/skills/codex-forge').exists())
             before = self.state(project).read_bytes()
-            # Explicit pack selection replaces the old selection, preserving omitted managed skills in backup.
-            code, _, error = self.cli('upgrade', *args, '--profile', 'core', '--pack', 'core')
+            for selection in ((), ('--profile', 'core', '--pack', 'engineering')):
+                code, _, error = self.cli('upgrade', *args, *selection)
+                self.assertEqual(code, 0, error)
+                self.assertEqual(self.state(project).read_bytes(), before)
+            code, _, error = self.cli('upgrade', *args, '--profile', '')
+            self.assertEqual(code, 1)
+            self.assertIn('unknown profile', error)
+            self.assertEqual(self.state(project).read_bytes(), before)
+            self.assertTrue(native.exists())
+            # An explicit profile replaces the saved selection; omitted skills remain in backup.
+            code, _, error = self.cli('upgrade', *args, '--profile', 'core')
             self.assertEqual(code, 0, error)
             self.assertFalse(native.exists())
             self.assertEqual(len(json.loads(self.state(project).read_text())['skills']), 6)
+            self.assertEqual(json.loads(self.state(project).read_text())['requested_packs'], [])
             code, _, error = self.cli('rollback', *args)
             self.assertEqual(code, 0, error)
             self.assertTrue(native.exists())
