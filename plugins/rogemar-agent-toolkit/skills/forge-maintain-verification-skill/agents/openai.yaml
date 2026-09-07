@@ -1,3 +1,6 @@
 interface:
-  display_name: "Forge Maintain Verification Skill"
+  display_name: "forge-maintain-verification-skill"
   short_description: "Codex engineering: maintain verification skill"
+  default_prompt: "Use $forge-maintain-verification-skill for the requested task."
+policy:
+  allow_implicit_invocation: true

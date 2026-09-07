@@ -104,6 +104,7 @@ system plus focused visual evidence.
 The orchestrator selects one matched native or portable engineering method for substantive execution and
 remediation, then resolves the task profile at package activation and before
 dispatch. Forge's panels, playbooks, and native agents return bounded hints to
-this same owner. The manually selected main profile remains the default and
-ceiling; setup preferences and parent suggestions never change it automatically.
+this same owner. Follow the router dispatch contract: named Forge modes govern
+worker profiles; the no-mode path retains parent defaults and ceilings. Saved
+preferences and parent suggestions do not change the running parent.
 Goal compilation only records these names; it does not execute Forge or routing.

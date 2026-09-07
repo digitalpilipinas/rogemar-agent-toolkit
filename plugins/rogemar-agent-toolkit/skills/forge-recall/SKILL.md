@@ -7,7 +7,7 @@ license: MIT
 
 ## Codex execution contract
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md). `workflow-orchestrator` owns delegation; `plan-model-router` resolves every worker profile under the manually selected parent model and effort defaults and ceilings. Role preferences are hints, never model IDs or a fanout requirement. Work locally when delegation adds no useful independent work.
+Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md). `workflow-orchestrator` owns delegation; `plan-model-router` resolves every worker profile under the active Forge mode, or parent defaults and ceilings when no mode is selected. Role preferences are hints, never model IDs or a fanout requirement. Work locally when delegation adds no useful independent work.
 
 Recover relevant prior decisions and progress without crossing task or workspace boundaries.
 

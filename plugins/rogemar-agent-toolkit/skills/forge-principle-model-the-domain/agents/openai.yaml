@@ -1,3 +1,6 @@
 interface:
-  display_name: "Forge Principle Model The Domain"
+  display_name: "forge-principle-model-the-domain"
   short_description: "Codex engineering: principle model the domain"
+  default_prompt: "Use $forge-principle-model-the-domain for the requested task."
+policy:
+  allow_implicit_invocation: true

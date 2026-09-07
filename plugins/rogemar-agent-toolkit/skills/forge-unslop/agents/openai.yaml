@@ -1,3 +1,6 @@
 interface:
-  display_name: "Forge Unslop"
+  display_name: "forge-unslop"
   short_description: "Codex engineering: unslop"
+  default_prompt: "Use $forge-unslop for the requested task."
+policy:
+  allow_implicit_invocation: true

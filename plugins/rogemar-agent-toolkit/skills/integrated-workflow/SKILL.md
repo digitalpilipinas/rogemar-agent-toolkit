@@ -1,171 +1,227 @@
 ---
 name: integrated-workflow
-description: Execute an already approved multi-sprint, multi-PR, or GoalBuddy coding programme through bounded implementation, verification, review, pull-request remediation, merge, and exact-target proof. Use after planning and approval; do not use for creating the plan, simple one-change tasks, or unapproved deployment.
+description: Execute an approved coding programme by complete vertical slices, with proportional implementation checks, local review, ready-PR review and remediation, and verified delivery. Use after approval for multi-sprint, multi-PR or GoalBuddy work; route small bounded corrections through the lighter path without starting a programme.
 metadata:
-  short-description: Implement approved work through verified delivery
+  short-description: Deliver approved vertical slices with proportional checks
 ---
 
 # Integrated Workflow
 
-Turn an approved plan or active GoalBuddy board into verified delivery without making the user complete a configuration form.
+Deliver the approved outcome with one plan, one implementation owner, one evidence
+record and one consolidated review process. Infer ordinary project details; the
+owner need not name every supporting skill or fill out a configuration form.
 
-The owner normally invokes this skill alone for programme execution. It uses
-`workflow-orchestrator` as the single capability and Worker router and applies
-`first-time-right-delivery` as the shared evidence discipline. Activate only
-the specialists justified by the approved plan, active task, and actual diff;
-the plan's capability handoff is advisory rather than an always-on bundle.
+## Scope and ownership
 
-At the start of each materially different execution phase, use
-`workflow-orchestrator` to run a targeted capability preflight for that phase.
-The owner does not need to remember every useful skill or MCP. Revalidate the
-preferred live route before relying on it, and choose a workaround only after
-that route is shown unavailable, unsuitable, or outside the approved boundary.
+Start after plan approval. During Goal Prep, preserve its preparation-only
+boundary and stop before implementation. With GoalBuddy, its execution contract
+and `state.yaml` govern active tasks; otherwise resume the first incomplete,
+dependency-ready increment. Do not replan or rewrite approved dependencies.
 
-## Shared skill responsibilities
+Use `workflow-orchestrator` as the sole capability and worker dispatcher. At a
+materially different phase, discover only the installed or surfaced capabilities
+needed for that phase and verify the selected live route before relying on it.
+`first-time-right-delivery` supplies requirement-to-evidence and counterexample
+checks within this same plan and review. One suitable independent review may
+cover correctness, counterexamples and scope; record that coverage. A complexity-
+only review cannot establish correctness or required independence.
 
-Use one active orchestrator, the approved plan and one shared evidence record. Supporting skills contribute methods and evidence to the current package; they must not restart planning, create a competing board or launch duplicate review cycles.
+The main agent writes, integrates and owns final acceptance. Default to
+`AGILE_FOCUSED`: one write-capable owner per worktree, with useful read-only support.
+`AGILE_CONTROLLED_PARALLEL` needs approved independent lanes with exact files or
+symbols, separate branches/worktrees, verification, stop conditions and a named
+main-agent integration owner. Stop affected lanes on overlap or shared-contract
+conflict and reconcile before continuing. Reviewers, monitors, Scouts and Judges
+remain read-only unless separately assigned an authorized bounded writing task.
 
-- `workflow-orchestrator` alone selects capabilities and workers. Reuse its active context when a specialist hands control back.
-- `first-time-right-delivery` supplies proportional requirement-to-evidence and counterexample checks. Read its "Before changing behavior" section as a gap check against the approved plan, not permission to replan. An appropriate existing independent correctness review may cover the counterexample assignment; explicitly record that coverage. A complexity-only Ponytail review cannot satisfy it.
-- `unlazy` is optional completion support through the [First-Time-Right Delivery adapter](../first-time-right-delivery/references/unlazy.md). Reuse one acceptance record and the approved plan; check affected outcomes against the final candidate and measure report claims. Inspect the installed checker version, keep abandoned or deferred gates distinct from passed gates, and preserve required owner decisions. It creates no second programme, worker hierarchy, review loop, automatic hook or new installation requirement.
-- `agent-map` is conditional navigation for unfamiliar architecture, multi-file impact or caller tracing. Check freshness, make one targeted query, then verify against current source/tests; skip known-file edits. Refresh only where generated local metadata is allowed by task scope and worktree hygiene. Otherwise use `rg`; do not alter ignore rules, install hooks or commit map output implicitly. Missing or stale edges are unknown, not proof of no callers.
-- `project-learning` is invoked only for explicitly requested learning work. Relevant accepted project lessons may inform execution, subject to current instructions and evidence. An optional final learning note is communication only. Delivery never automatically captures or promotes lessons, installs learning hooks, writes memory or interrupts the task for learning approval.
+For optional scope-review, Ponytail, Unlazy, navigation and Project Learning,
+read [supporting methods](references/supporting-methods.md) only when relevant.
+They add methods to the existing owner, not another board, reviewer hierarchy or
+mandatory cycle. Documentation and tooling increments need proof of their own
+outcome, not an unrelated app build or deployment.
 
-For documentation, governance or tooling increments, independently deliverable means usable and verifiable within the approved scope; it does not require an application build or deployment. Preserve every required safety, compatibility and approval gate. Select supporting skills only when applicable and available; naming them is not evidence that their tools ran.
+## Choose proportional checks
 
-## Engineering implementation packages
+Classify by effects and risk, not line count, file type or project size.
 
-The orchestrator selects one matching engineering playbook: complete Codex Forge in Codex, native PStack in Cursor, or the shared `engineering-playbooks` method elsewhere. Each harness retains its own available models and runtime controls. Codex uses `plan-model-router` when installed; another harness does not inherit Codex model names. Reassess material changes in task scope, capabilities or parent settings before delegation. Native evidence stores remain optional and cannot replace the approved plan, review gates or final acceptance.
+- **Small bounded correction:** localized, reversible, understood behavior with
+  limited impact and focused verification. Inspect the actual diff and affected
+  behavior; run applicable checks and UI/accessibility checks when relevant.
+  Local CodeRabbit and independent providers, including PR CodeRabbit/Codex,
+  are optional unless repository policy or the approved contract requires them.
+  Do not start a programme, board, reviewer panel or delivery ceremony for it.
+- **Substantive work:** an ordinary feature, vertical slice or meaningful bug fix
+  requires scoped implementation evidence, `code-review-and-quality`, and local
+  CodeRabbit at slice acceptance. Branch delivery also requires separate GitHub
+  CodeRabbit and Codex reviews once the complete slice is ready for review.
+- **Sensitive work:** add the independent domain evidence warranted by changed
+  authorization, privacy, data integrity, migrations, concurrency, compatibility
+  or recovery. A tiny sensitive edit is not automatically a small correction.
 
-## Optional Ponytail support
+The small-change exception never weakens an existing required gate, hides a
+substantive slice behind individually small commits, or turns review absence into
+a pass. Additional providers such as Antigravity, Grok and Junie are conditional
+on explicit selection and authority; do not activate them all by default.
 
-Use Ponytail through the existing orchestrator and minimality owner when available and useful; do not activate the whole family or add another mandatory reviewer. Select only the applicable method:
+Define each gate once in the existing receipt using the
+[gate and evidence contract](references/execution-loop.md#gate-and-evidence-contract).
+An optional capability failure remains optional at every later checkpoint.
+Required unavailable evidence blocks its named boundary while safe independent
+work may continue. Model modes affect execution profiles, not acceptance standards.
 
-- `ponytail`: challenge speculative work, trace affected callers, and prefer existing repository code, standard library and native features before custom code or new dependencies.
-- `ponytail-review`: inspect the scoped diff for unnecessary complexity as part of the existing minimality pass. Feed suggestions into the same finding ledger and convergence rule; its verdict is not correctness, security or merge approval.
-- `ponytail-debt`: on a debt-report request, collect existing shortcut markers with their limits and revisit triggers. Reuse existing task/debt records; do not create a second persistent ledger or insert markers merely to populate one.
-- `ponytail-audit`: a separately requested whole-repository complexity audit. An ordinary PR never authorizes that expansion; its findings do not automatically enter the active sprint.
-- `ponytail-gain`: on a benchmark-display request only. Published benchmark figures are not measured savings for this repository or evidence of delivery quality.
+## Harness and engineering methods
 
-Discover these external skills at runtime; do not vendor plugin files, hard-code cache paths or install missing capabilities. If absent, use the existing minimality discipline. Simplicity never removes requested behavior, trust-boundary validation, data-loss protection, accessibility or required checks. Reuse the repository's test framework and proportional coverage; shortest-line, single-test and terse-output preferences cannot replace the acceptance contract or truthful reporting. Apply methods within the active package without silently enabling a persistent mode in other tasks.
+Accept `Harness: <name>` or an explicitly invoked engineering entry. Otherwise
+infer from reliable host context and use the portable route when uncertain.
+Through the existing orchestrator, select one compatible route:
 
-## Invocation
+| Harness | Engineering methods | Profile selection |
+| --- | --- | --- |
+| Codex | `codex-forge` | `plan-model-router` |
+| Cursor | `cursor-forge`; upstream PStack/poteto-mode if absent | `cursor-forge-setup`; universal router only as a constraint-preserving fallback |
+| Other or unknown | `universal-forge`; shared `engineering-playbooks` if unavailable | `universal-plan-model-router` using observed native capabilities |
 
-Use a compact owner-control block. It keeps the decisions that legitimately vary by project while inferring ordinary repository details:
+Honor compatible explicit choices. Reassess task fit, capabilities and applicable
+parent/mode constraints before delegation. A harness name, saved mode or installed
+skill does not prove tool access, worker dispatch or a live parent-model switch.
+Keep one engineering owner and never import another harness's model IDs or controls.
+
+## Invocation and delivery boundaries
+
+Usually this is enough when authority is already recorded in the approved plan:
 
 ```text
-/goal Follow docs/goals/<slug>/goal.md. Use $integrated-workflow.
+Use $integrated-workflow to implement the approved plan at <path>.
+Harness: <name, or infer>
+```
 
-Plan name: <name>
-Plan path: <absolute path>
+Accept these optional controls when the owner needs to specify them; reuse
+recorded decisions and ask only for material missing scope or authority:
+
+```text
+Plan name/path: <approved source, or active GoalBuddy charter>
 Execution strategy: AGILE_FOCUSED | AGILE_CONTROLLED_PARALLEL
 Database or migrations: NONE | LOCAL | STAGING | PRODUCTION
 Delivery to main: LOCAL ONLY | DIRECT COMMIT AUTHORIZED | BRANCH + PR, STOP BEFORE MERGE | BRANCH + PR + MERGE AUTHORIZED
-Independent external review: DISABLED | OPTIONAL: <provider/model list> | REQUIRED AT <named risk boundary>: <provider/model list>
+Independent external review: DISABLED | OPTIONAL: <providers/models> | REQUIRED AT <boundary>: <providers/models>
 Simulator visual/accessibility QA: REQUIRED | CONDITIONAL | DEFERRED
 Physical-device QA: REQUIRED BEFORE MERGE | DEFERRED UNTIL BUILD | NOT APPLICABLE
 ```
 
-Outside GoalBuddy, replace the first line with `Use $integrated-workflow.` and keep the same block.
+- Branch-based work is the default strategy. It does not itself authorize commit,
+  push, PR creation, reviewer comments, merge or deployment. Apply the recorded
+  delivery authority; `LOCAL ONLY` permits none of those publication actions.
+- Direct commit and push to the verified target branch require the owner's
+  explicit instruction and repository-policy permission. Small or personal
+  projects do not imply this choice. Preserve applicable local checks and local
+  CodeRabbit for substantive work; PR-only gates are not applicable on this route.
+- `Independent external review` controls additional independent providers. It
+  does not silently disable the substantive local CodeRabbit and ready-PR
+  CodeRabbit/Codex requirements above. A separate explicit owner waiver or
+  stricter project contract must be recorded at the affected gate.
+- Database scope is the maximum authorized environment, not permission for
+  unrelated or destructive operations. Production and deployment authority
+  remain separate.
+- Conditional simulator QA applies to supported projects with visible or
+  interactive changes. An explicit simulator-testing request makes it required
+  for the named scope. Device deferral remains deferred, not passed.
 
-The plan name and path identify the approved source of truth. A value may be omitted when the active GoalBuddy charter already records the exact same decision. Infer the repository, target branch, current sprint, validation commands, platform, relevant skills, and exclusions from the current workspace, plan, board, and repository instructions. Ask only when a missing decision would materially change scope, authority, safety, or the result; never expand this compact block into a larger questionnaire.
+## Build continuously; review a complete vertical slice
 
-Interpret the controls as follows:
+Use one branch and optional draft PR per complete vertical slice, even when the
+slice spans several sprints and commits. Reuse that branch/draft while resuming
+work. Start a new branch/worktree from the verified target for a new independent
+slice; preserve explicitly approved stacked dependencies or separate-PR plans.
+Do not create another PR merely because a sprint ended.
 
-- `Database or migrations` is the highest environment the plan may affect. It does not authorize unrelated, destructive, or unspecified database work.
-- `Execution strategy` is `AGILE_FOCUSED` by default: use it for ambiguity, shared contracts, migrations, PR remediation, and tightly coupled UI or integration work. The main agent actively writes, integrates, and supervises; read-only research, review, and QA may run concurrently. `AGILE_CONTROLLED_PARALLEL` is permitted only after an approved dependency and ownership map proves independent write lanes. Each lane records exact files or symbols, a separate branch and worktree, verification commands, stop conditions, and the named main-agent integration owner. If a shared dependency, migration, overlap, integration conflict, or blocker appears, stop affected lanes, reconcile, and return to `AGILE_FOCUSED`.
-- `Delivery to main` combines branch strategy and mainline authority so the user does not need separate commit, push, PR, and merge toggles. Direct commit still requires repository policy and validation to allow it.
-- `Independent external review` selects both the requirement and the allowed provider/model list. For terminal providers, use `agent-collaboration-terminal`; verify only the named providers and never silently substitute another provider or model. GitHub Cloud Antigravity is a PR-native reviewer: name it in the controls and use the exact `@agy /review` conversation trigger described in Reviews, not the terminal route. For an authorized read-only external review, prefer its managed-background/manual-approval profile with visible fallback unless the owner explicitly requires a visible session. Pass `--review-profile code` only when the named task explicitly reviews code, a diff, branch, or PR; never infer code-review skills merely from `--mode review`. A `needs_attention` receipt is non-passing: the main agent executes the recorded fallback once when existing authority covers it, confirms native-CLI readiness, and only then submits the frozen prompt. For owner-required visible interactive sessions, treat Terminal creation, native-CLI readiness, and prompt submission as distinct evidence states. Do not claim the review started merely because a shell window opened.
-- `Simulator ... CONDITIONAL` means required only for a supported project when the candidate changes visible UI or an interactive flow.
-- An explicit owner instruction to run simulator testing makes it `REQUIRED` for the named change or delivery boundary, even when the standing programme control is `CONDITIONAL`.
-- `Physical-device QA ... DEFERRED UNTIL BUILD` is reported as deferred and is not a passed check.
+A draft PR is already an open GitHub PR. Treat **ready for review** as the cloud
+QA handoff. With publication authority, push incremental commits to the feature
+branch and optionally maintain its draft. Run proportionate local checks as work
+progresses. The final full local CodeRabbit review belongs at slice acceptance,
+before creating a ready PR or converting the draft; do not require a full review
+of every intermediate commit. Any stricter recorded checkpoint still applies.
 
-## Boundaries
+Keep the slice draft or branch-only until its approved functionality is complete,
+the integrated diff and applicable local/UI/runtime evidence are ready, and local
+review requirements are satisfied. Draft status is not a way to merge incomplete
+work. Avoid accumulating unrelated features into one unreviewable PR; follow the
+approved slice boundary and surface material scope drift.
 
-- This skill starts after the plan is approved. If invoked during Goal Prep, preserve Goal Prep's strict boundary: prepare the board and stop without implementation.
-- The active GoalBuddy `state.yaml` is board truth. Outside GoalBuddy, continue from the first incomplete approved increment.
-- Do not rewrite the approved plan or skip dependencies. Validate current assumptions and escalate only material drift or contradiction.
-- Use the smallest sufficient implementation. Evaluate review suggestions by verified necessity, concrete current benefit, and actual effort/risk—not by labels such as `nice to have`, `quick win`, or `enhancement`. A beneficial optional correction may be included without another approval only when it has meaningful current-PR value and is genuinely easy, localized, reversible, inside the approved product contract and recorded file scope, uses existing primitives, adds no dependency/infrastructure/migration/provider/flag/abstraction or material verification burden, and remains low-risk cumulatively with other additions. Required easy corrections should normally be implemented. Authentication, privacy, database, concurrency, migration, and release impact can make a tiny diff significant. If a necessary correction requires significant complexity or scope expansion, pause for the owner's explicit bounded approval. Explicitly reject as over-engineering or defer optional enhancements that are not both valuable now and genuinely easy/aligned; tell CodeRabbit, Codex, or the originating reviewer not to raise them again on the same PR unless materially new current-head evidence shows a required defect or a substantially simpler high-value in-scope correction. Repetition or rewording alone never changes that disposition.
-- For a multi-sprint or multi-PR programme with authorized and available independent workers, use `workflow-orchestrator` to assign one reusable read-only reviewer for scope and unnecessary complexity. When workers are unavailable, the parent performs the same bounded audit; any contractually required independence remains unmet and must be reported. It reviews proposed implementation and QA packages before activation and the actual diff before acceptance for scope drift, duplicated primitives, speculative future-proofing, unnecessary providers/infrastructure, and disproportionate testing. It does not continuously poll or add a new review cycle when nothing material changed. The Judge must apply the same necessity-versus-effort rule: approve concrete low-risk quick wins that stay inside scope, require explicit bounded owner approval for necessary unusual complexity, and reject or defer unusual optional work unless the owner separately prioritizes it.
-- For non-trivial delivery, record risk, the `code-review-and-quality` verdict and the independent evidence required by the approved contract. Record CodeRabbit separately when selected or required. Missing optional CodeRabbit does not create a new gate; an existing mandatory CodeRabbit gate remains binding and needs the owner's disposition if unavailable. Never relabel another review as CodeRabbit evidence.
-- Apply [review convergence](references/execution-loop.md#review-convergence) to all reviewers: collect current-head reviews, consolidate findings and fixes, publish one remediation wave, then obtain one appropriate rereview. Further waves require demonstrated required defects or explicit owner reprioritization; optional completeness must not keep the PR open. This never waives unresolved required findings or repository approval/check requirements.
-- Inventory every review surface and keep one canonical disposition per semantic root cause, affected contract and failure scenario. Repeated wording, authors or syntax variants are not automatically new work. Reopen only with material current-head evidence; distinguish a reproduced required defect from hypothetical future support. Record fixes as awaiting publication until verified on the remote head.
-- Before manually resolving a thread, ensure it has a concise disposition with current-head evidence or a link to the canonical finding. Backfill automatically resolved items only when disposition is missing or ambiguous; do not add acknowledgement-only replies. Reuse one PR update per wave. Automatic reviews already queued, running or completed for that head count toward the review request; do not also request them manually. Follow the convergence rule before triggering any additional configured reviewer.
-- For platform-visible or interactive work, record a simulator checkpoint separately from source tests and physical-device QA: selected policy (`required`, `conditional`, `deferred`, or `not-applicable`), whether a conditional trigger fired, evidence state (`passed`, `blocked`, `deferred`, or `not-applicable`), and exact worktree/SHA/runtime/route/profile when executed. Required or conditionally triggered simulator QA blocks the applicable acceptance, final-CI, or merge boundary until it passes, unless the approved plan or owner explicitly defers or waives that exact boundary. Screenshots, source tests, or a stale or ambiguous runtime do not substitute for governed simulator evidence.
-- Use one write-capable owner per worktree. Reviewers, monitors, Scouts, and Judges are read-only unless a separate bounded Worker task explicitly grants write scope.
-- The main agent is the primary writer, integrator, and supervisor—not a supervisor-only role. In `AGILE_FOCUSED`, it owns active implementation and integration work, including integration-heavy, ambiguous, highest-risk, and shared-surface changes; bounded read-only support may run concurrently. In `AGILE_CONTROLLED_PARALLEL`, concurrent Workers may write only in approved independent lanes with separate worktrees and explicit main-agent reconciliation. The main agent reviews every Worker diff and owns the final integrated validation. A Worker card defines scope and evidence; it does not require delegation to a sub-agent.
-- Never infer authority for commits, pushes, pull requests, merges, deployments, destructive actions, production changes, credential changes, or paid external-provider usage. Apply the compact controls plus authority recorded in the approved plan or GoalBuddy charter; otherwise stop at that boundary.
-- Treat the actual diff and executable checks as truth. Plans, receipts, AI reviews, screenshots, CI badges, and provider summaries are evidence inputs, not proof by themselves.
-- Keep local checks, CI, staging, simulator/browser QA, physical-device QA, external review, and deployment evidence separate. Never upgrade unavailable, skipped, or deferred evidence to passed.
+## UI/UX during implementation
 
-## Default delivery shape
+For visible or interactive changes, select the relevant design, UX and
+accessibility methods automatically through the orchestrator. Follow
+[UI/UX implementation](references/ui-ux-implementation.md): inspect the existing
+interface, implement accessible behavior, refine affected interactions, and
+verify the rendered result before final candidate readiness. Activate only the
+specialists justified by the affected surface; OpenDesign services are conditional.
 
-1. Read the approved plan, repository instructions, and—when present—the GoalBuddy execution contract, charter, and board.
-2. Inspect the actual repository and worktree before editing. Preserve unrelated, ignored, untracked, research, generated, environment, secret, and control files unless they are explicitly in scope.
-3. For a programme sprint, use one fresh branch and worktree from the verified target branch. Keep the sprint's approved increments together and normally open one GitHub pull request for that sprint unless the plan explicitly requires separate PRs.
-4. Implement the largest safe useful slice with its focused tests. Add negative or counterexample coverage when the changed contract warrants it.
-5. Run targeted validation during implementation and the applicable repository-native gates before delivery.
-6. Review the actual change using the [pre-commit review brief](#pre-commit-review-brief) with the five-axis `code-review-and-quality` gate and the risk-scaled local CodeRabbit layer; remediate only validated issues and resolve the recorded simulator checkpoint when the change is visible, interactive, platform-specific, or simulator testing was explicitly invoked.
-7. Stage only intentional paths, perform diff and secret checks, confirm the review and applicable simulator states are recorded, then commit, push, open or update the PR, and merge only within recorded authority. After PR creation, inventory and reconcile all reviewers and comment surfaces, including GitHub CodeRabbit and GitHub Cloud Antigravity, before triggering final CI labels or merge gates.
-8. Verify the remote feature-branch SHA after push and the actual target-branch SHA after merge. Record a GoalBuddy receipt when applicable and advance only the next safe task.
-9. Finish a programme only through a final Judge or PM audit mapped to the original goal oracle.
+Early architecture, security and diagnostic reviews may proceed while building.
+Missing required runtime evidence remains blocked or explicitly deferred; useful
+partial code review does not establish UI readiness. Record simulator `failed`
+when an executed check finds a defect, and `blocked` when its prerequisite is
+unavailable. Preserve browser, simulator, assistive-technology and physical-device
+evidence separately. After reviewer-driven UI changes, rerun affected UI checks.
 
-Read [references/execution-loop.md](references/execution-loop.md) for the full implementation and delivery sequence.
+## Ready-PR monitoring and remediation
 
-## Reviews
+When authorized branch delivery reaches a ready PR, the active workflow includes
+monitoring and resolving its review/check results through the allowed boundary.
+Observe GitHub CodeRabbit and Codex as separate reviewers, plus all applicable
+human, bot, conversation, inline-thread and check-annotation surfaces. Optional
+selected providers feed the same process. A posted request is not a completed review.
 
-Select the smallest effective review set based on risk. Run `code-review-and-quality` for non-trivial or high-risk candidates. Use local CodeRabbit when it is installed, authenticated, within authorized usage, and useful; use GitHub CodeRabbit as a separate independent PR layer. Before publication, record local CodeRabbit as passed, blocked, owner-waived, or not applicable rather than silently replacing it with another reviewer. After publication, inspect the complete PR conversation and every review thread across all authors, deduplicate new comments against the PR's canonical finding dispositions, and validate only genuinely new, reopened, or still-unresolved findings against the current code and tests. Read [references/coderabbit-review.md](references/coderabbit-review.md) whenever CodeRabbit is used or its availability affects the delivery gate.
+Do not start or poll a PR-review monitor while the PR is draft. Configured GitHub
+checks or bots may still run; do not disable them or claim draft status suppresses
+them. At ready transition, inspect existing results and the exact head before
+requesting missing due reviews. Reuse a valid equivalent review where the
+provider and repository allow it, without passing stale evidence forward.
 
-When the GitHub Cloud Antigravity app is installed, authorized, and named by the approved review controls, treat it as a PR-native review surface rather than a terminal provider. When an initial review or rereview is due under the convergence rule, and no equivalent Antigravity review is queued, running or completed for that head, post one top-level conversation comment with the verified head SHA, correction scope, and validation, followed by this exact standalone trigger on its own line:
+Collect available reviews, consolidate duplicate and interacting findings, then
+validate the combined proposed correction against the whole affected contract.
+The implementation owner applies the smallest sufficient batch of valid fixes;
+reviewers do not independently patch competing suggestions. Reconcile all
+recommendations, including ones that merit rejection or deferral, rather than
+implementing every suggestion. Follow
+[review convergence and dispositions](references/execution-loop.md#review-convergence).
 
-```text
-@agy /review
-```
+Reject false positives, speculative support and unnecessary complexity with
+concise evidence. Include optional improvements only when valuable now, easy,
+localized, reversible, within approved scope and low-risk cumulatively. Required
+significant scope/complexity changes need the owner's bounded decision. Keep
+settled dispositions across reviewers; reopen only with materially new evidence.
 
-The posted command means `requested`, not `passed`: wait for and inventory the resulting Antigravity review submission, reviewer state, and check annotations before counting its evidence toward CI or merge. If the app does not respond, record `unavailable` (and block a required Antigravity boundary) rather than treating the comment as a successful review. Do not route this GitHub Cloud trigger through `agent-collaboration-terminal`, and do not duplicate it while a review for the same head is running.
+Verify the published fix on the remote head before claiming a PR issue resolved.
+Obtain due focused rereview, honor required CI/approvals and stop optional churn
+once acceptance is satisfied. Monitoring ends on verified completion at the
+allowed boundary, closure, return to draft, cancellation or an actionable block.
+For stop-before-merge delivery, report readiness and stop without merging.
 
-Use independent external providers only when the owner or approved plan authorizes their data scope and credit usage. Review the frozen integrated candidate, not individual Worker fragments. For an explicit code, diff, branch, or PR review performed by a terminal provider, pass the terminal skill's opt-in code-review profile and give providers non-overlapping emphasis: terminal Antigravity performs the five-axis quality review and applicable focused test review; Grok emphasizes security, privacy, trust boundaries, authorization, architecture, and minimality; Cursor provides an independent pragmatic code-navigation, implementation-quality, maintainability, user-reliability, and focused-test perspective; Junie is used selectively for runtime, reproduction, or test evidence. GitHub Cloud Antigravity is separate: use the PR conversation trigger above instead of treating the app as a terminal provider. Do not apply that profile to non-code tasks, and do not ask any provider to invoke CodeRabbit, GitHub Cloud Antigravity, or another external reviewer. Normalize and deduplicate provider findings against the PR's canonical finding ledger before creating tasks or comments. External-provider artifacts remain advisory until reconciled against the actual diff and executable checks.
+This is active-task follow-through, not installation of a permanent background
+job. Use a harness scheduler only for an explicit request to keep watching after
+the task yields; preserve scope, changed-only updates and stop conditions.
 
-Keep the two capability preflights distinct. The parent selects from capabilities
-installed or surfaced in its own harness; each authorized terminal provider inspects its
-own installed or surfaced native skills, MCPs, plugins, and tools through the
-generated prompt. Neither tier searches an external marketplace, installs or
-authenticates capabilities, or expands the approved workspace, data, credit, or
-external-action authority. Named provider skills and methods are non-exhaustive
-unless the approved task explicitly requires them; within the manifest's hard
-boundaries, providers retain native judgment over how to achieve the objective.
+## Verify and report delivery
 
-## Pre-commit review brief
+Read [execution loop](references/execution-loop.md) for gate evidence, candidate
+identity, review convergence, simulator acceptance and exact-target delivery.
+Read [CodeRabbit review](references/coderabbit-review.md) when applying its local
+or GitHub layer. Read [capability fallbacks](references/capability-fallbacks.md)
+only when the selected capability cannot be used.
 
-Use this brief at the existing candidate-review step for local and authorized external reviewers, preserving their assigned emphasis. It adds no mandatory reviewer, provider invocation, hook or review cycle:
+Review the complete intended candidate and affected callers, including intended
+untracked additions, deletions and file modes. Identify its comparison base,
+contents and runtime; HEAD alone does not identify uncommitted changes. Before
+committing, compare staged contents to the reviewed candidate and proportionately
+revalidate differences. Reuse unchanged evidence only within its recorded scope.
 
-> Review the complete intended candidate and the surrounding code needed to assess its effects. Identify concrete bugs, regressions, security issues, and unnecessary complexity within the approved scope. Reuse existing patterns; justify simplifications by current benefit. Report severity, precise evidence, impact, and the smallest sufficient correction. Consolidate duplicate findings and distinguish required fixes from optional improvements. Remain read-only. The implementation owner validates and batches corrections, runs relevant checks, and obtains focused rereview under the existing convergence rule. Before committing, confirm the staged contents match the reviewed candidate, including intended additions, deletions, and file modes.
+Commit, push, request reviews, merge and deploy only within existing explicit
+authority. Confirm remote feature-head identity after pushes and target contents
+after direct-main delivery or merge. No merge or SHA receipt alone proves deployment.
+Finish through a main-agent/PM audit against the original outcome; use GoalBuddy's
+Judge/PM contract where applicable, without inventing a mandatory extra agent.
 
-Identify the candidate's base, worktree/head and intended paths; include intended untracked additions explicitly rather than assuming a Git diff contains them. The implementation owner performs the staged-content comparison and reconciles mismatches before committing. Changes since review receive proportional verification under [review convergence](references/execution-loop.md#review-convergence); reviewer count or an earlier verdict cannot establish coverage of changed contents.
-
-DRY/KISS guide justified simplification, not automatic refactoring. Tests and documentation are assessed by their effects, not presumed safe by file type. A review may report no findings. Completion means required defects are resolved and applicable checks pass, with required approvals still honored; optional improvements do not restart an unbounded "until clean" loop.
-
-## Capability failures
-
-Verify a capability before relying on it. Search the currently exposed skill
-and plugin/MCP/connector/tool catalog narrowly for the active need; do not assume
-that an installed skill or plugin makes its underlying live tool callable. An
-optional reviewer, plugin, connector, model, simulator, or provider being
-unavailable is not automatically a programme blocker. Use the discovery and
-fallback protocol in
-[references/capability-fallbacks.md](references/capability-fallbacks.md), label
-the evidence boundary, and continue safe work. Discovery never authorizes an
-installation, login, private-data access, credit spend, file exposure, or
-external mutation. Stop only when the missing capability is required by the
-approved acceptance contract or a material owner decision is needed.
-
-## Completion report
-
-At each sprint boundary, report only what helps the owner verify delivery:
-
-- completed and incomplete approved increments;
-- intentional files changed;
-- checks grouped as passed, failed, blocked, skipped, or deferred;
-- local, CI, staging, platform QA, physical-device, and reviewer evidence separately;
-- branch, commit, PR, merge, and target-branch SHAs when applicable;
-- preserved excluded work, remaining risks, and the next active task.
+Report completed and incomplete increments, intentional changes, evidence grouped
+as passed/failed/blocked/deferred/not applicable, review dispositions, relevant
+branch/PR/SHAs, preserved exclusions and the next safe action. Optional polish and
+duplicate findings do not restart delivery once required gates are satisfied.

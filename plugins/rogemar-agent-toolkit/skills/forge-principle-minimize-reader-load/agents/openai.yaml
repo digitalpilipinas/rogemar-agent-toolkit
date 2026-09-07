@@ -1,3 +1,6 @@
 interface:
-  display_name: "Forge Principle Minimize Reader Load"
+  display_name: "forge-principle-minimize-reader-load"
   short_description: "Codex engineering: principle minimize reader load"
+  default_prompt: "Use $forge-principle-minimize-reader-load for the requested task."
+policy:
+  allow_implicit_invocation: true

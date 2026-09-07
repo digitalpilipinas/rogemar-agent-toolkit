@@ -8,7 +8,7 @@ Define the completion oracle, scope, dependencies, current slice, acceptance and
 
 ## Brief contract
 
-Every assignment names goal, owner, allowed files or symbols, exclusions, acceptance, non-goals, upstream inputs, verification command, stop condition, output location, and concise receipt format. Include relevant standing constraints or a readable authoritative reference, not a full transcript. Tell writers they share the codebase, must preserve unrelated edits, and must report conflicts. The router resolves the role hint at dispatch under both parent ceilings, including saved role pins. A changed profile needs a fresh bounded assignment.
+Every assignment names goal, owner, allowed files or symbols, exclusions, acceptance, non-goals, upstream inputs, verification command, stop condition, output location, and concise receipt format. Include relevant standing constraints or a readable authoritative reference, not a full transcript. Tell writers they share the codebase, must preserve unrelated edits, and must report conflicts. The router resolves the role hint at dispatch under the active routing policy, including saved role pins. A changed profile needs a fresh bounded assignment.
 
 ## Optional local store
 

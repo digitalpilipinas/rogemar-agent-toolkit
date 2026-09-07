@@ -1,3 +1,6 @@
 interface:
-  display_name: "Forge Principle Fix Root Causes"
+  display_name: "forge-principle-fix-root-causes"
   short_description: "Codex engineering: principle fix root causes"
+  default_prompt: "Use $forge-principle-fix-root-causes for the requested task."
+policy:
+  allow_implicit_invocation: true

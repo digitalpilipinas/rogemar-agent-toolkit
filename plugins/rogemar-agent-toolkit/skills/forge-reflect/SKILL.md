@@ -7,7 +7,7 @@ license: MIT
 
 ## Codex execution contract
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md). `workflow-orchestrator` owns delegation; `plan-model-router` resolves every worker profile under the manually selected parent model and effort defaults and ceilings. Role preferences are hints, never model IDs or a fanout requirement. Work locally when delegation adds no useful independent work.
+Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md). `workflow-orchestrator` owns delegation; `plan-model-router` resolves every worker profile under the active Forge mode, or parent defaults and ceilings when no mode is selected. Role preferences are hints, never model IDs or a fanout requirement. Work locally when delegation adds no useful independent work.
 
 Extract durable lessons from the current task and propose improvements to the skills or structures that own them. Invoke on an explicit reflection request or when a recurring lesson merits a proposal; ordinary task completion does not authorize global edits.
 
@@ -17,7 +17,7 @@ Use the supplied current conversation or a verified task-specific transcript map
 
 ## 2. Apply independent lenses
 
-Use judgment, tooling and divergent lenses from `references/judgment-reviewer.md`, `references/tooling-reviewer.md`, and `references/divergent-reviewer.md`. Ask the orchestrator for read-only reviewers only where independent work helps; it selects a bounded panel and resolves `reflect judgment` and `reflect tooling` preferences under the parent ceilings. A missing connector is an evidence gap, never a reason to grant write access. Reviewers return cited findings without file edits, messages, or nested delegation.
+Use judgment, tooling and divergent lenses from `references/judgment-reviewer.md`, `references/tooling-reviewer.md`, and `references/divergent-reviewer.md`. Ask the orchestrator for read-only reviewers only where independent work helps; it selects a bounded panel and resolves `reflect-judgment` and `reflect-tooling` preferences under the active routing policy. A missing connector is an evidence gap, never a reason to grant write access. Reviewers return cited findings without file edits, messages, or nested delegation.
 
 ## 3. Synthesize and route
 

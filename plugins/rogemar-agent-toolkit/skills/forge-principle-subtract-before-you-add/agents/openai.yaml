@@ -1,3 +1,6 @@
 interface:
-  display_name: "Forge Principle Subtract Before You Add"
+  display_name: "forge-principle-subtract-before-you-add"
   short_description: "Codex engineering: principle subtract before you add"
+  default_prompt: "Use $forge-principle-subtract-before-you-add for the requested task."
+policy:
+  allow_implicit_invocation: true

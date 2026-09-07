@@ -28,13 +28,19 @@ installation, or a file on disk does not prove runtime activation.
 ## Profiles and dispatch
 
 `plan-model-router` owns profile policy and the setup preference schema. Read
-its `references/runtime-routing.md` for execution. The manually selected main
-model and effort are the inherited defaults and independent hard ceilings.
+its `references/dispatch-contract.md` for execution. A named mode supersedes
+inherited parent defaults for worker selection. Parent selection is a desired
+proposal pending a supported current-task control and verified effect. Without a named mode, the manually selected main model and
+effort remain the inherited defaults and independent hard ceilings.
 Astra is a supported candidate when actually exposed, never a forced parent.
 
 Any `role-profile` label in a comparison template means the profile resolved
 for that assignment; never submit that label as a model ID. Setup preferences
-are candidate pools, not fixed assignments or authority to exceed ceilings.
+are candidate pools, not fixed assignments. Named modes authorize profiles
+above current parent defaults; the live catalogue and separate user limits apply.
+A named mode never overrides an explicit user or host hard ceiling. Generic
+playbook references to parent ceilings mean the no-mode defaults or such explicit
+limits; apply this runtime policy consistently before every dispatch.
 Panels prefer independently useful views; use distinct available Codex
 profiles when feasible, and disclose when model diversity is unavailable.
 Panel size is bounded by useful independent questions and concurrency policy,
@@ -42,7 +48,7 @@ not the number of configured models. Queue excess independent arms.
 
 Before dispatch, inspect role configuration: fixed model/effort settings may
 override spawn arguments. Select an unpinned equivalent or return to the main
-agent if the effective settings would violate a ceiling. Full-history forks
+agent if the effective settings would violate the active mode or an applicable limit. Full-history forks
 inherit the parent and cannot take profile overrides in runtimes with that
 contract; use minimal task context for an explicitly routed worker. A profile
 change requires a fresh compatible assignment, not an assumed change to an
@@ -50,6 +56,10 @@ existing worker. Recheck existing workers after a parent setting changes.
 
 Record requested settings separately from observed runtime settings. A receipt
 or accepted call is not proof of the model used. Missing metadata is Unverified.
+
+A desired parent profile must be applied through an actually surfaced current-task
+model control. If unavailable, state that the requested parent change is unapplied;
+worker dispatch and preference configuration do not prove a parent switch.
 
 ## Capability translation
 

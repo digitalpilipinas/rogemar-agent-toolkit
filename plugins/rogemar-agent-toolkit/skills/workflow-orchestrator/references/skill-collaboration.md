@@ -84,5 +84,7 @@ silently continue after a ceiling, permission, or evidence boundary is hit.
 Every Forge companion and playbook uses this handoff contract, including
 comparison panels and autonomous programme recipes. A named step suggests a
 specialist or bounded Worker; it never dispatches independently. Resolve the
-profile through the active harness controls at execution time (Codex uses `plan-model-router`), starting with the owner's
-selected parent and inspecting role overrides before claiming ceiling compliance.
+profile through the active harness controls at execution time. Codex uses
+`plan-model-router/references/dispatch-contract.md`: named Forge modes govern
+workers; the no-mode route retains parent ceilings. Inspect native role pins
+and pass the resolver's qualified settings into the actual dispatch call.

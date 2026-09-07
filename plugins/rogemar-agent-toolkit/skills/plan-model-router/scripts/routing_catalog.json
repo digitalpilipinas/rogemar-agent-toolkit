@@ -1,0 +1,766 @@
+{
+  "schema_version": 1,
+  "mode_aliases": {
+    "supreme": "peak",
+    "optimize": "balanced",
+    "budget": "lean"
+  },
+  "modes": {
+    "peak": {
+      "gpt-6-astra": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "gpt-5.6-sol": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "gpt-5.6-terra": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ]
+    },
+    "balanced": {
+      "gpt-5.6-sol": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
+      "gpt-5.6-terra": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
+      "gpt-5.6-luna": [
+        "max"
+      ]
+    },
+    "lean": {
+      "gpt-5.6-terra": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "gpt-5.6-luna": [
+        "high",
+        "max"
+      ]
+    },
+    "sprint": {
+      "gpt-5.6-terra": [
+        "medium"
+      ],
+      "gpt-5.6-luna": [
+        "low",
+        "medium",
+        "high",
+        "max"
+      ]
+    }
+  },
+  "groups": {
+    "coordination": {
+      "peak": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "balanced": {
+        "model": "gpt-5.6-sol",
+        "effort": "high"
+      },
+      "lean": {
+        "model": "gpt-5.6-terra",
+        "effort": "high"
+      },
+      "sprint": {
+        "model": "gpt-5.6-terra",
+        "effort": "medium"
+      }
+    },
+    "engineering": {
+      "peak": {
+        "model": "gpt-5.6-sol",
+        "effort": "high"
+      },
+      "balanced": {
+        "model": "gpt-5.6-terra",
+        "effort": "high"
+      },
+      "lean": {
+        "model": "gpt-5.6-terra",
+        "effort": "high"
+      },
+      "sprint": {
+        "model": "gpt-5.6-terra",
+        "effort": "medium"
+      }
+    },
+    "design": {
+      "peak": {
+        "model": "gpt-5.6-sol",
+        "effort": "xhigh"
+      },
+      "balanced": {
+        "model": "gpt-5.6-sol",
+        "effort": "high"
+      },
+      "lean": {
+        "model": "gpt-5.6-terra",
+        "effort": "high"
+      },
+      "sprint": {
+        "model": "gpt-5.6-luna",
+        "effort": "max"
+      }
+    },
+    "verification": {
+      "peak": {
+        "model": "gpt-5.6-terra",
+        "effort": "high"
+      },
+      "balanced": {
+        "model": "gpt-5.6-terra",
+        "effort": "high"
+      },
+      "lean": {
+        "model": "gpt-5.6-luna",
+        "effort": "high"
+      },
+      "sprint": {
+        "model": "gpt-5.6-luna",
+        "effort": "medium"
+      }
+    },
+    "review": {
+      "peak": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "balanced": {
+        "model": "gpt-5.6-sol",
+        "effort": "high"
+      },
+      "lean": {
+        "model": "gpt-5.6-terra",
+        "effort": "high"
+      },
+      "sprint": {
+        "model": "gpt-5.6-luna",
+        "effort": "max"
+      }
+    },
+    "operations-learning": {
+      "peak": {
+        "model": "gpt-5.6-terra",
+        "effort": "medium"
+      },
+      "balanced": {
+        "model": "gpt-5.6-luna",
+        "effort": "max"
+      },
+      "lean": {
+        "model": "gpt-5.6-luna",
+        "effort": "high"
+      },
+      "sprint": {
+        "model": "gpt-5.6-luna",
+        "effort": "low"
+      }
+    }
+  },
+  "roles": {
+    "parent-coordinator": {
+      "group": "coordination",
+      "assignment": "main-owned",
+      "skill_hints": [],
+      "overrides": {
+        "sprint": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        }
+      }
+    },
+    "workflow-coordinator": {
+      "group": "coordination",
+      "assignment": "main-owned",
+      "skill_hints": [
+        "workflow-orchestrator"
+      ]
+    },
+    "integration-owner": {
+      "group": "coordination",
+      "assignment": "main-owned",
+      "skill_hints": [
+        "integrated-workflow"
+      ]
+    },
+    "findings-consolidator": {
+      "group": "coordination",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "why-synthesizer": {
+      "group": "coordination",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-5.6-sol",
+          "effort": "high"
+        },
+        "balanced": {
+          "model": "gpt-5.6-sol",
+          "effort": "medium"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "high"
+        }
+      }
+    },
+    "reflect-synthesizer": {
+      "group": "coordination",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-5.6-sol",
+          "effort": "high"
+        },
+        "balanced": {
+          "model": "gpt-5.6-sol",
+          "effort": "medium"
+        },
+        "lean": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "high"
+        }
+      }
+    },
+    "feature": {
+      "group": "engineering",
+      "assignment": "bounded-implementation",
+      "skill_hints": [],
+      "overrides": {
+        "sprint": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        }
+      }
+    },
+    "refactoring": {
+      "group": "engineering",
+      "assignment": "bounded-implementation",
+      "skill_hints": [],
+      "overrides": {
+        "balanced": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        },
+        "lean": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        },
+        "sprint": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        }
+      }
+    },
+    "bug-fix": {
+      "group": "engineering",
+      "assignment": "bounded-implementation",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-6-astra",
+          "effort": "high"
+        },
+        "balanced": {
+          "model": "gpt-5.6-sol",
+          "effort": "high"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        }
+      }
+    },
+    "perf-issue": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-5.6-sol",
+          "effort": "xhigh"
+        },
+        "balanced": {
+          "model": "gpt-5.6-terra",
+          "effort": "xhigh"
+        },
+        "sprint": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        }
+      }
+    },
+    "hillclimb": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-6-astra",
+          "effort": "max"
+        },
+        "balanced": {
+          "model": "gpt-5.6-sol",
+          "effort": "xhigh"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        }
+      }
+    },
+    "hardest-tasks": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-6-astra",
+          "effort": "max"
+        },
+        "balanced": {
+          "model": "gpt-5.6-sol",
+          "effort": "xhigh"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        }
+      }
+    },
+    "how-explorer": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        },
+        "balanced": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        },
+        "lean": {
+          "model": "gpt-5.6-luna",
+          "effort": "high"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "low"
+        }
+      }
+    },
+    "how-explainer": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-5.6-sol",
+          "effort": "medium"
+        },
+        "balanced": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        },
+        "lean": {
+          "model": "gpt-5.6-luna",
+          "effort": "high"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "medium"
+        }
+      }
+    },
+    "why-investigators": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-5.6-terra",
+          "effort": "high"
+        },
+        "lean": {
+          "model": "gpt-5.6-luna",
+          "effort": "high"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "high"
+        }
+      }
+    },
+    "reflect-tooling": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        },
+        "balanced": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        },
+        "lean": {
+          "model": "gpt-5.6-luna",
+          "effort": "high"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "medium"
+        }
+      }
+    },
+    "swarm-workers": {
+      "group": "engineering",
+      "assignment": "bounded-implementation",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-5.6-terra",
+          "effort": "high"
+        },
+        "balanced": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        },
+        "lean": {
+          "model": "gpt-5.6-luna",
+          "effort": "high"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "high"
+        }
+      }
+    },
+    "bug-triager": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "bug-triage"
+      ]
+    },
+    "goal-scout": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "goalbuddy:goal-prep"
+      ],
+      "native_contract": "goal_scout",
+      "overrides": {
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "low"
+        }
+      }
+    },
+    "judgment-and-prose": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-5.6-sol",
+          "effort": "medium"
+        },
+        "balanced": {
+          "model": "gpt-5.6-sol",
+          "effort": "medium"
+        },
+        "lean": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "high"
+        }
+      }
+    },
+    "reflect-divergent": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-5.6-sol",
+          "effort": "high"
+        },
+        "balanced": {
+          "model": "gpt-5.6-terra",
+          "effort": "xhigh"
+        },
+        "lean": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "high"
+        }
+      }
+    },
+    "arena-runners": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "balanced": {
+          "model": "gpt-5.6-terra",
+          "effort": "xhigh"
+        },
+        "lean": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        }
+      }
+    },
+    "architect-runners": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-6-astra",
+          "effort": "max"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        }
+      }
+    },
+    "ux-flow-designer": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "ux-flow-architect",
+        "design-brief"
+      ]
+    },
+    "ui-designer": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "frontend-design",
+        "reference-design-contract"
+      ]
+    },
+    "design-system-reviewer": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "design-system-steward"
+      ]
+    },
+    "interaction-designer": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "interaction-polish",
+        "motion-animation-engineer"
+      ]
+    },
+    "accessibility-reviewer": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "accessibility-auditor"
+      ]
+    },
+    "validation-runner": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "test-architecture-engineer"
+      ]
+    },
+    "visual-reviewer": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "visual-qa"
+      ]
+    },
+    "browser-qa": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "playwright"
+      ],
+      "evidence_surface": "browser-qa"
+    },
+    "simulator-qa": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "argent-ios-simulator-setup",
+        "argent-test-ui-flow"
+      ],
+      "evidence_surface": "simulator-qa"
+    },
+    "emulator-qa": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "argent-android-emulator-setup",
+        "argent-test-ui-flow"
+      ],
+      "evidence_surface": "emulator-qa"
+    },
+    "physical-device-qa": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "argent-device-interact",
+        "argent-test-ui-flow"
+      ],
+      "evidence_surface": "physical-device-qa"
+    },
+    "qa-runner": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "visual-qa",
+        "test-architecture-engineer"
+      ]
+    },
+    "how-critics": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        }
+      }
+    },
+    "reflect-judgment": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        }
+      }
+    },
+    "arena-cross-judge-pool": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-6-astra",
+          "effort": "max"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        }
+      }
+    },
+    "interrogate-reviewers": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "overrides": {
+        "peak": {
+          "model": "gpt-6-astra",
+          "effort": "xhigh"
+        },
+        "sprint": {
+          "model": "gpt-5.6-luna",
+          "effort": "max"
+        }
+      }
+    },
+    "correctness-reviewer": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "code-review-and-quality"
+      ]
+    },
+    "scope-reviewer": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "first-time-right-delivery",
+        "ponytail:ponytail-review"
+      ]
+    },
+    "acceptance-auditor": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "integrated-workflow",
+        "first-time-right-delivery"
+      ]
+    },
+    "goal-judge": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "goalbuddy:goal-prep"
+      ],
+      "native_contract": "goal_judge"
+    },
+    "status-monitor": {
+      "group": "operations-learning",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "activation": "bounded status request; recurring scheduling requires separate explicit request"
+    },
+    "learning-curator": {
+      "group": "operations-learning",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "project-learning"
+      ],
+      "activation": "explicit project-learning request; no automatic capture or promotion"
+    }
+  }
+}

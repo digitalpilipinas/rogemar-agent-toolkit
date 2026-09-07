@@ -1,3 +1,6 @@
 interface:
-  display_name: "Forge Arena"
+  display_name: "forge-arena"
   short_description: "Codex engineering: arena"
+  default_prompt: "Use $forge-arena for the requested task."
+policy:
+  allow_implicit_invocation: true

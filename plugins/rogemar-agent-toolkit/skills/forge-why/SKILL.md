@@ -7,7 +7,7 @@ license: MIT
 
 ## Codex execution contract
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md) before dispatch or a runtime action. This skill supplies methods and bounded collaboration hints; `workflow-orchestrator` alone selects specialists and subagents. `plan-model-router` resolves task profiles under the manually selected parent defaults and ceilings.
+Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md) before dispatch or a runtime action. This skill supplies methods and bounded collaboration hints; `workflow-orchestrator` alone selects specialists and subagents. `plan-model-router` resolves task profiles under the active Forge mode, or parent defaults and ceilings when no mode is selected.
 
 
 
@@ -101,7 +101,7 @@ Capture this as seed context (file paths, symbols, commits, PR numbers, linked t
 
 Discover the actual exposed tools and verify repository or connector access without assuming a filesystem tool registry. Map relevant authorized sources to the seven categories below. Availability does not authorize unrelated personal or business searches. Use the smallest sufficient set, preserving an explicit coverage map of queried, empty, unavailable and out-of-scope sources.
 
-For useful independent work, ask `workflow-orchestrator` for bounded read-only investigators with role hint `why investigators`. It resolves profiles through `plan-model-router` under both parent ceilings and schedules within the live limit. A missing connector is an evidence gap, never a reason to grant write access. The parent can answer a narrow question from sufficient primary evidence directly.
+For useful independent work, ask `workflow-orchestrator` for bounded read-only investigators with role hint `why-investigators`. It resolves profiles through `plan-model-router` under the active routing policy and schedules within the live limit. A missing connector is an evidence gap, never a reason to grant write access. The parent can answer a narrow question from sufficient primary evidence directly.
 
 Each assignment receives the code anchor, user's question, allowed source/topic/time scope, `references/investigator-prompt.md`, the relevant category playbook and `references/epistemics.md`. Add `references/sources/incident-postmortem.md` for defensive or incident-driven code when relevant. Return cited findings, contradictions and null results. Do not dispatch descendants or message source authors.
 
@@ -131,7 +131,7 @@ Record unavailable access, authorization boundaries, irrelevance to the question
 
 ## Step 4. Synthesize
 
-The parent reconciles findings using `references/synthesizer-prompt.md` and `references/epistemics.md`. A bounded read-only `why synthesizer` assignment through the orchestrator is optional when it supplies useful independent work. Keep direct evidence, inference, competing hypotheses and gaps separate. Spot-check material citations with authorized sources; report inaccessible citations instead of increasing permissions.
+The parent reconciles findings using `references/synthesizer-prompt.md` and `references/epistemics.md`. A bounded read-only `why-synthesizer` assignment through the orchestrator is optional when it supplies useful independent work. Keep direct evidence, inference, competing hypotheses and gaps separate. Spot-check material citations with authorized sources; report inaccessible citations instead of increasing permissions.
 
 ## Step 5. Present
 

@@ -20,6 +20,9 @@ ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('selected_toolkit', ROOT / 'scripts/toolkit.py')
 toolkit = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(toolkit)
+CATALOG = toolkit.load_json(toolkit.CATALOG_PATH)
+SELECTED_DISTRIBUTION = 'distribution_selection' in CATALOG['package']
+HAS_NATIVE_FORGE = any(e['name'] == 'codex-forge' for e in CATALOG['vendored'])
 
 
 def extract_archive(data, destination):
@@ -48,6 +51,9 @@ class SelectionInstallTests(unittest.TestCase):
             self.assertEqual(len(selected['skills']), 6)
             self.assertEqual(selected['external'], [])
             self.assertNotIn('codex-forge', selected['skills'])
+
+    @unittest.skipIf(SELECTED_DISTRIBUTION, 'cross-harness composition requires the source catalog')
+    def test_engineering_on_every_harness(self):
         generic = toolkit.resolve_selection('gemini', 'core', ['engineering'])
         codex = toolkit.resolve_selection('codex', 'core', ['engineering'])
         cursor = toolkit.resolve_selection('cursor', 'core', ['engineering'])
@@ -58,16 +64,28 @@ class SelectionInstallTests(unittest.TestCase):
         self.assertIn('pstack', cursor['external'])
         self.assertNotIn('pstack', codex['external'])
 
+    @unittest.skipIf(SELECTED_DISTRIBUTION, 'cross-harness composition requires the source catalog')
+    def test_universal_forge_dependencies_and_native_adapter_isolation(self):
+        catalog = toolkit.load_json(toolkit.CATALOG_PATH)
+        for harness in catalog['harnesses']:
+            selected = toolkit.resolve_selection(harness, 'core', ['engineering'])['skills']
+            for name in ['universal-forge', 'universal-plan-model-router', 'engineering-playbooks', 'workflow-orchestrator']:
+                self.assertIn(name, selected)
+            self.assertEqual('cursor-forge' in selected, harness == 'cursor')
+            self.assertEqual('plan-model-router' in selected, harness == 'codex')
+
     def test_unknown_pack_and_unsatisfied_native_requirement_fail_closed(self):
         with self.assertRaises(toolkit.ToolkitError):
             toolkit.resolve_selection('codex', 'core', ['invented-pack'])
         catalog = toolkit.load_json(toolkit.CATALOG_PATH)
         altered = copy.deepcopy(catalog)
-        next(e for e in altered['vendored'] if e['name'] == 'create-plan')['requires'] = ['plan-model-router']
+        next(e for e in altered['vendored'] if e['name'] == 'create-plan')['requires'] = ['fixture-codex-only']
+        altered['vendored'].append({'name': 'fixture-codex-only', 'targets': ['codex']})
         with patch.object(toolkit, 'load_json', return_value=altered):
             with self.assertRaisesRegex(toolkit.ToolkitError, 'incompatible'):
                 toolkit.resolve_selection('gemini', 'core', [])
 
+    @unittest.skipUnless(HAS_NATIVE_FORGE, 'native Forge was not selected')
     def test_codex_native_placement_and_recoverable_pack_removal(self):
         with tempfile.TemporaryDirectory() as project:
             args = ('--harness', 'codex', '--project-root', project)
@@ -121,11 +139,14 @@ class SelectionInstallTests(unittest.TestCase):
 
     def test_symlinked_managed_ancestors_are_rejected_without_external_writes(self):
         for relative in ('.agents', '.agents/skills', '.agents/.rogemar-agent-toolkit', '.codex/skills'):
+            if relative.startswith('.codex') and not HAS_NATIVE_FORGE:
+                continue
             with self.subTest(relative=relative), tempfile.TemporaryDirectory() as project, tempfile.TemporaryDirectory() as external:
                 link = Path(project) / relative
                 link.parent.mkdir(parents=True, exist_ok=True)
                 link.symlink_to(external, target_is_directory=True)
-                code, _, error = self.cli('install', '--harness', 'codex', '--pack', 'engineering', '--project-root', project)
+                packs = ('--pack', 'engineering') if HAS_NATIVE_FORGE else ()
+                code, _, error = self.cli('install', '--harness', 'codex', *packs, '--project-root', project)
                 self.assertEqual(code, 1)
                 self.assertIn('symlink', error)
                 self.assertEqual(list(Path(external).iterdir()), [])
@@ -289,6 +310,13 @@ class SelectionInstallTests(unittest.TestCase):
                         self.assertTrue((root / 'catalog/codex-forge-upstream.json').is_file())
                         result = subprocess.run([sys.executable, 'scripts/toolkit.py', 'verify'], cwd=root, capture_output=True, text=True)
                         self.assertEqual(result.returncode, 0, result.stderr)
+                        forge = subprocess.run([sys.executable, 'scripts/verify_forge.py'], cwd=root, capture_output=True, text=True)
+                        self.assertEqual(forge.returncode, 0, forge.stderr)
+                        self.assertEqual(json.loads(forge.stdout)['status'], 'not-applicable')
+                        if not SELECTED_DISTRIBUTION:
+                            # Only the source suite starts nested discovery, avoiding recursion.
+                            suite = subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-q'], cwd=root, capture_output=True, text=True)
+                            self.assertEqual(suite.returncode, 0, suite.stdout + suite.stderr)
 
     def test_full_archives_preserve_native_provenance_and_all_selected_resources(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -302,7 +330,8 @@ class SelectionInstallTests(unittest.TestCase):
                 receipt = json.loads((root / 'release-selection.json').read_text())
                 skillroot = root / 'skills' if (root / 'skills').exists() else root / 'plugins/rogemar-agent-toolkit/skills'
                 if 'codex-marketplace' in archive.name:
-                    self.assertEqual(len([n for n in receipt['skills'] if n == 'codex-forge' or n.startswith('forge-')]), 45)
+                    expected = toolkit.resolve_selection('codex', 'all', [])['skills']
+                    self.assertEqual({n for n in receipt['skills'] if n == 'codex-forge' or n.startswith('forge-')}, {n for n in expected if n == 'codex-forge' or n.startswith('forge-')})
                     self.assertTrue((root / 'catalog/codex-forge-upstream.json').is_file())
                 else:
                     self.assertNotIn('codex-forge', receipt['skills'])

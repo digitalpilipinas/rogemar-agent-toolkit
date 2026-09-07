@@ -1,3 +1,6 @@
 interface:
-  display_name: "Forge Swarm"
+  display_name: "forge-swarm"
   short_description: "Codex engineering: swarm"
+  default_prompt: "Use $forge-swarm for the requested task."
+policy:
+  allow_implicit_invocation: true

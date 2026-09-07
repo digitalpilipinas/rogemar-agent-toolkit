@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Keep selected release archives testable without optional packs; report absent Forge verification as not applicable.
+
+- Rewrite the README around getting started, everyday prompts and complete-feature delivery; keep the full generated inventory expandable.
+- Make preview and installation examples select the same packs and document saved-selection replacement and recovery.
+- Update compatibility and engineering-pack descriptions for Codex, Cursor and Universal Forge, including native model-control limits.
+- Document completed-slice local review, ready-PR CodeRabbit/Codex review, draft monitoring boundaries and consolidated minimal fixes.
+
 ## 1.0.0
 
 - Default to six shared core skills; add explicit packs, harness filtering and hard-dependency resolution.
