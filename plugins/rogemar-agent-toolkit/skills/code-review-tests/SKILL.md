@@ -1,51 +1,50 @@
 ---
 name: code-review-tests
-description: Use when reviewing code diffs, pull requests, bug fixes, migrations, or feature branches for correctness, regressions, security-sensitive behavior, missing tests, and focused verification steps.
+description: Check a change's test evidence, regression coverage, and relevant counterexamples. Use as the testing lens within one code review or for a focused verification review; contribute findings without starting a duplicate quality review.
 ---
 
-# Code Review + Tests
+# Code Review Tests
 
-## Review Workflow
+Contribute test and counterexample evidence to the active review. Keep its target,
+requirements, finding IDs, and verdict owner. For a full review requested through
+this compatibility entry, use the installed `code-review-and-quality` owner once
+and supply these checks within it. For a testing-only request, perform this
+focused pass directly. If the owner is absent, report the focused scope rather
+than claiming a complete five-axis review.
 
-1. Inspect the actual diff and surrounding code before judging.
-2. Trace the diff against the approved requirements or PR evidence matrix;
-   identify omitted planned behaviour before judging implementation details.
-3. Prioritize findings by user impact: correctness, data loss, auth/privacy, security, migrations, and regression risk.
-4. Ground every finding in a file and line when possible.
-5. Suggest focused tests that would catch the issue. Prefer repo-native test patterns.
-6. If asked to implement fixes, keep changes scoped and verify them.
-7. Perform a counterexample pass before approving risky work: try malformed,
-   legacy, unauthorized, concurrent, disabled, private, and rollback inputs.
-   Test the stated invariant rather than only the current implementation.
+## Check behavior, not the implementation's shape
 
-## Output Shape
+1. Inspect the actual diff, affected callers, approved requirements, and existing
+   tests. Trace important requirements to the evidence that would catch their
+   omission or regression; passing unrelated tests is insufficient.
+2. Choose the smallest useful checks from repository-native commands and test
+   conventions. A regression test should fail for the original bug or a plausible
+   wrong behavior. Avoid tests that merely repeat implementation details,
+   assertions with no meaningful failure, or mock-only proof of a real boundary.
+3. Exercise applicable counterexamples. For sensitive or stateful changes,
+   consider malformed, unauthorized, legacy, duplicate, concurrent, private,
+   disabled, offline, retry, and rollback inputs. Select the cases that can
+   violate this change's contract; do not impose every case on every change.
+4. Check identity, ownership, access control, entitlements, and sensitive derived
+   state at the trusted authority boundary. Preserve supported data and client
+   contracts. For migrations, examine partial completion and safe retry as well
+   as the successful final shape.
+5. Verify claims against the current candidate. Record the command/procedure,
+   relevant result, and environment. A proposed check is not a run; local tests
+   do not establish CI, deployed behavior, or browser/device verification.
 
-For reviews, lead with findings ordered by severity. Include open questions and a short residual-risk note only after findings.
+Run safe checks within task authority. Do not install tools, contact private
+services, mutate shared data, or edit tests solely because this review found a
+gap. When fixes are authorized, keep them scoped and validate their effect. Do
+not add tests for reversible low-impact changes when a direct check is adequate.
 
-## Sensitive System Biases
+## Return to the same review
 
-- Treat auth identity, permissions, roles, payments, credits, safety state,
-  health/wellness data, storage, privacy flows, migrations, and row/object-level
-  access controls as high-risk.
-- Do not trust client-supplied sensitive state when a server-authoritative path
-  is possible.
-- Preserve existing data contracts unless the user explicitly asks for a breaking change.
-- Tie acceptance claims to evidence from the reviewed commit; distinguish local
-  checks, CI, staging/production, and deferred manual/device QA.
+Return concrete findings and the evidence gap they expose, ordered by impact.
+Include location, violated requirement, affected scenario, and a check that can
+confirm the correction. Separate demonstrated bugs from missing coverage or
+unverified hypotheses. A missing test alone is not proof of a defect.
 
-## Helpful MCPs
-
-- `github` for PRs, issues, comments, and checks.
-- `openaiDeveloperDocs`, official framework docs, or package docs for current technical behavior.
-- `supabase` for database, RLS, migrations, functions, and logs.
-
-## Optional collaboration guidance
-
-For broad or high-risk diffs, the orchestrator may assign independent,
-read-only reviewers for correctness, security, regression, or test gaps when
-the review surfaces are separable. Give each reviewer the approved
-requirements, owned files, non-goals, evidence standard, parent model and
-reasoning ceilings, and required finding format. Reviewers return concrete
-findings and checks, not overall approval or readiness claims. The orchestrator
-deduplicates and sequences follow-up work; the main agent owns reconciliation
-and the final review decision.
+Deduplicate with other review results before reporting. Include required but
+unavailable checks and any owner-approved deferrals. Do not produce a second
+overall approval or run another external reviewer from this companion.

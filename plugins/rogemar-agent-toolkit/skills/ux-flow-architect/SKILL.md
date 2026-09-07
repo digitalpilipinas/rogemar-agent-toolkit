@@ -5,6 +5,13 @@ description: Use for UX architecture across apps and websites involving user jou
 
 # UX Flow Architect
 
+Own the journey and state model within the existing task coordinator. Reuse
+the current brief and design contract; if either needs clarification, the
+installed `design-brief` or `reference-design-contract` method can supply it.
+Do not create a second plan or prescribe a visual style before understanding
+the primary task. `frontend-design` implements the settled web interface;
+OpenDesign application flows keep their project/run state in the native host.
+
 ## Workflow
 
 1. Start from the user's real goal, context, constraints, and frequency of use.

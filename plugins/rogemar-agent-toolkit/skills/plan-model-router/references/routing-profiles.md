@@ -1,4 +1,4 @@
-# GPT-5.6 model-routing profiles
+# Codex model-routing profiles
 
 Inspect the active runtime first. Recommend only exposed models and reasoning
 levels. If a named choice is absent, label it unavailable and select the
@@ -12,11 +12,11 @@ retries, unnecessary rewrites, or weak verification is not an optimization.
 
 ## Planning versus implementation
 
-For formal multi-PR coding plans, use a high-quality Sol planning profile to
-establish the correct specification, invariants, dependencies, non-goals, and
-validation. Cost optimization starts after the plan: route each implementation
-PR independently from that quality anchor. Sol planning does not make Sol the
-default implementation model.
+The manually selected active parent model and effort remain the planning and
+execution defaults. Suggestions below describe task fit; they never switch the
+parent or turn a suggested Sol/Astra profile into a mandatory assignment.
+Assess each bounded worker independently and justify any lower-cost departure
+from inheritance against the task and validation burden.
 
 ## Portfolio roles
 
@@ -25,6 +25,7 @@ default implementation model.
 | GPT-5.6 Luna | The answer is explicit, local patterns are strong, and execution or high-volume coverage is the work | Ambiguous design, trust boundaries, migrations, consistency, or open-ended diagnosis |
 | GPT-5.6 Terra | Production implementation needs engineering judgment across normal code, APIs, data, tests, and conventional unfamiliar repositories | Frontier-hard ambiguity or critical security/reliability decisions |
 | GPT-5.6 Sol | The correct answer is uncertain, unusually novel, security-sensitive, high-risk, or deeply coupled | Mechanical, high-volume, well-specified routine work |
+| GPT-6 Astra | The most demanding unresolved architecture, cross-system reasoning, or critical uncertainty needs the strongest exposed judgment and parent ceilings permit it | Automatic upgrades merely because a task is large or important |
 
 Reasoning effort cannot replace base-model judgment. Change model when the
 limitation is interpretation, ambiguity, hidden constraints, or novel design.
@@ -37,11 +38,12 @@ use `max`.
 
 ## Planning-stage profiles
 
-Planning establishes the implementation quality bar before execution cost is
-optimized. For a formal multi-PR plan, default to **Sol xhigh**. Use **Sol max**
-when one tightly coupled problem needs a coherent reasoning chain, and **Sol
-ultra** only when planning separates cleanly into independent streams. Then
-route every PR separately with the score table below.
+Planning establishes the quality bar with the owner's selected parent. The
+following are advisory examples, subject to runtime availability and ceilings.
+If Astra is selected, inherit Astra; if another model is selected, inherit that
+model. Offer a parent change only with a concrete phase-boundary reason.
+Astra high/xhigh fits unusually difficult ambiguity; Astra max fits a deeply
+coupled unresolved problem. Effort must be supported by the active runtime.
 
 | Planning scope | Recommended profile | Use it for | Do not use it for |
 | --- | --- | --- | --- |
@@ -121,7 +123,7 @@ evidence, not just a score.
 
 ## Model-and-reasoning scope matrix
 
-Use the lowest row that matches the work. These profiles are advisory and must
+Use the lowest sufficient candidate only when a documented task-fit reason justifies departing from parent inheritance. These profiles are advisory and must
 be checked against currently exposed client options.
 
 | Profile | Scope that justifies it | Typical work | Escalate when |
@@ -203,7 +205,9 @@ required tests, or release authorization.
 
 Start only as high as evidence warrants:
 
-`Luna medium -> Luna high -> Terra high -> Terra xhigh -> Terra max -> Sol high -> Sol xhigh -> Sol max`
+`Luna medium -> Luna high -> Terra high -> Terra xhigh -> Terra max -> Sol high -> Sol xhigh -> Sol max -> Astra high/xhigh/max`
+
+This is a task-fit illustration, not authority to exceed either parent ceiling. Unknown model IDs require current evidence or exact parent inheritance.
 
 Use Ultra only after confirming clean workstream boundaries. Move from Luna to
 Terra when interpretation is the limitation; Terra to Sol when the correct

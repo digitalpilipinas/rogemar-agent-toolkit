@@ -1,0 +1,144 @@
+{
+  "upstream": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+  "adapted_from": "Codex Forge local approved adaptation",
+  "methods": [
+    {
+      "method": "authoring-a-skill",
+      "source": "codex-forge/playbooks/authoring-a-skill.md",
+      "source_sha256": "89481fcd8c3341160c0419bed91aec30ebcb4fcfcc334367ba54aca09dd1c7f2",
+      "portable": "playbooks/authoring-a-skill.md"
+    },
+    {
+      "method": "autonomous-run",
+      "source": "codex-forge/playbooks/autonomous-run.md",
+      "source_sha256": "ec85fc8e06eafefd3486622d21e90589a2cd154e8518f04b7e13f8a36784983d",
+      "portable": "playbooks/autonomous-run.md"
+    },
+    {
+      "method": "autopilot-full",
+      "source": "codex-forge/playbooks/autopilot-full.md",
+      "source_sha256": "8e4837199c6e61c46997423dfc7193787efb3248c6b5da137afd6a25b09cb4a6",
+      "portable": "playbooks/autopilot-full.md"
+    },
+    {
+      "method": "autopilot-stack",
+      "source": "codex-forge/playbooks/autopilot-stack.md",
+      "source_sha256": "1aa3f13f8dd95b757fddf5b1c61d8317bf8397dc5001bf0cb895c0a06a0a8127",
+      "portable": "playbooks/autopilot-stack.md"
+    },
+    {
+      "method": "babysit",
+      "source": "codex-forge/playbooks/babysit.md",
+      "source_sha256": "92f5553fc0aa0c5d869a4d2253ded265ecdf202567a7ea15f53c9f801fe268b3",
+      "portable": "playbooks/babysit.md"
+    },
+    {
+      "method": "bug-fix",
+      "source": "codex-forge/playbooks/bug-fix.md",
+      "source_sha256": "d0d48a9909683c6d6af81012d0b079c5dc2e6efe7e0ffbd4ff634dc823b7aa67",
+      "portable": "playbooks/bug-fix.md"
+    },
+    {
+      "method": "eval",
+      "source": "codex-forge/playbooks/eval.md",
+      "source_sha256": "5e8c096fba431fff04b06d505112e88759a9a3e802a8d404a830335db1c9af84",
+      "portable": "playbooks/eval.md"
+    },
+    {
+      "method": "feature",
+      "source": "codex-forge/playbooks/feature.md",
+      "source_sha256": "02478eb03a657edc06fff844e578e99640febcd0cf0cd973a43a5eeab8595221",
+      "portable": "playbooks/feature.md"
+    },
+    {
+      "method": "hillclimb",
+      "source": "codex-forge/playbooks/hillclimb.md",
+      "source_sha256": "f6873340f466310127bb9f65d32f7705a3c3552429a0af74a216e729a52b6c23",
+      "portable": "playbooks/hillclimb.md"
+    },
+    {
+      "method": "investigation",
+      "source": "codex-forge/playbooks/investigation.md",
+      "source_sha256": "48a278ca2249b7a10fd64f7d161bd910d4446d50c8d580700604f3a235b3579e",
+      "portable": "playbooks/investigation.md"
+    },
+    {
+      "method": "multi-phase-plan",
+      "source": "codex-forge/playbooks/multi-phase-plan.md",
+      "source_sha256": "f4ac99f7ca886c50b5d3e1812459d8799c83435c11584b49b1550380a4beaa23",
+      "portable": "playbooks/multi-phase-plan.md"
+    },
+    {
+      "method": "opening-a-pr",
+      "source": "codex-forge/playbooks/opening-a-pr.md",
+      "source_sha256": "a687be0452152eb6d13adca905ccf281b3af232f395c894952d925b156f47176",
+      "portable": "playbooks/opening-a-pr.md"
+    },
+    {
+      "method": "orchestrate",
+      "source": "codex-forge/playbooks/orchestrate.md",
+      "source_sha256": "acbae79507994f2e64a2c7b306b1d45a88747e7992d35a63534bd4b1698769a5",
+      "portable": "playbooks/orchestrate.md"
+    },
+    {
+      "method": "pause-safely",
+      "source": "codex-forge/playbooks/pause-safely.md",
+      "source_sha256": "e658705fa9e71f66dfdd879958e345547f32336eaedae968047cf23ec9fcef22",
+      "portable": "playbooks/pause-safely.md"
+    },
+    {
+      "method": "perf-issue",
+      "source": "codex-forge/playbooks/perf-issue.md",
+      "source_sha256": "5fb061c0170bae351ba64a61fddd7e401bcfa803390f1978ec37b9da1a550856",
+      "portable": "playbooks/perf-issue.md"
+    },
+    {
+      "method": "prototype",
+      "source": "codex-forge/playbooks/prototype.md",
+      "source_sha256": "37461e7d1ac60eef91b57652eaa89e7380933001bc6d294b20365adceca0ee47",
+      "portable": "playbooks/prototype.md"
+    },
+    {
+      "method": "refactoring",
+      "source": "codex-forge/playbooks/refactoring.md",
+      "source_sha256": "2b3dc3efc9bb1ff63d0d13605ed3d05f3ec3ab1bb7ee08960afdc0c5e9b70b8e",
+      "portable": "playbooks/refactoring.md"
+    },
+    {
+      "method": "runtime-forensics",
+      "source": "codex-forge/playbooks/runtime-forensics.md",
+      "source_sha256": "96ac9a3a368e6a31d8a7aa56055e6f7f75e8e773c21b65c0f941c26403c8d105",
+      "portable": "playbooks/runtime-forensics.md"
+    },
+    {
+      "method": "session-pickup",
+      "source": "codex-forge/playbooks/session-pickup.md",
+      "source_sha256": "1f294943c26955c4f5e018f458688dded558f06cb8f1672320c9c937fefc8684",
+      "portable": "playbooks/session-pickup.md"
+    },
+    {
+      "method": "shipping",
+      "source": "codex-forge/playbooks/shipping.md",
+      "source_sha256": "50028117cdddcfc3dc06c6355fa3eee1d9497de3d0131be4145cdfba3f66d4c7",
+      "portable": "playbooks/shipping.md"
+    },
+    {
+      "method": "trace-forensics",
+      "source": "codex-forge/playbooks/trace-forensics.md",
+      "source_sha256": "195cf8860b71c3e8a0a627220dcbac9b09580fe276a1a8a28f6e6cdb86d8724b",
+      "portable": "playbooks/trace-forensics.md"
+    },
+    {
+      "method": "visual-parity",
+      "source": "codex-forge/playbooks/visual-parity.md",
+      "source_sha256": "35883b7ffd029f028033cb3214b15f342acbf3bff581869fb7c5dfa93d14cdb2",
+      "portable": "playbooks/visual-parity.md"
+    },
+    {
+      "method": "worktree-cleanup",
+      "source": "codex-forge/playbooks/worktree-cleanup.md",
+      "source_sha256": "cecb335fbd9036021ed38a7872820725c3534f96e1b80537f160d297a979ee19",
+      "portable": "playbooks/worktree-cleanup.md"
+    }
+  ]
+}

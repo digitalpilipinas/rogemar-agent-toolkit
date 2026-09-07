@@ -10,6 +10,7 @@ portable descriptions and links come from the checked-in files and catalog.
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import re
 import sys
@@ -92,7 +93,63 @@ def members_cell(members: list[Any]) -> str:
     rendered = "<br>".join(f"`{md(str(member))}`" for member in members)
     if len(members) <= 20:
         return rendered
-    return f"<details><summary>{len(members)} members</summary>{rendered}</details>"
+    # Markdown inside a raw HTML details block is not reliably rendered by GFM.
+    codes = "<br>".join(f"<code>{html.escape(md(str(member)))}</code>" for member in members)
+    return f"<details><summary>{len(members)} members</summary>{codes}</details>"
+
+
+def packs_section(catalog: dict[str, Any]) -> list[str]:
+    rows = [
+        "### Pack membership", "",
+        "Direct members are listed in full; the installer also resolves required skill dependencies and filters native targets. A skill can belong to several packs. External dependencies are declared, not installed.", "",
+        "| Pack | Purpose | Canonical skill members | External dependencies |",
+        "| --- | --- | --- | --- |",
+    ]
+    for name, pack in sorted(catalog.get("packs", {}).items()):
+        members = members_cell(pack.get("skills", [])) or "None; dependency-only pack"
+        external = "<br>".join(f"[{md(item)}](#dependency-{item})" for item in pack.get("external", [])) or "None"
+        rows.append(f"| `{md(name)}` | {md(pack.get('description', ''))} | {members} | {external} |")
+    return rows
+
+
+def dependencies_section(catalog: dict[str, Any]) -> list[str]:
+    rows = [
+        "### Pack dependencies", "",
+        "These are the external skills, providers, runtimes and resource libraries referenced by pack selection. Names and installation routes describe the catalog; they do not prove availability in a fresh environment. The external groups below retain separately observed runtime inventories.", "",
+        "| Dependency | Kind / declared targets | Purpose and members or resources | Source, install and activation |",
+        "| --- | --- | --- | --- |",
+    ]
+    for name, dependency in sorted(catalog.get("dependencies", {}).items()):
+        targets = dependency.get("targets", list(catalog.get("harnesses", {})))
+        target_text = "All declared harnesses" if set(targets) == set(catalog.get("harnesses", {})) else ", ".join(targets)
+        details = md(dependency.get("purpose", ""))
+        if dependency.get("members"):
+            details += "<br>" + members_cell(dependency["members"])
+        elif dependency.get("skill_group"):
+            group = dependency["skill_group"]
+            details += f"<br>Members: [{md(group)}](#external-{group})"
+        if dependency.get("paths"):
+            details += "<br>Resource paths: " + members_cell(dependency["paths"])
+        if dependency.get("resource_counts"):
+            details += "<br>Pinned resource counts: " + ", ".join(f"{md(str(k))}: {v}" for k, v in dependency["resource_counts"].items())
+        for key, value in dependency.get("runtime_requirements", {}).items():
+            text = ", ".join(value) if isinstance(value, list) else str(value)
+            details += f"<br>{md(key)}: {md(text)}"
+        if dependency.get("native_adapter"):
+            details += "<br>" + md(dependency["native_adapter"])
+        if dependency.get("integration"):
+            details += "<br>" + link("Integration contract", dependency["integration"])
+        source = link("Repository", dependency.get("repository"))
+        if dependency.get("commit"):
+            source += f"<br>Pinned commit: `{md(dependency['commit'])}`"
+        source += f"<br>Install: `{md(dependency.get('install', 'Use the owning integration'))}`"
+        for harness, command in dependency.get("install_by_harness", {}).items():
+            source += f"<br>{md(harness)}: `{md(command)}`"
+        for key in ("activation", "inventory_evidence", "version_observed", "upstream_status"):
+            if dependency.get(key):
+                source += "<br>" + md(str(dependency[key]))
+        rows.append(f'| <a id="dependency-{html.escape(name, quote=True)}"></a>**`{md(name)}`** | {md(dependency.get("kind", "external"))}<br>{md(target_text)} | {details} | {source} |')
+    return rows
 
 
 def upstream_by_id(catalog: dict[str, Any]) -> dict[str, dict[str, Any]]:
@@ -105,10 +162,10 @@ def upstream_by_id(catalog: dict[str, Any]) -> dict[str, dict[str, Any]]:
 
 def vendored_section(catalog: dict[str, Any]) -> list[str]:
     rows: list[str] = [
-        f"### Vendored portable skills ({len(catalog.get('vendored', []))})",
+        f"### Canonical skills ({len(catalog.get('vendored', []))})",
         "",
-        "| Skill | Purpose | Declared author / provenance | Source and upstream | License / redistribution |",
-        "| --- | --- | --- | --- | --- |",
+        "| Skill | Purpose | Targets | Declared author / provenance | Source and upstream | License / redistribution |",
+        "| --- | --- | --- | --- | --- | --- |",
     ]
     upstreams = upstream_by_id(catalog)
     for entry in sorted(catalog.get("vendored", []), key=lambda item: str(item.get("name"))):
@@ -135,7 +192,7 @@ def vendored_section(catalog: dict[str, Any]) -> list[str]:
             )
         rows.append(
             f"| {link(f'`{name}`', f'plugins/rogemar-agent-toolkit/skills/{name}/SKILL.md')} "
-            f"| {md(purpose)} | {md(author)} | {source} | {md(license_info)} |"
+            f"| {md(purpose)} | {md(', '.join(entry.get('targets', ['portable'])))} | {md(author)} | {source} | {md(license_info)} |"
         )
     return rows
 
@@ -157,7 +214,7 @@ def external_groups_section(catalog: dict[str, Any]) -> list[str]:
     rows: list[str] = [
         "### External and runtime-managed skill groups",
         "",
-        "These names are part of the supported capability inventory but are not copied by the portable installer.",
+        "These are audited skill names and runtime families, not additional toolkit installs or a certification of harness support. Families can overlap; cached versions, source-only descriptors and credentials are not copied by the portable installer.",
         "",
         "| Skill group and members | Purpose | Author / status | License / redistribution | Canonical source and latest install |",
         "| --- | --- | --- | --- | --- |",
@@ -194,7 +251,7 @@ def external_groups_section(catalog: dict[str, Any]) -> list[str]:
             or "Not vendored; owner-managed"
         )
         rows.append(
-            f"| **`{name}`**<br>{members} | {md(str(group.get('purpose') or GROUP_PURPOSES.get(name, 'External skill group')))} "
+            f'| <a id="external-{html.escape(name, quote=True)}"></a>**`{md(name)}`**<br>{members} | {md(str(group.get("purpose") or GROUP_PURPOSES.get(name, "External skill group")))} '
             f"| {md(author)}<br>{md(status)} | {md(license_status)}<br>{md(redistribution)} | {source} |"
         )
     return rows
@@ -273,7 +330,13 @@ def package_section(catalog: dict[str, Any]) -> list[str]:
 def generated_inventory(catalog: dict[str, Any]) -> str:
     lines = [
         "<!-- This section is generated by scripts/inventory_readme.py; edit the catalog or SKILL.md instead. -->",
+        f"Catalog coverage: **{len(catalog.get('vendored', []))} canonical skills**, **{len(catalog.get('packs', {}))} packs**, **{len(catalog.get('dependencies', {}))} dependency records**, **{len(catalog.get('external_skill_groups', []))} external groups**, **{len(catalog.get('runtime_integrations', []))} runtime records**, and **{len(catalog.get('external_packages', []))} plugin package records**. These counts describe different units and must not be added as a unique skill total.",
+        "",
+        *packs_section(catalog),
+        "",
         *vendored_section(catalog),
+        "",
+        *dependencies_section(catalog),
         "",
         *external_groups_section(catalog),
         "",

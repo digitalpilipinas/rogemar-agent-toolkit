@@ -27,5 +27,9 @@ jobs:
         run: python3 scripts/inventory_readme.py --check
       - name: Run tests
         run: python3 -m unittest discover -s tests -v
-      - name: Build release archives
-        run: python3 scripts/toolkit.py package
+      - name: Verify complete native Forge inventory
+        run: python3 scripts/verify_forge.py
+      - name: Build core release archives
+        run: python3 scripts/toolkit.py package --output dist/core
+      - name: Build full release archives
+        run: python3 scripts/toolkit.py package --profile all --output dist/all

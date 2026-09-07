@@ -1,88 +1,73 @@
 ---
 name: create-plan
-description: Create an actionable coding plan. Use when a user explicitly asks for a plan related to a coding task; include a minimal capability handoff and invoke plan-model-router only for multi-PR, sprint, phased, materially different-risk, or explicitly routed plans.
+description: Plan a software change from repository evidence, clear scope, practical increments, and observable acceptance. Use for an explicit planning request or when non-trivial work needs sequencing; keep routine changes brief and leave model selection to the active harness.
+license: Apache-2.0
 metadata:
-  short-description: Create a plan
+  short-description: Create a proportionate implementation plan
 ---
 
 # Create Plan
 
-## Goal
+Produce one actionable plan that another capable implementer can use without
+reconstructing the conversation. Reuse an existing approved plan and its task
+IDs rather than creating a competing plan, board, or execution workflow.
 
-Turn a user prompt into one self-contained, actionable plan. Select the output
-template by delivery shape; do not compress a multi-PR programme into a small
-ticket checklist.
+## Match the depth to the work
 
-## Minimal workflow
+- For an obvious, reversible change, skip formal planning unless requested. A
+  short statement of the change and its check is enough.
+- For a bounded change, use a short outcome, scope, ordered steps, and acceptance.
+  The [concise template](references/concise-plan-template.md) is an optional shape.
+- For multiple dependent increments, a migration, or material operational risk,
+  add the relevant parts of the
+  [programme template](references/programme-plan-template.md). Complexity or
+  risk determines the detail; neither requires a large document by itself.
 
-Throughout the entire workflow, operate in read-only mode. Do not write or update files.
+## Build the plan
 
-1. **Scan context quickly**
-   - Read `README.md` and any obvious docs (`docs/`, `CONTRIBUTING.md`, `ARCHITECTURE.md`).
-   - Skim relevant files (the ones most likely touched).
-   - Identify constraints (language, frameworks, CI/test commands, deployment shape).
-   - Derive the capabilities the work is likely to need. When that choice
-     materially affects the plan, use read-only environment discovery to
-     shortlist relevant skill-family members and inspect surfaced plugin, MCP,
-     connector, app, or tool routes as a separate layer. A tool may exist
-     without a matching skill. Limit discovery to capabilities installed or
-     surfaced in Codex; do not scan the external marketplace or load the whole
-     catalog.
+1. **Inspect before deciding.** Read applicable instructions, the named issue or
+   specification, current changes, relevant source and tests, and the existing
+   verification commands. Follow nearby contracts and conventions. Inspect only
+   what can change the plan; do not load every installed skill or every document.
+2. **Define the outcome and boundary.** State observable success, affected paths
+   or systems, non-goals, and locked requirements. Separate verified facts from
+   assumptions. Preserve the user's product choices and authorized scope.
+3. **Resolve consequential uncertainty.** Discover repository and environment
+   facts before asking the user. Ask only for an unresolved decision that would
+   materially change scope, behavior, authority, risk, or acceptance; include a
+   recommendation and its tradeoff. Proceed with a labeled assumption when safe.
+   Compare alternatives only when there is a real fork. If an empirical question
+   needs an experiment outside planning authority, specify that experiment as a
+   step rather than quietly implementing a prototype.
+4. **Sequence useful increments.** Prefer the largest coherent slice that has a
+   bounded scope and a meaningful check. Name dependencies and the interfaces
+   later work relies on. Keep coupled work together; split at an independently
+   reviewable outcome, not at every helper or tool call. Identify likely files
+   and commands when known without inventing signatures or writing the entire
+   implementation into the plan.
+5. **Connect acceptance to evidence.** For each important requirement, name the
+   behavior that proves it and the focused check that could disprove it. Add
+   failure, permission, concurrency, compatibility, runtime, or rollback cases
+   where the change makes them relevant. State missing prerequisites and which
+   required checks will remain blocked until they are available.
+6. **Check coverage and hand off once.** Ensure the sequence covers the agreed
+   outcome, has no contradictory contracts or missing dependencies, and states
+   the first next action. Where useful, name a specialist and why it is needed.
+   An already selected orchestrator keeps coordination; model, tool, and agent
+   bindings come from the installed adapter for the active harness. A runtime
+   with one model or no delegation can still use this plan.
 
-2. **Ask follow-ups only if blocking**
-   - Ask **at most 1–2 questions**.
-   - Only ask if you cannot responsibly plan without the answer; prefer multiple-choice.
-   - If unsure but not blocked, make a reasonable assumption and proceed.
+## Keep the boundary clear
 
-3. **Select the output template**
-   - For one clear, low-risk change with no material contract, migration,
-     security, or cross-layer risk, read and use
-     [concise-plan-template.md](references/concise-plan-template.md).
-   - For multiple PRs, sprints, phases, parallel lanes, a migration,
-     security/privacy/authorization work, compatibility work, or materially
-     different-risk increments, read and use
-     [programme-plan-template.md](references/programme-plan-template.md).
+A planning-only request does not authorize implementation, experiments, runtime
+setup, external review, commits, or publication. Save a plan artifact when
+requested or within the agreed task scope; otherwise deliver it in the response.
+When planning is part of already authorized implementation, continue that work
+without requesting the same approval again. Pause only the work that depends on
+an unresolved owner decision or unmet required prerequisite.
 
-4. **Select the capability handoff**
-   - For non-trivial work, use `workflow-orchestrator` to identify the next
-     stage entry and only the specialists justified by the affected surfaces.
-     Do not turn the installed skill catalog into a mandatory bundle.
-   - Record whether the next entry is direct implementation,
-     `goalbuddy:goal-prep`, or `deliver-approved-programme`. When Goal Prep is
-     next, its job is to copy capability names into task inputs or constraints,
-     not load or execute those skills during board preparation.
-   - Every specialist remains directly invocable; a handoff is an activation
-     hint that execution must revalidate against the actual task and diff.
-   - For a materially independent workstream, record delegation topology only
-     when it earns its coordination cost: role or preferred agent type,
-     independence reason, desired profile, parent-ceiling fallback, synthesis
-     owner, and bounded fan-out. Do not prescribe a permanent agent model in a
-     plan.
-   - For each material live capability, record the need, preferred route,
-     observed availability, smallest fallback, and authorization still needed.
-     Distinguish installed or advertised from surfaced, enabled, authenticated,
-     and callable. Planning must not install, authenticate, access private
-     connector data, spend credits, or perform an external mutation.
+Record capability requirements only when they affect execution. Installed files,
+advertised tools, authenticated access, and observed execution are different
+states. Do not claim a capability was used or a check passed during planning.
 
-5. **Route models only when warranted**
-   - Invoke `plan-model-router` for multiple PRs, sprints, phases,
-     implementation increments, materially different-risk work, or an explicit
-     model/cost-routing request.
-   - Skip model-routing overhead for a routine single-track plan unless the
-     user asks for it.
-   - For routed work, use the shared `routing-profiles.md` guidance. State the
-     formal planning profile when justified and route each implementation
-     increment to the lowest sufficient available model and reasoning level.
-
-6. **Create the plan**
-   - Follow the selected template's required sections and populate every
-     applicable field with repository-grounded information. Mark genuinely
-     unknown information as open or pending; do not invent it.
-   - For a routed plan, embed the complete planning profile and per-PR
-     execution handoff in the final plan; do not merely point to the router or
-     its reference. Routing never replaces acceptance criteria, validation, or
-     rollback planning.
-   - Keep action items atomic and ordered. Use concrete paths, commands, and
-     evidence where available; write no application code.
-
-7. **Output only the selected plan**
+Modified by Rogemar Agent Toolkit on 2026-09-07 for portable, proportionate planning.

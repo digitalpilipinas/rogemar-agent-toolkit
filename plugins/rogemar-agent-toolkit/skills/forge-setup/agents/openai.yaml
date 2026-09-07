@@ -1,0 +1,3 @@
+interface:
+  display_name: "Forge Setup"
+  short_description: "Configure Forge roles and model inheritance"

@@ -22,6 +22,9 @@ toolkit = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(toolkit)
 
 
+SKILL_COUNT = len(json.loads((REPOSITORY_ROOT / "catalog/skills.yaml").read_text())["vendored"])
+
+
 class ToolkitTests(unittest.TestCase):
     def run_cli(self, *arguments: str) -> tuple[int, str, str]:
         stdout = StringIO()
@@ -33,7 +36,7 @@ class ToolkitTests(unittest.TestCase):
     def test_verify_clean_bundle(self) -> None:
         result, output, errors = self.run_cli("verify")
         self.assertEqual(result, 0, errors)
-        self.assertIn("52 vendored skills", output)
+        self.assertIn(f"{SKILL_COUNT} vendored skills", output)
 
     def test_readme_inventory_is_current(self) -> None:
         result = subprocess.run(
@@ -79,10 +82,10 @@ class ToolkitTests(unittest.TestCase):
                 "install", "--target", "project", "--project-root", str(project)
             )
             self.assertEqual(result, 0, errors)
-            self.assertIn("Installed 52 managed skills", output)
+            self.assertIn("Installed 6 managed skills", output)
             state_path = project / ".agents" / "rogemar-agent-toolkit.lock.json"
             state = json.loads(state_path.read_text(encoding="utf-8"))
-            self.assertEqual(len(state["skills"]), 52)
+            self.assertEqual(len(state["skills"]), 6)
             self.assertTrue(
                 (project / ".agents" / "skills" / "create-plan" / "SKILL.md").is_file()
             )
@@ -109,7 +112,7 @@ class ToolkitTests(unittest.TestCase):
             )
             self.assertEqual(self.run_cli(*install_args)[0], 0)
             installed = (
-                project / ".agents" / "skills" / "accessibility-auditor" / "SKILL.md"
+                project / ".agents" / "skills" / "create-plan" / "SKILL.md"
             )
             original = installed.read_text(encoding="utf-8")
             local_change = original + "\nlocal recovery marker\n"
@@ -119,6 +122,9 @@ class ToolkitTests(unittest.TestCase):
                 "upgrade", "--target", "project", "--project-root", str(project)
             )
             result, _output, errors = self.run_cli(*upgrade_args)
+            self.assertEqual(result, 1)
+            self.assertIn("local edits", errors)
+            result, _output, errors = self.run_cli(*upgrade_args, "--backup-conflicts")
             self.assertEqual(result, 0, errors)
             self.assertEqual(installed.read_text(encoding="utf-8"), original)
 

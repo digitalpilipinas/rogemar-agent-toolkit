@@ -1,0 +1,1307 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/cursor/plugins",
+  "commit": "93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+  "registered_skills": {
+    "figure-it-out": "forge-figure-it-out",
+    "bro": "forge-bro",
+    "interrogate": "forge-interrogate",
+    "principle-boundary-discipline": "forge-principle-boundary-discipline",
+    "setup-pstack": "forge-setup",
+    "swarm": "forge-swarm",
+    "principle-model-the-domain": "forge-principle-model-the-domain",
+    "technical-writing": "forge-technical-writing",
+    "principle-fix-root-causes": "forge-principle-fix-root-causes",
+    "why": "forge-why",
+    "principle-encode-lessons-in-structure": "forge-principle-encode-lessons-in-structure",
+    "how": "forge-how",
+    "blast-radius": "forge-blast-radius",
+    "principle-guard-the-context-window": "forge-principle-guard-the-context-window",
+    "principle-subtract-before-you-add": "forge-principle-subtract-before-you-add",
+    "reflect": "forge-reflect",
+    "principle-foundational-thinking": "forge-principle-foundational-thinking",
+    "show-me-your-work": "forge-show-me-your-work",
+    "principle-build-the-lever": "forge-principle-build-the-lever",
+    "poteto-mode": "codex-forge",
+    "principle-make-operations-idempotent": "forge-principle-make-operations-idempotent",
+    "recall": "forge-recall",
+    "principle-sequence-verifiable-units": "forge-principle-sequence-verifiable-units",
+    "make-bot-ui": "forge-make-bot-ui",
+    "maintain-verification-skill": "forge-maintain-verification-skill",
+    "principle-outcome-oriented-execution": "forge-principle-outcome-oriented-execution",
+    "typescript-best-practices": "forge-typescript-best-practices",
+    "architect": "forge-architect",
+    "principle-never-block-on-the-human": "forge-principle-never-block-on-the-human",
+    "principle-redesign-from-first-principles": "forge-principle-redesign-from-first-principles",
+    "principle-minimize-reader-load": "forge-principle-minimize-reader-load",
+    "principle-exhaust-the-design-space": "forge-principle-exhaust-the-design-space",
+    "principle-migrate-callers-then-delete-legacy-apis": "forge-principle-migrate-callers-then-delete-legacy-apis",
+    "automate-me": "forge-automate-me",
+    "teach": "forge-teach",
+    "arena": "forge-arena",
+    "create-verification-skill": "forge-create-verification-skill",
+    "no-comments": "forge-no-comments",
+    "principle-laziness-protocol": "forge-principle-laziness-protocol",
+    "principle-experience-first": "forge-principle-experience-first",
+    "unslop": "forge-unslop",
+    "tdd": "forge-tdd",
+    "principle-prove-it-works": "forge-principle-prove-it-works",
+    "principle-separate-before-serializing-shared-state": "forge-principle-separate-before-serializing-shared-state",
+    "principle-type-system-discipline": "forge-principle-type-system-discipline"
+  },
+  "expected": {
+    "skills": 45,
+    "playbooks": 23,
+    "agents": 2,
+    "inactive_recipes": 3
+  },
+  "files": [
+    {
+      "upstream": "pstack/.cursor-plugin/plugin.json",
+      "upstream_sha256": "01cdd5599f6d36ed8a1665f539626f3e9fbb0c695b03d30f8e573d2c75d3ede0",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "not needed for skills or playbooks",
+      "upstream_git_blob": "469c2d534b44cce593759f8ac8c8aced710130b9"
+    },
+    {
+      "upstream": "pstack/.gitignore",
+      "upstream_sha256": "8ffe9de56bd30c1a95cd945262d6e3ac355ada4111551dde41f67851b9f1fc55",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "not needed for skills or playbooks",
+      "upstream_git_blob": "aafcb345668bd80cbb256b066898d4df8988da0e"
+    },
+    {
+      "upstream": "pstack/LICENSE",
+      "upstream_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
+      "kind": "license",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/LICENSE.txt",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "6b5400237fdf6545be0b8fae370d6f2fcff8fb25"
+    },
+    {
+      "upstream": "pstack/README.md",
+      "upstream_sha256": "4fe423d7147cab0f2602abecb011f4621138443f524e6b9edad96a1fdcae6a6d",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "not needed for skills or playbooks",
+      "upstream_git_blob": "00ca86b0139fa67893e3203cd8a9a9808e8bdad9"
+    },
+    {
+      "upstream": "pstack/agents/comment-sicko.md",
+      "upstream_sha256": "c0fd0383008da45fc78cfac17b9007d62c42f87ad1c8d5c2fb658b1fd01f7c82",
+      "kind": "agent",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/agents/forge-comment-reviewer.toml",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "9a688b8c5b5734ee80f782d4616a78c4c59b0946"
+    },
+    {
+      "upstream": "pstack/agents/poteto-agent.md",
+      "upstream_sha256": "c3850be1b97bc97cec0568ed8b26d04e7693c4e07868137c58fe546d37f288e9",
+      "kind": "agent",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/agents/forge-agent.toml",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "91d53b85918f842c703758e66352b956ee80feb7"
+    },
+    {
+      "upstream": "pstack/assets/logo.png",
+      "upstream_git_blob": "3754e87cb0e1362f17428bc84c661166ee145156",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/automations/benny/FOR_AGENTS.md",
+      "upstream_sha256": "a125e317dec1b8731fdc71f404c669f1127a73af932f7a7b8b8744a5542328a7",
+      "kind": "inactive-resource",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/automations/benny/FOR_AGENTS.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "e732156e9b88b463e4a40c0f51596bca4aedcdb4"
+    },
+    {
+      "upstream": "pstack/automations/benny/README.md",
+      "upstream_sha256": "ca3c42cbb7f0bf7068f7407eb355815e6c234d5c2786942f3cbe751a3690024b",
+      "kind": "inactive-resource",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/automations/benny/README.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "76804c8c566aae1a70734725416ae2f251a7ae30"
+    },
+    {
+      "upstream": "pstack/automations/benny/skills/reproduce-and-fix-issues/SKILL.md",
+      "upstream_sha256": "1363cc07343fe86aab42853b1bd4563288cbcbdf12f1c265b3b3b1afa25c09cb",
+      "kind": "inactive-recipe",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/automations/benny/skills/reproduce-and-fix-issues/RECIPE.md",
+      "adaptation": "inactive Codex recipe; intentionally not discoverable as a skill",
+      "upstream_git_blob": "effa5f0a38d2cfe7d948a71ff51827e2e2017257"
+    },
+    {
+      "upstream": "pstack/automations/benny/skills/reproduce-and-fix-issues/references/control-adapter.md",
+      "upstream_sha256": "58b0615d2fca895f9a20df83266e280042b0d585b5f2fd324e2094a682fd846b",
+      "kind": "inactive-resource",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/automations/benny/skills/reproduce-and-fix-issues/references/control-adapter.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "3399491eddbc458f3a7ceb6fd62b8f89266b07ef"
+    },
+    {
+      "upstream": "pstack/automations/benny/skills/reproduce-and-fix-issues/references/feature-map.example.md",
+      "upstream_sha256": "1e5c7c8522daec3e43fcc2e73ceb97289ded65b552949ce65a11cc8eb3d2b6ee",
+      "kind": "inactive-resource",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/automations/benny/skills/reproduce-and-fix-issues/references/feature-map.example.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "620ddedba3c13d603974b1d78754e36946dacf81"
+    },
+    {
+      "upstream": "pstack/automations/benny/skills/reproduce-and-fix-issues/references/verify-existing-fix.md",
+      "upstream_sha256": "c90eae00abcdec71a58fa8d60f2c495b082a526ad50b8e8e494837609129bf29",
+      "kind": "inactive-resource",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/automations/benny/skills/reproduce-and-fix-issues/references/verify-existing-fix.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "e3cda3c06a48432fd932b32318ade4e6178ef4ed"
+    },
+    {
+      "upstream": "pstack/automations/benny/skills/setup-benny/SKILL.md",
+      "upstream_sha256": "5a3cbe63360c9f6373b6cb6c79a1eaf7e0eba181bfaa1577e2e6431af3407282",
+      "kind": "inactive-recipe",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/automations/benny/skills/setup-benny/RECIPE.md",
+      "adaptation": "inactive Codex recipe; intentionally not discoverable as a skill",
+      "upstream_git_blob": "b05c26f4d4a39c16559f5ef2bbdd380adc923fda"
+    },
+    {
+      "upstream": "pstack/automations/benny/skills/triage-issue-reports/SKILL.md",
+      "upstream_sha256": "216a758b8711e64d19a55e6032c496527daac6364d010611040f3c04ef1a448f",
+      "kind": "inactive-recipe",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/automations/benny/skills/triage-issue-reports/RECIPE.md",
+      "adaptation": "inactive Codex recipe; intentionally not discoverable as a skill",
+      "upstream_git_blob": "d691672d00fb8f8f07fc17290d00ae49d1fd119b"
+    },
+    {
+      "upstream": "pstack/automations/benny/skills/triage-issue-reports/references/routing.example.md",
+      "upstream_sha256": "e5e53013692568cf69da8e8b302fff929fe2fbc9aec1a4651fd7997e2c7a4025",
+      "kind": "inactive-resource",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/automations/benny/skills/triage-issue-reports/references/routing.example.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "d71aea768c7d9452270ca4f11091a47e5750038c"
+    },
+    {
+      "upstream": "pstack/automations/benny/templates/configuration.example.yaml",
+      "upstream_sha256": "13e24b4ce9b9a0913916e85fe3b080b88d45f8e55dccfe8ae38e0751a997b6f5",
+      "kind": "inactive-resource",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/automations/benny/templates/configuration.example.yaml",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "8616f5fcced0ac57964467dd537a6ba80560a271"
+    },
+    {
+      "upstream": "pstack/automations/benny/templates/reproduce-automation-prompt.md",
+      "upstream_sha256": "71ec574f1844e379394ae4ef14c48d7df10afbaa319d395c788d7f856f0e6899",
+      "kind": "inactive-resource",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/automations/benny/templates/reproduce-automation-prompt.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "5c66c922d69f7323d0c78461480baaf45d7b1284"
+    },
+    {
+      "upstream": "pstack/automations/benny/templates/triage-automation-prompt.md",
+      "upstream_sha256": "e0bba594547834f013ec805915610eb597e7929efe3ffbe85ae00339ee16d474",
+      "kind": "inactive-resource",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/assets/automations/benny/templates/triage-automation-prompt.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "939e5e15c09f57d17cee00c9ed58b3679a268e0f"
+    },
+    {
+      "upstream": "pstack/docs/guide/01-setup.md",
+      "upstream_git_blob": "8f30116c0a059269c84cc1a067960e6326bd4a38",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/02-poteto-mode.md",
+      "upstream_git_blob": "48d25d041c8fa726cd0a23b7c3f93c56f2be30f0",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/03-understand.md",
+      "upstream_git_blob": "5231c6c2bdc9d69f7002a2d8cd1ece9be98daadc",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/04-design.md",
+      "upstream_git_blob": "681d39cff22438b4feb3d40a8d97017af026bc3d",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/05-build-and-clean.md",
+      "upstream_git_blob": "c38bc44a39fe5e6ace2cd228f631c7eb57ecccf3",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/06-verify-and-ship.md",
+      "upstream_git_blob": "d96c76612c647bfd33270d510440991946c508ed",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/07-overnight.md",
+      "upstream_git_blob": "43c46529c0a468065854dd9c65bb57f1c0334705",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/08-principles.md",
+      "upstream_git_blob": "97dc61cebecd1d31ac371d8e71c9b01b47602195",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/09-make-it-yours.md",
+      "upstream_git_blob": "6723069b5108f586575fe5353272ee6567a49b02",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/10-recipes-and-pitfalls.md",
+      "upstream_git_blob": "da0af5e6f7984d24818ef1cd28f518d0014da788",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/README.md",
+      "upstream_git_blob": "e376601964ae294fa7ce9607783eaec446d6eccd",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/images/design.jpg",
+      "upstream_git_blob": "f86909437f8b5a83da3cba7bc35a018c9d4887c8",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/images/overnight.jpg",
+      "upstream_git_blob": "d64e1c63066c9f088da909160f5e136049e9a512",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/images/recipes.jpg",
+      "upstream_git_blob": "69fe992fdb9fb8e7baacc144ea140f9c93b262fb",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/images/router.jpg",
+      "upstream_git_blob": "c8fba6a266505caf406d5185d7a4cc6e34be98a4",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/images/understanding.jpg",
+      "upstream_git_blob": "bb1b1ac15dd11da9ad047d203049a1a24abb2b46",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/docs/guide/images/verification.jpg",
+      "upstream_git_blob": "a252ae0b5e14cb6fcef2e3b806bbd66316242446",
+      "kind": "excluded",
+      "destination": null,
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+    },
+    {
+      "upstream": "pstack/skills/architect/SKILL.md",
+      "upstream_sha256": "9dc60bcf8d8d09000cdd88636ddb7371c576282880a8bb17993d2a1ea1900285",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-architect/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "7bda4347cbd78059bc8a39a23eede4f657f95adc"
+    },
+    {
+      "upstream": "pstack/skills/architect/references/design-red-flags.md",
+      "upstream_sha256": "905066f9bbac81c573c2b325be47751d2c0f9325e0a0772bd4384e82dafe9336",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-architect/references/design-red-flags.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "32cb24083f308fd67ab4c431b44e1d7d3563435a"
+    },
+    {
+      "upstream": "pstack/skills/architect/references/rationale-template.md",
+      "upstream_sha256": "6645a0e5f68c003298ec95b85a23262bdda0c79f998b926060169b54d9f23fbb",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-architect/references/rationale-template.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "1ddd50545c977264ac387ab805afbef257df03b9"
+    },
+    {
+      "upstream": "pstack/skills/architect/references/runner-prompt.md",
+      "upstream_sha256": "3ef8c1452a0382a15b7601c7c94f2a16a00954170d705b7af8cc49ac78080ec9",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-architect/references/runner-prompt.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "d2daeee48c50f31825fdb0645e0df05c08e37bb6"
+    },
+    {
+      "upstream": "pstack/skills/arena/SKILL.md",
+      "upstream_sha256": "c090878efc50d71605e8be518d12e71d00b451b76c2fd38ea9e0bb2a3e2f6cda",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-arena/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "a38fea089bf47d2eb76613b1c599063def84c733"
+    },
+    {
+      "upstream": "pstack/skills/automate-me/SKILL.md",
+      "upstream_sha256": "34e7eab6f495093d474817bc4c13f26bcf5fafa439f2761b8c1ec72b07487764",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-automate-me/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "56829250c1fdce1ad72456d5421e1f1e5142373f"
+    },
+    {
+      "upstream": "pstack/skills/blast-radius/SKILL.md",
+      "upstream_sha256": "b060df3ca85803eabbce9fab53f5cc024ca8d784bdde5513c1c1a784947523f8",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-blast-radius/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "4b24c77e102955af19ae60aa10af642f69eaa8ba"
+    },
+    {
+      "upstream": "pstack/skills/bro/SKILL.md",
+      "upstream_sha256": "aa329d0ceeeecb6822a7174ad76bb07a7826a3c52ceb6a588dec4138815084bb",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-bro/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "b1701b778639c08bfc306291d70170c525c66a68"
+    },
+    {
+      "upstream": "pstack/skills/create-verification-skill/SKILL.md",
+      "upstream_sha256": "644f2551403c1bca01a2855b34611b6e7be0ce0dc5b204514c376c0f6a6e6ac4",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-create-verification-skill/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "f869e26122991252373d5b8f6357e5b9ff195a00"
+    },
+    {
+      "upstream": "pstack/skills/create-verification-skill/references/feature-map-example/README.md",
+      "upstream_sha256": "cb7bd782cf89968a4ba3d58a5151db837430db92d19a6f52a906973b77b516ba",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-create-verification-skill/references/feature-map-example/README.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "fb64570cfab3bbe672fe80925651933ebd57aa33"
+    },
+    {
+      "upstream": "pstack/skills/create-verification-skill/references/feature-map-example/create-note.md",
+      "upstream_sha256": "644a44c74f35d38c2feb7cd05a0121fdebbb623e8dc376c185b565a581d1ccf7",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-create-verification-skill/references/feature-map-example/create-note.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "21357566b69223a503d6780a04fb90ce540eae22"
+    },
+    {
+      "upstream": "pstack/skills/create-verification-skill/references/feature-map-example/search.md",
+      "upstream_sha256": "6e87b9e7f2791a7776ba1bb83f371cd285c306c67f19d245cc4dd6ca3015c823",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-create-verification-skill/references/feature-map-example/search.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "1f8e57d3aaf19cf27a9464d55fa72e46bcbc8b0f"
+    },
+    {
+      "upstream": "pstack/skills/figure-it-out/SKILL.md",
+      "upstream_sha256": "548616d04909de854f36869af2af127ce321fc6aaf95ea5a626997709fd46a2a",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-figure-it-out/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "6ffc04db212737584aac966c69c53836757fa545"
+    },
+    {
+      "upstream": "pstack/skills/how/SKILL.md",
+      "upstream_sha256": "3a554ff564d66a4200a07e20164558e820ea7a9795beb98a4a06546146c98f5f",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-how/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "7da56ddda31197fe6c9c54800f579c57e503ccc6"
+    },
+    {
+      "upstream": "pstack/skills/how/references/critic-prompt.md",
+      "upstream_sha256": "aa77a15590814c814bd5cb074842029ab7b790c2e8379050525bdbc20739d1bb",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-how/references/critic-prompt.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "e17298e8499d919d7700d06334d0c3d1744c4bfb"
+    },
+    {
+      "upstream": "pstack/skills/how/references/critique-rubric.md",
+      "upstream_sha256": "5774ff2caf51796e54c4a61b63620a165de5801f23c8f47406e527abfbe9addc",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-how/references/critique-rubric.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "b4d452f536de805107d3b96fc0772e9bbc1c1209"
+    },
+    {
+      "upstream": "pstack/skills/how/references/explainer-prompt.md",
+      "upstream_sha256": "04336086e7c415394459ca2f461717d920e15339517dbf5a56ca042f8b4fead3",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-how/references/explainer-prompt.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "868c737894352bc4f9a401eb0c3ab2051f2be37f"
+    },
+    {
+      "upstream": "pstack/skills/how/references/explorer-prompt.md",
+      "upstream_sha256": "fd1218b8cf1f467c644d4ce6fa5e54e6089ede65a28fbbae61f6ee7a2d462f85",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-how/references/explorer-prompt.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "80228270978dcd403bae34ed22b0f517fd38a6fc"
+    },
+    {
+      "upstream": "pstack/skills/interrogate/SKILL.md",
+      "upstream_sha256": "c9a42c706a84cab50d3cf1c7cf91149bac2e0d2ad24da2b8ff518ea0918ae3bb",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-interrogate/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "4e23d35ee2af0188b52654e7467e508261789c42"
+    },
+    {
+      "upstream": "pstack/skills/interrogate/references/code-quality-review.md",
+      "upstream_sha256": "2462f1347b99b412b04fcb0577b96d8744c801f792f2651746f9409fd4465dc9",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-interrogate/references/code-quality-review.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "569c9a4915dbbca8f02ede9359e1bad733fd7959"
+    },
+    {
+      "upstream": "pstack/skills/interrogate/references/lead-judgment.md",
+      "upstream_sha256": "d2cea6cc308758201c6b8b82baf780947645f1ab752707ddf97fab374bf473f9",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-interrogate/references/lead-judgment.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "ea6262ebe540a156e7b12f6b353f92ad621114a6"
+    },
+    {
+      "upstream": "pstack/skills/interrogate/references/reviewer-prompt.md",
+      "upstream_sha256": "a397cc61102add709803d917fb23d726920525bf23e7c06dc4ed0b5cbeb00e54",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-interrogate/references/reviewer-prompt.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "53ffa747ff6af72ed24cc00e2622b2c14dd564a9"
+    },
+    {
+      "upstream": "pstack/skills/interrogate/references/rubric.md",
+      "upstream_sha256": "a67bf02426f88714634ff481d667db821d4b2cea7b335bcd165fe3126e427fb5",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-interrogate/references/rubric.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "0f63289b7138bd300ed302ebfb919f67c7f9cb83"
+    },
+    {
+      "upstream": "pstack/skills/maintain-verification-skill/SKILL.md",
+      "upstream_sha256": "515c0eaa054b3f6be1b1fb06f2c2f173c80fddb58bbcac57576f89c479bc68e8",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-maintain-verification-skill/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "a2680b91fead45a0b4963d8c367a854956bea59d"
+    },
+    {
+      "upstream": "pstack/skills/make-bot-ui/SKILL.md",
+      "upstream_sha256": "3624c8ef16cf2e48deb2a4049e72c6962a9431c8d6c6af90e7bd7ea0375224ec",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-make-bot-ui/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "285df7569758a70e62e9f3596a1f829a5b6ba80e"
+    },
+    {
+      "upstream": "pstack/skills/no-comments/SKILL.md",
+      "upstream_sha256": "72d3b153712ab641875f1d7424de0f77375af1cec03707935f08fa7d8f17bbf3",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-no-comments/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "a14bdda050e71788638733d3b7c342be7f7a2523"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/SKILL.md",
+      "upstream_sha256": "7c4ba1987c39044947946f7cf8399acfcea156672e5ad92bbaacb448830ca954",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "930bea154f48180ce5c112a180e6e9d823474df3"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/authoring-a-skill.md",
+      "upstream_sha256": "5479e2b3914acccbafd70f8be56520e1774775d9527f79ac255fd31ec554538a",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/authoring-a-skill.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "0fc01383d072ceaf72b697076953d7376f162256"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/autonomous-run.md",
+      "upstream_sha256": "e4d9e2fc9195dbc521131021c23c6c53d66390048ca3e58be79bdb3d47b9d737",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/autonomous-run.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "bc68ad73435547747876a84d0283b62f8e51cdb9"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
+      "upstream_sha256": "0fbebbd42feb5be7771307ad48edc88f26b257309e86c0a3d6184f36c957da72",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/autopilot-full.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "56f3a6581f432ff9752de1cc27ce02bf866b76a7"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
+      "upstream_sha256": "779fbc9525db85eccda650535cdfc77426b107ace8e76d810681e24485c23105",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/autopilot-stack.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "8599a482a7537d8e4fe6ce6cdb74f69bab719f7f"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/babysit.md",
+      "upstream_sha256": "afd5d1af6deda89dfdb1092c8311c0f89908ec708d7c052817b20a31ab996773",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/babysit.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "5b162dd3145963138c25d30ba68b02d20250872c"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/bug-fix.md",
+      "upstream_sha256": "283bd4013dc13bba1b80844b0aec9e078b9c175dcaa8fed14a08566856346515",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/bug-fix.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "d0d05e4beef994deb65b5063a9255329b7f8b5e5"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/eval.md",
+      "upstream_sha256": "4881699e688353f7f5c64ae6f4db20fe96bf7267b2a77ce5a6198d2abf218ed3",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/eval.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "fe18dd589045fe7400e1af3385f3e6dbe0d6e63a"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/feature.md",
+      "upstream_sha256": "a2a04c2e4b273c0c33e4e3a22940049b60b917b064202e39bd34018356aa0926",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/feature.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "77dd564f1f7f4c9969a823449d4848434beaf92f"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/hillclimb.md",
+      "upstream_sha256": "12f8f7a08098f0b5b3e5b61c98fadde8609bf05554b4d73efdd696cdb4e83f10",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/hillclimb.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "c6adf1f3261849f0511a8796613536b4ce20fc0d"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/investigation.md",
+      "upstream_sha256": "bb28bfe2912511dbb777057326a8ccff3ef279d219e52271dcb5b10f68a38b5b",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/investigation.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "2f1e9ec991597c1263a842517754e75d4f09f671"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/multi-phase-plan.md",
+      "upstream_sha256": "1f09461cb4dc2b1588fd22b8277a9f6da33ac25add8e505ddfe9df6af034022a",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/multi-phase-plan.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "fb1d8b03f63b7c55d696780d96547bfeaae6332c"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
+      "upstream_sha256": "0603d41ddc067fc3c11965c2696e8f7ccb36ade7f6325e2f6bbaf9e635b9ce96",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/opening-a-pr.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "10ab011f6e391178f5844df387907ae044a27154"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/orchestrate.md",
+      "upstream_sha256": "8e2911af902df273504b1589747c13395229bcadc3e1e9448678a75f714dc9f6",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/orchestrate.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "fcd5a3e15b6cf5d0a88197119a82b09c52ca0984"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/pause-safely.md",
+      "upstream_sha256": "5a34883f8daa41596c0f69387f60c083fa826f90004e14952b8c831651a69b3c",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/pause-safely.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "b125efb8072e35d34639835d5bffddfc823cbd0a"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/perf-issue.md",
+      "upstream_sha256": "3c1e7a4d7d273e6160cc4cfab58db3b7cef9e2a6099930012eed1c90e8c3de16",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/perf-issue.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "62f81bb2844f6211c07156143a27b590b69f414a"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/prototype.md",
+      "upstream_sha256": "0e539b57aa33deb09472e10ccab2a20cd166a86bea94c50e0b8be39e41164d33",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/prototype.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "0f0a888396f2ff1da11a56bb694ee65eb51529f8"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/refactoring.md",
+      "upstream_sha256": "437b86120a8044e85aabf77933d03ab8862d0b3635b0aece69cc3b98914ee7a4",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/refactoring.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "70d74ac869d6a71bdbccfb0cfcbcfb086d9ed9e3"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/runtime-forensics.md",
+      "upstream_sha256": "96ac9a3a368e6a31d8a7aa56055e6f7f75e8e773c21b65c0f941c26403c8d105",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/runtime-forensics.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "76ebfb3a8c661fea4ab619968a1ac566797344d7"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/session-pickup.md",
+      "upstream_sha256": "c1a4aa69e32e2950fb66f7351b5cea7bbf8acff9c2aed4a4623585ed688fbf1e",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/session-pickup.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "b75ce11a1fba2f5deff43c272e1d40303524bb09"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/shipping.md",
+      "upstream_sha256": "802556ac81c20fd7c2f5701d4583207943106eaea86fb8eca53f2aad1f00685a",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/shipping.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "ac3fb6d0e11275319453af68ea19aafb6532145f"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/trace-forensics.md",
+      "upstream_sha256": "fcae1f68f349072a8b2518f09b73dedeb826192d2ec33befb8906f42292e38be",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/trace-forensics.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "10f8209e3d9c0e6b50056c92a28d89d56f5a31e6"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/visual-parity.md",
+      "upstream_sha256": "33165e74665bf8ddec181598c2b21b4a1cd310b1adf23742af90ac0d10652b39",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/visual-parity.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "ec4a449efdf4f1a3d4b81dc19797d7866545db95"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/playbooks/worktree-cleanup.md",
+      "upstream_sha256": "b3a3b23f23972c6db490edc0403a0d717990871308fd57d69bb8438725df5dce",
+      "kind": "playbook",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/worktree-cleanup.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "9f6be47290b138c30ed8bb7338cf15173899147a"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/references/bugbot-triage.md",
+      "upstream_sha256": "b2d146c770d8d3593e1ef3d77b668039b8e1f78093ea1a86f1d45d7f99614309",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/references/bugbot-triage.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "b2fc7d35712783707607cf2f39752885c8d5105c"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/bootstrap.ts",
+      "upstream_sha256": "ccd2ed08fd9da9d0d942e5f2491cfc74bb92d8a08fa51755e0da1ac8de287361",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/bootstrap.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "d9c63e2007449a80000abe75ecaf7f2a0bd5826b"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/bun.lock",
+      "upstream_sha256": "667d9cf7222e9aae3fa42a4be383e657784216e9df115da02227fbc5ac7bbe46",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/bun.lock",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "65f0c662f300a0f72b319ca93ea18f56219c2581"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/check-plan.mjs",
+      "upstream_sha256": "4f5118edf719b481983dc87dfadd5b4b5473d05aad04a7ba65191ff9c73faf1b",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/check-plan.mjs",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "21d350ac155928bbcf8d29dce193a97974f12748"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/orch/orch.test.ts",
+      "upstream_sha256": "174b86d21ff51ccd28d1a8c938cb2e0c6fa287b209d4ca6c03932fcb1b53372e",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/orch/orch.test.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "9c234de724991083b4644e906a5f1358f8ef8dcc"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/orch/orch.ts",
+      "upstream_sha256": "f091687df627a0b75fabd54af58945a9cd6c7039ef0622012ac9ed60cd8ec434",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/orch/orch.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "219ac17bd8805b45140eca7c429834be9ded1b7d"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/orch/store.ts",
+      "upstream_sha256": "0eae7cf69282e827b1227166f2e32cee3560f2f3e65b3f1f2faf6fb83d3b4c5b",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/orch/store.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "5e6c602fb670a6b5598977f5bf85d717cf797ef7"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/package.json",
+      "upstream_sha256": "d1f815091209d49763775cc188e8e06ff32d5fec648bffd2272bc25a165e87c3",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/package.json",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "8a3dfe27c2d0221a786e1ce61963d51c55260725"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/watch-pr/cli.test.ts",
+      "upstream_sha256": "a35592b4c6da96caf8d47987e9cd503fab6c7774ab87d11a43f24b4b5df2a9d1",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/cli.test.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "0656b413e6c180858ca42981105944c45caf9dca"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/watch-pr/cli.ts",
+      "upstream_sha256": "89c08863089181a232be782c4b2ed90a1552f44aeecb0dcb7aac2c623620e680",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/cli.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "ec8a2f27c5ac24866b699e6395e7d1f32e595068"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/watch-pr/fakes.test-helper.ts",
+      "upstream_sha256": "e53e31b7f03068063f53a99a3591b052aaed66e4e2b196b3a364980f60324ab1",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/fakes.test-helper.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "2312522cd7399334115a5f39fd6438aab7fc5aa5"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/watch-pr/github.test.ts",
+      "upstream_sha256": "0cbce011050522938523e36bb42a260e92b812dcd2076930fa681672ad316b24",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/github.test.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "87f4048f08a63a54975c4ef2de8065375e751683"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/watch-pr/github.ts",
+      "upstream_sha256": "d1bbbafbe8e2c703c84da2029de7f2c4011412512f8cf65a42100f46bcb92c8a",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/github.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "79bc06fb682c5d99de7d48338b0a6ecd27a518da"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/watch-pr/policy.test.ts",
+      "upstream_sha256": "a9fedb25feefd1f57ef6a662f80c99018690170a3a8070773a08eaf694d1d3d9",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/policy.test.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "0620ddedde46da8e763ab2a55ebceaad2aa6d0a7"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/watch-pr/policy.ts",
+      "upstream_sha256": "68d240505852cf23c9b2dea463342e9e61243f486b3cc86c735d140f9ee7be49",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/policy.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "4665be37e8f9afff1c9e1f5dd60d98e0d70c8c6c"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/watch-pr/render.ts",
+      "upstream_sha256": "2b709e86628d5b8fdb61f860e60ababc342b0626c67576305442cf548283a604",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/render.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "0e935839357335f24ab1bbc193d761495646ea99"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/watch-pr/tsconfig.json",
+      "upstream_sha256": "1ecccc72320b086c63ce3f73c959896fd747363e63553b3b1136296ea4069e45",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/tsconfig.json",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "477af90b05cbd24fcf974fd73cf331d5ac7379cc"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/watch-pr/types.compile.ts",
+      "upstream_sha256": "621af4c9a664fbf699a9737efccdc248abb416df8819c9dc5f824beae2b9b1d6",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/types.compile.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "1b53279c7f3e5da55703ed17d6ad0616254c5751"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/watch-pr/types.ts",
+      "upstream_sha256": "64ba6221e3bfe61bbb292337d199cdec6309455477280efb060203dba34e0e91",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/types.ts",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "b67144e0d757e0b61ff079f981ced0a98555ea9d"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/watch-pr/watch-pr",
+      "upstream_sha256": "d955603be6cc0e8b8ffcec722f635192b2261410b1f2929abea94480e47eb5d4",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/watch-pr",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "99807d577c3b006cfe6ee9e149cf2914bfd4afd6"
+    },
+    {
+      "upstream": "pstack/skills/poteto-mode/scripts/worktree-audit.sh",
+      "upstream_sha256": "95b8530f3c0ccada8cabc4b0727c052fbc85c141531375aaace65c427af8aecc",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/worktree-audit.sh",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "b9af08160032aeb17143248f2a3648e98f5a75b3"
+    },
+    {
+      "upstream": "pstack/skills/principle-boundary-discipline/SKILL.md",
+      "upstream_sha256": "ab3c690ce361542ca00446b8406f5afd47776f544b8ce06a9ef2eaa2338bde6d",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-boundary-discipline/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "84d526ce7ea45d207587e80015912d5a01714e21"
+    },
+    {
+      "upstream": "pstack/skills/principle-build-the-lever/SKILL.md",
+      "upstream_sha256": "3a0b02b1b890538810f27d00c525b2e677bb5d931f602fd7a774d5cd13b61c93",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-build-the-lever/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "8ba6740bd3bd9b2e582080bce0917cc4a7293d2f"
+    },
+    {
+      "upstream": "pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
+      "upstream_sha256": "4acdb3f466efd0a433899aafce3e0f100566228b63ccff43f363a83e80624d81",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-encode-lessons-in-structure/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "86a22f21146d358fc18afb2a0186da61470c3241"
+    },
+    {
+      "upstream": "pstack/skills/principle-exhaust-the-design-space/SKILL.md",
+      "upstream_sha256": "8583310d7297b7823d75494faa57b003564d436807febecdecbd8321abe5cf6e",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-exhaust-the-design-space/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "85dd16f1312f3427e2dddcfc8e7deb89e2555bb3"
+    },
+    {
+      "upstream": "pstack/skills/principle-experience-first/SKILL.md",
+      "upstream_sha256": "f8d643ddf2f6aa91d9607d1bb340fd2baf227d702e9738848b85312a312bb971",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-experience-first/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "be15f055d536721bbda859be3e3d202e78a2e001"
+    },
+    {
+      "upstream": "pstack/skills/principle-fix-root-causes/SKILL.md",
+      "upstream_sha256": "cfae13b5a3e27bc88d069092cae97b3e95246879d5bf14f0e9a4db719c781952",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-fix-root-causes/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "5b3b7916c961c231e7ce1430cd93541204ec0ec0"
+    },
+    {
+      "upstream": "pstack/skills/principle-foundational-thinking/SKILL.md",
+      "upstream_sha256": "a522488c9d4481e8bfcbe35cbf3838169c8e3801ee0738ae2859067684144579",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-foundational-thinking/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "3fcc57b3a54dea965e245dad966cab423f768b11"
+    },
+    {
+      "upstream": "pstack/skills/principle-guard-the-context-window/SKILL.md",
+      "upstream_sha256": "291d0125125eabbc2109c880b1c1083aa95826187119a648b26c1c8ea6367179",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-guard-the-context-window/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "0862757bbb63e314f13f18528c25db85d0901078"
+    },
+    {
+      "upstream": "pstack/skills/principle-laziness-protocol/SKILL.md",
+      "upstream_sha256": "8999fda9fde65fd905835c86e3bfc64190369a84bba30b1e93769f39ad6580fe",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-laziness-protocol/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "16bbb97426d1bbcbf957c032f0629a96a4709753"
+    },
+    {
+      "upstream": "pstack/skills/principle-make-operations-idempotent/SKILL.md",
+      "upstream_sha256": "540738217c3da7bf513b9886924ad6a2bc77e58be867f5bd2e1831c74bf2ce70",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-make-operations-idempotent/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "a0834247ca99b09c11441747717a8034d4c22d7c"
+    },
+    {
+      "upstream": "pstack/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "upstream_sha256": "e29b6b6534a23dcaf8c7e16fc25d6484000d7b6e289c48eb0a32a97280633c5d",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "a0c6e65e1eaf58278fa6bac1a01c23f998759f5c"
+    },
+    {
+      "upstream": "pstack/skills/principle-minimize-reader-load/SKILL.md",
+      "upstream_sha256": "480f4ddec29e7e3058a8f17eb97c0cec4a2c8b4b33ba6401e960167c1fc95a81",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-minimize-reader-load/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "1c5e18c332438ccd5e47f108ec28872e85e82501"
+    },
+    {
+      "upstream": "pstack/skills/principle-model-the-domain/SKILL.md",
+      "upstream_sha256": "6b359783c5c9be87860d0999321e864940ff17729b9f9a27f38abae449640022",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-model-the-domain/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "b2f6449498505a866592493ff3f3a10cfdd8ce5c"
+    },
+    {
+      "upstream": "pstack/skills/principle-never-block-on-the-human/SKILL.md",
+      "upstream_sha256": "f656f3b7581df55e79f53cc47df93905c3a940b822c25071ba95f40e530d102a",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-never-block-on-the-human/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "0c55555f85d6636cc26429cc18016ffdafaff576"
+    },
+    {
+      "upstream": "pstack/skills/principle-outcome-oriented-execution/SKILL.md",
+      "upstream_sha256": "beedcaed75572a6a1662d47f16da203c2bd2c9dbffbbd678d4ba187d67b7e670",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-outcome-oriented-execution/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "4c2ed4695b4ca15ea5a98468c13bfe5de97f16df"
+    },
+    {
+      "upstream": "pstack/skills/principle-prove-it-works/SKILL.md",
+      "upstream_sha256": "9bbe6138505be34d81e9395d95d3639b384f71d71d65cc1903075126e1da1508",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-prove-it-works/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "088c412cc38eb37442914a71d9e05bc6ee430a1b"
+    },
+    {
+      "upstream": "pstack/skills/principle-redesign-from-first-principles/SKILL.md",
+      "upstream_sha256": "9ae97b35d6338cc9e34c7023c995a39cb7afdaf4bfd41e1d3d665da04d7515d5",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-redesign-from-first-principles/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "6a8cf256d69d0d5f2ce4b57795f2794c41c8e5a0"
+    },
+    {
+      "upstream": "pstack/skills/principle-separate-before-serializing-shared-state/SKILL.md",
+      "upstream_sha256": "5b14fd656441580061f760968c828f3f4ba034242d8fa06b544763efb25e89ee",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-separate-before-serializing-shared-state/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "523591e0a1bda493598292358bd2142277fdbd19"
+    },
+    {
+      "upstream": "pstack/skills/principle-sequence-verifiable-units/SKILL.md",
+      "upstream_sha256": "7478f8160ba5701ca40c742a81e90aff12d45f53ac9191e80ad79b9763e4489f",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-sequence-verifiable-units/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "737480800564d634347afdcef25dd48851e9f2eb"
+    },
+    {
+      "upstream": "pstack/skills/principle-subtract-before-you-add/SKILL.md",
+      "upstream_sha256": "3999888dc21ced33b86054c2ffde1a3cb438e16bed1213f5dab2b5c000446292",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-subtract-before-you-add/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "1666d2617dbc9cf107ecb52aac30b6ffbcc1159b"
+    },
+    {
+      "upstream": "pstack/skills/principle-type-system-discipline/SKILL.md",
+      "upstream_sha256": "662ed1ad53fb491e97b9c4eac7317fba8ec5ed722fec8d71beb94da0111619cf",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-type-system-discipline/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "192a1255709e105cd055543b058b9e1bf66d84e1"
+    },
+    {
+      "upstream": "pstack/skills/recall/SKILL.md",
+      "upstream_sha256": "90d290daec500f548a167bbd20d69a3a248e345c546ca847ca12967d1c99cbf3",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-recall/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "7e3f26595160dac08bfc3287cef48d7e75b74dfa"
+    },
+    {
+      "upstream": "pstack/skills/reflect/SKILL.md",
+      "upstream_sha256": "5c0fd61b383a2cf98dfd597544c6fc0fdd6eb90802f1ada4f92fa0762c323ebc",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-reflect/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "3e056e97eb55103db24b2d5f99e5f1edef9d38ef"
+    },
+    {
+      "upstream": "pstack/skills/reflect/references/divergent-reviewer.md",
+      "upstream_sha256": "823167d485c8fc424530ac4eff447f132a10e318a2db35380312c7e843f17683",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/divergent-reviewer.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "70cfdff377e793208f7daa581caf8a7fbdfb2dd1"
+    },
+    {
+      "upstream": "pstack/skills/reflect/references/judgment-reviewer.md",
+      "upstream_sha256": "8db7a315ccf9280486b4df08b1277ba0fe4c4ac533ad3719945aa1aab2ebddea",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/judgment-reviewer.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "76261f1690adc8b8f845113466dd9e80c40f7103"
+    },
+    {
+      "upstream": "pstack/skills/reflect/references/synthesizer.md",
+      "upstream_sha256": "52767b4566c37df0adc6350fff1c5c7a919a1178c2be539e0efbf920f2803702",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/synthesizer.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "11040b0f4dc639517b569b55460f4a128f503e2a"
+    },
+    {
+      "upstream": "pstack/skills/reflect/references/tooling-reviewer.md",
+      "upstream_sha256": "3a4dc9e87d0d74b46d0d0bc2c1af6acba10be7c95d1adafeab6ec5701e247933",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/tooling-reviewer.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "19f4aa48775da3409116cc05a2162dc3d361c839"
+    },
+    {
+      "upstream": "pstack/skills/setup-pstack/SKILL.md",
+      "upstream_sha256": "6ed4840c3005fd455e347d2a97d7fc271df7e21ecadf3298a7e2b3d46dc58701",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-setup/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "6dcaef578f2075558a8da57a21f97a62590d07f1"
+    },
+    {
+      "upstream": "pstack/skills/show-me-your-work/SKILL.md",
+      "upstream_sha256": "b99833c41a8781a6af191487f1af37711a3198b98f9373e3c02292b8a6e09aba",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-show-me-your-work/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "8a9c731acf5bb7ad789e10ec7c5af6970dce1176"
+    },
+    {
+      "upstream": "pstack/skills/show-me-your-work/references/decision-log-template.tsv",
+      "upstream_sha256": "6779378006a2f5225e8c06deb84f1d913fb532041ebbb6e50d94600bfe3f4b76",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-show-me-your-work/references/decision-log-template.tsv",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "db220376ecb8c582a6a4f6575a8f26469603a38d"
+    },
+    {
+      "upstream": "pstack/skills/show-me-your-work/scripts/log.sh",
+      "upstream_sha256": "1601bc18f9aba0af3f5d6375e4f2d5dc6102334d1bca935026c0e3547cdadbbf",
+      "kind": "script",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-show-me-your-work/scripts/log.sh",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "523e2a74ee15bfe6528c795a347827f04ecc5e95"
+    },
+    {
+      "upstream": "pstack/skills/swarm/SKILL.md",
+      "upstream_sha256": "8e6494e296af5496cacb0fb83f33f647c84286d2e1d1b85580bc0f0f577a81cd",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-swarm/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "b7e61ec7bc46629930582a50f12a6b9f1f28a368"
+    },
+    {
+      "upstream": "pstack/skills/tdd/SKILL.md",
+      "upstream_sha256": "adad031f9e79d7f7389fa128f7af8e03344831270e282cf4e40bdacb8418c386",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-tdd/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "7d923bd705e4727b0bc9a378ca0928cc825035de"
+    },
+    {
+      "upstream": "pstack/skills/teach/SKILL.md",
+      "upstream_sha256": "0a5987b0588dc56e14bfd84d0300e2ab405abc7c5c2aa81e0d3d7c6b243db7a7",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-teach/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "beea0ffaa916e8fcf93f2bf13c632f2a9259d1e2"
+    },
+    {
+      "upstream": "pstack/skills/technical-writing/SKILL.md",
+      "upstream_sha256": "bd0cb21034f4fe6695cfdf8cd3561026eec943f0bb6e9300bc78a2b3340865a7",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-technical-writing/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "d13baf98426a72764f94d18ab45d1549151a6c38"
+    },
+    {
+      "upstream": "pstack/skills/typescript-best-practices/SKILL.md",
+      "upstream_sha256": "b854da40f946f1cd4681785d3e802a2a592322d351f770f5057b56430edb35d0",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-typescript-best-practices/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "2912734bdb985ac217849e8581c7a7e0aa7383a5"
+    },
+    {
+      "upstream": "pstack/skills/typescript-best-practices/references/patterns.md",
+      "upstream_sha256": "eb73b5f3514c0c14d14bafca59ffb54b161422ea5fc5fe65e60c5b4d71c40178",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-typescript-best-practices/references/patterns.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "15c3e1118055ca2f2d353b968004fc4a46491248"
+    },
+    {
+      "upstream": "pstack/skills/unslop/SKILL.md",
+      "upstream_sha256": "2789ab80477b7e382292e4d7acca1057784df19713fffb74622ff0f83b2f3733",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-unslop/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "ccb0c5563ff0fe7a04e2f95f27bf681df86240a9"
+    },
+    {
+      "upstream": "pstack/skills/why/SKILL.md",
+      "upstream_sha256": "a9423bb7bab7c3280d17478ebe97bb283ea6ed12d9dcae590fc2f81f41660990",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/SKILL.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "3aea3f7d3f51421f7860c00e775f00acc45a58cc"
+    },
+    {
+      "upstream": "pstack/skills/why/references/epistemics.md",
+      "upstream_sha256": "ba99dcdc4fbce91a83b50fc0c9b2c5769febd95540b1722c6b87fe8f900bb60a",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/epistemics.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "aca563ef9fe4ce27797a73027c6fb38b6d93e6f7"
+    },
+    {
+      "upstream": "pstack/skills/why/references/investigator-prompt.md",
+      "upstream_sha256": "e35d8eaea13f0a027dd35572d525e9f66e8f8918ca9e555237dc228f26278d5f",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/investigator-prompt.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "1886b46deb20ef1f13d409a0ad7f6c3fb885eb6a"
+    },
+    {
+      "upstream": "pstack/skills/why/references/source-playbook.md",
+      "upstream_sha256": "3cfb0245d5b2019eeeaa7a0e023579d390f2cdcdff6942d2fe009b9efac0eb11",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/source-playbook.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "bcf11e1315e7774651649dbf91b67213463c8073"
+    },
+    {
+      "upstream": "pstack/skills/why/references/sources/code-archaeology.md",
+      "upstream_sha256": "8c14aa382f0de40829b2668d43e3f54814480bb93a486c9282ada4003f6b9dbd",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/code-archaeology.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "32d5f97f8d2d3974c668f5f0392737b7e8e25afd"
+    },
+    {
+      "upstream": "pstack/skills/why/references/sources/databricks.md",
+      "upstream_sha256": "269a22032f027ee30a33c1b5e30443d13dd6d127ff20d8d1e8a20715b06a69cc",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/databricks.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "5e82b90536b81f395c74aa5f98c387bc0d5d5d79"
+    },
+    {
+      "upstream": "pstack/skills/why/references/sources/datadog.md",
+      "upstream_sha256": "db80803f1635a5015e3190f4753c4228083e6cebf222c84e24fc3c3919aa5574",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/datadog.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "039330e8491430a34167005c55a0baa29f7eeb67"
+    },
+    {
+      "upstream": "pstack/skills/why/references/sources/incident-postmortem.md",
+      "upstream_sha256": "486132457d3782eea64292ce7a2d3bbe3b24b372b20ca00de4329e820f74cd42",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/incident-postmortem.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "e5afc3204ba7e2b15b01e5abc538d26d8b1b3b53"
+    },
+    {
+      "upstream": "pstack/skills/why/references/sources/linear.md",
+      "upstream_sha256": "7e1b72ba459089168efd701502f8c268d2481154aeeda1ddd84f840f7e974760",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/linear.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "c000efd5aad749a4483e2563a63d460903eae124"
+    },
+    {
+      "upstream": "pstack/skills/why/references/sources/notion.md",
+      "upstream_sha256": "2ce336dd3052967187a56ec33d308c7a69e7ef3b04ba7b17386a8b3914a0f000",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/notion.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "ea6ab335c40834ba79e0085ae2d7a94950502f49"
+    },
+    {
+      "upstream": "pstack/skills/why/references/sources/sentry.md",
+      "upstream_sha256": "0eef902cb0f835f7fa9bd85a8e19ba1505d05e59a0173dfe852d8d52d828266d",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/sentry.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "fe09d17254e7653a7c75f855cecc779d5512a02e"
+    },
+    {
+      "upstream": "pstack/skills/why/references/sources/slack.md",
+      "upstream_sha256": "60e4c8dbb941f563c86aec7267cde66443b1dc651422569c8d112bc9da7551f6",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/slack.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "d4a5f23646053516bb1235f06dcf697b49acda23"
+    },
+    {
+      "upstream": "pstack/skills/why/references/synthesizer-prompt.md",
+      "upstream_sha256": "fcdc69ede22f94da9e22f510bb0c4a75a63820f0b49b8d5fd54a196b4010bf2a",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/synthesizer-prompt.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "dae7efc580f5bc8e63b2fd28a1462fe2b8445d07"
+    }
+  ],
+  "source_file_count": 158
+}

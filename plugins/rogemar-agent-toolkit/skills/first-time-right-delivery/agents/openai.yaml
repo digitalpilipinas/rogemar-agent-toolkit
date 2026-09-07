@@ -1,4 +1,4 @@
 interface:
   display_name: "First-Time-Right Delivery"
-  short_description: "Plan, build, review, and ship code with evidence gates."
-  default_prompt: "Use this skill to plan and execute this coding task with first-time-right quality gates."
+  short_description: "Keep requirements and acceptance evidence aligned"
+  default_prompt: "Use $first-time-right-delivery to check this task's acceptance evidence within the current plan."

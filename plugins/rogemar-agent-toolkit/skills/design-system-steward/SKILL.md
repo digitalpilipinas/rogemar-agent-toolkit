@@ -5,6 +5,13 @@ description: Use for design-system work involving themes, tokens, components, ty
 
 # Design System Steward
 
+Own tokens and component consistency within the existing coordinator. Use
+the settled brief and visual contract. When an optional OpenDesign style or
+craft bundle is selected, read its real manifest, token files, references and
+asset/license constraints; its name alone is not a specification. Map useful
+guidance into the project's existing system instead of maintaining a parallel
+palette. Native OpenDesign prompt injection is available only in that host.
+
 ## Workflow
 
 1. Inspect existing theme, token, component, and icon patterns before adding new styling.

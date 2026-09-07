@@ -1,0 +1,4 @@
+interface:
+  display_name: "Integrated Workflow"
+  short_description: "Execute approved programmes through verified merge"
+  default_prompt: "Use $integrated-workflow with my approved plan and compact controls for database scope, main delivery, external review, simulator QA, and physical-device QA."

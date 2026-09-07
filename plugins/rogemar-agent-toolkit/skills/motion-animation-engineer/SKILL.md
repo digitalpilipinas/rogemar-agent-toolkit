@@ -1,6 +1,6 @@
 ---
 name: motion-animation-engineer
-description: Use for app or web motion work involving transitions, animations, gestures, haptics, shared-element movement, React Native Reanimated, Framer Motion, CSS/Web Animations, reduced motion, animation performance, and motion QA.
+description: Use for app or web motion implementation and focused review involving transitions, animations, gestures, haptics, shared-element movement, reduced motion, animation performance and motion QA.
 ---
 
 # Motion Animation Engineer
@@ -8,6 +8,12 @@ description: Use for app or web motion work involving transitions, animations, g
 Use this skill when motion is part of the product behavior, not just decoration.
 Prefer the repository's existing animation library, design tokens, timing
 patterns, and accessibility conventions before adding dependencies.
+
+For a focused motion review or a consequential timing/interaction decision,
+read [motion-review.md](references/motion-review.md), adapted from the
+MIT-licensed Emil design engineering and animation review sources. Keep its
+findings in the current task's review record. A review request does not imply
+edits; a numeric timing convention alone is not evidence of a defect.
 
 ## Workflow
 

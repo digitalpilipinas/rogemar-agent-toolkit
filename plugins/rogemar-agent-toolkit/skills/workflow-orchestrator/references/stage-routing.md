@@ -9,9 +9,9 @@ specialists or Workers.
 
 | Stage | User-facing entry | Default internal contract | Output or handoff |
 | --- | --- | --- | --- |
-| Read-only planning | `create-plan` | `workflow-orchestrator`; add `plan-model-router` only for multi-PR, sprint, phased, materially mixed-risk, or explicitly routed work | An approved-plan candidate with a capability handoff |
+| Read-only planning | `create-plan` | `workflow-orchestrator`; in Codex when installed, add `plan-model-router` only for multi-PR, sprint, phased, materially mixed-risk, or explicitly routed work | An approved-plan candidate with a capability handoff |
 | Goal compilation | `goalbuddy:goal-prep` | Goal Prep only; it records named capabilities without loading or executing them | `goal.md`, `state.yaml`, task scopes, verification, and stop conditions |
-| Approved programme execution | `deliver-approved-programme` | `workflow-orchestrator` plus `first-time-right-delivery` | Bounded implementation, evidence, PR handling, and exact-target proof within recorded authority |
+| Approved programme execution | `integrated-workflow` | `workflow-orchestrator`, one matched native or portable engineering playbook, harness-specific profile selection, and `first-time-right-delivery` | Bounded implementation, evidence, PR handling, and exact-target proof within recorded authority |
 | Small direct implementation | `workflow-orchestrator` or the relevant specialist | Add `first-time-right-delivery` only when the change is non-trivial | The smallest coherent verified change |
 | Standalone specialist work | The named specialist | That specialist only unless a real cross-surface dependency appears | Its documented focused artifact or evidence |
 
@@ -26,13 +26,13 @@ specialists actually activate. A plan hint is not a command to load them all.
   discovery across relevant skill families and the separate live-tool registry
   to record the preferred route, observed availability, the smallest fallback,
   and any later authorization need. Inspect only capabilities installed or
-  surfaced in Codex; do not search the external marketplace. Do not install,
+  surfaced in the active harness; do not search the external marketplace. Do not install,
   authenticate, access private connector data, or perform the planned work.
 - **Goal compilation (`goalbuddy:goal-prep`):** copy the approved capability
   handoff into task `inputs` or `constraints`. Goal Prep does not load skills,
   call MCPs or connectors, test authentication, or activate fallbacks; schedule
   those checks for execution.
-- **Execution (`deliver-approved-programme`):** revalidate the capabilities the
+- **Execution (`integrated-workflow`):** revalidate the capabilities the
   active slice actually needs because surfacing and authentication may have
   changed since planning. Use the preferred route when usable and activate its
   recorded fallback only when necessary and authorized.
@@ -98,3 +98,12 @@ system plus focused visual evidence.
 - Do not create a new wrapper skill for every combination. Add a package here
   only when the same lifecycle handoff recurs and materially reduces routing
   mistakes.
+
+## Engineering handoff
+
+The orchestrator selects one matched native or portable engineering method for substantive execution and
+remediation, then resolves the task profile at package activation and before
+dispatch. Forge's panels, playbooks, and native agents return bounded hints to
+this same owner. The manually selected main profile remains the default and
+ceiling; setup preferences and parent suggestions never change it automatically.
+Goal compilation only records these names; it does not execute Forge or routing.
