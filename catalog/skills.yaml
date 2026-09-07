@@ -1043,11 +1043,12 @@
       "version": "2.0.0",
       "purpose": "Depth-tree execution discipline and gate-based completion checks.",
       "author": "Leonxlnx",
-      "license_status": "Not declared locally; verify upstream terms",
+      "license_status": "MIT (installed LICENSE and upstream repository)",
       "redistribution_status": "External install; not vendored",
       "members": [
         "unlazy"
-      ]
+      ],
+      "notes": "Optional First-Time-Right Delivery completion adapter; Integrated Workflow reuses the same gates. Local 2.0 and upstream 2.1 source commands differ; inspect the installed version. Hooks are never installed automatically."
     },
     {
       "name": "pstack",
@@ -1463,6 +1464,173 @@
         "codex-router",
         "codex-router-media"
       ]
+    },
+    {
+      "name": "convex-personal-skills",
+      "members": [
+        "convex",
+        "convex-add",
+        "convex-advisor",
+        "convex-agent",
+        "convex-auth",
+        "convex-authz",
+        "convex-backup",
+        "convex-billing",
+        "convex-cost",
+        "convex-create-component",
+        "convex-crons",
+        "convex-deploy-guard",
+        "convex-design",
+        "convex-docs",
+        "convex-domains",
+        "convex-env",
+        "convex-expert",
+        "convex-explain-app",
+        "convex-improve-convex-plugin",
+        "convex-insights",
+        "convex-launch-readiness",
+        "convex-migrate",
+        "convex-migrate-rehearse",
+        "convex-monitor",
+        "convex-optimize",
+        "convex-quickstart",
+        "convex-reviewer",
+        "convex-seed",
+        "convex-self-heal",
+        "convex-sentinel",
+        "convex-suggest",
+        "convex-test",
+        "convex-verify"
+      ],
+      "purpose": "Separately installed Convex operational skill family, including authoring, migration, permissions, testing, cost, deployment and recovery.",
+      "author": "Convex integration maintainers; verify each installed source",
+      "notes": "Exact personal-directory names observed 2026-09-07. Do not treat this family and multiple Convex plugin versions as simultaneous owners.",
+      "status": "audit-observed; execution-unverified",
+      "license_status": "Mixed or not declared locally; verify each owner",
+      "redistribution_status": "Names only; skill payloads remain owner-managed",
+      "install_latest": "Use the owning integration and its supported installation; not copied by this toolkit"
+    },
+    {
+      "name": "codex-with-chatgpt",
+      "members": [
+        "codex-with-chatgpt"
+      ],
+      "purpose": "Separately installed Codex with ChatGPT workspace pairing and planning/review handoff.",
+      "author": "External bridge maintainer; source not declared in the local skill descriptor",
+      "notes": "Installed descriptor observed 2026-09-07; requires its native bridge and explicit pairing authority.",
+      "status": "audit-observed; execution-unverified",
+      "license_status": "Mixed or not declared locally; verify each owner",
+      "redistribution_status": "Names only; skill payloads remain owner-managed",
+      "install_latest": "Use the owning integration and its supported installation; not copied by this toolkit"
+    },
+    {
+      "name": "codex-plugin-skill-members",
+      "members": [
+        "agent-collaboration-for-codex:agent-collaboration",
+        "app-69ea4ed2cf7c8191b742ef3622479ddd:Search",
+        "app-6a330a7730c081919892632d5baaec58:build-checklist",
+        "app-6a330a7730c081919892632d5baaec58:build-onboard",
+        "app-6a330a7730c081919892632d5baaec58:build-prd",
+        "app-6a330a7730c081919892632d5baaec58:build-project",
+        "app-6a330a7730c081919892632d5baaec58:build-scope",
+        "app-6a330a7730c081919892632d5baaec58:build-spec",
+        "app-6a330a7730c081919892632d5baaec58:find-hackathon",
+        "app-6a330a7730c081919892632d5baaec58:hackathon-map",
+        "app-6a330a7730c081919892632d5baaec58:prepare-submission",
+        "app-6a330a7730c081919892632d5baaec58:resources",
+        "app-6a330a7730c081919892632d5baaec58:review-hackathon-rules",
+        "app-6a330a7730c081919892632d5baaec58:start-hackathon",
+        "app-6a330a7730c081919892632d5baaec58:submit-project",
+        "build-mcp-apps:build-mcp-apps",
+        "build-mcp-apps:use-alpic",
+        "coderabbit:code-review",
+        "convex:add",
+        "convex:agent",
+        "convex:auth",
+        "convex:billing",
+        "convex:check-updates",
+        "convex:convex-authz",
+        "convex:convex-expert",
+        "convex:convex-reviewer",
+        "convex:crons",
+        "convex:domains",
+        "convex:env",
+        "convex:improve-convex-plugin",
+        "convex:labs-quickstart",
+        "convex:migrate",
+        "convex:quickstart",
+        "convex:quickstart-improve",
+        "convex:seed",
+        "convex:test",
+        "convex:workflow",
+        "deep-research-work:deep-research",
+        "documents:documents",
+        "goalbuddy:goal-prep",
+        "google-drive:google-docs",
+        "google-drive:google-drive",
+        "google-drive:google-drive-comments",
+        "google-drive:google-sheets",
+        "google-drive:google-slides",
+        "grok-supervisor-for-codex:grok-supervisor",
+        "junie-supervisor-for-codex:junie-supervisor",
+        "pdf:pdf",
+        "plugin-management:plugin-management",
+        "ponytail:ponytail",
+        "ponytail:ponytail-audit",
+        "ponytail:ponytail-debt",
+        "ponytail:ponytail-gain",
+        "ponytail:ponytail-help",
+        "ponytail:ponytail-review",
+        "presentations:Presentations",
+        "sites:sites-building",
+        "sites:sites-hosting",
+        "spreadsheets:Spreadsheets",
+        "spreadsheets:excel-live-control",
+        "supabase:supabase",
+        "supabase:supabase-postgres-best-practices",
+        "template-creator:template-creator",
+        "visualize:visualize",
+        "webmcp-enable:webmcp-enable",
+        "webmcp-kit:implement",
+        "webmcp-kit:verify",
+        "webmcp:webmcp-site-author"
+      ],
+      "purpose": "Exact namespaced skills exposed in the audited Codex plugin catalog, including Convex, documents, research, design, Ponytail, WebMCP and provider supervisors.",
+      "author": "Mixed plugin publishers",
+      "notes": "Startup-catalog snapshot 2026-09-07; same qualified names across cached versions are collapsed. Names are inventory evidence, not a claim of current authentication or runtime execution.",
+      "status": "audit-observed; execution-unverified",
+      "license_status": "Mixed or not declared locally; verify each owner",
+      "redistribution_status": "Names only; skill payloads remain owner-managed",
+      "install_latest": "Use the owning integration and its supported installation; not copied by this toolkit"
+    },
+    {
+      "name": "zcode-bundled-skills",
+      "members": [
+        "android-dev",
+        "computer-use",
+        "control-browser",
+        "diagnosing-commands",
+        "diagnosing-hooks",
+        "diagnosing-mcp",
+        "diagnosing-plugins",
+        "diagnosing-skills",
+        "docx",
+        "ios-dev",
+        "pdf",
+        "pptx",
+        "restore-legacy-sessions",
+        "skill-creator",
+        "web-gui-tester",
+        "xlsx",
+        "zcode-configuration-guide"
+      ],
+      "purpose": "ZCode bundled document, device, browser, configuration and diagnostic skill descriptors.",
+      "author": "ZCode runtime owner",
+      "notes": "On-disk bundled-source snapshot 2026-09-07; native parser/tool contracts remain ZCode-specific and activation was not tested.",
+      "status": "audit-observed; execution-unverified",
+      "license_status": "Mixed or not declared locally; verify each owner",
+      "redistribution_status": "Names only; skill payloads remain owner-managed",
+      "install_latest": "Use the owning integration and its supported installation; not copied by this toolkit"
     }
   ],
   "runtime_integrations": [
@@ -1973,7 +2141,8 @@
         "forge-why"
       ],
       "external": [
-        "pstack"
+        "pstack",
+        "unlazy"
       ]
     },
     "design": {
@@ -2417,7 +2586,8 @@
         "claude"
       ],
       "install": "Install the current official Convex integration for the active harness.",
-      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it."
+      "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+      "skill_group": "convex-personal-skills"
     },
     "hosting-clis": {
       "name": "Hosting providers",
@@ -2516,6 +2686,31 @@
         "design_systems": 152,
         "craft": 11
       }
+    },
+    "unlazy": {
+      "name": "Unlazy",
+      "kind": "skills",
+      "purpose": "Optional runnable completion gates through First-Time-Right Delivery; reuse the programme acceptance record.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ],
+      "install": "npx skills add Leonxlnx/unlazy",
+      "activation": "Optional; use only when selected and installed. Node 16+ for the checker; no MCP required. No automatic hook installation.",
+      "repository": "https://github.com/Leonxlnx/unlazy",
+      "skill_group": "unlazy",
+      "version_observed": "2.0.0 local installation",
+      "upstream_commit": "16671491f6679ad9378f52604d3bc2415b4120c7",
+      "upstream_status": "2.1 source documentation checked 2026-09-07; no upgrade performed or tagged release asserted.",
+      "integration": "plugins/rogemar-agent-toolkit/skills/first-time-right-delivery/references/unlazy.md"
     }
   }
 }

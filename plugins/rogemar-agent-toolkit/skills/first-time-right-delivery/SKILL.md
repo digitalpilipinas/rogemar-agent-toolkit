@@ -55,6 +55,16 @@ a second plan, board, review, or model-routing process.
    local tests, CI, staging/production, external review, and manual/device checks
    distinct. Report a required check that could not run without calling it passed.
 
+## Optional Unlazy completion checks
+
+When the owner requests `unlazy`, or substantial work needs runnable checks to
+prevent omitted outcomes, apply the [Unlazy adapter](references/unlazy.md) to the
+existing acceptance record. This skill owns evidence quality; Unlazy contributes
+gate checking and measured reporting. Keep one gate record and the active
+orchestrator. It adds no mandatory plan, worker tree, hook, provider or install.
+If Unlazy is unavailable, run the repository checks directly and retain the same
+evidence and incomplete-outcome reporting.
+
 ## Delivery boundary
 
 Release work applies only when authorized. Before a commit or publication,
