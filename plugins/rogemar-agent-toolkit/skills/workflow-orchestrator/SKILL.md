@@ -5,11 +5,12 @@ description: Use for non-trivial coding work that spans brainstorming, research,
 
 # Workflow Orchestrator
 
-Follow the shared [Forge mode and status contract](references/forge-mode-status.md) at entry,
+Only when a Codex, Cursor or Universal Forge route is active, follow the shared [Forge mode and status contract](references/forge-mode-status.md) at entry,
 resume and dispatch: explicit request → task mode → saved preference; ask once
 if none exists. Show role, model, effort, mode and evidence status without
 repeated introductions. Setup inspection alone does not require a mode choice
-or write preferences; apply the prompt when beginning an execution task.
+or write preferences; apply the prompt when beginning a Forge execution task.
+Generic/core-only workflows do not prompt for a Forge mode or emit Forge labels.
 
 
 Coordinate a coding task across its lifecycle without duplicating specialist

@@ -91,8 +91,9 @@ Keep one engineering owner and never import another harness's model IDs or contr
 ## Invocation and delivery boundaries
 
 Invoking this workflow to execute approved work authorizes the default branch-and-PR
-route through safe merge. Discussing or editing the skill alone does not invoke
-publication for the current task. Usually this is enough:
+route through safe merge. Plan approval, automatic skill selection, or discussing/editing this skill alone
+does not grant publication authority. The owner must explicitly invoke this
+workflow for execution or separately authorize the delivery route. Usually this is enough:
 
 ```text
 Use $integrated-workflow to implement the approved plan at <path>.
@@ -118,6 +119,10 @@ Physical-device QA: REQUIRED BEFORE MERGE | DEFERRED UNTIL BUILD | NOT APPLICABL
   addressing findings, applicable authorized CI, and merging after required gates
   pass. Continue through exact-target verification without per-step approval;
   reuse the existing task PR when present.
+- Stricter repository authorization requirements take precedence over this
+  default. If a repository requires a separate explicit publication or merge
+  instruction, obtain the missing authority before that action; a skill cannot
+  waive it.
 - Explicit task restrictions such as `LOCAL ONLY`, no-push, draft-only or
   `STOP BEFORE MERGE` override this default until the owner changes them. Record
   the effective route once. Ask only for a material conflict or missing decision,

@@ -3299,7 +3299,7 @@
     },
     "integrated-workflow": {
       "file_count": 7,
-      "sha256": "101cc817d1187019ac8242d85030e13131e8a28041f2e0c8495684ab6913be33"
+      "sha256": "98084d8521e125608acb8d82a8689b4667af26a598d70f5daa926ef163059c46"
     },
     "interaction-polish": {
       "file_count": 4,
@@ -3435,7 +3435,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 6,
-      "sha256": "01279f49f95c4d8ffe656a9c04bc050038ade6038bd71b6ea422a3ad2669f42f"
+      "sha256": "6d46741488ed4abad6825814d46af390db82e6939a18b6a6995c3bbd67bd3bef"
     }
   },
   "version": "1.0.0"

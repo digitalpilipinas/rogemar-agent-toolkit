@@ -41,7 +41,10 @@ and continue without per-step permission requests:
 - The default covers scoped commits/pushes, PR creation or updates, ready
   transition, configured PR review requests, in-scope remediation, applicable
   authorized CI and safe merge with exact-target verification. Reuse the task PR.
-  Discussing or editing the skill alone does not invoke its publication route.
+  Plan approval, automatic skill selection, or discussing/editing the skill
+  alone does not invoke its publication route. Require an explicit execution
+  invocation or separate delivery authorization. Stricter repository requirements
+  for separate publication/merge authority override the default.
 - Explicit local-only, no-push, draft-only or stop-before-merge restrictions take
   precedence until changed by the owner. Ask once for a material conflict, not
   again for steps already covered by the effective route.
