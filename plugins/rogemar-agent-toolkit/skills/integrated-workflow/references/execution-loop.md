@@ -26,7 +26,9 @@ already-delivered results once. This changes no review gate or final coverage au
 
 Resolve compact controls from the owner or approved plan:
 
-- `LOCAL ONLY`: no commits, pushes, PR creation, review comments or merge.
+- `LOCAL ONLY`: no commits, pushes, PR creation, remote review comments or merge.
+  Local review remains allowed and required for substantive local-only acceptance,
+  within the applicable provider/data/usage authority.
 - `DIRECT COMMIT AUTHORIZED`: explicit owner choice to commit/push directly to the
   verified target, subject to repository policy. Never infer it from project size.
 - `BRANCH + PR, STOP BEFORE MERGE`: authorized branch commits, pushes and PR

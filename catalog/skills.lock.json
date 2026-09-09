@@ -3051,7 +3051,7 @@
     },
     "codex-forge": {
       "file_count": 67,
-      "sha256": "d974b91d759a92ab50d53601d299ba2b15c34e410c28207a14a1ded996e93c0e"
+      "sha256": "b2b72839b12e4c38bfa3a6a1de59ddeb6861ac10125631562a67401d64b63cab"
     },
     "create-plan": {
       "file_count": 4,
@@ -3062,12 +3062,12 @@
       "sha256": "8ea8f95c02862d9d280becdd51e1d00753237e8243461405f0e7ee190e25c33e"
     },
     "cursor-forge": {
-      "file_count": 2,
-      "sha256": "070dbec8bf2c76a9ee80d51abd62d8de8719f649af4c5c6138c7ad5eecbbb6e3"
+      "file_count": 4,
+      "sha256": "94de1a3644ad635184d1ca5fbe8a926e104624cb3ddc5a8abdf995fc4648b057"
     },
     "cursor-forge-setup": {
-      "file_count": 4,
-      "sha256": "c5b8cdbb920d55a463c7bc612cef20144bb3c2b5e334ff13f63e623ccdcf28a1"
+      "file_count": 6,
+      "sha256": "48960abc764afd52ff198b877c6fe2f0727c17dc31c7d88f59466f6f37d1fccb"
     },
     "deliver-approved-programme": {
       "file_count": 2,
@@ -3103,15 +3103,15 @@
     },
     "first-time-right-delivery": {
       "file_count": 3,
-      "sha256": "11858d888fd92b43a132c7928584a2cd0c833a5dfca6cb758776efb1c3bafabd"
+      "sha256": "ea0309e6d873d5c6eb4ba63ce9b5387921ade1fd2fd6d7df76e4f9406c689cc5"
     },
     "forge-architect": {
       "file_count": 6,
-      "sha256": "448f156f539e6ee707b7ef6dc4624d7bce1ee13bfc60e77de133a4981bb341fa"
+      "sha256": "9dce5ab40e7d489e5309ad9e2cc950676d513e45b528daa445a4f32ded46f471"
     },
     "forge-arena": {
       "file_count": 3,
-      "sha256": "6c9ab2f9868da44a243000a95098904fd68d36f4b06aaf9b171f9ced8c5a60f1"
+      "sha256": "6e800488de9b9648ebd527da9896104c800deef5c0fae4fc2a1743b97a7a202d"
     },
     "forge-automate-me": {
       "file_count": 3,
@@ -3131,7 +3131,7 @@
     },
     "forge-figure-it-out": {
       "file_count": 3,
-      "sha256": "a347cb5658df5fc9f0b522b14a9872097e2f8db57af44c6aa7043f17b332b4c1"
+      "sha256": "0896299ac2e4aef70afcc0ce3f885f86d880f5e94f0b7fa807d6f96d0a95dd45"
     },
     "forge-how": {
       "file_count": 7,
@@ -3139,7 +3139,7 @@
     },
     "forge-interrogate": {
       "file_count": 7,
-      "sha256": "661a776f0e35353ac546c20bb21fcde6654cdae0f6ace63604c28616e8cc17eb"
+      "sha256": "3443d6a07e6181b5cf97585b6f51f9b3ad4c28d55963c65dd2bbbdb1846eaca7"
     },
     "forge-maintain-verification-skill": {
       "file_count": 3,
@@ -3255,7 +3255,7 @@
     },
     "forge-swarm": {
       "file_count": 3,
-      "sha256": "17dc3a8e747def629eaf9f5e70f2552637b2f483a15cce08965e5171d224302e"
+      "sha256": "757b87232e32c0d3fbdf9141a4ad8ac919babd7ff74de7ec947db1ee0456d29c"
     },
     "forge-tdd": {
       "file_count": 3,
@@ -3299,7 +3299,7 @@
     },
     "integrated-workflow": {
       "file_count": 7,
-      "sha256": "b7ab5a8cdd8ba7f664e8e98d100053aa7a9006dd3a4175f15c515cee3c7d9b7d"
+      "sha256": "fdd38d6dda3519f9dd0432fc4f687fd03768598711d48c790e98b6e9de995485"
     },
     "interaction-polish": {
       "file_count": 4,
@@ -3347,7 +3347,7 @@
     },
     "plan-model-router": {
       "file_count": 9,
-      "sha256": "98a2f77e0e8a52aa590616002ab2f3669fc122b358a1e3a6ebe6cfb35be354ba"
+      "sha256": "dec747a6cc101e3f109f46ed0424f3afe356211ed8ccad6338d65a428b2d64af"
     },
     "playwright": {
       "file_count": 9,
@@ -3435,7 +3435,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 5,
-      "sha256": "8c754c26917c4e929204e7cf7265f35b2c5ce47ec0a534b373ad361899df6f26"
+      "sha256": "dcf101f8986e1d3029f98f52bdb3d0e5036c049297cec63fc488c7fa71fba2f7"
     }
   },
   "version": "1.0.0"

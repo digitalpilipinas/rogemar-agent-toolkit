@@ -1,6 +1,6 @@
 # Multi-phase plan
 
-Use `create-plan` and `workflow-orchestrator` to turn a cross-cutting outcome into verifiable increments. `plan-model-router` supplies advisory profiles; the manually selected parent is the default and ceiling. Planning is not implementation.
+Use `create-plan` and `workflow-orchestrator` to turn a cross-cutting outcome into verifiable increments. `plan-model-router` supplies profile proposals under the active Forge mode; without a mode, parent defaults and ceilings apply. Explicit user and host limits always apply. Planning is not implementation.
 
 1. Inspect instructions, source, current changes, dependencies and existing plan state. Name the observable goal, assumptions, constraints, non-goals, affected systems and authority. Reuse an approved programme or GoalBuddy record rather than starting a competing board.
 2. Resolve only material user decisions. A prototype may answer an empirical question when scratch implementation is authorized; in planning mode describe the experiment without writing production code, scaffolding, branches or jobs.

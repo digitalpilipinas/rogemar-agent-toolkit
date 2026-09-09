@@ -22,7 +22,6 @@ ROLES = {
 }
 
 LEGACY_ROLES = ROLES
-ROLES = {name.replace(" ", "-") for name in LEGACY_ROLES}
 # Shared executable catalogue: mode pools, group defaults, role overrides and contracts.
 ROUTING_CATALOG = json.loads(Path(__file__).with_name("routing_catalog.json").read_text())
 MODE_ALIASES = ROUTING_CATALOG["mode_aliases"]

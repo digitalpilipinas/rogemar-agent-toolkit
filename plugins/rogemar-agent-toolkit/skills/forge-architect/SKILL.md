@@ -35,7 +35,7 @@ Skip Phase A only when the work is genuinely greenfield with no surrounding syst
 
 Ask the orchestrator to select **forge-arena** skill with the design-sketch task and the Phase A grounding artifacts. Pass `references/runner-prompt.md` as each runner's prompt. Each candidate produces a design package shaped per `references/rationale-template.md`: the caller's usage written first, then the type sketch, function signatures, module map, and prose rationale derived from it.
 
-Request bounded design candidates through the orchestrator using the `architect-runners` preference pool. Profiles inherit the selected parent unless a justified lower profile is resolved by the router. The parent can sketch alternatives sequentially when delegation adds no independent value.
+Request bounded design candidates through the orchestrator using the `architect-runners` preference pool. Resolve profiles under the active Forge mode when selected; its qualified pool may permit profiles above parent defaults. Without a mode, inherit the parent or resolve a justified profile within its model and effort ceilings. Explicit user and host limits always apply. The parent can sketch alternatives sequentially when delegation adds no independent value.
 
 Design it twice. Require at least two structurally distinct candidates before synthesis, even when the first looks sufficient. This is the **exhaust-the-design-space** principle skill made concrete. Whole-shape alternatives, not point fixes inside one shape.
 

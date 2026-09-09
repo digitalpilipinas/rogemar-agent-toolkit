@@ -17,7 +17,7 @@ State the artifact and shared grounding. Define 3–6 observable rubric criteria
 
 ## B. Produce independent candidates
 
-The orchestrator schedules within its actual concurrency and parent ceilings. Candidates return an artifact and rationale naming rejected alternatives. Writing candidates need isolated worktrees and explicit reconciliation; separate branches in one worktree are not isolation. Read-only design candidates may return text. Do useful local work while independent candidates run. A failed candidate is a reported gap, not an implicit pass.
+The orchestrator schedules within actual concurrency limits and the router-qualified active mode, or parent ceilings when no mode is selected; explicit user and host limits always apply. Candidates return an artifact and rationale naming rejected alternatives. Writing candidates need isolated worktrees and explicit reconciliation; separate branches in one worktree are not isolation. Read-only design candidates may return text. Do useful local work while independent candidates run. A failed candidate is a reported gap, not an implicit pass.
 
 ## C. Cross-judge
 

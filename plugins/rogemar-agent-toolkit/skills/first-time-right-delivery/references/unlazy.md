@@ -26,8 +26,10 @@ discover its installed directory rather than assuming a harness-specific path.
 
 For substantial logs and handoffs, use the orchestrator's
 [context guidance](../../workflow-orchestrator/references/context-efficiency.md).
-Keep original diagnostics recoverable and preserve every unmet gate. A shortened
-report or checker status is not fresh evidence for a changed candidate.
+Keep original diagnostics recoverable and preserve every unmet gate. An inherited
+report or checker status from an earlier candidate is not fresh evidence after
+a change. Record current commands and results when rerunning the checker against
+the current candidate; those results may supply fresh evidence.
 
 ## Select commands by the installed version
 

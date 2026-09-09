@@ -76,10 +76,12 @@ and user reliability; Junie selectively for reproduction/runtime/test evidence.
 These are methods, not automatic assignments or mandatory model choices. Parallelize
 only independent read-only reviews under the current orchestrator.
 
-GitHub Cloud Antigravity is a separate PR-native app. When installed, authorized,
-named in the controls and due on a ready PR, prefer existing automatic evidence.
-Otherwise post one authorized top-level head/scope/validation update and the exact
-standalone command:
+GitHub Cloud Antigravity is a separate PR-native app. Only when installed,
+authorized, named in the controls and due on a ready PR may it be requested.
+Reuse equivalent automatic evidence already queued, running or completed. If all
+those prerequisites hold and no equivalent review exists, post one authorized
+top-level head/scope/validation update and the exact standalone command below.
+Otherwise record unavailable or not applicable as appropriate without posting:
 
 ```text
 @agy /review

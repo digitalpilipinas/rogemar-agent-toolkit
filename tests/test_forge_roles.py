@@ -109,6 +109,16 @@ class RoleMappingTests(unittest.TestCase):
         request['candidates']=[{'model':'gpt-5.6-luna','effort':'high','reason':'native judge pin and bounded check'}]
         self.assertEqual(r.resolve(request)['status'],'ready')
 
+    @unittest.skipIf('distribution_selection' in catalog['package'],
+                     'cross-harness metadata comparison requires the source catalog')
+    def test_cursor_shared_role_metadata_matches_router(self):
+        cursor_path = ROOT / 'plugins/rogemar-agent-toolkit/skills/cursor-forge-setup/references/roles.json'
+        cursor_roles = json.loads(cursor_path.read_text())['roles']
+        shared_roles = {name: {key: value for key, value in contract.items()
+                               if key != 'overrides'}
+                        for name, contract in r.ROLE_CONTRACTS.items()}
+        self.assertEqual(cursor_roles, shared_roles)
+
     def test_documented_role_table_matches_executable_mapping(self):
         doc=(FILE.parents[1]/'references/role-mapping.md').read_text()
         for role in r.ROLES:

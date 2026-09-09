@@ -16,8 +16,8 @@ Each optional hint should provide:
   or configure an agent.
 - `desired_profile`: the role's lowest useful model and effort shape when a
   profile matters, or `None` for ordinary local work.
-- `effective_profile_evidence`: the observed runtime availability plus the
-  parent-ceiling result. Record `ceiling-constrained` or `Unverified` rather
+- `effective_profile_evidence`: observed runtime availability and the active
+  mode/no-mode qualification result, including explicit user and host limits. Record `ceiling-constrained` or `Unverified` rather
   than implying a desired profile was used.
 - `inputs`: sufficient task context and source/artifact pointers, their relevant
   candidate identity and refresh conditions; carry constraints explicitly rather
@@ -60,9 +60,13 @@ the orchestrator remains responsible for ordering, deduplication, permissions,
 budgets, model ceilings, and reconciliation.
 
 A role profile is a desired routing input, not a fixed override. The
-orchestrator selects a surfaced agent type, then the active harness profile policy computes (Codex uses `plan-model-router`)
-an effective profile no stronger than the parent model or effort. If that
-profile cannot meet the evidence burden, the work returns to the main agent.
+orchestrator selects a surfaced agent type, then the active harness profile policy
+computes an effective profile (Codex uses `plan-model-router`). In Codex, no-mode
+routes retain parent model and effort ceilings; named Forge modes qualify against
+their pool and the live backend and may exceed parent defaults. Explicit user and
+host limits always apply. Record requested and observed profiles; report constraints
+without silently clamping or dropping overrides. If a permitted profile cannot meet
+the evidence burden, the work returns to the main agent.
 
 A capability hint is not permission to install, authenticate, spend credits,
 read private connector data, expose additional files, or mutate an external

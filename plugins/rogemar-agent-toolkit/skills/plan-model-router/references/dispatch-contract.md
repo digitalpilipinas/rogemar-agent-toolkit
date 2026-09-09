@@ -28,11 +28,15 @@ The router computes a profile; the orchestrator performs the native tool call.
    hard limits: check both model and effort against them before dispatch, even
    in a named mode. If incompatible, requalify within those limits or retain the
    work with the main agent. `target: parent` is proposal-only and must never
-   be submitted to `spawn_agent`. With the surfaced native
-   `collaboration.spawn_agent`, copy `requested.model` and
-   `requested.reasoning_effort` EXACTLY into its model and reasoning_effort
-   arguments. Use `fork_turns: "none"` or a supported bounded history count
-   when supplying overrides; full-history forks may forbid overrides. Include
+   be submitted to `spawn_agent`. Inspect the live dispatch schema before
+   applying overrides; model/effort controls differ across Codex runtimes.
+   When `collaboration.spawn_agent` exposes both `model` and `reasoning_effort`,
+   copy the corresponding `requested` values exactly into those arguments.
+   Use only supported `fork_turns` values; full-history forks may forbid
+   overrides. Otherwise use an observed supported profile-selection control
+   and verify its effect. If none can apply the qualified profile, mark it
+   unapplied and retain the work with the main agent; never send unsupported
+   fields or silently substitute inheritance for a nonempty request. Include
    the role's bounded task contract in `message`. For `requested: {}`, omit
    both overrides and use a confirmed compatible inheritance path. Do not
    submit a role ID or the string `auto` as a model ID.

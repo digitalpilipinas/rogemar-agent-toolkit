@@ -15,8 +15,9 @@ When Codex Forge is active, automatically use the installed `plan-model-router` 
 EVERY justified new worker assignment. Follow its
 `plan-model-router/references/dispatch-contract.md` contract:
 read saved preferences and current runtime capabilities, select the task role,
-run the resolver, and copy its qualified model/effort into the actual native
-spawn arguments. Do not stop at a mapping table or recommendation. Re-resolve
+run the resolver, and apply its qualified model/effort through controls exposed
+by the live native dispatch schema. Never send unsupported fields; follow the
+contract's unapplied-profile fallback when no suitable control exists. Re-resolve
 after mode changes; a changed profile requires a fresh compatible assignment.
 
 Peak, Balanced, Lean, and Sprint share one executable catalogue owned by the

@@ -78,9 +78,10 @@ Through the existing orchestrator, select one compatible route:
 | Harness | Engineering methods | Profile selection |
 | --- | --- | --- |
 | Codex | `codex-forge` | `plan-model-router` |
-| Cursor | `cursor-forge`; upstream PStack/poteto-mode if absent | `cursor-forge-setup`; universal router only as a constraint-preserving fallback |
+| Cursor | `cursor-forge`; if absent, surfaced and authorized upstream PStack/poteto-mode; otherwise `universal-forge` or shared playbooks | `cursor-forge-setup` when available; universal router only as a constraint-preserving fallback |
 | Other or unknown | `universal-forge`; shared `engineering-playbooks` if unavailable | `universal-plan-model-router` using observed native capabilities |
 
+Record unavailable native routes before using the portable fallback.
 Honor compatible explicit choices. Reassess task fit, capabilities and applicable
 parent/mode constraints before delegation. A harness name, saved mode or installed
 skill does not prove tool access, worker dispatch or a live parent-model switch.
