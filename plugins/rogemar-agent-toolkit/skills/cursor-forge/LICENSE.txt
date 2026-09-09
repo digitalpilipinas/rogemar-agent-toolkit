@@ -4,4 +4,3 @@ This repository is private and proprietary unless a file or bundled component
 states a different license. Third-party components retain their original
 licenses and notices. No permission is granted to redistribute components whose
 catalog entry is classified as an external or runtime dependency.
-
