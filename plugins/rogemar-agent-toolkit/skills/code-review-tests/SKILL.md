@@ -40,6 +40,12 @@ not add tests for reversible low-impact changes when a direct check is adequate.
 
 ## Return to the same review
 
+For substantial output, follow shared
+[context guidance](../workflow-orchestrator/references/context-efficiency.md):
+retain the command/candidate, exit status, distinct failures, skipped or blocked
+checks and original log location. Read saved diagnostics before rerunning solely
+to recover omitted text; rerun affected checks when current evidence is needed.
+
 Return concrete findings and the evidence gap they expose, ordered by impact.
 Include location, violated requirement, affected scenario, and a check that can
 confirm the correction. Separate demonstrated bugs from missing coverage or

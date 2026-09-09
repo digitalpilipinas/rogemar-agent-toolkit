@@ -24,6 +24,13 @@ discover its installed directory rather than assuming a harness-specific path.
    remeasure any reported counts. Report met, unmet and explicitly deferred
    outcomes separately. Reuse the active review and its finding record.
 
+For substantial logs and handoffs, use the orchestrator's
+[context guidance](../../workflow-orchestrator/references/context-efficiency.md).
+Keep original diagnostics recoverable and preserve every unmet gate. An inherited
+report or checker status from an earlier candidate is not fresh evidence after
+a change. Record current commands and results when rerunning the checker against
+the current candidate; those results may supply fresh evidence.
+
 ## Select commands by the installed version
 
 Read the installed `SKILL.md` and checker before choosing flags. Node is needed

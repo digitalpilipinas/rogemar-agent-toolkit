@@ -1,185 +1,232 @@
 # Rogemar Agent Toolkit
 
-Shared agent methods with native harness adapters. A fresh environment receives a six-skill core; engineering, design and platform packs are optional. The source tree retains every canonical skill and its provenance. An installation exposes only its selected compatible skills.
+Reusable skills that help an AI coding assistant plan work, build features, check
+its results and handle code reviews. Describe the outcome you want; the assistant
+selects the relevant methods and tools without making you remember every skill.
 
-Source: [digitalpilipinas/rogemar-agent-toolkit](https://github.com/digitalpilipinas/rogemar-agent-toolkit). The repository is public; bundled licenses and third-party notices still apply.
-
-This README describes its selected Git revision. Pending changes appear on their PR branch; GitHub's default `main` page changes only after merge.
+The toolkit works with Codex, Cursor and other compatible assistants. It starts
+with six core skills, with optional packs for engineering, design, mobile apps
+and other work. It supplies instructions and helpers; your assistant still uses
+its own available models, tools and accounts.
 
 ## Table of contents
 
-- [Workflow ownership](#workflow-ownership)
-- [Optional Unlazy completion checks](#optional-unlazy-completion-checks)
-- [Install and choose packs](#install-and-choose-packs)
-- [OpenDesign](#opendesign)
-- [Updates and duplicate reconciliation](#updates-and-duplicate-reconciliation)
-- [Upstream sources](#upstream-sources)
+- [What it helps you do](#what-it-helps-you-do)
+- [Get started](#get-started)
+- [Everyday use](#everyday-use)
+- [How delivery works](#how-delivery-works)
+- [Choose your assistant and mode](#choose-your-assistant-and-mode)
+- [Design and app testing](#design-and-app-testing)
+- [Update an installation](#update-an-installation)
 - [Complete skill inventory](#complete-skill-inventory)
-- [Pack membership](#pack-membership)
-- [Pack dependencies](#pack-dependencies)
-- [External and runtime-managed skill groups](#external-and-runtime-managed-skill-groups)
+- [Credits and upstream sources](#credits-and-upstream-sources)
 - [Validation and releases](#validation-and-releases)
 
-## Workflow ownership
+## What it helps you do
 
-| Workflow | Shared owner | Native boundary |
-| --- | --- | --- |
-| Planning | `create-plan` | Repository-grounded scope, acceptance and proportional sequencing; no mandatory model matrix or board |
-| Coordination | `workflow-orchestrator` | One delegation owner; use the active harness's exposed controls |
-| Engineering | `engineering-playbooks` (23 methods) | Complete Codex Forge in Codex; PStack in Cursor; shared methods elsewhere |
-| Approved programme | `integrated-workflow` | Reuse the approved plan and its actual gates |
-| Completion evidence | `first-time-right-delivery` | Optional `unlazy` checker uses the same acceptance record; no second coordinator or automatic hook |
-| Independent review | `code-review-and-quality` | Five axes; `code-review-tests` supplies focused evidence; CodeRabbit and native reviewers remain separate providers |
-| Design | `design-brief`, `reference-design-contract`, `frontend-design` and existing UI/UX helpers | Taste, polish and motion methods are integrated under existing owners |
-| OpenDesign application | `opendesign` | All seven native lanes; app, scenarios, providers, renderers and connectors remain native |
-| Platform work | Optional web, mobile, Argent, Expo, iOS, Android and security packs | A skill can be useful without an MCP; live actions need the matching runtime |
+- Turn a request into a practical plan with clear success criteria.
+- Build or fix a feature using the project's existing patterns.
+- Include relevant design, accessibility and testing work during implementation.
+- Review changes, combine duplicate feedback and fix real problems without
+  expanding every suggestion into more work.
+- Continue an approved project across several tasks or sprints while preserving
+  decisions, evidence and delivery boundaries.
 
-```mermaid
-flowchart TD
-    plan["create-plan when a plan is needed"] --> approved["Approved scope and acceptance"]
-    approved --> router["workflow-orchestrator: one capability and worker owner"]
-    router --> execute["Direct work or integrated-workflow for an approved programme"]
-    execute --> method["Selected engineering, design or platform method"]
-    method --> review["code-review-and-quality plus focused test evidence"]
-    review --> gates["first-time-right-delivery: one acceptance evidence record"]
-    unlazy["Optional Unlazy checks"] -.-> gates
-    providers["Selected CodeRabbit or native reviewer"] -.-> review
-    gates --> report["Verified outcomes and explicit remaining boundaries"]
-    report --> release["Release only within recorded authority"]
-```
+A **skill** is a reusable set of instructions. A **pack** groups related skills.
+A **harness** means the assistant environment, such as Codex or Cursor. A plugin
+or MCP connection may provide live tools, but copying a skill does not install
+that connection or sign in to an account.
 
-The core is `workflow-orchestrator`, `create-plan`, `first-time-right-delivery`, `bug-triage`, `code-review-and-quality`, and `code-review-tests`.
+## Get started
 
-Planning and review consolidation evidence is in [methods-review.md](docs/methods-review.md). Design attribution and choices are in [design-integration.md](docs/design-integration.md). Runtime evidence limits and paths are in [compatibility.md](docs/compatibility.md).
-
-## Optional Unlazy completion checks
-
-Link [Unlazy](https://github.com/Leonxlnx/unlazy) as completion support when requested or when substantial work risks omitted outcomes. `first-time-right-delivery` owns the acceptance evidence; `integrated-workflow` owns programme execution. Unlazy checks that same record and helps measure report claims. It is an optional external dependency in the engineering pack, so the six-skill core stays small.
-
-Use the [shared integration contract](plugins/rogemar-agent-toolkit/skills/first-time-right-delivery/references/unlazy.md) from either delivery skill. It preserves one plan, one gate record and one orchestrator. Required gates cannot become passed merely because they were abandoned. Version 2.0 and upstream 2.1 source have different checker behavior; inspect the installed version before selecting execution or re-verification flags. No Unlazy upgrade, hook or persistent harness setting is applied by the toolkit installer.
-
-## Install and choose packs
-
-Use Python 3.9+ and a pinned toolkit checkout. Replace `REVIEWED_COMMIT` below with the exact commit from your approved PR or release. Installation does not call provider APIs, authenticate, start applications or install external dependencies.
+You need Git, Python 3.9 or later, and an assistant that can load skills. Choose a
+reviewed commit or tag from this repository and replace `REVIEWED_COMMIT` below.
+Using a specific revision keeps installations repeatable.
 
 ```bash
 git clone https://github.com/digitalpilipinas/rogemar-agent-toolkit.git
 cd rogemar-agent-toolkit
 git checkout --detach REVIEWED_COMMIT
 python3 scripts/toolkit.py verify
-python3 scripts/toolkit.py select --harness codex --pack engineering --pack design
-python3 scripts/toolkit.py install --harness codex --target project --project-root /path/to/project
 ```
 
-The last command installs the core only. To include optional packs, repeat `--pack`:
+For a first Codex app-development setup, the engineering and design packs include
+Forge, the delivery workflow and UI/UX methods. Preview the selection, then install
+that same selection into your project. Replace `/path/to/project` with its actual path.
 
 ```bash
-python3 scripts/toolkit.py install --harness codex --target project --project-root /path/to/project --pack engineering --pack design --pack opendesign
-python3 scripts/toolkit.py install --harness gemini --target project --project-root /path/to/project --pack engineering
+python3 scripts/toolkit.py select --harness codex --profile core --pack engineering --pack design
+python3 scripts/toolkit.py install --harness codex --profile core --pack engineering --pack design --target project --project-root /path/to/project --dry-run
+python3 scripts/toolkit.py install --harness codex --profile core --pack engineering --pack design --target project --project-root /path/to/project
 ```
 
-Use `--target user` for personal installation. The `agent-skills` and Codex portable layouts use `.agents/skills`; Codex-specific entries use `.codex/skills`. Other harnesses use the layout recorded in the catalog. Choose one primary shared installation per project/home; do not install the same pack through a plugin and personal directories simultaneously. `--profile all` is an explicit full selection, still filtered by harness. Development-only `--link` installs are not portable VM images.
+For Cursor, replace `codex` with `cursor`. For another assistant, see the
+[available installation targets](docs/compatibility.md#harness-adapters). Use
+`--target user` instead of the project options for a personal installation.
+Start a fresh task afterward and verify that your assistant can discover the skills.
 
-An upgrade with neither selection option preserves the saved selection. An explicit `--profile core` starts from core and clears saved optional packs; add `--pack` options to select the extras you want to keep. Removed managed skills remain recoverable through rollback.
+Want only the basics? Omit both `--pack` options to install the six-skill core.
+Forge and Integrated Workflow belong to the optional engineering pack. On an
+existing installation, explicit profile/pack options replace its saved selection;
+preview changes first. See [installation and recovery](docs/installation.md) for
+pack choices, plugin archives, backups and rollback.
 
-The generated [pack membership table](#pack-membership) lists every pack and its complete direct skill membership. The [dependency table](#pack-dependencies) includes full Expo and Argent member lists, native installation routes, OpenDesign resources and runtime requirements. These tables use the catalog directly, so adding a dependency cannot silently omit it from the README.
+Installation does not start agents, authenticate services, install provider apps,
+register monitors or spend provider credits. External requirements are listed for
+you to set up separately when needed.
 
-```mermaid
-flowchart LR
-    source["Pinned canonical source and content lock"] --> selection["Core plus explicitly selected packs"]
-    selection --> filter["Resolve dependencies and filter by harness"]
-    filter --> shared["Copy compatible shared skill trees"]
-    filter --> codex["Copy Codex-only adapters only for Codex"]
-    shared --> native["Use the selected harness's available models and tools"]
-    codex --> native
-    filter -.-> external["Declare external dependencies: PStack, Unlazy, Argent, Expo and others"]
-    external -.-> owner["Provision through each dependency's owner when authorized"]
-    selection -.-> library["Optional pinned OpenDesign resource import"]
+## Everyday use
+
+Use your assistant's skill picker or mention the skill by name. These examples use
+Codex's `$skill-name` notation; other assistants may present skills differently.
+
+| What you want | Start with |
+| --- | --- |
+| Build or fix something in Codex | `codex-forge` |
+| The same coordinated approach in Cursor | `cursor-forge` |
+| Engineering in another compatible assistant | `universal-forge` |
+| Plan a substantial change before building | `create-plan` |
+| Carry out an approved multi-step programme | `integrated-workflow` |
+
+```text
+$codex-forge Fix the login failure. Reproduce it, find the cause,
+implement the smallest reliable fix, and verify the affected flow.
+
+$create-plan Plan saved searches using this project's existing patterns.
+Include the behavior we need to verify before calling it complete.
+
+$integrated-workflow Implement the approved plan at docs/plans/saved-searches.md.
+Harness: Codex
+Delivery to main: BRANCH + PR, STOP BEFORE MERGE
 ```
 
-`select` prints the exact skills, incompatible exclusions and dependency installation routes. External dependencies are declarations, not automatically installed capabilities. For Expo, prefer its official plugin in Codex; the current [Expo instructions](https://github.com/expo/skills) also support a skills-only installation for other harnesses. Argent's pack records all 16 skills. SDKs, device virtualization, browser control and accounts remain environment prerequisites.
+You normally invoke one entry skill. It brings in relevant supporting skills and
+requests bounded sub-agents when their work is useful. Small tasks can stay with
+the main agent. You do not need to invoke the orchestrator or model router yourself.
 
-For a Codex marketplace install, build and extract the selected **Codex marketplace archive**, then register that extracted directory using the current Codex plugin commands. A default archive exposes only core. Registering the full source repository directly exposes its entire canonical tree and is appropriate only for an explicit full installation. Start a fresh task to verify discovery after any installation.
+## How delivery works
 
-## OpenDesign
+A **vertical slice** is one complete piece of user-facing behavior—for example,
+creating, saving and reopening a saved search. It can span several sprints and
+commits while staying on one branch and optional draft PR.
 
-Choose `design` for portable methods, `opendesign` for full app workflows, and `opendesign-library` for the optional resource library. They can be combined. The full adapter preserves native Import, Create, Export, Share, Deploy, Refine and Extend behavior, including scenario binding, critique state and admission checks.
-
-The application dependency is pinned to OpenDesign 0.21.1. Build/install the native app using its source instructions; its Node, pnpm, native SQLite/PTY/media packages, provider, renderer and connector dependencies are recorded separately. Copying skills does not provision these runtimes. The adapter's doctor is read-only; a real native command is explicit.
-
-```bash
-python3 plugins/rogemar-agent-toolkit/skills/opendesign/scripts/opendesign_adapter.py --root /path/to/built-open-design doctor
-python3 scripts/toolkit.py resources --source /path/to/open-design --destination /path/to/design-library --dry-run
-python3 scripts/toolkit.py resources --source /path/to/open-design --destination /path/to/design-library
-```
-
-The resource command reads the pinned commit's complete `design-templates/`, `design-systems/`, `craft/`, and license files. It copies no user database, credentials or untracked files. Resources remain outside skill discovery. Point native OpenDesign to these resources through its supported configuration, or load a selected complete template/style directly for portable work. The source revision must already be available locally; the command never fetches or installs an app.
-
-Headless HTML/project workflows are source-supported. PDF/image/PPTX need Electron's renderer; the bare daemon cannot provide them. Docker additionally needs separately provisioned agent CLIs and template resources. Fresh cloud/provider runs remain separate runtime verification. See [the full runtime matrix](plugins/rogemar-agent-toolkit/skills/opendesign/references/application-workflows.md).
+Planning, Forge and delivery share [context-efficiency guidance](plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/context-efficiency.md)
+for substantial outputs and handoffs. It preserves decisive evidence and current
+constraints while avoiding repeated reads; token savings still require measurement.
 
 ```mermaid
 flowchart TD
-    design["Design request"] --> methods["Brief, reference contract, UX and frontend methods"]
-    methods --> polish["Taste, design system, interaction and motion refinement"]
-    design --> adapter["OpenDesign adapter when native workflows are needed"]
-    adapter --> app["Native app or built source, provider and scenario contracts"]
-    app --> edit["Import, Create, Refine and Extend"]
-    app --> export["Export"]
-    export --> html["HTML: supported headless path"]
-    export --> renderer["PDF, image, PPTX: Electron renderer"]
-    app --> publish["Share and Deploy: selected connector and authority"]
-    library["Optional templates, styles and craft resources"] -.-> methods
-    library -.-> app
+    plan["Approve the scope"] --> build["Build the complete slice; test as you go"]
+    build --> local["Review the full slice locally"]
+    local --> fixes["Consolidate feedback; fix validated defects"]
+    fixes --> ready["Mark the PR ready for review"]
+    ready --> cloud["GitHub CodeRabbit and Codex review; monitor results"]
+    cloud --> finish["Reconcile findings and pass required checks"]
+    finish --> handoff["Hand off, or merge only when authorized"]
 ```
 
-## Updates and duplicate reconciliation
+For substantive work, Integrated Workflow requires local CodeRabbit review of the
+complete slice, plus any selected additional reviewers, before the ready-PR handoff.
+It does not require a full external-review cycle for every commit. GitHub CodeRabbit
+and Codex then provide separate reviews of the ready PR. These services need their
+own working setup; the toolkit cannot manufacture a missing review result.
 
-Keep one canonical copy in this repository. Same names are not proof of duplicates: compare complete skill trees, provenance, target and dependencies. Native PStack and Codex Forge remain intentional adapters. Do not remove platform-owned skills or cache versions as a side effect of a shared update.
+Feedback is collected and checked together. Duplicate comments share one finding;
+unsupported suggestions and over-engineering can be rejected; out-of-scope work
+can be deferred. Required defects get the smallest reliable fix and relevant
+verification. Completion does not require implementing every recommendation or
+getting a bot to produce zero comments.
+
+Small bounded corrections take a lighter path with relevant checks; CodeRabbit and
+external reviewers are optional unless the project requires them. Sensitive changes
+still need appropriate evidence even when the diff is tiny.
+
+Branching is the default. Direct commit and push to the target branch require your
+explicit instruction and repository permission. Draft PRs do not start workflow
+monitoring, although configured bots or CI may still run. Ready-PR monitoring is
+part of active delivery; persistent follow-up needs an explicit scheduling request.
+
+Read the [full delivery contract](plugins/rogemar-agent-toolkit/skills/integrated-workflow/SKILL.md)
+for approval boundaries and review handling. The [workflow responsibilities](docs/methods-review.md)
+explain how planning, coordination and acceptance fit together. Optional
+[Unlazy completion checks](plugins/rogemar-agent-toolkit/skills/first-time-right-delivery/references/unlazy.md)
+reuse the same acceptance record rather than starting another process.
+
+## Choose your assistant and mode
+
+| Assistant | Engineering entry | Model selection |
+| --- | --- | --- |
+| Codex | `codex-forge` | `plan-model-router` applies qualified Forge worker profiles. |
+| Cursor | `cursor-forge` | `cursor-forge-setup` supplies native mappings; the universal router is a fallback. Native PStack remains a separate, unchanged entry. |
+| Other compatible assistants | `universal-forge` | Uses the assistant's available native models and controls, with defaults when selection controls are absent. |
+
+The common modes describe how to allocate work:
+
+| Mode | Intended use |
+| --- | --- |
+| Peak | Strong available profiles for demanding work. |
+| Balanced | Strong reasoning where needed, efficient profiles for routine work. |
+| Lean | Economical suitable profiles with selective escalation. |
+| Sprint | Narrow, quick assignments with minimal coordination. |
+
+In Codex, use `$forge-setup Use Balanced` to save a preference, or specify a mode in
+the current Forge request. Available Astra, Sol, Terra and Luna profiles are
+qualified against the task, runtime and explicit limits. A saved preference does
+not change an already running parent or worker. Parent switching is applied only
+through an available supported control; otherwise the parent choice remains manual.
+Modes do not weaken required tests or review gates, and their names are not measured
+price or speed guarantees.
+
+File installation and live execution are different checks. See
+[compatibility and evidence](docs/compatibility.md) for tested boundaries and
+harness-specific paths; support for every assistant/version is not implied.
+
+## Design and app testing
+
+The design pack helps with briefs, reference designs, user journeys, reusable
+components, frontend implementation, accessibility, interaction polish and visual
+QA. The assistant selects the methods relevant to the affected screen or flow.
+A small layout fix should not activate every design skill.
+
+Use `opendesign` when you need the actual OpenDesign application's import, create,
+export, share, deploy, refine or extend workflows. Ordinary interface work can use
+the design pack directly. The optional `opendesign-library` provides pinned
+resources separately from the app. See [OpenDesign setup](docs/installation.md#opendesign)
+and [design integration](docs/design-integration.md).
+
+Mobile and browser checks need working tools. Argent, Expo, simulators, emulators,
+physical devices and browser drivers are separate dependencies. A passing source
+test is not proof that the interface worked on a device. Missing required runtime
+evidence stays visible as blocked or deferred.
+
+## Update an installation
+
+First review and check out the toolkit revision you want. Then preview the update:
 
 ```bash
 python3 scripts/toolkit.py upgrade --harness codex --target user --dry-run
 python3 scripts/toolkit.py upgrade --harness codex --target user
-python3 scripts/toolkit.py rollback --harness codex --target user
 ```
 
-Unmanaged collisions and edited managed copies stop an install. `--adopt-identical` adopts only exact trees. After reviewing differing copies, `--backup-conflicts` explicitly permits replacement while retaining the original. Reducing a selection moves former managed skills into the same recoverable backup. Rollback restores content and managed state; displaced newer content is also retained. Legacy installation state requires an explicit harness choice.
-
-Migration across two discovery roots requires first comparing their contents and ownership; the installer does not silently delete a second copy. Project-specific overlays and runtime-owned skill directories remain outside global consolidation.
-
-## Upstream sources
-
-Preserve each source's license and notices. Runtime packages are inventoried separately from redistributable methods. Mutable upstream installs do not update this toolkit's content lock.
-
-- [openai-plugins](https://github.com/openai/plugins) — Use the current Codex built-in marketplace
-- [supabase-agent-skills](https://github.com/supabase/agent-skills) — npx skills add supabase/agent-skills
-- [coderabbit-skills](https://github.com/coderabbitai/skills) — npx skills add coderabbitai/skills
-- [argent](https://github.com/software-mansion/argent) — npx @swmansion/argent@latest init --local
-- [unlazy](https://github.com/Leonxlnx/unlazy) — npx skills add Leonxlnx/unlazy
-- [pstack](https://github.com/cursor/plugins/tree/main/pstack) — /add-plugin pstack
-- [goalbuddy](https://github.com/tolibear/goalbuddy) — npx goalbuddy@latest
-- [remotion-skills](https://github.com/remotion-dev/skills) — npx skills add remotion-dev/skills
-- [vercel-agent-skills](https://github.com/vercel-labs/agent-skills) — npx skills add vercel-labs/agent-skills --skill vercel-deploy
-- [cursor-plugins](https://github.com/cursor/plugins) — Use the Cursor plugin marketplace or the built-in runtime
-- [chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) — Follow the Chrome DevTools MCP repository's installation instructions
-- [modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance) — Follow the repository's documented Gemini/Antigravity installation
-- [science-skills](https://github.com/google-deepmind/science-skills) — Follow the repository's documented installation
-- [exa-grok-plugin](https://github.com/exa-labs/exa-grok-plugin) — Follow the repository's Grok Build installation
-- [firecrawl-grok-plugin](https://github.com/firecrawl/firecrawl-grok-plugin) — Follow the repository's Grok Build installation
-- [plugin-grok](https://github.com/getsentry/plugin-grok) — Follow the repository's Grok Build installation
-- [superpowers](https://github.com/obra/superpowers) — Follow the repository's documented installation
-- [vercel-plugin](https://github.com/vercel/vercel-plugin) — Follow the repository's Grok Build installation
-- [junie](https://github.com/JetBrains/junie) — Install Junie through JetBrains
-- [codex-router](https://github.com/duolahypercho/codex-router) — Follow the repository's documented installation
-- [open-design](https://github.com/digitalpilipinas/open-design) — Use the upstream application/source setup instructions; review before moving the pinned resource revision.
-- [expo-skills](https://github.com/expo/skills) — npx skills add expo/skills
+With no new profile or pack arguments, an upgrade keeps your saved selection.
+The installer stops on conflicting local edits instead of overwriting them silently.
+See [recovery and duplicate copies](docs/installation.md#updates-and-recovery)
+before adopting or replacing existing files. Keep one managed installation per
+shared root; avoid loading the same skills from both a plugin and personal copies.
 
 ## Complete skill inventory
 
-This index covers canonical sources, including target-specific entries and external/runtime observations. It is not a claim that every capability is active in a fresh environment. Use `select` to inspect an installation.
+Expand this reference when you need the full list of skills, pack membership,
+dependencies, sources and license notes. It describes the repository's contents,
+not a promise that every listed service is installed or active. Generated counts
+cover different kinds of records and should not be added into one skill total.
+
+<details>
+<summary>Browse all skills, packs, dependencies and runtime records</summary>
 
 <!-- BEGIN GENERATED SKILL INVENTORY -->
 <!-- This section is generated by scripts/inventory_readme.py; edit the catalog or SKILL.md instead. -->
-Catalog coverage: **103 canonical skills**, **19 packs**, **15 dependency records**, **21 external groups**, **6 runtime records**, and **25 plugin package records**. These counts describe different units and must not be added as a unique skill total.
+Catalog coverage: **107 canonical skills**, **19 packs**, **15 dependency records**, **21 external groups**, **6 runtime records**, and **25 plugin package records**. These counts describe different units and must not be added as a unique skill total.
 
 ### Pack membership
 
@@ -195,7 +242,7 @@ Direct members are listed in full; the installer also resolves required skill de
 | `core` | Six shared owners for planning, execution discipline, diagnosis and review. | `workflow-orchestrator`<br>`create-plan`<br>`first-time-right-delivery`<br>`bug-triage`<br>`code-review-and-quality`<br>`code-review-tests` | None |
 | `data` | Database and data-analysis helpers. | `supabase`<br>`supabase-guardian`<br>`csv-analytics-reporter` | [supabase](#dependency-supabase)<br>[convex](#dependency-convex) |
 | `design` | Design brief, reference fidelity, UI/UX, frontend implementation, Taste, polish, motion and visual verification. | `design-brief`<br>`reference-design-contract`<br>`frontend-design`<br>`ux-flow-architect`<br>`design-system-steward`<br>`interaction-polish`<br>`motion-animation-engineer`<br>`accessibility-auditor`<br>`visual-qa`<br>`vector-asset-pipeline` | None |
-| `engineering` | All 23 shared engineering playbooks, approved delivery, testing and performance; native Forge for Codex or PStack for Cursor. | <details><summary>50 members</summary><code>engineering-playbooks</code><br><code>integrated-workflow</code><br><code>test-architecture-engineer</code><br><code>performance-profiler</code><br><code>agent-map</code><br><code>codex-forge</code><br><code>forge-architect</code><br><code>forge-arena</code><br><code>forge-automate-me</code><br><code>forge-blast-radius</code><br><code>forge-bro</code><br><code>forge-create-verification-skill</code><br><code>forge-figure-it-out</code><br><code>forge-how</code><br><code>forge-interrogate</code><br><code>forge-maintain-verification-skill</code><br><code>forge-make-bot-ui</code><br><code>forge-no-comments</code><br><code>forge-principle-boundary-discipline</code><br><code>forge-principle-build-the-lever</code><br><code>forge-principle-encode-lessons-in-structure</code><br><code>forge-principle-exhaust-the-design-space</code><br><code>forge-principle-experience-first</code><br><code>forge-principle-fix-root-causes</code><br><code>forge-principle-foundational-thinking</code><br><code>forge-principle-guard-the-context-window</code><br><code>forge-principle-laziness-protocol</code><br><code>forge-principle-make-operations-idempotent</code><br><code>forge-principle-migrate-callers-then-delete-legacy-apis</code><br><code>forge-principle-minimize-reader-load</code><br><code>forge-principle-model-the-domain</code><br><code>forge-principle-never-block-on-the-human</code><br><code>forge-principle-outcome-oriented-execution</code><br><code>forge-principle-prove-it-works</code><br><code>forge-principle-redesign-from-first-principles</code><br><code>forge-principle-separate-before-serializing-shared-state</code><br><code>forge-principle-sequence-verifiable-units</code><br><code>forge-principle-subtract-before-you-add</code><br><code>forge-principle-type-system-discipline</code><br><code>forge-recall</code><br><code>forge-reflect</code><br><code>forge-setup</code><br><code>forge-show-me-your-work</code><br><code>forge-swarm</code><br><code>forge-tdd</code><br><code>forge-teach</code><br><code>forge-technical-writing</code><br><code>forge-typescript-best-practices</code><br><code>forge-unslop</code><br><code>forge-why</code></details> | [pstack](#dependency-pstack)<br>[unlazy](#dependency-unlazy) |
+| `engineering` | 23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor and Universal Forge routes. | <details><summary>54 members</summary><code>engineering-playbooks</code><br><code>integrated-workflow</code><br><code>test-architecture-engineer</code><br><code>performance-profiler</code><br><code>agent-map</code><br><code>codex-forge</code><br><code>forge-architect</code><br><code>forge-arena</code><br><code>forge-automate-me</code><br><code>forge-blast-radius</code><br><code>forge-bro</code><br><code>forge-create-verification-skill</code><br><code>forge-figure-it-out</code><br><code>forge-how</code><br><code>forge-interrogate</code><br><code>forge-maintain-verification-skill</code><br><code>forge-make-bot-ui</code><br><code>forge-no-comments</code><br><code>forge-principle-boundary-discipline</code><br><code>forge-principle-build-the-lever</code><br><code>forge-principle-encode-lessons-in-structure</code><br><code>forge-principle-exhaust-the-design-space</code><br><code>forge-principle-experience-first</code><br><code>forge-principle-fix-root-causes</code><br><code>forge-principle-foundational-thinking</code><br><code>forge-principle-guard-the-context-window</code><br><code>forge-principle-laziness-protocol</code><br><code>forge-principle-make-operations-idempotent</code><br><code>forge-principle-migrate-callers-then-delete-legacy-apis</code><br><code>forge-principle-minimize-reader-load</code><br><code>forge-principle-model-the-domain</code><br><code>forge-principle-never-block-on-the-human</code><br><code>forge-principle-outcome-oriented-execution</code><br><code>forge-principle-prove-it-works</code><br><code>forge-principle-redesign-from-first-principles</code><br><code>forge-principle-separate-before-serializing-shared-state</code><br><code>forge-principle-sequence-verifiable-units</code><br><code>forge-principle-subtract-before-you-add</code><br><code>forge-principle-type-system-discipline</code><br><code>forge-recall</code><br><code>forge-reflect</code><br><code>forge-setup</code><br><code>forge-show-me-your-work</code><br><code>forge-swarm</code><br><code>forge-tdd</code><br><code>forge-teach</code><br><code>forge-technical-writing</code><br><code>forge-typescript-best-practices</code><br><code>forge-unslop</code><br><code>forge-why</code><br><code>universal-forge</code><br><code>universal-plan-model-router</code><br><code>cursor-forge</code><br><code>cursor-forge-setup</code></details> | [pstack](#dependency-pstack)<br>[unlazy](#dependency-unlazy) |
 | `expo` | Expo skills including routing, builds, deployment, native UI and upgrades. | None; dependency-only pack | [expo](#dependency-expo) |
 | `external-agents` | Explicitly authorized external provider coordination. | `agent-collaboration-terminal` | [external-providers](#dependency-external-providers) |
 | `ios` | iOS build and QA dependencies; macOS/Xcode are required for local simulators. | `mobile-release-manager` | [argent](#dependency-argent)<br>[ios-toolchain](#dependency-ios-toolchain) |
@@ -207,7 +254,7 @@ Direct members are listed in full; the installer also resolves required skill de
 | `security` | Portable security and privacy review, with optional separate Codex Security provider. | `security-best-practices`<br>`privacy-safety-review` | [codex-security](#dependency-codex-security) |
 | `web` | Browser verification and web implementation helpers. | `playwright`<br>`screenshot`<br>`develop-web-game`<br>`accessibility-auditor`<br>`visual-qa` | [browser-control](#dependency-browser-control) |
 
-### Canonical skills (103)
+### Canonical skills (107)
 
 | Skill | Purpose | Targets | Declared author / provenance | Source and upstream | License / redistribution |
 | --- | --- | --- | --- | --- | --- |
@@ -224,6 +271,8 @@ Direct members are listed in full; the installer also resolves required skill de
 | [`codex-forge`](plugins/rogemar-agent-toolkit/skills/codex-forge/SKILL.md) | Execute rigorous coding tasks with the full Forge engineering skill and playbook family. Use for Codex Forge, substantive implementation, diagnosis, refactoring, review, verification, or approved programme execution. Integrates with workflow-orchestrator and task-based Codex model routing. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/codex-forge/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`create-plan`](plugins/rogemar-agent-toolkit/skills/create-plan/SKILL.md) | Plan a software change from repository evidence, clear scope, practical increments, and observable acceptance. Use for an explicit planning request or when non-trivial work needs sequencing; keep routine changes brief and leave model selection to the active harness. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/create-plan/SKILL.md) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`csv-analytics-reporter`](plugins/rogemar-agent-toolkit/skills/csv-analytics-reporter/SKILL.md) | Use when analyzing CSV, TSV, spreadsheet exports, product analytics, finance tables, survey responses, event logs, or tabular data that needs cleaning, aggregation, charts, anomaly checks, or plain-language findings. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/csv-analytics-reporter/SKILL.md) | Not declared in snapshot; review before redistribution |
+| [`cursor-forge`](plugins/rogemar-agent-toolkit/skills/cursor-forge/SKILL.md) | Adapt native Cursor PStack methods to the shared Forge roles, modes and delivery workflow. Use in Cursor for Forge-style engineering with native models and tools; preserve upstream poteto-mode unchanged. | cursor | Rogemar (Cursor adapter); Lauren Tan (upstream PStack methods) | [SKILL.md](plugins/rogemar-agent-toolkit/skills/cursor-forge/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
+| [`cursor-forge-setup`](plugins/rogemar-agent-toolkit/skills/cursor-forge-setup/SKILL.md) | Configure and resolve Cursor Forge modes, native model profiles, role assignments and supporting skills. Use for Cursor setup, mode changes, mapping inspection, and automatically before Cursor Forge worker dispatch; universal routing is fallback only. | cursor | Rogemar (Cursor adapter); Lauren Tan (upstream PStack methods) | [SKILL.md](plugins/rogemar-agent-toolkit/skills/cursor-forge-setup/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`deliver-approved-programme`](plugins/rogemar-agent-toolkit/skills/deliver-approved-programme/SKILL.md) | Compatibility entry for prompts that explicitly name deliver-approved-programme. The maintained workflow is integrated-workflow; use that name for new approved implementation and delivery tasks. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/deliver-approved-programme/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`deploy-checklist`](plugins/rogemar-agent-toolkit/skills/deploy-checklist/SKILL.md) | Use when preparing releases, deploys, preview builds, production pushes, branch summaries, release notes, rollback plans, QA checklists, or risk reviews before shipping a web, mobile, backend, or Supabase change. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/deploy-checklist/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`design-brief`](plugins/rogemar-agent-toolkit/skills/design-brief/SKILL.md) | Turn natural-language or structured design input into a concise buildable brief with audience, visual dimensions, constraints and acceptance evidence. Use before design work when the desired direction is ambiguous; do not restart an already settled product brief. | portable | Rogemar; upstream notices preserved | [SKILL.md](plugins/rogemar-agent-toolkit/skills/design-brief/SKILL.md); [upstream](https://github.com/digitalpilipinas/open-design) | Evidence: `LICENSE.txt`; review terms before redistribution |
@@ -252,7 +301,7 @@ Direct members are listed in full; the installer also resolves required skill de
 | [`forge-principle-experience-first`](plugins/rogemar-agent-toolkit/skills/forge-principle-experience-first/SKILL.md) | Apply when product, UX, or feature-scope tradeoffs come up. Choose user delight over implementation convenience; ship fewer polished features over more rough ones. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-principle-experience-first/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-principle-fix-root-causes`](plugins/rogemar-agent-toolkit/skills/forge-principle-fix-root-causes/SKILL.md) | Apply when debugging. Trace each symptom to its root cause and fix it there; reproduce first, ask why until you reach it, resist nil-check guards that silence crashes. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-principle-fix-root-causes/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-principle-foundational-thinking`](plugins/rogemar-agent-toolkit/skills/forge-principle-foundational-thinking/SKILL.md) | Apply before writing logic: choosing core types and data structures, sequencing scaffold-vs-feature work, asking what concurrent actors share. Get the data structures right so downstream code becomes obvious. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-principle-foundational-thinking/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
-| [`forge-principle-guard-the-context-window`](plugins/rogemar-agent-toolkit/skills/forge-principle-guard-the-context-window/SKILL.md) | Apply when context is filling up: large outputs, long files, repeated reads, fan-out planning. Route bulk to subagents; keep summaries in the main thread, not raw payloads. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-principle-guard-the-context-window/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
+| [`forge-principle-guard-the-context-window`](plugins/rogemar-agent-toolkit/skills/forge-principle-guard-the-context-window/SKILL.md) | Apply when large outputs, long files, repeated reads or delegation make context handling material. Preserve sufficient evidence and reduce repeated work across the complete task. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-principle-guard-the-context-window/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-principle-laziness-protocol`](plugins/rogemar-agent-toolkit/skills/forge-principle-laziness-protocol/SKILL.md) | Apply when refactoring, evaluating diff size, or tempted to add abstractions, layers, or signal threading. Bias toward deletion and the smallest change that solves the problem. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-principle-laziness-protocol/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-principle-make-operations-idempotent`](plugins/rogemar-agent-toolkit/skills/forge-principle-make-operations-idempotent/SKILL.md) | Apply when designing commands, lifecycle steps, or processing loops that run amid crashes, restarts, and retries. Converge to the same end state regardless of partial prior runs. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-principle-make-operations-idempotent/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-principle-migrate-callers-then-delete-legacy-apis`](plugins/rogemar-agent-toolkit/skills/forge-principle-migrate-callers-then-delete-legacy-apis/SKILL.md) | Migrate controlled API callers and remove proven dead paths while preserving supported clients, persisted formats and staged compatibility contracts. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-principle-migrate-callers-then-delete-legacy-apis/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
@@ -268,7 +317,7 @@ Direct members are listed in full; the installer also resolves required skill de
 | [`forge-principle-type-system-discipline`](plugins/rogemar-agent-toolkit/skills/forge-principle-type-system-discipline/SKILL.md) | Apply when designing types, reviewing a function signature, or writing code in any statically-typed language. Make illegal states unrepresentable, brand semantic primitives, parse external data at boundaries, refuse to lie to the compiler, exhaust variants, derive from authoritative schemas. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-principle-type-system-discipline/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-recall`](plugins/rogemar-agent-toolkit/skills/forge-recall/SKILL.md) | Reconstruct your recent working context from your own chat history, live state, and the shared record (user reports, prior fixes, incidents), then hand back a tight current-state brief. Use for 'recall my work on X', 'catch me up', 'what have I been working on', 'where did I leave off', before starting or resuming work. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-recall/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-reflect`](plugins/rogemar-agent-toolkit/skills/forge-reflect/SKILL.md) | Review the current task for durable lessons using judgment, tooling and divergent lenses. Propose or apply explicitly authorized skill improvements with cited evidence. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-reflect/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
-| [`forge-setup`](plugins/rogemar-agent-toolkit/skills/forge-setup/SKILL.md) | Configure adaptive per-role Codex model preferences for Forge. Use when setting up Forge, changing preferred worker models or reasoning hints, or checking routing readiness. Preserve the manually selected main model and effort as the inherited defaults and ceilings. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-setup/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
+| [`forge-setup`](plugins/rogemar-agent-toolkit/skills/forge-setup/SKILL.md) | Configure adaptive per-role Codex model preferences for Forge. Use when setting up Forge, switching Peak, Balanced, Lean, or Sprint modes, changing preferred worker models or reasoning hints, or checking routing readiness. Let a selected mode govern parent and worker profiles; verify actual runtime switches separately. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-setup/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-show-me-your-work`](plugins/rogemar-agent-toolkit/skills/forge-show-me-your-work/SKILL.md) | Keep a local evidence-backed decision trail for long or multi-phase work. Audit actual results and apply publication authority separately. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-show-me-your-work/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-swarm`](plugins/rogemar-agent-toolkit/skills/forge-swarm/SKILL.md) | Fan out N parallel workers, drain them, and return one report. Use for $forge-swarm, 'swarm this', or parallel coverage, races, gauntlets, and exploration. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-swarm/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-tdd`](plugins/rogemar-agent-toolkit/skills/forge-tdd/SKILL.md) | Use only when the user explicitly asks for TDD, a failing test, or a regression test, OR when the bug has an obvious cheap local test target. Skip when the test path is unclear, expensive, integration-heavy, or not requested. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-tdd/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
@@ -281,7 +330,7 @@ Direct members are listed in full; the installer also resolves required skill de
 | [`gh-address-comments`](plugins/rogemar-agent-toolkit/skills/gh-address-comments/SKILL.md) | CLI fallback for addressing open GitHub PR comments when the GitHub plugin is unavailable, unauthenticated, or the user explicitly requests gh CLI. Prefer the GitHub-plugin gh-address-comments skill for connected review-thread context. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/gh-address-comments/SKILL.md) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`gh-fix-ci`](plugins/rogemar-agent-toolkit/skills/gh-fix-ci/SKILL.md) | CLI fallback for debugging GitHub Actions PR checks when the GitHub plugin is unavailable, unauthenticated, or the user explicitly requests gh CLI. Prefer the GitHub-plugin gh-fix-ci skill when its connected PR context is available. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/gh-fix-ci/SKILL.md) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`hatch-pet`](plugins/rogemar-agent-toolkit/skills/hatch-pet/SKILL.md) | Create, repair, validate, visually QA, and package Codex-compatible v2 animated pets from character art, generated images, company or prospect brand cues, or visual references. Use for any new Codex pet, custom mascot, non-pixel pet style, brand-inspired pet, existing-pet repair, or 8x11 spritesheet workflow requiring all 9 standard animation rows, 16 look directions, deterministic assembly, QA artifacts, and spriteVersionNumber 2 packaging. | codex | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/hatch-pet/SKILL.md) | Evidence: `LICENSE.txt`; review terms before redistribution |
-| [`integrated-workflow`](plugins/rogemar-agent-toolkit/skills/integrated-workflow/SKILL.md) | Execute an already approved multi-sprint, multi-PR, or GoalBuddy coding programme through bounded implementation, verification, review, pull-request remediation, merge, and exact-target proof. Use after planning and approval; do not use for creating the plan, simple one-change tasks, or unapproved deployment. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/integrated-workflow/SKILL.md) | Not declared in snapshot; review before redistribution |
+| [`integrated-workflow`](plugins/rogemar-agent-toolkit/skills/integrated-workflow/SKILL.md) | Execute an approved coding programme by complete vertical slices, with proportional implementation checks, local review, ready-PR review and remediation, and verified delivery. Use after approval for multi-sprint, multi-PR or GoalBuddy work; route small bounded corrections through the lighter path without starting a programme. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/integrated-workflow/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`interaction-polish`](plugins/rogemar-agent-toolkit/skills/interaction-polish/SKILL.md) | Use for interaction polish across apps and websites involving gestures, transitions, haptics, loading states, empty states, error recovery, microcopy, confirmation flows, touch ergonomics, keyboard behavior, perceived performance, and premium product feel. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/interaction-polish/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`knowledge-base-answering`](plugins/rogemar-agent-toolkit/skills/knowledge-base-answering/SKILL.md) | Use when answering questions from a scoped document set, repository docs, Notion/Drive/Slack content, internal notes, product specs, manuals, or local files where citations and source boundaries matter. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/knowledge-base-answering/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`linear`](plugins/rogemar-agent-toolkit/skills/linear/SKILL.md) | Manage issues, projects & team workflows in Linear. Use when the user wants to read, create or updates tickets in Linear. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/linear/SKILL.md) | Evidence: `LICENSE.txt`; review terms before redistribution |
@@ -293,7 +342,7 @@ Direct members are listed in full; the installer also resolves required skill de
 | [`opendesign`](plugins/rogemar-agent-toolkit/skills/opendesign/SKILL.md) | Use OpenDesign's full application workflows for importing, creating, exporting, sharing, deploying, refining, or extending design artifacts. Discover the native runtime and its dependencies before using its project, run, scenario, media, or connector tools. | portable | Rogemar; upstream notices preserved | [SKILL.md](plugins/rogemar-agent-toolkit/skills/opendesign/SKILL.md); [upstream](https://github.com/digitalpilipinas/open-design) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`pdf`](plugins/rogemar-agent-toolkit/skills/pdf/SKILL.md) | Use for lightweight local PDF reading, extraction, or programmatic generation. Prefer the bundled pdf skill when its managed runtime or stricter render-and-verify workflow is available. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/pdf/SKILL.md) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`performance-profiler`](plugins/rogemar-agent-toolkit/skills/performance-profiler/SKILL.md) | Use for performance investigations, profiling, or optimization involving React renders, Core Web Vitals, interaction latency, bundle size, images, virtualization, memory leaks, React Native frame drops, startup time, database/API latency, and measured evidence. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/performance-profiler/SKILL.md) | Not declared in snapshot; review before redistribution |
-| [`plan-model-router`](plugins/rogemar-agent-toolkit/skills/plan-model-router/SKILL.md) | Route Codex models and reasoning for plans, execution packages, and bounded subagents, including Astra, Sol, Terra, and Luna when surfaced. Preserve the manually selected parent as the default and ceiling; recommend justified task-specific worker profiles with validation and escalation evidence. | codex | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/plan-model-router/SKILL.md) | Not declared in snapshot; review before redistribution |
+| [`plan-model-router`](plugins/rogemar-agent-toolkit/skills/plan-model-router/SKILL.md) | Resolve Codex task and worker profiles automatically within Forge through workflow-orchestrator. Use Peak, Balanced, Lean, or Sprint role mappings with live Astra, Sol, Terra, and Luna availability, task-fit checks, and explicit dispatch arguments. Also use for standalone plan routing assessments. | codex | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/plan-model-router/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`playwright`](plugins/rogemar-agent-toolkit/skills/playwright/SKILL.md) | Use when the task requires automating a real browser from the terminal (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging) via `playwright-cli` or the bundled wrapper script. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/playwright/SKILL.md) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`privacy-safety-review`](plugins/rogemar-agent-toolkit/skills/privacy-safety-review/SKILL.md) | Use for product privacy, safety, and honesty reviews involving profiles, location, health or wellness signals, social features, leaderboards, badges, community data, media sharing, permissions, sensitive storage, generated insights, and surfaces where missing backend data must not be fabricated. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/privacy-safety-review/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`project-learning`](plugins/rogemar-agent-toolkit/skills/project-learning/SKILL.md) | Initialize and maintain project-local continuous learning, review captured lesson candidates, or adapt accepted lessons between repositories. Use for project learning setup and curation, not ordinary coding work. | codex | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/project-learning/SKILL.md) | Not declared in snapshot; review before redistribution |
@@ -309,6 +358,8 @@ Direct members are listed in full; the installer also resolves required skill de
 | [`supabase-guardian`](plugins/rogemar-agent-toolkit/skills/supabase-guardian/SKILL.md) | Use for any project with Supabase work involving RLS audits, migrations, SECURITY DEFINER RPCs, storage policies, auth/session handling, database functions, logs, or sensitive state where client-supplied identity, permissions, counters, rewards, tiers, credits, or ownership must not be trusted. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/supabase-guardian/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`test-architecture-engineer`](plugins/rogemar-agent-toolkit/skills/test-architecture-engineer/SKILL.md) | Use when designing or reviewing a test strategy for a feature, PR, sprint, bug fix, migration, or release. Routes work between unit, integration, contract, E2E, visual regression, accessibility, native emulator/device, smoke, and flaky-test diagnosis based on risk. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/test-architecture-engineer/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`transcribe`](plugins/rogemar-agent-toolkit/skills/transcribe/SKILL.md) | Transcribe audio files to text with optional diarization and known-speaker hints. Use when a user asks to transcribe speech from audio/video, extract text from recordings, or label speakers in interviews or meetings. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/transcribe/SKILL.md) | Evidence: `LICENSE.txt`; review terms before redistribution |
+| [`universal-forge`](plugins/rogemar-agent-toolkit/skills/universal-forge/SKILL.md) | Apply shared Forge engineering methods across agent harnesses using their own models, skills, tools, and sub-agents. Use for substantive engineering outside a specialized Codex or Cursor route, or when Universal Forge is explicitly requested. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/universal-forge/SKILL.md) | Evidence: `LICENSE.txt`; review terms before redistribution |
+| [`universal-plan-model-router`](plugins/rogemar-agent-toolkit/skills/universal-plan-model-router/SKILL.md) | Qualify task and role profiles using the current harness's native models and controls. Use internally with Universal Forge or as Cursor Forge fallback, or for portable plan routing; keep native defaults when model selection is unavailable. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/universal-plan-model-router/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`ux-flow-architect`](plugins/rogemar-agent-toolkit/skills/ux-flow-architect/SKILL.md) | Use for UX architecture across apps and websites involving user journeys, onboarding, navigation, information architecture, core task flows, permission flows, subscription gates, empty states, recovery paths, and reducing friction across desktop and mobile workflows. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/ux-flow-architect/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`vector-asset-pipeline`](plugins/rogemar-agent-toolkit/skills/vector-asset-pipeline/SKILL.md) | Use for SVG, icon, logo, vector illustration, symbol, map marker, app icon source, themable vector asset, density variant, export pipeline, optimization, accessibility, provenance, and render verification work. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/vector-asset-pipeline/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`vercel-deploy`](plugins/rogemar-agent-toolkit/skills/vercel-deploy/SKILL.md) | Deploy applications and websites to Vercel using the bundled `scripts/deploy.sh` claimable-preview flow. Use when the user asks to deploy to Vercel, wants a preview URL, or says to push a project live on Vercel. | portable | Vercel | [SKILL.md](plugins/rogemar-agent-toolkit/skills/vercel-deploy/SKILL.md); [upstream](https://github.com/vercel-labs/agent-skills) | Evidence: `LICENSE.txt`; review terms before redistribution |
@@ -411,7 +462,50 @@ These pinned package references record the capability audit and provenance. The 
 | `visualize@openai-bundled` (1.0.23) | Provides the `visualize` runtime skill/tool family. | OpenAI runtime<br>[OpenAI Plugins](https://github.com/openai/plugins) | `Enable through the target harness marketplace` |
 <!-- END GENERATED SKILL INVENTORY -->
 
+</details>
+
+## Credits and upstream sources
+
+Codex Forge is inspired by and adapted from **Lauren Tan (poteto)'s PStack and
+poteto-mode**, published in the [Cursor plugins repository](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack).
+It is an independent adaptation; the original MIT notices are preserved.
+
+This public repository combines maintained methods and licensed source snapshots.
+Each component retains its own license and attribution; being listed here does
+not mean a third-party service or proprietary runtime is bundled. The generated
+inventory above records the relevant source and dependency details.
+
+<details>
+<summary>Upstream repositories and projects</summary>
+
+- [openai-plugins](https://github.com/openai/plugins)
+- [supabase-agent-skills](https://github.com/supabase/agent-skills)
+- [coderabbit-skills](https://github.com/coderabbitai/skills)
+- [argent](https://github.com/software-mansion/argent)
+- [unlazy](https://github.com/Leonxlnx/unlazy)
+- [pstack](https://github.com/cursor/plugins/tree/main/pstack)
+- [goalbuddy](https://github.com/tolibear/goalbuddy)
+- [remotion-skills](https://github.com/remotion-dev/skills)
+- [vercel-agent-skills](https://github.com/vercel-labs/agent-skills)
+- [cursor-plugins](https://github.com/cursor/plugins)
+- [chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)
+- [modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance)
+- [science-skills](https://github.com/google-deepmind/science-skills)
+- [exa-grok-plugin](https://github.com/exa-labs/exa-grok-plugin)
+- [firecrawl-grok-plugin](https://github.com/firecrawl/firecrawl-grok-plugin)
+- [plugin-grok](https://github.com/getsentry/plugin-grok)
+- [superpowers](https://github.com/obra/superpowers)
+- [vercel-plugin](https://github.com/vercel/vercel-plugin)
+- [junie](https://github.com/JetBrains/junie)
+- [codex-router](https://github.com/duolahypercho/codex-router)
+- [open-design](https://github.com/digitalpilipinas/open-design)
+- [expo-skills](https://github.com/expo/skills)
+
+</details>
+
 ## Validation and releases
+
+For maintainers, run the repository checks before preparing release archives:
 
 ```bash
 python3 scripts/inventory_readme.py --check
@@ -422,6 +516,11 @@ python3 scripts/toolkit.py package --output dist/core
 python3 scripts/toolkit.py package --profile all --output dist/all
 ```
 
-Package outputs include deterministic checksums and the exact selection/content receipt. The Codex archive retains its selected source catalog, installer and Forge provenance manifest. The portable plugin contains the selected compatible skill trees. Use the full repository to add a pack omitted from a selected archive.
+The checks cover selection, packaging, content integrity, installation and recovery.
+They do not replace a fresh assistant session, authenticated provider review or
+real browser/device test. Archives contain checksums and a record of their selected
+contents. Follow [the release procedure](docs/releasing.md) for changes to sources,
+licenses, versions and publication.
 
-Local tests prove file selection, dependency closure, content integrity, migration and rollback behavior. They do not prove fresh Codex/Cursor discovery, a Linux VM, OpenDesign rendering, a provider account, or device QA. Follow [releasing.md](docs/releasing.md) and record these evidence states separately.
+This README describes the revision you are viewing. Local edits and draft work do
+not update the GitHub default branch until explicitly published there.

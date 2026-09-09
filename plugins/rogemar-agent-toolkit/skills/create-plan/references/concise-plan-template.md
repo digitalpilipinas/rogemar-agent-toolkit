@@ -25,4 +25,7 @@ Keep one acceptance list. Add a table only when several requirements are easier
 to compare that way. Do not attach a model matrix, board, delivery programme,
 or separate review plan to a routine change.
 
+For a handoff, include essential starting source pointers and refresh conditions
+in the existing scope or steps when useful. Do not copy the full conversation.
+
 Modified by Rogemar Agent Toolkit on 2026-09-07 for portable, proportionate planning.

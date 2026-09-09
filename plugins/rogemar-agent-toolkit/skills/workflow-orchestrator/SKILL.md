@@ -9,6 +9,32 @@ Coordinate a coding task across its lifecycle without duplicating specialist
 skills. Use this skill to decide what kind of work is needed, what evidence is
 required, which installed capabilities apply, and when the task should pause.
 
+## Automatic Codex Forge dispatch
+
+When Codex Forge is active, automatically use the installed `plan-model-router` for
+EVERY justified new worker assignment. Follow its
+`plan-model-router/references/dispatch-contract.md` contract:
+read saved preferences and current runtime capabilities, select the task role,
+run the resolver, and apply its qualified model/effort through controls exposed
+by the live native dispatch schema. Never send unsupported fields; follow the
+contract's unapplied-profile fallback when no suitable control exists. Re-resolve
+after mode changes; a changed profile requires a fresh compatible assignment.
+
+Peak, Balanced, Lean, and Sprint share one executable catalogue owned by the
+router. Old names remain compatibility aliases. Named modes supersede inherited
+parent defaults for workers; the no-mode route retains parent ceilings.
+Main-owned coordination and integration remain with the current main agent.
+A desired parent profile is advisory unless a supported live control applies it.
+Never recursively activate Forge or start a second coordinator when one is active.
+
+## Cursor Forge dispatch
+
+Cursor Forge uses `cursor-forge-setup` as the primary role/profile resolver.
+Read its saved native mappings, qualify task fit and pins, then apply exact
+supported settings to the native worker call. The universal router is fallback
+only for unavailable adapter/mappings; it cannot bypass owner limits, rejected
+configuration or required evidence. Keep this same orchestrator as sole dispatcher.
+
 ## Core routing
 
 1. Classify the request as answering, research, brainstorming, planning,
@@ -26,9 +52,9 @@ required, which installed capabilities apply, and when the task should pause.
 
 ## Shared methods and native harness bindings
 
-Use the shared `engineering-playbooks` method for substantive engineering work when installed. In Codex, prefer the complete installed `codex-forge` implementation of that method. In Cursor, prefer native PStack when installed. Other harnesses execute the same playbook with their own exposed models and tools. Select one execution owner; do not run the native and portable workflows twice.
+Use the shared `engineering-playbooks` method for substantive engineering work when installed. In Codex, prefer the complete installed `codex-forge` implementation of that method. In Cursor, prefer installed `cursor-forge`, otherwise native PStack with reconciled dispatch ownership. Elsewhere prefer `universal-forge` with `universal-plan-model-router`, falling back to the shared method if absent. Honor an explicit compatible entry choice and a declared `Harness: <name>`; a name does not prove live capabilities. Other harnesses use their own exposed models and tools. Select one execution owner; do not run the native and portable workflows twice.
 
-This orchestrator alone dispatches specialists and workers. Each playbook supplies methods and bounded hints. For Codex workers, use installed `plan-model-router` at materially different packages or dispatch boundaries, preserving its runtime contract and parent ceilings. Other harnesses use their actual model controls and inherit the parent when controls or identity are unavailable. Never import Codex or Cursor model names into another harness or invent a selector. Record requested and observed profiles only when delegation is material; unavailable identity remains Unverified.
+This orchestrator alone dispatches specialists and workers. Each playbook supplies methods and bounded hints. For Codex workers, use installed `plan-model-router` at materially different packages or dispatch boundaries, preserving its runtime contract: selected Forge modes supersede default parent ceilings; the no-mode route retains them. Other harnesses use their actual model controls and inherit the parent when controls or identity are unavailable. Never import Codex or Cursor model names into another harness or invent a selector. Record requested and observed profiles only when delegation is material; unavailable identity remains Unverified.
 
 `create-plan` owns planning. `code-review-and-quality` owns the independent review and may request focused `code-review-tests` evidence. CodeRabbit and harness-native reviewers are separate evidence providers; consolidate findings by root cause without relabeling their verdicts. They are required only when the approved acceptance contract requires them.
 
@@ -87,6 +113,10 @@ independent counterexample, or a safely partitioned package will improve the
 outcome more than its coordination, context, and validation cost. Keep
 synthesis, requirements, integration, and final judgment with the main agent.
 
+For large outputs, repeated reads or long handoffs, apply
+[context efficiency](references/context-efficiency.md). Preserve decisive evidence
+and freshness while reducing repeated work; do not add another acceptance cycle.
+
 Choose a surfaced custom-agent type for its behavioral and permission contract,
 not as a permanent model assignment. Role intent may be explorer, investigator,
 implementation worker, debugger, reviewer, architect, or bounded experiment
@@ -114,12 +144,13 @@ the active harness's profile controls when a profile is needed; Codex uses insta
   not revert another worker's changes, and report conflicts or out-of-scope
   findings instead of guessing. The main agent must inspect the resulting diff,
   reconcile it with the approved plan, and perform or direct final validation.
-- Capture the parent model and reasoning effort before spawning. No worker may
-  use a stronger model or higher reasoning effort than the parent.
+- Capture the parent model and reasoning effort before spawning. In a named
+  Forge mode, qualify the worker against its pool and the backend; it may exceed
+  parent defaults. Without a mode, enforce both parent ceilings.
 - Treat a role's stated model or effort as a desired profile, never a bypass of
-  either parent ceiling. Record the requested and effective profile; clamp to
-  the strongest permitted profile or mark the work `ceiling-constrained`.
-- If a worker needs more capability than the parent ceiling permits, mark the
+  mode membership or an applicable legacy parent ceiling. Record requested and observed profiles. Requalify a sufficient permitted
+  profile or report the constraint; never silently clamp or drop overrides.
+- Without a named mode, if a worker needs more capability than the parent ceiling permits, mark the
   handoff `ceiling-constrained` and return the unresolved work to the main
   agent or Rogemar.
 - If worker model or effort cannot be verified, report it as Unverified and do
@@ -235,7 +266,7 @@ Every phase handoff should carry:
 
 Every worker handoff must additionally carry:
 
-- Parent model and reasoning ceilings.
+- Observed parent profile, selected mode, and applicable limits.
 - Assigned model and reasoning effort.
 - Permissions, tools, isolation, and budget.
 - Owned files or surfaces and explicit non-goals.

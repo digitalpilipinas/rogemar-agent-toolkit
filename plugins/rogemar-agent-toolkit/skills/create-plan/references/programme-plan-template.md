@@ -13,7 +13,8 @@ approved plan or board in its own format; do not create a second source of truth
 
 ## Context and decisions
 
-- <Source path or specification, current behavior, and contract to preserve.>
+- <Essential starting source paths and why they matter; current behavior and
+  contract to preserve; candidate/revision and conditions requiring a refresh.>
 - <Chosen approach and why; material alternatives considered.>
 - <Verified fact, explicit assumption, or unresolved owner decision.>
 

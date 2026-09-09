@@ -20,6 +20,22 @@ or `constraints`; it does not execute those skills during preparation. During
 execution, the active task's scope and current evidence determine which listed
 specialists actually activate. A plan hint is not a command to load them all.
 
+### GoalBuddy context handoff
+
+Keep Goal Prep preparation-only and preserve its native board/receipt schema.
+Record essential source pointers, candidate identity and refresh conditions in
+existing task `inputs` or `constraints`; schedule source inspection for execution.
+Do not load implementation context merely to make the preparation prompt shorter.
+
+During execution, first read the charter and authoritative `state.yaml` as required
+by GoalBuddy. Then carry a focused view of the active task, oracle, authority,
+dependencies, relevant receipts, blockers and next action. Refresh it after board
+changes or uncertain recovery; retrieve historical detail when the task needs it.
+This view is transient context, not another board, persisted status schema or
+permission to skip full-board checks and final outcome coverage. Preserve native
+receipt fields and PM ownership. Apply [context efficiency](context-efficiency.md)
+within these boundaries; leave managed GoalBuddy plugin files unchanged.
+
 ## Capability preflight by stage
 
 - **Planning (`create-plan`):** infer required capabilities and use read-only
@@ -104,6 +120,7 @@ system plus focused visual evidence.
 The orchestrator selects one matched native or portable engineering method for substantive execution and
 remediation, then resolves the task profile at package activation and before
 dispatch. Forge's panels, playbooks, and native agents return bounded hints to
-this same owner. The manually selected main profile remains the default and
-ceiling; setup preferences and parent suggestions never change it automatically.
+this same owner. Follow the router dispatch contract: named Forge modes govern
+worker profiles; the no-mode path retains parent defaults and ceilings. Saved
+preferences and parent suggestions do not change the running parent.
 Goal compilation only records these names; it does not execute Forge or routing.

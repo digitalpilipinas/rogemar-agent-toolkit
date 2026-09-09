@@ -49,5 +49,5 @@ def verify():
 if __name__=='__main__':
     errors=verify()
     for e in errors:print(e,file=sys.stderr)
-    print(json.dumps({'status':'failed' if errors else 'verified','skills':45 if (SKILLS/'codex-forge').is_dir() else 0,'playbooks':23 if (SKILLS/'codex-forge').is_dir() else 0,'agents':2 if (SKILLS/'codex-forge').is_dir() else 0,'inactive_recipes':3 if (SKILLS/'codex-forge').is_dir() else 0,'errors':len(errors)}))
+    print(json.dumps({'status':'failed' if errors else ('verified' if (SKILLS/'codex-forge').is_dir() else 'not-applicable'),'skills':45 if (SKILLS/'codex-forge').is_dir() else 0,'playbooks':23 if (SKILLS/'codex-forge').is_dir() else 0,'agents':2 if (SKILLS/'codex-forge').is_dir() else 0,'inactive_recipes':3 if (SKILLS/'codex-forge').is_dir() else 0,'errors':len(errors)}))
     raise SystemExit(bool(errors))

@@ -17,7 +17,26 @@ The installer targets Python 3.9+ on macOS, Linux and WSL. It copies selected co
 | z-code | `.zcode/skills` | `.zcode/skills` | Fresh-session discovery required |
 | claude | `.claude/skills` | `.claude/skills` | Fresh-session discovery required |
 
-Codex places native-only entries in `.codex/skills`; its portable methods live once in `.agents/skills`. The complete 45-skill Forge family remains Codex-specific, including its own model routing. Cursor uses native PStack when installed. Generic engineering methods can run sequentially with the selected harness's current model and tools; no invented selector or subagent is required.
+Codex places native-only entries in `.codex/skills`; shared methods live once in
+`.agents/skills`. Its full 45-skill Forge family uses `plan-model-router` to qualify
+worker assignments. Cursor uses `cursor-forge` and `cursor-forge-setup` for native
+role/model mappings; the universal router is a fallback when that route is
+unavailable. Upstream PStack/poteto-mode remains a separate, unchanged entry.
+Other assistants use `universal-forge` with `universal-plan-model-router` and their
+own observed capabilities. Shared engineering methods may run sequentially on the
+current model when worker controls are unavailable.
+
+Peak, Balanced, Lean and Sprint share intent across adapters, not identical model
+IDs, prices or capabilities. A selected profile and an accepted dispatch are not
+proof of the effective model. Record observed runtime identity separately. A saved
+mode does not switch the running parent; parent switching needs a supported live
+control and verified result. Required independence cannot be supplied by merely
+renaming a sequential pass.
+
+See [installation and recovery](installation.md) for matching previews, saved
+selections and plugin-archive boundaries. Unknown assistant names should use the
+portable route and that assistant's documented import mechanism; do not invent a
+new installer `--harness` ID or assume native controls from a product name.
 
 These paths combine official format support and the local inventory's observed user layouts. They are delivery adapters, not certification of every harness version. For a harness whose installed version differs, use its documented skill import path and verify discovery; do not copy into runtime builtin/plugin cache directories. Use only one primary managed installation per shared root. Project overlays are never inferred from global skills.
 

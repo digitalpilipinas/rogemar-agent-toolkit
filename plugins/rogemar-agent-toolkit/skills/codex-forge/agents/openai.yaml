@@ -1,3 +1,6 @@
 interface:
-  display_name: "Codex Forge"
+  display_name: "codex-forge"
   short_description: "Engineering workflows with adaptive Codex routing"
+  default_prompt: "Use $codex-forge for the requested task."
+policy:
+  allow_implicit_invocation: true

@@ -1,256 +1,314 @@
 # Execution Loop
 
-Use this reference after an approved plan exists. Repository instructions and stronger domain, security, regulatory, or release contracts take precedence.
+Use after approval for the active slice. The entry skill defines change classes,
+review requirements and delivery strategy; this reference defines their evidence
+and execution. Preserve stronger repository/domain gates and exact owner authority.
 
-## 1. Resolve context without a questionnaire
+## 1. Resolve the slice and authority
 
-Infer from the current workspace, plan, and GoalBuddy board:
+Inspect the approved plan, repository instructions, current root/branch/HEAD,
+upstream and target, staged/unstaged/untracked changes, existing worktrees and PRs,
+validation commands, affected platforms and recorded exclusions. Read relevant
+lockfiles, environment-variable names and nearby patterns without exposing secrets.
+Preserve unrelated, ignored, private, generated and control files.
 
-- repository root and applicable instructions;
-- active task, sprint, and dependencies;
-- remote target/default branch;
-- existing branches and worktrees;
-- repository validation commands;
-- changed platform and specialist capabilities;
-- exclusions and recorded mutation authority.
+With GoalBuddy, follow its execution contract and `state.yaml`: only the PM selects
+the next active task or completes the goal. Goal Prep prepares the board and stops.
+Without a board, resume the first incomplete dependency-ready approved increment.
+Do not invent a new board, replan or restart completed work.
 
-Ask one concise question only if a missing choice materially changes scope, safety, external data exposure, production behavior, or mutation authority. Plain-language owner instructions override inferred defaults.
+For long runs, follow the shared [context guidance](../../workflow-orchestrator/references/context-efficiency.md)
+and [GoalBuddy handoff](../../workflow-orchestrator/references/stage-routing.md#goalbuddy-context-handoff)
+when applicable. Carry changes since the last accepted receipt alongside still-valid
+constraints, source identity, dependency evidence and next action. Refresh changed
+or uncertain state. Preserve original logs and decisive diagnostics, and consume
+already-delivered results once. This changes no review gate or final coverage audit.
 
-Apply the compact invocation controls before work begins:
+Resolve compact controls from the owner or approved plan:
 
-- Treat `Database or migrations` as the maximum permitted environment: `NONE`, `LOCAL`, `STAGING`, or `PRODUCTION`. A higher environment never authorizes work absent from the approved plan, and destructive operations still require exact scope and safety checks.
-- Treat `Delivery to main` as the delivery route and authority ceiling:
-  - `LOCAL ONLY`: do not commit, push, open a PR, or merge;
-  - `DIRECT COMMIT AUTHORIZED`: commit and push directly to the verified target branch only when repository policy permits;
-  - `BRANCH + PR, STOP BEFORE MERGE`: create the branch, commit, push, and open/update the PR, but do not merge;
-  - `BRANCH + PR + MERGE AUTHORIZED`: run the branch/PR workflow and merge only after the applicable gate clears.
-- Parse `Independent external review` as `DISABLED`, `OPTIONAL`, or `REQUIRED AT <named boundary>`, followed by the exact allowed provider/model list. Use `agent-collaboration-terminal` only when enabled.
-- Treat omitted `Execution strategy` as `AGILE_FOCUSED`. Select `AGILE_CONTROLLED_PARALLEL` only when an approved dependency and ownership map proves every writer lane is independent; otherwise keep the main agent actively writing and integrating.
-- Apply simulator and physical-device QA exactly as selected; do not infer a stronger or weaker gate. If the owner explicitly invokes simulator testing for a named change or boundary, treat it as `REQUIRED` there.
+- `LOCAL ONLY`: no commits, pushes, PR creation, remote review comments or merge.
+  Local review remains allowed and required for substantive local-only acceptance,
+  within the applicable provider/data/usage authority.
+- `DIRECT COMMIT AUTHORIZED`: explicit owner choice to commit/push directly to the
+  verified target, subject to repository policy. Never infer it from project size.
+- `BRANCH + PR, STOP BEFORE MERGE`: authorized branch commits, pushes and PR
+  preparation; ready-PR review/remediation within the recorded review authority;
+  stop at verified readiness without merging.
+- `BRANCH + PR + MERGE AUTHORIZED`: the same flow, followed by merge only after
+  applicable gates clear and exact-target verification.
+- If publication authority is absent, use a local branch strategy and continue
+  safe work up to that boundary. Ask only when a material missing decision is
+  needed, not again for authority already supplied.
+- Database scope is the maximum permitted environment. Production changes,
+  destructive work, provider data/credit usage and deployment need their own
+  applicable authority; none follows from branch or PR creation alone.
 
-## 2. Respect the planning and GoalBuddy boundaries
+For branch delivery, begin a new independent vertical slice from the verified
+remote target in its own branch/worktree. Resume the same branch and optional
+draft across its sprints and commits. Do not create per-sprint PRs automatically.
+Honor an explicit stacked or multiple-PR plan without silently rebasing/replanning.
+For direct-main delivery, follow that route without manufacturing a PR or separate
+sprint branch; preserve user work and policy. Local-only work stops locally.
 
-`create-plan` is read-only and produces the plan. Goal Prep compiles `goal.md` and `state.yaml`, then stops. Execution starts only in `/goal` or through an explicit request to execute the approved plan.
+## 2. Build and validate continuously
 
-When a GoalBuddy board exists:
+The orchestrator selects one native/portable engineering playbook and justified
+skills; apply the selected harness's routing contract when dispatching. Forge's
+artifacts supplement the approved plan and cannot activate tasks or pass gates.
 
-- read its adjacent execution contract;
-- treat `state.yaml` as truth;
-- work only the active task;
-- in `AGILE_FOCUSED`, keep one active implementation/integration owner; read-only Scout, Judge, review, research, and QA work may still run concurrently;
-- in `AGILE_CONTROLLED_PARALLEL`, activate concurrent writer lanes only when the board records exact files or symbols, separate branch/worktree, verification, stop conditions, and a named main-agent integration owner for each lane; require main-agent reconciliation rather than treating supervision as an idle-only role;
-- limit Workers to `allowed_files` and their declared verification;
-- leave a receipt for done, blocked, or escalated work;
-- let only the PM select the next task or complete the goal.
+Default to one main-agent writing/integration lane. Concurrent read-only support
+may earn its cost; concurrent writers require approved independent branches and
+worktrees, exact files/symbols, verification, stop conditions and reconciliation.
+Stop overlapping lanes and return to focused work when a shared dependency emerges.
 
-When no board exists, use the approved plan's first incomplete dependency-ready increment and keep a concise native plan.
+Use existing primitives and patterns. Keep sensitive decisions server-authoritative.
+Implement coherent increments with focused tests and relevant counterexamples:
+ownership/authorization, malformed or legacy state, retries/duplicates, disabled
+behavior, offline/restart, concurrency, migration and recovery where affected.
+Do not mechanically add every permutation or widen the approved contract.
 
-## 3. Preflight the candidate
+For visible or interactive changes, follow [UI/UX implementation](ui-ux-implementation.md)
+from baseline through accessible behavior and applicable runtime checks. Early
+review is allowed; missing required UI evidence remains explicit and does not
+establish final readiness. Reuse the existing scope/correctness reviewer where
+appropriate rather than creating separate Judges for every implementation or QA helper.
 
-Before editing:
+Run focused checks during work and the repository-native checks covering the final
+integrated diff before slice acceptance. Distinguish pre-existing failures from
+regressions. Preserve required checks even for the small-change exception.
 
-1. Inspect repository root, branch, HEAD, upstream, remotes, remote target branch, status, staged and unstaged changes, and untracked files.
-2. Inspect relevant instructions, package scripts, lockfiles, environment-variable names, and nearby implementation and test patterns.
-3. Confirm that the compact controls agree with the plan, board, repository policy, and current task. A conflict is a material decision; do not silently choose one.
-4. Preserve unrelated user work and private material. Do not place secrets, environment files, credentials, ignored material, research, GoalBuddy control files, or generated diagnostics into commits or external review scope without explicit authorization.
-5. For a new sprint, create a fresh branch and separate worktree from the verified target branch. Do not silently base a new sprint on unmerged work unless the approved plan defines a stacked dependency.
+With publication authority, meaningful intermediate commits and feature-branch
+pushes may accumulate while the slice is branch-only or draft. Inspect/stage only
+intentional content and run applicable commit-time checks. Do not claim slice
+acceptance, start PR monitoring or require a full local CodeRabbit run per commit.
+A stricter project checkpoint still applies. Local full-slice review must pass
+before ready-for-review, substantive direct-main publication or final local-only
+slice acceptance, unless the owner explicitly waives that layer.
 
-## 4. Implement one coherent slice
+## Gate and evidence contract
 
-- At activation, `workflow-orchestrator` selects one matching native or portable engineering playbook. In Codex, use its installed Forge and model-router contracts; elsewhere use the active harness's own controls. Inherit the parent by default, record material profile constraints and verify role overrides when delegation is used.
-
-- Forge provides methods and bounded collaboration hints to that same owner.
-  Its store is evidence within the approved package, not an alternate board or
-  independent authority to activate tasks or pass programme gates.
-
-- Assign the active write scope from the selected strategy. In `AGILE_FOCUSED`, the main agent actively writes or integrates one coherent lane; do not create a shadow effort on the same symbols. In `AGILE_CONTROLLED_PARALLEL`, start only approved independent writer lanes in separate worktrees, each with exact scope, verification, stop conditions, and a named integration owner. On a shared dependency, migration, overlap, integration conflict, or blocker, stop affected lanes, reconcile, and resume as `AGILE_FOCUSED`.
-- At package activation, use the programme's authorized available independent reviewer for scope and unnecessary complexity. If no worker is supported, the parent performs this audit and reports any required independence as unmet. Reuse the reviewer at pre-acceptance against the actual diff; do not create per-helper Judges or continuous monitoring. Classify verified suggestions by necessity, concrete current benefit, and actual effort/risk rather than reviewer labels. Include a beneficial optional quick win only when it is genuinely easy, localized, reversible, inside the approved product contract and recorded file scope, based on existing primitives, proportionately verifiable, and still low-risk after cumulative additions. Trust-boundary impact overrides line count. Stop for owner approval when a necessary correction genuinely needs significant complexity or scope expansion. Reject or defer significant optional, speculative, or unnecessary work without interrupting the owner unless the owner has separately prioritized it.
-- Follow approved order and dependencies.
-- Prefer existing repository primitives and patterns.
-- Keep identity, authorization, credits, privacy, safety, and other sensitive decisions server-authoritative.
-- Implement code and tests together.
-- Add relevant counterexamples for authorization, ownership, privacy, legacy or malformed state, disabled behavior, duplicates, offline/restart, rollback, concurrency, media, migration, and recovery. Do not add irrelevant test permutations mechanically.
-- Re-check scope before widening shared abstractions or touching files outside the active task.
-
-## 5. Validate proportionally
-
-Run focused checks while editing. Before delivery, run the repository-native checks that cover the final diff, such as lint, typecheck, unit/integration tests, build, database/RLS/migration checks, security scans, offline/recovery suites, and `git diff --check`.
-
-Classify evidence honestly:
-
-- `passed`: command or acceptance check completed successfully;
-- `failed`: product or verification failure remains;
-- `blocked`: required check could not run because a named prerequisite is unavailable;
-- `skipped`: deliberately not applicable or outside scope;
-- `deferred`: intentionally postponed under the approved acceptance policy.
-
-Pre-existing failures must be distinguished from regressions introduced by the candidate.
-
-## 6. Review the actual candidate
-
-Review the complete frozen integrated candidate and tests, not a provider summary or individual Worker fragments. Use CodeRabbit according to [coderabbit-review.md](coderabbit-review.md). Run independent terminal-provider review only when its compact control enables it; use the exact named providers/models through `agent-collaboration-terminal`. When the approved controls name the installed GitHub Cloud Antigravity app, use its PR-native conversation trigger described below instead of routing the request through a terminal provider. If multiple providers are named, parallelize only read-only review. One reviewer finding never overrides repository behavior or scope.
-
-For an authorized read-only external review, prefer the terminal skill's managed-background/manual-approval profile with visible fallback. Select its opt-in code-review profile only when the objective explicitly reviews code, a diff, branch, or PR; `--mode review` alone does not activate code-review skills. Treat `needs_attention` as incomplete evidence; when the existing authority covers it, the main agent runs the recorded fallback once, waits for the native CLI to become ready, and submits only the frozen prompt. For code review, use the normalized finding contract and distinct provider emphases rather than asking every provider to repeat the same analysis. Keep CodeRabbit as a separate parent-owned review provider, never a nested provider action, and deduplicate provider findings against the canonical PR ledger before creating remediation work or PR comments.
-
-Before push or PR creation, persist one review checkpoint in the active board or delivery receipt:
+Define each gate once in the existing board/receipt, rather than separate reviewer
+or test ledgers. Retain only:
 
 ```text
-risk: low | moderate | high
-code-review-and-quality: approved | changes-required
-local-coderabbit: passed | blocked:<reason> | owner-waived:<reason> | not-applicable:<reason>
-github-coderabbit: pending-until-pr | passed | changes-required | unavailable:<reason>
-github-antigravity: pending-until-pr | requested | reviewing | passed | changes-required | unavailable:<reason>
+gate: <check or named provider>
+requirement: required | optional | not-applicable:<reason>
+source: <owner instruction, repository policy, approved plan or workflow default>
+trigger: <affected behavior or explicit request>
+owner: <implementation owner or evidence provider>
+boundary: <commit, slice-acceptance, ready-for-review, direct-main-publication, final-CI, merge>
+state: pending | running | passed | failed:<evidence> | blocked:<prerequisite> | unavailable:<optional reason> | deferred:<owner decision> | not-applicable:<reason>
+candidate: <comparison base, content identity and scope>
+evidence: <result/artifact, environment and relevant limitations>
 ```
 
-- When CodeRabbit is selected or required, resolve its installation, version, authentication, data scope, and usage authority before publication rather than discovering them after the PR opens.
-- When the approved contract requires local CodeRabbit, do not push or open the PR while that required review is blocked unless the owner explicitly authorizes authentication or explicitly waives that layer and accepts the recorded fallback.
-- `code-review-and-quality`, Codex sub-agent review, Minimality, security review, tests, and CI are complementary evidence; none may be relabeled as or silently substituted for CodeRabbit.
-- After the PR opens, let the automatic GitHub CodeRabbit review finish and, when configured and explicitly authorized to post, request GitHub Cloud Antigravity with the exact standalone PR conversation command `@agy /review`. Reconcile valid issues from both reviewers before adding a final-CI trigger such as `run-ci`. A posted Antigravity command or pending bot is not review readiness.
-- Inventory all PR review surfaces after publication: top-level conversation comments, review submissions, inline threads and replies, reviewer states, and relevant check annotations. CodeRabbit and Antigravity are individual layers, not the whole inventory. Before final CI or merge, every actionable item must be fixed, explicitly rejected with current-code evidence, deduplicated, or deferred under an approved boundary; unresolved validated findings block the gate.
+`failed` means an executed check exposed a failure. `blocked` means required
+prerequisites are unavailable. Optional unavailability does not become a gate
+because the change is high-risk. A waived or deferred requirement retains the
+owner's disposition and never becomes `passed`. Required failures remain binding;
+continue safe independent work but do not cross the affected boundary.
+
+Record local CodeRabbit, GitHub CodeRabbit and GitHub Codex separately. Resolve
+requirements from the entry skill, route and stronger project rules: substantive
+local review is required; substantive ready-PR cloud CodeRabbit and Codex are
+required; the small-change exception makes those layers optional unless otherwise
+mandated. PR-only layers are not applicable to explicitly authorized direct-main
+or local-only delivery. Additional external providers are governed by their exact
+selection, data/usage authority and named boundary. `DISABLED` for additional
+providers does not cancel the default CodeRabbit/Codex layers.
+
+During branch-only/draft development, cloud layers are `pending` for the future
+ready/merge boundary, not a reason to halt unfinished implementation. At readiness,
+check all applicable local gates before opening ready or converting the existing
+draft. Cloud review then governs final-CI/merge or stop-before-merge readiness.
+Never report `requested`, `running`, thread resolution or a provider launch as a pass.
+
+### Candidate identity and evidence reuse
+
+Identify the exact comparison base, intended paths, file contents and modes,
+including additions/deletions and explicitly included untracked files. For a
+committed candidate use its commit/tree identity. For uncommitted work retain a
+content manifest/hash or frozen patch plus hashes of intended additions, together
+with base and scope; a HEAD SHA or worktree path alone is insufficient. Keep private
+content and local-only records out of external review and PR comments.
+
+Record runtime/build, route, fixture/account state and platform/viewport where
+those affect a check. A content hash is identity, not proof the check ran.
+Before commit, compare staged content to the reviewed candidate. Reuse a result
+only when contents, comparison scope, relevant dependencies/environment and its
+acceptance requirement remain equivalent. Committing unchanged contents does not
+alone require another local review. Preserve the original evidence identity and
+record equivalence rather than relabeling the old result as a new-SHA execution.
+Provider freshness rules, branch protections and required CI still apply.
+
+## 3. Ready-PR handoff and monitoring
+
+A draft is already an open PR. Build the full approved vertical slice before
+creating a ready PR or marking its draft ready; multiple sprints may contribute.
+Use [CodeRabbit review](coderabbit-review.md) for the complete local candidate.
+When local gates clear, verify the published feature head, base, aggregate diff
+and PR state, then make the authorized ready transition.
+
+Do not start, poll or schedule a PR-review monitor for a draft. Existing GitHub
+checks or bots can still run; do not disable required automation or assume draft
+status silences it. Carry any already known urgent defect forward without waiting
+for readiness. At ready transition, inventory all existing review evidence so a
+valid equivalent automatic review is not requested twice.
+
+For a ready PR, active authorized delivery includes observing review/check
+progress and bounded remediation. Use available native events or bounded waits;
+avoid repeated full inventories and unchanged status narration. Inventory the
+complete conversation, review submissions/states, inline threads/replies, all
+reviewers and relevant check annotations, including auto-resolved items. GitHub
+CodeRabbit and Codex are required distinct layers for substantive PRs; additional
+named providers contribute to the same record.
+
+Prefer configured automatic review. If a due review is missing and comment
+posting is authorized, use the installed provider's supported request, such as
+`@coderabbitai review` or `@codex review`. Verify the actual response, scope and
+head; a request alone is not evidence. Apply [external-provider handling](supporting-methods.md#external-review-providers)
+only when additional providers are selected. A required provider timeout blocks
+its boundary; optional unavailability may use a disclosed fallback.
+
+Monitoring stops at verified completion of the allowed boundary, PR closure,
+return to draft, cancellation or an actionable blocker requiring owner input.
+When returning to draft, preserve findings and resume implementation without
+polling; reinventory at its next ready transition. With stop-before-merge authority,
+finish at verified readiness and report the handoff without merging. Recurring
+follow-up after the active task yields requires an explicit scheduling request
+and the harness's supported scheduler; do not create a background job by default.
 
 ### Review convergence
 
-Review the approved diff and affected contracts; inspect surrounding code only to establish impact. Record the current objective, exclusions and required acceptance evidence in the existing PR/receipt. A documentation or planned-component task does not authorize a whole-repository audit or speculative platform support.
+1. **Collect:** let current-head configured reviews settle before routine fixes;
+   read-only triage may proceed. Record pending/running/completed/unavailable
+   states and use bounded provider waits. Urgent security/data-loss containment
+   may proceed earlier with the reason recorded. A timeout is not a pass.
+2. **Consolidate and validate together:** group findings by semantic root cause,
+   affected contract and failure scenario. Assess interacting recommendations,
+   contradictory fixes, affected callers and cumulative complexity against the
+   whole approved behavior. Preserve distinct failure modes even in the same file.
+   Reproduction or decisive source/contract evidence must establish necessity;
+   a reviewer label, repetition or speculative future support is insufficient.
+3. **Remediate:** the implementation owner batches available validated in-scope
+   corrections into one coherent wave. Reviewers remain read-only. Implement the
+   smallest sufficient solution and run affected checks/local review as warranted
+   before publishing. Multiple commits may form one push. If no required change
+   exists, record dispositions and proceed; do not invent a fix wave or rereview.
+4. **Verify and rereview:** verify the remote head and publish one concise update
+   with correction scope and validation. Recheck affected UI/runtime behavior.
+   Obtain only due, proportionate rereview, counting equivalent automatic runs.
+   Further fix waves require a demonstrated required defect or explicit owner
+   reprioritization. This never waives required checks, approvals or unresolved defects.
 
-1. **Collect.** Let configured reviews of the current head settle before routine remediation. Read-only triage can proceed meanwhile. Record each review's SHA and queued/running/completed/unavailable state; use the existing provider timeout/fallback policy rather than waiting indefinitely. Urgent security/data-loss containment may proceed earlier with the reason recorded. A timeout never becomes a pass.
-2. **Consolidate.** Deduplicate across reviewers and validate each unique finding against a concrete failure scenario and the approved contract. Distinct syntax examples require proof of a required current defect, not just novelty. An executable reproduction or decisive source/contract evidence is sufficient; runtime execution is not always safe or applicable.
-3. **Remediate once.** Group all available validated in-scope fixes into one coherent wave. Inspect the shared root cause and affected callers before patching individual symptoms. Run affected checks and the applicable local review before pushing; multiple local commits may form one push. Avoid publishing each small fix while reviews are still arriving.
-4. **Verify once.** After verifying the remote head, publish one concise head update and obtain the appropriate rereview. Prefer automatic review; manually trigger only a due review not already queued, running or completed on that head. Draft-to-ready transitions can trigger automation too. A failed, cancelled or incomplete review is not equivalent completed evidence; use the existing retry/fallback policy when the review remains required, recording the reason. Do not retrigger merely because approval wording differs or a settled comment is repeated.
-5. **Converge.** After the normal remediation/rereview wave, another wave needs a demonstrated current-head merge blocker, a remediation regression, or a materially distinct required defect. Record that evidence and cumulative scope/effort before editing. Further optional improvements require explicit owner reprioritization. If successive waves reveal variants of one root cause, reassess the contract and smallest coherent solution once instead of continuing one-variant commits; significant necessary expansion requires bounded owner approval.
+Material change means altered runtime behavior, API/data/permission contracts,
+compatibility, migrations, executable configuration or validity of required
+evidence. Judge effects, not extensions or line count: documentation may be agent
+policy and tests can weaken assurance. Pure wording or formatting with no such
+effect gets focused verification without another manual review request unless
+required. Observe automation that still runs; never weaken CI or stale-approval
+rules to reduce noise.
 
-A material correction changes behavior, an API or policy contract, a trust boundary, dependencies/build configuration, or the validity of required evidence. Judge effects, not extensions or line count: documentation can be executable agent policy, and a test edit can weaken assurance. Pure wording, formatting or test cleanup with no such effect gets focused verification and a recorded rationale, without an additional manual review request unless repository policy or the approved plan requires it. Observe automatic reviews that still run. Never relabel an older review/test as covering a new SHA, bypass stale-approval rules, suppress required automation or weaken CI to reduce noise.
+### Findings and minimum sufficient corrections
 
-Defer hypothetical integrations, future framework/SDK support and parser completeness unless they break the current approved contract. A planned feature is not grounds to defer a real defect in its currently promised safety boundary. Retain the limitation and concrete revisit trigger in the existing finding record. Stop optional expansion when acceptance is satisfied; finish only with required findings reconciled and required checks/approvals satisfied on the applicable revision. A wave limit is not permission to merge a known required defect.
+Keep one canonical disposition per root cause/contract/failure scenario in the
+existing board, receipt, working state or PR conversation. Retain canonical and
+duplicate comment IDs, current-head evidence, necessity/impact, proposed minimal
+correction and disposition: `fixed`, `awaiting-publication`, `rejected`,
+`rejected-overengineering`, `false-positive`, `deferred` or `reopened`.
 
-### Deduplicate PR findings before triage
+Validate all actionable surfaces, including recommendations from CodeRabbit,
+Codex, Antigravity, Grok, Junie, humans and check annotations. Resolved means
+reconciled with evidence, not that every suggestion was implemented.
 
-Maintain one lightweight finding ledger for the lifetime of the PR in existing working state, the active board/receipt, or the PR conversation; do not create another artifact unless the repository requires it. For each canonical finding, retain only the information needed to prevent repeat work:
+- Required defects get the smallest reliable correction. Significant necessary
+  scope or complexity expansion needs an explicit bounded owner decision.
+- A beneficial optional correction may join the batch only when valuable now,
+  easy, localized, reversible, within the approved product/file scope and low-risk
+  cumulatively. Prefer existing primitives; do not sneak in new dependencies,
+  infrastructure, migrations, providers, flags, abstractions or material testing
+  burden. Sensitive trust-boundary impact outweighs a tiny diff.
+- Reject false positives and unnecessary complexity with concise evidence. Defer
+  out-of-scope enhancements with a concrete revisit trigger. Do not reopen them
+  for rewording, another author or a new thread alone.
+- Reopen only for a reproduced current defect/regression, a missing prior fix,
+  changed contracts invalidating proof, or materially new evidence of a simpler
+  valuable in-scope correction. Reassessment alone does not authorize another
+  optional enhancement wave.
 
-- semantic fingerprint: root cause + affected contract or symbol + requested outcome;
-- canonical thread or comment and duplicate thread/comment IDs across all authors and review cycles;
-- disposition: `fixed`, `rejected`, `rejected-overengineering`, `deferred`, `false-positive`, `awaiting-publication`, or `reopened`;
-- last verified remote-head SHA plus the decisive test, code evidence, or owner decision.
+Verify duplicates against the existing disposition before starting another
+investigation, worker, test run or owner question. A local fix remains
+`awaiting-publication`; do not manually resolve its PR thread until the published
+head contains it. Before manual resolution ensure a concise disposition or link
+already exists; backfill auto-resolved items only when missing or ambiguous.
+Avoid acknowledgement-only replies.
 
-Before triaging any new CodeRabbit, Antigravity, Codex, human, review-submission, or check-annotation item:
+At each remediation push, use one authorized PR update with the verified SHA,
+delta, validation and canonical dispositions. Ask due reviewers to focus on new
+required defects and regressions, excluding settled findings without new evidence.
+Keep provider commands intact; post only missing due triggers. Bot compliance is
+an optimization: independently deduplicate every response even if it ignores the
+scope notice. Optional completeness cannot prolong delivery once acceptance passes.
 
-1. Match it semantically against the ledger. Similar wording, author, file, or line is not enough; distinct failure modes remain separate even when they touch the same symbol.
-2. If it is a duplicate of a finding already fixed on the current remote head, rejected with evidence or as over-engineering, or deferred under an approved boundary, verify that disposition still applies, then reuse or add a concise disposition linking the canonical item, head/evidence or approved boundary where needed for clarity. State explicitly that it is not being considered again for this PR and ask the reviewer not to raise it again unless materially new current-head evidence shows a required defect or a substantially simpler high-value in-scope correction. Do not start another investigation, worker, implementation, test run, or owner-approval loop for that duplicate.
-3. If the canonical fix exists only locally, reply `duplicate; fix awaiting publication`, link the canonical finding, and keep the thread open. Do not count it as a new issue or claim it fixed on the PR head.
-4. Reopen and re-triage only when the current remote head still reproduces the failure, the canonical fix is absent or regressed, a material change makes its proof stale, new evidence materially invalidates the earlier disposition, or a previously deferred enhancement now has a demonstrably simpler high-value in-scope implementation. Record the new evidence once on the canonical entry. Repetition, rewording, or a different reviewer is not new evidence.
-5. Keep one active remediation lane per root cause. Reply to duplicate threads before resolving them, but do not multiply commits, tests, rereview requests, owner questions, or status reporting for the same issue.
+## 4. Platform acceptance
 
-For every actionable item, retain one clear disposition. Before manual thread resolution, ensure a concise owner reply or canonical-disposition link is present; do not repeat an adequate existing reply. Classify it as `fixed`, `rejected`, `duplicate`, or `deferred`, with current-code evidence. For a correction, first publish and verify the remote PR head; only then reply or manually resolve, citing that head SHA and the relevant validation or honest blocked/deferred evidence. Inventory bot-auto-resolved threads too, but backfill only missing or ambiguous dispositions. Informational acknowledgements and already-linked duplicates need no additional reply.
+Infer actual platform tools: web browser QA, Expo/React Native/Argent, native
+simulator/emulator/device tools, or backend/database verification as applicable.
+For mobile UI, identify the exact candidate, app build, Metro/project root,
+environment, flags, route, fixtures/account and device profile before judging.
+Use element discovery before interaction and combine rendered and runtime evidence.
 
-After a consolidated correction wave, verify the remote head and add one visible PR update naming the head SHA, correction scope, validation and blocked/deferred evidence. Apply review convergence to determine which configured rereviews are due. Count equivalent automatic reviews already queued, running or completed; request only missing due reviews, choosing incremental or full review proportionately to risk.
-
-Make the rereview scope explicit in that update:
-
-- tell `@coderabbitai`, `@codex`, `@agy /review`, or the configured equivalents to exclude root causes already recorded as fixed, rejected, rejected as over-engineering, or deferred;
-- permit a settled root cause to be raised again only with materially new evidence against the current head, a reproduced regression, or a demonstrably simpler high-value safe in-scope correction to a prior deferral;
-- ask reviewers to focus on regressions introduced by the new correction wave and genuinely unique unresolved issues;
-- link concise canonical PR dispositions when useful, but do not expose private tracker or local-only evidence; and
-- keep each provider's required command on its own intact line. If a provider requires a standalone trigger comment, post the scope notice immediately before that command as one rereview wave rather than omitting the notice.
-
-Use this compact shape and omit commands for reviewers whose review is not due or is already queued, running or completed automatically. Keep the Antigravity command exactly as shown when GitHub Cloud Antigravity is configured; it must remain a standalone top-level conversation line:
-
-```text
-Head update: <verified remote-head SHA>
-Delta: <concise correction scope>
-Validation: <passed/blocked/deferred evidence>
-
-Review scope: exclude root causes already fixed, rejected, rejected as over-engineering, or deferred. Reopen only with materially new current-head evidence, a reproduced regression, or a demonstrably simpler high-value safe in-scope correction. Focus on regressions from this update and genuinely unique unresolved issues.
-
-@coderabbitai review
-@codex review
-@agy /review
-```
-
-Reviewer compliance is an optimization, not a gate. Bots may ignore the scope notice or lose prior context, so independently inventory and semantically deduplicate every response before analysis, implementation, testing, delegation, or owner escalation. Do not send another rereview request merely because a duplicate was repeated.
-
-For canonical new, reopened, or still-unresolved findings from any reviewer or PR comment surface:
-
-1. verify against current HEAD;
-2. identify the concrete failure and impact;
-3. classify necessity (`required`, `beneficial-optional`, `false-positive`, or `out-of-scope`) and actual effort/risk (`easy-low-risk` or `significant`), treating reviewer labels as advisory only;
-4. implement the smallest valid required correction and consider a beneficial optional correction only when it is easy, low-risk, and remains inside the approved scope; seek bounded owner approval for significant necessary work, and reject or defer significant optional work;
-5. add regression coverage when warranted;
-6. rerun affected checks;
-7. preserve rejected findings with a concise evidence-based explanation.
-
-For a first-time optional enhancement, implement it only when it provides meaningful value to the current PR and is genuinely easy, localized, low-risk, aligned with the approved contract, and proportionately verifiable. Otherwise classify it as `rejected-overengineering` or `deferred`, reply explicitly that it is not considered for this PR, and ask CodeRabbit, Codex, or the originating reviewer not to raise it again without the new evidence required by the deduplication gate. Do not repeatedly return the same optional enhancement to the owner.
-
-Apply the review-convergence gate before another correction wave. Reopening a finding for assessment does not authorize another optional enhancement wave.
-
-## 7. Platform acceptance
-
-Select platform skills from repository reality:
-
-- Expo/React Native: Expo and Argent workflows;
-- web applications: the relevant browser, visual, accessibility, and web-build workflows;
-- native iOS or macOS: the corresponding build, simulator, accessibility, and release workflows;
-- backend/database: server-authority, migration, RLS, privacy, and security workflows.
-
-For visible mobile changes, confirm the exact worktree, SHA, Metro project root, environment, feature flags, route, fixture/account state, and app build before visual judgment. Use element discovery before interaction and combine screenshots with structural or runtime evidence.
-
-Apply the selected QA gates:
-
-- Simulator `REQUIRED`: obtain governed simulator visual/accessibility evidence before the delivery gate; if unsupported or unavailable, block that gate.
-- Simulator `CONDITIONAL`: require it only when a supported project changes visible UI or an interactive flow.
-- Simulator `DEFERRED`: do not run it; report it as deferred.
-- Physical device `REQUIRED BEFORE MERGE`: do not merge without the required device evidence.
-- Physical device `DEFERRED UNTIL BUILD`: report it as deferred and do not represent it as a merge pass.
-- Physical device `NOT APPLICABLE`: record why it is outside the project or change scope.
-
-Before accepting a platform-visible or interactive package, persist a simulator checkpoint in the active board or delivery receipt:
+Record the selected simulator checkpoint within the shared gate record:
 
 ```text
 simulator-selection: required | conditional | deferred | not-applicable:<reason>
 simulator-trigger: triggered:<reason> | not-triggered:<reason> | not-applicable:<reason>
-simulator-evidence: passed:<worktree/SHA/runtime/route/profile> | blocked:<reason> | deferred:<approved reason> | not-applicable:<reason>
+simulator-evidence: pending | running | passed:<candidate/runtime/route/profile> | failed:<evidence> | blocked:<prerequisite> | deferred:<approved reason> | not-applicable:<reason>
 ```
 
-- Resolve the conditional trigger from the actual diff. Visible UI or interactive-flow changes in a supported project trigger it; backend-only or documentation-only work ordinarily does not.
-- An explicit simulator-testing invocation is `required` for its named scope and cannot be downgraded to an untriggered conditional check.
-- `passed` requires evidence from the exact candidate worktree and SHA with the runtime, route, fixture/account state, and platform profile identified. Source tests, screenshots alone, or a stale/ambiguous runtime are not substitutes.
-- A required or conditionally triggered check that is not passed blocks the selected package-acceptance, final-CI, or merge boundary. Continue only when the approved plan or owner explicitly records a deferral or waiver for that exact boundary.
-- Keep simulator, browser, manual assistive-technology, and physical-device evidence separate; one does not silently satisfy another.
+- Required simulator QA applies at its named boundary; unsupported or unavailable
+  required runtime blocks that boundary. Conditional QA triggers only for supported
+  projects with visible UI or interactive changes. An explicit simulator request
+  makes it required for its named scope. Do not silently strengthen/weaken policy.
+- An executed run exposing a defect is `failed`; an unavailable or ambiguous
+  candidate runtime is `blocked`. Fix valid defects and rerun affected checks.
+  Source tests, screenshots alone and stale runtime do not substitute for proof.
+- Required or triggered simulator QA must pass before the recorded acceptance,
+  final-CI or merge boundary unless the owner explicitly defers/waives that exact
+  boundary. Deferred evidence remains deferred. Continue other safe work meanwhile.
+- Keep browser, simulator, manual assistive-technology and physical-device evidence
+  distinct. Device `REQUIRED BEFORE MERGE` blocks merge; `DEFERRED UNTIL BUILD`
+  remains deferred; `NOT APPLICABLE` needs a truthful scope reason.
 
-If a valid runtime cannot be established, do not inspect a stale or ambiguous UI. Record platform QA as blocked or deferred and continue only if that evidence is not a required merge gate.
+## 5. Deliver and audit the outcome
 
-## 8. Prepare and deliver
+Before each commit, inspect the complete intended staged contents, diff/secret
+checks and applicable commit-time gates. Preserve exclusions and content parity.
+Use coherent commits throughout the slice; do not require one commit per sprint.
 
-Before commit:
+Before final local acceptance, ready-PR handoff or substantive direct-main
+publication, confirm the applicable local review and runtime gates for the exact
+candidate. Only a required blocked review needs owner disposition; optional
+unavailability never becomes a gate. Earlier authorized branch/draft commits may
+continue under their own checkpoints without claiming final acceptance.
 
-1. inspect status and the complete diff;
-2. confirm plan increments as complete, partial, or not started;
-3. stage only intentional paths;
-4. run `git diff --check`, staged secret review, and final applicable validation;
-5. ensure excluded material remains untracked or unstaged.
-6. confirm the review checkpoint exists and that any high-risk local CodeRabbit block has an explicit owner decision before publication;
-7. confirm the applicable simulator checkpoint is resolved for the current delivery boundary.
+For direct-main delivery, verify target identity/policy, pass required local gates,
+commit/push intentional content and verify the remote target contains the intended
+result. PR-only reviews and PR monitoring are not applicable. For branch delivery,
+verify each remote push; after the slice becomes ready, reconcile reviews and
+required CI through the authorized boundary. Before final-CI triggers or merge,
+refresh all review surfaces and ensure no unreconciled actionable item remains.
 
-Prefer one coherent sprint commit unless repository policy or the plan calls for multiple atomic commits. Record scope, important compatibility or migration notes, feature flags, validation, and deferred QA in the commit or PR description as appropriate.
+Merge only when authorized and required findings, checks and approvals are
+satisfied. Verify the actual target contains the merge result and run required
+exact-target checks from a clean candidate. Neither merging nor a SHA proves a
+deployment. Record passed, failed, blocked, deferred and not-applicable evidence
+truthfully, with provider identities kept separate.
 
-Follow the selected delivery route:
-
-- For direct-main delivery, first verify repository policy permits it, inspect the exact target branch, run the same applicable pre-commit gates, commit only intentional files, push, and verify the remote target contains the pushed SHA.
-- For branch/PR delivery, verify the remote feature branch contains the pushed SHA, open or update the PR, run the configured review loop, and keep unexplained failures visible. Stop before merge when instructed. When merge is authorized, merge only after the gate is clear, verify the actual target branch contains the merge result, and run required exact-target checks from a clean candidate.
-- Before a final-CI trigger or merge, refresh the PR inventory and confirm no newly added or still-unreconciled actionable conversation comment, review submission, inline thread, reviewer state, or check annotation remains.
-
-Do not claim deployment merely because code merged.
-
-## 9. Advance or stop
-
-Update the GoalBuddy receipt and board when applicable. Continue to the next safe active task rather than stopping after a single sprint when the approved programme remains incomplete.
-
-Stop and request direction only for:
-
-- missing mutation or production authority;
-- a material scope or product decision;
-- destructive or irreversible action not already authorized;
-- unsafe or ambiguous repository state;
-- required credentials or external data access;
-- a required acceptance capability that has no valid fallback;
-- repeated verification failure whose smallest safe resolution changes scope.
-
-The final task is a skeptical audit against the original goal oracle, receipts, actual diff history, merge state, and required acceptance evidence.
+Advance the next safe approved task after receipts; do not stop merely because a
+sprint ended when the slice/programme remains authorized and incomplete. At the
+final boundary, the main agent/PM audits the original outcome against the actual
+integrated changes, required evidence and delivery state. Apply GoalBuddy's Judge/PM
+contract where present without manufacturing another mandatory agent elsewhere.
+Stop for missing authority, material scope drift, unsafe repository state,
+unavailable required prerequisites or failures whose safe resolution changes scope.

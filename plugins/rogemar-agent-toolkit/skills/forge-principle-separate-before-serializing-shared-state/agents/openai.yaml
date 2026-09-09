@@ -1,3 +1,6 @@
 interface:
-  display_name: "Forge Principle Separate Before Serializing Shared State"
+  display_name: "forge-principle-separate-before-serializing-shared-state"
   short_description: "Codex engineering: principle separate before serializing shared "
+  default_prompt: "Use $forge-principle-separate-before-serializing-shared-state for the requested task."
+policy:
+  allow_implicit_invocation: true

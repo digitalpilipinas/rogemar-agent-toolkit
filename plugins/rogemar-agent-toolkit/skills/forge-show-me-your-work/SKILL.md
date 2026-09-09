@@ -7,7 +7,7 @@ license: MIT
 
 ## Codex execution contract
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md) before dispatch or a runtime action. This skill supplies methods and bounded collaboration hints; `workflow-orchestrator` alone selects specialists and subagents. `plan-model-router` resolves task profiles under the manually selected parent defaults and ceilings.
+Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md) before dispatch or a runtime action. This skill supplies methods and bounded collaboration hints; `workflow-orchestrator` alone selects specialists and subagents. `plan-model-router` resolves task profiles under the active Forge mode, or parent defaults and ceilings when no mode is selected.
 
 
 
@@ -67,7 +67,7 @@ At handoff, compare each row with actual artifacts and the current task record. 
 
 ## Independent review of the trail
 
-Request a bounded read-only review through the orchestrator when the run's risk or breadth warrants it. The reviewer checks weak evidence, skipped proof, scope drift and unresolved risks. Another available Codex profile is optional under both parent ceilings; independent framing does not require another provider or family. Report requested and observed model metadata separately and omit an unobserved model claim. Return a concise list of actionable flags or state that none were found in the reviewed scope. Do not invent an extra universal handoff gate.
+Request a bounded read-only review through the orchestrator when the run's risk or breadth warrants it. The reviewer checks weak evidence, skipped proof, scope drift and unresolved risks. Another available Codex profile is optional under the active routing policy; independent framing does not require another provider or family. Report requested and observed model metadata separately and omit an unobserved model claim. Return a concise list of actionable flags or state that none were found in the reviewed scope. Do not invent an extra universal handoff gate.
 
 ## Reviewing the trail
 

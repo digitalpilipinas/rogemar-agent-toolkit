@@ -968,6 +968,56 @@
     {
       "name": "workflow-orchestrator",
       "source": "approved local user-level snapshot"
+    },
+    {
+      "name": "universal-forge",
+      "source": "approved portable Forge expansion, 2026-09-07",
+      "requires": [
+        "workflow-orchestrator",
+        "engineering-playbooks",
+        "universal-plan-model-router"
+      ],
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "universal-plan-model-router",
+      "source": "approved portable Forge expansion, 2026-09-07",
+      "requires": [
+        "workflow-orchestrator"
+      ]
+    },
+    {
+      "name": "cursor-forge",
+      "source": "approved portable Forge expansion, 2026-09-07",
+      "requires": [
+        "universal-forge",
+        "universal-plan-model-router",
+        "workflow-orchestrator",
+        "cursor-forge-setup"
+      ],
+      "targets": [
+        "cursor"
+      ],
+      "author": "Rogemar (Cursor adapter); Lauren Tan (upstream PStack methods)",
+      "license": "Repository license for adapter additions; MIT for upstream PStack methods",
+      "license_evidence": "LICENSE.txt",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack"
+    },
+    {
+      "name": "cursor-forge-setup",
+      "source": "approved Cursor Forge setup adaptation",
+      "targets": [
+        "cursor"
+      ],
+      "requires": [
+        "universal-forge",
+        "workflow-orchestrator"
+      ],
+      "author": "Rogemar (Cursor adapter); Lauren Tan (upstream PStack methods)",
+      "license": "Repository license for adapter additions; MIT for upstream PStack methods",
+      "license_evidence": "LICENSE.txt",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack"
     }
   ],
   "external_skill_groups": [
@@ -2087,7 +2137,7 @@
       ]
     },
     "engineering": {
-      "description": "All 23 shared engineering playbooks, approved delivery, testing and performance; native Forge for Codex or PStack for Cursor.",
+      "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor and Universal Forge routes.",
       "skills": [
         "engineering-playbooks",
         "integrated-workflow",
@@ -2138,7 +2188,11 @@
         "forge-technical-writing",
         "forge-typescript-best-practices",
         "forge-unslop",
-        "forge-why"
+        "forge-why",
+        "universal-forge",
+        "universal-plan-model-router",
+        "cursor-forge",
+        "cursor-forge-setup"
       ],
       "external": [
         "pstack",

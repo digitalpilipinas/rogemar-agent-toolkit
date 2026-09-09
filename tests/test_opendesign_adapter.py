@@ -14,6 +14,10 @@ import unittest
 from unittest.mock import patch
 
 
+catalog = json.loads((Path(__file__).resolve().parents[1] / 'catalog/skills.yaml').read_text())
+if 'distribution_selection' in catalog['package'] and not set(['opendesign']).issubset({e['name'] for e in catalog['vendored']}):
+    raise unittest.SkipTest('optional skills were not selected for this distribution')
+
 SCRIPT = (
     Path(__file__).resolve().parents[1]
     / "plugins/rogemar-agent-toolkit/skills/opendesign/scripts/opendesign_adapter.py"

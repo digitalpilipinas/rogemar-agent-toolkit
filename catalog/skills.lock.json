@@ -1563,7 +1563,7 @@
         ]
       },
       "engineering": {
-        "description": "All 23 shared engineering playbooks, approved delivery, testing and performance; native Forge for Codex or PStack for Cursor.",
+        "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor and Universal Forge routes.",
         "external": [
           "pstack",
           "unlazy"
@@ -1618,7 +1618,11 @@
           "forge-technical-writing",
           "forge-typescript-best-practices",
           "forge-unslop",
-          "forge-why"
+          "forge-why",
+          "universal-forge",
+          "universal-plan-model-router",
+          "cursor-forge",
+          "cursor-forge-setup"
         ]
       },
       "expo": {
@@ -1921,6 +1925,26 @@
         "command-code",
         "z-code",
         "claude"
+      ]
+    },
+    "cursor-forge": {
+      "requires": [
+        "universal-forge",
+        "universal-plan-model-router",
+        "workflow-orchestrator",
+        "cursor-forge-setup"
+      ],
+      "targets": [
+        "cursor"
+      ]
+    },
+    "cursor-forge-setup": {
+      "requires": [
+        "universal-forge",
+        "workflow-orchestrator"
+      ],
+      "targets": [
+        "cursor"
       ]
     },
     "deliver-approved-programme": {
@@ -2872,6 +2896,42 @@
         "claude"
       ]
     },
+    "universal-forge": {
+      "requires": [
+        "workflow-orchestrator",
+        "engineering-playbooks",
+        "universal-plan-model-router"
+      ],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
+    "universal-plan-model-router": {
+      "requires": [
+        "workflow-orchestrator"
+      ],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
     "ux-flow-architect": {
       "requires": [],
       "targets": [
@@ -2979,11 +3039,11 @@
     },
     "code-review-and-quality": {
       "file_count": 1,
-      "sha256": "8fcddcf6c2b7b910e2065f57e38540fb5179a5d091312da071ed545c05672d98"
+      "sha256": "70ee9d8e3acf73a3a2d4ff3a5531bd27344feb7e6e963f965e0b4fee4b42ed10"
     },
     "code-review-tests": {
       "file_count": 2,
-      "sha256": "332a9eae8184ee84f6f0cf9d0b8d01fe2bb4747fe70b46e931f24775f99c882c"
+      "sha256": "ec05b6b8651d31abd109821f6dc1594342fbaabca52972bb8d3d6dd3bfb3cdf8"
     },
     "codex-capability-maintainer": {
       "file_count": 2,
@@ -2991,15 +3051,23 @@
     },
     "codex-forge": {
       "file_count": 67,
-      "sha256": "b99e3821d98c3cc26f39b3900b9029b5f075b7fb0755678706b3f222dfc4b3d3"
+      "sha256": "99abe1a1fd9b56eed607b56a98f77eed217d6d5f9efa964bac5ff98432fb253f"
     },
     "create-plan": {
       "file_count": 4,
-      "sha256": "127994557f0a24ae11b0a9b8bb491a5198787f07a2720454acf6bfe5d1e4899d"
+      "sha256": "2c3e85666b6883d38a82605f16c329ab0544042846309953f339c76b692a752b"
     },
     "csv-analytics-reporter": {
       "file_count": 2,
       "sha256": "8ea8f95c02862d9d280becdd51e1d00753237e8243461405f0e7ee190e25c33e"
+    },
+    "cursor-forge": {
+      "file_count": 4,
+      "sha256": "9d32a825c61ec741b80fa9920f91a71a78bd83f2d02659e487614a33a381c140"
+    },
+    "cursor-forge-setup": {
+      "file_count": 6,
+      "sha256": "7ecaac2176b50bf543cb3afe200d085c3b5fffc4869ce336feb92d085ac4a791"
     },
     "deliver-approved-programme": {
       "file_count": 2,
@@ -3027,7 +3095,7 @@
     },
     "engineering-playbooks": {
       "file_count": 48,
-      "sha256": "2a2806f0e181b6719748b7a65d6d4f21a00030d282a4513e6248001328cc31c4"
+      "sha256": "5e5008a3a0e0fb9016e86dab122420e073d9560897da75ca31813b0a196bfffa"
     },
     "figma": {
       "file_count": 8,
@@ -3035,183 +3103,183 @@
     },
     "first-time-right-delivery": {
       "file_count": 3,
-      "sha256": "984998ece22711e31c7025b97c1c94293b32f82ce146967f599dbb92870ada8d"
+      "sha256": "ea0309e6d873d5c6eb4ba63ce9b5387921ade1fd2fd6d7df76e4f9406c689cc5"
     },
     "forge-architect": {
       "file_count": 6,
-      "sha256": "0be0d7e851871d053247998ced516e870c9d62b98261aeefa7b5a283c34eb636"
+      "sha256": "9dce5ab40e7d489e5309ad9e2cc950676d513e45b528daa445a4f32ded46f471"
     },
     "forge-arena": {
       "file_count": 3,
-      "sha256": "09b19dea42baf9a1dcae64ce0bd1ef706739e94a0be11de83bd97e254e19e6a0"
+      "sha256": "6e800488de9b9648ebd527da9896104c800deef5c0fae4fc2a1743b97a7a202d"
     },
     "forge-automate-me": {
       "file_count": 3,
-      "sha256": "bc9c67c02071d0c0af74c440fd221fe08289e929464c23300ae7ed7cf92e874d"
+      "sha256": "b780b869e4b19c045600bb32c91f26c42d945aa7595ac9c142b25e39647c23a7"
     },
     "forge-blast-radius": {
       "file_count": 3,
-      "sha256": "9f631a4f997c3a370205252e66ccdc31be32f5982e73bff002811efa4944c4c9"
+      "sha256": "13377eb47e93b5c19840e1ad3146359b3eddcd18d59496084dd14a3bb10cb5e7"
     },
     "forge-bro": {
       "file_count": 3,
-      "sha256": "78fd156a223571e596e2c908b157bb6ded457e91db981d74eb0d25f6c5f88b96"
+      "sha256": "4e81d8ef4816380f2a4cc9847b6cb599359477a8ae4824df7a020bc2e1ddfe81"
     },
     "forge-create-verification-skill": {
       "file_count": 6,
-      "sha256": "247eb3f268fdfac91e7400d1ef90320ea465a325d5c19777d94762405931181f"
+      "sha256": "4444c3c5f0c11af1a64625a0cda77fac914195aefe1f6f588208e224657af3b7"
     },
     "forge-figure-it-out": {
       "file_count": 3,
-      "sha256": "4f32aa0b0f7e806b6f10db11a7512994a34544475784b7406e8f900f9d2eb3a9"
+      "sha256": "0896299ac2e4aef70afcc0ce3f885f86d880f5e94f0b7fa807d6f96d0a95dd45"
     },
     "forge-how": {
       "file_count": 7,
-      "sha256": "5a3f09cc62e5f7996796ccdf6720537fcd7d997a4032fe66682892afd7655bf8"
+      "sha256": "5ba59c95b471c7a47310eeb6b9054baf461276c3d2aaeaeb53fd5bf2fbf02ef6"
     },
     "forge-interrogate": {
       "file_count": 7,
-      "sha256": "8a9679b5be2b8f1b46205e775aeb4f56c3a23ccca16a57851cb3336e949478a9"
+      "sha256": "3443d6a07e6181b5cf97585b6f51f9b3ad4c28d55963c65dd2bbbdb1846eaca7"
     },
     "forge-maintain-verification-skill": {
       "file_count": 3,
-      "sha256": "1d3d4d6d82ffb80d38f6e6d848c680a0cae5e161d2dbf25ad61f14c5cbc8aa64"
+      "sha256": "b46908e2f01eea4876b032ef6b63df601eed1e7d2f69e6cd84b22564cf8927e8"
     },
     "forge-make-bot-ui": {
       "file_count": 3,
-      "sha256": "1acd727b2114940471d0ea90727c3186b5b1f0082c24688fb5ed7c53a46f30a5"
+      "sha256": "4f9abcf575196bbafbbfb3447c498865b469a90758e93167598ae1b609b0b698"
     },
     "forge-no-comments": {
       "file_count": 3,
-      "sha256": "139ac56ce33094b4fd8fbf371277147d8dd4f89123302f42bcf5f58800268079"
+      "sha256": "2d186aae94e799ca6b704b2f9adaaf9ecbd742ab56d1a743305eade3591ba2a6"
     },
     "forge-principle-boundary-discipline": {
       "file_count": 3,
-      "sha256": "e600232c560bab25c14f7942524f221830c7ffa28b7d9d42b2a081b991ed5270"
+      "sha256": "a0ffd1561c470ac3fe1c94f0c6406ee9297d1e9206840a0c98bbf6309d2a260b"
     },
     "forge-principle-build-the-lever": {
       "file_count": 3,
-      "sha256": "5a371acb2f7be230668f93f2a0e463b723e0c644bbff158cacfca4607cbd2c55"
+      "sha256": "9b48fe51f7cbb24405e0e467c02165b124f3a18717fe0058b75bc0b238f2ad6a"
     },
     "forge-principle-encode-lessons-in-structure": {
       "file_count": 3,
-      "sha256": "43a05a7e19c5905149e8d91c579d374363e61a38a26752a47df3a90fdee3ede0"
+      "sha256": "6d6f09d40f63d28ebac63eaab92ada0b060c6d9def2ba2754119965d92eabc0f"
     },
     "forge-principle-exhaust-the-design-space": {
       "file_count": 3,
-      "sha256": "a66381bfbdec5371df59ffe229e8b55ab7b8807273db1c2f0a70b22a6fe975bf"
+      "sha256": "cc081c2fd3b5c4f532f6a6df59326a7892eb14a654939719ea47be30c1457b50"
     },
     "forge-principle-experience-first": {
       "file_count": 3,
-      "sha256": "171d6f1f19c080ccaa2119b0f93bac3ee58f0185ef8d275bafbfa22596ac5bd3"
+      "sha256": "1ed1197696a434b2c5151d7c471278a8dce5a70f26939cab72a5bf6783906c09"
     },
     "forge-principle-fix-root-causes": {
       "file_count": 3,
-      "sha256": "26fa19c19b5bf8cdcb897475320fa209affdeb792f236625d70ada736d88304d"
+      "sha256": "554ce4b33e2c11219f633063aafdd15c492d1927beb0d730d578e92171e2cc5b"
     },
     "forge-principle-foundational-thinking": {
       "file_count": 3,
-      "sha256": "b21d94e8b80af1f1903a61fc83667fad4d765e6a307e9ee4b16abd8dd5867b80"
+      "sha256": "fb43d987d830d512e1f44637ac973b98221d02251539f1ee37238083e767a1ba"
     },
     "forge-principle-guard-the-context-window": {
       "file_count": 3,
-      "sha256": "8312176b4767dd6e1cd18410d4c16d555d3c5f7aa2d8063ce781a7d4bb11920e"
+      "sha256": "7fc41e5e29299189a817f0f4352c4f6dc89d888a1a963565ff2afe13547d9e7a"
     },
     "forge-principle-laziness-protocol": {
       "file_count": 3,
-      "sha256": "08ba1f934d6a5e5c280fee3cfab311214cef7a5ca939f447dffa3fe47875736e"
+      "sha256": "e9846443184ab876895db7d933a5255b480c48182b9ccafd6aca4e0e9fb60883"
     },
     "forge-principle-make-operations-idempotent": {
       "file_count": 3,
-      "sha256": "2ad665624a34ee169a5747f4a4d5867521713797d8b79eb7698b7da24bd18d4b"
+      "sha256": "baf1a75dfd4b1438cbac331a09d59f33cf0dc829f522c4dfa626990fe3e37eb0"
     },
     "forge-principle-migrate-callers-then-delete-legacy-apis": {
       "file_count": 3,
-      "sha256": "2f2980d0ab68053c0771b46f94f4b863c5fc2570f10b52168aa4d87b9c85cc9b"
+      "sha256": "6c5cf312d61922588a58e05dc6ee55df9b46075177d9916925846a4594b47624"
     },
     "forge-principle-minimize-reader-load": {
       "file_count": 3,
-      "sha256": "6cde0e1ad355d425318cf015709e621721819a924cd1c14c7515e02c4af44b78"
+      "sha256": "02d08d3d425cdd8db2206288f35ce48e65b92b166b3e507f28bdb1bace5d710f"
     },
     "forge-principle-model-the-domain": {
       "file_count": 3,
-      "sha256": "b638deb49f980aba28471192bef7c9f19fa4dd4b0bb52c851f74d21fb9ad19da"
+      "sha256": "2db026788a6e24d10c946777579f2f2344608e51fc2c1fffabd9470a27c1b782"
     },
     "forge-principle-never-block-on-the-human": {
       "file_count": 3,
-      "sha256": "d84b7b6afc4d2af1de9756ec140237d8aa2bcca1afe5a84de9135cd8be5de151"
+      "sha256": "e424023bcfb7ac4d4a08266c192c52b9aeb90532c3d801abb1ede9db0112f245"
     },
     "forge-principle-outcome-oriented-execution": {
       "file_count": 3,
-      "sha256": "5538fbd4d6dfa699eb0a8f652b487090c2eef1ddfbf964497e0335d6bb72753d"
+      "sha256": "1d975e737936c4ed53450b87ee63be9730c6bdc09802910f39d4397fee48d690"
     },
     "forge-principle-prove-it-works": {
       "file_count": 3,
-      "sha256": "4e3d17986071226842bf100eebfd6baed88f2b5c8885268b4ebd1f4fabbb7767"
+      "sha256": "09a310ddbb28a15d0638b65ba6071521008f738a8f406a6cf79d9c95eb13935e"
     },
     "forge-principle-redesign-from-first-principles": {
       "file_count": 3,
-      "sha256": "21ebe4780bfdc6c058b45ccdb407d8b02408c459ffed6d823ed23c663abd0575"
+      "sha256": "e88ce08ae4a82c04d3a62fe7043d046569a8133a07d9b983c1a8b890be23448b"
     },
     "forge-principle-separate-before-serializing-shared-state": {
       "file_count": 3,
-      "sha256": "f34d75ae72bc53c4b3371a150c8f01eaa803aa5ad2d9bb12de759634cb5ae345"
+      "sha256": "185c81bff14b26b2d7fedf96eff18b8b48fb441c7c55a801abae41db25d9155c"
     },
     "forge-principle-sequence-verifiable-units": {
       "file_count": 3,
-      "sha256": "03384271d8e70b718ce976d1cec35e03aad3cf9cfd53a361c97360ee7fd3dbb2"
+      "sha256": "d12555b06218fb7fc96daf87aab57a1f29664a210da730a3633f85baadc52cf6"
     },
     "forge-principle-subtract-before-you-add": {
       "file_count": 3,
-      "sha256": "1aec7c419aad90bb43a3c770b76614a24d8294fb661b501dc44955e1453073fa"
+      "sha256": "f7a17c99b29aa5263ef87d005e54fc057f2162df1b3328f41eb9de7e38e351a7"
     },
     "forge-principle-type-system-discipline": {
       "file_count": 3,
-      "sha256": "4effcbe28d3dfb8ab949a4c2c478221c8acfa1505423b72f4a30ceedf153e6a1"
+      "sha256": "39f7e0a6fccaa30bedb670b2f155856c8ba61f0877fd2fc5f5b3d9f15a215e49"
     },
     "forge-recall": {
       "file_count": 3,
-      "sha256": "030b00473c307eefd3bd83b146535461e615f7b1de314ff90c41f33458afe7b5"
+      "sha256": "423b51132b896b88218a4886565e8fb9213fcc5eef94f0953318c8a89ebe04ed"
     },
     "forge-reflect": {
       "file_count": 7,
-      "sha256": "684cede633effc2bf0e5f1691c89637151f31e2d443feb8be8122a2c9a1e24e6"
+      "sha256": "0de92dd940232a7d1ccbf7ac680fe21439534538ca5ed6e4d6262b9f2e861a23"
     },
     "forge-setup": {
       "file_count": 3,
-      "sha256": "4a1da63f1badd768e9a1348c1bfad35d92d6645aa23044c364e3b953cab5829c"
+      "sha256": "1db6c738eff89f537b24f456572fc97ab9bcced6b332f1ec196918bbfbcbe48d"
     },
     "forge-show-me-your-work": {
       "file_count": 5,
-      "sha256": "c6c9da92da7e7368457bc34de577d2d34a2a36ff17871d42594c7f710cd10dde"
+      "sha256": "680cd46585b5464b41e7b5c0ce658c7dffd7fd7ef83c2831405dd576d148f7d3"
     },
     "forge-swarm": {
       "file_count": 3,
-      "sha256": "f1b04b84bc01ccd84e893072ffe477daacb1f604013af2ea53150d628b9dfba3"
+      "sha256": "757b87232e32c0d3fbdf9141a4ad8ac919babd7ff74de7ec947db1ee0456d29c"
     },
     "forge-tdd": {
       "file_count": 3,
-      "sha256": "bf6b9c4b792e494b302dbf2d5de79de3db2af6891defed9093c2b7c285694e11"
+      "sha256": "860c4535a2b32c10607afe54394c63ee6e151aa71dc03b5999ceb095cf07125a"
     },
     "forge-teach": {
       "file_count": 3,
-      "sha256": "2d8539e1f59e16991aca2e0f152a22e1df13819dad3cd945e7d8808d03bf7e71"
+      "sha256": "533d85f3edffe3acf73d0626895af3cf1ff626406de78e5cef17b508374a7d4d"
     },
     "forge-technical-writing": {
       "file_count": 3,
-      "sha256": "93e059860b5549bed3d221d71d31a5b52b2f2ca491230c056843c73dbe56d488"
+      "sha256": "c64fda1d227eb1e48d4d92fecfbcd571cd917916e38589bb19273f3ac8e32873"
     },
     "forge-typescript-best-practices": {
       "file_count": 4,
-      "sha256": "87e436cddf04fe1019ed4dda84987ae4f2237dd11c5799072e6b3c0e34072469"
+      "sha256": "1c988a62527f8e3c62868e7e9b5b942e93efbc2f3b2036e40c1e47ddc79fd49b"
     },
     "forge-unslop": {
       "file_count": 3,
-      "sha256": "ddbd42e5c519cef76113c46adec67c8350f8212c0c602cc9ca0840e7e8ab27a5"
+      "sha256": "092675617f91d66e537387836f0d7d9c11cca1b117a8fce8917c4c3487865aeb"
     },
     "forge-why": {
       "file_count": 15,
-      "sha256": "00372abf1317ff7f2d02e7f1b063549b6c244d5924eabbdfb9904dc722076b26"
+      "sha256": "8c977b39e27b5e12c43d9ddbf57c0bfd04157992ce65502f6eba99fb203da591"
     },
     "frontend-design": {
       "file_count": 6,
@@ -3230,8 +3298,8 @@
       "sha256": "2f011b9660a5393827c266b79fe5a6d7a4ce4b298125218409ab45e86f96f140"
     },
     "integrated-workflow": {
-      "file_count": 5,
-      "sha256": "b8dfa9a0dd0b6df6c82b3e23ddc3740f4c6329bbe624f10c82060c3a71592440"
+      "file_count": 7,
+      "sha256": "fdd38d6dda3519f9dd0432fc4f687fd03768598711d48c790e98b6e9de995485"
     },
     "interaction-polish": {
       "file_count": 4,
@@ -3278,8 +3346,8 @@
       "sha256": "da143ea70c6e44c476a3fc4deffa9b543a0f42e8cccee19530696821ba91ab70"
     },
     "plan-model-router": {
-      "file_count": 6,
-      "sha256": "d5cf5f054676d11854baaab397165bac886862ed73cee9e5b918074b3eea3ca6"
+      "file_count": 9,
+      "sha256": "dec747a6cc101e3f109f46ed0424f3afe356211ed8ccad6338d65a428b2d64af"
     },
     "playwright": {
       "file_count": 9,
@@ -3341,6 +3409,14 @@
       "file_count": 7,
       "sha256": "ae0e0230f429b62ec61bea4a11a389802b943ed6cf6b2e43c7974a6dc6038764"
     },
+    "universal-forge": {
+      "file_count": 5,
+      "sha256": "99330ed0e487b1cba6625a397bfcb56b9bb8a710283e2298b0db488113872014"
+    },
+    "universal-plan-model-router": {
+      "file_count": 2,
+      "sha256": "95cedd3de00606f09541e2af95bf6b713fa04617b15a0e1d965d0639f78eefc6"
+    },
     "ux-flow-architect": {
       "file_count": 2,
       "sha256": "fe1b1b471f74038ed12f3a0106274b8704b887dd2b1588916ff2e184bd17bf80"
@@ -3358,8 +3434,8 @@
       "sha256": "4f6e4f6de44a67dd2d28e4cb80c498481baa6f5035f59661756108ce78cf4e32"
     },
     "workflow-orchestrator": {
-      "file_count": 4,
-      "sha256": "d94c81e0871997721aa7eb5a652d99b6b765c0c98586e15feda32b39bfa4d840"
+      "file_count": 5,
+      "sha256": "dcf101f8986e1d3029f98f52bdb3d0e5036c049297cec63fc488c7fa71fba2f7"
     }
   },
   "version": "1.0.0"

@@ -1,3 +1,6 @@
 interface:
-  display_name: "Forge Principle Outcome Oriented Execution"
+  display_name: "forge-principle-outcome-oriented-execution"
   short_description: "Codex engineering: principle outcome oriented execution"
+  default_prompt: "Use $forge-principle-outcome-oriented-execution for the requested task."
+policy:
+  allow_implicit_invocation: true

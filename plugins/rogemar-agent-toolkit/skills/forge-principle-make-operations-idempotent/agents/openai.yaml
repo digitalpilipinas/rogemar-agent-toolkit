@@ -1,3 +1,6 @@
 interface:
-  display_name: "Forge Principle Make Operations Idempotent"
+  display_name: "forge-principle-make-operations-idempotent"
   short_description: "Codex engineering: principle make operations idempotent"
+  default_prompt: "Use $forge-principle-make-operations-idempotent for the requested task."
+policy:
+  allow_implicit_invocation: true

@@ -59,6 +59,13 @@ IDs rather than creating a competing plan, board, or execution workflow.
 
 ## Keep the boundary clear
 
+For substantial handoffs, use existing context or input fields to identify the
+essential starting sources, why they matter, their candidate/revision and what
+would require refreshing them. Carry the outcome and constraints explicitly;
+link older detail instead of copying the conversation. Apply the orchestrator's
+[context guidance](../workflow-orchestrator/references/context-efficiency.md)
+when repeated context is material; routine plans need no additional artifact.
+
 A planning-only request does not authorize implementation, experiments, runtime
 setup, external review, commits, or publication. Save a plan artifact when
 requested or within the agreed task scope; otherwise deliver it in the response.

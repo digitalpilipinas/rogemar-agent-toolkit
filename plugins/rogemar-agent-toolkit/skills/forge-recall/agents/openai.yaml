@@ -1,3 +1,6 @@
 interface:
-  display_name: "Forge Recall"
+  display_name: "forge-recall"
   short_description: "Codex engineering: recall"
+  default_prompt: "Use $forge-recall for the requested task."
+policy:
+  allow_implicit_invocation: true

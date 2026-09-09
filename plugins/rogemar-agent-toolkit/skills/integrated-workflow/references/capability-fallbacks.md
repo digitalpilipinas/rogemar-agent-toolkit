@@ -30,7 +30,8 @@ actions before proceeding.
 | Need | Preferred capability | Fallback |
 | --- | --- | --- |
 | Long-running control | GoalBuddy `state.yaml` and execution contract | Existing board plus manual checker/PM handling, or an approved plan with native plan tracking; do not claim GoalBuddy automation passed |
-| Local code review | CodeRabbit CLI | A separately labeled native review plus repository tests |
+| Local code review | CodeRabbit CLI at the applicable slice boundary | Separately labeled native review plus tests; cannot satisfy a required CodeRabbit layer without explicit owner disposition |
+| Ready-PR cloud review | Separate GitHub CodeRabbit and Codex reviews | Record the unavailable layer and continue other safe work; required cloud evidence remains unmet |
 | Independent review | Authorized external provider or read-only sub-agent | Native verification reviewer or main-agent review; never invent independence |
 | Security/privacy | Relevant Codex Security and domain skills | Repository security checks, secret scan, server-authority, privacy, RLS/migration, and domain counterexamples |
 | React Native QA | Expo and Argent | Repository build/tests; mark simulator QA blocked or deferred if exact runtime provenance cannot be established |
@@ -41,15 +42,15 @@ actions before proceeding.
 
 ## Fallback rules
 
-- Optional capability failure does not block safe in-scope work. Required acceptance evidence without an equivalent fallback does block the gate.
+- Resolve requirements once from the [gate contract](execution-loop.md#gate-and-evidence-contract). Optional capability failure does not block safe in-scope work, even for a high-risk change. Required evidence without an accepted equivalent fallback blocks only its named boundary. The small-change exception does not weaken existing project gates; substantive local CodeRabbit and ready-PR CodeRabbit/Codex are distinct default requirements.
 - A fallback is a new evidence source, not a relabeling of the failed provider.
 - Do not silently install or authenticate integrations, expose additional files, spend credits, weaken a gate, or change scope to make a capability appear available.
 - Use the smallest relevant capability set. Do not invoke every installed reviewer, security scanner, platform plugin, or external model for routine changes.
 - Keep one writer per worktree. Parallelize only independent read-only review, research, or validation unless separate write worktrees and reconciliation are explicitly approved.
-- The manually selected main-agent model and reasoning effort are ceilings for native sub-agents. Route to the lowest sufficient available profile and use tests and review as the quality gate. External provider model availability remains provider-owned.
+- For named Codex Forge modes, follow plan-model-router's dispatch contract and mode pools. Without a named mode, the manually selected main-agent model and reasoning effort are ceilings for native sub-agents. Route to the lowest sufficient available profile and use tests and review as the quality gate. External provider model availability remains provider-owned.
 - For external review, freeze the exact workspace and allowed/excluded paths, keep artifacts outside the repository, monitor changed-only receipts, and validate the actual code rather than the provider summary.
 - Do not replace a named Grok, Antigravity/Gemini, Cursor, or Junie provider/model silently. For GitHub Cloud Antigravity, verify the installed/authorized app and its PR response to the exact `@agy /review` conversation trigger rather than looking for a terminal executable. Verify executable, authentication, credits, and model availability for terminal providers. Optional failure may use the recorded fallback; required failure blocks only the named risk boundary while other safe work may continue.
-- Simulator or physical-device unavailability follows the selected gate: `REQUIRED` blocks the applicable delivery boundary, `CONDITIONAL` applies only to relevant supported changes, `DEFERRED` remains deferred, and `NOT APPLICABLE` requires a truthful scope reason. An explicit owner invocation makes simulator evidence required for the named scope; repository tests or screenshots do not replace it.
+- Simulator or physical-device unavailability follows the selected gate: `REQUIRED` blocks the applicable delivery boundary, `CONDITIONAL` applies only to relevant supported changes, `DEFERRED` remains deferred, and `NOT APPLICABLE` requires a truthful scope reason. An explicit owner invocation makes simulator evidence required for the named scope; repository tests or screenshots do not replace it. An executed check exposing a defect is `failed`, not `blocked`; fix and rerun affected checks before passing its required boundary.
 
 ## Default exclusions
 

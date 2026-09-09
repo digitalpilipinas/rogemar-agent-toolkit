@@ -8,8 +8,46 @@ license: MIT
 Read [the runtime contract](references/codex-runtime.md) before runtime work.
 `workflow-orchestrator` owns capability selection and every subagent dispatch.
 `plan-model-router` owns model policy. `integrated-workflow` retains
-approved programme and publication authority. The manually selected main model
-and reasoning effort remain the defaults and ceilings, including Astra.
+approved programme and publication authority. A selected Forge mode governs parent and worker profiles; without a named mode,
+the manually selected main model and reasoning effort remain defaults and ceilings.
+
+The portable sibling is `universal-forge`; this entry retains tested Codex
+bindings and its full native companions. Do not invoke both as execution owners.
+
+## Automatic selection
+
+Invoke `$codex-forge` once with the desired outcome and constraints. Keep Forge
+active for relevant follow-up work in this task until the user opts out. Select
+and read the matching playbook and only the supporting skills needed by each
+step; do not ask the user to remember or enumerate the family. Match the
+subtask's evidence needs to installed specialist skills, including those outside
+Forge, through `workflow-orchestrator`. A role is a task assignment, not a skill
+command and not a reason to spawn a worker. Keep simple answers proportional.
+Use hyphenated invocation IDs and picker labels (`$forge-how`, `$forge-setup`),
+never spaced display titles as commands. Carry this selection intent in an
+existing handoff when resuming; this is task context, not a background daemon.
+
+For every justified new worker assignment, automatically use the orchestrator's
+[router dispatch contract](../plan-model-router/references/dispatch-contract.md).
+It runs the shared resolver and passes the resulting model and effort into the
+native worker tool. Read [role-mapping.md](../plan-model-router/references/role-mapping.md)
+for six group defaults and individual role contracts. Selecting a role does not
+create an agent; simple work stays with the main agent.
+
+Read the saved Forge mode before each materially different worker assignment.
+`$forge-setup Use peak`, `Use balanced`, `Use lean`, or `Use sprint` changes the saved
+candidate pool. A task-only mode request stays in task context. The router
+checks the pool, current backend, task fit, and any explicit user limits together.
+No eligible worker means the main agent keeps the work; do not silently escape
+the mode by inheriting an excluded profile. Adapt the desired parent to the mode; apply it only through a supported current-task
+model control, or report that the parent change still needs the user to apply it.
+
+## Attribution
+
+Codex Forge is inspired by and adapted from Lauren Tan (poteto)'s **PStack**
+and **poteto-mode**, published in the [Cursor plugins repository](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack).
+The original MIT attribution is preserved in `LICENSE.txt`. This is an independent
+Codex adaptation; it does not imply endorsement or an unverified affiliation.
 
 ## Choose the work
 
@@ -50,9 +88,10 @@ no new external-action authority. Keep an unavailable service or required
 runtime check visibly blocked and continue independent authorized work.
 
 For each materially different package, the orchestrator requests a fresh model
-fit assessment. Workers inherit the selected parent unless a justified lower
-profile passes availability, effort, and ceiling checks. Setup is optional;
-`forge-setup` stores preferences without changing the parent or Codex settings.
+fit assessment. Workers use justified profiles from the selected mode, even when above the
+current parent defaults. Without a mode, use parent inheritance and ceilings. Setup is optional;
+`forge-setup` stores mode preferences; a real parent switch is a separate
+runtime action whose outcome must be verified.
 Reconcile the actual diff, executable evidence, and independently useful review
 before acceptance. Never infer delivery from a worker summary or a green badge.
 
@@ -89,7 +128,7 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 
 **Delegation**
 
-- **Guard the Context Window** (**forge-principle-guard-the-context-window**). Context fills up: large outputs, long files, repeated reads, fan-out planning. Route bulk to subagents, keep summaries in the main thread.
+- **Guard the Context Window** (**forge-principle-guard-the-context-window**). Large outputs, long files, repeated reads or delegation make context handling material. Preserve sufficient evidence and reduce repeated work across the complete task.
 - **Never Block on the Human** (**forge-principle-never-block-on-the-human**). Tempted to ask "should I do X?" on reversible work. Proceed, present the result, let the human course-correct.
 
 **Meta**

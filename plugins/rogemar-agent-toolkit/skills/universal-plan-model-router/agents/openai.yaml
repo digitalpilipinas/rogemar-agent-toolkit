@@ -1,0 +1,6 @@
+interface:
+  display_name: "universal-plan-model-router"
+  short_description: "Portable engineering and native capability routing."
+  default_prompt: "Use $universal-plan-model-router for this task with the current harness capabilities."
+policy:
+  allow_implicit_invocation: true

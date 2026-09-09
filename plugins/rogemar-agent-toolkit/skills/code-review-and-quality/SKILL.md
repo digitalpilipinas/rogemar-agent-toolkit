@@ -99,6 +99,11 @@ disagreement to resolve the concrete missing fact or owner decision.
 
 ## Report
 
+For large evidence sets, use shared
+[context guidance](../workflow-orchestrator/references/context-efficiency.md).
+Concise reporting must retain decisive diagnostics and incomplete coverage;
+inspect the full intended diff and recover original evidence when needed.
+
 Lead with findings ordered by impact, then the scoped verdict and material gaps.
 If none qualify, say no actionable findings in the reviewed scope. Name the
 candidate/baseline and checks actually run; distinguish source inspection, local

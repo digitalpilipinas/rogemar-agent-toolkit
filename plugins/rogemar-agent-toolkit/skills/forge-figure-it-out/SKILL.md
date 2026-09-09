@@ -7,7 +7,7 @@ license: MIT
 
 ## Codex execution contract
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md) before dispatch or a runtime action. This skill supplies methods and bounded collaboration hints; `workflow-orchestrator` alone selects specialists and subagents. `plan-model-router` resolves task profiles under the manually selected parent defaults and ceilings.
+Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md) before dispatch or a runtime action. This skill supplies methods and bounded collaboration hints; `workflow-orchestrator` alone selects specialists and subagents. `plan-model-router` resolves task profiles under the active Forge mode, or parent defaults and ceilings when no mode is selected.
 
 
 
@@ -34,7 +34,7 @@ Present the framing and tradeoffs before committing to a long run. Reversible wo
 Decompose into atomic, independently-landable units. Sequence riskiest-unknown-first so option value stays high. Scaffold and verification come before features (the **foundational-thinking** principle skill).
 
 - Build the verification harness before the work, with the baseline captured from the pre-change state, so the check reads as "old value vs new value".
-- For one-way-door design decisions, ask the orchestrator to select **forge-architect** skill (it runs **forge-arena**) with diverse, isolated, opinionated candidates and an independent read-only judge requested through the orchestrator within parent ceilings. Skip it for mechanical work whose shape is already concrete. A second arena over a settled design is over-engineering (the **laziness-protocol** principle skill).
+- For one-way-door design decisions, ask the orchestrator to select **forge-architect** skill (it runs **forge-arena**) with diverse, isolated, opinionated candidates and an independent read-only judge requested through the orchestrator under the active routing policy, preserving explicit user and host limits. Skip it for mechanical work whose shape is already concrete. A second arena over a settled design is over-engineering (the **laziness-protocol** principle skill).
 - Decide what fans out. Parallelize only across genuine seams, and give each worker its own worktree or branch (the **separate-before-serializing-shared-state** principle skill). Don't over-fan.
 - Write the designed phase list down. That list is what the human reviews.
 

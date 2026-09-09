@@ -16,10 +16,13 @@ Each optional hint should provide:
   or configure an agent.
 - `desired_profile`: the role's lowest useful model and effort shape when a
   profile matters, or `None` for ordinary local work.
-- `effective_profile_evidence`: the observed runtime availability plus the
-  parent-ceiling result. Record `ceiling-constrained` or `Unverified` rather
+- `effective_profile_evidence`: observed runtime availability and the active
+  mode/no-mode qualification result, including explicit user and host limits. Record `ceiling-constrained` or `Unverified` rather
   than implying a desired profile was used.
-- `inputs`: the minimum context, files, artifacts, or prior findings required.
+- `inputs`: sufficient task context and source/artifact pointers, their relevant
+  candidate identity and refresh conditions; carry constraints explicitly rather
+  than copying the entire conversation. Use [context efficiency](context-efficiency.md)
+  when the handoff is substantial.
 - `required_capabilities`: the capability need, not an exhaustive tool list.
 - `preferred_route`: the selected skill plus its underlying plugin, MCP,
   connector, app, CLI, or local tool when one is required.
@@ -57,9 +60,13 @@ the orchestrator remains responsible for ordering, deduplication, permissions,
 budgets, model ceilings, and reconciliation.
 
 A role profile is a desired routing input, not a fixed override. The
-orchestrator selects a surfaced agent type, then the active harness profile policy computes (Codex uses `plan-model-router`)
-an effective profile no stronger than the parent model or effort. If that
-profile cannot meet the evidence burden, the work returns to the main agent.
+orchestrator selects a surfaced agent type, then the active harness profile policy
+computes an effective profile (Codex uses `plan-model-router`). In Codex, no-mode
+routes retain parent model and effort ceilings; named Forge modes qualify against
+their pool and the live backend and may exceed parent defaults. Explicit user and
+host limits always apply. Record requested and observed profiles; report constraints
+without silently clamping or dropping overrides. If a permitted profile cannot meet
+the evidence burden, the work returns to the main agent.
 
 A capability hint is not permission to install, authenticate, spend credits,
 read private connector data, expose additional files, or mutate an external
@@ -84,5 +91,7 @@ silently continue after a ceiling, permission, or evidence boundary is hit.
 Every Forge companion and playbook uses this handoff contract, including
 comparison panels and autonomous programme recipes. A named step suggests a
 specialist or bounded Worker; it never dispatches independently. Resolve the
-profile through the active harness controls at execution time (Codex uses `plan-model-router`), starting with the owner's
-selected parent and inspecting role overrides before claiming ceiling compliance.
+profile through the active harness controls at execution time. Codex uses
+`plan-model-router/references/dispatch-contract.md`: named Forge modes govern
+workers; the no-mode route retains parent ceilings. Inspect native role pins
+and pass the resolver's qualified settings into the actual dispatch call.

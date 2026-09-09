@@ -3,7 +3,7 @@
 Build and verify a linear PR chain for the user to review and land. `integrated-workflow` owns the approved delivery contract; the orchestrator owns delegation.
 
 1. Verify implementation and publication authority separately. If publication is outside scope, prepare the local changes and proposed topology. Preserve user-owned review and merge decisions. Do not create a goal or monitor unless requested.
-2. Assign coherent slices with `feature.md`, `bug-fix.md` or `refactoring.md`. Parallel writers use isolated worktrees; the parent can own coupled work. Use live task profiles below both parent ceilings and explicit verification responsibilities.
+2. Assign coherent slices with `feature.md`, `bug-fix.md` or `refactoring.md`. Parallel writers use isolated worktrees; the parent can own coupled work. Use live task profiles qualified under the active mode, or parent ceilings without a mode, preserving explicit user/host limits and verification responsibilities.
 3. Capture decisions and exact base/head evidence as work progresses. Review the actual diff, meaningful checks and applicable runtime behavior. Request independent verification where its risk justifies it, with bounded coverage and one reconciled verdict.
 4. Publish only under existing authority. Draft PRs are valid when evidence or review is pending. A timeline or checkpoint never forces a push or ready-state claim.
 5. Keep one writer for stack topology. Confirm each child is based on the intended parent's tip and targets its branch. Record an explicit bottom-to-top order. Do not infer dependency from PR numbers or require Graphite.

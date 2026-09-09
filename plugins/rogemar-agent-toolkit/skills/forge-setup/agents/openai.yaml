@@ -1,3 +1,6 @@
 interface:
-  display_name: "Forge Setup"
-  short_description: "Configure Forge roles and model inheritance"
+  display_name: "forge-setup"
+  short_description: "Configure Peak, Balanced, Lean, and Sprint role routing"
+  default_prompt: "Use $forge-setup for the requested task."
+policy:
+  allow_implicit_invocation: true
