@@ -4,6 +4,13 @@ description: Qualify task and role profiles using the current harness's native m
 ---
 # Universal Plan Model Router
 
+Follow the shared [Forge mode and status contract](../workflow-orchestrator/references/forge-mode-status.md) at entry,
+resume and dispatch: explicit request → task mode → saved preference; ask once
+if none exists. Show role, model, effort, mode and evidence status without
+repeated introductions. Setup inspection alone does not require a mode choice
+or write preferences; apply the prompt when beginning an execution task.
+
+
 Cursor Forge first uses `cursor-forge-setup`. Activate this route there only
 for unavailable native adapter/mappings, carrying explicit limits and reporting
 the fallback. Never bypass a primary rejection or permission boundary.
@@ -58,8 +65,11 @@ and recommend a mode change rather than silently claiming success.
 
 ## Partial capabilities
 
-- Workers available, model selector absent: use native inheritance/defaults,
-  label model selection uncontrolled, and still assign useful authorized roles.
+- Workers available, model selector absent: use native inheritance/defaults only
+  after confirming compatibility with the selected mode, native pins and explicit
+  limits. Label model selection uncontrolled. If compatibility cannot be
+  established, retain direct work and disclose the unmet routing constraint;
+  do not dispatch an excluded or unqualified profile.
 - Catalogue incomplete: use a confirmed supported profile or native default;
   do not invent IDs. If an explicit restriction cannot be established, keep the
   dependent assignment blocked while continuing independent allowed work.

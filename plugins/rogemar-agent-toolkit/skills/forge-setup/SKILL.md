@@ -5,6 +5,14 @@ license: MIT
 ---
 # Set up Forge model preferences
 
+Read `references/forge-mode-status.md` from the installed `workflow-orchestrator`
+skill and follow that shared contract at entry,
+resume and dispatch: explicit request → task mode → saved preference; ask once
+if none exists. Show role, model, effort, mode and evidence status without
+repeated introductions. Setup inspection alone does not require a mode choice
+or write preferences; apply the prompt when beginning an execution task.
+
+
 Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md).
 Route the configuration assessment through `workflow-orchestrator` and read
 `plan-model-router/references/runtime-routing.md` for the single shared schema.

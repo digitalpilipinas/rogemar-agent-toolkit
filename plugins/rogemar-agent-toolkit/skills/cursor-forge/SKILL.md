@@ -4,6 +4,13 @@ description: Adapt native Cursor PStack methods to the shared Forge roles, modes
 ---
 # Cursor Forge
 
+Follow the shared [Forge mode and status contract](../workflow-orchestrator/references/forge-mode-status.md) at entry,
+resume and dispatch: explicit request → task mode → saved preference; ask once
+if none exists. Show role, model, effort, mode and evidence status without
+repeated introductions. Setup inspection alone does not require a mode choice
+or write preferences; apply the prompt when beginning an execution task.
+
+
 A thin Cursor entry adapter, not a second PStack skill family. Use installed
 `universal-forge` for shared roles and `engineering-playbooks` for portable
 methods. Keep the same current orchestrator and approved programme gates.

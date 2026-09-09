@@ -24,7 +24,9 @@ constraints, source identity, dependency evidence and next action. Refresh chang
 or uncertain state. Preserve original logs and decisive diagnostics, and consume
 already-delivered results once. This changes no review gate or final coverage audit.
 
-Resolve compact controls from the owner or approved plan:
+Resolve compact controls from the owner or approved plan. Invocation for approved
+implementation defaults to `BRANCH + PR + MERGE AUTHORIZED`; record the route once
+and continue without per-step permission requests:
 
 - `LOCAL ONLY`: no commits, pushes, PR creation, remote review comments or merge.
   Local review remains allowed and required for substantive local-only acceptance,
@@ -36,9 +38,18 @@ Resolve compact controls from the owner or approved plan:
   stop at verified readiness without merging.
 - `BRANCH + PR + MERGE AUTHORIZED`: the same flow, followed by merge only after
   applicable gates clear and exact-target verification.
-- If publication authority is absent, use a local branch strategy and continue
-  safe work up to that boundary. Ask only when a material missing decision is
-  needed, not again for authority already supplied.
+- The default covers scoped commits/pushes, PR creation or updates, ready
+  transition, configured PR review requests, in-scope remediation, applicable
+  authorized CI and safe merge with exact-target verification. Reuse the task PR.
+  Discussing or editing the skill alone does not invoke its publication route.
+- Explicit local-only, no-push, draft-only or stop-before-merge restrictions take
+  precedence until changed by the owner. Ask once for a material conflict, not
+  again for steps already covered by the effective route.
+- Required checks, reviews, repository approvals and trusted scope evidence remain
+  mandatory. Never manufacture owner approval or bypass checks. Prepare concrete
+  owner-only artifacts before reporting the specific blocker. Inspect automation
+  before push, PR or merge; stop before unapproved deployment, store/OTA
+  publication, destructive operations or expensive builds.
 - Database scope is the maximum permitted environment. Production changes,
   destructive work, provider data/credit usage and deployment need their own
   applicable authority; none follows from branch or PR creation alone.
@@ -59,7 +70,9 @@ artifacts supplement the approved plan and cannot activate tasks or pass gates.
 Default to one main-agent writing/integration lane. Concurrent read-only support
 may earn its cost; concurrent writers require approved independent branches and
 worktrees, exact files/symbols, verification, stop conditions and reconciliation.
-Stop overlapping lanes and return to focused work when a shared dependency emerges.
+Apply the orchestrator's [automatic strategy selection](../../workflow-orchestrator/SKILL.md#automatic-execution-strategy).
+Pause and reconcile affected lanes on shared dependencies; preserve their work
+and continue unaffected lanes only when independence remains established.
 
 Use existing primitives and patterns. Keep sensitive decisions server-authoritative.
 Implement coherent increments with focused tests and relevant counterexamples:

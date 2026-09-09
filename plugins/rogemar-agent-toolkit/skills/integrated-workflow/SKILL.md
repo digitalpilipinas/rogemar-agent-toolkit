@@ -28,11 +28,13 @@ only review cannot establish correctness or required independence.
 
 The main agent writes, integrates and owns final acceptance. Default to
 `AGILE_FOCUSED`: one write-capable owner per worktree, with useful read-only support.
-`AGILE_CONTROLLED_PARALLEL` needs approved independent lanes with exact files or
-symbols, separate branches/worktrees, verification, stop conditions and a named
-main-agent integration owner. Stop affected lanes on overlap or shared-contract
-conflict and reconcile before continuing. Reviewers, monitors, Scouts and Judges
-remain read-only unless separately assigned an authorized bounded writing task.
+The orchestrator automatically selects `AGILE_CONTROLLED_PARALLEL` when existing
+approval permits delegation and its [strategy selection criteria](../workflow-orchestrator/SKILL.md#automatic-execution-strategy)
+prove independent, isolated and worthwhile write lanes. The owner need not choose
+per package. Explicit strategy or one-writer restrictions take precedence.
+When independence is uncertain, stay focused. On a new conflict, pause affected
+writers, preserve their work and reconcile sequentially; unaffected independent
+lanes may continue. Reviewers remain read-only unless assigned bounded write scope.
 
 For optional scope-review, Ponytail, Unlazy, navigation and Project Learning,
 read [supporting methods](references/supporting-methods.md) only when relevant.
@@ -78,10 +80,9 @@ Through the existing orchestrator, select one compatible route:
 | Harness | Engineering methods | Profile selection |
 | --- | --- | --- |
 | Codex | `codex-forge` | `plan-model-router` |
-| Cursor | `cursor-forge`; if absent, surfaced and authorized upstream PStack/poteto-mode; otherwise `universal-forge` or shared playbooks | `cursor-forge-setup` when available; universal router only as a constraint-preserving fallback |
+| Cursor | `cursor-forge`; upstream PStack/poteto-mode if absent | `cursor-forge-setup`; universal router only as a constraint-preserving fallback |
 | Other or unknown | `universal-forge`; shared `engineering-playbooks` if unavailable | `universal-plan-model-router` using observed native capabilities |
 
-Record unavailable native routes before using the portable fallback.
 Honor compatible explicit choices. Reassess task fit, capabilities and applicable
 parent/mode constraints before delegation. A harness name, saved mode or installed
 skill does not prove tool access, worker dispatch or a live parent-model switch.
@@ -89,7 +90,9 @@ Keep one engineering owner and never import another harness's model IDs or contr
 
 ## Invocation and delivery boundaries
 
-Usually this is enough when authority is already recorded in the approved plan:
+Invoking this workflow to execute approved work authorizes the default branch-and-PR
+route through safe merge. Discussing or editing the skill alone does not invoke
+publication for the current task. Usually this is enough:
 
 ```text
 Use $integrated-workflow to implement the approved plan at <path>.
@@ -109,9 +112,24 @@ Simulator visual/accessibility QA: REQUIRED | CONDITIONAL | DEFERRED
 Physical-device QA: REQUIRED BEFORE MERGE | DEFERRED UNTIL BUILD | NOT APPLICABLE
 ```
 
-- Branch-based work is the default strategy. It does not itself authorize commit,
-  push, PR creation, reviewer comments, merge or deployment. Apply the recorded
-  delivery authority; `LOCAL ONLY` permits none of those publication actions.
+- Default to `BRANCH + PR + MERGE AUTHORIZED` for approved implementation.
+  Invocation authorizes scoped branch commits and pushes, opening or updating the
+  task PR, marking it ready when eligible, requesting configured PR reviews,
+  addressing findings, applicable authorized CI, and merging after required gates
+  pass. Continue through exact-target verification without per-step approval;
+  reuse the existing task PR when present.
+- Explicit task restrictions such as `LOCAL ONLY`, no-push, draft-only or
+  `STOP BEFORE MERGE` override this default until the owner changes them. Record
+  the effective route once. Ask only for a material conflict or missing decision,
+  not to reconfirm authority already supplied by invocation.
+- Safe merge requires current-head checks, required reviews, repository approvals
+  and trusted scope evidence. Never self-approve an owner-controlled record,
+  bypass protection or weaken a gate. Prepare the exact owner-only artifact and
+  explain the remaining action when genuinely blocked.
+- Inspect push, PR and merge automation before triggering it. This route does not
+  authorize deployment, store/OTA publication, unapproved expensive builds,
+  destructive operations or additional paid providers. Stop before an excluded
+  action and request its specific authorization.
 - Direct commit and push to the verified target branch require the owner's
   explicit instruction and repository-policy permission. Small or personal
   projects do not imply this choice. Preserve applicable local checks and local

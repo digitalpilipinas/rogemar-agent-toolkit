@@ -36,9 +36,9 @@ acceptance requirements. Owner-specified pools and limits remain binding.
 
 ## Resolve before dispatch
 
-1. Read the complete configuration. An explicit task mode overrides active_mode
-   without persisting it; default to Balanced as a stated task preference only
-   when no saved mode or owner choice exists.
+1. Read the complete configuration. Apply the shared mode/status contract: explicit
+   request, then established task mode, then saved active_mode. Ask once when
+   absent; retain pending state and do not silently select Balanced.
 2. Select a role for the actual task. Resolve mode → group default → role
    override. Explicit task adaptations require a reason and must remain inside
    owner restrictions; do not silently replace a configured profile.

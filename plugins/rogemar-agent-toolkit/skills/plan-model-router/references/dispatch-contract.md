@@ -7,7 +7,16 @@ The router computes a profile; the orchestrator performs the native tool call.
    for serial or simple work. Identify the smallest bounded role, skill hints,
    exact scope, permissions, acceptance evidence, and stop condition. Read only
    relevant installed skills. A hint is neither tool availability nor permission.
-2. Read `${CODEX_HOME:-$HOME/.codex}/forge.json` if present. Pass its complete
+2. Resolve task mode and status using `references/forge-mode-status.md`
+   from the installed `workflow-orchestrator` skill.
+   Pass the established task mode as explicit `mode` on every resolver request
+   so saved preferences cannot override it on later assignments. When mode is
+   pending, continue direct work and do not dispatch mode-dependent workers.
+   For an explicit no-mode choice, use a request-local validated preference copy
+   with `active_mode: null` and `parent_policy: suggest-at-phase-boundaries`;
+   never let the saved active mode reappear through resolver fallback or write
+   this temporary choice to disk.
+   Read `${CODEX_HOME:-$HOME/.codex}/forge.json` if present. Pass its complete
    validated object as `preferences`; do not reconstruct it from a remembered
    mode. A task-only `mode` overrides the saved mode without writing it. Re-read
    before new assignments after a switch. Keep aliases supreme → peak,

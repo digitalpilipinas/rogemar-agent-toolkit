@@ -5,6 +5,14 @@ license: MIT
 ---
 # Codex Forge
 
+Read `references/forge-mode-status.md` from the installed `workflow-orchestrator`
+skill and follow that shared contract at entry,
+resume and dispatch: explicit request → task mode → saved preference; ask once
+if none exists. Show role, model, effort, mode and evidence status without
+repeated introductions. Setup inspection alone does not require a mode choice
+or write preferences; apply the prompt when beginning an execution task.
+
+
 Read [the runtime contract](references/codex-runtime.md) before runtime work.
 `workflow-orchestrator` owns capability selection and every subagent dispatch.
 `plan-model-router` owns model policy. `integrated-workflow` retains

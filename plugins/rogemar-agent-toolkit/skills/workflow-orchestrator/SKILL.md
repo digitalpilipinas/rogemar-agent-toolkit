@@ -5,6 +5,13 @@ description: Use for non-trivial coding work that spans brainstorming, research,
 
 # Workflow Orchestrator
 
+Follow the shared [Forge mode and status contract](references/forge-mode-status.md) at entry,
+resume and dispatch: explicit request → task mode → saved preference; ask once
+if none exists. Show role, model, effort, mode and evidence status without
+repeated introductions. Setup inspection alone does not require a mode choice
+or write preferences; apply the prompt when beginning an execution task.
+
+
 Coordinate a coding task across its lifecycle without duplicating specialist
 skills. Use this skill to decide what kind of work is needed, what evidence is
 required, which installed capabilities apply, and when the task should pause.
@@ -15,9 +22,8 @@ When Codex Forge is active, automatically use the installed `plan-model-router` 
 EVERY justified new worker assignment. Follow its
 `plan-model-router/references/dispatch-contract.md` contract:
 read saved preferences and current runtime capabilities, select the task role,
-run the resolver, and apply its qualified model/effort through controls exposed
-by the live native dispatch schema. Never send unsupported fields; follow the
-contract's unapplied-profile fallback when no suitable control exists. Re-resolve
+run the resolver, and copy its qualified model/effort into the actual native
+spawn arguments. Do not stop at a mapping table or recommendation. Re-resolve
 after mode changes; a changed profile requires a fresh compatible assignment.
 
 Peak, Balanced, Lean, and Sprint share one executable catalogue owned by the
@@ -102,10 +108,11 @@ The main agent owns the goal, final decisions, synthesis, and validation. This
 skill owns delegation policy and should be the only orchestration layer that
 decides whether a worker is needed.
 
-The main agent is also an implementation-capable worker. In the default hybrid
-shape, it owns integration-heavy, ambiguous, highest-risk, or shared-surface
-implementation while bounded Workers own disjoint packages. Reconciliation is
-an additional responsibility, not a supervisor-only restriction.
+The current main agent performs the orchestrator role and remains an
+implementation-capable owner of integration, synthesis and final validation.
+This skill has no separate default AI model and does not spawn a coordinator.
+The selected harness's Forge adapter and router qualify worker profiles; any
+requested parent-model change requires supported controls and verified effect.
 
 Before delegating, decide whether a fresh context materially earns its cost.
 Delegate only when independent investigation, a bounded specialist lens, an
@@ -140,10 +147,12 @@ the active harness's profile controls when a profile is needed; Codex uses insta
   implement, edit, test, document, or run scoped validation. Isolate writers,
   permit sequential workers when dependencies require them, and never allow
   multiple workers to edit the same file or surface concurrently.
-- Workers share the worktree: preserve unrelated dirty or untracked work, do
-  not revert another worker's changes, and report conflicts or out-of-scope
-  findings instead of guessing. The main agent must inspect the resulting diff,
-  reconcile it with the approved plan, and perform or direct final validation.
+- In a shared worktree, serialize writers, including the main agent. Parallel
+  implementation uses separate worktrees with explicit ownership; separation
+  does not isolate shared databases, generated outputs or runtime resources.
+  Preserve unrelated work in every lane. Report conflicts rather than reverting
+  others' edits. The main agent inspects and reconciles the combined diff and
+  performs or directs final integrated validation.
 - Capture the parent model and reasoning effort before spawning. In a named
   Forge mode, qualify the worker against its pool and the backend; it may exceed
   parent defaults. Without a mode, enforce both parent ceilings.
@@ -178,6 +187,34 @@ is actually present.
 Do not assume a language, framework, database, hosting provider, deployment
 system, test runner, or integration. Derive those from the repository or the
 user's explicit constraints.
+
+## Automatic execution strategy
+
+Default to `AGILE_FOCUSED`. At a new implementation package or a material change
+in dependencies, scope or available isolation, assess the actual repository and
+approved authority; do not continuously poll or create a detector/scoring system.
+Explicit user strategy, one-writer limits and repository restrictions take precedence.
+
+Select `AGILE_CONTROLLED_PARALLEL` automatically only when delegation is already
+permitted, independent packages have exact owners/files or symbols, separate
+branches/worktrees are available, and parallel work is likely to justify its
+coordination and integration cost. Check shared contracts, dependency ordering,
+generated outputs, databases and runtime resources; different filenames alone
+are insufficient. Assign acceptance checks, stop conditions and the main-agent
+integration owner before dispatch. Selection grants no additional authority.
+
+If evidence is insufficient or isolation unavailable, continue focused; useful
+read-only investigation/review may still run concurrently. Briefly record the
+chosen strategy and reason in the existing receipt, without a new board or a
+routine owner confirmation. Ask only when a material scope/authority decision is
+missing and cannot be resolved within the approved task.
+
+If overlap or a shared dependency emerges, pause affected writers at a safe
+checkpoint, retain their edits and receipts, reconcile ownership and continue
+those packages sequentially. Keep unaffected lanes running only while their
+independence remains established. Do not reset, discard work or switch strategy
+merely because a task is taking longer than expected. Reassess parallel eligibility
+when the dependency is resolved; validate the final integrated candidate.
 
 ## Lifecycle
 

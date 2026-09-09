@@ -4,6 +4,14 @@ description: Resolve Codex task and worker profiles automatically within Forge t
 ---
 # Plan Model Router
 
+Read `references/forge-mode-status.md` from the installed `workflow-orchestrator`
+skill and follow that shared contract at entry,
+resume and dispatch: explicit request → task mode → saved preference; ask once
+if none exists. Show role, model, effort, mode and evidence status without
+repeated introductions. Setup inspection alone does not require a mode choice
+or write preferences; apply the prompt when beginning an execution task.
+
+
 This is the Codex implementation. Other harnesses use the installed
 `universal-plan-model-router`; this script and its model catalogue are not a
 portable fallback. Keep existing Codex preferences and resolution unchanged.
