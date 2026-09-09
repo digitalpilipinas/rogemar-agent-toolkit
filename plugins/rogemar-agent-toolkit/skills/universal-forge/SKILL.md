@@ -33,6 +33,11 @@ otherwise the main agent applies that role without creating a second coordinator
 `integrated-workflow` retains approved programme and delivery gates. Do not
 invoke either entry point recursively or restart the plan when a method returns.
 
+For substantial context or handoffs, use the orchestrator's shared
+[context guidance](../workflow-orchestrator/references/context-efficiency.md).
+Native adapters retain their own runtime controls; no cache or notification
+behavior is implied by the portable method.
+
 ## Roles and execution
 
 Read [roles.md](references/roles.md) for shared assignment groups and contracts.

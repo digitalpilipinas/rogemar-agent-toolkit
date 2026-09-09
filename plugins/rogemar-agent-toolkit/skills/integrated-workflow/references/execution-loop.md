@@ -17,6 +17,13 @@ the next active task or completes the goal. Goal Prep prepares the board and sto
 Without a board, resume the first incomplete dependency-ready approved increment.
 Do not invent a new board, replan or restart completed work.
 
+For long runs, follow the shared [context guidance](../../workflow-orchestrator/references/context-efficiency.md)
+and [GoalBuddy handoff](../../workflow-orchestrator/references/stage-routing.md#goalbuddy-context-handoff)
+when applicable. Carry changes since the last accepted receipt alongside still-valid
+constraints, source identity, dependency evidence and next action. Refresh changed
+or uncertain state. Preserve original logs and decisive diagnostics, and consume
+already-delivered results once. This changes no review gate or final coverage audit.
+
 Resolve compact controls from the owner or approved plan:
 
 - `LOCAL ONLY`: no commits, pushes, PR creation, review comments or merge.

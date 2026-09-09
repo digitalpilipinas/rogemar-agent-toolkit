@@ -9,6 +9,9 @@ A thin Cursor entry adapter, not a second PStack skill family. Use installed
 methods. Keep the same current orchestrator and approved programme gates.
 Do not recursively call entry skills or start a second coordination process.
 
+Use shared [context guidance](../workflow-orchestrator/references/context-efficiency.md)
+for large outputs or handoffs, preserving the active harness's tool and wait contracts.
+
 Inspect actual Cursor capabilities before native operations. If this is not a
 Cursor runtime, use the portable method and disclose the mismatch. Merely naming
 Cursor never grants native Task, model-control, MCP or plugin access.

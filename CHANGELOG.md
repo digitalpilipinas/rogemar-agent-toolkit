@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Share context-efficiency guidance across planning, native/portable Forge, delivery and review; preserve evidence and freshness while avoiding repeated work.
+- Add a focused GoalBuddy context handoff within the existing toolkit integration, retaining native board, receipt and preparation boundaries.
+
 - Keep selected release archives testable without optional packs; report absent Forge verification as not applicable.
 
 - Rewrite the README around getting started, everyday prompts and complete-feature delivery; keep the full generated inventory expandable.

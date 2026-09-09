@@ -55,6 +55,11 @@ a second plan, board, review, or model-routing process.
    local tests, CI, staging/production, external review, and manual/device checks
    distinct. Report a required check that could not run without calling it passed.
 
+When shortening evidence or resuming a long task, apply the shared
+[context guidance](../workflow-orchestrator/references/context-efficiency.md).
+Retain the original outcome, candidate identity, decisive failures and incomplete
+gates; a concise receipt must still support the existing acceptance audit.
+
 ## Optional Unlazy completion checks
 
 When the owner requests `unlazy`, or substantial work needs runnable checks to

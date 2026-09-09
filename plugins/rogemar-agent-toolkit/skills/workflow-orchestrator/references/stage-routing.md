@@ -20,6 +20,22 @@ or `constraints`; it does not execute those skills during preparation. During
 execution, the active task's scope and current evidence determine which listed
 specialists actually activate. A plan hint is not a command to load them all.
 
+### GoalBuddy context handoff
+
+Keep Goal Prep preparation-only and preserve its native board/receipt schema.
+Record essential source pointers, candidate identity and refresh conditions in
+existing task `inputs` or `constraints`; schedule source inspection for execution.
+Do not load implementation context merely to make the preparation prompt shorter.
+
+During execution, first read the charter and authoritative `state.yaml` as required
+by GoalBuddy. Then carry a focused view of the active task, oracle, authority,
+dependencies, relevant receipts, blockers and next action. Refresh it after board
+changes or uncertain recovery; retrieve historical detail when the task needs it.
+This view is transient context, not another board, persisted status schema or
+permission to skip full-board checks and final outcome coverage. Preserve native
+receipt fields and PM ownership. Apply [context efficiency](context-efficiency.md)
+within these boundaries; leave managed GoalBuddy plugin files unchanged.
+
 ## Capability preflight by stage
 
 - **Planning (`create-plan`):** infer required capabilities and use read-only

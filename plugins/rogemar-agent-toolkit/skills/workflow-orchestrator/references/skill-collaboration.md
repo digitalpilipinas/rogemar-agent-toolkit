@@ -19,7 +19,10 @@ Each optional hint should provide:
 - `effective_profile_evidence`: the observed runtime availability plus the
   parent-ceiling result. Record `ceiling-constrained` or `Unverified` rather
   than implying a desired profile was used.
-- `inputs`: the minimum context, files, artifacts, or prior findings required.
+- `inputs`: sufficient task context and source/artifact pointers, their relevant
+  candidate identity and refresh conditions; carry constraints explicitly rather
+  than copying the entire conversation. Use [context efficiency](context-efficiency.md)
+  when the handoff is substantial.
 - `required_capabilities`: the capability need, not an exhaustive tool list.
 - `preferred_route`: the selected skill plus its underlying plugin, MCP,
   connector, app, CLI, or local tool when one is required.

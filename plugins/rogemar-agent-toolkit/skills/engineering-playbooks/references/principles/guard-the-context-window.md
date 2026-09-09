@@ -4,12 +4,9 @@
 
 
 
-The context window is finite and non-renewable within a session. Every token that enters should earn its place.
-
-**Why:** Context overflow degrades reasoning quality, creates compression artifacts, and halts progress. Unlike compute or time, context spent inside a session cannot be reclaimed.
-
-**Pattern:**
-- **Isolate large payloads.** Route verbose outputs, screenshots, and large documents to subagents. The main context gets summaries, not raw data.
-- **Don't read what you won't use.** Read selectively based on relevance. If a file isn't needed for the current task, skip it.
-- **Keep frequently used content inline.** Templates and references used on every invocation belong in the skill file, not in separate files that cost a read each time.
-- **Size phases and cap scope.** Limit files per phase, set turn budgets, account for mechanism costs.
+Apply the shared [context-efficiency contract](../../../workflow-orchestrator/references/context-efficiency.md)
+through the existing orchestrator. Preserve sufficient source and failure
+evidence; compare delegation with its total coordination cost. Keep small common
+rules inline and substantial conditional material in references. Use only the
+active harness's observed context and notification capabilities. Compaction may
+lose detail; retain durable state and recheck critical evidence when uncertain.

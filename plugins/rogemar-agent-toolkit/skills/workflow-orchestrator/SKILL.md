@@ -112,6 +112,10 @@ independent counterexample, or a safely partitioned package will improve the
 outcome more than its coordination, context, and validation cost. Keep
 synthesis, requirements, integration, and final judgment with the main agent.
 
+For large outputs, repeated reads or long handoffs, apply
+[context efficiency](references/context-efficiency.md). Preserve decisive evidence
+and freshness while reducing repeated work; do not add another acceptance cycle.
+
 Choose a surfaced custom-agent type for its behavioral and permission contract,
 not as a permanent model assignment. Role intent may be explorer, investigator,
 implementation worker, debugger, reviewer, architect, or bounded experiment
