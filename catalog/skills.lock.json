@@ -3051,7 +3051,7 @@
     },
     "codex-forge": {
       "file_count": 67,
-      "sha256": "b2b72839b12e4c38bfa3a6a1de59ddeb6861ac10125631562a67401d64b63cab"
+      "sha256": "99abe1a1fd9b56eed607b56a98f77eed217d6d5f9efa964bac5ff98432fb253f"
     },
     "create-plan": {
       "file_count": 4,
@@ -3063,11 +3063,11 @@
     },
     "cursor-forge": {
       "file_count": 4,
-      "sha256": "4dfb51cd6c2466121c796742e9fca23c4b9edb13055aa7980fe832dc2179015c"
+      "sha256": "9d32a825c61ec741b80fa9920f91a71a78bd83f2d02659e487614a33a381c140"
     },
     "cursor-forge-setup": {
       "file_count": 6,
-      "sha256": "174dcc7ff442a0a6c135879ef8c787552afe046fea25108c5d80d881b603fbca"
+      "sha256": "7ecaac2176b50bf543cb3afe200d085c3b5fffc4869ce336feb92d085ac4a791"
     },
     "deliver-approved-programme": {
       "file_count": 2,
