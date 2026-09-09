@@ -100,6 +100,11 @@ Harness: Codex
 Delivery to main: BRANCH + PR, STOP BEFORE MERGE
 ```
 
+For approved implementation, invoking Integrated Workflow defaults to branch-and-PR
+delivery through a safe merge after required gates pass. The example above explicitly
+stops before merge. Local-only and other explicit restrictions always take precedence;
+editing or discussing the skill does not itself authorize publication.
+
 You normally invoke one entry skill. It brings in relevant supporting skills and
 requests bounded sub-agents when their work is useful. Small tasks can stay with
 the main agent. You do not need to invoke the orchestrator or model router yourself.
@@ -168,6 +173,12 @@ The common modes describe how to allocate work:
 | Balanced | Strong reasoning where needed, efficient profiles for routine work. |
 | Lean | Economical suitable profiles with selective escalation. |
 | Sprint | Narrow, quick assignments with minimal coordination. |
+
+Forge uses the mode in your request, then the established task mode, then a saved
+preference. With none available, it asks once and recommends Balanced while safe
+inspection continues. It does not infer a mode from the parent model or silently
+save your choice. At entry and useful dispatch, a short label shows role, model,
+effort and mode; requested profiles stay distinct from runtime-verified identity.
 
 In Codex, use `$forge-setup Use Balanced` to save a preference, or specify a mode in
 the current Forge request. Available Astra, Sol, Terra and Luna profiles are

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Standardize Forge mode precedence, ask-once reminders, and role/model/effort/mode evidence labels across native and portable entries.
+- Integrate capability preflight and automatic isolated execution-strategy selection from the shared workflow updates.
+- Carry approved implementation through the default branch/PR/safe-merge route while preserving explicit restrictions and required review gates.
+
 - Share context-efficiency guidance across planning, native/portable Forge, delivery and review; preserve evidence and freshness while avoiding repeated work.
 - Add a focused GoalBuddy context handoff within the existing toolkit integration, retaining native board, receipt and preparation boundaries.
 

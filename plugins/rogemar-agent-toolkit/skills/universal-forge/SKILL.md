@@ -5,6 +5,13 @@ license: MIT
 ---
 # Universal Forge
 
+Follow the shared [Forge mode and status contract](../workflow-orchestrator/references/forge-mode-status.md) at entry,
+resume and dispatch: explicit request → task mode → saved preference; ask once
+if none exists. Show role, model, effort, mode and evidence status without
+repeated introductions. Setup inspection alone does not require a mode choice
+or write preferences; apply the prompt when beginning an execution task.
+
+
 Use one entry point for the requested engineering outcome. The host agent
 selects the relevant methods and capabilities; the user need not enumerate
 skills or repeatedly request useful sub-agents. Keep this intent for relevant
@@ -50,14 +57,17 @@ merely because native capabilities are missing.
 For useful authorized delegation, automatically use the installed
 `universal-plan-model-router` to qualify a native model and settings. The
 orchestrator applies those settings through the host's actual worker tool and
-reconciles the result. Use native defaults if no selector exists; do not invent
+reconciles the result. If no selector exists, use native defaults only after
+confirming compatibility with the selected mode, native pins and explicit limits.
+Otherwise keep the dependent work with the main agent and disclose the unmet
+routing constraint. Do not invent
 APIs, model names, effort flags or capabilities. Missing routing controls do
 not prevent direct engineering work. Required independence or device evidence
 still remains unmet if unavailable.
 
 Peak, Balanced, Lean and Sprint express routing preferences, not model equivalence
-or measured costs. Accept an explicit task mode; otherwise preserve existing
-host-local preferences or use Balanced as a stated task default. Do not read
+or measured costs. Resolve the mode through the shared contract; recommend Balanced when asking
+for an absent choice, without silently selecting it. Do not read
 Codex's preference file in another harness or write settings without a request.
 Model assignments never reduce acceptance standards or broaden authority.
 

@@ -4,6 +4,13 @@ description: Configure and resolve Cursor Forge modes, native model profiles, ro
 ---
 # Cursor Forge Setup
 
+Follow the shared [Forge mode and status contract](../workflow-orchestrator/references/forge-mode-status.md) at entry,
+resume and dispatch: explicit request → task mode → saved preference; ask once
+if none exists. Show role, model, effort, mode and evidence status without
+repeated introductions. Setup inspection alone does not require a mode choice
+or write preferences; apply the prompt when beginning an execution task.
+
+
 Our adaptation of PStack setup, preserving upstream `/setup-pstack` and its
 configuration. Own Cursor-specific profile configuration and resolution;
 `workflow-orchestrator` alone dispatches workers. The user invokes Cursor Forge
