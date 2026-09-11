@@ -15,6 +15,10 @@ MIT-licensed Emil design engineering and animation review sources. Keep its
 findings in the current task's review record. A review request does not imply
 edits; a numeric timing convention alone is not evidence of a defect.
 
+For affected mobile behavior, read [mobile-motion.md](references/mobile-motion.md)
+only when relevant. These adapted Appllama methods need no subscription or MCP
+and use the existing task owner and evidence record.
+
 ## Workflow
 
 1. Identify the motion job: orient, confirm, reveal, dismiss, reorder, navigate,

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Adapt free Appllama research, mobile navigation, control and motion methods into four existing design owners; preserve MIT notices and optional runtime boundaries.
+
 - Standardize Forge mode precedence, ask-once reminders, and role/model/effort/mode evidence labels across native and portable entries.
 - Integrate capability preflight and automatic isolated execution-strategy selection from the shared workflow updates.
 - Carry approved implementation through the default branch/PR/safe-merge route while preserving explicit restrictions and required review gates.

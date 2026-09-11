@@ -12,6 +12,10 @@ Do not create a second plan or prescribe a visual style before understanding
 the primary task. `frontend-design` implements the settled web interface;
 OpenDesign application flows keep their project/run state in the native host.
 
+For affected mobile behavior, read [mobile-navigation.md](references/mobile-navigation.md)
+only when relevant. These adapted Appllama methods need no subscription or MCP
+and use the existing task owner and evidence record.
+
 ## Workflow
 
 1. Start from the user's real goal, context, constraints, and frequency of use.

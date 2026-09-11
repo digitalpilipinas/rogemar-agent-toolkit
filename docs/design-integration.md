@@ -82,3 +82,35 @@ service start, provider spending, auth migration, global configuration change
 or publication is performed by skill installation or doctor. Native `run`
 executes only the command explicitly requested by its caller, within that
 caller's existing authority.
+
+## Free Appllama method adaptation
+
+Selected methods from Appllama/appllama-skills at
+`dd5caaec3d5d50ad7fc0324da238119c6b7c3707` extend four existing owners:
+
+| Owner | On-demand addition |
+| --- | --- |
+| reference-design-contract | Question-driven comparison, source attribution and reusable decisions |
+| ux-flow-architect | Mobile navigation, return context, cancellation and completed-operation recovery |
+| interaction-polish | Native controls, keyboard, safe areas, platform accessibility and full states |
+| motion-animation-engineer | Gesture interruption, velocity, reduced motion and proportional evidence |
+
+Each adapted skill includes LICENSE.appllama.txt and a pinned source link in its
+new reference. Existing OpenDesign, Taste and Emil notices and roles remain.
+Skill names, profile membership and installer interfaces are unchanged.
+
+```mermaid
+flowchart LR
+    owner["Existing workflow owner"] --> methods["Relevant design specialists"]
+    evidence["Existing brief and allowed references"] --> methods
+    methods --> result["Scoped implementation and UI checks"]
+    result --> receipt["Existing acceptance record"]
+```
+
+This is a methods-only adaptation: no Appllama MCP, subscription, credentials,
+library content or media cache is included. It adds no fixed research count,
+mandatory framework, image-generation spend or endless perfection loop. Native
+OpenDesign services remain conditional on actual application tasks. Platform
+checks use available authorized tooling; absent cloud/device runtimes do not
+turn source inspection into UI proof. Packaging checks establish instruction and
+license portability, not live device behavior or improved product outcomes.

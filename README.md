@@ -122,6 +122,8 @@ constraints while avoiding repeated reads; token savings still require measureme
 ```mermaid
 flowchart TD
     plan["Approve the scope"] --> build["Build the complete slice; test as you go"]
+    build -. "Visible or interactive changes" .-> ui["Existing design methods; scoped UI evidence"]
+    ui -. "Same acceptance record" .-> local
     build --> local["Review the full slice locally"]
     local --> fixes["Consolidate feedback; fix validated defects"]
     fixes --> ready["Mark the PR ready for review"]
@@ -198,6 +200,9 @@ The design pack helps with briefs, reference designs, user journeys, reusable
 components, frontend implementation, accessibility, interaction polish and visual
 QA. The assistant selects the methods relevant to the affected screen or flow.
 A small layout fix should not activate every design skill.
+Selected MIT-licensed Appllama methods extend the existing reference, navigation,
+interaction and motion skills. They require no Appllama subscription or MCP;
+existing project evidence and legitimately accessible references are sufficient.
 
 Use `opendesign` when you need the actual OpenDesign application's import, create,
 export, share, deploy, refine or extend workflows. Ordinary interface work can use

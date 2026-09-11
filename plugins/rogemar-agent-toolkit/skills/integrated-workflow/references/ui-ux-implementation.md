@@ -26,6 +26,13 @@ package dependencies or proof of tool access. Ordinary codebase design work
 does not need OpenDesign running. Missing optional methods can use equivalent
 local evidence; missing required tools keep the affected check blocked.
 
+For mobile work, the existing reference, UX, interaction and motion owners carry
+selected Appllama methods in on-demand references. Use the current brief and
+legitimately accessible evidence; no Appllama MCP/account or library retrieval is
+required. Scope research and recordings to unresolved decisions and affected
+behavior. Select platform targets and APIs from the project; cloud environments
+without device tooling retain the existing blocked/deferred evidence boundary.
+
 ## Implementation sequence
 
 1. Before modifying an existing interface, inspect its current rendering and

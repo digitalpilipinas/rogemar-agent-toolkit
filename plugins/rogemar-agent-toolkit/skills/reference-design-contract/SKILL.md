@@ -30,6 +30,10 @@ prompt. Use one existing project contract where possible.
    user requested the OpenDesign three-file output. A preview is optional.
 6. Validate against [checklist.md](references/checklist.md) before handing off.
 
+For unresolved reference decisions, read [reference-research.md](references/reference-research.md)
+only when relevant. These adapted Appllama methods need no subscription or MCP
+and use the existing task owner and evidence record.
+
 ## Default contract shape
 
 1. Visual theme and atmosphere: audience, purpose, stance and reference evidence.
