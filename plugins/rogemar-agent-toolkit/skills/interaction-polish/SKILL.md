@@ -13,6 +13,10 @@ produce findings; implementation requests permit the scoped fixes. Motion
 implementation or specialized motion review belongs to
 `motion-animation-engineer` when that skill is available.
 
+For affected mobile behavior, read [mobile-craft.md](references/mobile-craft.md)
+only when relevant. These adapted Appllama methods need no subscription or MCP
+and use the existing task owner and evidence record.
+
 ## Workflow
 
 1. Identify the exact moment being polished: start, choose, submit, sync, recover, share, celebrate, return, or cancel.

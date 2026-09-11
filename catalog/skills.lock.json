@@ -3299,11 +3299,11 @@
     },
     "integrated-workflow": {
       "file_count": 7,
-      "sha256": "98084d8521e125608acb8d82a8689b4667af26a598d70f5daa926ef163059c46"
+      "sha256": "511f328efeeec0a5418c3aa9a47efcd4c4ba9702c33737ba27d3783b3f23f6b4"
     },
     "interaction-polish": {
-      "file_count": 4,
-      "sha256": "66b4c64ba674e881b5eaa78899722b1b578f888c40524e36b07d2e982f0d9739"
+      "file_count": 6,
+      "sha256": "21e716965791f054199b0f481d92ee4a2e69ae4fbd92a3782ffda8fc8d9d1b09"
     },
     "knowledge-base-answering": {
       "file_count": 2,
@@ -3322,8 +3322,8 @@
       "sha256": "c12aa58a5193b24dfe9124a65bc648cf3471e95c4e0f76b0e6c202c1440b5194"
     },
     "motion-animation-engineer": {
-      "file_count": 4,
-      "sha256": "9d2e9d77661d9f7d60f83cf8a9c91f97154fd7f636f64e8656b512922bd76874"
+      "file_count": 6,
+      "sha256": "fa25e8d543fea36cca40ca2c75fc9c521f8646b007c0ff4769d39d50ab5668d6"
     },
     "netlify-deploy": {
       "file_count": 8,
@@ -3362,8 +3362,8 @@
       "sha256": "06ee51f24b4cb072fbd7c27cc50b3e72a4bc8fa756b1f79c84c11ce25e3db22e"
     },
     "reference-design-contract": {
-      "file_count": 5,
-      "sha256": "4e9f45d26fe877df19c6f71dd54062d44572d6c34bd2dcdccdb6863e59a48588"
+      "file_count": 7,
+      "sha256": "2232eb9c502d4692dba0360e2b773ff50e0dd43ade91802f6f799bb9ec0aacb1"
     },
     "research-synthesizer": {
       "file_count": 2,
@@ -3418,8 +3418,8 @@
       "sha256": "f13ac64b9876edf47c15482eb1e352e5d0748a987819866c43440014fb3993f3"
     },
     "ux-flow-architect": {
-      "file_count": 2,
-      "sha256": "fe1b1b471f74038ed12f3a0106274b8704b887dd2b1588916ff2e184bd17bf80"
+      "file_count": 4,
+      "sha256": "2a670b5f4300fea85a4f1259af7a44caac4f6a58299e1da4eeef9448efd70abb"
     },
     "vector-asset-pipeline": {
       "file_count": 2,

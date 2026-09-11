@@ -816,7 +816,7 @@
     },
     {
       "name": "interaction-polish",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)"
     },
     {
       "name": "knowledge-base-answering",
@@ -837,7 +837,7 @@
     },
     {
       "name": "motion-animation-engineer",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)"
     },
     {
       "name": "netlify-deploy",
@@ -890,7 +890,7 @@
     },
     {
       "name": "reference-design-contract",
-      "source": "reviewed portable adaptation, 2026-09-07",
+      "source": "reviewed portable adaptation, 2026-09-07; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)",
       "author": "Rogemar; upstream notices preserved",
       "upstream_repository": "https://github.com/digitalpilipinas/open-design",
       "license": "Apache-2.0; per-reference notices preserved",
@@ -948,7 +948,7 @@
     },
     {
       "name": "ux-flow-architect",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)"
     },
     {
       "name": "vector-asset-pipeline",
