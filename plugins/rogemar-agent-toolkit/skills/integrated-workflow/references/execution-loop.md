@@ -70,6 +70,12 @@ The orchestrator selects one native/portable engineering playbook and justified
 skills; apply the selected harness's routing contract when dispatching. Forge's
 artifacts supplement the approved plan and cannot activate tasks or pass gates.
 
+For new workers, use the orchestrator's
+[sub-agent naming](../../workflow-orchestrator/references/subagent-naming.md)
+after native profile qualification, through supported naming controls or the
+handoff fallback. Reuse the existing receipt for full profile IDs,
+mode and observed evidence; names do not establish verification or alter gates.
+
 Default to one main-agent writing/integration lane. Concurrent read-only support
 may earn its cost; concurrent writers require approved independent branches and
 worktrees, exact files/symbols, verification, stop conditions and reconciliation.
@@ -179,10 +185,11 @@ reviewers and relevant check annotations, including auto-resolved items. GitHub
 CodeRabbit and Codex are required distinct layers for substantive PRs; additional
 named providers contribute to the same record.
 
-Prefer configured automatic review. If a due review is missing and comment
-posting is authorized, use the installed provider's supported request, such as
-`@coderabbitai review` or `@codex review`. Verify the actual response, scope and
-head; a request alone is not evidence. Apply [external-provider handling](supporting-methods.md#external-review-providers)
+Follow the [full initial requests, completion barrier and cloud allowance](coderabbit-review.md#ready-pr-coderabbit-and-codex).
+Both initial cloud reviews cover the full PR; equivalent automatic full reviews
+count without duplicate tags. Preserve the per-provider allowance across pushes
+and resumes. Verify the actual response, scope and head; a request alone is not
+evidence. Apply [external-provider handling](supporting-methods.md#external-review-providers)
 only when additional providers are selected. A required provider timeout blocks
 its boundary; optional unavailability may use a disclosed fallback.
 
@@ -196,10 +203,17 @@ and the harness's supported scheduler; do not create a background job by default
 
 ### Review convergence
 
-1. **Collect:** let current-head configured reviews settle before routine fixes;
-   read-only triage may proceed. Record pending/running/completed/unavailable
-   states and use bounded provider waits. Urgent security/data-loss containment
-   may proceed earlier with the reason recorded. A timeout is not a pass.
+The completion barrier below applies to active ready-PR **cloud** review waves.
+Local and pre-ready reviews reuse the consolidation, validation and minimum-fix
+methods without waiting for cloud reviews; their existing cadence is unchanged.
+
+1. **Collect and wait:** obtain both full initial cloud reviews for the intended
+   candidate/base before consolidating, validating findings or applying fixes.
+   While either is pending, collect raw artifacts and monitor status only; no
+   early finding triage or remediation. For follow-up waves, wait for every due
+   review in that wave while retaining still-valid prior coverage. Follow the
+   completion barrier above for unavailable, partial or stale results; a timeout
+   is not a pass and an exception requires explicit owner instruction.
 2. **Consolidate and validate together:** group findings by semantic root cause,
    affected contract and failure scenario. Assess interacting recommendations,
    contradictory fixes, affected callers and cumulative complexity against the
@@ -213,7 +227,9 @@ and the harness's supported scheduler; do not create a background job by default
    exists, record dispositions and proceed; do not invent a fix wave or rereview.
 4. **Verify and rereview:** verify the remote head and publish one concise update
    with correction scope and validation. Recheck affected UI/runtime behavior.
-   Obtain only due, proportionate rereview, counting equivalent automatic runs.
+   Obtain only due, proportionate rereview within the shared per-provider cloud
+   allowance, counting equivalent automatic runs. Exhaustion blocks further
+   requests pending an explicit extension; it never grants acceptance.
    Further fix waves require a demonstrated required defect or explicit owner
    reprioritization. This never waives required checks, approvals or unresolved defects.
 

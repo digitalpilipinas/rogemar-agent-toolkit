@@ -23,6 +23,13 @@ Inspect actual Cursor capabilities before native operations. If this is not a
 Cursor runtime, use the portable method and disclose the mismatch. Merely naming
 Cursor never grants native Task, model-control, MCP or plugin access.
 
+For new workers, use shared
+[sub-agent naming](../workflow-orchestrator/references/subagent-naming.md) after
+the primary Cursor Forge Setup route or its authorized universal fallback
+qualifies the native profile. Inspect supported naming
+controls; use the handoff fallback when unavailable. Keep mode outside names
+and preserve native model and reasoning settings.
+
 When PStack is installed, read the matching native playbook and needed companion
 methods. Preserve useful PStack rigor and provenance, but route every worker hint
 through the existing `workflow-orchestrator` and primary `cursor-forge-setup`

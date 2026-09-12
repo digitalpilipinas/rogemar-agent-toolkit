@@ -69,6 +69,14 @@ the agreed candidate. Keep its procedure and verdict independent; do not replace
 it with a shortened shared review or a sample of the diff. See
 [provider routing](references/provider-routing.md) for overlapping installations.
 
+When Integrated Workflow is installed and owns an active ready-PR cloud review
+wave, carry existing per-provider counts, candidate coverage and pending states
+through handoffs. Follow [delivery review routing](references/provider-routing.md#delivery-review-cadence)
+before consolidating, validating cloud findings or dispatching cloud-review fixes;
+do not create a second review loop. Selected local providers retain full agreed
+coverage and local reconciliation at the existing cadence. Outside that lifecycle, retain the task's
+own acceptance requirements rather than mandating both cloud providers.
+
 For a programme, use `integrated-workflow` if installed; otherwise preserve the approved plan and gates directly. Missing optional packs do not block adequate in-scope work. Keep trivial direct work proportional.
 
 ## Capability preflight
@@ -108,6 +116,11 @@ local route is sufficient. Re-run the targeted preflight at a phase boundary
 when the next phase needs materially different live capabilities.
 
 ## Delegation policy
+
+For every justified new sub-agent, in default operation or any Forge route,
+follow [sub-agent naming](references/subagent-naming.md) after native profile
+qualification: role, task, model and native reasoning in the supported naming
+field, or the ordinary handoff when unavailable; keep mode in status and receipts.
 
 The main agent owns the goal, final decisions, synthesis, and validation. This
 skill owns delegation policy and should be the only orchestration layer that

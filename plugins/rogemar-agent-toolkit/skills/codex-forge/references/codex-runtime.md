@@ -57,6 +57,11 @@ existing worker. Recheck existing workers after a parent setting changes.
 Record requested settings separately from observed runtime settings. A receipt
 or accepted call is not proof of the model used. Missing metadata is Unverified.
 
+After profile qualification, follow the installed orchestrator's
+`references/subagent-naming.md` for new native task names. The assigned model and
+reasoning belong in the name; mode stays in status and receipts. Preserve native
+agent types and existing names; use only the naming controls actually surfaced.
+
 A desired parent profile must be applied through an actually surfaced current-task
 model control. If unavailable, state that the requested parent change is unapplied;
 worker dispatch and preference configuration do not prove a parent switch.

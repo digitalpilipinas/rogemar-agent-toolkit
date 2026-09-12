@@ -61,9 +61,11 @@ Report mismatches promptly and requalify or stop affected work as appropriate.
 Workers return their role, assignment mode and evidence status in their ordinary
 receipt; they must not claim identity based on the assignment prompt.
 
-Repeat labels only at entry/resume, relevant dispatch, a mode/profile/constraint
-change, or on request. Roles remain the names; model and mode are adjacent status,
-not required native agent identifiers or a promise the UI can rename agents.
+Repeat status labels only at entry/resume, relevant dispatch, a mode/profile/constraint
+change, or on request. New sub-agent labels follow
+[sub-agent naming](subagent-naming.md): role, task, assigned native model and
+reasoning, with mode retained only in status and receipts. Use the active harness's
+naming controls or handoff fallback; native role IDs and existing agents remain unchanged.
 When multiple models were used, include a compact final routing receipt covering
 roles, assignment modes, requested profiles, observed profiles and unresolved
 mismatches. Use the existing receipt rather than a second ledger.

@@ -33,6 +33,17 @@ mode does not switch the running parent; parent switching needs a supported live
 control and verified result. Required independence cannot be supplied by merely
 renaming a sequential pass.
 
+New sub-agent labels share `Role — Task · Model / Reasoning` across default
+operation and Forge adapters. Codex encodes supported `task_name` values such as
+`review_design_routing_terra_medium`; Cursor and other harnesses use their own
+observed naming controls, with a handoff-only fallback when absent. Native
+reasoning settings are not translated between providers. Mode stays in status
+and receipts. See the orchestrator's
+[naming contract](../plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/subagent-naming.md).
+Names describe assignments, not verified runtime identity. Existing agents retain
+their names; each harness controls sidebar formatting. Native dispatch and
+rendering require separate evidence in that harness.
+
 See [installation and recovery](installation.md) for matching previews, saved
 selections and plugin-archive boundaries. Unknown assistant names should use the
 portable route and that assistant's documented import mechanism; do not invent a

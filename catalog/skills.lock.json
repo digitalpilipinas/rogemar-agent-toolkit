@@ -3041,7 +3041,7 @@
     },
     "agent-collaboration-terminal": {
       "file_count": 8,
-      "sha256": "9f62c522b4573d56fc4263574317fb7cb194c54059a4c864028851a2f1c60539"
+      "sha256": "2371112debbff8b5dc11b61c0bb456a6832c08f1c8bd9309f35b0e14228985d5"
     },
     "agent-map": {
       "file_count": 3,
@@ -3061,7 +3061,7 @@
     },
     "code-review-and-quality": {
       "file_count": 1,
-      "sha256": "70ee9d8e3acf73a3a2d4ff3a5531bd27344feb7e6e963f965e0b4fee4b42ed10"
+      "sha256": "fcb58de717622ae8a1d931fdd25afa0a9a5d85fb393a0a547dd5f5d604b73039"
     },
     "code-review-tests": {
       "file_count": 2,
@@ -3073,7 +3073,7 @@
     },
     "codex-forge": {
       "file_count": 67,
-      "sha256": "13ea8797de82a85e8947def06fe009734757d66de98b0edf7f2724ff2d0f6c8e"
+      "sha256": "2142447c04d9e3c1e7756a56480502ae4049ac8b91047c3bb986a8205e6aa72f"
     },
     "create-plan": {
       "file_count": 4,
@@ -3085,11 +3085,11 @@
     },
     "cursor-forge": {
       "file_count": 4,
-      "sha256": "d31dd750eceeeff379ca980d4f084fc725d71d834a34ed6652990e159401296a"
+      "sha256": "ccec042288f3770dc0677562e93ede08e730286cca2b7258a96292215cb82b06"
     },
     "cursor-forge-setup": {
       "file_count": 6,
-      "sha256": "d0b38af0fe3e3207cea13f8a500272ab13974810896849cb09e29af648945aea"
+      "sha256": "58f4b1e3110200f6948ccffa8824f11dbfdfa77b1cddce47c2dddc4cab00edc2"
     },
     "deliver-approved-programme": {
       "file_count": 2,
@@ -3117,7 +3117,7 @@
     },
     "engineering-playbooks": {
       "file_count": 48,
-      "sha256": "5e5008a3a0e0fb9016e86dab122420e073d9560897da75ca31813b0a196bfffa"
+      "sha256": "95a7c180d24802d0c12e32b0484cd9cdc2183fede68e0b35f2ea3314e347e28f"
     },
     "figma": {
       "file_count": 8,
@@ -3321,7 +3321,7 @@
     },
     "integrated-workflow": {
       "file_count": 7,
-      "sha256": "c9ef277af44255387e4a32076803c3a962f3784fa9c4c25cfe8d7bd5958effae"
+      "sha256": "d03d2e4fbd1f4855ff141032e226073c0139b9698a98078df6cb543e73a57102"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -3369,7 +3369,7 @@
     },
     "plan-model-router": {
       "file_count": 9,
-      "sha256": "9cb6b1b414c22f7b7c523dd2fcd083662c2815be6f86d90e0036557725d5d006"
+      "sha256": "dea9d4614cb7dec9b6e3035cc424b7ab3f236cd0e9500e264dcbf479cd01ca59"
     },
     "playwright": {
       "file_count": 9,
@@ -3437,11 +3437,11 @@
     },
     "universal-forge": {
       "file_count": 5,
-      "sha256": "1c0b4b16e78143d5a0332bd80986d6a12ce587ebe7299d04f09097299515a8cc"
+      "sha256": "9065db5c62ad6159eb2a07137f4a300c5cba37e6912a5b78b0e810a27588f2cf"
     },
     "universal-plan-model-router": {
       "file_count": 2,
-      "sha256": "f13ac64b9876edf47c15482eb1e352e5d0748a987819866c43440014fb3993f3"
+      "sha256": "b5948d12ef897594de306b7f803097e6404e179cbfe4d6da743b73e4cc599211"
     },
     "ux-flow-architect": {
       "file_count": 4,
@@ -3460,8 +3460,8 @@
       "sha256": "4f6e4f6de44a67dd2d28e4cb80c498481baa6f5035f59661756108ce78cf4e32"
     },
     "workflow-orchestrator": {
-      "file_count": 7,
-      "sha256": "852fa2245d1369825f757ce445f0950303eb2e0ff2845c1cf5849655c6ebda7b"
+      "file_count": 8,
+      "sha256": "5b7771492fde10f75b2c3ed86778e474da0d04438eb7c23eaec7c173179eb302"
     }
   },
   "version": "1.0.0"

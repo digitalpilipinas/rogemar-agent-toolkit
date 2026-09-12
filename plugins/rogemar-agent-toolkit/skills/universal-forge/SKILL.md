@@ -47,6 +47,11 @@ behavior is implied by the portable method.
 
 ## Roles and execution
 
+For new workers, follow shared
+[sub-agent naming](../workflow-orchestrator/references/subagent-naming.md) after
+native profile qualification. Use supported naming controls or the handoff
+fallback; native reasoning settings remain provider-owned and mode stays out of names.
+
 Read [roles.md](references/roles.md) for shared assignment groups and contracts.
 Select only useful roles for the actual task. A role does not mandate an agent;
 small or coupled work remains with the parent. Discover relevant native skills,

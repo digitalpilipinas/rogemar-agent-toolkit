@@ -69,12 +69,19 @@ branch or PR; `--mode review` alone does not activate that profile. For
 native-CLI readiness and only then submit the frozen prompt. Shell creation,
 CLI readiness, prompt submission and completed review are distinct evidence states.
 
-Assign complementary emphasis rather than asking every provider to repeat a full
-review: Antigravity for broad quality/test gaps; Grok for trust boundaries, privacy,
+Every selected terminal code reviewer performs a full independent review of the
+agreed candidate, including the whole in-scope diff and relevant callers/tests.
+Complementary emphasis does not narrow that coverage: Antigravity for broad
+quality/test gaps; Grok for trust boundaries, privacy,
 authorization, architecture and minimality; Cursor for navigation, maintainability
 and user reliability; Junie selectively for reproduction/runtime/test evidence.
 These are methods, not automatic assignments or mandatory model choices. Parallelize
 only independent read-only reviews under the current orchestrator.
+
+Do not substitute a sampled, light, findings-only or single-axis pass for a
+selected provider's full review. Keep allowed/excluded paths and provider authority
+intact; missing required coverage is partial evidence, not a silently smaller
+review. This changes review depth, not invocation cadence or provider selection.
 
 GitHub Cloud Antigravity is a separate PR-native app. Only when installed,
 authorized, named in the controls and due on a ready PR may it be requested.
@@ -98,3 +105,14 @@ frozen assignment. Neither tier searches the external marketplace, installs,
 authenticates or expands approved workspace/data/credit/action authority. A named
 skill is not proof of a callable tool. Provider-native judgment remains within the
 assigned scope and feeds the same consolidated finding and convergence process.
+
+## PR helper skills
+
+When `autopilot` or `autofix` assists an active ready-PR cloud wave, it consumes the same
+[cloud barrier and allowance](coderabbit-review.md#ready-pr-coderabbit-and-codex).
+Its polling or comment-processing loop cannot launch a separate review cycle,
+reset counts, or validate/fix one cloud provider's feedback while the other is
+pending. Preserve each helper's standalone scope and authorization boundaries.
+Do not assume a push triggers review or promise a fixed completion time; inspect
+configured triggers and actual provider status. Runtime-owned helper packages
+remain external dependencies, with this maintained adapter governing integration.

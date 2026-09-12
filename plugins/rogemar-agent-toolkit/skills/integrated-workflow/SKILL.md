@@ -56,6 +56,10 @@ Classify by effects and risk, not line count, file type or project size.
   requires scoped implementation evidence, `code-review-and-quality`, and local
   CodeRabbit at slice acceptance. Branch delivery also requires separate GitHub
   CodeRabbit and Codex reviews once the complete slice is ready for review.
+  Start both with full-PR coverage and wait for both to complete before
+  consolidating, validating findings or fixing. Follow the shared
+  [cloud review allowance](references/coderabbit-review.md#cloud-review-allowance);
+  local review cadence remains unchanged and invoked local providers review fully.
 - **Sensitive work:** add the independent domain evidence warranted by changed
   authorization, privacy, data integrity, migrations, concurrency, compatibility
   or recovery. A tiny sensitive edit is not automatically a small correction.
@@ -201,8 +205,12 @@ them. At ready transition, inspect existing results and the exact head before
 requesting missing due reviews. Reuse a valid equivalent review where the
 provider and repository allow it, without passing stale evidence forward.
 
-Collect available reviews, consolidate duplicate and interacting findings, then
-validate the combined proposed correction against the whole affected contract.
+Wait for both full initial cloud reviews to complete before consolidating,
+validating findings or fixing. For later waves, wait for every due review in the
+wave and retain only still-valid prior coverage under the
+[shared completion barrier and allowance](references/coderabbit-review.md#ready-pr-coderabbit-and-codex).
+Then consolidate duplicate and interacting findings and validate the combined
+proposed correction against the whole affected contract.
 The implementation owner applies the smallest sufficient batch of valid fixes;
 reviewers do not independently patch competing suggestions. Reconcile all
 recommendations, including ones that merit rejection or deferral, rather than
