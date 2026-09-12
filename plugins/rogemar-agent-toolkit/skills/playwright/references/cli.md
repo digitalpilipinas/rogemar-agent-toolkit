@@ -3,12 +3,13 @@
 Use the wrapper script unless the CLI is already installed globally:
 
 ```bash
-export CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
-export PWCLI="$CODEX_HOME/skills/playwright/scripts/playwright_cli.sh"
+export SKILL_DIR="/absolute/path/to/loaded/playwright"
+export PWCLI="$SKILL_DIR/scripts/playwright_cli.sh"
 "$PWCLI" --help
 ```
 
-User-scoped skills install under `$CODEX_HOME/skills` (default: `~/.codex/skills`).
+Set `SKILL_DIR` to the actual directory containing the loaded `SKILL.md`.
+Use the same directory selected by the entry skill; do not change `CODEX_HOME`.
 
 Optional convenience alias:
 

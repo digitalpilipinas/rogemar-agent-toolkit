@@ -36,6 +36,12 @@ permission to skip full-board checks and final outcome coverage. Preserve native
 receipt fields and PM ownership. Apply [context efficiency](context-efficiency.md)
 within these boundaries; leave managed GoalBuddy plugin files unchanged.
 
+A task card's `harness:` field records an intended route, not permission to use
+another provider. External dispatch requires the user's existing explicit
+provider selection and compatible task/data authority. A PM-generated field or
+plan approval alone cannot grant that authority; use native authorized work or
+keep the dependent external step blocked.
+
 ## Capability preflight by stage
 
 - **Planning (`create-plan`):** infer required capabilities and use read-only

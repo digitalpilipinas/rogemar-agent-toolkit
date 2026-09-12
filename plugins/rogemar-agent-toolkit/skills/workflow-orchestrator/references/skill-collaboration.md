@@ -47,10 +47,11 @@ Each optional hint should provide:
 2. The orchestrator classifies the lifecycle phase, affected surfaces, and risks.
 3. The orchestrator selects applicable specialist skills.
 4. Specialist skills run sequentially when they require shared context.
-5. The orchestrator may run independent evidence streams in parallel and may
-   assign bounded implementation packages when the task, approved plan, or
-   owner authorizes project-local writes. Concurrent writers require
-   proven-disjoint scopes and isolated worktrees.
+5. The orchestrator may run authorized independent evidence streams in parallel.
+   Bounded implementation packages require existing user-authorized execution
+   and worker scope; planning-only approval or main-agent assignment cannot
+   create write authority. Concurrent writers require proven-disjoint scopes
+   and isolated worktrees.
 6. The main agent reconciles findings and Worker diffs and owns the final
    decision and integrated validation.
 

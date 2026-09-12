@@ -14,6 +14,7 @@ useful skill set and any justified workers. No extra coordinator or agent panel.
 | Journey, navigation or recovery states | ux-flow-architect |
 | Tokens, components and product consistency | design-system-steward |
 | Working web interface implementation | frontend-design; use platform-native methods for other targets |
+| Existing shadcn web components or explicit shadcn setup | shadcn when the optional pack is installed; inspect local primitives and customizations |
 | Semantics, input, focus, assistive technology and visual access | accessibility-auditor throughout design, implementation and verification |
 | Feedback, microcopy, loading/error states and touch ergonomics | interaction-polish |
 | Existing or requested motion/gesture behavior | motion-animation-engineer, including reduced-motion alternatives |

@@ -1712,6 +1712,12 @@
           "privacy-safety-review"
         ]
       },
+      "shadcn": {
+        "description": "Optional shadcn web component adapter; preserves local primitives, tokens and customizations. No automatic CLI installation.",
+        "skills": [
+          "shadcn"
+        ]
+      },
       "web": {
         "description": "Browser verification and web implementation helpers.",
         "external": [
@@ -1746,7 +1752,8 @@
         "release",
         "codex",
         "external-agents",
-        "compatibility"
+        "compatibility",
+        "shadcn"
       ],
       "core": [
         "core"
@@ -2791,6 +2798,21 @@
         "claude"
       ]
     },
+    "shadcn": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ]
+    },
     "social-content-factory": {
       "requires": [],
       "targets": [
@@ -3046,8 +3068,8 @@
       "sha256": "ec05b6b8651d31abd109821f6dc1594342fbaabca52972bb8d3d6dd3bfb3cdf8"
     },
     "codex-capability-maintainer": {
-      "file_count": 2,
-      "sha256": "db9801b30f1c72e9d1b980bbcab5d6a878389e3ee13cce19cab70395b711aea9"
+      "file_count": 3,
+      "sha256": "39cdcf28e7aacaffebdb7548acf3b63ea88926642daf9d00daaf67f08f1a1fd2"
     },
     "codex-forge": {
       "file_count": 67,
@@ -3082,12 +3104,12 @@
       "sha256": "dcc1f6d8c5b48f2f075f308b29aa77cb13bef3371335d3d043fdf6798b556743"
     },
     "design-system-steward": {
-      "file_count": 2,
-      "sha256": "df9fa9f69f5ab834d6ff7bc5e0d887457222e61e9abc96f6e3199dea29b239e1"
+      "file_count": 5,
+      "sha256": "be4a79da9c59e3feefd9e0ab8f386a663082e7144dc3629514c596a4f0fbba19"
     },
     "develop-web-game": {
       "file_count": 7,
-      "sha256": "71187f91470ebe8de60fb776f9212d9cabc34a46a395f28e06cba8334688733f"
+      "sha256": "b3220f341b4312d549b0b961f1c17aa4d0229c7aaa2467a8b78dbe2516e7419e"
     },
     "dream-team": {
       "file_count": 7,
@@ -3299,11 +3321,11 @@
     },
     "integrated-workflow": {
       "file_count": 7,
-      "sha256": "511f328efeeec0a5418c3aa9a47efcd4c4ba9702c33737ba27d3783b3f23f6b4"
+      "sha256": "c9ef277af44255387e4a32076803c3a962f3784fa9c4c25cfe8d7bd5958effae"
     },
     "interaction-polish": {
-      "file_count": 6,
-      "sha256": "21e716965791f054199b0f481d92ee4a2e69ae4fbd92a3782ffda8fc8d9d1b09"
+      "file_count": 10,
+      "sha256": "c564c35e665552b8de9535985d33ac8dce31ead893ec9c32aac0cbc11d0793d7"
     },
     "knowledge-base-answering": {
       "file_count": 2,
@@ -3322,8 +3344,8 @@
       "sha256": "c12aa58a5193b24dfe9124a65bc648cf3471e95c4e0f76b0e6c202c1440b5194"
     },
     "motion-animation-engineer": {
-      "file_count": 6,
-      "sha256": "fa25e8d543fea36cca40ca2c75fc9c521f8646b007c0ff4769d39d50ab5668d6"
+      "file_count": 9,
+      "sha256": "5ed25efdc54c9cf459e96f9180f1d7065e67435eed392193003e64591d1cb2ca"
     },
     "netlify-deploy": {
       "file_count": 8,
@@ -3351,7 +3373,7 @@
     },
     "playwright": {
       "file_count": 9,
-      "sha256": "ae3e53f3beebb2c1d5c123c1912cd2a804383339a13e073ff99ef98167918a34"
+      "sha256": "2cee1548b84fa49c4479c6999ef85d8fd088251101eb741f14703d9764df93b6"
     },
     "privacy-safety-review": {
       "file_count": 2,
@@ -3381,6 +3403,10 @@
       "file_count": 2,
       "sha256": "7dfce9cffb1ac69ae088c51a2690e0a07285e0cea6f0d1eb0d748ff848ba0de7"
     },
+    "shadcn": {
+      "file_count": 2,
+      "sha256": "a88c986253094b75e673189b319a04714ea728e7e492871a0a8d491394787c70"
+    },
     "social-content-factory": {
       "file_count": 2,
       "sha256": "edb8229e45f7abc78907fa9aa8dd9510477862e66d2acb8db2f511d5afd60a3e"
@@ -3407,7 +3433,7 @@
     },
     "transcribe": {
       "file_count": 7,
-      "sha256": "ae0e0230f429b62ec61bea4a11a389802b943ed6cf6b2e43c7974a6dc6038764"
+      "sha256": "18a5b3c876a50758a0d7532d2e80f0c5a3d4c20b3caa816a5f2313520ce6b8ca"
     },
     "universal-forge": {
       "file_count": 5,
@@ -3434,8 +3460,8 @@
       "sha256": "4f6e4f6de44a67dd2d28e4cb80c498481baa6f5035f59661756108ce78cf4e32"
     },
     "workflow-orchestrator": {
-      "file_count": 6,
-      "sha256": "6d46741488ed4abad6825814d46af390db82e6939a18b6a6995c3bbd67bd3bef"
+      "file_count": 7,
+      "sha256": "852fa2245d1369825f757ce445f0950303eb2e0ff2845c1cf5849655c6ebda7b"
     }
   },
   "version": "1.0.0"

@@ -12,6 +12,9 @@ asset/license constraints; its name alone is not a specification. Map useful
 guidance into the project's existing system instead of maintaining a parallel
 palette. Native OpenDesign prompt injection is available only in that host.
 
+For nested surfaces, optical alignment, elevation or icon consistency, read
+[visual-craft.md](references/visual-craft.md) when those details are affected.
+
 ## Workflow
 
 1. Inspect existing theme, token, component, and icon patterns before adding new styling.

@@ -1018,6 +1018,14 @@
       "license": "Repository license for adapter additions; MIT for upstream PStack methods",
       "license_evidence": "LICENSE.txt",
       "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack"
+    },
+    {
+      "name": "shadcn",
+      "source": "reviewed portable adaptation, 2026-09-12",
+      "author": "shadcn; adapted by Rogemar Agent Toolkit",
+      "upstream_repository": "https://github.com/shadcn-ui/ui",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt"
     }
   ],
   "external_skill_groups": [
@@ -2376,6 +2384,12 @@
       "external": [
         "coderabbit"
       ]
+    },
+    "shadcn": {
+      "description": "Optional shadcn web component adapter; preserves local primitives, tokens and customizations. No automatic CLI installation.",
+      "skills": [
+        "shadcn"
+      ]
     }
   },
   "profiles": {
@@ -2401,7 +2415,8 @@
       "release",
       "codex",
       "external-agents",
-      "compatibility"
+      "compatibility",
+      "shadcn"
     ]
   },
   "dependencies": {

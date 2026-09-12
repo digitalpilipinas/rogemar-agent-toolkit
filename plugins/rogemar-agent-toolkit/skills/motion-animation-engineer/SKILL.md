@@ -19,6 +19,9 @@ For affected mobile behavior, read [mobile-motion.md](references/mobile-motion.m
 only when relevant. These adapted Appllama methods need no subscription or MCP
 and use the existing task owner and evidence record.
 
+For motion purpose, staging or interrupted transitions, read
+[motion-craft.md](references/motion-craft.md) when relevant.
+
 ## Workflow
 
 1. Identify the motion job: orient, confirm, reveal, dismiss, reorder, navigate,

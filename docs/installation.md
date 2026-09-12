@@ -160,3 +160,19 @@ needed for the intended work. Keep installed, discovered and successfully execut
 states separate. Required unavailable capabilities remain blocked; optional ones
 can use a disclosed in-scope fallback. See [compatibility](compatibility.md) for
 current evidence limits and [releasing](releasing.md) for maintainer checks.
+
+## shadcn
+
+Select the optional adapter with `--pack shadcn`, or as part of `--profile all`.
+Core and the general design pack do not include it. For example:
+
+```sh
+python3 scripts/toolkit.py select --harness codex --profile core --pack design --pack shadcn
+python3 scripts/toolkit.py install --harness codex --profile core --pack design --pack shadcn --target project --project-root /path/to/project --dry-run
+```
+
+Use the intended harness and complete desired pack selection when installing or
+updating. The adapter is portable across supported harnesses; installing it does
+not install shadcn packages, fetch registries or start services. Native mobile UI
+continues through its existing methods. Runtime invocation must be verified in
+the chosen harness independently of package installation.

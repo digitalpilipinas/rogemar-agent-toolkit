@@ -1,5 +1,12 @@
 # Changelog
 
+## Trigger and design updates (unreleased)
+
+- Add scoped design craft supplements and an optional shadcn pack on top of the merged mobile design methods.
+- Correct portable helper paths and clarify delegated/provider authority without trimming workflow entrypoints.
+- Preserve standalone full CodeRabbit reviews and document receiving-harness invocation controls and duplicate selection.
+- Align the previously approved capability maintainer policy and refresh inventory/install guidance.
+
 ## Unreleased
 
 - Adapt free Appllama research, mobile navigation, control and motion methods into four existing design owners; preserve MIT notices and optional runtime boundaries.
