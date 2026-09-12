@@ -72,8 +72,10 @@ These documentation checks were made on 2026-09-07. Grok/ZCode user directories 
 Skill discovery, explicit-only policy, MCP registration and service access are
 separate checks. The capability maintainer's trigger reference covers moved
 paths, native invocation controls and recoverable duplicate selection. Cursor
-`disable-model-invocation` imports need Codex `agents/openai.yaml` policy when
-explicit-only behavior is intended; retain their native Cursor metadata.
+skills imported into Codex with `disable-model-invocation: true` need
+`policy.allow_implicit_invocation: false` in `agents/openai.yaml`. When installing
+in Cursor, retain `disable-model-invocation: true` in `SKILL.md` for its native
+explicit-only behavior.
 
 CodeRabbit remains standalone: use its own installed skill and full review of
 the selected candidate. Shared review reconciliation does not replace or shorten

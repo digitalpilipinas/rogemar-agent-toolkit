@@ -3105,7 +3105,7 @@
     },
     "design-system-steward": {
       "file_count": 5,
-      "sha256": "be4a79da9c59e3feefd9e0ab8f386a663082e7144dc3629514c596a4f0fbba19"
+      "sha256": "14b97719a0062c0cb1fef826033d29fa7e7ceaf363df68950d68f092850bfe0b"
     },
     "develop-web-game": {
       "file_count": 7,
@@ -3325,7 +3325,7 @@
     },
     "interaction-polish": {
       "file_count": 10,
-      "sha256": "c564c35e665552b8de9535985d33ac8dce31ead893ec9c32aac0cbc11d0793d7"
+      "sha256": "458d2108844588486ecaab81ebc4bfa60ff5a3d0ee6c5e4bc7ce83c3fa3300c6"
     },
     "knowledge-base-answering": {
       "file_count": 2,
@@ -3345,7 +3345,7 @@
     },
     "motion-animation-engineer": {
       "file_count": 9,
-      "sha256": "5ed25efdc54c9cf459e96f9180f1d7065e67435eed392193003e64591d1cb2ca"
+      "sha256": "7660153768db52247bf9d6ec9361e76ccedd25f3c489cb1c9b2d55cc3f82b2e5"
     },
     "netlify-deploy": {
       "file_count": 8,

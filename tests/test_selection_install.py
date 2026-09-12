@@ -76,6 +76,7 @@ class SelectionInstallTests(unittest.TestCase):
 
     @unittest.skipIf(SELECTED_DISTRIBUTION, 'cross-harness composition requires the source catalog')
     def test_shadcn_is_optional_portable_and_has_no_external_dependencies(self):
+        """Keep shadcn opt-in across harnesses without external dependencies."""
         for harness in CATALOG['harnesses']:
             with self.subTest(harness=harness):
                 core = toolkit.resolve_selection(harness, 'core', [])
@@ -89,6 +90,7 @@ class SelectionInstallTests(unittest.TestCase):
 
     @unittest.skipIf(SELECTED_DISTRIBUTION, 'optional pack test requires the source catalog')
     def test_shadcn_install_preserves_resources_and_is_idempotent(self):
+        """Preserve the skill and license through repeated Cursor installation."""
         with tempfile.TemporaryDirectory() as project:
             args = ('--harness', 'cursor', '--profile', 'core', '--pack', 'shadcn',
                     '--project-root', project)
