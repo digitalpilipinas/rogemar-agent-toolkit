@@ -74,6 +74,42 @@ class SelectionInstallTests(unittest.TestCase):
             self.assertEqual('cursor-forge' in selected, harness == 'cursor')
             self.assertEqual('plan-model-router' in selected, harness == 'codex')
 
+    @unittest.skipIf(SELECTED_DISTRIBUTION, 'cross-harness composition requires the source catalog')
+    def test_shadcn_is_optional_portable_and_has_no_external_dependencies(self):
+        """Keep shadcn opt-in across harnesses without external dependencies."""
+        for harness in CATALOG['harnesses']:
+            with self.subTest(harness=harness):
+                core = toolkit.resolve_selection(harness, 'core', [])
+                design = toolkit.resolve_selection(harness, 'core', ['design'])
+                selected = toolkit.resolve_selection(harness, 'core', ['shadcn'])
+                self.assertNotIn('shadcn', core['skills'])
+                self.assertNotIn('shadcn', design['skills'])
+                self.assertEqual(set(selected['skills']) - set(core['skills']), {'shadcn'})
+                self.assertEqual(selected['external'], [])
+                self.assertIn('shadcn', toolkit.resolve_selection(harness, 'all', [])['skills'])
+
+    @unittest.skipIf(SELECTED_DISTRIBUTION, 'optional pack test requires the source catalog')
+    def test_shadcn_install_preserves_resources_and_is_idempotent(self):
+        """Preserve the skill and license through repeated Cursor installation."""
+        with tempfile.TemporaryDirectory() as project:
+            args = ('--harness', 'cursor', '--profile', 'core', '--pack', 'shadcn',
+                    '--project-root', project)
+            code, _, error = self.cli('install', *args)
+            self.assertEqual(code, 0, error)
+            source = ROOT / 'plugins/rogemar-agent-toolkit/skills/shadcn'
+            # Find the harness-owned installed tree without assuming native placement.
+            installed = list(Path(project).rglob('shadcn/SKILL.md'))
+            self.assertEqual(len(installed), 1)
+            self.assertEqual(installed[0].read_bytes(), (source / 'SKILL.md').read_bytes())
+            self.assertEqual((installed[0].parent / 'LICENSE.txt').read_bytes(),
+                             (source / 'LICENSE.txt').read_bytes())
+            states = list(Path(project).rglob('rogemar-agent-toolkit.lock.json'))
+            self.assertEqual(len(states), 1)
+            before = states[0].read_bytes()
+            code, _, error = self.cli('install', *args)
+            self.assertEqual(code, 0, error)
+            self.assertEqual(states[0].read_bytes(), before)
+
     def test_unknown_pack_and_unsatisfied_native_requirement_fail_closed(self):
         with self.assertRaises(toolkit.ToolkitError):
             toolkit.resolve_selection('codex', 'core', ['invented-pack'])

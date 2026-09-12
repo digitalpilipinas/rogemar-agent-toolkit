@@ -114,3 +114,23 @@ OpenDesign services remain conditional on actual application tasks. Platform
 checks use available authorized tooling; absent cloud/device runtimes do not
 turn source inspection into UI proof. Packaging checks establish instruction and
 license portability, not live device behavior or improved product outcomes.
+
+## Optional component craft supplements (2026-09-12)
+
+Interaction Polish owns web control feedback and tooltip continuity; Design
+System Steward owns optical alignment, nested surfaces and icon consistency;
+Motion Animation Engineer owns contextual animation diagnostics. Their new
+references are loaded only for affected details. Existing entry descriptions,
+workflow roots, OpenDesign and prior source notices are preserved. Reference-local
+`craft-sources.md` records exact source revisions and license evidence.
+
+The optional `shadcn` pack adds a portable web adapter, excluded from core and
+from the general design pack. It uses local component contracts and adds no MCP,
+CLI installation, coordinator or acceptance gate. See [installation](installation.md#shadcn).
+
+```mermaid
+flowchart LR
+  UI[Existing UI/UX routing] --> D[Existing design owners]
+  UI -->|shadcn project or explicit setup; optional pack| S[shadcn adapter]
+  D -->|affected details only| R[Craft supplement references]
+```

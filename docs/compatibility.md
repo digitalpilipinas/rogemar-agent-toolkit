@@ -66,3 +66,17 @@ Runtime-managed system skills, proprietary plugin caches, credentials, histories
 - [Command Code skill locations](https://commandcode.ai/docs/skills): native and shared paths are supported, with native precedence.
 
 These documentation checks were made on 2026-09-07. Grok/ZCode user directories are local observations; their fresh remote discovery remains unverified.
+
+## Invocation and provider compatibility
+
+Skill discovery, explicit-only policy, MCP registration and service access are
+separate checks. The capability maintainer's trigger reference covers moved
+paths, native invocation controls and recoverable duplicate selection. Cursor
+skills imported into Codex with `disable-model-invocation: true` need
+`policy.allow_implicit_invocation: false` in `agents/openai.yaml`. When installing
+in Cursor, retain `disable-model-invocation: true` in `SKILL.md` for its native
+explicit-only behavior.
+
+CodeRabbit remains standalone: use its own installed skill and full review of
+the selected candidate. Shared review reconciliation does not replace or shorten
+its provider workflow. No new login or installation follows from discovery alone.

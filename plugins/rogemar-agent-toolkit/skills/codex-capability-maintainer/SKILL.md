@@ -7,7 +7,10 @@ description: Use when auditing, adding, updating, or troubleshooting Codex skill
 
 ## Workflow
 
-1. Inventory current capabilities first: installed skills, MCP servers, plugins/connectors, repo guidance, and config.
+1. Inspect the capabilities relevant to the request: installed skill instructions,
+   surfaced live tools, applicable guidance and configuration. Static methods need
+   readable instructions/resources; live services need authentication only when
+   that service requires it. Discovery does not authorize installation or login.
 2. Separate durable surfaces:
    - Skills for reusable workflows.
    - MCP servers/connectors for live data and actions.
@@ -15,22 +18,31 @@ description: Use when auditing, adding, updating, or troubleshooting Codex skill
    - Custom agents for reusable role, permission, and sandbox contracts.
    - `AGENTS.md` for repo conventions.
    - Config/hooks for mechanical enforcement.
-3. Prefer one canonical global source for reusable skills. When multiple
-   runtimes require installed mirrors, keep them byte-identical and validate
-   every surfaced copy; do not maintain independent repository forks of a
-   global workflow.
+3. Maintain one canonical source for reusable methods. Identify consumers and
+   resolve symlinks before updating installed copies. True mirrors of the same
+   implementation should match byte-for-byte; intentional harness adapters may
+   differ. Preserve native controls, licenses and approved differences, and
+   validate shared behavior against the canonical contract. Back up changed
+   files; do not overwrite unrelated local work or runtime-managed caches.
 4. Before retiring a skill, inspect its callers and resources. Move reusable
    behavior to the canonical global skill and project-only contracts to the
    repository's `AGENTS.md` or maintained product documentation.
 5. Prefer official or widely maintained MCP servers over obscure packages.
 6. Keep API keys and secrets local, ignored, and out of committed files.
-7. After skill changes, run the skill validator, inspect referenced resources,
-   and compare every required installed mirror byte-for-byte. After custom-agent
-   or config changes, confirm the config loads, the expected agent types surface,
-   and any configured model/effort is accepted by the active runtime.
-8. Treat a custom-agent role as behavior and permission policy. Route its model
-   and reasoning through the active parent ceiling; a fixed role setting must
-   not silently override that ceiling.
+7. After skill changes, run the applicable validator, inspect referenced
+   resources and compare true mirrors byte-for-byte. Review harness adaptations
+   for shared-contract consistency and preservation of intentional differences.
+   For global guidance, check instruction consumers, links, scope/authorization
+   boundaries and conflicting clauses. After custom-agent or config changes,
+   verify the relevant runtime controls when available; file edits alone do not
+   prove that a running session reloaded guidance or applied a profile.
+8. Treat a custom-agent role as behavior and permission policy. Use the active
+   harness's qualified routing contract: native Codex workers retain parent
+   ceilings without a named Forge mode; an explicitly selected Codex Forge mode
+   uses its permitted profiles. Explicit user limits and runtime availability
+   still apply. Keep resolution with the model router and dispatch with
+   workflow-orchestrator; never bypass the governing policy with a fixed role
+   setting or claim a parent-model switch from a preference edit.
 9. For a materially changed orchestration workflow, perform focused smoke
    exercises for one exploration handoff, one authorized implementation-routing
    example, and one independent-review handoff. Report them as separate
@@ -39,7 +51,15 @@ description: Use when auditing, adding, updating, or troubleshooting Codex skill
     MCP changes. Tell the user when a restart or login is required before new
     tools appear in future turns.
 
-## Recommended Core Stack
+For discovery drift, explicit-only imports, or service/skill overlap, read
+[trigger maintenance](references/trigger-maintenance.md). Preserve working
+entrypoints and provider workflows; repair concrete paths and controls.
+
+## Conditional integrations
+
+These are examples to consider only when the task needs them and a suitable
+route is available. They are not a required installation set or authority to
+install, authenticate or spend. Select the smallest sufficient route.
 
 - Official OpenAI docs MCP for current OpenAI/Codex docs.
 - GitHub MCP for PRs, issues, checks, and repo workflows.
@@ -53,7 +73,8 @@ description: Use when auditing, adding, updating, or troubleshooting Codex skill
 ## Guardrails
 
 - Do not install API-backed MCPs with real keys in public repo files.
-- Do not promise a tool is usable until it is registered and authenticated.
+- Verify a live tool is surfaced/enabled and, when required, authenticated before
+  relying on it. Do not require a service login for static skill instructions.
 - Avoid adding too many overlapping tools to a single active context.
 - Retire duplicate skills recoverably until replacement discovery and caller
   checks pass.

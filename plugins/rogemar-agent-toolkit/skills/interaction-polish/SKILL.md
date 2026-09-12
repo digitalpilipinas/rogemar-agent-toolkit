@@ -17,6 +17,9 @@ For affected mobile behavior, read [mobile-craft.md](references/mobile-craft.md)
 only when relevant. These adapted Appllama methods need no subscription or MCP
 and use the existing task owner and evidence record.
 
+For web control feedback, tooltip continuity or pointer behavior, read
+[web-control-craft.md](references/web-control-craft.md) when relevant.
+
 ## Workflow
 
 1. Identify the exact moment being polished: start, choose, submit, sync, recover, share, celebrate, return, or cancel.

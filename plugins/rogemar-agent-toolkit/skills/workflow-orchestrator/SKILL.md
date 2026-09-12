@@ -64,6 +64,10 @@ Use the shared `engineering-playbooks` method for substantive engineering work w
 This orchestrator alone dispatches specialists and workers. Each playbook supplies methods and bounded hints. For Codex workers, use installed `plan-model-router` at materially different packages or dispatch boundaries, preserving its runtime contract: selected Forge modes supersede default parent ceilings; the no-mode route retains them. Other harnesses use their actual model controls and inherit the parent when controls or identity are unavailable. Never import Codex or Cursor model names into another harness or invent a selector. Record requested and observed profiles only when delegation is material; unavailable identity remains Unverified.
 
 `create-plan` owns planning. `code-review-and-quality` owns the independent review and may request focused `code-review-tests` evidence. CodeRabbit and harness-native reviewers are separate evidence providers; consolidate findings by root cause without relabeling their verdicts. They are required only when the approved acceptance contract requires them.
+When CodeRabbit is selected, invoke its own installed skill for a full review of
+the agreed candidate. Keep its procedure and verdict independent; do not replace
+it with a shortened shared review or a sample of the diff. See
+[provider routing](references/provider-routing.md) for overlapping installations.
 
 For a programme, use `integrated-workflow` if installed; otherwise preserve the approved plan and gates directly. Missing optional packs do not block adequate in-scope work. Keep trivial direct work proportional.
 
@@ -131,12 +135,12 @@ implementation worker, debugger, reviewer, architect, or bounded experiment
 worker; the main agent normally synthesizes. Use the role guidance in
 the active harness's profile controls when a profile is needed; Codex uses installed `plan-model-router`.
 
-- Automatically delegate safe, independent, read-heavy work when it justifies
-  its overhead. Treat an approved plan or explicit user instruction to use
-  workers for implementation as authorization for bounded project-local writes.
-- Require main-agent or user authorization for implementation, external
-  actions, destructive operations, and shared-state writes. Authorization does
-  not expand the worker's assigned scope or permit irreversible actions.
+- Delegate safe, independent, read-heavy work when authorized and useful.
+  Delegated writes require existing user-authorized execution and a bounded
+  worker scope; approval of a planning-only artifact does not authorize writes.
+- The main agent may delegate only authority already granted by the user.
+  External actions, destructive operations and shared-state writes retain their
+  applicable user authorization; a worker assignment cannot expand it.
 - Limit default concurrency to three workers and nested delegation to one
   level. Use zero workers for trivial or serial work, one for one independent
   stream, and two or three only for proven-disjoint evidence or write scopes.

@@ -11,12 +11,15 @@ Build games in small steps and validate every change. Treat each iteration as: i
 ## Skill paths (set once)
 
 ```bash
-export CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
-export WEB_GAME_CLIENT="$CODEX_HOME/skills/develop-web-game/scripts/web_game_playwright_client.js"
-export WEB_GAME_ACTIONS="$CODEX_HOME/skills/develop-web-game/references/action_payloads.json"
+export SKILL_DIR="/absolute/path/to/loaded/develop-web-game"
+export WEB_GAME_CLIENT="$SKILL_DIR/scripts/web_game_playwright_client.js"
+export WEB_GAME_ACTIONS="$SKILL_DIR/references/action_payloads.json"
 ```
 
-User-scoped skills install under `$CODEX_HOME/skills` (default: `~/.codex/skills`).
+Set `SKILL_DIR` to the actual directory containing the loaded `SKILL.md`
+before running these examples. Resolve bundled helpers there, whether this
+skill is installed under `.agents`, `.codex`, a plugin or a project. Do not
+change `CODEX_HOME` or assume a particular personal installation root.
 
 ## Workflow
 
@@ -142,8 +145,8 @@ At the end of your work, leave TODOs and suggestions for the next agent in `prog
 
 ## Scripts
 
-- `$WEB_GAME_CLIENT` (installed default: `$CODEX_HOME/skills/develop-web-game/scripts/web_game_playwright_client.js`) — Playwright-based action loop with virtual-time stepping, screenshot capture, and console error buffering. You must pass an action burst via `--actions-file`, `--actions-json`, or `--click`.
+- `$WEB_GAME_CLIENT` (installed default: `$SKILL_DIR/scripts/web_game_playwright_client.js`) — Playwright-based action loop with virtual-time stepping, screenshot capture, and console error buffering. You must pass an action burst via `--actions-file`, `--actions-json`, or `--click`.
 
 ## References
 
-- `$WEB_GAME_ACTIONS` (installed default: `$CODEX_HOME/skills/develop-web-game/references/action_payloads.json`) — example action payloads (keyboard + mouse, per-frame capture). Use these to build your burst.
+- `$WEB_GAME_ACTIONS` (installed default: `$SKILL_DIR/references/action_payloads.json`) — example action payloads (keyboard + mouse, per-frame capture). Use these to build your burst.
