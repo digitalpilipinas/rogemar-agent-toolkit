@@ -105,9 +105,22 @@ delivery through a safe merge after required gates pass. The example above expli
 stops before merge. Local-only and other explicit restrictions always take precedence;
 editing or discussing the skill does not itself authorize publication.
 
+Forge now chooses a lower-usage worker when paired tests support the task. This
+includes routine coding. Consequential architecture, security and acceptance judgment
+retain the parent family; hard-task escalation needs specific evidence and a reason.
+When cheaper profiles fail, Forge explains the provisional parent fallback and keeps
+required checks. [Routing results and limitations](plugins/rogemar-agent-toolkit/skills/plan-model-router/references/validation-v6.md)
+show what was tested; token or quality savings are not guaranteed for every project.
+
 You normally invoke one entry skill. It brings in relevant supporting skills and
 requests bounded sub-agents when their work is useful. Small tasks can stay with
 the main agent. You do not need to invoke the orchestrator or model router yourself.
+
+External review has separate jobs: Luna watches progress and organizes feedback;
+qualified decision roles validate findings, check the minimum needed scope and fix
+accepted defects. Keeping a finding in the summary does not mean accepting it.
+[Review handoffs](plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/provider-routing.md#review-support-and-decision-roles)
+preserve mode limits and the existing local/ready-PR review cadence.
 
 ## How delivery works
 
@@ -167,14 +180,21 @@ reuse the same acceptance record rather than starting another process.
 | Cursor | `cursor-forge` | `cursor-forge-setup` supplies native mappings; the universal router is a fallback. Native PStack remains a separate, unchanged entry. |
 | Other compatible assistants | `universal-forge` | Uses the assistant's available native models and controls, with defaults when selection controls are absent. |
 
-The common modes describe how to allocate work:
+Codex has five modes for choosing how to spend effort and account usage:
 
 | Mode | Intended use |
 | --- | --- |
-| Peak | Strong available profiles for demanding work. |
-| Balanced | Strong reasoning where needed, efficient profiles for routine work. |
-| Lean | Economical suitable profiles with selective escalation. |
-| Sprint | Narrow, quick assignments with minimal coordination. |
+| Default | Use your exact chosen model and reasoning for ordinary parent and worker roles. |
+| Peak | Highest frontier ceiling with tested savings on routine work. |
+| Balanced | Strong frontier judgment with tested savings on routine work. |
+| Lean | General development within a smaller model pool; hard-task escalation needs evidence. |
+| Economy | Conserve usage with Luna and minimal unnecessary coordination. |
+
+Codex keeps `sprint` as an alias for Economy and `budget` as an alias for Lean.
+Cursor and Universal Forge retain their native catalogues and mode definitions;
+this Codex update does not replace them. See the [current role mappings](plugins/rogemar-agent-toolkit/skills/plan-model-router/references/role-mapping.md)
+and [validation report](plugins/rogemar-agent-toolkit/skills/plan-model-router/references/validation-v6.md)
+for parent targets, measured results and remaining gaps.
 
 Forge uses the mode in your request, then the established task mode, then a saved
 preference. With none available, it asks once and recommends Balanced while safe
@@ -183,12 +203,24 @@ save your choice. At entry and useful dispatch, a short label shows role, model,
 effort and mode; requested profiles stay distinct from runtime-verified identity.
 
 In Codex, use `$forge-setup Use Balanced` to save a preference, or specify a mode in
-the current Forge request. Available Astra, Sol, Terra and Luna profiles are
-qualified against the task, runtime and explicit limits. A saved preference does
+the current Forge request. Codex presets include GPT-6 Sol and GPT-6 Luna;
+existing explicit model choices are never silently renamed. Exact profiles are
+qualified against the task, runtime, explicit limits and both mode/accepted-parent
+ceilings. Only exact, evidence-qualified hillclimb and hardest-task exceptions can
+exceed the normal model or reasoning limit, for a practical unmet requirement or
+justified bounded consultation. A saved preference does
 not change an already running parent or worker. Parent switching is applied only
 through an available supported control; otherwise the parent choice remains manual.
 Modes do not weaken required tests or review gates, and their names are not measured
 price or speed guarantees.
+
+The role ledger records the exact model generation, reasoning level, supporting
+trials and remaining limits for each assignment. Swarm and Arena choose each
+participant by its actual task. A short benchmark pass identifies a candidate;
+separate coding, UI and source-tracing checks qualify the tested work. Explaining
+QA readiness does not prove browser or device operation, and a database exercise
+does not qualify UI building. Historical results remain dated evidence, not proof
+that a successor model has the same strengths.
 
 File installation and live execution are different checks. See
 [compatibility and evidence](docs/compatibility.md) for tested boundaries and
@@ -334,7 +366,7 @@ Direct members are listed in full; the installer also resolves required skill de
 | [`forge-principle-type-system-discipline`](plugins/rogemar-agent-toolkit/skills/forge-principle-type-system-discipline/SKILL.md) | Apply when designing types, reviewing a function signature, or writing code in any statically-typed language. Make illegal states unrepresentable, brand semantic primitives, parse external data at boundaries, refuse to lie to the compiler, exhaust variants, derive from authoritative schemas. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-principle-type-system-discipline/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-recall`](plugins/rogemar-agent-toolkit/skills/forge-recall/SKILL.md) | Reconstruct your recent working context from your own chat history, live state, and the shared record (user reports, prior fixes, incidents), then hand back a tight current-state brief. Use for 'recall my work on X', 'catch me up', 'what have I been working on', 'where did I leave off', before starting or resuming work. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-recall/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-reflect`](plugins/rogemar-agent-toolkit/skills/forge-reflect/SKILL.md) | Review the current task for durable lessons using judgment, tooling and divergent lenses. Propose or apply explicitly authorized skill improvements with cited evidence. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-reflect/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
-| [`forge-setup`](plugins/rogemar-agent-toolkit/skills/forge-setup/SKILL.md) | Configure adaptive per-role Codex model preferences for Forge. Use when setting up Forge, switching Peak, Balanced, Lean, or Sprint modes, changing preferred worker models or reasoning hints, or checking routing readiness. Let a selected mode govern parent and worker profiles; verify actual runtime switches separately. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-setup/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
+| [`forge-setup`](plugins/rogemar-agent-toolkit/skills/forge-setup/SKILL.md) | Configure adaptive per-role Codex model preferences for Forge. Use when setting up Forge, switching Default, Peak, Balanced, Lean, or Economy modes, changing preferred worker models or reasoning hints, or checking routing readiness. Let a selected mode govern parent and worker profiles; verify actual runtime switches separately. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-setup/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-show-me-your-work`](plugins/rogemar-agent-toolkit/skills/forge-show-me-your-work/SKILL.md) | Keep a local evidence-backed decision trail for long or multi-phase work. Audit actual results and apply publication authority separately. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-show-me-your-work/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-swarm`](plugins/rogemar-agent-toolkit/skills/forge-swarm/SKILL.md) | Fan out N parallel workers, drain them, and return one report. Use for $forge-swarm, 'swarm this', or parallel coverage, races, gauntlets, and exploration. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-swarm/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`forge-tdd`](plugins/rogemar-agent-toolkit/skills/forge-tdd/SKILL.md) | Use only when the user explicitly asks for TDD, a failing test, or a regression test, OR when the bug has an obvious cheap local test target. Skip when the test path is unclear, expensive, integration-heavy, or not requested. | codex | Lauren Tan; Codex adaptation by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/forge-tdd/SKILL.md); [upstream](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack) | Evidence: `LICENSE.txt`; review terms before redistribution |
@@ -359,7 +391,7 @@ Direct members are listed in full; the installer also resolves required skill de
 | [`opendesign`](plugins/rogemar-agent-toolkit/skills/opendesign/SKILL.md) | Use OpenDesign's full application workflows for importing, creating, exporting, sharing, deploying, refining, or extending design artifacts. Discover the native runtime and its dependencies before using its project, run, scenario, media, or connector tools. | portable | Rogemar; upstream notices preserved | [SKILL.md](plugins/rogemar-agent-toolkit/skills/opendesign/SKILL.md); [upstream](https://github.com/digitalpilipinas/open-design) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`pdf`](plugins/rogemar-agent-toolkit/skills/pdf/SKILL.md) | Use for lightweight local PDF reading, extraction, or programmatic generation. Prefer the bundled pdf skill when its managed runtime or stricter render-and-verify workflow is available. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/pdf/SKILL.md) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`performance-profiler`](plugins/rogemar-agent-toolkit/skills/performance-profiler/SKILL.md) | Use for performance investigations, profiling, or optimization involving React renders, Core Web Vitals, interaction latency, bundle size, images, virtualization, memory leaks, React Native frame drops, startup time, database/API latency, and measured evidence. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/performance-profiler/SKILL.md) | Not declared in snapshot; review before redistribution |
-| [`plan-model-router`](plugins/rogemar-agent-toolkit/skills/plan-model-router/SKILL.md) | Resolve Codex task and worker profiles automatically within Forge through workflow-orchestrator. Use Peak, Balanced, Lean, or Sprint role mappings with live Astra, Sol, Terra, and Luna availability, task-fit checks, and explicit dispatch arguments. Also use for standalone plan routing assessments. | codex | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/plan-model-router/SKILL.md) | Not declared in snapshot; review before redistribution |
+| [`plan-model-router`](plugins/rogemar-agent-toolkit/skills/plan-model-router/SKILL.md) | Resolve Codex task and worker profiles automatically within Forge through workflow-orchestrator. Use Default, Peak, Balanced, Lean, or Economy role mappings with exact-generation model availability, task-fit checks, and explicit dispatch arguments. Also use for standalone plan routing assessments. | codex | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/plan-model-router/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`playwright`](plugins/rogemar-agent-toolkit/skills/playwright/SKILL.md) | Use when the task requires automating a real browser from the terminal (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging) via `playwright-cli` or the bundled wrapper script. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/playwright/SKILL.md) | Evidence: `LICENSE.txt`; review terms before redistribution |
 | [`privacy-safety-review`](plugins/rogemar-agent-toolkit/skills/privacy-safety-review/SKILL.md) | Use for product privacy, safety, and honesty reviews involving profiles, location, health or wellness signals, social features, leaderboards, badges, community data, media sharing, permissions, sensitive storage, generated insights, and surfaces where missing backend data must not be fabricated. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/privacy-safety-review/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`project-learning`](plugins/rogemar-agent-toolkit/skills/project-learning/SKILL.md) | Initialize and maintain project-local continuous learning, review captured lesson candidates, or adapt accepted lessons between repositories. Use for project learning setup and curation, not ordinary coding work. | codex | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/project-learning/SKILL.md) | Not declared in snapshot; review before redistribution |

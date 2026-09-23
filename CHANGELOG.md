@@ -9,6 +9,10 @@
 
 ## Unreleased
 
+- Update Codex Forge to Default, Peak, Balanced, Lean and Economy with GPT-6 Sol/Luna, exact-generation evidence, parent limits and scoped consultant exceptions.
+- Include the 225 role/mode decisions, preserved historical qualification records, 714-case benchmark summary and focused paired validation, with provisional limits disclosed.
+- Keep monitoring and feedback consolidation separate from validation, minimum-scope decisions and implementation; preserve Cursor and Universal catalogues.
+
 - Adapt free Appllama research, mobile navigation, control and motion methods into four existing design owners; preserve MIT notices and optional runtime boundaries.
 
 - Standardize Forge mode precedence, ask-once reminders, and role/model/effort/mode evidence labels across native and portable entries.

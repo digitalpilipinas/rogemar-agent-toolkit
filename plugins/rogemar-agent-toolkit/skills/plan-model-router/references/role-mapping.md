@@ -1,108 +1,63 @@
-# Forge mode and role mapping
+# Forge role mapping
 
-The executable source is `scripts/routing_catalog.json`. Run
-`resolve_profile.py --list-modes` or `--role-map` for current data.
-Resolution follows selected mode → group default → role override → saved role
-preferences → task-fit, live availability, and native role pin checks.
-Explicit qualified candidates can adapt an assignment within the mode.
-These defaults do not guarantee sufficiency or launch permanent agents.
+The router owns the model catalogue and these assignments. [All 225 decisions](role-evidence.json) record each playbook purpose, actual responsibility, prior selection, candidate, fallback, qualification, failures and measured usage. [The comparison](validation-v6.md) separates historical results, the new benchmark and scoped qualification.
 
-| Mode | Allowed profiles |
-| --- | --- |
-| Peak | Astra, Sol, Terra: low, medium, high, xhigh, max |
-| Balanced | Sol, Terra: low, medium, high, xhigh; Luna: max |
-| Lean | Terra: low, medium, high; Luna: high, max |
-| Sprint | Terra: medium; Luna: low, medium, high, max |
+Default is the exact user-selected available profile. Normal workers obey the mode pool and both reasoning/model ceilings, tightened by an accepted actual parent. Consequential judgment retains the actual parent's exact model generation; a lower reasoning setting still requires paired evidence. Main-owned responsibilities do not create extra agents. Swarm/Arena resolve each participant's actual function.
 
-Compatibility aliases: supreme → peak, optimize → balanced, budget → lean.
-Light is `low`; Extra High is `xhigh`. Astra is `gpt-6-astra`; the other families
-use `gpt-5.6-*`. Ultra is excluded from these four pools. The names express
-intent, not measured price, speed, or benchmark guarantees.
+`*` means a provisional parent assignment, not an optimized winner. Other entries have narrow fixture evidence, not full-playbook mastery. Native GoalBuddy Scout/Low and Judge/High keep their separate contracts, tools and receipts. Ordinary Forge trials cannot satisfy a mandatory native gate.
 
-## Role contracts
-
-Keep integration and final acceptance with the main agent. The three
-main-owned roles below require `target: parent` and return proposals only.
-Other roles describe bounded assignments; the orchestrator still decides
-whether an independent worker is useful and grants its exact scope.
-
-- Goal Scout and Goal Judge reuse available GoalBuddy native contracts and
-  preserve their independence, permissions, and fixed settings. Pass native
-  pins to the resolver; a conflict is blocked until a valid profile is qualified.
-  Do not relabel an ordinary reviewer as GoalBuddy evidence to escape a pin.
-- Design roles select applicable installed design skills, not copies of them.
-  Skill hints are selective discovery aids, not mandatory activation lists.
-- Browser, simulator, emulator, physical-device, and visual evidence remain
-  distinct. A screenshot is not interaction testing; a simulator is not a
-  physical-device check. Verify the requested surface and available tools.
-- `scope-reviewer` may use Ponytail for simplicity; it does not replace
-  correctness, security, accessibility, or final acceptance.
-- `learning-curator` activates only on an explicit project-learning request.
-  Prepare project-local evidence-backed proposals within that skill's contract;
-  no automatic capture, promotion, memory writes, or delivery interruption.
-- `status-monitor` performs bounded requested checks. Recurring monitoring
-  requires a separate explicit scheduling request; it creates no automatic job.
-- Dream Team offers optional perspectives to this orchestrator, not another
-  coordination layer. Findings consolidation is advisory; the main agent owns
-  reconciliation and the final result.
-
-## Shared group defaults
-
-| Group | Peak | Balanced | Lean | Sprint |
-| --- | --- | --- | --- | --- |
-| coordination | astra/high | sol/high | terra/high | terra/medium |
-| engineering | sol/high | terra/high | terra/high | terra/medium |
-| design | sol/xhigh | sol/high | terra/high | luna/max |
-| verification | terra/high | terra/high | luna/high | luna/medium |
-| review | astra/high | sol/high | terra/high | luna/max |
-| operations-learning | terra/medium | luna/max | luna/high | luna/low |
-
-## Individual role defaults
-
-| Role | Group | Peak | Balanced | Lean | Sprint |
+| Role | Default | Peak | Balanced | Lean | Economy |
 | --- | --- | --- | --- | --- | --- |
-| `parent-coordinator` (main-owned) | coordination | astra/high | sol/high | terra/high | terra/medium |
-| `workflow-coordinator` (main-owned) | coordination | astra/high | sol/high | terra/high | terra/medium |
-| `integration-owner` (main-owned) | coordination | astra/high | sol/high | terra/high | terra/medium |
-| `findings-consolidator` | coordination | astra/high | sol/high | terra/high | terra/medium |
-| `why-synthesizer` | coordination | sol/high | sol/medium | terra/high | luna/high |
-| `reflect-synthesizer` | coordination | sol/high | sol/medium | terra/medium | luna/high |
-| `feature` | engineering | sol/high | terra/high | terra/high | terra/medium |
-| `refactoring` | engineering | sol/high | terra/medium | terra/medium | terra/medium |
-| `bug-fix` | engineering | astra/high | sol/high | terra/high | luna/max |
-| `perf-issue` | engineering | sol/xhigh | terra/xhigh | terra/high | terra/medium |
-| `hillclimb` | engineering | astra/max | sol/xhigh | terra/high | luna/max |
-| `hardest-tasks` | engineering | astra/max | sol/xhigh | terra/high | luna/max |
-| `how-explorer` | engineering | terra/medium | luna/max | luna/high | luna/low |
-| `how-explainer` | engineering | sol/medium | terra/medium | luna/high | luna/medium |
-| `why-investigators` | engineering | terra/high | terra/high | luna/high | luna/high |
-| `reflect-tooling` | engineering | terra/medium | luna/max | luna/high | luna/medium |
-| `swarm-workers` | engineering | terra/high | luna/max | luna/high | luna/high |
-| `bug-triager` | engineering | sol/high | terra/high | terra/high | terra/medium |
-| `goal-scout` | engineering | sol/high | terra/high | terra/high | luna/low |
-| `judgment-and-prose` | design | sol/medium | sol/medium | terra/medium | luna/high |
-| `reflect-divergent` | design | sol/high | terra/xhigh | luna/max | luna/high |
-| `arena-runners` | design | sol/xhigh | terra/xhigh | luna/max | luna/max |
-| `architect-runners` | design | astra/max | sol/high | terra/high | luna/max |
-| `ux-flow-designer` | design | sol/xhigh | sol/high | terra/high | luna/max |
-| `ui-designer` | design | sol/xhigh | sol/high | terra/high | luna/max |
-| `design-system-reviewer` | design | sol/xhigh | sol/high | terra/high | luna/max |
-| `interaction-designer` | design | sol/xhigh | sol/high | terra/high | luna/max |
-| `accessibility-reviewer` | design | sol/xhigh | sol/high | terra/high | luna/max |
-| `validation-runner` | verification | terra/high | terra/high | luna/high | luna/medium |
-| `visual-reviewer` | verification | terra/high | terra/high | luna/high | luna/medium |
-| `browser-qa` | verification | terra/high | terra/high | luna/high | luna/medium |
-| `simulator-qa` | verification | terra/high | terra/high | luna/high | luna/medium |
-| `emulator-qa` | verification | terra/high | terra/high | luna/high | luna/medium |
-| `physical-device-qa` | verification | terra/high | terra/high | luna/high | luna/medium |
-| `qa-runner` | verification | terra/high | terra/high | luna/high | luna/medium |
-| `how-critics` | review | astra/high | sol/high | terra/high | luna/max |
-| `reflect-judgment` | review | astra/high | sol/high | terra/high | luna/max |
-| `arena-cross-judge-pool` | review | astra/max | sol/high | terra/high | luna/max |
-| `interrogate-reviewers` | review | astra/xhigh | sol/high | terra/high | luna/max |
-| `correctness-reviewer` | review | astra/high | sol/high | terra/high | luna/max |
-| `scope-reviewer` | review | astra/high | sol/high | terra/high | luna/max |
-| `acceptance-auditor` | review | astra/high | sol/high | terra/high | luna/max |
-| `goal-judge` | review | astra/high | sol/high | terra/high | luna/max |
-| `status-monitor` | operations-learning | terra/medium | luna/max | luna/high | luna/low |
-| `learning-curator` | operations-learning | terra/medium | luna/max | luna/high | luna/low |
+| `parent-coordinator` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh | gpt-6-luna/medium |
+| `workflow-coordinator` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh | gpt-6-luna/medium |
+| `integration-owner` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh | gpt-6-luna/medium |
+| `findings-consolidator` | Exact user choice | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low |
+| `why-synthesizer` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh * | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `reflect-synthesizer` | Exact user choice | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low |
+| `feature` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh * | gpt-5.6-sol/high | gpt-6-luna/medium * |
+| `refactoring` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `bug-fix` | Exact user choice | gpt-6-sol/high | gpt-6-sol/high | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `perf-issue` | Exact user choice | gpt-6-sol/medium | gpt-6-sol/medium | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `hillclimb` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `hardest-tasks` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh * | gpt-5.6-sol/xhigh * | gpt-6-luna/medium * |
+| `how-explorer` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh * | gpt-6-luna/medium * |
+| `how-explainer` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `why-investigators` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `reflect-tooling` | Exact user choice | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low |
+| `swarm-workers` | Actual task role | Actual task role | Actual task role | Actual task role | Actual task role |
+| `bug-triager` | Exact user choice | gpt-6-astra/xhigh * | gpt-6-sol/xhigh * | gpt-5.6-sol/xhigh * | gpt-6-luna/medium * |
+| `goal-scout` | Exact user choice | gpt-6-luna/xhigh | gpt-6-luna/xhigh | gpt-6-luna/xhigh | gpt-6-luna/medium * |
+| `judgment-and-prose` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh * | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `reflect-divergent` | Exact user choice | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low |
+| `arena-runners` | Actual task role | Actual task role | Actual task role | Actual task role | Actual task role |
+| `architect-runners` | Exact user choice | gpt-6-astra/medium | gpt-6-sol/high | gpt-5.6-sol/high | gpt-6-luna/medium * |
+| `ux-flow-designer` | Exact user choice | gpt-6-sol/low | gpt-6-sol/low | gpt-5.6-sol/low | gpt-6-luna/medium |
+| `ui-designer` | Exact user choice | gpt-6-sol/low | gpt-6-sol/low | gpt-5.6-sol/low | gpt-6-luna/low |
+| `design-system-reviewer` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `interaction-designer` | Exact user choice | gpt-6-sol/low | gpt-6-sol/low | gpt-5.6-sol/medium | gpt-6-luna/low |
+| `accessibility-reviewer` | Exact user choice | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low |
+| `validation-runner` | Exact user choice | gpt-6-sol/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `visual-reviewer` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `browser-qa` | Exact user choice | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low |
+| `simulator-qa` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `emulator-qa` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `physical-device-qa` | Exact user choice | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low |
+| `qa-runner` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh * | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `how-critics` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/medium | gpt-5.6-sol/low | gpt-6-luna/medium * |
+| `reflect-judgment` | Exact user choice | gpt-6-astra/medium | gpt-6-sol/xhigh | gpt-5.6-sol/xhigh | gpt-6-luna/low |
+| `arena-cross-judge-pool` | Exact user choice | gpt-6-astra/medium | gpt-6-sol/high | gpt-5.6-sol/xhigh | gpt-6-luna/medium * |
+| `interrogate-reviewers` | Exact user choice | gpt-6-astra/medium | gpt-6-sol/xhigh | gpt-5.6-sol/high | gpt-6-luna/medium |
+| `correctness-reviewer` | Exact user choice | gpt-6-sol/high | gpt-6-sol/high | gpt-5.6-sol/high | gpt-6-luna/medium * |
+| `scope-reviewer` | Exact user choice | gpt-6-sol/medium | gpt-6-sol/medium | gpt-5.6-sol/low | gpt-6-luna/medium * |
+| `acceptance-auditor` | Exact user choice | gpt-6-astra/medium | gpt-6-sol/high | gpt-5.6-sol/low | gpt-6-luna/low |
+| `goal-judge` | Exact user choice | gpt-6-astra/xhigh | gpt-6-sol/xhigh | gpt-5.6-sol/high | gpt-6-luna/medium |
+| `status-monitor` | Exact user choice | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low |
+| `learning-curator` | Exact user choice | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low | gpt-6-luna/low |
+
+## Task fit and consultants
+
+Monitoring and clerical consolidation use the catalogue's Luna support profiles. They do not validate recommendations, select minimum scope, fix code or approve delivery. Analytical synthesis is a separate task. Browser/device-readiness prose is not proof of live operation; the single-form fixture is not a full design system or independent visual/accessibility audit.
+
+Use the exact evidence contract for implementation. Database evidence cannot qualify UI work. Consultant exceptions apply only to exact qualified hillclimb/hardest-tasks profiles with a concrete practical need and matching evidence; explicit user hard limits still win. Max and supported Ultra remain available in Default. Their cost and quality depend on the task, and a newer generation is not an automatic qualification.
+
+Parent targets are proposals. A saved mode or worker launch does not switch the running parent; use the existing once-per-task clarification if they differ. Retired preset models remain available for exact explicit selections where supported, without translating preferences or historical evidence.
