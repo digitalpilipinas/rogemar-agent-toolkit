@@ -270,6 +270,31 @@ class ModeTests(unittest.TestCase):
                     self.assertEqual(actual['status'], direct['status']); self.assertEqual(actual.get('expected_from_config'), direct.get('expected_from_config')); self.assertEqual(actual['role'], role)
                 q['assignment_role'] = wrapper; self.assertEqual(r.resolve(q)['status'], 'assignment-required')
 
+    def test_no_mode_preserves_legacy_but_enforces_declared_work(self):
+        q = self.request(None, 'feature')
+        q['parent'] = {'model': 'gpt-6-astra', 'effort': 'xhigh'}
+        candidate = {'model': 'gpt-5.6-sol', 'effort': 'high', 'reason': 'bounded implementation'}
+        q['candidates'] = [candidate]
+        legacy = {k: v for k, v in q.items() if k not in ('role', 'evidence_contract')}
+        self.assertEqual(r.resolve(legacy)['quality_status'], 'alternate-profile-provisional')
+        legacy.pop('candidates')
+        self.assertEqual(r.resolve(legacy)['quality_status'], 'parent-profile-provisional')
+        with self.qualified_fixture('feature', 'gpt-5.6-sol', 'high', executable=True):
+            q['implementation'] = True
+            self.assertEqual(r.resolve(q)['status'], 'ready')
+            for contract in (None, 'note-editor-ui'):
+                self.assertEqual(r.resolve({**q, 'evidence_contract': contract})['status'], 'blocked')
+        q = self.request(None, 'acceptance-auditor')
+        q['parent'] = {'model': 'gpt-6-astra', 'effort': 'xhigh'}
+        q['candidates'] = [{'model': 'gpt-6-luna', 'effort': 'medium', 'reason': 'cheap'}]
+        self.assertEqual(r.resolve(q)['status'], 'blocked')
+        q['role'] = 'goal-scout'
+        q.update(goalbuddy_required=True, role_config={'effort': 'low'})
+        q['candidates'] = [{'model': 'gpt-6-astra', 'effort': 'low', 'reason': 'native observed pin'}]
+        self.assertEqual(r.resolve(q)['quality_status'], 'native-contract')
+        q['candidates'][0]['model'] = 'gpt-6-luna'
+        self.assertEqual(r.resolve(q)['status'], 'blocked')
+
     def test_unresolved_arrangement_cli_fails(self):
         for role in ('swarm-workers', 'arena-runners'):
             result = subprocess.run([sys.executable, r.__file__],

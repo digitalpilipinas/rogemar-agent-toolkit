@@ -1,5 +1,7 @@
 """Generation identity, native support and preserved explicit legacy choices."""
 import copy
+import json
+from pathlib import Path
 import unittest
 from unittest.mock import patch
 from test_forge import router as r
@@ -11,6 +13,14 @@ class GenerationTests(unittest.TestCase):
                 'task_reason': 'bounded source inspection',
                 'catalog': [{'model': m, 'efforts': c['supported_efforts']}
                             for m, c in r.ROUTING_CATALOG['models'].items()]}
+
+    def test_vendored_evidence_omits_runtime_session_metadata(self):
+        def check(record):
+            self.assertTrue({'session_id', 'session_sha256'}.isdisjoint(record))
+            return record
+        references = Path(r.__file__).resolve().parents[1] / 'references'
+        for path in references.glob('*.json'):
+            json.loads(path.read_text(), object_hook=check)
 
     def test_named_pools_and_targets_are_exact(self):
         pools = {'peak': ['gpt-6-astra', 'gpt-6-sol', 'gpt-5.6-sol', 'gpt-6-luna'],

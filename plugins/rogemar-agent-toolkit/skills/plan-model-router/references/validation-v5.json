@@ -103,8 +103,6 @@
       "repetition": 1,
       "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
       "profile_verified": true,
-      "session_id": "01a099ab-9da6-7152-a3dd-b3c801676c6e",
-      "session_sha256": "551aab50ab102c9d56bcf83c45977691b99086cc993d69be68f6656d957040fc",
       "usage": {
         "input_tokens": 86697,
         "cached_input_tokens": 54784,
@@ -351,8 +349,6 @@
       "repetition": 2,
       "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
       "profile_verified": true,
-      "session_id": "01a099ae-1cef-79a1-9b89-47994f3bc639",
-      "session_sha256": "f5c9a891e52fbce2371cbd5abb686a03386db4af7f98c75fd7444779c3bab0ab",
       "usage": {
         "input_tokens": 86600,
         "cached_input_tokens": 83456,
@@ -522,8 +518,6 @@
       "repetition": 1,
       "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
       "profile_verified": true,
-      "session_id": "01a099ab-5c38-7180-a3c8-4078e3bf1313",
-      "session_sha256": "e84018e9ff0d75491d06a9492d1fb924b36500cfafb12ac2755e78c19ffc8183",
       "usage": {
         "input_tokens": 86661,
         "cached_input_tokens": 54784,
@@ -770,8 +764,6 @@
       "repetition": 2,
       "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
       "profile_verified": true,
-      "session_id": "01a099ad-c5a1-7760-b890-92add57beb1e",
-      "session_sha256": "7f42d3e3cce90a071764bdb26435368207b67568b56b64e737921a78c6f3c649",
       "usage": {
         "input_tokens": 86599,
         "cached_input_tokens": 83456,
@@ -1018,8 +1010,6 @@
       "repetition": 1,
       "packet_sha256": "c20ecbf71cac327122d4ffcd08b248ee64f3bc9aae6981e956fd2935b8d5a015",
       "profile_verified": true,
-      "session_id": "01a099ab-cd06-7380-9611-c487c2f9335c",
-      "session_sha256": "051378e6d792bc9c62fb1eabf0e48b7deedaeca8d0eb98da95c4939221573122",
       "usage": {
         "input_tokens": 123253,
         "cached_input_tokens": 80384,
@@ -1085,8 +1075,6 @@
       "repetition": 2,
       "packet_sha256": "c20ecbf71cac327122d4ffcd08b248ee64f3bc9aae6981e956fd2935b8d5a015",
       "profile_verified": true,
-      "session_id": "01a099ac-9207-7c92-97fb-f5c29c1b8bbf",
-      "session_sha256": "a14fb5c97dd8b7751c69792b0b08c9951352b6859b4e02c0d8797887dc24c070",
       "usage": {
         "input_tokens": 130111,
         "cached_input_tokens": 123136,
@@ -1145,8 +1133,6 @@
       "repetition": 1,
       "packet_sha256": "37571c8a6da78c54dedaf8084043ff510b67ce1b41956ffead3ac49f2f7a422e",
       "profile_verified": true,
-      "session_id": "01a099b9-e462-7d32-8541-c415cf50f43e",
-      "session_sha256": "702984f17f915794fdd58a73358775ea0ebeccea1b5604eb1f5d1f48a22a4b28",
       "usage": {
         "input_tokens": 78454,
         "cached_input_tokens": 38784,
@@ -1254,8 +1240,6 @@
       "repetition": 2,
       "packet_sha256": "37571c8a6da78c54dedaf8084043ff510b67ce1b41956ffead3ac49f2f7a422e",
       "profile_verified": true,
-      "session_id": "01a099bb-a603-7bb3-826f-ab33f74da5d8",
-      "session_sha256": "39f802925008d60dbc93c1d39cb4cdca2330800e29ab915de9c4132f0025f91e",
       "usage": {
         "input_tokens": 78455,
         "cached_input_tokens": 76160,
@@ -1363,8 +1347,6 @@
       "repetition": 1,
       "packet_sha256": "37571c8a6da78c54dedaf8084043ff510b67ce1b41956ffead3ac49f2f7a422e",
       "profile_verified": true,
-      "session_id": "01a099b3-e18c-73e1-ab27-82c870a87fc1",
-      "session_sha256": "3f332b94bb8ce81f68c5a6497a0026626f74b3b963115fab31042a6d7f311dd1",
       "usage": {
         "input_tokens": 85512,
         "cached_input_tokens": 42240,
@@ -1472,8 +1454,6 @@
       "repetition": 2,
       "packet_sha256": "37571c8a6da78c54dedaf8084043ff510b67ce1b41956ffead3ac49f2f7a422e",
       "profile_verified": true,
-      "session_id": "01a099b4-1188-7350-9307-8dc0d242927b",
-      "session_sha256": "aae984ec2cb03b15464391ffc6ac3148b9ae8a07ba4e27a474cee4e29e1203ac",
       "usage": {
         "input_tokens": 85499,
         "cached_input_tokens": 83072,
@@ -1581,8 +1561,6 @@
       "repetition": 1,
       "packet_sha256": "37571c8a6da78c54dedaf8084043ff510b67ce1b41956ffead3ac49f2f7a422e",
       "profile_verified": true,
-      "session_id": "01a099ba-168f-78d1-8d15-3383043641a5",
-      "session_sha256": "7656c0004b047624075149ebfa77534e67e1fcba499266533706577f72042903",
       "usage": {
         "input_tokens": 85466,
         "cached_input_tokens": 42240,
@@ -1690,8 +1668,6 @@
       "repetition": 2,
       "packet_sha256": "37571c8a6da78c54dedaf8084043ff510b67ce1b41956ffead3ac49f2f7a422e",
       "profile_verified": true,
-      "session_id": "01a099bb-f269-7340-98a3-b79c2f674c6a",
-      "session_sha256": "6d1a54c04afa52f7bbb2b8c9338a804ebf1123e2b320228b9ca334b517638114",
       "usage": {
         "input_tokens": 85556,
         "cached_input_tokens": 83072,
@@ -1799,8 +1775,6 @@
       "repetition": 1,
       "packet_sha256": "37571c8a6da78c54dedaf8084043ff510b67ce1b41956ffead3ac49f2f7a422e",
       "profile_verified": true,
-      "session_id": "01a099ae-7b8f-7540-bec5-540caa955675",
-      "session_sha256": "f129caa593ed97bc5f4dc25b67ed96d51cb76ca2016484d09920133368e1f5d8",
       "usage": {
         "input_tokens": 85392,
         "cached_input_tokens": 82432,
@@ -1908,8 +1882,6 @@
       "repetition": 2,
       "packet_sha256": "37571c8a6da78c54dedaf8084043ff510b67ce1b41956ffead3ac49f2f7a422e",
       "profile_verified": true,
-      "session_id": "01a099b0-3da5-7410-b5ea-3af8452a39d1",
-      "session_sha256": "80e2d0ace8450b2b445a33854b9b7eef2047ee055733184b1bd1bf22a691ad65",
       "usage": {
         "input_tokens": 85619,
         "cached_input_tokens": 82432,
@@ -2020,8 +1992,6 @@
       "repetition": 1,
       "packet_sha256": "37571c8a6da78c54dedaf8084043ff510b67ce1b41956ffead3ac49f2f7a422e",
       "profile_verified": true,
-      "session_id": "01a099ba-46fd-7b11-a4a3-463df9c9b230",
-      "session_sha256": "5385f3c47b2cee6d104fbdc5ad6edff53045ae40e08905957d4802e486a616c2",
       "usage": {
         "input_tokens": 85574,
         "cached_input_tokens": 41728,
@@ -2129,8 +2099,6 @@
       "repetition": 2,
       "packet_sha256": "37571c8a6da78c54dedaf8084043ff510b67ce1b41956ffead3ac49f2f7a422e",
       "profile_verified": true,
-      "session_id": "01a099bc-235d-76a3-9acc-a132248f17a2",
-      "session_sha256": "f88f15408b967672648394966f0eff0ecc3456ce34a44a6bcb8a27c1a12868f7",
       "usage": {
         "input_tokens": 85497,
         "cached_input_tokens": 82432,
@@ -5697,7 +5665,6 @@
   "evaluation_overhead": [
     {
       "id": "grade_v5_artifacts",
-      "session_id": "01a099b8-4b1f-7e21-9000-0d50175a6412",
       "profiles": [
         [
           "gpt-5.6-sol",
@@ -5726,7 +5693,6 @@
     },
     {
       "id": "grade_v5_routine_0",
-      "session_id": "01a099b5-96f3-7190-8503-64af8e757fa8",
       "profiles": [
         [
           "gpt-5.6-sol",
@@ -5755,7 +5721,6 @@
     },
     {
       "id": "grade_v5_routine_1",
-      "session_id": "01a099b5-c91a-7b52-afec-46290499af8a",
       "profiles": [
         [
           "gpt-5.6-sol",

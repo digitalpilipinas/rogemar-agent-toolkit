@@ -3073,7 +3073,7 @@
     },
     "codex-forge": {
       "file_count": 67,
-      "sha256": "009eaf410e1483b9c7c53704af3b26a77842d0b420b4364cef9c06f1e4772702"
+      "sha256": "a91370d5ecf80b0f34d40e0cf913e3010bb765fcbf0efdef3950d060c7a8e099"
     },
     "create-plan": {
       "file_count": 4,
@@ -3369,7 +3369,7 @@
     },
     "plan-model-router": {
       "file_count": 18,
-      "sha256": "534b5ce63f5e04f78e13208159c67fa4ca25141469817e1d8e4136fc88bd4e92"
+      "sha256": "3d63338756050173cbd731982f9a8ec5539d76f01564001c5f9883e272748796"
     },
     "playwright": {
       "file_count": 9,
@@ -3461,7 +3461,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 8,
-      "sha256": "ee77545f30a9f8c1f66cc7d428a124bd1eef254c438420794cc916a7923a04a0"
+      "sha256": "503be2be0ad2adaa9ef756b52d8e1ff57a6f9dc3294e61d8510faa6f9d134a2b"
     }
   },
   "version": "1.0.0"

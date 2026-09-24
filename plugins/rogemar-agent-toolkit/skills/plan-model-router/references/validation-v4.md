@@ -8,7 +8,7 @@ Default, parent targets, legacy aliases and saved preferences are unchanged.
 
 This report describes the v4 candidate and evidence. The earlier
 [validation-v3 report](validation-v3.md) documents the superseded release, not
-current routing. [All225 decisions](role-evidence.json), [readable mapping](role-mapping.md)
+current routing. [All 225 decisions](role-evidence.json), [readable mapping](role-mapping.md)
 and [new evidence](validation-v4.json) are the reviewable sources.
 
 ## What changed in the mappings
@@ -24,9 +24,9 @@ to the tested contract, never general intelligence or finished application quali
 | Lean | Terra/xhigh | 30/42 | 15/42 | 27/42 |
 | Economy | Luna/medium | 33/42 | 25/42 | 17/42 |
 
-Default uses the exact user-selected profile for every ordinary role. Its45 dynamic
-rows have no fixed coverage claim. Of225 total rows,128 have paired qualification,
-40 are provisional, and57 have no fixed/isolated evidence (Default or main-owned).
+Default uses the exact user-selected profile for every ordinary role. Its 45 dynamic
+rows have no fixed coverage claim. Of 225 total rows, 128 have paired qualification,
+40 are provisional, and 57 have no fixed/isolated evidence (Default or main-owned).
 No lower-family diversity was forced.
 
 Examples: Peak and Balanced use Terra/xhigh for qualified refactoring, bug fixes
@@ -37,16 +37,16 @@ its parent fallback carries the unresolved defects rather than a quality guarant
 
 ## Fresh matched validation
 
-Seven profiles received the identical31-focus Harbor Notes packet and SQLite coding
-exercise, twice each:14 workers,434 focused answers,14 complete coding artifacts.
+Seven profiles received the identical 31-focus Harbor Notes packet and SQLite coding
+exercise, twice each: 14 workers, 434 focused answers, 14 complete coding artifacts.
 The full packet, SHA256, answers, runtime identities and checks are in
 [validation-v4.json](validation-v4.json). Existing matching v3 pairs were reused for
 focuses outside this cohort; new failures invalidate conflicting older qualifications.
-The historical42-focus corpus and v3 ten-focus packet were not modified.
+The historical 42-focus corpus and v3 ten-focus packet were not modified.
 
 Three graders saw shuffled IDs, source and the same five-criterion rubric, without
 models, mode labels or usage. Each grader assessed all profiles for its assigned
-focuses. Main reconciliation retained concrete counterexamples and corrected12
+focuses. Main reconciliation retained concrete counterexamples and corrected 12
 scope/interpretation disagreements consistently across profiles. Two graders omitted
 outer JSON delimiters; only those closing delimiters were repaired. Raw outputs remain
 in the local audit. Candidate malformed source remains failed without repair.
@@ -61,12 +61,12 @@ in the local audit. Candidate malformed source remains failed without repair.
 | Luna/high | 51/62 | 1/2 | 0.287 | 90,357 | 2.0 | 156.0 |
 | Terra/low | 55/62 | 0/2 | 1.981 | 89,154 | 2.0 | 70.5 |
 
-*Frozen September11 Standard account-credit estimates, not an invoice, current quota,
+*Frozen September 11 Standard account-credit estimates, not an invoice, current quota,
 subscription dollars or a price claim. Cached input is included in raw totals. These
 are whole-batch costs; no per-role cost was invented by dividing a batch. New batch
 usage cannot be compared directly with historical single-role or v3 ten-role workers.
 
-The coding check covers19 assertions per runnable artifact: result shape, original
+The coding check covers 19 assertions per runnable artifact: result shape, original
 replay despite changed/blank retry text, blank rejection, owner and missing-ID denial,
 valid-data preservation, updates, reopening, stable IDs, concurrent duplicate requests
 and concurrent owners. Three artifacts fail syntax as supplied; other failing artifacts
@@ -74,7 +74,7 @@ return ValueError for unauthorized blank updates where PermissionError was requi
 An immutable original response after a later update is ambiguous in the packet and
 was not used as a pass/fail criterion. Clarify that product contract before live work.
 
-382/434 focus answers and8/14 coding artifacts passed. Only two-pass matching profiles
+382/434 focus answers and 8/14 coding artifacts passed. Only two-pass matching profiles
 were promoted for each applicable focus; no failure triggered unlimited retries.
 No UI, simulator, physical device, production migration, parent-coordination or actual
 parent-switch claim is supported by this fixture.
@@ -88,7 +88,7 @@ include differing context/cache and are not randomized causal cost rankings. Hig
 effort alone cannot remedy a demonstrated defect. Max/Ultra remain available for exact
 Default or future qualified exceptions, but lack new paired promotion proof here.
 
-The following sums replay one historical observation for each of40 comparable roles
+The following sums replay one historical observation for each of 40 comparable roles
 (excluding native-pinned Scout/Judge and main-owned roles). They are synthetic worker
 cost proxies, not measured mode totals or complete delivered-task savings. No claim
 is made about avoided rework, reviewer cost or actual account reduction in an app.
@@ -124,11 +124,11 @@ is made about avoided rework, reviewer cost or actual account reduction in an ap
 
 ## Verification and usage accounting
 
-The policy suite covers all225 mappings, actual-parent/mode ceilings, preferences,
+The policy suite covers all 225 mappings, actual-parent/mode ceilings, preferences,
 aliases, consequential flags, executable evidence, exact Default, known failures,
 qualified escalation and native pins. Independent review found and fixed two escapes:
 an unqualified desired-target fallback and a broad native-role exemption. The new
 regressions pass. Required repository/release checks and installation parity are
 recorded in the local release receipt after the candidate is frozen.
 
-The14 candidate/baseline workers used 1,510,775 raw tokens and 44.514 estimated Standard credits. Separately captured grading, policy-review and dispatch workers used 2,000,809 tokens and 111.574 estimated credits. These are evaluation overhead, not mode usage. Parent coordination tokens are not completely isolated; a complete execution cost is unavailable.
+The 14 candidate/baseline workers used 1,510,775 raw tokens and 44.514 estimated Standard credits. Separately captured grading, policy-review and dispatch workers used 2,000,809 tokens and 111.574 estimated credits. These are evaluation overhead, not mode usage. Parent coordination tokens are not completely isolated; a complete execution cost is unavailable.

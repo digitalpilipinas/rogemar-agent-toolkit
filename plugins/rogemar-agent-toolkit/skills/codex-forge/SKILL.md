@@ -43,7 +43,8 @@ For every justified new worker assignment, automatically use the orchestrator's
 [router dispatch contract](../plan-model-router/references/dispatch-contract.md).
 It runs the shared resolver and passes the resulting model and effort into the
 native worker tool. Read [role-mapping.md](../plan-model-router/references/role-mapping.md)
-for six group defaults and individual role contracts. Selecting a role does not
+for the five-mode role table and task-fit limits; the router's `--role-map` shows
+group defaults and individual role contracts. Selecting a role does not
 create an agent; simple work stays with the main agent.
 
 Resolve explicit task mode, established task mode, then saved preference before each materially different assignment.

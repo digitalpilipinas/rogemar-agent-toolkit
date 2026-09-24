@@ -29,7 +29,11 @@ The router computes a profile; the orchestrator performs the native tool call.
    named mode, omit `candidates` to use group → role override → saved role
    preferences. Explicit candidates require task-fit reasons and undergo the
    same checks. Apply separately requested user limits before proposing them.
-   Without a named mode, use qualified candidates or exact parent inheritance.
+   Without a named mode, declared roles and implementation/consequential work still
+   require qualified candidates, exact parent inheritance or a compatible mandatory
+   native pin in the parent family. Legacy role-less, unflagged assessments may
+   propose an alternate within both ceilings, labeled `alternate-profile-provisional`;
+   they do not qualify that profile for a Forge role or implementation contract.
 5. Dispatch only authorized independent assignments with `status: ready`,
    `target: worker`. A ready resolver result does not waive explicit user or host
    hard limits: check both model and effort against them before dispatch, even

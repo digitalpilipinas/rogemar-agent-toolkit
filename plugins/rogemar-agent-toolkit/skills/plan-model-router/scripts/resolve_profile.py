@@ -396,6 +396,7 @@ def resolve(request):
                 reasons.append('finding validation, minimum-scope judgment and implementation require a non-Luna permitted profile')
             if actual['effort'] not in MODE_PROFILES[mode].get(actual['model'],[]) and not exception:
                 reasons.append('effective profile is outside the selected mode normal pool; no verified exception')
+        if mode != 'default' and (mode or role_name or implementation or consequential):
             if consequential and actual['model'] != parent['model'] and not exception:
                 reasons.append('consequential judgment retains the actual parent family')
             native_pin_only = native and actual['model']==parent['model'] and actual['effort']==binding['effort']
@@ -418,7 +419,7 @@ def resolve(request):
                       exception_applied=exception, evidence_status='unverified-runtime',
                       qualification_id=(ex if exception else qualified or {}).get('evidence_id'),
                       known_quality_failures=[f for f in ROUTING_CATALOG.get('known_failures',{}).get(role_name,[]) if f['profile']==actual and (implementation or not f.get('coding_only'))],
-                      quality_status='qualified-for-tested-contract' if exception or qualified else 'native-contract' if native else 'parent-profile-provisional')
+                      quality_status='qualified-for-tested-contract' if exception or qualified else 'native-contract' if native else 'parent-profile-provisional' if actual == parent else 'alternate-profile-provisional')
         result['qualification_scope'] = (ex if exception else qualified or {}).get('scope', 'supplied benchmark contract only; not general role competence')
         if 'not general role competence' not in result['qualification_scope']:
             result['qualification_scope'] += '; not general role competence'

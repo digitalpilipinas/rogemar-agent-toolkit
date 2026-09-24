@@ -129,8 +129,6 @@
   "batches": [
     {
       "id": "validate_roles_luna_high_2",
-      "session_id": "01a09768-e342-7a02-80b0-68727a7c400b",
-      "session_sha256": "020544effd980df7b762edf78008c5341407e39612930548f1f9c1605ebf5c51",
       "model": "gpt-5.6-luna",
       "effort": "high",
       "profile_verified": true,
@@ -161,8 +159,6 @@
     },
     {
       "id": "validate_roles_luna_high",
-      "session_id": "01a09766-c418-7ff0-90be-8a862768b661",
-      "session_sha256": "cf955bfaa2b4f96189c9b97c1efda4e25a09563b8f8736acf78da928e1ac0282",
       "model": "gpt-5.6-luna",
       "effort": "high",
       "profile_verified": true,
@@ -193,8 +189,6 @@
     },
     {
       "id": "validate_roles_terra_xhigh",
-      "session_id": "01a09761-5248-7680-89d1-380405453e63",
-      "session_sha256": "3571a55d1eb099158014e1698c87fd6f8156cd3ec85d108d539cee77b3cda7cf",
       "model": "gpt-5.6-terra",
       "effort": "xhigh",
       "profile_verified": true,
@@ -225,8 +219,6 @@
     },
     {
       "id": "validate_roles_luna_low",
-      "session_id": "01a0976b-6fbd-7c20-958f-608627723f76",
-      "session_sha256": "2d7ca6fe13e4ebf2218b5ee4d44b55218ce79d608486013b0b3a409fa08df023",
       "model": "gpt-5.6-luna",
       "effort": "low",
       "profile_verified": true,
@@ -257,8 +249,6 @@
     },
     {
       "id": "validate_roles_luna_xhigh",
-      "session_id": "01a09766-ecd4-7591-9d3d-3c2339344748",
-      "session_sha256": "b6aba4691d4011cc201517f352aeb6228b6dbe9879a706bd8521dccf1aefd72d",
       "model": "gpt-5.6-luna",
       "effort": "xhigh",
       "profile_verified": true,
@@ -289,8 +279,6 @@
     },
     {
       "id": "validate_roles_luna_low_2",
-      "session_id": "01a0976b-a4d8-7d73-8a93-f23cab969815",
-      "session_sha256": "9760cb90b3afc999e3e8d6f1f6c5268a4ba4d1b30efb196d56a6ca2db492e464",
       "model": "gpt-5.6-luna",
       "effort": "low",
       "profile_verified": true,
@@ -321,8 +309,6 @@
     },
     {
       "id": "validate_roles_luna_medium_2",
-      "session_id": "01a09768-b2c0-7f90-b3ad-3660737ca7bf",
-      "session_sha256": "4b8f5a0104109af27a6df885dcc419b9d246200cab8e7a5a8dadf00169faf383",
       "model": "gpt-5.6-luna",
       "effort": "medium",
       "profile_verified": true,
@@ -353,8 +339,6 @@
     },
     {
       "id": "validate_roles_luna_xhigh_2",
-      "session_id": "01a09769-0964-74f2-acb8-dfa23fbeb8dc",
-      "session_sha256": "de6a0255b1e9da0327046c74c1948580481dec6d54ffc634b7db78c7ba1cb398",
       "model": "gpt-5.6-luna",
       "effort": "xhigh",
       "profile_verified": true,
@@ -385,8 +369,6 @@
     },
     {
       "id": "validate_roles_sol_xhigh",
-      "session_id": "01a09761-3311-7d03-ba57-3006b871d3e4",
-      "session_sha256": "a4990407a16ee21c1d3eee0e18adcf77927c934ed8ac8a1e2a81569bfb4a6841",
       "model": "gpt-5.6-sol",
       "effort": "xhigh",
       "profile_verified": true,
@@ -417,8 +399,6 @@
     },
     {
       "id": "validate_roles_sol_xhigh_2",
-      "session_id": "01a09764-8465-7e91-a865-036cae471001",
-      "session_sha256": "b79ecf0ffb38425e0ca980a3f80f99c5e2a280be593f5182ad2f92bdb39685c1",
       "model": "gpt-5.6-sol",
       "effort": "xhigh",
       "profile_verified": true,
@@ -449,8 +429,6 @@
     },
     {
       "id": "validate_roles_terra_xhigh_2",
-      "session_id": "01a09764-a294-7960-9a32-6b463d515b5d",
-      "session_sha256": "8eb4964cec4ac31fccada670e3146fed2e2659d3c9852b39b301bcdf153e02e3",
       "model": "gpt-5.6-terra",
       "effort": "xhigh",
       "profile_verified": true,
@@ -481,8 +459,6 @@
     },
     {
       "id": "validate_roles_luna_medium",
-      "session_id": "01a09766-a5dc-7de2-afda-374a7d0096a2",
-      "session_sha256": "eb5126e13ff927a9c8f9c4fcdfba0656529d44b51d58bfb7e126329a8fa7ab15",
       "model": "gpt-5.6-luna",
       "effort": "medium",
       "profile_verified": true,
@@ -513,8 +489,6 @@
     },
     {
       "id": "validate_roles_astra_xhigh",
-      "session_id": "01a09761-10b1-7272-8035-efaaf7e43d7b",
-      "session_sha256": "f17eeccdb1dfab61c0364a8c3b7d9be88b3c38eb3cbe6fd9299f6651fa1a8e41",
       "model": "gpt-6-astra",
       "effort": "xhigh",
       "profile_verified": true,
@@ -545,8 +519,6 @@
     },
     {
       "id": "validate_roles_astra_xhigh_2",
-      "session_id": "01a09764-5f99-7d11-8a59-0cc3f91c8ef0",
-      "session_sha256": "4e32540cd760fedd5f08e25af333caec244fd67530e4ac2bd376680e3d14f4a3",
       "model": "gpt-6-astra",
       "effort": "xhigh",
       "profile_verified": true,
@@ -4902,7 +4874,6 @@
           "note_needed": false
         }
       },
-      "session_id": "01a09774-81f7-7b40-a16e-821b64df1366",
       "usage": {
         "input_tokens": 82842,
         "cached_input_tokens": 40704,
@@ -4932,7 +4903,6 @@
         ],
         "native_gate_satisfied": false
       },
-      "session_id": "01a09773-4d29-7d63-bf6b-8eec8b8c4acc",
       "usage": {
         "input_tokens": 78707,
         "cached_input_tokens": 55808,
@@ -4962,7 +4932,6 @@
         ],
         "native_gate_satisfied": false
       },
-      "session_id": "01a09773-f2bc-76c3-a4d2-8a3ac2a38155",
       "usage": {
         "input_tokens": 78712,
         "cached_input_tokens": 55808,
@@ -5009,7 +4978,6 @@
           ]
         }
       },
-      "session_id": "01a09774-a324-7cd3-a39d-5498ce782fd8",
       "usage": {
         "input_tokens": 83356,
         "cached_input_tokens": 40704,

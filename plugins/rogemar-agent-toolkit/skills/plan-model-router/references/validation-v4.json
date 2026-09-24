@@ -176,8 +176,6 @@
       },
       "profile_verified": true,
       "repetition": 1,
-      "session_id": "01a097b5-edad-7962-9c6f-c1941c82dc78",
-      "session_sha256": "d68fa3aff007e7b39cbf79f455cbb1aa46ad63cf02617c3a1ef3f856a9c7be59",
       "usage": {
         "input_tokens": 86228,
         "cached_input_tokens": 41728,
@@ -294,8 +292,6 @@
       },
       "profile_verified": true,
       "repetition": 1,
-      "session_id": "01a097af-f783-7a12-9bb8-600b91382033",
-      "session_sha256": "1856993c454ea99a62b733b5e4d4230bf582cf31476fe197f1ab060b438d6b33",
       "usage": {
         "input_tokens": 79259,
         "cached_input_tokens": 75648,
@@ -412,8 +408,6 @@
       },
       "profile_verified": true,
       "repetition": 1,
-      "session_id": "01a097a6-84cd-7850-b850-e3e6b84b12f7",
-      "session_sha256": "1ade87bf55b371a4b3f8e1518f8151c0347008dc3d326332f1491dcd25363ba1",
       "usage": {
         "input_tokens": 82553,
         "cached_input_tokens": 79360,
@@ -532,8 +526,6 @@
       },
       "profile_verified": true,
       "repetition": 2,
-      "session_id": "01a097a9-8fdd-7680-a1e9-4347a93bdd6d",
-      "session_sha256": "89056ce825f3ba9da29745609a868420c39858bcc6662c143bd851421389f082",
       "usage": {
         "input_tokens": 82554,
         "cached_input_tokens": 79360,
@@ -573,8 +565,6 @@
       },
       "profile_verified": true,
       "repetition": 2,
-      "session_id": "01a097b3-172e-70f3-8afd-8fa14236ea92",
-      "session_sha256": "eabb1dd2da986bb8b5057b2161aab0a64e34eb4805d2b69a5c2636bdcafc6efe",
       "usage": {
         "input_tokens": 79267,
         "cached_input_tokens": 75648,
@@ -691,8 +681,6 @@
       },
       "profile_verified": true,
       "repetition": 1,
-      "session_id": "01a097b0-4630-7342-a85e-b905723485af",
-      "session_sha256": "1ccee14308184fdb6ec2204506eab39766692adc0066a6772a8ad79c9d22ff00",
       "usage": {
         "input_tokens": 171611,
         "cached_input_tokens": 167168,
@@ -809,8 +797,6 @@
       },
       "profile_verified": true,
       "repetition": 1,
-      "session_id": "01a097a6-30c2-74c2-9ca8-4ee0deb4a5a9",
-      "session_sha256": "dec33817e3dfafff9e3c8f94f3c57c73f35eae2a3fe4a58f9ee1add48c135346",
       "usage": {
         "input_tokens": 82585,
         "cached_input_tokens": 79360,
@@ -927,8 +913,6 @@
       },
       "profile_verified": true,
       "repetition": 2,
-      "session_id": "01a097a9-25c0-7fe0-8e21-f93dabf78524",
-      "session_sha256": "33749257601addea2682a7e8f2bfab9d9ff8cb45d3bf9261d103ecbb168880ab",
       "usage": {
         "input_tokens": 82603,
         "cached_input_tokens": 79360,
@@ -1047,8 +1031,6 @@
       },
       "profile_verified": true,
       "repetition": 2,
-      "session_id": "01a097b2-a6d2-7192-826a-032df120847d",
-      "session_sha256": "df65d3202a7db92c003fb11eb18a6a439b871bca6d2ea89a92525a3d30e208f5",
       "usage": {
         "input_tokens": 82631,
         "cached_input_tokens": 79360,
@@ -1088,8 +1070,6 @@
       },
       "profile_verified": true,
       "repetition": 2,
-      "session_id": "01a097aa-04c3-7680-bd13-9fe579ae72b1",
-      "session_sha256": "91862fa97af5ba90fb74fe5f46e07b17eedee7812e260075847c4fc42de46cff",
       "usage": {
         "input_tokens": 86176,
         "cached_input_tokens": 83456,
@@ -1208,8 +1188,6 @@
       },
       "profile_verified": true,
       "repetition": 2,
-      "session_id": "01a097b6-47fb-7ea0-8daa-642a783e4bc5",
-      "session_sha256": "67510889b20d2aba1ec727ac8889c010111c2c922910209b0616d4ea847b8f6d",
       "usage": {
         "input_tokens": 134004,
         "cached_input_tokens": 127232,
@@ -1326,8 +1304,6 @@
       },
       "profile_verified": true,
       "repetition": 1,
-      "session_id": "01a097a6-d04b-7471-b069-6da5eb7e326d",
-      "session_sha256": "247a09fc4b868483011693c299a433760b7b54391144d23e646e44a7362586f1",
       "usage": {
         "input_tokens": 86138,
         "cached_input_tokens": 59904,
@@ -1367,8 +1343,6 @@
       },
       "profile_verified": true,
       "repetition": 1,
-      "session_id": "01a097af-b7c4-7692-8083-fe3c0889e652",
-      "session_sha256": "dc8edb7d804045e2f9d15b50f5ce229d01784e92749d50d77b778453d46da749",
       "usage": {
         "input_tokens": 82663,
         "cached_input_tokens": 79360,
@@ -1485,8 +1459,6 @@
       },
       "profile_verified": true,
       "repetition": 2,
-      "session_id": "01a097b3-c754-7263-a977-991da0da32a7",
-      "session_sha256": "410f5e78b1e6e862583c14415f969857c42c71a3ae9c1dc6a19d5e864692dde8",
       "usage": {
         "input_tokens": 213961,
         "cached_input_tokens": 209280,
@@ -17583,7 +17555,6 @@
       "xhigh"
     ],
     "source": "native worker turn_context records",
-    "session_id": "01a097c7-5e41-75b2-822b-2790cf65a820",
     "code": "def read_note(notes, note_id, caller):\n    for note in notes:\n        if note[\"id\"] == note_id:\n            return note\n    raise StopIteration\n",
     "checks": [
       "first match object identity",
