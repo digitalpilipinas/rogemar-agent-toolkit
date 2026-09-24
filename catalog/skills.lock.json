@@ -3073,7 +3073,7 @@
     },
     "codex-forge": {
       "file_count": 67,
-      "sha256": "13ea8797de82a85e8947def06fe009734757d66de98b0edf7f2724ff2d0f6c8e"
+      "sha256": "a91370d5ecf80b0f34d40e0cf913e3010bb765fcbf0efdef3950d060c7a8e099"
     },
     "create-plan": {
       "file_count": 4,
@@ -3269,7 +3269,7 @@
     },
     "forge-setup": {
       "file_count": 3,
-      "sha256": "ed32e9edde7563149afda368c7c5e2e421cc11e85baf9c0597bf8e9a48dcbea9"
+      "sha256": "44e663c88a639a2e38eedc30035f62ce821db13ad301b4c3f72e555dfcc07b7c"
     },
     "forge-show-me-your-work": {
       "file_count": 5,
@@ -3368,8 +3368,8 @@
       "sha256": "da143ea70c6e44c476a3fc4deffa9b543a0f42e8cccee19530696821ba91ab70"
     },
     "plan-model-router": {
-      "file_count": 9,
-      "sha256": "9cb6b1b414c22f7b7c523dd2fcd083662c2815be6f86d90e0036557725d5d006"
+      "file_count": 18,
+      "sha256": "3d63338756050173cbd731982f9a8ec5539d76f01564001c5f9883e272748796"
     },
     "playwright": {
       "file_count": 9,
@@ -3460,8 +3460,8 @@
       "sha256": "4f6e4f6de44a67dd2d28e4cb80c498481baa6f5035f59661756108ce78cf4e32"
     },
     "workflow-orchestrator": {
-      "file_count": 7,
-      "sha256": "852fa2245d1369825f757ce445f0950303eb2e0ff2845c1cf5849655c6ebda7b"
+      "file_count": 8,
+      "sha256": "503be2be0ad2adaa9ef756b52d8e1ff57a6f9dc3294e61d8510faa6f9d134a2b"
     }
   },
   "version": "1.0.0"

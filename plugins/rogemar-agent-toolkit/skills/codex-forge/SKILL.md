@@ -13,11 +13,15 @@ repeated introductions. Setup inspection alone does not require a mode choice
 or write preferences; apply the prompt when beginning an execution task.
 
 
+Complete the shared mode contract’s bounded profile-evidence inspection before
+reporting model/effort as unverified; distinguish requested, applied and verified
+profiles rather than treating mode selection as a model switch.
+
 Read [the runtime contract](references/codex-runtime.md) before runtime work.
 `workflow-orchestrator` owns capability selection and every subagent dispatch.
 `plan-model-router` owns model policy. `integrated-workflow` retains
-approved programme and publication authority. A selected Forge mode governs parent and worker profiles; without a named mode,
-the manually selected main model and reasoning effort remain defaults and ceilings.
+approved programme and publication authority. The selected mode sets parent targets and normal worker ceilings. Default uses one
+exact user-selected profile. Without a named mode, retain parent inheritance and ceilings.
 
 The portable sibling is `universal-forge`; this entry retains tested Codex
 bindings and its full native companions. Do not invoke both as execution owners.
@@ -39,14 +43,16 @@ For every justified new worker assignment, automatically use the orchestrator's
 [router dispatch contract](../plan-model-router/references/dispatch-contract.md).
 It runs the shared resolver and passes the resulting model and effort into the
 native worker tool. Read [role-mapping.md](../plan-model-router/references/role-mapping.md)
-for six group defaults and individual role contracts. Selecting a role does not
+for the five-mode role table and task-fit limits; the router's `--role-map` shows
+group defaults and individual role contracts. Selecting a role does not
 create an agent; simple work stays with the main agent.
 
-Read the saved Forge mode before each materially different worker assignment.
-`$forge-setup Use peak`, `Use balanced`, `Use lean`, or `Use sprint` changes the saved
-candidate pool. A task-only mode request stays in task context. The router
+Resolve explicit task mode, established task mode, then saved preference before each materially different assignment.
+`$forge-setup Use default`, `Use peak`, `Use balanced`, `Use lean`, or `Use economy`
+configures the requested mode. `sprint` remains an alias for Economy. A task-only mode request stays in task context. The router
 checks the pool, current backend, task fit, and any explicit user limits together.
-No eligible worker means the main agent keeps the work; do not silently escape
+No eligible worker means the main agent keeps ordinary work; required independent
+evidence remains required; do not silently escape
 the mode by inheriting an excluded profile. Adapt the desired parent to the mode; apply it only through a supported current-task
 model control, or report that the parent change still needs the user to apply it.
 
@@ -96,8 +102,10 @@ no new external-action authority. Keep an unavailable service or required
 runtime check visibly blocked and continue independent authorized work.
 
 For each materially different package, the orchestrator requests a fresh model
-fit assessment. Workers use justified profiles from the selected mode, even when above the
-current parent defaults. Without a mode, use parent inheritance and ceilings. Setup is optional;
+fit assessment. Normal workers obey both model and reasoning ceilings, including an accepted
+fallback parent. Only the router’s verified, exact role exceptions may exceed
+either ceiling for hillclimb/hardest-tasks when concretely needed and compliant with explicit user limits. Default has no automatic exceptions.
+Without a mode, use parent inheritance and ceilings. Setup is optional;
 `forge-setup` stores mode preferences; a real parent switch is a separate
 runtime action whose outcome must be verified.
 Reconcile the actual diff, executable evidence, and independently useful review
@@ -172,3 +180,13 @@ in addition to the 22 task playbooks.
 - **Multi-phase or multi-PR plan.** Work that spans phases or stacked PRs. `playbooks/multi-phase-plan.md`.
 - **Worktree and simulator cleanup.** Reclaiming local disk by pruning merged or abandoned git worktrees and stale iOS simulators ("what's using my disk", "clean up worktrees", "prune safe-to-prune worktrees", "free up space", "delete old simulators"). `playbooks/worktree-cleanup.md`.
 - **Opening a PR.** Use when PR creation is in the approved delivery route. `playbooks/opening-a-pr.md`.
+
+Routine assignments, including implementation, may use qualified lower profiles.
+Keep consequential judgment and coding-evidence checks with `plan-model-router`;
+inspect its role ledger for qualification or a provisional parent rationale.
+Do not copy its model table here or change saved preferences during inspection.
+Use the router's current qualification scope and known failures when applying the
+playbook. The [focused comparison](../plan-model-router/references/validation-v6.md)
+distinguishes working UI/source-tracing evidence from readiness-only answers.
+Use exact-generation model labels and qualifications from the router. New native
+availability is not evidence that an old assignment or consultant exception transfers.
