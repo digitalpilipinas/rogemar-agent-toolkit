@@ -1569,12 +1569,11 @@
           "unlazy"
         ],
         "skills": [
-          "engineering-playbooks",
-          "integrated-workflow",
-          "test-architecture-engineer",
-          "performance-profiler",
           "agent-map",
           "codex-forge",
+          "cursor-forge",
+          "cursor-forge-setup",
+          "engineering-playbooks",
           "forge-architect",
           "forge-arena",
           "forge-automate-me",
@@ -1587,6 +1586,7 @@
           "forge-maintain-verification-skill",
           "forge-make-bot-ui",
           "forge-no-comments",
+          "forge-principle-attack-the-premise",
           "forge-principle-boundary-discipline",
           "forge-principle-build-the-lever",
           "forge-principle-encode-lessons-in-structure",
@@ -1607,6 +1607,7 @@
           "forge-principle-separate-before-serializing-shared-state",
           "forge-principle-sequence-verifiable-units",
           "forge-principle-subtract-before-you-add",
+          "forge-principle-test-behavior-not-implementation",
           "forge-principle-type-system-discipline",
           "forge-recall",
           "forge-reflect",
@@ -1619,10 +1620,11 @@
           "forge-typescript-best-practices",
           "forge-unslop",
           "forge-why",
+          "integrated-workflow",
+          "performance-profiler",
+          "test-architecture-engineer",
           "universal-forge",
-          "universal-plan-model-router",
-          "cursor-forge",
-          "cursor-forge-setup"
+          "universal-plan-model-router"
         ]
       },
       "expo": {
@@ -2189,6 +2191,14 @@
         "codex"
       ]
     },
+    "forge-principle-attack-the-premise": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
     "forge-principle-boundary-discipline": {
       "requires": [
         "codex-forge"
@@ -2342,6 +2352,14 @@
       ]
     },
     "forge-principle-subtract-before-you-add": {
+      "requires": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
+    },
+    "forge-principle-test-behavior-not-implementation": {
       "requires": [
         "codex-forge"
       ],
@@ -3041,7 +3059,7 @@
     },
     "agent-collaboration-terminal": {
       "file_count": 8,
-      "sha256": "2371112debbff8b5dc11b61c0bb456a6832c08f1c8bd9309f35b0e14228985d5"
+      "sha256": "f18f46751c10205d1210a943eb87bbe2f09b3795be7ee9e489a67d76378f15bd"
     },
     "agent-map": {
       "file_count": 3,
@@ -3073,7 +3091,7 @@
     },
     "codex-forge": {
       "file_count": 67,
-      "sha256": "2142447c04d9e3c1e7756a56480502ae4049ac8b91047c3bb986a8205e6aa72f"
+      "sha256": "fbe740792caf874b224ebfecbdb1122c256322633e4245d60cc48461879e5aa8"
     },
     "create-plan": {
       "file_count": 4,
@@ -3085,7 +3103,7 @@
     },
     "cursor-forge": {
       "file_count": 4,
-      "sha256": "ccec042288f3770dc0677562e93ede08e730286cca2b7258a96292215cb82b06"
+      "sha256": "33ee3b960222232095514483a18c12d8db9ea3de275c419c5bbd16b14f8fa7d8"
     },
     "cursor-forge-setup": {
       "file_count": 6,
@@ -3116,8 +3134,8 @@
       "sha256": "88b075048cf393c80c5327da1c07ec227eb6151c22cd9a856e1e418e0e472ce0"
     },
     "engineering-playbooks": {
-      "file_count": 48,
-      "sha256": "95a7c180d24802d0c12e32b0484cd9cdc2183fede68e0b35f2ea3314e347e28f"
+      "file_count": 51,
+      "sha256": "3d90662779de2271f0412fe730e6cbaf3f9a654dd2d1b3dc31a3838b497eda13"
     },
     "figma": {
       "file_count": 8,
@@ -3149,7 +3167,7 @@
     },
     "forge-create-verification-skill": {
       "file_count": 6,
-      "sha256": "4444c3c5f0c11af1a64625a0cda77fac914195aefe1f6f588208e224657af3b7"
+      "sha256": "a74846d87e88a687d612d98a4ac5e66cb120729eec6c31c03090f7ef52b11f50"
     },
     "forge-figure-it-out": {
       "file_count": 3,
@@ -3157,7 +3175,7 @@
     },
     "forge-how": {
       "file_count": 7,
-      "sha256": "5ba59c95b471c7a47310eeb6b9054baf461276c3d2aaeaeb53fd5bf2fbf02ef6"
+      "sha256": "04450240520359ed028d02f7104f83c9d2bee406988578c2cf9ca98658d7d5f4"
     },
     "forge-interrogate": {
       "file_count": 7,
@@ -3165,7 +3183,7 @@
     },
     "forge-maintain-verification-skill": {
       "file_count": 3,
-      "sha256": "b46908e2f01eea4876b032ef6b63df601eed1e7d2f69e6cd84b22564cf8927e8"
+      "sha256": "e25787ce33f2d2b78a70ae732bd45602a4f23bd15353b8012303a0a23974f40e"
     },
     "forge-make-bot-ui": {
       "file_count": 3,
@@ -3174,6 +3192,10 @@
     "forge-no-comments": {
       "file_count": 3,
       "sha256": "2d186aae94e799ca6b704b2f9adaaf9ecbd742ab56d1a743305eade3591ba2a6"
+    },
+    "forge-principle-attack-the-premise": {
+      "file_count": 3,
+      "sha256": "ca46f5c61089653645c7958cc14270592ceb43bc4c523e1db79ff92417b4b369"
     },
     "forge-principle-boundary-discipline": {
       "file_count": 3,
@@ -3255,6 +3277,10 @@
       "file_count": 3,
       "sha256": "f7a17c99b29aa5263ef87d005e54fc057f2162df1b3328f41eb9de7e38e351a7"
     },
+    "forge-principle-test-behavior-not-implementation": {
+      "file_count": 3,
+      "sha256": "6a781c061e1ffc8e19560d640c38e83d44f0d77fc8dcf7bbbe3a3d04a25468c2"
+    },
     "forge-principle-type-system-discipline": {
       "file_count": 3,
       "sha256": "39f7e0a6fccaa30bedb670b2f155856c8ba61f0877fd2fc5f5b3d9f15a215e49"
@@ -3269,15 +3295,15 @@
     },
     "forge-setup": {
       "file_count": 3,
-      "sha256": "ed32e9edde7563149afda368c7c5e2e421cc11e85baf9c0597bf8e9a48dcbea9"
+      "sha256": "44e663c88a639a2e38eedc30035f62ce821db13ad301b4c3f72e555dfcc07b7c"
     },
     "forge-show-me-your-work": {
       "file_count": 5,
-      "sha256": "680cd46585b5464b41e7b5c0ce658c7dffd7fd7ef83c2831405dd576d148f7d3"
+      "sha256": "7cced47a9041971991973ee7f996720bb0edb13109c90ef490f9028d98e9dc74"
     },
     "forge-swarm": {
       "file_count": 3,
-      "sha256": "757b87232e32c0d3fbdf9141a4ad8ac919babd7ff74de7ec947db1ee0456d29c"
+      "sha256": "91ce0facfebea3a807ae092b1e84701d45fff5f9759e213daa48ecc1acf98ae9"
     },
     "forge-tdd": {
       "file_count": 3,
@@ -3320,8 +3346,8 @@
       "sha256": "2f011b9660a5393827c266b79fe5a6d7a4ce4b298125218409ab45e86f96f140"
     },
     "integrated-workflow": {
-      "file_count": 7,
-      "sha256": "d03d2e4fbd1f4855ff141032e226073c0139b9698a98078df6cb543e73a57102"
+      "file_count": 8,
+      "sha256": "fc4c004e1df8d5189b9e33d900bba144c6ba886ead8f1c533c1e72808b6b5b90"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -3368,8 +3394,8 @@
       "sha256": "da143ea70c6e44c476a3fc4deffa9b543a0f42e8cccee19530696821ba91ab70"
     },
     "plan-model-router": {
-      "file_count": 9,
-      "sha256": "dea9d4614cb7dec9b6e3035cc424b7ab3f236cd0e9500e264dcbf479cd01ca59"
+      "file_count": 18,
+      "sha256": "91d08c16ec664ad4cf667a15fc811e583955e4d6ca564dfa63fa73d8047736e7"
     },
     "playwright": {
       "file_count": 9,
@@ -3380,8 +3406,8 @@
       "sha256": "2c481a79b7db67d3b82455f5b2e311854aad20408991bc23635e4940aeeecf23"
     },
     "project-learning": {
-      "file_count": 13,
-      "sha256": "06ee51f24b4cb072fbd7c27cc50b3e72a4bc8fa756b1f79c84c11ce25e3db22e"
+      "file_count": 14,
+      "sha256": "f48d7e8aeec34187931b39e309abfc7baf774c20215c855af897744e0fe63e26"
     },
     "reference-design-contract": {
       "file_count": 7,
@@ -3437,7 +3463,7 @@
     },
     "universal-forge": {
       "file_count": 5,
-      "sha256": "9065db5c62ad6159eb2a07137f4a300c5cba37e6912a5b78b0e810a27588f2cf"
+      "sha256": "307990025f0ee6541f9e0d9173c55d673bdd1e3c093423aed27579a9855c06c6"
     },
     "universal-plan-model-router": {
       "file_count": 2,
@@ -3461,7 +3487,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 8,
-      "sha256": "5b7771492fde10f75b2c3ed86778e474da0d04438eb7c23eaec7c173179eb302"
+      "sha256": "5fe4abbebf25f7ab738ccd5f69298c78426b3d645942e57cd6d1bb3d12ab9d3d"
     }
   },
   "version": "1.0.0"

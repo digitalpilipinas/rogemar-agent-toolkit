@@ -1,75 +1,46 @@
 ---
 name: forge-setup
-description: Configure adaptive per-role Codex model preferences for Forge. Use when setting up Forge, switching Peak, Balanced, Lean, or Sprint modes, changing preferred worker models or reasoning hints, or checking routing readiness. Let a selected mode govern parent and worker profiles; verify actual runtime switches separately.
+description: Configure adaptive per-role Codex model preferences for Forge. Use when setting up Forge, switching Default, Peak, Balanced, Lean, or Economy modes, changing preferred worker models or reasoning hints, or checking routing readiness. Let a selected mode govern parent and worker profiles; verify actual runtime switches separately.
 license: MIT
 ---
 # Set up Forge model preferences
 
-Read `references/forge-mode-status.md` from the installed `workflow-orchestrator`
-skill and follow that shared contract at entry,
-resume and dispatch: explicit request → task mode → saved preference; ask once
-if none exists. Show role, model, effort, mode and evidence status without
-repeated introductions. Setup inspection alone does not require a mode choice
-or write preferences; apply the prompt when beginning an execution task.
+Follow the installed orchestrator’s `references/forge-mode-status.md`: explicit
+request → task mode → saved preference. Inspection alone never changes settings
+or requires an execution-mode choice. A saved mode does not switch the parent.
 
+1. Inspect the actual supported models/reasoning and read the existing `forge.json`
+   in the Codex home. Preserve malformed files and explain the error.
+2. Use the router’s `--list-modes` and `--role-map` for the single policy catalogue.
+   Explain the parent target, actual parent, normal ceilings and any verified
+   exceptions. Default is the exact user-selected model AND effort; ask only if
+   that profile cannot be established from the explicit choice/current metadata.
+3. For an explicit save, run `resolve_profile.py --set-mode MODE --preferences FILE`.
+   Default accepts `--default-model MODEL --default-effort EFFORT`; reuse a saved
+   Default profile when available. Schema 3 adds `default_profile`; schema 1/2
+   remains readable and migrates on an authorized write with backup, atomic
+   replacement and readback. Preserve per-role choices; rejected overrides stay
+   visible rather than silently escaping policy. Keep exact model generations: a
+   preset catalogue update does not rewrite saved Default or role selections.
+   Explain an excluded or unavailable preference and offer permitted choices.
+4. Read back and validate. Retain the chosen active mode when none was requested.
+   `sprint → economy`, `supreme → peak`, `optimize → balanced`, `budget → lean`.
+   Never infer mode from parent identity. The accepted new policy changes preset
+   meanings; show that once on migration without claiming a runtime switch.
+5. Before subsequent execution, resolve any desired/current parent mismatch using
+   the existing shared task-level choice. A fallback retains both actual-parent
+   and mode ceilings. Default must stay exact: choosing a different current parent
+   requires an explicit task Default profile matching that parent.
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md).
-Route the configuration assessment through `workflow-orchestrator` and read
-`plan-model-router/references/runtime-routing.md` for the single shared schema.
-Setup writes only the explicitly requested preference file; it does not alter
-Codex's main model, global defaults, agent pins, permissions, or integrations.
+Read the router’s [runtime routing contract](../plan-model-router/references/runtime-routing.md)
+for fields, examples and validation. Setup does not change native GoalBuddy pins,
+global Codex defaults, permissions or integrations. Configuration checks and live
+worker verification are separate; promotion requires the recorded focused trials.
 
-1. Inspect the current dispatch catalog and supported reasoning levels. Include
-   Astra, Sol, Terra, and Luna only when those exact IDs are surfaced. Distinguish
-   active parent evidence from configuration defaults. No catalog means keep
-   parent inheritance available and report model choices as Unverified.
-2. Read `${CODEX_HOME:-$HOME/.codex}/forge.json` if present. Preserve valid
-   existing choices. Show missing/retired choices without treating them as
-   usable. Never overwrite a malformed file or silently change an owner choice.
-3. Read the named modes in `plan-model-router/references/runtime-routing.md`.
-   Use `resolve_profile.py --list-modes` for their exact model/effort pools.
-   Accept `$forge-setup Use peak`, `Use balanced`, `Use lean`, or
-   `Use sprint`. Preserve the active mode if none is selected;
-   recommend Balanced for everyday work without silently changing an owner choice.
-   Modes supersede parent defaults for future profile assessments; the file write
-   alone does not switch the running parent. No
-   eligible worker means report the constraint; do not invent an eligible profile. Ultra is outside all
-   four presets by the owner's specification. Use only hyphenated role keys.
-   Show the executable role mapping with `resolve_profile.py --role-map`,
-   including every role across Peak, Balanced, Lean, and Sprint. Read
-   `plan-model-router/references/role-mapping.md` for task-fit rules. Distinguish
-   these defaults from saved per-role overrides and actual dispatched profiles.
-   Offer the available Codex models plus `inherit-parent`/`auto`. Lists are
-   candidate pools; they neither pin a role nor create a worker per entry.
-   Use group defaults with individual role overrides and justified task adaptations.
-   Accept the owner's batch choices rather than requiring a configuration form
-   before ordinary programme execution.
-4. Validate the version, policy, role keys, model IDs, and effort hints using
-   `plan-model-router/scripts/resolve_profile.py --validate-preferences FILE`.
-   This validates structure; verify selected real IDs against the live catalog
-   separately. Apply the mode pool; retain parent ceilings only on the legacy no-mode route.
-5. For a requested mode switch, run the router helper with `--set-mode MODE
-   --preferences FILE`. It validates before mutation, backs up prior bytes,
-   migrates legacy spaced role keys, atomically writes schema version 2, and
-   reads it back. It preserves per-role choices. Old mode names remain aliases (supreme → peak,
-   optimize → balanced, budget → lean); authorized writes use canonical names. For other explicitly requested
-   preference updates, preserve the same validation/backup/atomic-write contract.
-   Version 2 retains policy, parent_policy and roles, and adds active_mode.
-   Existing version 1 files remain readable until an authorized write.
-
-6. Read back and validate the file. Report configured preferences separately
-   from a verified worker dispatch. Profile changes apply at the next package
-   assessment; do not claim existing workers changed models.
-7. If the project lacks reusable runtime proof, recommend
-   `forge-create-verification-skill` through the orchestrator when useful. This
-   is optional and grants no device, service, installation, or publication access.
-
-## Switching verification
-
-Run fixture tests for all four mode transitions, inheritance exclusions,
-unknown metadata, pinned profiles, and mode precedence and legacy parent ceilings. When live
-worker tests are requested, assign a useful bounded read-only task to permitted
-profiles through the orchestrator, keeping requested and runtime-observed
-settings separate. Reassess after any user-applied parent change. Without a
-surfaced control for switching the current parent, report that portion pending
-an owner-applied change; do not imply a preference update switched the parent.
+Routine assignments, including implementation, may use qualified lower profiles.
+Keep consequential judgment and coding-evidence checks with `plan-model-router`;
+inspect its role ledger for qualification or a provisional parent rationale.
+Do not copy its model table here or change saved preferences during inspection.
+Explain the qualification scope and any known failure alongside the profile.
+Swarm/Arena select each participant by its actual assignment; no fixed worker
+model or automatic worker count is implied by the setup table.

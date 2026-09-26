@@ -4,6 +4,9 @@ description: Adapt native Cursor PStack methods to the shared Forge roles, modes
 ---
 # Cursor Forge
 
+At task start/resume, before acceptance and at verified completion, apply the shared
+[automatic checkpoints](../engineering-playbooks/references/agent-friendly-workflow.md) when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence.
+
 Follow the shared [Forge mode and status contract](../workflow-orchestrator/references/forge-mode-status.md) at entry,
 resume and dispatch: explicit request → task mode → saved preference; ask once
 if none exists. Show role, model, effort, mode and evidence status without

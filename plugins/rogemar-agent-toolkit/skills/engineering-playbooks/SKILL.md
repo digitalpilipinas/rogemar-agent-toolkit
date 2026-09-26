@@ -5,6 +5,9 @@ license: MIT
 ---
 # Engineering playbooks
 
+At task start/resume, before acceptance and at verified completion, apply the shared
+[automatic checkpoints](references/agent-friendly-workflow.md) when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence.
+
 When selected by Universal Forge or a native adapter, stay in this method library; do not redirect recursively to another entry. Select one method for the task below and read only its relevant principles. This is the shared engineering playbook layer used by universal-forge. Codex Forge remains the complete Codex-native implementation; Cursor PStack remains the Cursor-native implementation. Do not activate both native and portable owners for the same work.
 
 `workflow-orchestrator` owns delegation and the final reconciliation. `create-plan` owns planning; `code-review-and-quality` owns independent review. Simple changes can stay in the parent. An installed skill is useful without an MCP when its method only requires files, reasoning or an existing CLI.

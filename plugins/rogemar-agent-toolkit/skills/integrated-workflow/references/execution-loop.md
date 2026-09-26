@@ -4,6 +4,11 @@ Use after approval for the active slice. The entry skill defines change classes,
 review requirements and delivery strategy; this reference defines their evidence
 and execution. Preserve stronger repository/domain gates and exact owner authority.
 
+Use the [automatic checkpoint contract](../../engineering-playbooks/references/agent-friendly-workflow.md)
+without requiring explicit skill invocation: `start` before investigation or resumed
+work, `accept` at the named boundary and `close` after verified completion. Extend
+the gate record below; required local runtime evidence does not become hosted CI proof.
+
 ## 1. Resolve the slice and authority
 
 Inspect the approved plan, repository instructions, current root/branch/HEAD,

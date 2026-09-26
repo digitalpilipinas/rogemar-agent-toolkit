@@ -25,10 +25,15 @@ Check the installed version and reuse the approved plan/acceptance record. Aband
 deferred and blocked gates are not passed gates; measure report claims against the
 candidate. It creates no second programme, worker hierarchy, hook or install requirement.
 
-`project-learning` is explicitly requested work. Accepted project lessons may
-inform execution when consistent with current evidence. Delivery does not capture
-or promote lessons, install learning hooks, write memory or interrupt for learning
-approval. A final conversational learning note is not persistent learning.
+Apply the [automatic verification and learning checkpoints](../../engineering-playbooks/references/agent-friendly-workflow.md)
+at start/resume, affected behavior, acceptance and completion. Reuse a project verifier;
+create only missing authorized coverage. Use full maintenance for a due full map audit,
+not every small fix. During frozen QA do not refresh generated navigation metadata.
+
+Read accepted project lessons when relevant. `project-learning` captures only on
+explicit request or an explicitly enrolled workflow completion checkpoint; pending
+candidates remain inactive. Enrollment does not authorize promotion, shared-skill
+edits, memory writes, hooks or background collection. Capture failures are nonblocking.
 
 ## Ponytail
 

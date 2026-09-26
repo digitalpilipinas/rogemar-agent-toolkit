@@ -1,6 +1,6 @@
 ---
 name: forge-how
-description: "Use for \\\"how does X work\\\", code walkthroughs before changing something, and placement / ownership / layering questions (\\\"where should this live\\\", \\\"which package owns this\\\", \\\"is this the right layer\\\"). Explains subsystem architecture, runtime flow, onboarding mental models. Can critique architecture. Use why for motivation."
+description: "Use for \\\"how does X work\\\", code walkthroughs before changing something, and placement / ownership / layering questions (\\\"where should this live\\\", \\\"which package owns this\\\", \\\"is this the right layer\\\"). Explains subsystem architecture, runtime flow, onboarding mental models. Routes requested architectural critique to forge-interrogate. Use why for motivation."
 license: MIT
 ---
 # How
@@ -18,8 +18,8 @@ Explain how a subsystem works from current source. Use `forge-why` for the force
 3. For a narrow question, the parent explores and explains directly using `references/explainer-prompt.md`. For a broad question, ask the orchestrator for independent read-only slices such as data model, request path, and configuration. Use the `how-explorer` role hint and `references/explorer-prompt.md`; choose only useful slices within concurrency limits. Workers return components, traced flow, files read, surprises, and gaps.
 4. Synthesize locally, or request a bounded `how-explainer` only when there is useful independent work. Reconcile overlapping findings. Use concrete names and code citations to build a mental model rather than annotate every source line. Match depth to the reader and state untraced links.
 
-## Critique (when requested or material to the design)
+## Architectural critique and compatibility
 
-Explain first. Ask the orchestrator for independent critiques using the `how-critics` preference pool and `references/critic-prompt.md` when available. The number of configured models does not dictate panel size. Use read-only scopes and distinct questions; the parent can supply another perspective when workers are unavailable.
+For a requested critique, explain the relevant source first, then route the bounded design question to [forge-interrogate](../forge-interrogate/SKILL.md) through the existing orchestrator. Use the current review and acceptance contract; do not start a second critique lifecycle or edit product code during a review-only task.
 
-Compare findings against actual source and caller contracts. Consolidate duplicates, discard unsupported claims with reasons, and prioritize concrete architectural constraints and tradeoffs. Do not edit code during explanation or critique without implementation authority. Return the explanation, evidenced issues, uncertainty, and suggested next investigation.
+Existing requests for "how critique" remain supported by this route. Preserve the saved `how-critics` role preference and the legacy `references/critic-prompt.md` and `references/critique-rubric.md` resources for existing callers. Do not delete or rewrite preferences silently. They remain optional review hints subject to the native router, not a required reviewer panel. New callers use `forge-interrogate`.

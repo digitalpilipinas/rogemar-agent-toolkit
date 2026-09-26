@@ -13,6 +13,11 @@ Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md) be
 
 Every serious project needs a scripted way to drive the real app and prove behavior: launch it, exercise a feature the way a user would, and capture evidence. This skill generates that as a project-local skill (`.agents/skills/verify-<app>/`) tailored to the repo. You write the generator's output for the next agent, not for a human: it will be read cold, mid-task, by an agent that has never seen the app.
 
+The shared checkpoint contract in the installed `engineering-playbooks/references/agent-friendly-workflow.md`
+may select this skill automatically when required coverage is missing within approved
+scope. First locate existing verification skills and reuse/extend the suitable one;
+do not recreate a verifier, this creator or the maintainer. Keep platform claims separate.
+
 ## 1. Interview the repo, not the user
 
 Answer these from the codebase and only ask the user what you cannot observe:
@@ -43,6 +48,9 @@ Create `.agents/skills/verify-<app>/features/README.md` plus one file per user-f
 ## 4. Prove the generated skill before handing it over
 
 Run its own instructions end to end once: launch, doctor, drive ONE mapped feature (one is enough; the map exists so later runs can cover the rest), capture evidence, clean up. After cleanup, confirm the evidence still exists at the named location — a cleanup that eats the proof fails this step. Fix what fails, and run the generated cleanup after every failed iteration too, so broken attempts don't strand processes and ports. A generated skill that was never executed is a draft, not a deliverable.
+
+A successful initial journey proves only that recipe and its exercised entry points.
+Record all untested features/platforms as not run, and retain blocked prerequisites.
 
 ## 5. Offer the maintenance loop
 

@@ -1,5 +1,5 @@
 {
-  "upstream": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+  "upstream": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
   "adapted_from": "Codex Forge local approved adaptation",
   "methods": [
     {
@@ -23,25 +23,25 @@
     {
       "method": "autopilot-stack",
       "source": "codex-forge/playbooks/autopilot-stack.md",
-      "source_sha256": "1aa3f13f8dd95b757fddf5b1c61d8317bf8397dc5001bf0cb895c0a06a0a8127",
+      "source_sha256": "56955a859630fe438d575225ac10c8495eefc60d1953fd0f62a164aeedfe08ef",
       "portable": "playbooks/autopilot-stack.md"
     },
     {
       "method": "babysit",
       "source": "codex-forge/playbooks/babysit.md",
-      "source_sha256": "92f5553fc0aa0c5d869a4d2253ded265ecdf202567a7ea15f53c9f801fe268b3",
+      "source_sha256": "ad38bd367f2ad414c2388e109b1a9951a54da4f0042ab1f3964527df37f2b9e2",
       "portable": "playbooks/babysit.md"
     },
     {
       "method": "bug-fix",
       "source": "codex-forge/playbooks/bug-fix.md",
-      "source_sha256": "d0d48a9909683c6d6af81012d0b079c5dc2e6efe7e0ffbd4ff634dc823b7aa67",
+      "source_sha256": "a57883a204e00a5e2d9b64b69a661428773d623fe58b2ee8779a390621009884",
       "portable": "playbooks/bug-fix.md"
     },
     {
       "method": "eval",
       "source": "codex-forge/playbooks/eval.md",
-      "source_sha256": "5e8c096fba431fff04b06d505112e88759a9a3e802a8d404a830335db1c9af84",
+      "source_sha256": "fec0524ce21dd073a8420ad80144514606e3b3655e9872d627d3aeb1927cf9de",
       "portable": "playbooks/eval.md"
     },
     {
@@ -65,7 +65,7 @@
     {
       "method": "multi-phase-plan",
       "source": "codex-forge/playbooks/multi-phase-plan.md",
-      "source_sha256": "f4ac99f7ca886c50b5d3e1812459d8799c83435c11584b49b1550380a4beaa23",
+      "source_sha256": "136839850c2319b8055b3f7c5875d80e4880929d7c7377cdef4e633dbc723efd",
       "portable": "playbooks/multi-phase-plan.md"
     },
     {
@@ -77,7 +77,7 @@
     {
       "method": "orchestrate",
       "source": "codex-forge/playbooks/orchestrate.md",
-      "source_sha256": "acbae79507994f2e64a2c7b306b1d45a88747e7992d35a63534bd4b1698769a5",
+      "source_sha256": "23dcce2b39097fab21c9f63db8fa46b6579d17fdd8cc06224b7c1bb1399ad008",
       "portable": "playbooks/orchestrate.md"
     },
     {
@@ -119,7 +119,7 @@
     {
       "method": "shipping",
       "source": "codex-forge/playbooks/shipping.md",
-      "source_sha256": "50028117cdddcfc3dc06c6355fa3eee1d9497de3d0131be4145cdfba3f66d4c7",
+      "source_sha256": "78f013f312045f3501a8843a68c1c4442705d4947d27225767bb502cadecd52e",
       "portable": "playbooks/shipping.md"
     },
     {
@@ -139,6 +139,20 @@
       "source": "codex-forge/playbooks/worktree-cleanup.md",
       "source_sha256": "cecb335fbd9036021ed38a7872820725c3534f96e1b80537f160d297a979ee19",
       "portable": "playbooks/worktree-cleanup.md"
+    }
+  ],
+  "principles": [
+    {
+      "method": "attack-the-premise",
+      "source": "forge-principle-attack-the-premise/SKILL.md",
+      "source_sha256": "95b46781ea72fc8e4d6c2fac1f190a210c16ced72736b72875535aa5cde5d6ca",
+      "portable": "references/principles/attack-the-premise.md"
+    },
+    {
+      "method": "test-behavior-not-implementation",
+      "source": "forge-principle-test-behavior-not-implementation/SKILL.md",
+      "source_sha256": "0f39e2912a1e7e1968d676427674fc8230869b01dc4c81a8bcab312bd32c0b15",
+      "portable": "references/principles/test-behavior-not-implementation.md"
     }
   ]
 }

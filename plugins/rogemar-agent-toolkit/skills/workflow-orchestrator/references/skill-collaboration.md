@@ -63,9 +63,10 @@ budgets, model ceilings, and reconciliation.
 A role profile is a desired routing input, not a fixed override. The
 orchestrator selects a surfaced agent type, then the active harness profile policy
 computes an effective profile (Codex uses `plan-model-router`). In Codex, no-mode
-routes retain parent model and effort ceilings; named Forge modes qualify against
-their pool and the live backend and may exceed parent defaults. Explicit user and
-host limits always apply. Record requested and observed profiles; report constraints
+routes retain parent model and effort ceilings. Named Forge modes qualify against
+their pool, live backend and both mode/accepted-parent ceilings; only verified exact
+hard-role exceptions may exceed a normal ceiling. Explicit user and host limits
+always apply. Record requested and observed profiles; report constraints
 without silently clamping or dropping overrides. If a permitted profile cannot meet
 the evidence burden, the work returns to the main agent.
 

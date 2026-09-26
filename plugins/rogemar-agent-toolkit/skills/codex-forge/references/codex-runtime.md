@@ -27,19 +27,18 @@ installation, or a file on disk does not prove runtime activation.
 
 ## Profiles and dispatch
 
-`plan-model-router` owns profile policy and the setup preference schema. Read
-its `references/dispatch-contract.md` for execution. A named mode supersedes
-inherited parent defaults for worker selection. Parent selection is a desired
-proposal pending a supported current-task control and verified effect. Without a named mode, the manually selected main model and
-effort remain the inherited defaults and independent hard ceilings.
-Astra is a supported candidate when actually exposed, never a forced parent.
+`plan-model-router` owns the five-mode policy and preference schema. Follow its
+`references/dispatch-contract.md`. Normal workers obey independent model and
+reasoning ceilings from the mode target and accepted actual parent. Default
+uses the exact user-selected profile. Only verified hillclimb/hardest-tasks
+exceptions may exceed model-family and reasoning ceilings; explicit limits remain
+hard limits. Parent selection is proposal-only until actually applied and verified.
 
 Any `role-profile` label in a comparison template means the profile resolved
-for that assignment; never submit that label as a model ID. Setup preferences
-are candidate pools, not fixed assignments. Named modes authorize profiles
-above current parent defaults; the live catalogue and separate user limits apply.
+for that assignment; never submit that label as a model ID. Preset preferences are candidates subject to task fit; Default is exact.
+The live catalogue, role contracts and explicit user limits always apply.
 A named mode never overrides an explicit user or host hard ceiling. Generic
-playbook references to parent ceilings mean the no-mode defaults or such explicit
+playbook references to parent ceilings include normal mode and accepted-parent
 limits; apply this runtime policy consistently before every dispatch.
 Panels prefer independently useful views; use distinct available Codex
 profiles when feasible, and disclose when model diversity is unavailable.
@@ -61,6 +60,11 @@ After profile qualification, follow the installed orchestrator's
 `references/subagent-naming.md` for new native task names. The assigned model and
 reasoning belong in the name; mode stays in status and receipts. Preserve native
 agent types and existing names; use only the naming controls actually surfaced.
+
+Before mode-dependent execution, follow the installed `workflow-orchestrator`
+shared Forge mode/status contract's parent clarification: compare desired and
+observed profiles, obtain a task-local fallback or manual-switch choice for a
+mismatch, and preserve an already accepted choice while those profiles match.
 
 A desired parent profile must be applied through an actually surfaced current-task
 model control. If unavailable, state that the requested parent change is unapplied;
@@ -130,7 +134,7 @@ does not register skills, create jobs, connect accounts, or send messages.
 
 ## Sources
 
-Adapted from [PStack at the pinned commit](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack).
+Adapted from [PStack at the pinned commit](https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack).
 See the bundled MIT license and toolkit coverage manifest for provenance.
 Codex interfaces follow [skills](https://learn.chatgpt.com/docs/build-skills)
 and [subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents);

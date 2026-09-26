@@ -20,26 +20,20 @@ routine tasks for ceremony. Reassess against the real diff before execution.
 
 ## Family and effort hints
 
-These are local task-fit heuristics, not measured prices or benchmark claims.
-Use only model IDs and efforts exposed by the current dispatch tool:
+Read exact model IDs, supported efforts and policy tiers from
+`scripts/routing_catalog.json`; use the intersection with the observed native
+catalogue. Tier ordering is a routing boundary, not an intelligence or price claim.
+Distinguish generations in every receipt. An old family member's qualification
+cannot transfer to its successor, even when the label or assigned role is similar.
 
-| Family | Candidate ID | Task-fit hint |
-| --- | --- | --- |
-| Astra | `gpt-6-astra` | Most demanding unresolved reasoning when available and permitted |
-| Sol | `gpt-5.6-sol` | Substantial ambiguity, coupled design, or consequential review |
-| Terra | `gpt-5.6-terra` | Bounded implementation requiring engineering judgment |
-| Luna | `gpt-5.6-luna` | Narrow investigation, established execution, or bounded checking |
+Low/medium are candidates for narrow established tasks; high/xhigh/max/ultra need
+matching evidence and supported controls, not a presumed quality advantage.
+Light maps to `low`, Extra High to `xhigh`. Neither reasoning effort nor generation
+establishes superiority or lower total delivered-task cost.
 
-Low/medium are candidates for narrow established tasks; high/xhigh for deeper
-investigation or checking; max for assignments needing sustained reasoning.
-These are choices to qualify, not guarantees. Light maps to `low`, Extra High
-to `xhigh`. Reasoning effort does not establish model-family equivalence.
-Do not claim Luna/max outperforms Terra/medium or necessarily finishes faster.
-
-The four Forge pools exclude Ultra. If the runtime exposes Ultra for another
-explicitly authorized no-mode assignment, validate it through the helper's
-applicable parent ceiling and independent-work condition. Do not infer supported
-efforts or automatic parallel execution from a remembered model description.
+Normal presets stop at their explicit effort ceiling. Default may use any exact
+supported selection; higher preset effort requires a verified, practically needed
+hard-role exception. Never infer native effort support from a remembered label.
 
 ## Adaptation and evidence
 

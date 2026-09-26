@@ -70,10 +70,10 @@ Examples illustrate labels, not profile recommendations or runtime observations:
 
 | Readable assignment | Codex encoding, when supported |
 | --- | --- |
-| Review — Design routing · Terra / medium | `review_design_routing_terra_medium` |
-| Build — Navigation fix · Luna / max | `build_navigation_fix_luna_max` |
+| Review — Design routing · GPT-5.6 Sol / medium | `review_design_routing_gpt_5_6_sol_medium` |
+| Build — Navigation fix · GPT-6 Sol / high | `build_navigation_fix_gpt_6_sol_high` |
 | Explore — Helper paths · inherited / inherited | `explore_helper_paths_inherited_inherited` |
-| Review — Naming rules · Astra / xhigh | `review_naming_rules_astra_xhigh` |
+| Review — Naming rules · GPT-6 Astra / xhigh | `review_naming_rules_gpt_6_astra_xhigh` |
 
 For other providers, substitute the qualified native model and actual native
 setting in the readable form; the Codex examples do not establish availability

@@ -2,7 +2,7 @@
 
 ## Bounded cloud review and full initial coverage (unreleased)
 
-- Begin ready-PR review with full CodeRabbit and Codex coverage and wait for both completed reports before consolidation, finding validation or remediation.
+- Begin a substantive or explicitly required ready-PR cloud review with full CodeRabbit and Codex coverage, and wait for both completed reports before consolidation, finding validation or remediation.
 - Limit each cloud provider to the initial review and one justified follow-up by default, preserving counts across pushes/resumes and requiring explicit extensions without weakening merge gates.
 - Preserve local invocation cadence while requiring full agreed-candidate review from CodeRabbit and each selected terminal code reviewer.
 - Align review handoffs, native and portable Forge monitoring, and PR helper integration; preserve provider-owned packages and repository trigger settings.
@@ -22,6 +22,10 @@
 - Align the previously approved capability maintainer policy and refresh inventory/install guidance.
 
 ## Unreleased
+
+- Update Codex Forge to Default, Peak, Balanced, Lean and Economy with GPT-6 Sol/Luna, exact-generation evidence, parent limits and scoped consultant exceptions.
+- Include the 225 role/mode decisions, preserved historical qualification records, 714-case benchmark summary and focused paired validation, with provisional limits disclosed.
+- Keep monitoring and feedback consolidation separate from validation, minimum-scope decisions and implementation; preserve Cursor and Universal catalogues.
 
 - Adapt free Appllama research, mobile navigation, control and motion methods into four existing design owners; preserve MIT notices and optional runtime boundaries.
 

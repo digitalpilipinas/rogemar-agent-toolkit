@@ -16,7 +16,7 @@ def verify():
     manifest = json.loads((ROOT/'catalog/codex-forge-upstream.json').read_text())
     names = manifest['registered_skills']
     errors=[]
-    if len(names)!=45 or len(set(names.values()))!=45: errors.append('Expected 45 unique mapped skills')
+    if manifest['expected']['skills'] != 47 or len(names)!=47 or len(set(names.values()))!=47: errors.append('Expected 47 unique mapped skills')
     actual={p.name for p in SKILLS.iterdir() if p.name=='codex-forge' or p.name.startswith('forge-')}
     if actual != set(names.values()): errors.append('Forge skill directories differ from the pinned inventory')
     for row in manifest['files']:
@@ -49,5 +49,5 @@ def verify():
 if __name__=='__main__':
     errors=verify()
     for e in errors:print(e,file=sys.stderr)
-    print(json.dumps({'status':'failed' if errors else ('verified' if (SKILLS/'codex-forge').is_dir() else 'not-applicable'),'skills':45 if (SKILLS/'codex-forge').is_dir() else 0,'playbooks':23 if (SKILLS/'codex-forge').is_dir() else 0,'agents':2 if (SKILLS/'codex-forge').is_dir() else 0,'inactive_recipes':3 if (SKILLS/'codex-forge').is_dir() else 0,'errors':len(errors)}))
+    print(json.dumps({'status':'failed' if errors else ('verified' if (SKILLS/'codex-forge').is_dir() else 'not-applicable'),'skills':47 if (SKILLS/'codex-forge').is_dir() else 0,'playbooks':23 if (SKILLS/'codex-forge').is_dir() else 0,'agents':2 if (SKILLS/'codex-forge').is_dir() else 0,'inactive_recipes':3 if (SKILLS/'codex-forge').is_dir() else 0,'errors':len(errors)}))
     raise SystemExit(bool(errors))

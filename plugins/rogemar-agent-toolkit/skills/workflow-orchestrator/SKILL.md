@@ -5,6 +5,9 @@ description: Use for non-trivial coding work that spans brainstorming, research,
 
 # Workflow Orchestrator
 
+At task start/resume, before acceptance and at verified completion, apply the shared
+automatic checkpoints in the installed `engineering-playbooks/references/agent-friendly-workflow.md` when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence. If that optional pack is absent, inspect the project’s recipes and existing gate record directly; do not install a pack implicitly.
+
 Only when a Codex, Cursor or Universal Forge route is active, follow the shared [Forge mode and status contract](references/forge-mode-status.md) at entry,
 resume and dispatch: explicit request → task mode → saved preference; ask once
 if none exists. Show role, model, effort, mode and evidence status without
@@ -27,9 +30,10 @@ run the resolver, and copy its qualified model/effort into the actual native
 spawn arguments. Do not stop at a mapping table or recommendation. Re-resolve
 after mode changes; a changed profile requires a fresh compatible assignment.
 
-Peak, Balanced, Lean, and Sprint share one executable catalogue owned by the
-router. Old names remain compatibility aliases. Named modes supersede inherited
-parent defaults for workers; the no-mode route retains parent ceilings.
+Codex Default, Peak, Balanced, Lean and Economy share one executable catalogue
+owned by the router. Normal workers obey both mode and accepted actual-parent
+ceilings; only verified exact hard-role exceptions may exceed either ceiling. Default
+uses the exact selected profile. The no-mode route retains parent ceilings.
 Main-owned coordination and integration remain with the current main agent.
 A desired parent profile is advisory unless a supported live control applies it.
 Never recursively activate Forge or start a second coordinator when one is active.
@@ -61,7 +65,15 @@ configuration or required evidence. Keep this same orchestrator as sole dispatch
 
 Use the shared `engineering-playbooks` method for substantive engineering work when installed. In Codex, prefer the complete installed `codex-forge` implementation of that method. In Cursor, prefer installed `cursor-forge`, otherwise native PStack with reconciled dispatch ownership. Elsewhere prefer `universal-forge` with `universal-plan-model-router`, falling back to the shared method if absent. Honor an explicit compatible entry choice and a declared `Harness: <name>`; a name does not prove live capabilities. Other harnesses use their own exposed models and tools. Select one execution owner; do not run the native and portable workflows twice.
 
-This orchestrator alone dispatches specialists and workers. Each playbook supplies methods and bounded hints. For Codex workers, use installed `plan-model-router` at materially different packages or dispatch boundaries, preserving its runtime contract: selected Forge modes supersede default parent ceilings; the no-mode route retains them. Other harnesses use their actual model controls and inherit the parent when controls or identity are unavailable. Never import Codex or Cursor model names into another harness or invent a selector. Record requested and observed profiles only when delegation is material; unavailable identity remains Unverified.
+This orchestrator alone dispatches specialists and workers. For Codex, classify
+each assignment before resolving: set `implementation: true` for code-producing
+work and `consequential: true` for security or architectural judgment. Protected
+roles cannot opt out. Routine work may use paired-qualified lower profiles; a
+parent fallback cannot replace required independence or hide a quality failure.
+For Codex, preserve exact-generation IDs in dispatch and receipts. Read support
+profiles from the router catalogue; do not rewrite saved pins or transfer old
+qualifications when a new generation becomes available.
+ Each playbook supplies methods and bounded hints. For Codex workers, use installed `plan-model-router` at materially different packages or dispatch boundaries, preserving its runtime contract: Codex modes enforce both normal ceilings, verified role exceptions and exact Default profiles; the no-mode route retains parent ceilings. Other harnesses use their actual model controls and inherit the parent when controls or identity are unavailable. Never import Codex or Cursor model names into another harness or invent a selector. Record requested and observed profiles only when delegation is material; unavailable identity remains Unverified.
 
 `create-plan` owns planning. `code-review-and-quality` owns the independent review and may request focused `code-review-tests` evidence. CodeRabbit and harness-native reviewers are separate evidence providers; consolidate findings by root cause without relabeling their verdicts. They are required only when the approved acceptance contract requires them.
 When CodeRabbit is selected, invoke its own installed skill for a full review of
@@ -76,6 +88,10 @@ before consolidating, validating cloud findings or dispatching cloud-review fixe
 do not create a second review loop. Selected local providers retain full agreed
 coverage and local reconciliation at the existing cadence. Outside that lifecycle, retain the task's
 own acceptance requirements rather than mandating both cloud providers.
+Follow the [review support/decision handoff](references/provider-routing.md#review-support-and-decision-roles)
+locally and in the cloud: Luna collection and consolidation do not validate findings
+or make minimum-scope or implementation decisions. Preserve the active delivery
+workflow's review cadence and acceptance requirements.
 
 For a programme, use `integrated-workflow` if installed; otherwise preserve the approved plan and gates directly. Missing optional packs do not block adequate in-scope work. Keep trivial direct work proportional.
 
@@ -171,11 +187,11 @@ the active harness's profile controls when a profile is needed; Codex uses insta
   Preserve unrelated work in every lane. Report conflicts rather than reverting
   others' edits. The main agent inspects and reconciles the combined diff and
   performs or directs final integrated validation.
-- Capture the parent model and reasoning effort before spawning. In a named
-  Forge mode, qualify the worker against its pool and the backend; it may exceed
-  parent defaults. Without a mode, enforce both parent ceilings.
+- Capture the parent model and reasoning effort before spawning. In a Codex
+  mode, enforce both normal ceilings or its verified exact hard-role exception.
+  Other harnesses retain their native policy. Without a mode, enforce both ceilings.
 - Treat a role's stated model or effort as a desired profile, never a bypass of
-  mode membership or an applicable legacy parent ceiling. Record requested and observed profiles. Requalify a sufficient permitted
+  mode membership, either normal ceiling, or an explicit limit. Record requested and observed profiles. Requalify a sufficient permitted
   profile or report the constraint; never silently clamp or drop overrides.
 - Without a named mode, if a worker needs more capability than the parent ceiling permits, mark the
   handoff `ceiling-constrained` and return the unresolved work to the main
@@ -340,3 +356,29 @@ to the task. Use these evidence statuses:
 
 Never invent quality scores, progress percentages, costs, timelines,
 performance results, test results, CI status, deployment status, or tool access.
+
+## Codex Economy and native role boundaries
+
+Economy optimizes estimated account usage after required checks: keep sufficient
+serial work with the parent, supply compact bounded handoffs, reuse valid evidence
+and avoid redundant reviewers. Token counts, dollar estimates and account credits
+are separate measurements; a cheaper model does not guarantee fewer tokens.
+
+Use the Codex resolver’s `dispatch_agent_type` for ordinary Forge Scout/Judge
+assignments. When GoalBuddy is actually required, pass `goalbuddy_required: true`,
+inspect native pins and preserve the native read-only/independence/receipt contract.
+Detect incompatibility before spawning, explain it once and keep that gate visible.
+Never relabel an ordinary review or parent takeover as independent native evidence.
+
+For Forge dispatch, apply the router’s playbook-step qualification contract.
+Classify actual function before model selection; supply `assignment_role` for
+Swarm/Arena wrappers. Readiness prose is not runtime qualification. Budget the
+whole bounded job, including fan-out, reconciliation and retries. Keep analytical
+synthesis distinct from clerical findings consolidation.
+Pass through the resolver's actual `qualification_scope` and known failures.
+A read-only readiness answer cannot establish operational QA capability, and a
+SQLite implementation pass cannot establish UI implementation capability. Apply
+the actual playbook, tools and required evidence before assigning broader work.
+For Codex alternate implementation or hard-task consultation, declare the router's
+matching `evidence_contract` from the actual work. Do not copy a convenient contract
+ID to bypass a failed qualification; retain unsupported work with the main agent.

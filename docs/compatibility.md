@@ -26,8 +26,9 @@ Other assistants use `universal-forge` with `universal-plan-model-router` and th
 own observed capabilities. Shared engineering methods may run sequentially on the
 current model when worker controls are unavailable.
 
-Peak, Balanced, Lean and Sprint share intent across adapters, not identical model
-IDs, prices or capabilities. A selected profile and an accepted dispatch are not
+Codex offers Default, Peak, Balanced, Lean and Economy; `sprint` remains an alias
+for Economy. Cursor and Universal Forge retain their native mode catalogues.
+Shared mode names do not imply identical model IDs, prices or capabilities. A selected profile and an accepted dispatch are not
 proof of the effective model. Record observed runtime identity separately. A saved
 mode does not switch the running parent; parent switching needs a supported live
 control and verified result. Required independence cannot be supplied by merely

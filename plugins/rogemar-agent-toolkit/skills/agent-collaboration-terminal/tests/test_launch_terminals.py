@@ -869,6 +869,9 @@ class PromptAndValidationTests(unittest.TestCase):
         self.assertIn("$code-review-tests", contract)
         self.assertIn("Do not invoke CodeRabbit", contract)
         self.assertIn("Finding key", contract)
+        self.assertIn("every in-scope change, relevant callers, tests, and surrounding contracts", contract)
+        self.assertIn("light, sampled, findings-only, or single-axis pass", contract)
+        self.assertIn("report incomplete coverage as partial", contract)
 
     def test_grok_review_prompt_has_security_focus_without_nested_coderabbit(self) -> None:
         contract = prepare.review_contract_for("grok", "code")

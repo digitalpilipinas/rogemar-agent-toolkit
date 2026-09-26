@@ -7,6 +7,9 @@ metadata:
 
 # Integrated Workflow
 
+At task start/resume, before acceptance and at verified completion, apply the shared
+[automatic checkpoints](../engineering-playbooks/references/agent-friendly-workflow.md) when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence.
+
 Deliver the approved outcome with one plan, one implementation owner, one evidence
 record and one consolidated review process. Infer ordinary project details; the
 owner need not name every supporting skill or fill out a configuration form.
@@ -205,7 +208,8 @@ them. At ready transition, inspect existing results and the exact head before
 requesting missing due reviews. Reuse a valid equivalent review where the
 provider and repository allow it, without passing stale evidence forward.
 
-Wait for both full initial cloud reviews to complete before consolidating,
+For an active ready-PR cloud review wave with substantive or explicitly required
+coverage, wait for both full initial cloud reviews to complete before consolidating,
 validating findings or fixing. For later waves, wait for every due review in the
 wave and retain only still-valid prior coverage under the
 [shared completion barrier and allowance](references/coderabbit-review.md#ready-pr-coderabbit-and-codex).
