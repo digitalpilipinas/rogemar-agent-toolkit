@@ -118,12 +118,19 @@ def merged_hooks(path: Path) -> tuple[str | None, str]:
     return json.dumps(data, indent=2, ensure_ascii=False) + "\n", "add Stop hook"
 
 
-def merged_agents(existing: str, section: str, path: Path) -> tuple[str | None, str]:
+def merged_agents(existing: str, section: str, path: Path, replace: bool = False) -> tuple[str | None, str]:
     begin_count = existing.count(BEGIN_MARKER)
     end_count = existing.count(END_MARKER)
     if begin_count != end_count or begin_count > 1:
         raise InitializationError(f"ambiguous Project Learning markers in {path}")
     if begin_count == 1:
+        start = existing.index(BEGIN_MARKER)
+        end = existing.index(END_MARKER) + len(END_MARKER)
+        if start >= existing.index(END_MARKER):
+            raise InitializationError(f"reversed Project Learning markers in {path}")
+        desired = section.strip()
+        if replace and existing[start:end] != desired:
+            return existing[:start] + desired + existing[end:], "update Project Learning AGENTS block"
         return None, "Project Learning AGENTS block already present"
     prefix = existing
     if prefix and not prefix.endswith("\n"):
@@ -159,6 +166,8 @@ def validate_existing_config(path: Path) -> None:
     for key, expected in required.items():
         if data.get(key) != expected:
             raise InitializationError(f"unsupported {key!r} in {path}")
+    if data.get("capture_mode", "explicit") not in {"explicit", "workflow"}:
+        raise InitializationError(f"unsupported capture_mode in {path}")
     if not isinstance(data.get("enabled"), bool):
         raise InitializationError(f"`enabled` must be boolean in {path}")
 
@@ -177,18 +186,34 @@ def set_enabled(root: Path, enabled: bool, check: bool) -> list[str]:
     return [f"{'would ' if check else ''}set enabled={str(enabled).lower()}"]
 
 
-def initialize(root: Path, check: bool) -> list[str]:
+def initialize(root: Path, check: bool, capture_mode: str | None = None) -> list[str]:
     skill_root = Path(__file__).resolve().parents[1]
     assets = skill_root / "assets"
     changes: list[tuple[Path, str, int | None, str]] = []
     messages: list[str] = []
+    config_path = root / ".codex/project-learning/config.json"
+    if config_path.exists():
+        validate_existing_config(config_path)
+        config = load_json(config_path)
+    else:
+        config = load_json(assets / "config.json")
+    selected_mode = capture_mode or config.get("capture_mode", "explicit")
+    config["capture_mode"] = selected_mode
+    desired_config = json.dumps(config, indent=2, ensure_ascii=False) + "\n"
+    if not config_path.exists() or (capture_mode is not None and load_json(config_path) != config):
+        label = "set project-learning capture mode " + selected_mode
+        changes.append((config_path, desired_config, None, label))
+        messages.append(label)
+    else:
+        messages.append("project-learning config already present")
 
     agents_path = root / "AGENTS.md"
     agents_existing = agents_path.read_text(encoding="utf-8") if agents_path.exists() else ""
     agents_content, message = merged_agents(
         agents_existing,
-        (assets / "agents-section.md").read_text(encoding="utf-8"),
+        (assets / ("agents-workflow-section.md" if selected_mode == "workflow" else "agents-section.md")).read_text(encoding="utf-8"),
         agents_path,
+        replace=capture_mode is not None,
     )
     messages.append(message)
     if agents_content is not None:
@@ -201,25 +226,26 @@ def initialize(root: Path, check: bool) -> list[str]:
     if ignore_content is not None:
         changes.append((ignore_path, ignore_content, None, message))
 
-    hooks_path = root / ".codex/hooks.json"
-    hooks_content, message = merged_hooks(hooks_path)
-    messages.append(message)
-    if hooks_content is not None:
-        changes.append((hooks_path, hooks_content, None, message))
+    managed_assets = [(assets / "lessons.md", root / "docs/project-learning/lessons.md", None)]
+    if selected_mode == "explicit":
+        hooks_path = root / ".codex/hooks.json"
+        hooks_content, message = merged_hooks(hooks_path)
+        messages.append(message)
+        if hooks_content is not None:
+            changes.append((hooks_path, hooks_content, None, message))
+        managed_assets.append((assets / HOOK_SCRIPT_NAME, root / ".codex/hooks" / HOOK_SCRIPT_NAME, 0o755))
+    else:
+        messages.append("workflow capture uses checkpoints; existing hooks preserved")
 
-    managed_assets = (
-        (assets / HOOK_SCRIPT_NAME, root / ".codex/hooks" / HOOK_SCRIPT_NAME, 0o755),
-        (assets / "config.json", root / ".codex/project-learning/config.json", None),
-        (assets / "lessons.md", root / "docs/project-learning/lessons.md", None),
-    )
     for source, destination, mode in managed_assets:
         desired = source.read_text(encoding="utf-8")
         if destination.exists():
-            if destination.name == "config.json":
-                validate_existing_config(destination)
-                messages.append("project-learning config already present")
-                continue
             current = destination.read_text(encoding="utf-8")
+            if destination.name == "lessons.md":
+                if current.count("<!-- PROJECT-LEARNING:ENTRIES -->") != 1:
+                    raise InitializationError(f"accepted ledger marker must appear once: {destination}")
+                messages.append("accepted ledger preserved")
+                continue
             if current != desired:
                 raise InitializationError(f"managed file differs from the skill asset: {destination}")
             messages.append(f"managed file already present: {destination.relative_to(root)}")
@@ -241,6 +267,7 @@ def initialize(root: Path, check: bool) -> list[str]:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", help="Repository path; defaults to the current repository")
+    parser.add_argument("--capture-mode", choices=("explicit", "workflow"), help="Explicitly enroll checkpoint capture without installing hooks")
     parser.add_argument("--check", action="store_true", help="Report changes without writing")
     parser.add_argument(
         "--set-enabled",
@@ -257,7 +284,7 @@ def main() -> int:
         if args.set_enabled is not None:
             messages = set_enabled(root, args.set_enabled == "true", args.check)
         else:
-            messages = initialize(root, args.check)
+            messages = initialize(root, args.check, args.capture_mode)
         print(json.dumps({"root": str(root), "check": args.check, "results": messages}, indent=2))
         return 0
     except InitializationError as exc:

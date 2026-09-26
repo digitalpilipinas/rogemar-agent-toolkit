@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "repository": "https://github.com/cursor/plugins",
-  "commit": "93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+  "commit": "12d587dfb20741cafc376c42c696c5f6e2a64487",
   "registered_skills": {
     "figure-it-out": "forge-figure-it-out",
     "bro": "forge-bro",
@@ -47,10 +47,12 @@
     "tdd": "forge-tdd",
     "principle-prove-it-works": "forge-principle-prove-it-works",
     "principle-separate-before-serializing-shared-state": "forge-principle-separate-before-serializing-shared-state",
-    "principle-type-system-discipline": "forge-principle-type-system-discipline"
+    "principle-type-system-discipline": "forge-principle-type-system-discipline",
+    "principle-attack-the-premise": "forge-principle-attack-the-premise",
+    "principle-test-behavior-not-implementation": "forge-principle-test-behavior-not-implementation"
   },
   "expected": {
-    "skills": 45,
+    "skills": 47,
     "playbooks": 23,
     "agents": 2,
     "inactive_recipes": 3
@@ -58,11 +60,12 @@
   "files": [
     {
       "upstream": "pstack/.cursor-plugin/plugin.json",
-      "upstream_sha256": "01cdd5599f6d36ed8a1665f539626f3e9fbb0c695b03d30f8e573d2c75d3ede0",
+      "upstream_sha256": "0fc91a08dab312d166a11f2c2cb8b699f19627415f001e641fcfa7aea9ba5836",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "not needed for skills or playbooks",
-      "upstream_git_blob": "469c2d534b44cce593759f8ac8c8aced710130b9"
+      "adaptation": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "upstream_git_blob": "6ebc34b96f65088d695e3c3038eb412d750c8bdb",
+      "disposition": "exclude"
     },
     {
       "upstream": "pstack/.gitignore",
@@ -82,11 +85,12 @@
     },
     {
       "upstream": "pstack/README.md",
-      "upstream_sha256": "4fe423d7147cab0f2602abecb011f4621138443f524e6b9edad96a1fdcae6a6d",
+      "upstream_sha256": "16262f32aa041d857f2936f3ad6c589648f8e7b5d23e03c3c0a8c76ef99fd08c",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "not needed for skills or playbooks",
-      "upstream_git_blob": "00ca86b0139fa67893e3203cd8a9a9808e8bdad9"
+      "adaptation": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "upstream_git_blob": "b7cdef8aeb15da88a8f9cdd82904d884552395b7",
+      "disposition": "exclude"
     },
     {
       "upstream": "pstack/agents/comment-sicko.md",
@@ -109,7 +113,8 @@
       "upstream_git_blob": "3754e87cb0e1362f17428bc84c661166ee145156",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency",
+      "upstream_sha256": "672f6791589ef758b0ced2c4c477913fa2758623c438e265639a0d539ce90695"
     },
     {
       "upstream": "pstack/automations/benny/FOR_AGENTS.md",
@@ -209,130 +214,154 @@
     },
     {
       "upstream": "pstack/docs/guide/01-setup.md",
-      "upstream_git_blob": "8f30116c0a059269c84cc1a067960e6326bd4a38",
+      "upstream_git_blob": "1e602f61c81eb1902150b849682b92b8e583fa7c",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "upstream_sha256": "bbac20e25fb097029e2676ecf3212f4a72f566eaf2b1031b56317aa1e4fdf490",
+      "disposition": "exclude"
     },
     {
       "upstream": "pstack/docs/guide/02-poteto-mode.md",
-      "upstream_git_blob": "48d25d041c8fa726cd0a23b7c3f93c56f2be30f0",
+      "upstream_git_blob": "403cbe8cc9dbc5204c6f9399abcced228f8e76f7",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "upstream_sha256": "379a1b2c9cd2ba54032b2b142563328d0f3d65039f067863d19b1d4c008737f5",
+      "disposition": "exclude"
     },
     {
       "upstream": "pstack/docs/guide/03-understand.md",
-      "upstream_git_blob": "5231c6c2bdc9d69f7002a2d8cd1ece9be98daadc",
+      "upstream_git_blob": "af985988c2ac9babbabf6e9b4447c2f22a346ee7",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "upstream_sha256": "16f3fe0f7df092a5c69dac90971ef57e63a8a9ae926eed851285c7bfddc0f3fd",
+      "disposition": "exclude"
     },
     {
       "upstream": "pstack/docs/guide/04-design.md",
       "upstream_git_blob": "681d39cff22438b4feb3d40a8d97017af026bc3d",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency",
+      "upstream_sha256": "21e820ff73c0b70682aa570a967ede446b4d7caf62e8f391d0dd733ccb74874c"
     },
     {
       "upstream": "pstack/docs/guide/05-build-and-clean.md",
       "upstream_git_blob": "c38bc44a39fe5e6ace2cd228f631c7eb57ecccf3",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency",
+      "upstream_sha256": "6bd421b43a3cf9fec3cd201fd40ce65fd8c657264eac48b0c9a175b6afd7c252"
     },
     {
       "upstream": "pstack/docs/guide/06-verify-and-ship.md",
       "upstream_git_blob": "d96c76612c647bfd33270d510440991946c508ed",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency",
+      "upstream_sha256": "c93cd50c0359ce875a82b3f7d64eab102a4b0815dbbecdb8e0e5e910bd2d18e9"
     },
     {
       "upstream": "pstack/docs/guide/07-overnight.md",
-      "upstream_git_blob": "43c46529c0a468065854dd9c65bb57f1c0334705",
+      "upstream_git_blob": "9ff66b7706041179ff3661213939a961eb196212",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "upstream_sha256": "5033d61e8b4b6fb0b2304b2132f26bf0b6aee685aa4ed53a76a73cf0ac1c3557",
+      "disposition": "exclude"
     },
     {
       "upstream": "pstack/docs/guide/08-principles.md",
-      "upstream_git_blob": "97dc61cebecd1d31ac371d8e71c9b01b47602195",
+      "upstream_git_blob": "be1102d678a9748b396f829e29fb3dfdd60ba205",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "upstream_sha256": "3ede7c9cf74d9631142aec016a01843d97c1e20469387144b70c2660d50fa96f",
+      "disposition": "exclude"
     },
     {
       "upstream": "pstack/docs/guide/09-make-it-yours.md",
       "upstream_git_blob": "6723069b5108f586575fe5353272ee6567a49b02",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency",
+      "upstream_sha256": "b98588a232a38ca7acebbeecb95ac771df1981aed662dcb45c96b4b66ed20ec0"
     },
     {
       "upstream": "pstack/docs/guide/10-recipes-and-pitfalls.md",
       "upstream_git_blob": "da0af5e6f7984d24818ef1cd28f518d0014da788",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency",
+      "upstream_sha256": "a4662cd98870f08c6abe117a832abe37670ee84f8ed25dcbe7e99ef4eb8e05e0"
     },
     {
       "upstream": "pstack/docs/guide/README.md",
-      "upstream_git_blob": "e376601964ae294fa7ce9607783eaec446d6eccd",
+      "upstream_git_blob": "b8b1b079456d6f2b2c536937d21180ba5c21f733",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "upstream_sha256": "0db8dd72e832c06638ca2f43489e8597d44dc0ea8da3b5088e4382ea26d904c5",
+      "disposition": "exclude"
     },
     {
       "upstream": "pstack/docs/guide/images/design.jpg",
       "upstream_git_blob": "f86909437f8b5a83da3cba7bc35a018c9d4887c8",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency",
+      "upstream_sha256": "b8ed07427f6a0c37dd8ba97961fc0eb5071efeee6c4a230648bdb7547f6f2a8f"
     },
     {
       "upstream": "pstack/docs/guide/images/overnight.jpg",
       "upstream_git_blob": "d64e1c63066c9f088da909160f5e136049e9a512",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency",
+      "upstream_sha256": "4b4405e4df8925c5b3abbe702f681af0f3b1f5f32271b599f95717f578f1a0c8"
     },
     {
       "upstream": "pstack/docs/guide/images/recipes.jpg",
       "upstream_git_blob": "69fe992fdb9fb8e7baacc144ea140f9c93b262fb",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency",
+      "upstream_sha256": "9fa2d51b476635712737795ddef81806efaa0086bb3bfa9f9f45695d9ab0f8e8"
     },
     {
       "upstream": "pstack/docs/guide/images/router.jpg",
       "upstream_git_blob": "c8fba6a266505caf406d5185d7a4cc6e34be98a4",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency",
+      "upstream_sha256": "525843055a4efd2b10acc50a8652fd02b0834ea733a8a2f895c1eb89036017da"
     },
     {
       "upstream": "pstack/docs/guide/images/understanding.jpg",
       "upstream_git_blob": "bb1b1ac15dd11da9ad047d203049a1a24abb2b46",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency",
+      "upstream_sha256": "b60587e9a9bbe2550e93be9819cf0cd4acf77d90fac769a0c43d82bd8e34e279"
     },
     {
       "upstream": "pstack/docs/guide/images/verification.jpg",
       "upstream_git_blob": "a252ae0b5e14cb6fcef2e3b806bbd66316242446",
       "kind": "excluded",
       "destination": null,
-      "adaptation": "upstream guide or branding asset; no skill/playbook dependency"
+      "adaptation": "upstream guide or branding asset; no skill/playbook dependency",
+      "upstream_sha256": "2a76b52007a1cd2866ba67fd47d7d9ef3e1118bb5a09c4665eee8c3f161bd09a"
     },
     {
       "upstream": "pstack/skills/architect/SKILL.md",
-      "upstream_sha256": "9dc60bcf8d8d09000cdd88636ddb7371c576282880a8bb17993d2a1ea1900285",
+      "upstream_sha256": "691cd39f52c7b613866e6baf9ea0b05451ffa21a6a9b4102f166418b89178fde",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-architect/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "7bda4347cbd78059bc8a39a23eede4f657f95adc"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "afa6eead878d2a7b8d22b8eb99e6cf0c6ee0ad69",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/architect/references/design-red-flags.md",
@@ -344,43 +373,48 @@
     },
     {
       "upstream": "pstack/skills/architect/references/rationale-template.md",
-      "upstream_sha256": "6645a0e5f68c003298ec95b85a23262bdda0c79f998b926060169b54d9f23fbb",
+      "upstream_sha256": "0cedfccdc7b47fc881febd5a8293eecbc542c20f8df825639904a8102d2eb5d3",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-architect/references/rationale-template.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "1ddd50545c977264ac387ab805afbef257df03b9"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "a10f77f59510c532cd909faaf3bfeee5ffbfd588",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/architect/references/runner-prompt.md",
-      "upstream_sha256": "3ef8c1452a0382a15b7601c7c94f2a16a00954170d705b7af8cc49ac78080ec9",
+      "upstream_sha256": "983bf2820cc14ed8ecab6e448e1033e5cfe6031967d0a9287b48c7fa9c33d925",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-architect/references/runner-prompt.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "d2daeee48c50f31825fdb0645e0df05c08e37bb6"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "580ec47a5df4259a6a9ace5c452e33092053bb90",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/arena/SKILL.md",
-      "upstream_sha256": "c090878efc50d71605e8be518d12e71d00b451b76c2fd38ea9e0bb2a3e2f6cda",
+      "upstream_sha256": "e3a1f6c49a08b7e0b92134e53300d146f1f22ba83386d2019926e736df421851",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-arena/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "a38fea089bf47d2eb76613b1c599063def84c733"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "e50356e2f97608dbb48d9c1cd75af6d70b3f7059",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/automate-me/SKILL.md",
-      "upstream_sha256": "34e7eab6f495093d474817bc4c13f26bcf5fafa439f2761b8c1ec72b07487764",
+      "upstream_sha256": "1510979b0b71b54284427a19c09918f8b1fdfc168f9b7f9e30098793a5ec88ef",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-automate-me/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "56829250c1fdce1ad72456d5421e1f1e5142373f"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "cd3636e9a53c7c782cf15254204dccfc854086b5",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/blast-radius/SKILL.md",
-      "upstream_sha256": "b060df3ca85803eabbce9fab53f5cc024ca8d784bdde5513c1c1a784947523f8",
+      "upstream_sha256": "5f02db9101ccf26c20254718f0fcd5c2c7ac5d4292b0e0923d0944ac47237aff",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-blast-radius/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "4b24c77e102955af19ae60aa10af642f69eaa8ba"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "1713b283d477530be64e925ede2bdbe5ce2d6e31",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/bro/SKILL.md",
@@ -424,91 +458,84 @@
     },
     {
       "upstream": "pstack/skills/figure-it-out/SKILL.md",
-      "upstream_sha256": "548616d04909de854f36869af2af127ce321fc6aaf95ea5a626997709fd46a2a",
+      "upstream_sha256": "0eb9485f0e7d84fee56b5d0f0af0faf4635e3ca87c8cba3970c01293b76ecc19",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-figure-it-out/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "6ffc04db212737584aac966c69c53836757fa545"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "fbf3fb122cab127d71d3c41e84711e61cc5dec4c",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/how/SKILL.md",
-      "upstream_sha256": "3a554ff564d66a4200a07e20164558e820ea7a9795beb98a4a06546146c98f5f",
+      "upstream_sha256": "d31805589c7f6a63a6db6c9fadebbd79fb9660682cf1654e9b2e5e1e7cd30bc0",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-how/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "7da56ddda31197fe6c9c54800f579c57e503ccc6"
-    },
-    {
-      "upstream": "pstack/skills/how/references/critic-prompt.md",
-      "upstream_sha256": "aa77a15590814c814bd5cb074842029ab7b790c2e8379050525bdbc20739d1bb",
-      "kind": "reference",
-      "destination": "plugins/rogemar-agent-toolkit/skills/forge-how/references/critic-prompt.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "e17298e8499d919d7700d06334d0c3d1744c4bfb"
-    },
-    {
-      "upstream": "pstack/skills/how/references/critique-rubric.md",
-      "upstream_sha256": "5774ff2caf51796e54c4a61b63620a165de5801f23c8f47406e527abfbe9addc",
-      "kind": "reference",
-      "destination": "plugins/rogemar-agent-toolkit/skills/forge-how/references/critique-rubric.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "b4d452f536de805107d3b96fc0772e9bbc1c1209"
+      "adaptation": "Route architectural critique through interrogate/review. Keep how critique callers and saved how-critics preferences compatible.",
+      "upstream_git_blob": "cd22fff659f14822ad2f485f711a355b6da0668d",
+      "disposition": "adapt"
     },
     {
       "upstream": "pstack/skills/how/references/explainer-prompt.md",
-      "upstream_sha256": "04336086e7c415394459ca2f461717d920e15339517dbf5a56ca042f8b4fead3",
+      "upstream_sha256": "ddb89cebefc24e2b54517a331aedfe045b6971e101f45c71b8cef4cccff45bff",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-how/references/explainer-prompt.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "868c737894352bc4f9a401eb0c3ab2051f2be37f"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "3a36fb6736c5b74ac2774350841e332a019dec94",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/how/references/explorer-prompt.md",
-      "upstream_sha256": "fd1218b8cf1f467c644d4ce6fa5e54e6089ede65a28fbbae61f6ee7a2d462f85",
+      "upstream_sha256": "a3b44a6e5bb16a6d4d1cac19db8ed5322ffd5f5f5d45baca4e73990ca096f8be",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-how/references/explorer-prompt.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "80228270978dcd403bae34ed22b0f517fd38a6fc"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "9b4b0594bfd779015616e9d280369aba939583b4",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/interrogate/SKILL.md",
-      "upstream_sha256": "c9a42c706a84cab50d3cf1c7cf91149bac2e0d2ad24da2b8ff518ea0918ae3bb",
+      "upstream_sha256": "59d498c3e9848a24b2d105eb3f05b808aa4152adf4cb1de7bbb6aff4f4cd9b68",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-interrogate/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "4e23d35ee2af0188b52654e7467e508261789c42"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "bd82e5b179f186e1cd7913dd112db9f8b07b4846",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/interrogate/references/code-quality-review.md",
-      "upstream_sha256": "2462f1347b99b412b04fcb0577b96d8744c801f792f2651746f9409fd4465dc9",
+      "upstream_sha256": "79162fda183eafd40d51661fbb5e151c7ba250f89e506ba17f5bd135dcbd50a8",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-interrogate/references/code-quality-review.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "569c9a4915dbbca8f02ede9359e1bad733fd7959"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "16581250d81044c7e80fe234c4970a3f7b7fc98a",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/interrogate/references/lead-judgment.md",
-      "upstream_sha256": "d2cea6cc308758201c6b8b82baf780947645f1ab752707ddf97fab374bf473f9",
+      "upstream_sha256": "6e5bdf5670eb34017692e9b6c546f36ac7552e6bb9f3f2f3429164fcc46a9361",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-interrogate/references/lead-judgment.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "ea6262ebe540a156e7b12f6b353f92ad621114a6"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "5ce526097fdd3dfeaf4cd3b126a3f486c3ee36ae",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/interrogate/references/reviewer-prompt.md",
-      "upstream_sha256": "a397cc61102add709803d917fb23d726920525bf23e7c06dc4ed0b5cbeb00e54",
+      "upstream_sha256": "e0598e254792b56de39bb16b1e6db559b03a522fdc54b98f942d254090920ae6",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-interrogate/references/reviewer-prompt.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "53ffa747ff6af72ed24cc00e2622b2c14dd564a9"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "13a252b2c3cd18522d4c8dc39a7030477037b249",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/interrogate/references/rubric.md",
-      "upstream_sha256": "a67bf02426f88714634ff481d667db821d4b2cea7b335bcd165fe3126e427fb5",
+      "upstream_sha256": "a85aa801abbaf14434f00579440abc0d8e2723227ba8bf57de7cca8d6e7d2f25",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-interrogate/references/rubric.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "0f63289b7138bd300ed302ebfb919f67c7f9cb83"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "2d92f1b83e13be03fb10f20cba12639a1406a2da",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/maintain-verification-skill/SKILL.md",
@@ -528,203 +555,228 @@
     },
     {
       "upstream": "pstack/skills/no-comments/SKILL.md",
-      "upstream_sha256": "72d3b153712ab641875f1d7424de0f77375af1cec03707935f08fa7d8f17bbf3",
+      "upstream_sha256": "5c5b0882297d704c3a9720c52b7a793c68b013eaf717989f0945624efdfe2b05",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-no-comments/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "a14bdda050e71788638733d3b7c342be7f7a2523"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "3b3e76295a7ad66806dcc683e4de92fb25690f8b",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/SKILL.md",
-      "upstream_sha256": "7c4ba1987c39044947946f7cf8399acfcea156672e5ad92bbaacb448830ca954",
+      "upstream_sha256": "7645c9ee27ef9798c48a84060b6df409f8593d1058c7c25cbec28dce976195f9",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "930bea154f48180ce5c112a180e6e9d823474df3"
+      "adaptation": "Register both new principles and update attribution. Keep native dispatch, routers, authority and explanatory safeguards; do not import Opus-specific reductions.",
+      "upstream_git_blob": "f8ddcae379007d61aefcae39b18bd836a488ee21",
+      "disposition": "adapt"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/authoring-a-skill.md",
-      "upstream_sha256": "5479e2b3914acccbafd70f8be56520e1774775d9527f79ac255fd31ec554538a",
+      "upstream_sha256": "f6a13a445c360b48d6cd72780ac01955f45b82826476efe0e67c7559329407aa",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/authoring-a-skill.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "0fc01383d072ceaf72b697076953d7376f162256"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "8c5a55a44f5e95bba92f652da0ac87e941c49538",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/autonomous-run.md",
-      "upstream_sha256": "e4d9e2fc9195dbc521131021c23c6c53d66390048ca3e58be79bdb3d47b9d737",
+      "upstream_sha256": "15e54ad3ac92565613980772d8708de6e19cc4690bfd4bb3fb8836522407377b",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/autonomous-run.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "bc68ad73435547747876a84d0283b62f8e51cdb9"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "12c3a7d84effcacf3550cb893be67498d7b28a4a",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
-      "upstream_sha256": "0fbebbd42feb5be7771307ad48edc88f26b257309e86c0a3d6184f36c957da72",
+      "upstream_sha256": "975439613b9073b637a88c6df762b474dbd745f0e86150bb07d2121e32eb48e7",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/autopilot-full.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "56f3a6581f432ff9752de1cc27ce02bf866b76a7"
+      "adaptation": "Existing delegation to autopilot-stack now consumes its bounded verification rounds; preserve explicit landing authority and no new monitor.",
+      "upstream_git_blob": "e92be88a8dfcb0a1f2745e0da7af42d31f1d6606",
+      "disposition": "adapt"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
-      "upstream_sha256": "779fbc9525db85eccda650535cdfc77426b107ace8e76d810681e24485c23105",
+      "upstream_sha256": "f626f4ed17725de5ea96ac22597a1c298c46c36015e844bf86a68f6d38d57fbf",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/autopilot-stack.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "8599a482a7537d8e4fe6ce6cdb74f69bab719f7f"
+      "adaptation": "Record each current candidate round, comparable baseline and regression evidence in existing acceptance records; preserve review allowances and proportional checks.",
+      "upstream_git_blob": "810a70fff72ae49a9387b5ea41dcb13f890c83c0",
+      "disposition": "adapt"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/babysit.md",
-      "upstream_sha256": "afd5d1af6deda89dfdb1092c8311c0f89908ec708d7c052817b20a31ab996773",
+      "upstream_sha256": "a0346c37c2313f36a863b80f66ee7b98059c2242adf74fc7b3e48abdb9ec6f5a",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/babysit.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "5b162dd3145963138c25d30ba68b02d20250872c"
+      "adaptation": "Reconcile installed cloud-review barrier and persistent allowances; retain current authority, scope and watcher limits rather than upstream topology or wake-loop assumptions.",
+      "upstream_git_blob": "683cf0ba889789cbe2d880fce667c75349f9ed12",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/bug-fix.md",
-      "upstream_sha256": "283bd4013dc13bba1b80844b0aec9e078b9c175dcaa8fed14a08566856346515",
+      "upstream_sha256": "018bbc146ae19145caa6c7e70591fee081b64447dda1c1c4b681c9974d928b13",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/bug-fix.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "d0d05e4beef994deb65b5063a9255329b7f8b5e5"
+      "adaptation": "Route repeated failed fixes and regression-test selection to the two new principles; preserve runtime gaps and scoped fixes.",
+      "upstream_git_blob": "eeebc42b7477d435d8ac61d631d84822f908f59c",
+      "disposition": "adapt"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/eval.md",
-      "upstream_sha256": "4881699e688353f7f5c64ae6f4db20fe96bf7267b2a77ce5a6198d2abf218ed3",
+      "upstream_sha256": "b862bfa2fae2399abf047a8e80d3e3dddb64003af96fb1cebb625216131e36bb",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/eval.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "fe18dd589045fe7400e1af3385f3e6dbe0d6e63a"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "3dae34e2ef0cbdd9bafa5ab372da5ea143d48452",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/feature.md",
-      "upstream_sha256": "a2a04c2e4b273c0c33e4e3a22940049b60b917b064202e39bd34018356aa0926",
+      "upstream_sha256": "3a62cc4a8cbcf144bb9dd05f05420a15be0d38b784d3b141bb730a5852f50a62",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/feature.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "77dd564f1f7f4c9969a823449d4848434beaf92f"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "79a6bbbe0ce61c3b5ef9af1ee8e3ccdb0557edc6",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/hillclimb.md",
-      "upstream_sha256": "12f8f7a08098f0b5b3e5b61c98fadde8609bf05554b4d73efdd696cdb4e83f10",
+      "upstream_sha256": "41980da135de2579bb38570e4b3373e015029148734ab5dc7d6103417b499af6",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/hillclimb.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "c6adf1f3261849f0511a8796613536b4ce20fc0d"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "582555e826675068ceaea08e6134a44ba0ea4511",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/investigation.md",
-      "upstream_sha256": "bb28bfe2912511dbb777057326a8ccff3ef279d219e52271dcb5b10f68a38b5b",
+      "upstream_sha256": "dc66bcf6af3a074fc7f67aa5e12b93ef571a4fb4d8e17f2f1af5ae5359f42e46",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/investigation.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "2f1e9ec991597c1263a842517754e75d4f09f671"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "cd119f04f23e0b7acb3f8cc5ba13ce4ab7aa6c7d",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/multi-phase-plan.md",
-      "upstream_sha256": "1f09461cb4dc2b1588fd22b8277a9f6da33ac25add8e505ddfe9df6af034022a",
+      "upstream_sha256": "8f8603f97aa57bce07a4c29e83e24e84db62a1fbd1fa5b3f639e1e74ea3c9da9",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/multi-phase-plan.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "fb1d8b03f63b7c55d696780d96547bfeaae6332c"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "fe006110f6005dcdb746d891e7901a1734a75538",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
-      "upstream_sha256": "0603d41ddc067fc3c11965c2696e8f7ccb36ade7f6325e2f6bbaf9e635b9ce96",
+      "upstream_sha256": "1c0281f84348aa5dc6f10defbcdd8357f4b0786d874f340ba34bfc169dc6c26f",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/opening-a-pr.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "10ab011f6e391178f5844df387907ae044a27154"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "626f376bd64e2e7b04c2575cb8b8f4ba70a6078d",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/orchestrate.md",
-      "upstream_sha256": "8e2911af902df273504b1589747c13395229bcadc3e1e9448678a75f714dc9f6",
+      "upstream_sha256": "d42b4375f1bd4ce23da0b575a198571a2117df7eea10c3c9fc6d92ae1053f7be",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/orchestrate.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "fcd5a3e15b6cf5d0a88197119a82b09c52ca0984"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "d5b6d008026ff0177f52e22a6fb4b2edae5c87e2",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/pause-safely.md",
-      "upstream_sha256": "5a34883f8daa41596c0f69387f60c083fa826f90004e14952b8c831651a69b3c",
+      "upstream_sha256": "77968cfe5f4a71a8cd33e0ae8ffcdbd88dd693a212c240457773e6c40c96c21d",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/pause-safely.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "b125efb8072e35d34639835d5bffddfc823cbd0a"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "9d1c5f8303976fff40de099f7f28185909430c11",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/perf-issue.md",
-      "upstream_sha256": "3c1e7a4d7d273e6160cc4cfab58db3b7cef9e2a6099930012eed1c90e8c3de16",
+      "upstream_sha256": "bb957907426666b7aa599aed3f6ddebf423364a1428f93790b5cb9e15c878e7e",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/perf-issue.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "62f81bb2844f6211c07156143a27b590b69f414a"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "688d483d4d4a6c58efa515558c822e11f621540f",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/prototype.md",
-      "upstream_sha256": "0e539b57aa33deb09472e10ccab2a20cd166a86bea94c50e0b8be39e41164d33",
+      "upstream_sha256": "7aa1f52c691c3d46d5afc527b23f90977fce869ce33573c73c81a4c7f0cde962",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/prototype.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "0f0a888396f2ff1da11a56bb694ee65eb51529f8"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "18bedc7e9249d180f9198d5b4b13e3817d41d281",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/refactoring.md",
-      "upstream_sha256": "437b86120a8044e85aabf77933d03ab8862d0b3635b0aece69cc3b98914ee7a4",
+      "upstream_sha256": "50f4f7d3d301551f8b8a57c3303c99958c5ca630ae0d0051823b6987c0eb5b96",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/refactoring.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "70d74ac869d6a71bdbccfb0cfcbcfb086d9ed9e3"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "df2a863b531906c64f92b9f9d8feb62f8c7a8665",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/runtime-forensics.md",
-      "upstream_sha256": "96ac9a3a368e6a31d8a7aa56055e6f7f75e8e773c21b65c0f941c26403c8d105",
+      "upstream_sha256": "594f02c40c243a346e1f57b688ecf2ed5e882f21b3d24ed2204d1ac6f1c24a8a",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/runtime-forensics.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "76ebfb3a8c661fea4ab619968a1ac566797344d7"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "ba659bfe1c4c2f956f3285974bfdc941120f9948",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/session-pickup.md",
-      "upstream_sha256": "c1a4aa69e32e2950fb66f7351b5cea7bbf8acff9c2aed4a4623585ed688fbf1e",
+      "upstream_sha256": "1604fb463f7c7410d43fa024ca76c1c1824c166a01fd69d61f073d06fdca2a47",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/session-pickup.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "b75ce11a1fba2f5deff43c272e1d40303524bb09"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "9b2ed06e0ff8b01bf03b7a0d6a4cbb8ba3a46720",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/shipping.md",
-      "upstream_sha256": "802556ac81c20fd7c2f5701d4583207943106eaea86fb8eca53f2aad1f00685a",
+      "upstream_sha256": "19f3f6803a7bbe9ff04f624b03e3b55f07ac0a05e991aa00d5fe51239b920b2a",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/shipping.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "ac3fb6d0e11275319453af68ea19aafb6532145f"
+      "adaptation": "Require current-head CI and affected re-verification after input changes. Exclude build-noise-based proof reuse, forced fanout and publication assumptions.",
+      "upstream_git_blob": "0f1d41f189222b991734015926a3b22607e1b92f",
+      "disposition": "adapt"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/trace-forensics.md",
-      "upstream_sha256": "fcae1f68f349072a8b2518f09b73dedeb826192d2ec33befb8906f42292e38be",
+      "upstream_sha256": "137ce3984fb96e45971fdff4d3c79fa4ccc647c5b30ae4945783b9fb23f8cec7",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/trace-forensics.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "10f8209e3d9c0e6b50056c92a28d89d56f5a31e6"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "48ed6b2f690215027eda96a1897ed98212bbd07a",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/visual-parity.md",
-      "upstream_sha256": "33165e74665bf8ddec181598c2b21b4a1cd310b1adf23742af90ac0d10652b39",
+      "upstream_sha256": "950ca51999a6454c98eee6bcbc3d1bbe501a4e3a5d5439b6f6ddc378991b256c",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/visual-parity.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "ec4a449efdf4f1a3d4b81dc19797d7866545db95"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "248830ec74a593fc22143a842026388f92f1b9f4",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/playbooks/worktree-cleanup.md",
-      "upstream_sha256": "b3a3b23f23972c6db490edc0403a0d717990871308fd57d69bb8438725df5dce",
+      "upstream_sha256": "fc464dc4121926df1704f483c5feca83717c0a40b4651d3e11bd3aedd89441b6",
       "kind": "playbook",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/worktree-cleanup.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "9f6be47290b138c30ed8bb7338cf15173899147a"
+      "adaptation": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "upstream_git_blob": "39c9ef9f368ac63b0e4245503302a4c174e846d6",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/references/bugbot-triage.md",
@@ -752,11 +804,12 @@
     },
     {
       "upstream": "pstack/skills/poteto-mode/scripts/check-plan.mjs",
-      "upstream_sha256": "4f5118edf719b481983dc87dfadd5b4b5473d05aad04a7ba65191ff9c73faf1b",
+      "upstream_sha256": "1f9e788ce90a13a9973e35e8c3a52737857c375e057bdccc13c8510a9af30f04",
       "kind": "script",
       "destination": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/check-plan.mjs",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "21d350ac155928bbcf8d29dce193a97974f12748"
+      "adaptation": "Retain adapted validator; upstream flexible model token still requires ten lanes and must not replace native proportional routing.",
+      "upstream_git_blob": "6c07f4e903d10332702a2ac4602ada9273e71609",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/poteto-mode/scripts/orch/orch.test.ts",
@@ -895,28 +948,40 @@
       "upstream_git_blob": "b9af08160032aeb17143248f2a3648e98f5a75b3"
     },
     {
+      "upstream": "pstack/skills/principle-attack-the-premise/SKILL.md",
+      "upstream_sha256": "c87bd7536f772f8a403ad8155535ee17a1bbec9a353156693eb3bb1520c87ae3",
+      "upstream_git_blob": "f9785ff9fdcf37d1c689e4468da7d611f3b76d4b",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-attack-the-premise/SKILL.md",
+      "adaptation": "Add native and portable principle; choose a relevant discriminating experiment. Actor census is conditional; even distribution does not disprove causation.",
+      "disposition": "adapt"
+    },
+    {
       "upstream": "pstack/skills/principle-boundary-discipline/SKILL.md",
-      "upstream_sha256": "ab3c690ce361542ca00446b8406f5afd47776f544b8ce06a9ef2eaa2338bde6d",
+      "upstream_sha256": "62ac2862c2caa22dd14531f51c9c6bb445ceb198ca98a687e25b4d47c1f10a28",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-boundary-discipline/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "84d526ce7ea45d207587e80015912d5a01714e21"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "dfe9a6fb0e5acd6ae43a41437ee0951adfe839cb",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-build-the-lever/SKILL.md",
-      "upstream_sha256": "3a0b02b1b890538810f27d00c525b2e677bb5d931f602fd7a774d5cd13b61c93",
+      "upstream_sha256": "458b269eab8e95a1573276955312f7d2a13ae8599879a9efc748248f6bc34b56",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-build-the-lever/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "8ba6740bd3bd9b2e582080bce0917cc4a7293d2f"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "277189a10b00fddc7cbb63fcf2323c7341abb0df",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
-      "upstream_sha256": "4acdb3f466efd0a433899aafce3e0f100566228b63ccff43f363a83e80624d81",
+      "upstream_sha256": "77044c83a9ac6df78fc643887ea5f1f11f082adaf14b717c060cdaed03cce863",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-encode-lessons-in-structure/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "86a22f21146d358fc18afb2a0186da61470c3241"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "df9cd5ff2fb3c18267349cc6aecd8121848ef834",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-exhaust-the-design-space/SKILL.md",
@@ -928,43 +993,48 @@
     },
     {
       "upstream": "pstack/skills/principle-experience-first/SKILL.md",
-      "upstream_sha256": "f8d643ddf2f6aa91d9607d1bb340fd2baf227d702e9738848b85312a312bb971",
+      "upstream_sha256": "58903529d733b1c1a7c9ccf127d45ef3c7d0d9f0b81164a4dc6b80efe6f2912b",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-experience-first/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "be15f055d536721bbda859be3e3d202e78a2e001"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "5ea51741302cf3af4cc0b90ec70815bd3208dbf2",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-fix-root-causes/SKILL.md",
-      "upstream_sha256": "cfae13b5a3e27bc88d069092cae97b3e95246879d5bf14f0e9a4db719c781952",
+      "upstream_sha256": "ba4cd38da1dcc8fe5432feb64457cba95594736a9b21b2ebf8f8c52aee068707",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-fix-root-causes/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "5b3b7916c961c231e7ce1430cd93541204ec0ec0"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "7e5a419aeec97b4076fa517865013677428a9fa3",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-foundational-thinking/SKILL.md",
-      "upstream_sha256": "a522488c9d4481e8bfcbe35cbf3838169c8e3801ee0738ae2859067684144579",
+      "upstream_sha256": "864b827e8199d946ce58beca0f89c4ed4099ed6e426fb698a3aaa45de2a9eea2",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-foundational-thinking/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "3fcc57b3a54dea965e245dad966cab423f768b11"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "19cc6c0eaa6fcbc2863fb73d1d25ca196c6a46e0",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-guard-the-context-window/SKILL.md",
-      "upstream_sha256": "291d0125125eabbc2109c880b1c1083aa95826187119a648b26c1c8ea6367179",
+      "upstream_sha256": "d2cef147862576e3d709b7afc149d85196245e8338b9c7eef337c95fba412b3e",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-guard-the-context-window/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "0862757bbb63e314f13f18528c25db85d0901078"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "c4db544909b26981c45eed9caa6591d32885f841",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-laziness-protocol/SKILL.md",
-      "upstream_sha256": "8999fda9fde65fd905835c86e3bfc64190369a84bba30b1e93769f39ad6580fe",
+      "upstream_sha256": "9006579e9e3f33955d17569733db688ae65f22577dc3b21803d219a5a8445aff",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-laziness-protocol/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "16bbb97426d1bbcbf957c032f0629a96a4709753"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "e5bc77e62aa96ae13e482a84df61b3c711c5d828",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-make-operations-idempotent/SKILL.md",
@@ -976,155 +1046,183 @@
     },
     {
       "upstream": "pstack/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
-      "upstream_sha256": "e29b6b6534a23dcaf8c7e16fc25d6484000d7b6e289c48eb0a32a97280633c5d",
+      "upstream_sha256": "09978915a4a11990cf0a9a02d9c08cc59e0b7a04c5c24b83aa560fbe4146f75b",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "a0c6e65e1eaf58278fa6bac1a01c23f998759f5c"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "06c7cfd87becc62d614d0af075b792f8ec6eb21d",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-minimize-reader-load/SKILL.md",
-      "upstream_sha256": "480f4ddec29e7e3058a8f17eb97c0cec4a2c8b4b33ba6401e960167c1fc95a81",
+      "upstream_sha256": "42551c5dc74cd578163c148da552db3ff67d29b78600ef216bfd311fb828fe69",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-minimize-reader-load/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "1c5e18c332438ccd5e47f108ec28872e85e82501"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "64541d963123e344078d82fd3977e857e76129df",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-model-the-domain/SKILL.md",
-      "upstream_sha256": "6b359783c5c9be87860d0999321e864940ff17729b9f9a27f38abae449640022",
+      "upstream_sha256": "bbadbb9a723fac3f76e782ae45665eb94058ec10993e4bae36d4dc6b0e4eac07",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-model-the-domain/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "b2f6449498505a866592493ff3f3a10cfdd8ce5c"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "e1d664a19243c90a84e5e7a816e9e05146c88720",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-never-block-on-the-human/SKILL.md",
-      "upstream_sha256": "f656f3b7581df55e79f53cc47df93905c3a940b822c25071ba95f40e530d102a",
+      "upstream_sha256": "f2764bb9338cbfc788c903cf4b9cd0a5f4042d3a04dd6d59cbd525d9beaadd0a",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-never-block-on-the-human/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "0c55555f85d6636cc26429cc18016ffdafaff576"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "11f08b6ef1fd93a3b3e47c57eb84716dc9acbff9",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-outcome-oriented-execution/SKILL.md",
-      "upstream_sha256": "beedcaed75572a6a1662d47f16da203c2bd2c9dbffbbd678d4ba187d67b7e670",
+      "upstream_sha256": "10eb91633aa570355ba4bb37088fcade2b22e498df7a58edc749e65bc5a78e2d",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-outcome-oriented-execution/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "4c2ed4695b4ca15ea5a98468c13bfe5de97f16df"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "c49be0bc74783f0dee013101365ae09b2abb48a2",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-prove-it-works/SKILL.md",
-      "upstream_sha256": "9bbe6138505be34d81e9395d95d3639b384f71d71d65cc1903075126e1da1508",
+      "upstream_sha256": "ec79a15025bac8d33d62011c54f3b612733fd2a024e623b531b3637aa75070e2",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-prove-it-works/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "088c412cc38eb37442914a71d9e05bc6ee430a1b"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "5dc14a3b06f9d579e5c17cd8a7242f432ddb3125",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-redesign-from-first-principles/SKILL.md",
-      "upstream_sha256": "9ae97b35d6338cc9e34c7023c995a39cb7afdaf4bfd41e1d3d665da04d7515d5",
+      "upstream_sha256": "a1c7fd0a96b40e12a74bceb0e6bb20a9666dd844dcabfb624acb27da23b929fe",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-redesign-from-first-principles/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "6a8cf256d69d0d5f2ce4b57795f2794c41c8e5a0"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "090a4325f43a96080cce3895f0e932b62c39146a",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-separate-before-serializing-shared-state/SKILL.md",
-      "upstream_sha256": "5b14fd656441580061f760968c828f3f4ba034242d8fa06b544763efb25e89ee",
+      "upstream_sha256": "05294b40448e927c5da1c7b6f5c6b9fed3744637e3833d2d948b9154a9dd00bb",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-separate-before-serializing-shared-state/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "523591e0a1bda493598292358bd2142277fdbd19"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "ff93b4a2032c08e2232992a9a24f2891ee14e58f",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-sequence-verifiable-units/SKILL.md",
-      "upstream_sha256": "7478f8160ba5701ca40c742a81e90aff12d45f53ac9191e80ad79b9763e4489f",
+      "upstream_sha256": "2ccbbacc56ace5afdfb8670cef19d7bd009fb2a0033b9a741cbdf2b6baf72187",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-sequence-verifiable-units/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "737480800564d634347afdcef25dd48851e9f2eb"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "986371260ebccd9a5a6818c9561e88c1d270d0ee",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/principle-subtract-before-you-add/SKILL.md",
-      "upstream_sha256": "3999888dc21ced33b86054c2ffde1a3cb438e16bed1213f5dab2b5c000446292",
+      "upstream_sha256": "a983a50e732c1ed315eba7aaf47a61329e31c4794eb1ab9d25d9945265b31e03",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-subtract-before-you-add/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "1666d2617dbc9cf107ecb52aac30b6ffbcc1159b"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "d28770cf47a5798d0250a25ad494aedfecad154e",
+      "disposition": "retain"
+    },
+    {
+      "upstream": "pstack/skills/principle-test-behavior-not-implementation/SKILL.md",
+      "upstream_sha256": "87e40efe4e486f7ea639d2ed1fc0abe6c93b8fd0e89a81218086909d2470a52e",
+      "upstream_git_blob": "42de6f8f7cab01b9f67aa28bd59b128f7574fbab",
+      "kind": "skill",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-test-behavior-not-implementation/SKILL.md",
+      "adaptation": "Add native and portable principle; meaningful-defect checks preserve valid negative, security, schema and static contracts. No assertion-name deletion heuristic.",
+      "disposition": "adapt"
     },
     {
       "upstream": "pstack/skills/principle-type-system-discipline/SKILL.md",
-      "upstream_sha256": "662ed1ad53fb491e97b9c4eac7317fba8ec5ed722fec8d71beb94da0111619cf",
+      "upstream_sha256": "c83da8031ffb4c86410030d3e261f659598fca2b7d8158fd9dc269d70a3a025e",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-principle-type-system-discipline/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "192a1255709e105cd055543b058b9e1bf66d84e1"
+      "adaptation": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "upstream_git_blob": "6030f171bee0d1902cf7ca91f06225e09f0f5433",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/recall/SKILL.md",
-      "upstream_sha256": "90d290daec500f548a167bbd20d69a3a248e345c546ca847ca12967d1c99cbf3",
+      "upstream_sha256": "d265b0e5b6dc5b89c0407f3387d24462c988e1990a37d5359735137908128c5a",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-recall/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "7e3f26595160dac08bfc3287cef48d7e75b74dfa"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "a70062a3f89a8d68b3391bc71fc4c6cc2dfcf6a4",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/reflect/SKILL.md",
-      "upstream_sha256": "5c0fd61b383a2cf98dfd597544c6fc0fdd6eb90802f1ada4f92fa0762c323ebc",
+      "upstream_sha256": "36efa48cc4ec2ba6f8131651aae24c6321682b098ed47a1069a7509462bf4a84",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-reflect/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "3e056e97eb55103db24b2d5f99e5f1edef9d38ef"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "cb270acc507aeaeab7c37db11fc8130cbb2f93f4",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/reflect/references/divergent-reviewer.md",
-      "upstream_sha256": "823167d485c8fc424530ac4eff447f132a10e318a2db35380312c7e843f17683",
+      "upstream_sha256": "221dfc0abf7cbcd25e1da3cd87323f5d1050fc3bf652e096d093584e183c98fb",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/divergent-reviewer.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "70cfdff377e793208f7daa581caf8a7fbdfb2dd1"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "de95be3b9cc9c11052596249336dcc328473eb26",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/reflect/references/judgment-reviewer.md",
-      "upstream_sha256": "8db7a315ccf9280486b4df08b1277ba0fe4c4ac533ad3719945aa1aab2ebddea",
+      "upstream_sha256": "a40ecb9b28bd2a3491e11a541157fe58efe158e0eda7b61a5006c14590aabe61",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/judgment-reviewer.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "76261f1690adc8b8f845113466dd9e80c40f7103"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "222f02b1c3c6eb3e700fa09a71bad108807d3485",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/reflect/references/synthesizer.md",
-      "upstream_sha256": "52767b4566c37df0adc6350fff1c5c7a919a1178c2be539e0efbf920f2803702",
+      "upstream_sha256": "2f76c847eb45b182dc6fbcbf7d96c8ee7e2986ecfd9e0d640fec44e3cc5a617c",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/synthesizer.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "11040b0f4dc639517b569b55460f4a128f503e2a"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "d0e78195186c0dd6cfdc87ba19402ea8cd2aa385",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/reflect/references/tooling-reviewer.md",
-      "upstream_sha256": "3a4dc9e87d0d74b46d0d0bc2c1af6acba10be7c95d1adafeab6ec5701e247933",
+      "upstream_sha256": "bc49ced90fa81eaba3083b88aeb430d900a6d8f14ff40c1d6b52263bacfc77b6",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/tooling-reviewer.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "19f4aa48775da3409116cc05a2162dc3d361c839"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "a37e2009d6ef08f535df87e020e52426c6a5fa33",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/setup-pstack/SKILL.md",
-      "upstream_sha256": "6ed4840c3005fd455e347d2a97d7fc271df7e21ecadf3298a7e2b3d46dc58701",
+      "upstream_sha256": "125dd0c8f588782cfb271efae8f97a0719e43e79f56b3495c095f460bcee6389",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-setup/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "6dcaef578f2075558a8da57a21f97a62590d07f1"
+      "adaptation": "Keep observed native model availability, router ceilings and saved user choices; no upstream model defaults or family-prefix fallback.",
+      "upstream_git_blob": "1009e73c6116c8f6c24b5870c8f0600ae144b631",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/show-me-your-work/SKILL.md",
-      "upstream_sha256": "b99833c41a8781a6af191487f1af37711a3198b98f9373e3c02292b8a6e09aba",
+      "upstream_sha256": "bcff5f7f9fd23f92c12b251f9cd6b947e9485e1055cfacb6fdd9cae0789d7550",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-show-me-your-work/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "8a9c731acf5bb7ad789e10ec7c5af6970dce1176"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "d350a150c36ca16382b4aa6d4196b39e67454ad1",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/show-me-your-work/references/decision-log-template.tsv",
@@ -1136,99 +1234,111 @@
     },
     {
       "upstream": "pstack/skills/show-me-your-work/scripts/log.sh",
-      "upstream_sha256": "1601bc18f9aba0af3f5d6375e4f2d5dc6102334d1bca935026c0e3547cdadbbf",
+      "upstream_sha256": "a65a4bc5fb7cdeadbdb7b7ff1ca4682f4d9c42420942b2977cd17b46c4ac338e",
       "kind": "script",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-show-me-your-work/scripts/log.sh",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "523e2a74ee15bfe6528c795a347827f04ecc5e95"
+      "adaptation": "Use nonempty-file detection and append-only header initialization; preserve escaping and existing records.",
+      "upstream_git_blob": "052e53b7e1090579eaec1d3d59f7a1cd2f2e452a",
+      "disposition": "adopt"
     },
     {
       "upstream": "pstack/skills/swarm/SKILL.md",
-      "upstream_sha256": "8e6494e296af5496cacb0fb83f33f647c84286d2e1d1b85580bc0f0f577a81cd",
+      "upstream_sha256": "e28057fbbd1113257b2e953c6e891c41f535dbb01400b6bfd3eb9a85a2ab861f",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-swarm/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "b7e61ec7bc46629930582a50f12a6b9f1f28a368"
+      "adaptation": "Require candidate and measurement identity in worker receipts, preserve bounded native dispatch, missing-evidence gaps and task-specific retry judgment.",
+      "upstream_git_blob": "a63e09eda94558aa8c7ae6d0653951838a3abd3f",
+      "disposition": "adapt"
     },
     {
       "upstream": "pstack/skills/tdd/SKILL.md",
-      "upstream_sha256": "adad031f9e79d7f7389fa128f7af8e03344831270e282cf4e40bdacb8418c386",
+      "upstream_sha256": "eeb868e2dfebee528d730a67d7b17498fac4bb85dec2e38bc5c5176aca4d5d2f",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-tdd/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "7d923bd705e4727b0bc9a378ca0928cc825035de"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "ca6f24c963001d9d518db2936dfe3d12f29b4e94",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/teach/SKILL.md",
-      "upstream_sha256": "0a5987b0588dc56e14bfd84d0300e2ab405abc7c5c2aa81e0d3d7c6b243db7a7",
+      "upstream_sha256": "bd286e5a6290673be2cd28aef7af2ec7f1fb138e6bce156ea657368c7e7fc8a4",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-teach/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "beea0ffaa916e8fcf93f2bf13c632f2a9259d1e2"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "25369f3f554ed6b5826340ae3eee688fac0bda80",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/technical-writing/SKILL.md",
-      "upstream_sha256": "bd0cb21034f4fe6695cfdf8cd3561026eec943f0bb6e9300bc78a2b3340865a7",
+      "upstream_sha256": "10c74685e1639cc4f8ff096007e5405b25ca0e824b65aaa17105c238faf6a1e8",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-technical-writing/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "d13baf98426a72764f94d18ab45d1549151a6c38"
+      "adaptation": "Current adaptation already proposes global vocabulary changes instead of editing implicitly. Preserve writing guidance; no untested instruction reduction.",
+      "upstream_git_blob": "1cd44cf2595a5caeda1f702aacd4f8a25aa8166a",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/typescript-best-practices/SKILL.md",
-      "upstream_sha256": "b854da40f946f1cd4681785d3e802a2a592322d351f770f5057b56430edb35d0",
+      "upstream_sha256": "28f9e61710e205f6f3c5476f333483cff0e988f6a5b639e2faad536344b40c5e",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-typescript-best-practices/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "2912734bdb985ac217849e8581c7a7e0aa7383a5"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "2c0279d9a5f800192605e47b55cae4e75a17ec27",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/typescript-best-practices/references/patterns.md",
-      "upstream_sha256": "eb73b5f3514c0c14d14bafca59ffb54b161422ea5fc5fe65e60c5b4d71c40178",
+      "upstream_sha256": "62e9cd32d2fa066a35d0d1349aac22dce31a48ad7d5eaf142570770cfe707384",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-typescript-best-practices/references/patterns.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "15c3e1118055ca2f2d353b968004fc4a46491248"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "f44d22ffe9130c5340d55a2fa57028c6959479cb",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/unslop/SKILL.md",
-      "upstream_sha256": "2789ab80477b7e382292e4d7acca1057784df19713fffb74622ff0f83b2f3733",
+      "upstream_sha256": "195411d320b5b328f9f642baf59757ed19aaf0931c0838740e0aca273d538dc1",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-unslop/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "ccb0c5563ff0fe7a04e2f95f27bf681df86240a9"
+      "adaptation": "Preserve approved writing style and existing rule IDs. Do not import broad deletion of guidance or mandatory style rules without behavior evidence.",
+      "upstream_git_blob": "229a090708710c36caa0017f8d33e90880dc6846",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/why/SKILL.md",
-      "upstream_sha256": "a9423bb7bab7c3280d17478ebe97bb283ea6ed12d9dcae590fc2f81f41660990",
+      "upstream_sha256": "2a852ec8680920109d2b56538b027c52867896a597250ac5d18a13e0b42e5b06",
       "kind": "skill",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/SKILL.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "3aea3f7d3f51421f7860c00e775f00acc45a58cc"
+      "adaptation": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "upstream_git_blob": "daac2c734a8f8fe43d30663054d694066f2b41ec",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/why/references/epistemics.md",
-      "upstream_sha256": "ba99dcdc4fbce91a83b50fc0c9b2c5769febd95540b1722c6b87fe8f900bb60a",
+      "upstream_sha256": "fcc0f559c072832c869a5ada72434b4849320a637ae63c09e8ee14f7ad787059",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/epistemics.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "aca563ef9fe4ce27797a73027c6fb38b6d93e6f7"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "3732bf6881b60d1337fa3498574452a85d33ba30",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/why/references/investigator-prompt.md",
-      "upstream_sha256": "e35d8eaea13f0a027dd35572d525e9f66e8f8918ca9e555237dc228f26278d5f",
+      "upstream_sha256": "6892956a7ab0b5ee6c4babaf4f793703abe89b350ea7cb9463b4a56eea1c8266",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/investigator-prompt.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "1886b46deb20ef1f13d409a0ad7f6c3fb885eb6a"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "3b56af44c589833508f4605cfdd4432b39a16739",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/why/references/source-playbook.md",
-      "upstream_sha256": "3cfb0245d5b2019eeeaa7a0e023579d390f2cdcdff6942d2fe009b9efac0eb11",
+      "upstream_sha256": "9ae9dcb9d09111c9facc68510331c5aba4aed9b1b057314ff1fc0e166ad3993a",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/source-playbook.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "bcf11e1315e7774651649dbf91b67213463c8073"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "aa3d877cd539763ff05e266ae0a02dd811441e2b",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/why/references/sources/code-archaeology.md",
@@ -1240,68 +1350,1212 @@
     },
     {
       "upstream": "pstack/skills/why/references/sources/databricks.md",
-      "upstream_sha256": "269a22032f027ee30a33c1b5e30443d13dd6d127ff20d8d1e8a20715b06a69cc",
+      "upstream_sha256": "236ede7aab6454662a992db088a5393537a5233a4c26719c93188f9e174488f6",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/databricks.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "5e82b90536b81f395c74aa5f98c387bc0d5d5d79"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "2770763ff5d0d1ad004abcc9a0138c9537ad1978",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/why/references/sources/datadog.md",
-      "upstream_sha256": "db80803f1635a5015e3190f4753c4228083e6cebf222c84e24fc3c3919aa5574",
+      "upstream_sha256": "ebe9c07bac28e47757ee7f16fb93b0c01d427a08c501957d047f395a2f37b7e7",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/datadog.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "039330e8491430a34167005c55a0baa29f7eeb67"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "d8363b1c1d1c7eadb15d47abd83bf70537c39620",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/why/references/sources/incident-postmortem.md",
-      "upstream_sha256": "486132457d3782eea64292ce7a2d3bbe3b24b372b20ca00de4329e820f74cd42",
+      "upstream_sha256": "a899470f05f86029630a13a2696491cc708ca7b56a6e822a69ff6e954d6ff8cf",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/incident-postmortem.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "e5afc3204ba7e2b15b01e5abc538d26d8b1b3b53"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "450d6e52f25b1b41f741cb3e9c93e1c74ef858b4",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/why/references/sources/linear.md",
-      "upstream_sha256": "7e1b72ba459089168efd701502f8c268d2481154aeeda1ddd84f840f7e974760",
+      "upstream_sha256": "01304e7f1badfcfb78babbb0edcadeb3cc8dd3f713793420cdff24ba190f907c",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/linear.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "c000efd5aad749a4483e2563a63d460903eae124"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "899c643c078f322afe6ae0ef78a007f8ffd356c1",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/why/references/sources/notion.md",
-      "upstream_sha256": "2ce336dd3052967187a56ec33d308c7a69e7ef3b04ba7b17386a8b3914a0f000",
+      "upstream_sha256": "3bcfa695c49dfad4ac036d5d7181c12585f55ac04f1936198d16ab75a2788997",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/notion.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "ea6ab335c40834ba79e0085ae2d7a94950502f49"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "d16230a4105fd1dacf870da0950a38faeb9381e6",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/why/references/sources/sentry.md",
-      "upstream_sha256": "0eef902cb0f835f7fa9bd85a8e19ba1505d05e59a0173dfe852d8d52d828266d",
+      "upstream_sha256": "6f292bc4fb1548e956f95e1900b9481abf5134254419f1cd9edec95428c82d73",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/sentry.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "fe09d17254e7653a7c75f855cecc779d5512a02e"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "2b7cf6f3098ee868547dc4e69efacfe9c255246b",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/why/references/sources/slack.md",
-      "upstream_sha256": "60e4c8dbb941f563c86aec7267cde66443b1dc651422569c8d112bc9da7551f6",
+      "upstream_sha256": "58fee61d024b3700b407e7acbed367944720ff05adfddb6954d36c88368f3ba7",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/slack.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "d4a5f23646053516bb1235f06dcf697b49acda23"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "863a527d60e4e055e680834ef8098ea04273a1ae",
+      "disposition": "retain"
     },
     {
       "upstream": "pstack/skills/why/references/synthesizer-prompt.md",
-      "upstream_sha256": "fcdc69ede22f94da9e22f510bb0c4a75a63820f0b49b8d5fd54a196b4010bf2a",
+      "upstream_sha256": "733a3e9cf897b1aca56aaddeae01a3832e4bfed024c2f602db2d1bf807d7a73b",
       "kind": "reference",
       "destination": "plugins/rogemar-agent-toolkit/skills/forge-why/references/synthesizer-prompt.md",
-      "adaptation": "codex-native",
-      "upstream_git_blob": "dae7efc580f5bc8e63b2fd28a1462fe2b8445d07"
+      "adaptation": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "upstream_git_blob": "9707dfcc2fc57ea126484a433c5cd9ee4d400ef3",
+      "disposition": "retain"
     }
   ],
-  "source_file_count": 158
+  "source_file_count": 158,
+  "previous_commit": "93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+  "version": "0.15.5",
+  "adaptation_report": "docs/pstack-v0.15.5-adaptation.md",
+  "deltas": [
+    {
+      "path": "pstack/.cursor-plugin/plugin.json",
+      "status": "modified",
+      "old": "01cdd5599f6d36ed8a1665f539626f3e9fbb0c695b03d30f8e573d2c75d3ede0",
+      "new": "0fc91a08dab312d166a11f2c2cb8b699f19627415f001e641fcfa7aea9ba5836",
+      "disposition": "exclude",
+      "reason": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "destinations": []
+    },
+    {
+      "path": "pstack/README.md",
+      "status": "modified",
+      "old": "4fe423d7147cab0f2602abecb011f4621138443f524e6b9edad96a1fdcae6a6d",
+      "new": "16262f32aa041d857f2936f3ad6c589648f8e7b5d23e03c3c0a8c76ef99fd08c",
+      "disposition": "exclude",
+      "reason": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "destinations": []
+    },
+    {
+      "path": "pstack/docs/guide/01-setup.md",
+      "status": "modified",
+      "old": "e6e501f8f58405dcffab8a71f829bf0985466a28f23f49ef29a301f5e8a62087",
+      "new": "bbac20e25fb097029e2676ecf3212f4a72f566eaf2b1031b56317aa1e4fdf490",
+      "disposition": "exclude",
+      "reason": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "destinations": []
+    },
+    {
+      "path": "pstack/docs/guide/02-poteto-mode.md",
+      "status": "modified",
+      "old": "528ef62a66ae0ac74cf3eb489b960a80ee4370e0256342cb2b94c6712241c8aa",
+      "new": "379a1b2c9cd2ba54032b2b142563328d0f3d65039f067863d19b1d4c008737f5",
+      "disposition": "exclude",
+      "reason": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "destinations": []
+    },
+    {
+      "path": "pstack/docs/guide/03-understand.md",
+      "status": "modified",
+      "old": "0a42633faaa03cbc3c8d48cc3987c3a2f5924ff3b4651d045486933cbc5f1b10",
+      "new": "16f3fe0f7df092a5c69dac90971ef57e63a8a9ae926eed851285c7bfddc0f3fd",
+      "disposition": "exclude",
+      "reason": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "destinations": []
+    },
+    {
+      "path": "pstack/docs/guide/07-overnight.md",
+      "status": "modified",
+      "old": "eefbc665ad411ee22b6430d779674e5e8d8f304d51fafd80a62ab2334d095ebc",
+      "new": "5033d61e8b4b6fb0b2304b2132f26bf0b6aee685aa4ed53a76a73cf0ac1c3557",
+      "disposition": "exclude",
+      "reason": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "destinations": []
+    },
+    {
+      "path": "pstack/docs/guide/08-principles.md",
+      "status": "modified",
+      "old": "34c0b6d6f789738cc05fdfbc2d8f8e6a45f52acc47f78752f4ee28c1525bc576",
+      "new": "3ede7c9cf74d9631142aec016a01843d97c1e20469387144b70c2660d50fa96f",
+      "disposition": "exclude",
+      "reason": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "destinations": []
+    },
+    {
+      "path": "pstack/docs/guide/README.md",
+      "status": "modified",
+      "old": "e2921b1ddb06cb8a4aee0d4fa66de340235f47f683bc4919c35eb00121f522d3",
+      "new": "0db8dd72e832c06638ca2f43489e8597d44dc0ea8da3b5088e4382ea26d904c5",
+      "disposition": "exclude",
+      "reason": "Upstream plugin metadata/guide is not a native instruction entry. Record the new pin/version; retain independently adapted discovery and runtime instructions.",
+      "destinations": []
+    },
+    {
+      "path": "pstack/skills/architect/SKILL.md",
+      "status": "modified",
+      "old": "9dc60bcf8d8d09000cdd88636ddb7371c576282880a8bb17993d2a1ea1900285",
+      "new": "691cd39f52c7b613866e6baf9ea0b05451ffa21a6a9b4102f166418b89178fde",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-architect/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/architect/references/rationale-template.md",
+      "status": "modified",
+      "old": "6645a0e5f68c003298ec95b85a23262bdda0c79f998b926060169b54d9f23fbb",
+      "new": "0cedfccdc7b47fc881febd5a8293eecbc542c20f8df825639904a8102d2eb5d3",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-architect/references/rationale-template.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/architect/references/runner-prompt.md",
+      "status": "modified",
+      "old": "3ef8c1452a0382a15b7601c7c94f2a16a00954170d705b7af8cc49ac78080ec9",
+      "new": "983bf2820cc14ed8ecab6e448e1033e5cfe6031967d0a9287b48c7fa9c33d925",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-architect/references/runner-prompt.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/arena/SKILL.md",
+      "status": "modified",
+      "old": "c090878efc50d71605e8be518d12e71d00b451b76c2fd38ea9e0bb2a3e2f6cda",
+      "new": "e3a1f6c49a08b7e0b92134e53300d146f1f22ba83386d2019926e736df421851",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-arena/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/automate-me/SKILL.md",
+      "status": "modified",
+      "old": "34e7eab6f495093d474817bc4c13f26bcf5fafa439f2761b8c1ec72b07487764",
+      "new": "1510979b0b71b54284427a19c09918f8b1fdfc168f9b7f9e30098793a5ec88ef",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-automate-me/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/blast-radius/SKILL.md",
+      "status": "modified",
+      "old": "b060df3ca85803eabbce9fab53f5cc024ca8d784bdde5513c1c1a784947523f8",
+      "new": "5f02db9101ccf26c20254718f0fcd5c2c7ac5d4292b0e0923d0944ac47237aff",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-blast-radius/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/figure-it-out/SKILL.md",
+      "status": "modified",
+      "old": "548616d04909de854f36869af2af127ce321fc6aaf95ea5a626997709fd46a2a",
+      "new": "0eb9485f0e7d84fee56b5d0f0af0faf4635e3ca87c8cba3970c01293b76ecc19",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-figure-it-out/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/how/SKILL.md",
+      "status": "modified",
+      "old": "3a554ff564d66a4200a07e20164558e820ea7a9795beb98a4a06546146c98f5f",
+      "new": "d31805589c7f6a63a6db6c9fadebbd79fb9660682cf1654e9b2e5e1e7cd30bc0",
+      "disposition": "adapt",
+      "reason": "Route architectural critique through interrogate/review. Keep how critique callers and saved how-critics preferences compatible.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-how/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/how/references/critic-prompt.md",
+      "status": "removed",
+      "old": "aa77a15590814c814bd5cb074842029ab7b790c2e8379050525bdbc20739d1bb",
+      "new": null,
+      "disposition": "retain",
+      "reason": "Keep legacy critique resource for existing callers. New requests route to interrogate; no silent deletion of role preferences.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-how/references/critic-prompt.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/how/references/critique-rubric.md",
+      "status": "removed",
+      "old": "5774ff2caf51796e54c4a61b63620a165de5801f23c8f47406e527abfbe9addc",
+      "new": null,
+      "disposition": "retain",
+      "reason": "Keep legacy critique resource for existing callers. New requests route to interrogate; no silent deletion of role preferences.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-how/references/critique-rubric.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/how/references/explainer-prompt.md",
+      "status": "modified",
+      "old": "04336086e7c415394459ca2f461717d920e15339517dbf5a56ca042f8b4fead3",
+      "new": "ddb89cebefc24e2b54517a331aedfe045b6971e101f45c71b8cef4cccff45bff",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-how/references/explainer-prompt.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/how/references/explorer-prompt.md",
+      "status": "modified",
+      "old": "fd1218b8cf1f467c644d4ce6fa5e54e6089ede65a28fbbae61f6ee7a2d462f85",
+      "new": "a3b44a6e5bb16a6d4d1cac19db8ed5322ffd5f5f5d45baca4e73990ca096f8be",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-how/references/explorer-prompt.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/interrogate/SKILL.md",
+      "status": "modified",
+      "old": "c9a42c706a84cab50d3cf1c7cf91149bac2e0d2ad24da2b8ff518ea0918ae3bb",
+      "new": "59d498c3e9848a24b2d105eb3f05b808aa4152adf4cb1de7bbb6aff4f4cd9b68",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-interrogate/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/interrogate/references/code-quality-review.md",
+      "status": "modified",
+      "old": "2462f1347b99b412b04fcb0577b96d8744c801f792f2651746f9409fd4465dc9",
+      "new": "79162fda183eafd40d51661fbb5e151c7ba250f89e506ba17f5bd135dcbd50a8",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-interrogate/references/code-quality-review.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/interrogate/references/lead-judgment.md",
+      "status": "modified",
+      "old": "d2cea6cc308758201c6b8b82baf780947645f1ab752707ddf97fab374bf473f9",
+      "new": "6e5bdf5670eb34017692e9b6c546f36ac7552e6bb9f3f2f3429164fcc46a9361",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-interrogate/references/lead-judgment.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/interrogate/references/reviewer-prompt.md",
+      "status": "modified",
+      "old": "a397cc61102add709803d917fb23d726920525bf23e7c06dc4ed0b5cbeb00e54",
+      "new": "e0598e254792b56de39bb16b1e6db559b03a522fdc54b98f942d254090920ae6",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-interrogate/references/reviewer-prompt.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/interrogate/references/rubric.md",
+      "status": "modified",
+      "old": "a67bf02426f88714634ff481d667db821d4b2cea7b335bcd165fe3126e427fb5",
+      "new": "a85aa801abbaf14434f00579440abc0d8e2723227ba8bf57de7cca8d6e7d2f25",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-interrogate/references/rubric.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/no-comments/SKILL.md",
+      "status": "modified",
+      "old": "72d3b153712ab641875f1d7424de0f77375af1cec03707935f08fa7d8f17bbf3",
+      "new": "5c5b0882297d704c3a9720c52b7a793c68b013eaf717989f0945624efdfe2b05",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-no-comments/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/SKILL.md",
+      "status": "modified",
+      "old": "7c4ba1987c39044947946f7cf8399acfcea156672e5ad92bbaacb448830ca954",
+      "new": "7645c9ee27ef9798c48a84060b6df409f8593d1058c7c25cbec28dce976195f9",
+      "disposition": "adapt",
+      "reason": "Register both new principles and update attribution. Keep native dispatch, routers, authority and explanatory safeguards; do not import Opus-specific reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/authoring-a-skill.md",
+      "status": "modified",
+      "old": "5479e2b3914acccbafd70f8be56520e1774775d9527f79ac255fd31ec554538a",
+      "new": "f6a13a445c360b48d6cd72780ac01955f45b82826476efe0e67c7559329407aa",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/authoring-a-skill.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/authoring-a-skill.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/autonomous-run.md",
+      "status": "modified",
+      "old": "e4d9e2fc9195dbc521131021c23c6c53d66390048ca3e58be79bdb3d47b9d737",
+      "new": "15e54ad3ac92565613980772d8708de6e19cc4690bfd4bb3fb8836522407377b",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/autonomous-run.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/autonomous-run.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
+      "status": "modified",
+      "old": "0fbebbd42feb5be7771307ad48edc88f26b257309e86c0a3d6184f36c957da72",
+      "new": "975439613b9073b637a88c6df762b474dbd745f0e86150bb07d2121e32eb48e7",
+      "disposition": "adapt",
+      "reason": "Existing delegation to autopilot-stack now consumes its bounded verification rounds; preserve explicit landing authority and no new monitor.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/autopilot-full.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/autopilot-full.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
+      "status": "modified",
+      "old": "779fbc9525db85eccda650535cdfc77426b107ace8e76d810681e24485c23105",
+      "new": "f626f4ed17725de5ea96ac22597a1c298c46c36015e844bf86a68f6d38d57fbf",
+      "disposition": "adapt",
+      "reason": "Record each current candidate round, comparable baseline and regression evidence in existing acceptance records; preserve review allowances and proportional checks.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/autopilot-stack.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/autopilot-stack.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/babysit.md",
+      "status": "modified",
+      "old": "afd5d1af6deda89dfdb1092c8311c0f89908ec708d7c052817b20a31ab996773",
+      "new": "a0346c37c2313f36a863b80f66ee7b98059c2242adf74fc7b3e48abdb9ec6f5a",
+      "disposition": "retain",
+      "reason": "Reconcile installed cloud-review barrier and persistent allowances; retain current authority, scope and watcher limits rather than upstream topology or wake-loop assumptions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/babysit.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/babysit.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/bug-fix.md",
+      "status": "modified",
+      "old": "283bd4013dc13bba1b80844b0aec9e078b9c175dcaa8fed14a08566856346515",
+      "new": "018bbc146ae19145caa6c7e70591fee081b64447dda1c1c4b681c9974d928b13",
+      "disposition": "adapt",
+      "reason": "Route repeated failed fixes and regression-test selection to the two new principles; preserve runtime gaps and scoped fixes.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/bug-fix.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/bug-fix.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/eval.md",
+      "status": "modified",
+      "old": "4881699e688353f7f5c64ae6f4db20fe96bf7267b2a77ce5a6198d2abf218ed3",
+      "new": "b862bfa2fae2399abf047a8e80d3e3dddb64003af96fb1cebb625216131e36bb",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/eval.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/eval.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/feature.md",
+      "status": "modified",
+      "old": "a2a04c2e4b273c0c33e4e3a22940049b60b917b064202e39bd34018356aa0926",
+      "new": "3a62cc4a8cbcf144bb9dd05f05420a15be0d38b784d3b141bb730a5852f50a62",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/feature.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/feature.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/hillclimb.md",
+      "status": "modified",
+      "old": "12f8f7a08098f0b5b3e5b61c98fadde8609bf05554b4d73efdd696cdb4e83f10",
+      "new": "41980da135de2579bb38570e4b3373e015029148734ab5dc7d6103417b499af6",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/hillclimb.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/hillclimb.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/investigation.md",
+      "status": "modified",
+      "old": "bb28bfe2912511dbb777057326a8ccff3ef279d219e52271dcb5b10f68a38b5b",
+      "new": "dc66bcf6af3a074fc7f67aa5e12b93ef571a4fb4d8e17f2f1af5ae5359f42e46",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/investigation.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/investigation.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/multi-phase-plan.md",
+      "status": "modified",
+      "old": "1f09461cb4dc2b1588fd22b8277a9f6da33ac25add8e505ddfe9df6af034022a",
+      "new": "8f8603f97aa57bce07a4c29e83e24e84db62a1fbd1fa5b3f639e1e74ea3c9da9",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/multi-phase-plan.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/multi-phase-plan.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
+      "status": "modified",
+      "old": "0603d41ddc067fc3c11965c2696e8f7ccb36ade7f6325e2f6bbaf9e635b9ce96",
+      "new": "1c0281f84348aa5dc6f10defbcdd8357f4b0786d874f340ba34bfc169dc6c26f",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/opening-a-pr.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/opening-a-pr.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/orchestrate.md",
+      "status": "modified",
+      "old": "8e2911af902df273504b1589747c13395229bcadc3e1e9448678a75f714dc9f6",
+      "new": "d42b4375f1bd4ce23da0b575a198571a2117df7eea10c3c9fc6d92ae1053f7be",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/orchestrate.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/orchestrate.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/pause-safely.md",
+      "status": "modified",
+      "old": "5a34883f8daa41596c0f69387f60c083fa826f90004e14952b8c831651a69b3c",
+      "new": "77968cfe5f4a71a8cd33e0ae8ffcdbd88dd693a212c240457773e6c40c96c21d",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/pause-safely.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/pause-safely.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/perf-issue.md",
+      "status": "modified",
+      "old": "3c1e7a4d7d273e6160cc4cfab58db3b7cef9e2a6099930012eed1c90e8c3de16",
+      "new": "bb957907426666b7aa599aed3f6ddebf423364a1428f93790b5cb9e15c878e7e",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/perf-issue.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/perf-issue.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/prototype.md",
+      "status": "modified",
+      "old": "0e539b57aa33deb09472e10ccab2a20cd166a86bea94c50e0b8be39e41164d33",
+      "new": "7aa1f52c691c3d46d5afc527b23f90977fce869ce33573c73c81a4c7f0cde962",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/prototype.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/prototype.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/refactoring.md",
+      "status": "modified",
+      "old": "437b86120a8044e85aabf77933d03ab8862d0b3635b0aece69cc3b98914ee7a4",
+      "new": "50f4f7d3d301551f8b8a57c3303c99958c5ca630ae0d0051823b6987c0eb5b96",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/refactoring.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/refactoring.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/runtime-forensics.md",
+      "status": "modified",
+      "old": "96ac9a3a368e6a31d8a7aa56055e6f7f75e8e773c21b65c0f941c26403c8d105",
+      "new": "594f02c40c243a346e1f57b688ecf2ed5e882f21b3d24ed2204d1ac6f1c24a8a",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/runtime-forensics.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/runtime-forensics.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/session-pickup.md",
+      "status": "modified",
+      "old": "c1a4aa69e32e2950fb66f7351b5cea7bbf8acff9c2aed4a4623585ed688fbf1e",
+      "new": "1604fb463f7c7410d43fa024ca76c1c1824c166a01fd69d61f073d06fdca2a47",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/session-pickup.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/session-pickup.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/shipping.md",
+      "status": "modified",
+      "old": "802556ac81c20fd7c2f5701d4583207943106eaea86fb8eca53f2aad1f00685a",
+      "new": "19f3f6803a7bbe9ff04f624b03e3b55f07ac0a05e991aa00d5fe51239b920b2a",
+      "disposition": "adapt",
+      "reason": "Require current-head CI and affected re-verification after input changes. Exclude build-noise-based proof reuse, forced fanout and publication assumptions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/shipping.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/shipping.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/trace-forensics.md",
+      "status": "modified",
+      "old": "fcae1f68f349072a8b2518f09b73dedeb826192d2ec33befb8906f42292e38be",
+      "new": "137ce3984fb96e45971fdff4d3c79fa4ccc647c5b30ae4945783b9fb23f8cec7",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/trace-forensics.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/trace-forensics.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/visual-parity.md",
+      "status": "modified",
+      "old": "33165e74665bf8ddec181598c2b21b4a1cd310b1adf23742af90ac0d10652b39",
+      "new": "950ca51999a6454c98eee6bcbc3d1bbe501a4e3a5d5439b6f6ddc378991b256c",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/visual-parity.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/visual-parity.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/playbooks/worktree-cleanup.md",
+      "status": "modified",
+      "old": "b3a3b23f23972c6db490edc0403a0d717990871308fd57d69bb8438725df5dce",
+      "new": "fc464dc4121926df1704f483c5feca83717c0a40b4651d3e11bd3aedd89441b6",
+      "disposition": "retain",
+      "reason": "Preserve the bounded native playbook, proportional checks, authority and existing router; no upstream model, fanout, wake-loop or untested reduction change.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/worktree-cleanup.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/worktree-cleanup.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/poteto-mode/scripts/check-plan.mjs",
+      "status": "modified",
+      "old": "4f5118edf719b481983dc87dfadd5b4b5473d05aad04a7ba65191ff9c73faf1b",
+      "new": "1f9e788ce90a13a9973e35e8c3a52737857c375e057bdccc13c8510a9af30f04",
+      "disposition": "retain",
+      "reason": "Retain adapted validator; upstream flexible model token still requires ten lanes and must not replace native proportional routing.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/check-plan.mjs"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-attack-the-premise/SKILL.md",
+      "status": "added",
+      "old": null,
+      "new": "c87bd7536f772f8a403ad8155535ee17a1bbec9a353156693eb3bb1520c87ae3",
+      "disposition": "adapt",
+      "reason": "Add native and portable principle; choose a relevant discriminating experiment. Actor census is conditional; even distribution does not disprove causation.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-attack-the-premise/SKILL.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/references/principles/attack-the-premise.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-boundary-discipline/SKILL.md",
+      "status": "modified",
+      "old": "ab3c690ce361542ca00446b8406f5afd47776f544b8ce06a9ef2eaa2338bde6d",
+      "new": "62ac2862c2caa22dd14531f51c9c6bb445ceb198ca98a687e25b4d47c1f10a28",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-boundary-discipline/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-build-the-lever/SKILL.md",
+      "status": "modified",
+      "old": "3a0b02b1b890538810f27d00c525b2e677bb5d931f602fd7a774d5cd13b61c93",
+      "new": "458b269eab8e95a1573276955312f7d2a13ae8599879a9efc748248f6bc34b56",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-build-the-lever/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
+      "status": "modified",
+      "old": "4acdb3f466efd0a433899aafce3e0f100566228b63ccff43f363a83e80624d81",
+      "new": "77044c83a9ac6df78fc643887ea5f1f11f082adaf14b717c060cdaed03cce863",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-encode-lessons-in-structure/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-experience-first/SKILL.md",
+      "status": "modified",
+      "old": "f8d643ddf2f6aa91d9607d1bb340fd2baf227d702e9738848b85312a312bb971",
+      "new": "58903529d733b1c1a7c9ccf127d45ef3c7d0d9f0b81164a4dc6b80efe6f2912b",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-experience-first/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-fix-root-causes/SKILL.md",
+      "status": "modified",
+      "old": "cfae13b5a3e27bc88d069092cae97b3e95246879d5bf14f0e9a4db719c781952",
+      "new": "ba4cd38da1dcc8fe5432feb64457cba95594736a9b21b2ebf8f8c52aee068707",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-fix-root-causes/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-foundational-thinking/SKILL.md",
+      "status": "modified",
+      "old": "a522488c9d4481e8bfcbe35cbf3838169c8e3801ee0738ae2859067684144579",
+      "new": "864b827e8199d946ce58beca0f89c4ed4099ed6e426fb698a3aaa45de2a9eea2",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-foundational-thinking/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-guard-the-context-window/SKILL.md",
+      "status": "modified",
+      "old": "291d0125125eabbc2109c880b1c1083aa95826187119a648b26c1c8ea6367179",
+      "new": "d2cef147862576e3d709b7afc149d85196245e8338b9c7eef337c95fba412b3e",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-guard-the-context-window/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-laziness-protocol/SKILL.md",
+      "status": "modified",
+      "old": "8999fda9fde65fd905835c86e3bfc64190369a84bba30b1e93769f39ad6580fe",
+      "new": "9006579e9e3f33955d17569733db688ae65f22577dc3b21803d219a5a8445aff",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-laziness-protocol/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "status": "modified",
+      "old": "e29b6b6534a23dcaf8c7e16fc25d6484000d7b6e289c48eb0a32a97280633c5d",
+      "new": "09978915a4a11990cf0a9a02d9c08cc59e0b7a04c5c24b83aa560fbe4146f75b",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-migrate-callers-then-delete-legacy-apis/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-minimize-reader-load/SKILL.md",
+      "status": "modified",
+      "old": "480f4ddec29e7e3058a8f17eb97c0cec4a2c8b4b33ba6401e960167c1fc95a81",
+      "new": "42551c5dc74cd578163c148da552db3ff67d29b78600ef216bfd311fb828fe69",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-minimize-reader-load/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-model-the-domain/SKILL.md",
+      "status": "modified",
+      "old": "6b359783c5c9be87860d0999321e864940ff17729b9f9a27f38abae449640022",
+      "new": "bbadbb9a723fac3f76e782ae45665eb94058ec10993e4bae36d4dc6b0e4eac07",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-model-the-domain/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-never-block-on-the-human/SKILL.md",
+      "status": "modified",
+      "old": "f656f3b7581df55e79f53cc47df93905c3a940b822c25071ba95f40e530d102a",
+      "new": "f2764bb9338cbfc788c903cf4b9cd0a5f4042d3a04dd6d59cbd525d9beaadd0a",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-never-block-on-the-human/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-outcome-oriented-execution/SKILL.md",
+      "status": "modified",
+      "old": "beedcaed75572a6a1662d47f16da203c2bd2c9dbffbbd678d4ba187d67b7e670",
+      "new": "10eb91633aa570355ba4bb37088fcade2b22e498df7a58edc749e65bc5a78e2d",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-outcome-oriented-execution/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-prove-it-works/SKILL.md",
+      "status": "modified",
+      "old": "9bbe6138505be34d81e9395d95d3639b384f71d71d65cc1903075126e1da1508",
+      "new": "ec79a15025bac8d33d62011c54f3b612733fd2a024e623b531b3637aa75070e2",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-prove-it-works/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-redesign-from-first-principles/SKILL.md",
+      "status": "modified",
+      "old": "9ae97b35d6338cc9e34c7023c995a39cb7afdaf4bfd41e1d3d665da04d7515d5",
+      "new": "a1c7fd0a96b40e12a74bceb0e6bb20a9666dd844dcabfb624acb27da23b929fe",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-redesign-from-first-principles/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-separate-before-serializing-shared-state/SKILL.md",
+      "status": "modified",
+      "old": "5b14fd656441580061f760968c828f3f4ba034242d8fa06b544763efb25e89ee",
+      "new": "05294b40448e927c5da1c7b6f5c6b9fed3744637e3833d2d948b9154a9dd00bb",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-separate-before-serializing-shared-state/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-sequence-verifiable-units/SKILL.md",
+      "status": "modified",
+      "old": "7478f8160ba5701ca40c742a81e90aff12d45f53ac9191e80ad79b9763e4489f",
+      "new": "2ccbbacc56ace5afdfb8670cef19d7bd009fb2a0033b9a741cbdf2b6baf72187",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-sequence-verifiable-units/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-subtract-before-you-add/SKILL.md",
+      "status": "modified",
+      "old": "3999888dc21ced33b86054c2ffde1a3cb438e16bed1213f5dab2b5c000446292",
+      "new": "a983a50e732c1ed315eba7aaf47a61329e31c4794eb1ab9d25d9945265b31e03",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-subtract-before-you-add/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-test-behavior-not-implementation/SKILL.md",
+      "status": "added",
+      "old": null,
+      "new": "87e40efe4e486f7ea639d2ed1fc0abe6c93b8fd0e89a81218086909d2470a52e",
+      "disposition": "adapt",
+      "reason": "Add native and portable principle; meaningful-defect checks preserve valid negative, security, schema and static contracts. No assertion-name deletion heuristic.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-test-behavior-not-implementation/SKILL.md",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/references/principles/test-behavior-not-implementation.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/principle-type-system-discipline/SKILL.md",
+      "status": "modified",
+      "old": "662ed1ad53fb491e97b9c4eac7317fba8ec5ed722fec8d71beb94da0111619cf",
+      "new": "c83da8031ffb4c86410030d3e261f659598fca2b7d8158fd9dc269d70a3a025e",
+      "disposition": "retain",
+      "reason": "Keep the existing principle explanation and safety/scope adaptation. Do not infer cross-profile effectiveness from upstream Opus-targeted instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-principle-type-system-discipline/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/recall/SKILL.md",
+      "status": "modified",
+      "old": "90d290daec500f548a167bbd20d69a3a248e345c546ca847ca12967d1c99cbf3",
+      "new": "d265b0e5b6dc5b89c0407f3387d24462c988e1990a37d5359735137908128c5a",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-recall/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/reflect/SKILL.md",
+      "status": "modified",
+      "old": "5c0fd61b383a2cf98dfd597544c6fc0fdd6eb90802f1ada4f92fa0762c323ebc",
+      "new": "36efa48cc4ec2ba6f8131651aae24c6321682b098ed47a1069a7509462bf4a84",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-reflect/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/reflect/references/divergent-reviewer.md",
+      "status": "modified",
+      "old": "823167d485c8fc424530ac4eff447f132a10e318a2db35380312c7e843f17683",
+      "new": "221dfc0abf7cbcd25e1da3cd87323f5d1050fc3bf652e096d093584e183c98fb",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/divergent-reviewer.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/reflect/references/judgment-reviewer.md",
+      "status": "modified",
+      "old": "8db7a315ccf9280486b4df08b1277ba0fe4c4ac533ad3719945aa1aab2ebddea",
+      "new": "a40ecb9b28bd2a3491e11a541157fe58efe158e0eda7b61a5006c14590aabe61",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/judgment-reviewer.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/reflect/references/synthesizer.md",
+      "status": "modified",
+      "old": "52767b4566c37df0adc6350fff1c5c7a919a1178c2be539e0efbf920f2803702",
+      "new": "2f76c847eb45b182dc6fbcbf7d96c8ee7e2986ecfd9e0d640fec44e3cc5a617c",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/synthesizer.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/reflect/references/tooling-reviewer.md",
+      "status": "modified",
+      "old": "3a4dc9e87d0d74b46d0d0bc2c1af6acba10be7c95d1adafeab6ec5701e247933",
+      "new": "bc49ced90fa81eaba3083b88aeb430d900a6d8f14ff40c1d6b52263bacfc77b6",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/tooling-reviewer.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/setup-pstack/SKILL.md",
+      "status": "modified",
+      "old": "6ed4840c3005fd455e347d2a97d7fc271df7e21ecadf3298a7e2b3d46dc58701",
+      "new": "125dd0c8f588782cfb271efae8f97a0719e43e79f56b3495c095f460bcee6389",
+      "disposition": "retain",
+      "reason": "Keep observed native model availability, router ceilings and saved user choices; no upstream model defaults or family-prefix fallback.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-setup/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/show-me-your-work/SKILL.md",
+      "status": "modified",
+      "old": "b99833c41a8781a6af191487f1af37711a3198b98f9373e3c02292b8a6e09aba",
+      "new": "bcff5f7f9fd23f92c12b251f9cd6b947e9485e1055cfacb6fdd9cae0789d7550",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-show-me-your-work/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/show-me-your-work/scripts/log.sh",
+      "status": "modified",
+      "old": "1601bc18f9aba0af3f5d6375e4f2d5dc6102334d1bca935026c0e3547cdadbbf",
+      "new": "a65a4bc5fb7cdeadbdb7b7ff1ca4682f4d9c42420942b2977cd17b46c4ac338e",
+      "disposition": "adopt",
+      "reason": "Use nonempty-file detection and append-only header initialization; preserve escaping and existing records.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-show-me-your-work/scripts/log.sh"
+      ]
+    },
+    {
+      "path": "pstack/skills/swarm/SKILL.md",
+      "status": "modified",
+      "old": "8e6494e296af5496cacb0fb83f33f647c84286d2e1d1b85580bc0f0f577a81cd",
+      "new": "e28057fbbd1113257b2e953c6e891c41f535dbb01400b6bfd3eb9a85a2ab861f",
+      "disposition": "adapt",
+      "reason": "Require candidate and measurement identity in worker receipts, preserve bounded native dispatch, missing-evidence gaps and task-specific retry judgment.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-swarm/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/tdd/SKILL.md",
+      "status": "modified",
+      "old": "adad031f9e79d7f7389fa128f7af8e03344831270e282cf4e40bdacb8418c386",
+      "new": "eeb868e2dfebee528d730a67d7b17498fac4bb85dec2e38bc5c5176aca4d5d2f",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-tdd/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/teach/SKILL.md",
+      "status": "modified",
+      "old": "0a5987b0588dc56e14bfd84d0300e2ab405abc7c5c2aa81e0d3d7c6b243db7a7",
+      "new": "bd286e5a6290673be2cd28aef7af2ec7f1fb138e6bce156ea657368c7e7fc8a4",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-teach/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/technical-writing/SKILL.md",
+      "status": "modified",
+      "old": "bd0cb21034f4fe6695cfdf8cd3561026eec943f0bb6e9300bc78a2b3340865a7",
+      "new": "10c74685e1639cc4f8ff096007e5405b25ca0e824b65aaa17105c238faf6a1e8",
+      "disposition": "retain",
+      "reason": "Current adaptation already proposes global vocabulary changes instead of editing implicitly. Preserve writing guidance; no untested instruction reduction.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-technical-writing/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/typescript-best-practices/SKILL.md",
+      "status": "modified",
+      "old": "b854da40f946f1cd4681785d3e802a2a592322d351f770f5057b56430edb35d0",
+      "new": "28f9e61710e205f6f3c5476f333483cff0e988f6a5b639e2faad536344b40c5e",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-typescript-best-practices/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/typescript-best-practices/references/patterns.md",
+      "status": "modified",
+      "old": "eb73b5f3514c0c14d14bafca59ffb54b161422ea5fc5fe65e60c5b4d71c40178",
+      "new": "62e9cd32d2fa066a35d0d1349aac22dce31a48ad7d5eaf142570770cfe707384",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-typescript-best-practices/references/patterns.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/unslop/SKILL.md",
+      "status": "modified",
+      "old": "2789ab80477b7e382292e4d7acca1057784df19713fffb74622ff0f83b2f3733",
+      "new": "195411d320b5b328f9f642baf59757ed19aaf0931c0838740e0aca273d538dc1",
+      "disposition": "retain",
+      "reason": "Preserve approved writing style and existing rule IDs. Do not import broad deletion of guidance or mandatory style rules without behavior evidence.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-unslop/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/why/SKILL.md",
+      "status": "modified",
+      "old": "a9423bb7bab7c3280d17478ebe97bb283ea6ed12d9dcae590fc2f81f41660990",
+      "new": "2a852ec8680920109d2b56538b027c52867896a597250ac5d18a13e0b42e5b06",
+      "disposition": "retain",
+      "reason": "Preserve the native method, independent evidence and authority boundaries; do not import runtime defaults or untested instruction reductions.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-why/SKILL.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/why/references/epistemics.md",
+      "status": "modified",
+      "old": "ba99dcdc4fbce91a83b50fc0c9b2c5769febd95540b1722c6b87fe8f900bb60a",
+      "new": "fcc0f559c072832c869a5ada72434b4849320a637ae63c09e8ee14f7ad787059",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-why/references/epistemics.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/why/references/investigator-prompt.md",
+      "status": "modified",
+      "old": "e35d8eaea13f0a027dd35572d525e9f66e8f8918ca9e555237dc228f26278d5f",
+      "new": "6892956a7ab0b5ee6c4babaf4f793703abe89b350ea7cb9463b4a56eea1c8266",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-why/references/investigator-prompt.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/why/references/source-playbook.md",
+      "status": "modified",
+      "old": "3cfb0245d5b2019eeeaa7a0e023579d390f2cdcdff6942d2fe009b9efac0eb11",
+      "new": "9ae9dcb9d09111c9facc68510331c5aba4aed9b1b057314ff1fc0e166ad3993a",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-why/references/source-playbook.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/why/references/sources/databricks.md",
+      "status": "modified",
+      "old": "269a22032f027ee30a33c1b5e30443d13dd6d127ff20d8d1e8a20715b06a69cc",
+      "new": "236ede7aab6454662a992db088a5393537a5233a4c26719c93188f9e174488f6",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/databricks.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/why/references/sources/datadog.md",
+      "status": "modified",
+      "old": "db80803f1635a5015e3190f4753c4228083e6cebf222c84e24fc3c3919aa5574",
+      "new": "ebe9c07bac28e47757ee7f16fb93b0c01d427a08c501957d047f395a2f37b7e7",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/datadog.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/why/references/sources/incident-postmortem.md",
+      "status": "modified",
+      "old": "486132457d3782eea64292ce7a2d3bbe3b24b372b20ca00de4329e820f74cd42",
+      "new": "a899470f05f86029630a13a2696491cc708ca7b56a6e822a69ff6e954d6ff8cf",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/incident-postmortem.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/why/references/sources/linear.md",
+      "status": "modified",
+      "old": "7e1b72ba459089168efd701502f8c268d2481154aeeda1ddd84f840f7e974760",
+      "new": "01304e7f1badfcfb78babbb0edcadeb3cc8dd3f713793420cdff24ba190f907c",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/linear.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/why/references/sources/notion.md",
+      "status": "modified",
+      "old": "2ce336dd3052967187a56ec33d308c7a69e7ef3b04ba7b17386a8b3914a0f000",
+      "new": "3bcfa695c49dfad4ac036d5d7181c12585f55ac04f1936198d16ab75a2788997",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/notion.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/why/references/sources/sentry.md",
+      "status": "modified",
+      "old": "0eef902cb0f835f7fa9bd85a8e19ba1505d05e59a0173dfe852d8d52d828266d",
+      "new": "6f292bc4fb1548e956f95e1900b9481abf5134254419f1cd9edec95428c82d73",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/sentry.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/why/references/sources/slack.md",
+      "status": "modified",
+      "old": "60e4c8dbb941f563c86aec7267cde66443b1dc651422569c8d112bc9da7551f6",
+      "new": "58fee61d024b3700b407e7acbed367944720ff05adfddb6954d36c88368f3ba7",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-why/references/sources/slack.md"
+      ]
+    },
+    {
+      "path": "pstack/skills/why/references/synthesizer-prompt.md",
+      "status": "modified",
+      "old": "fcdc69ede22f94da9e22f510bb0c4a75a63820f0b49b8d5fd54a196b4010bf2a",
+      "new": "733a3e9cf897b1aca56aaddeae01a3832e4bfed024c2f602db2d1bf807d7a73b",
+      "disposition": "retain",
+      "reason": "Retain the current adapted reference and its evidence/authority constraints. Upstream prose and reduction changes are not needed for the selected behavior update.",
+      "destinations": [
+        "plugins/rogemar-agent-toolkit/skills/forge-why/references/synthesizer-prompt.md"
+      ]
+    }
+  ],
+  "legacy_compatibility": [
+    {
+      "upstream": "pstack/skills/how/references/critic-prompt.md",
+      "upstream_sha256": "aa77a15590814c814bd5cb074842029ab7b790c2e8379050525bdbc20739d1bb",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-how/references/critic-prompt.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "e17298e8499d919d7700d06334d0c3d1744c4bfb",
+      "removed_upstream_at": "12d587dfb20741cafc376c42c696c5f6e2a64487",
+      "retained_reason": "Keep legacy critique resource for existing callers. New requests route to interrogate; no silent deletion of role preferences."
+    },
+    {
+      "upstream": "pstack/skills/how/references/critique-rubric.md",
+      "upstream_sha256": "5774ff2caf51796e54c4a61b63620a165de5801f23c8f47406e527abfbe9addc",
+      "kind": "reference",
+      "destination": "plugins/rogemar-agent-toolkit/skills/forge-how/references/critique-rubric.md",
+      "adaptation": "codex-native",
+      "upstream_git_blob": "b4d452f536de805107d3b96fc0772e9bbc1c1209",
+      "removed_upstream_at": "12d587dfb20741cafc376c42c696c5f6e2a64487",
+      "retained_reason": "Keep legacy critique resource for existing callers. New requests route to interrogate; no silent deletion of role preferences."
+    }
+  ]
 }

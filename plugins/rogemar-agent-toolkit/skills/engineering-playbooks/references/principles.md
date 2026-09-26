@@ -21,3 +21,6 @@
 - [sequence-verifiable-units](principles/sequence-verifiable-units.md)
 - [subtract-before-you-add](principles/subtract-before-you-add.md)
 - [type-system-discipline](principles/type-system-discipline.md)
+
+- [attack-the-premise](principles/attack-the-premise.md)
+- [test-behavior-not-implementation](principles/test-behavior-not-implementation.md)

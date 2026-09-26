@@ -67,7 +67,7 @@ def main() -> int:
             require(ignore_lines.count(entry) == 1, f"ignore entry must appear once: {entry}")
 
         hooks_path = root / ".codex/hooks.json"
-        hooks = candidate_store.load_json(hooks_path)
+        hooks = candidate_store.load_json(hooks_path) if hooks_path.exists() else {}
         commands = []
         stack = [hooks]
         while stack:
@@ -79,16 +79,18 @@ def main() -> int:
                 stack.extend(value.values())
             elif isinstance(value, list):
                 stack.extend(value)
-        require(len(commands) == 1, "exactly one project-learning hook command is required")
+        if config.get("capture_mode", "explicit") == "explicit":
+            require(len(commands) == 1, "exactly one project-learning hook command is required")
 
         hook_path = root / ".codex/hooks" / HOOK_SCRIPT_NAME
-        require(hook_path.is_file(), f"missing {hook_path}")
-        with tempfile.TemporaryDirectory(prefix="project-learning-pycache-") as cache_dir:
-            py_compile.compile(
-                str(hook_path),
-                cfile=str(Path(cache_dir) / "project-learning-stop.pyc"),
-                doraise=True,
-            )
+        if commands:
+            require(hook_path.is_file(), f"missing {hook_path}")
+            with tempfile.TemporaryDirectory(prefix="project-learning-pycache-") as cache_dir:
+                py_compile.compile(
+                    str(hook_path),
+                    cfile=str(Path(cache_dir) / "project-learning-stop.pyc"),
+                    doraise=True,
+                )
 
         require(ledger_path.is_file(), f"missing {ledger_path}")
         ledger = ledger_path.read_text(encoding="utf-8")
@@ -133,6 +135,7 @@ def main() -> int:
                     "valid": True,
                     "root": str(root),
                     "enabled": config["enabled"],
+                    "capture_mode": config.get("capture_mode", "explicit"),
                     "candidate_events": len(events),
                     "accepted_entries": len(
                         re.findall(r"^##\s+PL-[A-F0-9]{12}\s*$", ledger, re.M)

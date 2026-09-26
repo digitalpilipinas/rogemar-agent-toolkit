@@ -87,14 +87,14 @@
     },
     {
       "name": "codex-forge",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "workflow-orchestrator",
         "plan-model-router"
@@ -148,7 +148,7 @@
       "author": "Rogemar; upstream notices preserved",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "workflow-orchestrator"
       ]
@@ -164,616 +164,616 @@
     },
     {
       "name": "forge-architect",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-arena",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-automate-me",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-blast-radius",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-bro",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-create-verification-skill",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-figure-it-out",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-how",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-interrogate",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-maintain-verification-skill",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-make-bot-ui",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-no-comments",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-boundary-discipline",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-build-the-lever",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-encode-lessons-in-structure",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-exhaust-the-design-space",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-experience-first",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-fix-root-causes",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-foundational-thinking",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-guard-the-context-window",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-laziness-protocol",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-make-operations-idempotent",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-migrate-callers-then-delete-legacy-apis",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-minimize-reader-load",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-model-the-domain",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-never-block-on-the-human",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-outcome-oriented-execution",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-prove-it-works",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-redesign-from-first-principles",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-separate-before-serializing-shared-state",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-sequence-verifiable-units",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-subtract-before-you-add",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-principle-type-system-discipline",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-recall",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-reflect",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-setup",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-show-me-your-work",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-swarm",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-tdd",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-teach",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-technical-writing",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-typescript-best-practices",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-unslop",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
     },
     {
       "name": "forge-why",
-      "source": "Codex adaptation of cursor/plugins pstack at 93b00b89ef425a9c1bac0d0b317dfc49c930ac99",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
       ],
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
       ]
@@ -1002,7 +1002,7 @@
       "author": "Rogemar (Cursor adapter); Lauren Tan (upstream PStack methods)",
       "license": "Repository license for adapter additions; MIT for upstream PStack methods",
       "license_evidence": "LICENSE.txt",
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack"
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack"
     },
     {
       "name": "cursor-forge-setup",
@@ -1017,7 +1017,7 @@
       "author": "Rogemar (Cursor adapter); Lauren Tan (upstream PStack methods)",
       "license": "Repository license for adapter additions; MIT for upstream PStack methods",
       "license_evidence": "LICENSE.txt",
-      "upstream_repository": "https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack"
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack"
     },
     {
       "name": "shadcn",
@@ -1026,6 +1026,34 @@
       "upstream_repository": "https://github.com/shadcn-ui/ui",
       "license": "MIT",
       "license_evidence": "LICENSE.txt"
+    },
+    {
+      "name": "forge-principle-attack-the-premise",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
+      "requires": [
+        "codex-forge"
+      ]
+    },
+    {
+      "name": "forge-principle-test-behavior-not-implementation",
+      "source": "Codex adaptation of cursor/plugins pstack at 12d587dfb20741cafc376c42c696c5f6e2a64487",
+      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "targets": [
+        "codex"
+      ],
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
+      "requires": [
+        "codex-forge"
+      ]
     }
   ],
   "external_skill_groups": [
@@ -2147,12 +2175,11 @@
     "engineering": {
       "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor and Universal Forge routes.",
       "skills": [
-        "engineering-playbooks",
-        "integrated-workflow",
-        "test-architecture-engineer",
-        "performance-profiler",
         "agent-map",
         "codex-forge",
+        "cursor-forge",
+        "cursor-forge-setup",
+        "engineering-playbooks",
         "forge-architect",
         "forge-arena",
         "forge-automate-me",
@@ -2165,6 +2192,7 @@
         "forge-maintain-verification-skill",
         "forge-make-bot-ui",
         "forge-no-comments",
+        "forge-principle-attack-the-premise",
         "forge-principle-boundary-discipline",
         "forge-principle-build-the-lever",
         "forge-principle-encode-lessons-in-structure",
@@ -2185,6 +2213,7 @@
         "forge-principle-separate-before-serializing-shared-state",
         "forge-principle-sequence-verifiable-units",
         "forge-principle-subtract-before-you-add",
+        "forge-principle-test-behavior-not-implementation",
         "forge-principle-type-system-discipline",
         "forge-recall",
         "forge-reflect",
@@ -2197,10 +2226,11 @@
         "forge-typescript-best-practices",
         "forge-unslop",
         "forge-why",
+        "integrated-workflow",
+        "performance-profiler",
+        "test-architecture-engineer",
         "universal-forge",
-        "universal-plan-model-router",
-        "cursor-forge",
-        "cursor-forge-setup"
+        "universal-plan-model-router"
       ],
       "external": [
         "pstack",

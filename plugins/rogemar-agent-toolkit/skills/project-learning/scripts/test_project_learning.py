@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import tempfile
 import unittest
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 
@@ -373,6 +374,13 @@ class ProjectLearningTest(unittest.TestCase):
             + "\n",
             encoding="utf-8",
         )
+        approved = json.loads(promotion_path.read_text())
+        unapproved = dict(approved, approved_by="agent")
+        promotion_path.write_text(json.dumps(unapproved))
+        rejected = self.store("promote", "--root", str(self.root), "--request", str(promotion_path), check=False)
+        self.assertNotEqual(rejected.returncode, 0)
+        self.assertEqual(ledger.read_text(), before)
+        promotion_path.write_text(json.dumps(approved))
         promoted = json.loads(
             self.store(
                 "promote", "--root", str(self.root), "--request", str(promotion_path)
@@ -380,6 +388,14 @@ class ProjectLearningTest(unittest.TestCase):
         )
         self.assertEqual(promoted["status"], "promoted")
         self.assertIn("Approved durable lesson", ledger.read_text(encoding="utf-8"))
+        before_duplicate = ledger.read_text()
+        duplicate = json.loads(request.read_text())
+        duplicate["turn_id"] = "another-completed-turn"
+        request.write_text(json.dumps(duplicate))
+        result = json.loads(self.store("capture", "--root", str(self.root), "--request", str(request)).stdout)
+        self.assertFalse(result["captured"])
+        self.assertEqual(ledger.read_text(), before_duplicate)
+        self.assertEqual(json.loads(self.store("list", "--root", str(self.root), "--status", "promoted").stdout)["count"], 1)
 
     def test_full_project_validator_accepts_initialized_project(self) -> None:
         self.initialize()
@@ -389,6 +405,182 @@ class ProjectLearningTest(unittest.TestCase):
         report = json.loads(result.stdout)
         self.assertTrue(report["valid"])
         self.assertEqual(report["candidate_events"], 0)
+
+    def enroll(self) -> None:
+        run_command("python3", "-I", str(INITIALIZER), "--root", str(self.root),
+                    "--capture-mode", "workflow", cwd=self.root)
+
+    def workflow_capture(self, request: Path, *guards: str, check: bool = True) -> dict:
+        result = self.store("capture", "--root", str(self.root), "--request", str(request),
+                            "--workflow", "--permission-mode", "execution", *guards, check=check)
+        return json.loads(result.stdout)
+
+    def snapshot(self) -> dict:
+        return {str(path.relative_to(self.root)): path.read_bytes()
+                for path in self.root.rglob("*") if path.is_file() and ".git" not in path.parts}
+
+    def test_workflow_initialization_is_hook_free_preserves_ledger_and_hooks(self) -> None:
+        hooks = self.root / ".codex/hooks.json"
+        original_hooks = hooks.read_bytes()
+        self.enroll()
+        ledger = self.root / "docs/project-learning/lessons.md"
+        ledger.write_text(ledger.read_text() + "\nReviewed lesson content must survive.\n")
+        before = self.snapshot()
+        self.enroll()
+        self.assertEqual(self.snapshot(), before)
+        self.assertEqual(hooks.read_bytes(), original_hooks)
+        self.assertFalse((self.root / ".codex/hooks/project-learning-stop.py").exists())
+        result = run_command("python3", "-I", str(VALIDATOR), "--root", str(self.root), cwd=self.root)
+        self.assertEqual(json.loads(result.stdout)["capture_mode"], "workflow")
+        hooks.unlink()
+        run_command("python3", "-I", str(VALIDATOR), "--root", str(self.root), cwd=self.root)
+
+    def test_existing_hook_and_ledger_survive_workflow_enrollment(self) -> None:
+        self.initialize()
+        ledger = self.root / "docs/project-learning/lessons.md"
+        ledger.write_text(ledger.read_text() + "\nExisting accepted project guidance.\n")
+        original_ledger = ledger.read_bytes()
+        original_hooks = (self.root / ".codex/hooks.json").read_bytes()
+        self.enroll()
+        self.assertEqual(ledger.read_bytes(), original_ledger)
+        self.assertEqual((self.root / ".codex/hooks.json").read_bytes(), original_hooks)
+        self.assertIn("explicitly enrolls workflow capture", (self.root / "AGENTS.md").read_text())
+
+    def test_guarded_workflow_creates_no_files_and_does_not_read_request(self) -> None:
+        self.initialize()
+        missing_request = self.root / "does-not-exist.json"
+        before = self.snapshot()
+        result = self.workflow_capture(missing_request)
+        self.assertEqual(result["reason"], "not_enrolled")
+        self.assertEqual(self.snapshot(), before)
+        self.enroll()
+        before = self.snapshot()
+        missing_mode = self.store("capture", "--root", str(self.root), "--request", str(missing_request), "--workflow", check=False)
+        self.assertNotEqual(missing_mode.returncode, 0)
+        self.assertEqual(self.snapshot(), before)
+        for guard in ("--read-only", "--no-learning"):
+            before = self.snapshot()
+            result = self.workflow_capture(missing_request, guard)
+            self.assertFalse(result["captured"])
+            self.assertEqual(self.snapshot(), before)
+        before = self.snapshot()
+        self.store("capture", "--root", str(self.root), "--request", "-", "--workflow", "--permission-mode", "plan")
+        self.assertEqual(self.snapshot(), before)
+        run_command("python3", "-I", str(INITIALIZER), "--root", str(self.root), "--set-enabled", "false", cwd=self.root)
+        before = self.snapshot()
+        self.assertEqual(self.workflow_capture(missing_request)["reason"], "disabled")
+        self.assertEqual(self.snapshot(), before)
+
+    def test_concurrent_capture_is_idempotent(self) -> None:
+        self.enroll()
+        request = self.capture_request(1)
+        with ThreadPoolExecutor(max_workers=6) as pool:
+            results = list(pool.map(lambda _: self.workflow_capture(request), range(6)))
+        store = self.root / ".codex/project-learning/candidates.jsonl"
+        self.assertEqual(len(store.read_text().splitlines()), 1)
+        self.assertEqual(sum(not result["idempotent"] for result in results), 1)
+        requests = [self.capture_request(index) for index in range(2, 8)]
+        with ThreadPoolExecutor(max_workers=6) as pool:
+            list(pool.map(self.workflow_capture, requests))
+        self.assertEqual(len(store.read_text().splitlines()), 7)
+        self.assertEqual(json.loads(self.store("list", "--root", str(self.root)).stdout)["count"], 7)
+
+    def test_settled_duplicate_stays_settled_and_new_evidence_is_new_candidate(self) -> None:
+        self.enroll()
+        request = self.capture_request(1)
+        first = self.workflow_capture(request)
+        self.store("dismiss", "--root", str(self.root), "--candidate-id", first["candidate_id"])
+        original = json.loads(request.read_text())
+        original["turn_id"] = "another-turn"
+        request.write_text(json.dumps(original))
+        duplicate = self.workflow_capture(request)
+        self.assertFalse(duplicate["captured"])
+        marker = self.root / ".codex/project-learning/state" / (original["session_id"] + "-" + original["turn_id"] + ".json")
+        self.assertEqual(json.loads(marker.read_text())["session_id"], original["session_id"])
+        self.assertEqual(json.loads(marker.read_text())["turn_id"], original["turn_id"])
+        self.assertEqual(json.loads(self.store("list", "--root", str(self.root), "--status", "dismissed").stdout)["count"], 1)
+        original["turn_id"] = "new-proof-turn"
+        original["evidence"][0]["reference"] = "new-independent-check"
+        request.write_text(json.dumps(original))
+        revision = self.workflow_capture(request)
+        self.assertNotEqual(revision["candidate_id"], first["candidate_id"])
+        self.assertEqual(json.loads(self.store("list", "--root", str(self.root), "--status", "dismissed").stdout)["count"], 1)
+
+    def test_accepted_ledger_deduplicates_without_local_candidate_history(self) -> None:
+        self.enroll()
+        request = self.capture_request(1)
+        data = json.loads(request.read_text())
+        ledger = self.root / "docs/project-learning/lessons.md"
+        ledger.write_text(ledger.read_text() + "\n## PL-123456789ABC\n\nStatus: Accepted\n"
+                          + f"Lesson: {data['lesson']}\nApplies when: {data['applies_when']}\n"
+                          + f"Does not apply when: {data['does_not_apply_when']}\n")
+        result = self.workflow_capture(request)
+        self.assertEqual(result["candidate_id"], "PL-123456789ABC")
+        self.assertFalse(result["captured"])
+        self.assertFalse((self.root / ".codex/project-learning/candidates.jsonl").exists())
+
+    def test_workflow_evidence_and_secret_checks(self) -> None:
+        self.enroll()
+        request = self.capture_request(1)
+        data = json.loads(request.read_text())
+        for value in ("reported", "observed"):
+            data["evidence_level"] = value
+            request.write_text(json.dumps(data))
+            result = self.store("capture", "--root", str(self.root), "--request", str(request), "--workflow", "--permission-mode", "execution", check=False)
+            self.assertNotEqual(result.returncode, 0)
+        data["evidence_level"] = "verified"
+        data["lesson"] = "Avoid leaking sk-" + "x" * 25
+        request.write_text(json.dumps(data))
+        result = self.store("capture", "--root", str(self.root), "--request", str(request), check=False)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertFalse((self.root / ".codex/project-learning/candidates.jsonl").exists())
+
+    def test_milestone_only_reminds_for_new_pending_material(self) -> None:
+        self.enroll()
+        request = self.capture_request(1, milestone=True)
+        self.assertTrue(self.workflow_capture(request)["review_due"])
+        data = json.loads(request.read_text())
+        data["turn_id"] = "other-milestone"
+        request.write_text(json.dumps(data))
+        self.assertFalse(self.workflow_capture(request)["review_due"])
+        request2 = self.capture_request(2)
+        self.assertFalse(self.workflow_capture(request2)["review_due"])
+        args = ("mark-no-candidate", "--root", str(self.root), "--session", "review", "--turn", "close", "--milestone", "--workflow", "--permission-mode", "execution")
+        self.assertTrue(json.loads(self.store(*args).stdout)["review_due"])
+        self.assertFalse(json.loads(self.store(*args).stdout)["review_due"])
+        listed = json.loads(self.store("list", "--root", str(self.root)).stdout)
+        self.store("dismiss", "--root", str(self.root), "--candidate-id", listed["candidates"][0]["candidate_id"])
+        self.assertFalse(json.loads(self.store(*args).stdout)["review_due"])
+
+    def test_global_proposal_requires_accepted_source_and_bounded_target(self) -> None:
+        self.enroll()
+        source = Path(self.temp.name) / "source"
+        source.mkdir()
+        run_command("git", "init", "-q", cwd=source)
+        run_command("python3", "-I", str(INITIALIZER), "--root", str(source), "--capture-mode", "workflow", cwd=source)
+        target = self.root / "skills/example/SKILL.md"
+        target.parent.mkdir(parents=True)
+        target.write_text("# Canonical example\n")
+        request = self.capture_request(1)
+        data = json.loads(request.read_text())
+        data.update(source_project="source", source_lesson_id="PL-123456789ABC",
+                    proposal={"target_skill": "skills/example/SKILL.md", "allowed_files": ["skills/example/SKILL.md"], "validation": "Run the existing skill checks"})
+        request.write_text(json.dumps(data))
+        args = ("capture", "--root", str(self.root), "--request", str(request), "--source-root", str(source), "--workflow", "--permission-mode", "execution")
+        self.assertNotEqual(self.store(*args, check=False).returncode, 0)
+        ledger = source / "docs/project-learning/lessons.md"
+        ledger.write_text(ledger.read_text() + "\n## PL-123456789ABC\n\nStatus: Accepted\nEvidence strength: verified\n")
+        config_path = source / ".codex/project-learning/config.json"
+        original = json.loads(config_path.read_text())
+        for overrides in ({"enabled": False}, {"capture_mode": "explicit"}):
+            config_path.write_text(json.dumps(dict(original, **overrides)))
+            result = self.store(*args, check=False)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("enrolled source", result.stderr)
+        config_path.write_text(json.dumps(original))
+        self.assertTrue(json.loads(self.store(*args).stdout)["captured"])
+        self.assertEqual(target.read_text(), "# Canonical example\n")
+        self.assertNotIn(data["lesson"], (self.root / "docs/project-learning/lessons.md").read_text())
 
 
 if __name__ == "__main__":

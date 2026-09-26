@@ -132,7 +132,7 @@ does not register skills, create jobs, connect accounts, or send messages.
 
 ## Sources
 
-Adapted from [PStack at the pinned commit](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack).
+Adapted from [PStack at the pinned commit](https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack).
 See the bundled MIT license and toolkit coverage manifest for provenance.
 Codex interfaces follow [skills](https://learn.chatgpt.com/docs/build-skills)
 and [subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents);

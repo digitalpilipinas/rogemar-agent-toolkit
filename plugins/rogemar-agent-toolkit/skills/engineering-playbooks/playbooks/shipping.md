@@ -10,3 +10,5 @@ Land only a contiguous verified run from the bottom of an explicitly authorized 
 6. Watch that PR with the authorized exposed tool. `READY` is a snapshot, not a merge. Confirm MERGED and its merge commit before advancing. A pending or unknown state is not ready; diagnose blocked requirements without mutating the rest of the queue.
 7. Recompute topology and current trunk after every merge. Inspect any automatic retargeting, revalidate the next link and repeat only within the authorized verified run.
 8. Report landed PRs and SHAs, anything armed and how verified, the first remaining gap, and deployment status separately. Do not extend the approved run by inference.
+
+After merge preparation, require CI for the actual current head. A green run for a previous SHA does not satisfy this gate. A changed base, source, dependency, configuration or generated runtime input invalidates affected evidence; rerun the affected checks. Do not preserve runtime proof merely because patch IDs match or rebuilt artifacts differ only in presumed build noise. Record required checks that cannot run as blocked or explicitly deferred under the acceptance contract.

@@ -59,7 +59,7 @@ class SelectionInstallTests(unittest.TestCase):
         cursor = toolkit.resolve_selection('cursor', 'core', ['engineering'])
         self.assertIn('engineering-playbooks', generic['skills'])
         self.assertNotIn('plan-model-router', generic['skills'])
-        self.assertEqual(len([n for n in codex['skills'] if n == 'codex-forge' or n.startswith('forge-')]), 45)
+        self.assertEqual(len([n for n in codex['skills'] if n == 'codex-forge' or n.startswith('forge-')]), 47)
         self.assertIn('plan-model-router', codex['skills'])
         self.assertIn('pstack', cursor['external'])
         self.assertNotIn('pstack', codex['external'])

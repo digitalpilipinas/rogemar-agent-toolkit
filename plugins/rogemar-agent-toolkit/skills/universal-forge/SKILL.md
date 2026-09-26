@@ -5,6 +5,9 @@ license: MIT
 ---
 # Universal Forge
 
+At task start/resume, before acceptance and at verified completion, apply the shared
+[automatic checkpoints](../engineering-playbooks/references/agent-friendly-workflow.md) when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence.
+
 Follow the shared [Forge mode and status contract](../workflow-orchestrator/references/forge-mode-status.md) at entry,
 resume and dispatch: explicit request → task mode → saved preference; ask once
 if none exists. Show role, model, effort, mode and evidence status without
@@ -46,6 +49,11 @@ Native adapters retain their own runtime controls; no cache or notification
 behavior is implied by the portable method.
 
 ## Roles and execution
+
+For new workers, follow shared
+[sub-agent naming](../workflow-orchestrator/references/subagent-naming.md) after
+native profile qualification. Use supported naming controls or the handoff
+fallback; native reasoning settings remain provider-owned and mode stays out of names.
 
 Read [roles.md](references/roles.md) for shared assignment groups and contracts.
 Select only useful roles for the actual task. A role does not mandate an agent;
