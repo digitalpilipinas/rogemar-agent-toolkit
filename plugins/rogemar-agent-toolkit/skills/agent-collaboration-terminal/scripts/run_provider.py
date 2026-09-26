@@ -243,6 +243,16 @@ def build_command(entry: dict[str, object], *, workspace: Path, run_dir: Path,
         # Cursor accepts the initial prompt as a positional argument. MCP
         # approval remains interactive; never add --approve-mcps implicitly.
         args.append(prompt)
+    elif provider_id == "droid":
+        args.extend(["exec", "--cwd", str(workspace), "--output-format", "text"])
+        if model:
+            args.extend(["--model", str(model)])
+        if effort:
+            args.extend(["--reasoning-effort", str(effort)])
+        if auto_approve:
+            # High retains Droid's hard safety checks; never bypass permissions.
+            args.extend(["--auto", "high"])
+        args.extend(["--file", str(run_dir / str(entry["artifact_dir"]) / "prompt.md")])
     elif provider_id == "codex":
         # Use the non-interactive subcommand for host-owned runs. The prompt
         # is supplied through stdin so a large brief is not exposed in argv.

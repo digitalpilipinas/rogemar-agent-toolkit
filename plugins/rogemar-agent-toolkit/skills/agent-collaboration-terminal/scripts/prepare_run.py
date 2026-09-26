@@ -21,6 +21,8 @@ PROVIDER_SPECS = {
     "agy": {"command": "agy", "artifact_dir": "agy"},
     "junie": {"command": "junie", "artifact_dir": "junie"},
     "codex": {"command": "codex", "artifact_dir": "codex"},
+    "droid": {"command": "droid", "artifact_dir": "droid"},
+    "factory": {"command": "droid", "artifact_dir": "droid"},
     "cursor": {
         "command": "agent",
         "artifact_dir": "cursor",
@@ -53,6 +55,8 @@ def canonical_provider(value: str, parser: argparse.ArgumentParser) -> str:
         parser.error(f"unsupported provider: {value}")
     if normalized in {"gemini", "agy"}:
         return "antigravity"
+    if normalized == "factory":
+        return "droid"
     if normalized in {"cursor-agent", "agent"}:
         return "cursor"
     return normalized

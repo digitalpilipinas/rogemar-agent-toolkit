@@ -194,6 +194,16 @@ when an executed check finds a defect, and `blocked` when its prerequisite is
 unavailable. Preserve browser, simulator, assistive-technology and physical-device
 evidence separately. After reviewer-driven UI changes, rerun affected UI checks.
 
+## Local and cloud review assignments
+
+Use the orchestrator's [review support/decision roles](../workflow-orchestrator/references/provider-routing.md#review-support-and-decision-roles)
+for local complete-slice reviews and ready-PR review waves. Separate low-usage status
+monitoring and feedback consolidation from correctness validation, minimum-viable
+scope decisions and implementation. Consolidation preserves every provider finding
+and its provenance; a qualified decision owner validates and disposes the combined
+set before the implementation owner applies the smallest sufficient fixes. The main
+agent retains final acceptance. This adds no review cycle or mandatory agent panel.
+
 ## Ready-PR monitoring and remediation
 
 When authorized branch delivery reaches a ready PR, the active workflow includes

@@ -37,6 +37,12 @@ A **harness** means the assistant environment, such as Codex or Cursor. A plugin
 or MCP connection may provide live tools, but copying a skill does not install
 that connection or sign in to an account.
 
+Installation also provisions missing external skill files from catalog-pinned
+upstreams for the selected packs. `--profile all` selects the full compatible set;
+`--skip-external` explicitly skips that step for offline setups. Existing external
+copies are preserved. Native plugins, runtimes and authentication remain separate.
+See [installation and recovery](docs/installation.md#automatic-external-skill-provisioning).
+
 ## Get started
 
 You need Git, Python 3.9 or later, and an assistant that can load skills. Choose a
@@ -293,7 +299,7 @@ Catalog coverage: **110 canonical skills**, **20 packs**, **16 dependency record
 
 ### Pack membership
 
-Direct members are listed in full; the installer also resolves required skill dependencies and filters native targets. A skill can belong to several packs. External dependencies are declared, not installed.
+Direct members are listed in full; the installer also resolves required skill dependencies and filters native targets. A skill can belong to several packs. Missing catalog-pinned external skill files are installed automatically for selected packs; runtime/plugin activation remains separate.
 
 | Pack | Purpose | Canonical skill members | External dependencies |
 | --- | --- | --- | --- |
@@ -324,7 +330,7 @@ Direct members are listed in full; the installer also resolves required skill de
 | --- | --- | --- | --- | --- | --- |
 | [`accessibility-auditor`](plugins/rogemar-agent-toolkit/skills/accessibility-auditor/SKILL.md) | Use for accessibility reviews or implementation involving semantic structure, keyboard and focus behavior, screen readers, ARIA, live announcements, contrast, touch targets, Dynamic Type, reduced motion, forms, errors, and automated plus manual a11y evidence. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/accessibility-auditor/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`activity-schema-guardian`](plugins/rogemar-agent-toolkit/skills/activity-schema-guardian/SKILL.md) | Use for activity, event, telemetry, logging, or domain schema work involving canonical IDs, category discriminators, sport/activity-specific fields, fixtures, aliases, backward compatibility, JSONB or flexible payload validation, database migrations, and derived insight metrics. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/activity-schema-guardian/SKILL.md) | Not declared in snapshot; review before redistribution |
-| [`agent-collaboration-terminal`](plugins/rogemar-agent-toolkit/skills/agent-collaboration-terminal/SKILL.md) | Coordinate native Grok, Antigravity/Gemini, Cursor Agent, Junie, and Codex CLI sessions from Codex for research, planning, implementation, review, validation, or other bounded external-agent work. Prepare exact worktree prompts, Codex-managed PTY or background execution with physical fallback, frozen repository fingerprints, Markdown artifacts, monitoring, handoffs, and Codex synthesis without routing through the Agent Collaboration MCP broker. | codex | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/agent-collaboration-terminal/SKILL.md) | Not declared in snapshot; review before redistribution |
+| [`agent-collaboration-terminal`](plugins/rogemar-agent-toolkit/skills/agent-collaboration-terminal/SKILL.md) | Coordinate native Grok, Antigravity/Gemini, Cursor Agent, Junie, Droid (Factory), and Codex CLI sessions from a terminal-capable harness for bounded external-agent work, with frozen scope, provider artifacts, and independent supervisor validation. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/agent-collaboration-terminal/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`agent-map`](plugins/rogemar-agent-toolkit/skills/agent-map/SKILL.md) | Use a local, on-demand repository map to reduce exploratory file reads and token use during unfamiliar-code, architecture, multi-file refactor, branch, and commit tasks. Build incremental metadata-only indexes, locate likely files/symbols/callers, check freshness, and fall back to direct search when the map is stale or incomplete. Do not use for known-file edits or simple one-file tasks. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/agent-map/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`article-creator-2`](plugins/rogemar-agent-toolkit/skills/article-creator-2/SKILL.md) | Use when creating researched long-form content, blog posts, documentation pages, product landing pages, or article packages that need source-backed research, an outline, polished HTML/Markdown, visual direction or generated images, and optional PDF/export preparation. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/article-creator-2/SKILL.md) | Not declared in snapshot; review before redistribution |
 | [`bug-triage`](plugins/rogemar-agent-toolkit/skills/bug-triage/SKILL.md) | Use when investigating errors, logs, failed tests, crashes, CI failures, production incidents, bug reports, or confusing runtime behavior that needs hypotheses, reproduction steps, and prioritized fixes. | portable | Source author not declared; snapshot maintained by Rogemar | [SKILL.md](plugins/rogemar-agent-toolkit/skills/bug-triage/SKILL.md) | Not declared in snapshot; review before redistribution |

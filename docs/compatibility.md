@@ -16,6 +16,7 @@ The installer targets Python 3.9+ on macOS, Linux and WSL. It copies selected co
 | command-code | `.commandcode/skills` | `.commandcode/skills` | Fresh-session discovery required |
 | z-code | `.zcode/skills` | `.zcode/skills` | Fresh-session discovery required |
 | claude | `.claude/skills` | `.claude/skills` | Fresh-session discovery required |
+| droid | `.factory/skills` | `.factory/skills` | Native `/skills` discovery and runtime checks required |
 
 Codex places native-only entries in `.codex/skills`; shared methods live once in
 `.agents/skills`. Its full 45-skill Forge family uses `plan-model-router` to qualify
@@ -25,6 +26,12 @@ unavailable. Upstream PStack/poteto-mode remains a separate, unchanged entry.
 Other assistants use `universal-forge` with `universal-plan-model-router` and their
 own observed capabilities. Shared engineering methods may run sequentially on the
 current model when worker controls are unavailable.
+
+Project Learning is shared across harnesses. Pass `--harness <name>` to its
+initializer; non-Codex callers keep explicit capture without installing Codex
+hooks. Approved workflow enrollment is a separate `--capture-mode workflow`
+choice. Existing `.codex/project-learning/` stores remain compatible.
+Factory's native skill locations are documented at https://docs.factory.ai/harness/skills.
 
 Codex offers Default, Peak, Balanced, Lean and Economy; `sprint` remains an alias
 for Economy. Cursor and Universal Forge retain their native mode catalogues.

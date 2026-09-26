@@ -1104,11 +1104,36 @@
           "junie",
           "command-code",
           "z-code",
-          "claude"
+          "claude",
+          "droid"
         ]
       },
       "argent": {
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "auto_install": {
+          "commit": "133b1dfcd13e7a8aacca85d3ebcf85d4e3abffb4",
+          "repository": "https://github.com/software-mansion/argent.git",
+          "skills": {
+            "argent-android-emulator-setup": "packages/skills/skills/argent-android-emulator-setup",
+            "argent-create-flow": "packages/skills/skills/argent-create-flow",
+            "argent-device-interact": "packages/skills/skills/argent-device-interact",
+            "argent-ios-device-interact": "packages/skills/skills/argent-ios-device-interact",
+            "argent-ios-device-setup": "packages/skills/skills/argent-ios-device-setup",
+            "argent-ios-simulator-setup": "packages/skills/skills/argent-ios-simulator-setup",
+            "argent-lens": "packages/skills/skills/argent-lens",
+            "argent-metro-debugger": "packages/skills/skills/argent-metro-debugger",
+            "argent-native-profiler": "packages/skills/skills/argent-native-profiler",
+            "argent-qa-flows": "packages/skills/skills/argent-qa-flows",
+            "argent-react-native-app-workflow": "packages/skills/skills/argent-react-native-app-workflow",
+            "argent-react-native-optimization": "packages/skills/skills/argent-react-native-optimization",
+            "argent-react-native-profiler": "packages/skills/skills/argent-react-native-profiler",
+            "argent-screen-recording": "packages/skills/skills/argent-screen-recording",
+            "argent-screenshot-diff": "packages/skills/skills/argent-screenshot-diff",
+            "argent-settings-permissions": "packages/skills/skills/argent-settings-permissions",
+            "argent-test-ui-flow": "packages/skills/skills/argent-test-ui-flow",
+            "argent-tv-interact": "packages/skills/skills/argent-tv-interact"
+          }
+        },
         "capabilities": [
           "ios",
           "android",
@@ -1152,7 +1177,8 @@
           "junie",
           "command-code",
           "z-code",
-          "claude"
+          "claude",
+          "droid"
         ]
       },
       "browser-control": {
@@ -1171,11 +1197,20 @@
           "junie",
           "command-code",
           "z-code",
-          "claude"
+          "claude",
+          "droid"
         ]
       },
       "coderabbit": {
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "auto_install": {
+          "commit": "3e8763d24d543b48615b82535d02288de3ddae40",
+          "repository": "https://github.com/coderabbitai/skills.git",
+          "skills": {
+            "autofix": "skills/autofix",
+            "code-review": "skills/code-review"
+          }
+        },
         "install": "Install the CodeRabbit integration supported by the active harness.",
         "kind": "review-provider",
         "name": "CodeRabbit",
@@ -1192,7 +1227,8 @@
           "junie",
           "command-code",
           "z-code",
-          "claude"
+          "claude",
+          "droid"
         ]
       },
       "codex-security": {
@@ -1207,6 +1243,45 @@
       },
       "convex": {
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "auto_install": {
+          "commit": "0aa10576821c6928f6a0f498c087af4ee231536e",
+          "repository": "https://github.com/get-convex/agent-skills.git",
+          "skills": {
+            "convex": "skills/convex",
+            "convex-add": "skills/convex-add",
+            "convex-advisor": "skills/convex-advisor",
+            "convex-agent": "skills/convex-agent",
+            "convex-auth": "skills/convex-auth",
+            "convex-authz": "skills/convex-authz",
+            "convex-backup": "skills/convex-backup",
+            "convex-billing": "skills/convex-billing",
+            "convex-cost": "skills/convex-cost",
+            "convex-create-component": "skills/convex-create-component",
+            "convex-crons": "skills/convex-crons",
+            "convex-deploy-guard": "skills/convex-deploy-guard",
+            "convex-design": "skills/convex-design",
+            "convex-docs": "skills/convex-docs",
+            "convex-domains": "skills/convex-domains",
+            "convex-env": "skills/convex-env",
+            "convex-expert": "skills/convex-expert",
+            "convex-explain-app": "skills/convex-explain-app",
+            "convex-improve-convex-plugin": "skills/convex-improve-convex-plugin",
+            "convex-insights": "skills/convex-insights",
+            "convex-launch-readiness": "skills/convex-launch-readiness",
+            "convex-migrate": "skills/convex-migrate",
+            "convex-migrate-rehearse": "skills/convex-migrate-rehearse",
+            "convex-monitor": "skills/convex-monitor",
+            "convex-optimize": "skills/convex-optimize",
+            "convex-quickstart": "skills/convex-quickstart",
+            "convex-reviewer": "skills/convex-reviewer",
+            "convex-seed": "skills/convex-seed",
+            "convex-self-heal": "skills/convex-self-heal",
+            "convex-sentinel": "skills/convex-sentinel",
+            "convex-suggest": "skills/convex-suggest",
+            "convex-test": "skills/convex-test",
+            "convex-verify": "skills/convex-verify"
+          }
+        },
         "install": "Install the current official Convex integration for the active harness.",
         "kind": "native-plugin",
         "name": "Convex",
@@ -1222,11 +1297,43 @@
           "junie",
           "command-code",
           "z-code",
-          "claude"
+          "claude",
+          "droid"
         ]
       },
       "expo": {
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "auto_install": {
+          "commit": "efa52f0a9d2176db75992736281c77da1b714fa3",
+          "repository": "https://github.com/expo/skills.git",
+          "skills": {
+            "eas-app-stores": "plugins/expo/skills/eas-app-stores",
+            "eas-hosting": "plugins/expo/skills/eas-hosting",
+            "eas-observe": "plugins/expo/skills/eas-observe",
+            "eas-simulator": "plugins/expo/skills/eas-simulator",
+            "eas-update": "plugins/expo/skills/eas-update",
+            "eas-update-insights": "plugins/expo/skills/eas-update-insights",
+            "eas-workflows": "plugins/expo/skills/eas-workflows",
+            "expo-animation": "plugins/expo/skills/expo-animation",
+            "expo-app-clip": "plugins/expo/skills/expo-app-clip",
+            "expo-brownfield": "plugins/expo/skills/expo-brownfield",
+            "expo-data-fetching": "plugins/expo/skills/expo-data-fetching",
+            "expo-design-system": "plugins/expo/skills/expo-design-system",
+            "expo-dev-client": "plugins/expo/skills/expo-dev-client",
+            "expo-dom": "plugins/expo/skills/expo-dom",
+            "expo-examples": "plugins/expo/skills/expo-examples",
+            "expo-migrate-module": "plugins/expo-experiments/skills/expo-migrate-module",
+            "expo-module": "plugins/expo/skills/expo-module",
+            "expo-native-ui": "plugins/expo/skills/expo-native-ui",
+            "expo-overview": "plugins/expo/skills/expo-overview",
+            "expo-project-structure": "plugins/expo/skills/expo-project-structure",
+            "expo-router": "plugins/expo/skills/expo-router",
+            "expo-skill-feedback": "plugins/expo/skills/expo-skill-feedback",
+            "expo-ui": "plugins/expo/skills/expo-ui",
+            "expo-upgrade": "plugins/expo/skills/expo-upgrade",
+            "expo-web-to-native": "plugins/expo/skills/expo-web-to-native"
+          }
+        },
         "install": "npx skills@latest add expo/skills --skill '*'",
         "install_by_harness": {
           "claude": "claude plugin install expo@claude-plugins-official",
@@ -1272,7 +1379,8 @@
           "junie",
           "command-code",
           "z-code",
-          "claude"
+          "claude",
+          "droid"
         ]
       },
       "external-providers": {
@@ -1301,7 +1409,8 @@
           "junie",
           "command-code",
           "z-code",
-          "claude"
+          "claude",
+          "droid"
         ]
       },
       "ios-toolchain": {
@@ -1320,7 +1429,8 @@
           "junie",
           "command-code",
           "z-code",
-          "claude"
+          "claude",
+          "droid"
         ]
       },
       "opendesign-library": {
@@ -1352,7 +1462,8 @@
           "junie",
           "command-code",
           "z-code",
-          "claude"
+          "claude",
+          "droid"
         ]
       },
       "opendesign-runtime": {
@@ -1388,12 +1499,25 @@
           "junie",
           "command-code",
           "z-code",
-          "claude"
+          "claude",
+          "droid"
         ],
         "version": "0.21.1"
       },
       "ponytail": {
         "activation": "Optional; use only when installed and useful through the current minimality owner. No mode persists across tasks and no hook is installed by the toolkit.",
+        "auto_install": {
+          "commit": "e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156",
+          "repository": "https://github.com/DietrichGebert/ponytail.git",
+          "skills": {
+            "ponytail": "skills/ponytail",
+            "ponytail-audit": "skills/ponytail-audit",
+            "ponytail-debt": "skills/ponytail-debt",
+            "ponytail-gain": "skills/ponytail-gain",
+            "ponytail-help": "skills/ponytail-help",
+            "ponytail-review": "skills/ponytail-review"
+          }
+        },
         "install": "npx skills add DietrichGebert/ponytail --skill '*'",
         "integration": "plugins/rogemar-agent-toolkit/skills/integrated-workflow/references/supporting-methods.md",
         "kind": "skills",
@@ -1411,12 +1535,66 @@
           "junie",
           "command-code",
           "z-code",
-          "claude"
+          "claude",
+          "droid"
         ],
         "version_observed": "4.9.0 local installation"
       },
       "pstack": {
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "auto_install": {
+          "commit": "ecc249f1e306fc64ddf83c7bed16cacf7c2239db",
+          "repository": "https://github.com/cursor/plugins.git",
+          "skills": {
+            "architect": "pstack/skills/architect",
+            "arena": "pstack/skills/arena",
+            "automate-me": "pstack/skills/automate-me",
+            "blast-radius": "pstack/skills/blast-radius",
+            "bro": "pstack/skills/bro",
+            "create-verification-skill": "pstack/skills/create-verification-skill",
+            "figure-it-out": "pstack/skills/figure-it-out",
+            "how": "pstack/skills/how",
+            "interrogate": "pstack/skills/interrogate",
+            "maintain-verification-skill": "pstack/skills/maintain-verification-skill",
+            "make-bot-ui": "pstack/skills/make-bot-ui",
+            "no-comments": "pstack/skills/no-comments",
+            "poteto-mode": "pstack/skills/poteto-mode",
+            "principle-attack-the-premise": "pstack/skills/principle-attack-the-premise",
+            "principle-boundary-discipline": "pstack/skills/principle-boundary-discipline",
+            "principle-build-the-lever": "pstack/skills/principle-build-the-lever",
+            "principle-encode-lessons-in-structure": "pstack/skills/principle-encode-lessons-in-structure",
+            "principle-exhaust-the-design-space": "pstack/skills/principle-exhaust-the-design-space",
+            "principle-experience-first": "pstack/skills/principle-experience-first",
+            "principle-fix-root-causes": "pstack/skills/principle-fix-root-causes",
+            "principle-foundational-thinking": "pstack/skills/principle-foundational-thinking",
+            "principle-guard-the-context-window": "pstack/skills/principle-guard-the-context-window",
+            "principle-laziness-protocol": "pstack/skills/principle-laziness-protocol",
+            "principle-make-operations-idempotent": "pstack/skills/principle-make-operations-idempotent",
+            "principle-migrate-callers-then-delete-legacy-apis": "pstack/skills/principle-migrate-callers-then-delete-legacy-apis",
+            "principle-minimize-reader-load": "pstack/skills/principle-minimize-reader-load",
+            "principle-model-the-domain": "pstack/skills/principle-model-the-domain",
+            "principle-never-block-on-the-human": "pstack/skills/principle-never-block-on-the-human",
+            "principle-outcome-oriented-execution": "pstack/skills/principle-outcome-oriented-execution",
+            "principle-prove-it-works": "pstack/skills/principle-prove-it-works",
+            "principle-redesign-from-first-principles": "pstack/skills/principle-redesign-from-first-principles",
+            "principle-separate-before-serializing-shared-state": "pstack/skills/principle-separate-before-serializing-shared-state",
+            "principle-sequence-verifiable-units": "pstack/skills/principle-sequence-verifiable-units",
+            "principle-subtract-before-you-add": "pstack/skills/principle-subtract-before-you-add",
+            "principle-test-behavior-not-implementation": "pstack/skills/principle-test-behavior-not-implementation",
+            "principle-type-system-discipline": "pstack/skills/principle-type-system-discipline",
+            "recall": "pstack/skills/recall",
+            "reflect": "pstack/skills/reflect",
+            "setup-pstack": "pstack/skills/setup-pstack",
+            "show-me-your-work": "pstack/skills/show-me-your-work",
+            "swarm": "pstack/skills/swarm",
+            "tdd": "pstack/skills/tdd",
+            "teach": "pstack/skills/teach",
+            "technical-writing": "pstack/skills/technical-writing",
+            "typescript-best-practices": "pstack/skills/typescript-best-practices",
+            "unslop": "pstack/skills/unslop",
+            "why": "pstack/skills/why"
+          }
+        },
         "install": "/add-plugin pstack",
         "kind": "native-plugin",
         "name": "PStack",
@@ -1429,6 +1607,13 @@
       },
       "supabase": {
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
+        "auto_install": {
+          "commit": "551274ed2fe97c8fea1325f7ceb05803a542f8df",
+          "repository": "https://github.com/supabase/agent-skills.git",
+          "skills": {
+            "supabase-postgres-best-practices": "skills/supabase-postgres-best-practices"
+          }
+        },
         "install": "npx skills add supabase/agent-skills",
         "kind": "skills-and-runtime",
         "name": "Supabase",
@@ -1444,11 +1629,19 @@
           "junie",
           "command-code",
           "z-code",
-          "claude"
+          "claude",
+          "droid"
         ]
       },
       "unlazy": {
         "activation": "Optional; use only when selected and installed. Node 16+ for the checker; no MCP required. No automatic hook installation.",
+        "auto_install": {
+          "commit": "16671491f6679ad9378f52604d3bc2415b4120c7",
+          "repository": "https://github.com/Leonxlnx/unlazy.git",
+          "skills": {
+            "unlazy": "."
+          }
+        },
         "install": "npx skills add Leonxlnx/unlazy",
         "integration": "plugins/rogemar-agent-toolkit/skills/first-time-right-delivery/references/unlazy.md",
         "kind": "skills",
@@ -1466,7 +1659,8 @@
           "junie",
           "command-code",
           "z-code",
-          "claude"
+          "claude",
+          "droid"
         ],
         "upstream_commit": "16671491f6679ad9378f52604d3bc2415b4120c7",
         "upstream_status": "2.1 source documentation checked 2026-09-07; no upgrade performed or tagged release asserted.",
@@ -1503,6 +1697,11 @@
         "project": ".cursor",
         "runtime_status": "requires fresh-session discovery; file placement is not runtime activation",
         "user": ".cursor"
+      },
+      "droid": {
+        "project": ".factory",
+        "runtime_status": "requires native discovery and runtime verification; file placement alone is not activation",
+        "user": ".factory"
       },
       "gemini": {
         "project": ".gemini",
@@ -1830,7 +2029,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "activity-schema-guardian": {
@@ -1845,13 +2045,24 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "agent-collaboration-terminal": {
       "requires": [],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "agent-map": {
@@ -1866,7 +2077,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "article-creator-2": {
@@ -1881,7 +2093,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "bug-triage": {
@@ -1896,7 +2109,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "cloudflare-deploy": {
@@ -1911,7 +2125,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "code-review-and-quality": {
@@ -1928,7 +2143,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "code-review-tests": {
@@ -1943,7 +2159,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "codex-capability-maintainer": {
@@ -1973,7 +2190,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "csv-analytics-reporter": {
@@ -1988,7 +2206,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "cursor-forge": {
@@ -2025,7 +2244,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "deploy-checklist": {
@@ -2040,7 +2260,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "design-brief": {
@@ -2055,7 +2276,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "design-system-steward": {
@@ -2070,7 +2292,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "develop-web-game": {
@@ -2085,7 +2308,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "dream-team": {
@@ -2100,7 +2324,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "engineering-playbooks": {
@@ -2117,7 +2342,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "figma": {
@@ -2132,7 +2358,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "first-time-right-delivery": {
@@ -2147,7 +2374,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "forge-architect": {
@@ -2530,7 +2758,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "gh-address-comments": {
@@ -2545,7 +2774,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "gh-fix-ci": {
@@ -2560,7 +2790,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "hatch-pet": {
@@ -2586,7 +2817,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "interaction-polish": {
@@ -2601,7 +2833,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "knowledge-base-answering": {
@@ -2616,7 +2849,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "linear": {
@@ -2631,7 +2865,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "meeting-notes-task-extractor": {
@@ -2646,7 +2881,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "mobile-release-manager": {
@@ -2661,7 +2897,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "motion-animation-engineer": {
@@ -2676,7 +2913,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "netlify-deploy": {
@@ -2691,7 +2929,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "offline-sync-auditor": {
@@ -2706,7 +2945,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "opendesign": {
@@ -2721,7 +2961,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "pdf": {
@@ -2736,7 +2977,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "performance-profiler": {
@@ -2751,7 +2993,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "plan-model-router": {
@@ -2772,7 +3015,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "privacy-safety-review": {
@@ -2787,7 +3031,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "project-learning": {
@@ -2802,7 +3047,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "reference-design-contract": {
@@ -2817,7 +3063,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "research-synthesizer": {
@@ -2832,7 +3079,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "screenshot": {
@@ -2847,7 +3095,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "security-best-practices": {
@@ -2862,7 +3111,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "seo-content-strategy": {
@@ -2877,7 +3127,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "shadcn": {
@@ -2892,7 +3143,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "social-content-factory": {
@@ -2907,7 +3159,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "sora": {
@@ -2922,7 +3175,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "speech": {
@@ -2937,7 +3191,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "supabase": {
@@ -2952,7 +3207,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "supabase-guardian": {
@@ -2967,7 +3223,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "test-architecture-engineer": {
@@ -2982,7 +3239,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "transcribe": {
@@ -2997,7 +3255,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "universal-forge": {
@@ -3016,7 +3275,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "universal-plan-model-router": {
@@ -3033,7 +3293,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "ux-flow-architect": {
@@ -3048,7 +3309,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "vector-asset-pipeline": {
@@ -3063,7 +3325,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "vercel-deploy": {
@@ -3078,7 +3341,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "visual-qa": {
@@ -3093,7 +3357,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     },
     "workflow-orchestrator": {
@@ -3108,7 +3373,8 @@
         "junie",
         "command-code",
         "z-code",
-        "claude"
+        "claude",
+        "droid"
       ]
     }
   },
@@ -3123,7 +3389,7 @@
     },
     "agent-collaboration-terminal": {
       "file_count": 8,
-      "sha256": "f18f46751c10205d1210a943eb87bbe2f09b3795be7ee9e489a67d76378f15bd"
+      "sha256": "5f368294b88315b678f8bb5b1efc33818bc7fab14c10f1a8b3d97f4e0bbb1940"
     },
     "agent-map": {
       "file_count": 3,
@@ -3411,7 +3677,7 @@
     },
     "integrated-workflow": {
       "file_count": 8,
-      "sha256": "fc4c004e1df8d5189b9e33d900bba144c6ba886ead8f1c533c1e72808b6b5b90"
+      "sha256": "2ee05d08b6c49cc4b5ea19a1bdfed772e1e0bf8d5ef29c82190aa3f02b8de4e9"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -3471,7 +3737,7 @@
     },
     "project-learning": {
       "file_count": 14,
-      "sha256": "59bb121a6bdd8758772eb46e10af480160055a2c9a7e0fb58d99aef350d86c36"
+      "sha256": "1a00e7fcc194e2b42813245a882bbaa82229d51b552b1f2e55245161aa675f94"
     },
     "reference-design-contract": {
       "file_count": 7,

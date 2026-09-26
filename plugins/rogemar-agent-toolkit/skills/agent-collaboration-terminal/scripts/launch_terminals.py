@@ -19,6 +19,7 @@ DEFAULT_TIMEOUTS = {
     "junie": 30 * 60,
     "cursor": 30 * 60,
     "codex": 30 * 60,
+    "droid": 30 * 60,
 }
 
 INTERACTIVE_COMMANDS = {
@@ -26,6 +27,7 @@ INTERACTIVE_COMMANDS = {
     "antigravity": "agy",
     "cursor": "agent",
     "codex": "codex",
+    "droid": "droid",
 }
 APPROVAL_POLICIES = {"manual", "full-auto"}
 EXECUTION_MODES = {"visible", "background", "managed-pty"}

@@ -29,7 +29,7 @@ Use when asked to initialize continuous project learning in a repository.
 2. Run `scripts/initialize_project.py --check --root <repository-root>`.
 3. If the check reports no ambiguity, run it again without `--check`.
 4. Run `scripts/validate_project.py --root <repository-root>`.
-5. Default initialization preserves explicit capture and installs its passive hook. That Stop hook is Codex-only (`.codex/hooks.json`); in Cursor and other harnesses use `--capture-mode workflow`. For approved automatic checkpoint capture use `--capture-mode workflow` on both commands; this adds no hooks and preserves existing hooks and accepted lessons. Enrolled workflows do not require a restart. Mention `/hooks` review and a fresh task only when hooks were actually installed or changed.
+5. Pass `--harness <actual-harness>` on both initialization commands. The CLI defaults to `codex` for existing callers. Other harnesses install no Codex hook and keep explicit capture unless the owner enrolls `--capture-mode workflow`. Workflow enrollment also installs no hooks; preserve existing hooks and accepted lessons. Mention `/hooks` review only for a Codex hook actually installed or changed. The compatible `.codex/project-learning/` data path does not require Codex. Never infer workflow enrollment from a harness name.
 
 ### Optional dedicated learning task
 
