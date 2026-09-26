@@ -81,6 +81,13 @@ the agreed candidate. Keep its procedure and verdict independent; do not replace
 it with a shortened shared review or a sample of the diff. See
 [provider routing](references/provider-routing.md) for overlapping installations.
 
+When Integrated Workflow is installed and owns an active ready-PR cloud review
+wave, carry existing per-provider counts, candidate coverage and pending states
+through handoffs. Follow [delivery review routing](references/provider-routing.md#delivery-review-cadence)
+before consolidating, validating cloud findings or dispatching cloud-review fixes;
+do not create a second review loop. Selected local providers retain full agreed
+coverage and local reconciliation at the existing cadence. Outside that lifecycle, retain the task's
+own acceptance requirements rather than mandating both cloud providers.
 Follow the [review support/decision handoff](references/provider-routing.md#review-support-and-decision-roles)
 locally and in the cloud: Luna collection and consolidation do not validate findings
 or make minimum-scope or implementation decisions. Preserve the active delivery

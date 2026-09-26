@@ -29,7 +29,7 @@
     {
       "method": "babysit",
       "source": "codex-forge/playbooks/babysit.md",
-      "source_sha256": "b41cee93533e0ed557cbca414923434c3c7f74eb9a92abddce4b2f64795305fb",
+      "source_sha256": "ad38bd367f2ad414c2388e109b1a9951a54da4f0042ab1f3964527df37f2b9e2",
       "portable": "playbooks/babysit.md"
     },
     {

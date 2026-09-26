@@ -96,6 +96,11 @@ Only when the task explicitly asks the provider to review code, a diff, branch, 
 
 With `--review-profile code`, `prepare_run.py` adds this normalized contract:
 
+- Each selected provider performs a full independent review of the complete
+  agreed candidate: all in-scope changes, relevant callers, tests and surrounding
+  contracts. Its specialist emphasis does not replace that coverage. Do not use
+  a light, sampled, findings-only or single-axis pass. Preserve allowed/excluded
+  paths and authority; if coverage cannot be completed, report it as partial.
 - Antigravity explicitly invokes `$code-review-and-quality`; it invokes `$code-review-tests` only when changed behavior, tests, or material regression risk makes that analysis relevant. If native skill expansion is unavailable, it reads and applies the exact installed skill file and discloses the fallback.
 - Grok applies the same five-axis quality standard with additional security, privacy, trust-boundary, authorization, data-integrity, architecture, and minimality focus. It applies the focused test contract only when relevant.
 - Cursor applies the same base standard with an independent pragmatic codebase-navigation and implementation-quality perspective: correctness, maintainability, developer ergonomics, user-visible reliability, focused tests, and the smallest feasible correction.
@@ -305,7 +310,10 @@ unnecessary for this CLI. Do not add CodeRabbit as a provider, route it through
 
 Before the approved review gate, check `coderabbit --version`,
 `coderabbit review --help`, and `coderabbit auth status --agent`. Run only the
-narrowest authorized scope, do not pass `--use-credits` implicitly, and do not
+narrowest authorized scope that covers the complete agreed candidate, using
+CodeRabbit's own full review procedure without `--light` or diff sampling. This
+does not add a review checkpoint or import cloud cycle limits into local review.
+Do not pass `--use-credits` implicitly, and do not
 send a worktree containing secrets. CodeRabbit sends the selected diff to its
 service; preserve that external-data boundary in the review receipt. If auth
 or an interactive prerequisite requires a physical terminal, use the explicit

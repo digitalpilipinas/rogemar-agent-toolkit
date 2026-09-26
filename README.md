@@ -140,16 +140,31 @@ flowchart TD
     build --> local["Review the full slice locally"]
     local --> fixes["Consolidate feedback; fix validated defects"]
     fixes --> ready["Mark the PR ready for review"]
-    ready --> cloud["GitHub CodeRabbit and Codex review; monitor results"]
-    cloud --> finish["Reconcile findings and pass required checks"]
-    finish --> handoff["Hand off, or merge only when authorized"]
+    ready --> cloud["Full initial GitHub CodeRabbit and Codex reviews"]
+    cloud --> both["Wait for BOTH reviews to complete"]
+    both --> finish["Consolidate, validate findings, fix and check"]
+    finish --> due{"Required review coverage needs refresh?"}
+    due -->|"Within allowance or explicit extension"| follow["Request due follow-up; wait for all reviews in that wave"]
+    follow --> finish
+    due -->|"Allowance exhausted"| blocked["Report review gap; do not merge"]
+    due -->|"No"| handoff["Hand off, or merge only when authorized"]
 ```
 
 For substantive work, Integrated Workflow requires local CodeRabbit review of the
 complete slice, plus any selected additional reviewers, before the ready-PR handoff.
 It does not require a full external-review cycle for every commit. GitHub CodeRabbit
-and Codex then provide separate reviews of the ready PR. These services need their
-own working setup; the toolkit cannot manufacture a missing review result.
+and Codex then provide separate full initial reviews of the ready PR. Both must
+finish before findings are consolidated, validated or fixed. Each cloud provider
+has an initial review plus at most one justified follow-up by default; additional
+runs need an explicit owner extension. Equivalent automatic reviews count, and
+commits or resumed sessions do not reset the allowance. Exhaustion never waives
+required evidence or permits an unsafe merge. See the
+[cloud review contract](plugins/rogemar-agent-toolkit/skills/integrated-workflow/references/coderabbit-review.md#ready-pr-coderabbit-and-codex).
+
+Local review cadence stays unchanged. Whenever CodeRabbit or an explicitly selected
+terminal code reviewer runs, it performs its full review of the agreed candidate.
+These services need their own working setup; the toolkit cannot manufacture a
+missing review result or assume pushes trigger reviews in every repository.
 
 Feedback is collected and checked together. Duplicate comments share one finding;
 unsupported suggestions and over-engineering can be rejected; out-of-scope work

@@ -228,6 +228,7 @@ def review_contract_for(provider_id: str, review_profile: str) -> str:
 
     return f"""## Review contract
 
+- Perform a full independent review of the complete agreed candidate: every in-scope change, relevant callers, tests, and surrounding contracts. Specialist emphasis does not narrow this coverage. Do not substitute a light, sampled, findings-only, or single-axis pass; report incomplete coverage as partial. Preserve all allowed/excluded paths and recorded authority.
 {provider_guidance}
 - CodeRabbit is a separate Codex-owned review layer. Do not invoke CodeRabbit, a CodeRabbit skill, or another external reviewer from this provider session.
 - Keep one finding per semantic root cause. Do not repeat the same issue under different wording.

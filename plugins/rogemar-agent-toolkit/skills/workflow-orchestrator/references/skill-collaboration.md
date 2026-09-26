@@ -76,6 +76,10 @@ system. The orchestrator must confirm that authority separately.
 
 ## Worker result
 
+For new workers, apply [sub-agent naming](subagent-naming.md) after native profile
+qualification, using supported naming controls or the ordinary handoff fallback. Keep the returned identity and original name on reuse; record the
+current assignment, mode and runtime evidence in this same handoff.
+
 Every delegated result should state:
 
 - Status: Verified, Partial, Unverified, Blocked, or Deferred.

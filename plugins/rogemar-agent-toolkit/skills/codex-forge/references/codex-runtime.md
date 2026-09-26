@@ -56,8 +56,10 @@ existing worker. Recheck existing workers after a parent setting changes.
 Record requested settings separately from observed runtime settings. A receipt
 or accepted call is not proof of the model used. Missing metadata is Unverified.
 
-After qualification, apply the orchestrator’s `references/subagent-naming.md`
-to new workers; retain existing names and native role IDs.
+After profile qualification, follow the installed orchestrator's
+`references/subagent-naming.md` for new native task names. The assigned model and
+reasoning belong in the name; mode stays in status and receipts. Preserve native
+agent types and existing names; use only the naming controls actually surfaced.
 
 Before mode-dependent execution, follow the installed `workflow-orchestrator`
 shared Forge mode/status contract's parent clarification: compare desired and

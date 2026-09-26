@@ -20,6 +20,16 @@ authentication, code transmission and paid use retain the applicable user
 permission; selecting a skill cannot silently grant missing authority. Reuse
 existing authorization without asking twice.
 
+## Delivery review cadence
+
+When the optional `integrated-workflow` skill is installed and owns delivery,
+read its `references/coderabbit-review.md` for full initial cloud requests, the
+both-reviewers completion barrier, persistent per-provider allowance and owner
+extensions. Carry its receipt through PR-helper and worker handoffs. Apply the
+barrier only to active ready-PR cloud waves; local/pre-ready reconciliation keeps
+its existing cadence. Core-only or standalone reviews do not require installing
+Integrated Workflow or activating cloud providers.
+
 ## Multiple versions or distributions
 
 Use one established primary for overlapping names, with qualified paths when

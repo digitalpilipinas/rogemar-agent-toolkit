@@ -49,6 +49,11 @@ acceptance requirements. Owner-specified pools and limits remain binding.
    supported settings, selected skills, task-fit reason and verification needs.
    The existing orchestrator copies the qualified arguments into the actual
    native worker tool. Do not hard-code another harness's argument names.
+   Before dispatch it applies shared
+   [sub-agent naming](../../workflow-orchestrator/references/subagent-naming.md)
+   through the supported Cursor naming field or handoff fallback. Derive the
+   label from this qualified native profile; keep configuration and profile
+   arguments unchanged and mode outside names.
 5. Keep proposed/requested/accepted/runtime-observed profiles distinct. Record
    missing model identity as Unverified. A configured mapping is not a live test.
    Reuse existing workers only when their verified contract still fits.

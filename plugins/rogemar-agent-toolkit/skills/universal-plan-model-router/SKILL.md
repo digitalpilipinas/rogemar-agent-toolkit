@@ -44,6 +44,10 @@ do not import its model catalogue into this portable path.
    exact supported dispatch arguments and source of availability to the existing
    orchestrator. It copies the qualified arguments into the host's actual tool,
    with a bounded assignment. Do not call a Codex or Cursor tool by analogy.
+   After qualification, the orchestrator applies shared
+   [sub-agent naming](../workflow-orchestrator/references/subagent-naming.md)
+   using the native profile and supported naming control or handoff fallback.
+   Labels do not change profile arguments, settings or dispatch eligibility.
 6. Record proposed, requested, accepted and runtime-observed settings separately.
    A worker's self-report is not authoritative runtime identity. Missing metadata
    is Unverified; it does not erase valid task evidence. Reassess on task or mode

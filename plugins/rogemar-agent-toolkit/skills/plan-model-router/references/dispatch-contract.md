@@ -51,6 +51,9 @@ The router computes a profile; the orchestrator performs the native tool call.
    the role's bounded task contract in `message`. For `requested: {}`, omit
    both overrides and use a confirmed compatible inheritance path. Do not
    submit a role ID or the string `auto` as a model ID.
+   Before the native call, construct `task_name` from the qualified assignment
+   using the installed orchestrator's `references/subagent-naming.md`. Keep mode
+   out of the name and retain exact model IDs in arguments and receipts.
 6. A blocked resolution is not a license to drop the arguments or silently
    inherit an excluded profile. Requalify an available permitted profile, retain
    direct work with the main agent while disclosing its mode status, or report

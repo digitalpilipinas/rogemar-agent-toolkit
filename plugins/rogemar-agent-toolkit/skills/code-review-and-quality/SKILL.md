@@ -71,6 +71,14 @@ authorized; never label local analysis as that provider's result.
 
 ## Reconcile findings once
 
+During an active Integrated Workflow ready-PR cloud review wave, follow the
+orchestrator's [delivery review routing](../workflow-orchestrator/references/provider-routing.md#delivery-review-cadence).
+Do not consolidate, validate findings or fix from one cloud report while the
+other required report is pending. Carry the existing provider counts and coverage;
+this reviewer does not reset the allowance or start another provider loop.
+Local/pre-ready and standalone reviews retain their existing reconciliation,
+agreed scope and applicable evidence requirements without this cloud barrier.
+
 Use the existing plan or PR finding ledger if present; otherwise a concise list
 in the review is enough. Combine reports about the same cause into one entry,
 retaining provider IDs, evidence, and any disagreement. Do not restart a full

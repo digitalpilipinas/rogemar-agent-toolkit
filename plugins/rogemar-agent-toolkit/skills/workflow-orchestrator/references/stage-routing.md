@@ -36,6 +36,12 @@ permission to skip full-board checks and final outcome coverage. Preserve native
 receipt fields and PM ownership. Apply [context efficiency](context-efficiency.md)
 within these boundaries; leave managed GoalBuddy plugin files unchanged.
 
+When execution authorizes a new worker, follow
+[sub-agent naming](subagent-naming.md) through native naming controls or the
+handoff fallback. Keep GoalBuddy task
+IDs, native role contracts and board/receipt schemas unchanged; preparation does
+not spawn or rename agents.
+
 A task card's `harness:` field records an intended route, not permission to use
 another provider. External dispatch requires the user's existing explicit
 provider selection and compatible task/data authority. A PM-generated field or

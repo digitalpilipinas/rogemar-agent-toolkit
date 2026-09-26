@@ -3059,7 +3059,7 @@
     },
     "agent-collaboration-terminal": {
       "file_count": 8,
-      "sha256": "9f62c522b4573d56fc4263574317fb7cb194c54059a4c864028851a2f1c60539"
+      "sha256": "f18f46751c10205d1210a943eb87bbe2f09b3795be7ee9e489a67d76378f15bd"
     },
     "agent-map": {
       "file_count": 3,
@@ -3079,7 +3079,7 @@
     },
     "code-review-and-quality": {
       "file_count": 1,
-      "sha256": "70ee9d8e3acf73a3a2d4ff3a5531bd27344feb7e6e963f965e0b4fee4b42ed10"
+      "sha256": "fcb58de717622ae8a1d931fdd25afa0a9a5d85fb393a0a547dd5f5d604b73039"
     },
     "code-review-tests": {
       "file_count": 2,
@@ -3091,7 +3091,7 @@
     },
     "codex-forge": {
       "file_count": 67,
-      "sha256": "b1720def640a3b4ab6b3f1725cbd8e3ca3620cc9fc5caab767d5787eebc4273e"
+      "sha256": "fbe740792caf874b224ebfecbdb1122c256322633e4245d60cc48461879e5aa8"
     },
     "create-plan": {
       "file_count": 4,
@@ -3107,7 +3107,7 @@
     },
     "cursor-forge-setup": {
       "file_count": 6,
-      "sha256": "d0b38af0fe3e3207cea13f8a500272ab13974810896849cb09e29af648945aea"
+      "sha256": "58f4b1e3110200f6948ccffa8824f11dbfdfa77b1cddce47c2dddc4cab00edc2"
     },
     "deliver-approved-programme": {
       "file_count": 2,
@@ -3135,7 +3135,7 @@
     },
     "engineering-playbooks": {
       "file_count": 51,
-      "sha256": "0f84e62e18a8d0d463dd8830d6fb2a8a63203d3b3126707fa3e18bed0f1cdfcd"
+      "sha256": "3d90662779de2271f0412fe730e6cbaf3f9a654dd2d1b3dc31a3838b497eda13"
     },
     "figma": {
       "file_count": 8,
@@ -3347,7 +3347,7 @@
     },
     "integrated-workflow": {
       "file_count": 8,
-      "sha256": "f5a8deb096537f62b6acfa7ba21468a39729e6d33dbe7b57edce0c2e09ecda4a"
+      "sha256": "fc4c004e1df8d5189b9e33d900bba144c6ba886ead8f1c533c1e72808b6b5b90"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -3395,7 +3395,7 @@
     },
     "plan-model-router": {
       "file_count": 18,
-      "sha256": "3d63338756050173cbd731982f9a8ec5539d76f01564001c5f9883e272748796"
+      "sha256": "91d08c16ec664ad4cf667a15fc811e583955e4d6ca564dfa63fa73d8047736e7"
     },
     "playwright": {
       "file_count": 9,
@@ -3467,7 +3467,7 @@
     },
     "universal-plan-model-router": {
       "file_count": 2,
-      "sha256": "f13ac64b9876edf47c15482eb1e352e5d0748a987819866c43440014fb3993f3"
+      "sha256": "b5948d12ef897594de306b7f803097e6404e179cbfe4d6da743b73e4cc599211"
     },
     "ux-flow-architect": {
       "file_count": 4,
@@ -3487,7 +3487,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 8,
-      "sha256": "45387e05ac626a3bccdf7b765a9130e97ac5d39e5cb75740a5aa97302ec2bb1f"
+      "sha256": "5fe4abbebf25f7ab738ccd5f69298c78426b3d645942e57cd6d1bb3d12ab9d3d"
     }
   },
   "version": "1.0.0"

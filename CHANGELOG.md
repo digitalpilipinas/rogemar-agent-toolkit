@@ -1,5 +1,19 @@
 # Changelog
 
+## Bounded cloud review and full initial coverage (unreleased)
+
+- Begin a substantive or explicitly required ready-PR cloud review with full CodeRabbit and Codex coverage, and wait for both completed reports before consolidation, finding validation or remediation.
+- Limit each cloud provider to the initial review and one justified follow-up by default, preserving counts across pushes/resumes and requiring explicit extensions without weakening merge gates.
+- Preserve local invocation cadence while requiring full agreed-candidate review from CodeRabbit and each selected terminal code reviewer.
+- Align review handoffs, native and portable Forge monitoring, and PR helper integration; preserve provider-owned packages and repository trigger settings.
+
+## Shared sub-agent naming (unreleased)
+
+- Prefer concise task labels, with readable separators where native free-text names support them and underscore encoding in Codex.
+
+- Name new assignments by role, task, native model and reasoning across Codex, Cursor and Universal Forge; retain mode and runtime evidence in existing status and receipts.
+- Share one convention with native naming controls and a handoff fallback, without changing role IDs, profile arguments, routing policy or review gates.
+
 ## Trigger and design updates (unreleased)
 
 - Add scoped design craft supplements and an optional shadcn pack on top of the merged mobile design methods.
