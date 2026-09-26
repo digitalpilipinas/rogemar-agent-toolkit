@@ -883,10 +883,7 @@
     },
     {
       "name": "project-learning",
-      "source": "approved local Codex snapshot",
-      "targets": [
-        "codex"
-      ]
+      "source": "approved local Codex snapshot"
     },
     {
       "name": "reference-design-contract",
@@ -1135,6 +1132,27 @@
         "unlazy"
       ],
       "notes": "Optional First-Time-Right Delivery completion adapter; Integrated Workflow reuses the same gates. Local 2.0 and upstream 2.1 source commands differ; inspect the installed version. Hooks are never installed automatically."
+    },
+    {
+      "name": "ponytail",
+      "mode": "external-git-skill",
+      "source": "https://github.com/DietrichGebert/ponytail",
+      "repository": "https://github.com/DietrichGebert/ponytail",
+      "install_latest": "npx skills add DietrichGebert/ponytail --skill '*'",
+      "version": "4.9.0",
+      "purpose": "Minimality methods: challenge speculative work and review for unnecessary complexity.",
+      "author": "DietrichGebert",
+      "license_status": "MIT (installed LICENSE and upstream repository)",
+      "redistribution_status": "External install; not vendored",
+      "members": [
+        "ponytail",
+        "ponytail-review",
+        "ponytail-audit",
+        "ponytail-debt",
+        "ponytail-gain",
+        "ponytail-help"
+      ],
+      "notes": "Optional Integrated Workflow minimality methods through the current owner. Not a correctness, security or merge gate. No mode persists across tasks; the toolkit installs no hook."
     },
     {
       "name": "pstack",
@@ -2002,6 +2020,15 @@
       "repository": "https://github.com/expo/skills",
       "represented_by": "optional Expo pack",
       "install_latest": "npx skills add expo/skills"
+    },
+    {
+      "id": "ponytail",
+      "author": "DietrichGebert",
+      "license_status": "MIT (upstream LICENSE, observed in the 4.9.0 installation)",
+      "repository": "https://github.com/DietrichGebert/ponytail",
+      "represented_by": "external ponytail, ponytail-review, ponytail-audit, ponytail-debt, ponytail-gain and ponytail-help skills",
+      "install_latest": "npx skills add DietrichGebert/ponytail --skill '*'",
+      "update_policy": "external; keep separately versioned"
     }
   ],
   "external_packages": [
@@ -2227,6 +2254,7 @@
         "forge-unslop",
         "forge-why",
         "integrated-workflow",
+        "project-learning",
         "performance-profiler",
         "test-architecture-engineer",
         "universal-forge",
@@ -2234,7 +2262,8 @@
       ],
       "external": [
         "pstack",
-        "unlazy"
+        "unlazy",
+        "ponytail"
       ]
     },
     "design": {
@@ -2810,6 +2839,29 @@
       "upstream_commit": "16671491f6679ad9378f52604d3bc2415b4120c7",
       "upstream_status": "2.1 source documentation checked 2026-09-07; no upgrade performed or tagged release asserted.",
       "integration": "plugins/rogemar-agent-toolkit/skills/first-time-right-delivery/references/unlazy.md"
+    },
+    "ponytail": {
+      "name": "Ponytail",
+      "kind": "skills",
+      "purpose": "Optional minimality methods for Integrated Workflow: challenge speculative work and review for unnecessary complexity. Not a correctness, security or merge gate.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
+      ],
+      "install": "npx skills add DietrichGebert/ponytail --skill '*'",
+      "activation": "Optional; use only when installed and useful through the current minimality owner. No mode persists across tasks and no hook is installed by the toolkit.",
+      "repository": "https://github.com/DietrichGebert/ponytail",
+      "skill_group": "ponytail",
+      "version_observed": "4.9.0 local installation",
+      "integration": "plugins/rogemar-agent-toolkit/skills/integrated-workflow/references/supporting-methods.md"
     }
   }
 }

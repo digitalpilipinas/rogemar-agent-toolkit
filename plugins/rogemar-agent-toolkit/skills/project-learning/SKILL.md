@@ -9,7 +9,8 @@ Maintain durable, evidence-backed project lessons without turning unreviewed cha
 
 ## Boundaries
 
-- Keep learning project-local. Never write Codex memory, global AGENTS.md, or another project's files unless the user explicitly requests adaptation into that target.
+- Keep learning project-local. Never write harness memory (Codex, Cursor or other), global AGENTS.md, or another project's files unless the user explicitly requests adaptation into that target.
+- The store under `.codex/project-learning/` is the shared project location for every harness; the directory name is kept for compatibility with existing projects.
 - Treat candidates as inactive. Only user-approved entries in `docs/project-learning/lessons.md` are usable guidance.
 - Current user instructions, repository contracts, tests, and verified current evidence override accepted lessons.
 - Never persist raw transcripts, hidden reasoning, tool output, secrets, credentials, personal data, or quoted conversation text.
@@ -28,7 +29,7 @@ Use when asked to initialize continuous project learning in a repository.
 2. Run `scripts/initialize_project.py --check --root <repository-root>`.
 3. If the check reports no ambiguity, run it again without `--check`.
 4. Run `scripts/validate_project.py --root <repository-root>`.
-5. Default initialization preserves explicit capture and installs its passive hook. For approved automatic checkpoint capture use `--capture-mode workflow` on both commands; this adds no hooks and preserves existing hooks and accepted lessons. Enrolled workflows do not require a restart. Mention `/hooks` review and a fresh task only when hooks were actually installed or changed.
+5. Default initialization preserves explicit capture and installs its passive hook. That Stop hook is Codex-only (`.codex/hooks.json`); in Cursor and other harnesses use `--capture-mode workflow`. For approved automatic checkpoint capture use `--capture-mode workflow` on both commands; this adds no hooks and preserves existing hooks and accepted lessons. Enrolled workflows do not require a restart. Mention `/hooks` review and a fresh task only when hooks were actually installed or changed.
 
 ### Optional dedicated learning task
 

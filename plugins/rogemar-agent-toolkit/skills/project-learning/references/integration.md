@@ -7,7 +7,7 @@ Project learning is a post-task evidence consumer and curator. It is not a plann
 - `workflow-orchestrator` remains the dispatcher and delegation owner; explicitly invoked `integrated-workflow` owns the approved delivery lifecycle.
 - `first-time-right-delivery` and `integrated-workflow` produce evidence and invoke candidate-only capture at explicitly enrolled workflow checkpoints; they never approve or activate lessons.
 - `create-plan` remains read-only. The Stop hook skips `permission_mode: plan` and explicit no-write requests.
-- Capture cannot edit product files, task plans, delivery status, existing skills, global AGENTS.md, or Codex memory.
+- Capture cannot edit product files, task plans, delivery status, existing skills, global AGENTS.md, or harness memory.
 - A normal task agent may include a task-local `Learning note:` in its own final response when the current task establishes a verified reusable rule. That note is communication only; it does not create, approve, or activate a project lesson.
 
 Explicit-capture projects retain their current behavior. Enrolled workflows call the existing candidate store at completion, using native-neutral source IDs and explicit permission/no-write guards. The Stop hook remains an optional passive queue; workflow enrollment does not install it. Review and promotion always require approval. Capture errors cannot change the source task's delivery status.
@@ -25,7 +25,7 @@ When an accepted lesson conflicts with current evidence, do not silently apply i
 
 ## Hook Coexistence
 
-Codex runs all matching hook handlers. The project-learning Stop handler therefore:
+The passive Stop handler is a Codex hook; other harnesses use enrolled workflow capture and install no hook. Codex runs all matching hook handlers. The project-learning Stop handler therefore:
 
 - Never blocks the current task or emits a model continuation prompt.
 - Records only bounded session, turn, signal, milestone, and transcript-path metadata in the ignored queue for a dedicated learning task.
