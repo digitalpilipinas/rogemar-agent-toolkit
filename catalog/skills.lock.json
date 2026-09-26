@@ -272,6 +272,27 @@
         "version": "2.0.0"
       },
       {
+        "author": "DietrichGebert",
+        "install_latest": "npx skills add DietrichGebert/ponytail --skill '*'",
+        "license_status": "MIT (installed LICENSE and upstream repository)",
+        "members": [
+          "ponytail",
+          "ponytail-review",
+          "ponytail-audit",
+          "ponytail-debt",
+          "ponytail-gain",
+          "ponytail-help"
+        ],
+        "mode": "external-git-skill",
+        "name": "ponytail",
+        "notes": "Optional Integrated Workflow minimality methods through the current owner. Not a correctness, security or merge gate. No mode persists across tasks; the toolkit installs no hook.",
+        "purpose": "Minimality methods: challenge speculative work and review for unnecessary complexity.",
+        "redistribution_status": "External install; not vendored",
+        "repository": "https://github.com/DietrichGebert/ponytail",
+        "source": "https://github.com/DietrichGebert/ponytail",
+        "version": "4.9.0"
+      },
+      {
         "author": "Lauren Tan (poteto persona)",
         "install_latest": "/add-plugin pstack",
         "license_status": "MIT (upstream manifest)",
@@ -1050,6 +1071,15 @@
         "license_status": "External upstream; verify current license before vendoring",
         "repository": "https://github.com/expo/skills",
         "represented_by": "optional Expo pack"
+      },
+      {
+        "author": "DietrichGebert",
+        "id": "ponytail",
+        "install_latest": "npx skills add DietrichGebert/ponytail --skill '*'",
+        "license_status": "MIT (upstream LICENSE, observed in the 4.9.0 installation)",
+        "repository": "https://github.com/DietrichGebert/ponytail",
+        "represented_by": "external ponytail, ponytail-review, ponytail-audit, ponytail-debt, ponytail-gain and ponytail-help skills",
+        "update_policy": "external; keep separately versioned"
       }
     ]
   },
@@ -1362,6 +1392,29 @@
         ],
         "version": "0.21.1"
       },
+      "ponytail": {
+        "activation": "Optional; use only when installed and useful through the current minimality owner. No mode persists across tasks and no hook is installed by the toolkit.",
+        "install": "npx skills add DietrichGebert/ponytail --skill '*'",
+        "integration": "plugins/rogemar-agent-toolkit/skills/integrated-workflow/references/supporting-methods.md",
+        "kind": "skills",
+        "name": "Ponytail",
+        "purpose": "Optional minimality methods for Integrated Workflow: challenge speculative work and review for unnecessary complexity. Not a correctness, security or merge gate.",
+        "repository": "https://github.com/DietrichGebert/ponytail",
+        "skill_group": "ponytail",
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "gemini",
+          "antigravity",
+          "grok-build",
+          "junie",
+          "command-code",
+          "z-code",
+          "claude"
+        ],
+        "version_observed": "4.9.0 local installation"
+      },
       "pstack": {
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
         "install": "/add-plugin pstack",
@@ -1566,7 +1619,8 @@
         "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor and Universal Forge routes.",
         "external": [
           "pstack",
-          "unlazy"
+          "unlazy",
+          "ponytail"
         ],
         "skills": [
           "agent-map",
@@ -1621,6 +1675,7 @@
           "forge-unslop",
           "forge-why",
           "integrated-workflow",
+          "project-learning",
           "performance-profiler",
           "test-architecture-engineer",
           "universal-forge",
@@ -2738,7 +2793,16 @@
     "project-learning": {
       "requires": [],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude"
       ]
     },
     "reference-design-contract": {
@@ -3407,7 +3471,7 @@
     },
     "project-learning": {
       "file_count": 14,
-      "sha256": "f48d7e8aeec34187931b39e309abfc7baf774c20215c855af897744e0fe63e26"
+      "sha256": "59bb121a6bdd8758772eb46e10af480160055a2c9a7e0fb58d99aef350d86c36"
     },
     "reference-design-contract": {
       "file_count": 7,
