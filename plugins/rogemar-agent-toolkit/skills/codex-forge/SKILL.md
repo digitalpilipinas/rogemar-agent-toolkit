@@ -28,6 +28,12 @@ bindings and its full native companions. Do not invoke both as execution owners.
 
 ## Automatic selection
 
+When the project has a verification map or learning enrollment, apply the
+shared checkpoint contract in the installed `engineering-playbooks/references/agent-friendly-workflow.md`
+at task start or resume, acceptance, and verified completion. Select the needed
+navigation, verifier and learning method automatically; the user need not name
+each skill. Existing task scope, approval and publication authority still apply.
+
 Invoke `$codex-forge` once with the desired outcome and constraints. Keep Forge
 active for relevant follow-up work in this task until the user opts out. Select
 and read the matching playbook and only the supporting skills needed by each
@@ -59,7 +65,7 @@ model control, or report that the parent change still needs the user to apply it
 ## Attribution
 
 Codex Forge is inspired by and adapted from Lauren Tan (poteto)'s **PStack**
-and **poteto-mode**, published in the [Cursor plugins repository](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack).
+and **poteto-mode**, published in the [Cursor plugins repository](https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack).
 The original MIT attribution is preserved in `LICENSE.txt`. This is an independent
 Codex adaptation; it does not imply endorsement or an unverified affiliation.
 
@@ -137,6 +143,9 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 - **Separate Before Serializing Shared State** (**forge-principle-separate-before-serializing-shared-state**). Concurrent actors might write the same file, branch, key, or object. Eliminate the sharing first.
 
 **Verification**
+
+- **Attack the Premise** (**forge-principle-attack-the-premise**). Repeated failed fixes share an assumption. Name it and run a discriminating check before another fix.
+- **Test Behavior, Not Implementation** (**forge-principle-test-behavior-not-implementation**). Adding or reviewing tests. Detect meaningful defects while preserving valid negative, security, schema and static contracts.
 
 - **Prove It Works** (**forge-principle-prove-it-works**). After a task, before declaring done. Verify against the real artifact, not a proxy or "it compiles".
 - **Fix Root Causes** (**forge-principle-fix-root-causes**). Debugging. Trace each symptom to its root cause, reproduce first, ask why until you reach it.

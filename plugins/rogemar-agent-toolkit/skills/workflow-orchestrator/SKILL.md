@@ -5,6 +5,9 @@ description: Use for non-trivial coding work that spans brainstorming, research,
 
 # Workflow Orchestrator
 
+At task start/resume, before acceptance and at verified completion, apply the shared
+automatic checkpoints in the installed `engineering-playbooks/references/agent-friendly-workflow.md` when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence. If that optional pack is absent, inspect the project’s recipes and existing gate record directly; do not install a pack implicitly.
+
 Only when a Codex, Cursor or Universal Forge route is active, follow the shared [Forge mode and status contract](references/forge-mode-status.md) at entry,
 resume and dispatch: explicit request → task mode → saved preference; ask once
 if none exists. Show role, model, effort, mode and evidence status without

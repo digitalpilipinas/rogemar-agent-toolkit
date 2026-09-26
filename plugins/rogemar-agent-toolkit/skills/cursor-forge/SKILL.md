@@ -4,6 +4,9 @@ description: Adapt native Cursor PStack methods to the shared Forge roles, modes
 ---
 # Cursor Forge
 
+At task start/resume, before acceptance and at verified completion, apply the shared
+[automatic checkpoints](../engineering-playbooks/references/agent-friendly-workflow.md) when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence.
+
 Follow the shared [Forge mode and status contract](../workflow-orchestrator/references/forge-mode-status.md) at entry,
 resume and dispatch: explicit request → task mode → saved preference; ask once
 if none exists. Show role, model, effort, mode and evidence status without
@@ -22,6 +25,13 @@ for large outputs or handoffs, preserving the active harness's tool and wait con
 Inspect actual Cursor capabilities before native operations. If this is not a
 Cursor runtime, use the portable method and disclose the mismatch. Merely naming
 Cursor never grants native Task, model-control, MCP or plugin access.
+
+For new workers, use shared
+[sub-agent naming](../workflow-orchestrator/references/subagent-naming.md) after
+the primary Cursor Forge Setup route or its authorized universal fallback
+qualifies the native profile. Inspect supported naming
+controls; use the handoff fallback when unavailable. Keep mode outside names
+and preserve native model and reasoning settings.
 
 When PStack is installed, read the matching native playbook and needed companion
 methods. Preserve useful PStack rigor and provenance, but route every worker hint

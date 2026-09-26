@@ -11,6 +11,8 @@ import re
 import subprocess
 import sys
 import tempfile
+import time
+from contextlib import contextmanager
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -40,6 +42,8 @@ SECRET_PATTERNS = (
     re.compile(r"\bsk-[A-Za-z0-9_-]{16,}\b"),
     re.compile(r"\bsb_(?:secret|publishable)_[A-Za-z0-9_-]{16,}\b"),
     re.compile(r"\bAKIA[0-9A-Z]{16}\b"),
+    re.compile(r"\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})\b"),
+    re.compile(r"(?i)\b(?:password|secret|api[_-]?key|access[_-]?token)\s*[:=]\s*[^\s]{8,}"),
     re.compile(r"\beyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b"),
 )
 LEDGER_MARKER = "<!-- PROJECT-LEARNING:ENTRIES -->"
@@ -114,6 +118,11 @@ def config_for(root: Path) -> dict[str, Any]:
     for key, expected in required.items():
         if config.get(key) != expected:
             raise StoreError(f"unsupported {key!r} in {path}")
+    if config.get("capture_mode", "explicit") not in {"explicit", "workflow"}:
+        raise StoreError(f"unsupported capture_mode in {path}")
+    reminder = config.get("review_reminder")
+    if not isinstance(reminder, dict) or type(reminder.get("pending_count")) is not int or reminder["pending_count"] < 1:
+        raise StoreError("review_reminder.pending_count must be a positive integer")
     if not isinstance(config.get("enabled"), bool):
         raise StoreError(f"`enabled` must be boolean in {path}")
     return config
@@ -183,6 +192,7 @@ def validate_capture_request(request: dict[str, Any]) -> dict[str, Any]:
         "milestone",
         "source_project",
         "source_lesson_id",
+        "proposal",
     }
     unexpected = set(request) - allowed
     if unexpected:
@@ -223,7 +233,26 @@ def validate_capture_request(request: dict[str, Any]) -> dict[str, Any]:
     if (source_project is None) != (source_lesson_id is None):
         raise StoreError("source_project and source_lesson_id must be provided together")
 
-    return {
+    proposal = request.get("proposal")
+    if proposal is not None:
+        if not isinstance(proposal, dict) or set(proposal) != {"target_skill", "allowed_files", "validation"}:
+            raise StoreError("proposal requires target_skill, allowed_files and validation")
+        target = Path(validate_text(proposal["target_skill"], "proposal.target_skill", 500))
+        if target.is_absolute() or ".." in target.parts or target.name != "SKILL.md":
+            raise StoreError("proposal.target_skill must be a repository-relative SKILL.md")
+        allowed_files = proposal["allowed_files"]
+        if not isinstance(allowed_files, list) or not 1 <= len(allowed_files) <= 20:
+            raise StoreError("proposal.allowed_files requires 1 to 20 paths")
+        for raw in allowed_files:
+            path = Path(validate_text(raw, "proposal.allowed_files", 500))
+            if path.is_absolute() or ".." in path.parts or not path.is_relative_to(target.parent):
+                raise StoreError("proposal allowed files must stay inside the target skill")
+        proposal = {"target_skill": str(target), "allowed_files": allowed_files,
+                    "validation": validate_text(proposal["validation"], "proposal.validation")}
+        if source_project is None:
+            raise StoreError("global proposal requires accepted source provenance")
+
+    result = {
         "schema_version": SCHEMA_VERSION,
         "session_id": safe_id(request.get("session_id"), "session_id"),
         "turn_id": safe_id(request.get("turn_id"), "turn_id"),
@@ -238,6 +267,9 @@ def validate_capture_request(request: dict[str, Any]) -> dict[str, Any]:
         "source_project": source_project,
         "source_lesson_id": source_lesson_id,
     }
+    if proposal is not None:
+        result["proposal"] = proposal
+    return result
 
 
 def fingerprint(request: dict[str, Any]) -> str:
@@ -247,6 +279,8 @@ def fingerprint(request: dict[str, Any]) -> str:
         request["does_not_apply_when"],
     )
     normalized = "\n".join(" ".join(part.lower().split()) for part in parts)
+    if request.get("proposal"):
+        normalized += "\n" + json.dumps(request["proposal"], sort_keys=True)
     return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
 
 
@@ -307,40 +341,79 @@ def marker_path(state_dir: Path, session_id: str, turn_id: str) -> Path:
     return state_dir / f"{session_id}-{turn_id}.json"
 
 
-def review_due(
-    state_dir: Path,
-    pending_count: int,
-    threshold: int,
-    milestone: bool,
-    source_key: str,
-) -> bool:
+def review_due(state_dir: Path, candidates: dict[str, Any], threshold: int, milestone: bool) -> bool:
     state_path = state_dir / "review-reminder.json"
-    state = load_json(state_path) if state_path.exists() else {
-        "schema_version": SCHEMA_VERSION,
-        "last_pending_bucket": 0,
-        "milestone_keys": [],
-    }
-    bucket = pending_count // max(threshold, 1)
+    state = load_json(state_path) if state_path.exists() else {}
+    pending = {key: item["payload"] for key, item in candidates.items() if item["status"] == "pending"}
+    # Only changed pending material earns another reminder, not a new source turn.
+    versions = {key: hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
+                for key, payload in pending.items()}
+    notified = state.get("notified_versions", {})
+    if not isinstance(notified, dict):
+        raise StoreError("invalid notified candidate state")
+    new_material = any(notified.get(key) != version for key, version in versions.items())
+    bucket = len(pending) // threshold
     last_bucket = state.get("last_pending_bucket", 0)
-    milestone_keys = state.get("milestone_keys", [])
-    if not isinstance(last_bucket, int) or not isinstance(milestone_keys, list):
-        raise StoreError(f"invalid review reminder state in {state_path}")
-    due_for_count = bucket > 0 and bucket > last_bucket
-    due_for_milestone = milestone and source_key not in milestone_keys
-    state_changed = False
-    if bucket < last_bucket:
+    if type(last_bucket) is not int:
+        raise StoreError("invalid review reminder state")
+    due = new_material and (
+        bucket > last_bucket or milestone
+    )
+    if due or bucket < last_bucket:
         state["last_pending_bucket"] = bucket
-        state_changed = True
-    if due_for_count:
-        state["last_pending_bucket"] = bucket
-        state_changed = True
-    if due_for_milestone:
-        milestone_keys.append(source_key)
-        state["milestone_keys"] = milestone_keys[-100:]
-        state_changed = True
-    if state_changed:
+        if due:
+            state["notified_versions"] = versions
         atomic_json(state_path, state)
-    return due_for_count or due_for_milestone
+    return due
+
+
+def evidence_keys(payload: dict[str, Any]) -> set[tuple[str, str]]:
+    return {(item["kind"], item["reference"]) for item in payload.get("evidence", [])}
+
+
+def accepted_sections(ledger: Path) -> dict[str, str]:
+    if not ledger.exists():
+        return {}
+    parts = re.split(r"^## (PL-[A-F0-9]{12})\s*$", ledger.read_text(encoding="utf-8"), flags=re.M)
+    return {parts[i]: parts[i + 1] for i in range(1, len(parts), 2)
+            if re.search(r"^Status: (?:Accepted|Reinforced)$", parts[i + 1], re.M)}
+
+
+def ledger_match(ledger: Path, request: dict[str, Any]) -> str | None:
+    for candidate_id, section in accepted_sections(ledger).items():
+        fields = {}
+        for key, label in (("lesson", "Lesson"), ("applies_when", "Applies when"),
+                           ("does_not_apply_when", "Does not apply when")):
+            match = re.search(rf"^{label}: (.+)$", section, re.M)
+            if match:
+                fields[key] = match.group(1)
+        if len(fields) == 3 and fingerprint(fields) == fingerprint(request):
+            return candidate_id
+    return None
+
+
+def validate_proposal_source(args: argparse.Namespace, root: Path, request: dict[str, Any]) -> None:
+    proposal = request.get("proposal")
+    if proposal is None:
+        return
+    if not getattr(args, "source_root", None):
+        raise StoreError("global proposal requires --source-root for accepted source validation")
+    source = resolve_root(args.source_root)
+    if source.name != request["source_project"]:
+        raise StoreError("source_project must match the selected source repository name")
+    source_config = config_for(source)
+    if getattr(args, "workflow", False) and (not source_config["enabled"] or source_config.get("capture_mode", "explicit") != "workflow"):
+        raise StoreError("automatic global proposals require an enabled, enrolled source project")
+    _, _, ledger = candidate_paths(source, source_config)
+    section = accepted_sections(ledger).get(request["source_lesson_id"])
+    if not section or not re.search(r"^Evidence strength: (?:verified|reinforced)$", section, re.M):
+        raise StoreError("global proposal source must be an accepted, verified lesson")
+    target = (root / proposal["target_skill"]).resolve()
+    if not target.is_relative_to(root) or not target.is_file():
+        raise StoreError("global proposal target skill must exist inside the repository")
+    for path in proposal["allowed_files"]:
+        if not (root / path).resolve().is_relative_to(target.parent):
+            raise StoreError("global proposal allowed path escapes the target skill")
 
 
 def candidate_paths(root: Path, config: dict[str, Any]) -> tuple[Path, Path, Path]:
@@ -356,8 +429,11 @@ def capture(args: argparse.Namespace) -> dict[str, Any]:
     config = config_for(root)
     if config.get("enabled") is not True:
         return {"captured": False, "reason": "disabled", "review_due": False}
-    request = validate_capture_request(load_json(Path(args.request).resolve()))
-    store_path, state_dir, _ = candidate_paths(root, config)
+    request = validate_capture_request(read_request(args.request))
+    if getattr(args, "workflow", False) and request["evidence_level"] not in {"verified", "reinforced"}:
+        raise StoreError("workflow capture requires verified or reinforced evidence")
+    validate_proposal_source(args, root, request)
+    store_path, state_dir, ledger_path = candidate_paths(root, config)
     processed = marker_path(state_dir, request["session_id"], request["turn_id"])
     if processed.exists():
         previous = load_json(processed)
@@ -397,22 +473,39 @@ def capture(args: argparse.Namespace) -> dict[str, Any]:
 
     digest = fingerprint(request)
     candidates = materialize(events)
-    matching = next(
-        (
-            item
-            for item in candidates.values()
-            if item.get("fingerprint") == digest and item.get("status") == "pending"
-        ),
-        None,
-    )
+    matching = next((item for item in reversed(list(candidates.values()))
+                     if item.get("fingerprint") == digest), None)
+    revisits = None
+    duplicate = False
     if matching:
         candidate_id = matching["candidate_id"]
-        event_type = "reinforced"
+        prior_evidence = set().union(*(evidence_keys(event.get("payload", {})) for event in events
+                                      if event.get("fingerprint") == digest))
+        new_evidence = evidence_keys(request) - prior_evidence
+        duplicate = not new_evidence or request["evidence_level"] not in {"verified", "reinforced"}
+        if matching["status"] != "pending" and not duplicate:
+            revisits = candidate_id
+            revision = hashlib.sha256((digest + json.dumps(sorted(new_evidence))).encode()).hexdigest()
+            candidate_id = "PL-" + revision[:12].upper()
+            event_type = "captured"
+        else:
+            event_type = "reinforced"
     else:
-        candidate_id = "PL-" + digest[:12].upper()
+        candidate_id = ledger_match(ledger_path, request) or "PL-" + digest[:12].upper()
+        duplicate = candidate_id in accepted_sections(ledger_path)
         event_type = "captured"
+    if duplicate:
+        atomic_json(processed, {"schema_version": SCHEMA_VERSION, "outcome": "duplicate",
+                               "session_id": request["session_id"], "turn_id": request["turn_id"],
+                               "candidate_id": candidate_id, "processed_at": now_iso()})
+        due = review_due(state_dir, candidates, config["review_reminder"]["pending_count"],
+                         request["milestone"] and config["review_reminder"].get("milestones") is True)
+        return {"captured": False, "reason": "duplicate", "candidate_id": candidate_id,
+                "review_due": due, "idempotent": False}
 
     payload = {key: value for key, value in request.items() if key not in {"session_id", "turn_id"}}
+    if revisits:
+        payload["revisits_candidate_id"] = revisits
     event = {
         "schema_version": SCHEMA_VERSION,
         "event_id": str(uuid.uuid4()),
@@ -426,20 +519,8 @@ def capture(args: argparse.Namespace) -> dict[str, Any]:
     append_event(store_path, event)
     updated = materialize(events + [event])
     pending_count = sum(1 for item in updated.values() if item["status"] == "pending")
-    reminder = config.get("review_reminder")
-    if not isinstance(reminder, dict):
-        raise StoreError("review_reminder must be an object")
-    threshold = reminder.get("pending_count", 5)
-    if not isinstance(threshold, int) or threshold < 1:
-        raise StoreError("review_reminder.pending_count must be a positive integer")
-    milestone_enabled = reminder.get("milestones") is True
-    due = review_due(
-        state_dir,
-        pending_count,
-        threshold,
-        request["milestone"] and milestone_enabled,
-        source_key,
-    )
+    due = review_due(state_dir, updated, config["review_reminder"]["pending_count"],
+                     request["milestone"] and config["review_reminder"].get("milestones") is True)
     atomic_json(
         processed,
         {
@@ -485,7 +566,10 @@ def mark_no_candidate(args: argparse.Namespace) -> dict[str, Any]:
                 "processed_at": now_iso(),
             },
         )
-    return {"captured": False, "reason": "no_candidate", "review_due": False}
+    store_path, _, _ = candidate_paths(root, config)
+    due = review_due(state_dir, materialize(load_events(store_path)), config["review_reminder"]["pending_count"],
+                     getattr(args, "milestone", False) and config["review_reminder"].get("milestones") is True)
+    return {"captured": False, "reason": "no_candidate", "review_due": due}
 
 
 def list_candidates(args: argparse.Namespace) -> dict[str, Any]:
@@ -510,6 +594,7 @@ def status(args: argparse.Namespace) -> dict[str, Any]:
     return {
         "root": str(root),
         "enabled": config["enabled"],
+        "capture_mode": config.get("capture_mode", "explicit"),
         "counts": counts,
         "candidate_store_exists": store_path.exists(),
         "ledger_exists": ledger_path.exists(),
@@ -621,6 +706,13 @@ def ledger_entry(root: Path, request: dict[str, Any], candidate: dict[str, Any])
         f"Last reviewed: {datetime.now(timezone.utc).date().isoformat()}",
         f"Cross-project candidate: {request['cross_project']}",
     ]
+    if payload.get("proposal"):
+        lines.extend([
+            f"Proposed skill: {payload['proposal']['target_skill']}",
+            f"Allowed files: {', '.join(payload['proposal']['allowed_files'])}",
+            f"Required validation: {payload['proposal']['validation']}",
+            "Proposal approval does not execute or authorize changes outside the recorded scope.",
+        ])
     if request.get("supersedes"):
         lines.append(f"Supersedes: {request['supersedes']}")
     return "\n".join(lines) + "\n"
@@ -629,7 +721,7 @@ def ledger_entry(root: Path, request: dict[str, Any], candidate: dict[str, Any])
 def promote(args: argparse.Namespace) -> dict[str, Any]:
     root = resolve_root(args.root)
     config = config_for(root)
-    request = validate_promotion_request(load_json(Path(args.request).resolve()))
+    request = validate_promotion_request(read_request(args.request))
     store_path, _, ledger_path = candidate_paths(root, config)
     events = load_events(store_path)
     candidates = materialize(events)
@@ -676,13 +768,17 @@ def parse_args() -> argparse.Namespace:
 
     capture_parser = subparsers.add_parser("capture")
     add_root_argument(capture_parser)
-    capture_parser.add_argument("--request", required=True)
+    capture_parser.add_argument("--request", required=True, help="JSON request path, or - for stdin")
+    capture_parser.add_argument("--source-root", help="Accepted source repository for a global proposal")
+    add_capture_guards(capture_parser)
     capture_parser.set_defaults(handler=capture)
 
     no_candidate_parser = subparsers.add_parser("mark-no-candidate")
     add_root_argument(no_candidate_parser)
     no_candidate_parser.add_argument("--session", required=True)
     no_candidate_parser.add_argument("--turn", required=True)
+    no_candidate_parser.add_argument("--milestone", action="store_true")
+    add_capture_guards(no_candidate_parser)
     no_candidate_parser.set_defaults(handler=mark_no_candidate)
 
     list_parser = subparsers.add_parser("list")
@@ -711,13 +807,92 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def read_request(raw: str) -> dict[str, Any]:
+    if raw != "-":
+        return load_json(Path(raw).resolve())
+    try:
+        value = json.loads(sys.stdin.read(65537))
+    except json.JSONDecodeError as exc:
+        raise StoreError("invalid request JSON on stdin") from exc
+    if not isinstance(value, dict):
+        raise StoreError("request must be a JSON object")
+    return value
+
+
+def add_capture_guards(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--workflow", action="store_true", help="Require explicit workflow enrollment")
+    parser.add_argument("--permission-mode", choices=("execution", "plan"))
+    parser.add_argument("--read-only", action="store_true")
+    parser.add_argument("--no-learning", action="store_true")
+
+
+@contextmanager
+def mutation_lock(state_dir: Path):
+    # ponytail: one bounded repository lock; shard only if capture throughput matters.
+    state_dir.mkdir(parents=True, exist_ok=True)
+    with (state_dir / "store.lock").open("a+b") as handle:
+        if os.name == "nt":
+            import msvcrt
+            if handle.tell() == 0:
+                handle.write(b"0")
+                handle.flush()
+            def lock():
+                handle.seek(0)
+                msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+            def unlock():
+                handle.seek(0)
+                msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+        else:
+            import fcntl
+            def lock():
+                fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            def unlock():
+                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+        deadline = time.monotonic() + 2
+        while True:
+            try:
+                lock()
+                break
+            except OSError as exc:
+                if time.monotonic() >= deadline:
+                    raise StoreError("learning store busy; skip capture and continue product delivery") from exc
+                time.sleep(0.02)
+        try:
+            yield
+        finally:
+            unlock()
+
+
+def run(args: argparse.Namespace) -> dict[str, Any]:
+    if args.command in {"list", "status"}:
+        return args.handler(args)
+    # These checks must precede reading a request or creating state/lock files.
+    if getattr(args, "permission_mode", None) == "plan" or getattr(args, "read_only", False):
+        return {"captured": False, "reason": "read_only", "review_due": False}
+    if getattr(args, "no_learning", False):
+        return {"captured": False, "reason": "no_learning", "review_due": False}
+    root = resolve_root(args.root)
+    config = config_for(root)
+    if args.command in {"capture", "mark-no-candidate"}:
+        if config["enabled"] is not True:
+            return {"captured": False, "reason": "disabled", "review_due": False}
+        if getattr(args, "workflow", False):
+            if config.get("capture_mode", "explicit") != "workflow":
+                return {"captured": False, "reason": "not_enrolled", "review_due": False}
+            if args.permission_mode != "execution":
+                raise StoreError("workflow capture requires --permission-mode execution")
+    _, state_dir, _ = candidate_paths(root, config)
+    with mutation_lock(state_dir):
+        return args.handler(args)
+
+
 def main() -> int:
     args = parse_args()
     try:
-        result = args.handler(args)
+        result = run(args)
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return 0
-    except StoreError as exc:
+    except (StoreError, OSError) as exc:
         print(f"project-learning store failed: {exc}", file=sys.stderr)
         return 1
 

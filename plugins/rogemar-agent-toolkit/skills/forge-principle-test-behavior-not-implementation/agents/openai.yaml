@@ -1,0 +1,6 @@
+interface:
+  display_name: "forge-principle-test-behavior-not-implementation"
+  short_description: "Codex engineering: Test Behavior, Not Implementation"
+  default_prompt: "Use $forge-principle-test-behavior-not-implementation for the requested task."
+policy:
+  allow_implicit_invocation: true

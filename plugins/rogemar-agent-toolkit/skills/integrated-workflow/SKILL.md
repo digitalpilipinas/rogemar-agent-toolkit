@@ -7,6 +7,9 @@ metadata:
 
 # Integrated Workflow
 
+At task start/resume, before acceptance and at verified completion, apply the shared
+[automatic checkpoints](../engineering-playbooks/references/agent-friendly-workflow.md) when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence.
+
 Deliver the approved outcome with one plan, one implementation owner, one evidence
 record and one consolidated review process. Infer ordinary project details; the
 owner need not name every supporting skill or fill out a configuration form.

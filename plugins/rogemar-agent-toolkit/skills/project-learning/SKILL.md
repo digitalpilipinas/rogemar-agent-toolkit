@@ -1,6 +1,6 @@
 ---
 name: project-learning
-description: Initialize and maintain project-local continuous learning, review captured lesson candidates, or adapt accepted lessons between repositories. Use for project learning setup and curation, not ordinary coding work.
+description: Initialize and maintain project-local continuous learning, review captured lesson candidates, or adapt accepted lessons between repositories. Use for setup and curation, or enrolled workflow completion capture.
 ---
 
 # Project Learning
@@ -28,7 +28,7 @@ Use when asked to initialize continuous project learning in a repository.
 2. Run `scripts/initialize_project.py --check --root <repository-root>`.
 3. If the check reports no ambiguity, run it again without `--check`.
 4. Run `scripts/validate_project.py --root <repository-root>`.
-5. Tell the user that project hooks require review through `/hooks` and a fresh Codex task after installation or hook changes.
+5. Default initialization preserves explicit capture and installs its passive hook. For approved automatic checkpoint capture use `--capture-mode workflow` on both commands; this adds no hooks and preserves existing hooks and accepted lessons. Enrolled workflows do not require a restart. Mention `/hooks` review and a fresh task only when hooks were actually installed or changed.
 
 ### Optional dedicated learning task
 
@@ -54,13 +54,30 @@ Include it only when the rule is genuinely reusable and supported by the task's 
 
 ### Capture
 
-Use in the dedicated learning task or when the user explicitly asks to harvest a specific task. Do not use Capture as an automatic continuation of an ordinary task chat.
+Use in a dedicated learning task, when explicitly asked to harvest a task, or at an explicitly enrolled workflow completion checkpoint. Existing projects default to explicit capture. Automatic capture requires `--workflow --permission-mode execution` and verified or reinforced evidence; it never activates a lesson.
 
 1. Read [references/schemas.md](references/schemas.md).
 2. Inspect only the completed visible turn and current repository evidence.
 3. Decide whether there is one durable, project-relevant lesson. State the lesson as one plain-language sentence describing one reusable decision rule. Keep trigger conditions in `applies_when`, exceptions in `does_not_apply_when`, and proof in `evidence`; do not pack those details into the lesson. One-off task details, unsupported AI suggestions, summaries of work, and facts already covered by an accepted lesson are not candidates.
 4. Write a structured capture request under `.codex/project-learning/state/` and run `scripts/candidate_store.py capture`. If nothing qualifies, run `scripts/candidate_store.py mark-no-candidate`.
 5. Return the dedicated learning task's outcome with the compact capture receipt described below. Mention a pending review only when the script returns `"review_due": true`, and follow any higher-priority instruction about whether to emit a learning marker.
+
+### Enrolled workflow checkpoint
+
+The existing workflow owner automatically assesses one candidate at a verified task/sprint completion. Read the config first: only `capture_mode: workflow` with `enabled: true` enrolls the project. Use native session/turn identifiers from the calling harness; never invent source identity or read another harness's transcripts. If trustworthy source identity is unavailable, skip capture and report that limitation once.
+
+- First honor planning, no-write and no-learning restrictions; do not even create request files. The CLI accepts `--permission-mode plan`, `--read-only` or `--no-learning`, returning before persistence. Use `--request -` with structured JSON on stdin for ordinary capture.
+- Capture only a reusable rule supported by visible verified evidence. Evidence labels are claims checked by the owner, not automatic proof of test execution.
+- Use `mark-no-candidate` when nothing qualifies. Add `--milestone` at a task/sprint boundary so new pending material can earn one review reminder.
+- Keep candidate failures separate from product acceptance. Skip after a bounded lock timeout; never keep a task alive for learning. A nonzero capture exit is a learning error, not a product gate.
+- Inspect pending, accepted and dismissed matches. A settled lesson stays settled; a new independently verified evidence reference may create a separate pending revision linked to it. Similar wording still needs semantic review by the owner.
+- Review reminders appear only when `review_due` is true, once per pending threshold or milestone with new pending material. Reminders do not approve anything.
+
+### Global improvement proposal
+
+When the owner authorizes evaluating enrolled projects' accepted lessons for shared-skill improvements, inspect an accepted source entry and current canonical target skill. Prefer an existing type, lint, schema or small tested guard when it can prevent the mistake better than prose. Keep context-dependent rules as bounded guidance.
+
+Capture a proposal in the toolkit repository's existing store using `proposal` metadata and `--source-root`; the CLI validates the accepted source ID/evidence strength and target path boundaries. Record the exact allowed files and required validation. This prepares an inactive proposal only, never edits another repository, installs a skill or promotes a lesson. Present the concrete target and patch intent for approval; apply an approved patch as a separately scoped task and validate it before synchronizing the installation. Approved proposals do not grant blanket global authority.
 
 ### Review
 

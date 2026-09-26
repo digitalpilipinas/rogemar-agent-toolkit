@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
   "enabled": true,
+  "capture_mode": "explicit",
   "capture_policy": "signal-gated",
   "promotion_policy": "review-required",
   "storage_policy": "structured-summaries-only",
