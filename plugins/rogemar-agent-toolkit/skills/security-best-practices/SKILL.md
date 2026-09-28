@@ -5,6 +5,15 @@ description: "Perform language and framework specific security best-practice rev
 
 # Security Best Practices
 
+## Evidence and review mode
+
+Apply [finding precision](references/finding-precision.md). Distinguish confirmed
+security defects, source-grounded leads needing validation, and hardening advice.
+A checklist deviation alone is not a vulnerability. Keep this skill's supported
+languages and existing review owner; use the optional engineering security-audit
+playbook for a separately scoped broader audit. A focused review does not
+authorize a full audit, target execution, report-file creation, or fixes.
+
 ## Overview
 
 This skill provides a description of how to identify the language and frameworks used by the current context, and then to load information from this skill's references directory about the security best practices for this language and or frameworks.
@@ -47,7 +56,7 @@ When producing a report, you should write the report as a markdown file in `secu
 
 The report should have a short executive summary at the top.
 
-The report should be clearly delineated into multiple sections based on severity of the vulnerability. The report should focus on the most critical findings as these have the highest impact for the user. All findings should be noted with an numeric ID to make them easier to reference.
+Separate established vulnerabilities, source-grounded leads requiring validation, and hardening recommendations. Use the repository priority scheme for established defects; give unresolved leads investigation priority without presenting it as confirmed vulnerability severity. Preserve existing finding IDs and link each claim to its actual boundary, source, conditions, and observed result or decisive missing fact.
 
 For critical findings include a one sentence impact statement.
 

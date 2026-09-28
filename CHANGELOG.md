@@ -1,5 +1,16 @@
 # Changelog
 
+## Toolkit alignment (unreleased; native host qualification remains scoped)
+
+- Add catalog-generated contextual routes for all 110 skills, original-skill fallbacks, and concise entry/resume/acceptance contracts.
+- Add bounded workflow/action adapters, scoped qualification (AQ-01), controlled update transitions (UP-01), effectiveness observations (ME-01), and optional protected execution-observation comparison.
+- Extend the existing learning writer with root-event provenance, worktree identity, bounded recall, lifecycle states and actual staged proposal application/recovery/rollback; retain approval boundaries.
+- Add optional knowledge, security-review and external-collaboration playbooks without new public skill IDs.
+- Preserve provider review barriers and allowances, native routing, and the single-owner delivery workflow.
+- Correct inspected portability/authority assumptions and project-specific rules in reusable guidance.
+- Add regression tests, change-relevant owner-suite selection, an everyday workflow, editable Mermaid sources and explicit qualification limits.
+- See docs/alignment/implementation-spec.md for implemented code versus pending integration and host qualification.
+
 ## Bounded cloud review and full initial coverage (unreleased)
 
 - Begin a substantive or explicitly required ready-PR cloud review with full CodeRabbit and Codex coverage, and wait for both completed reports before consolidation, finding validation or remediation.

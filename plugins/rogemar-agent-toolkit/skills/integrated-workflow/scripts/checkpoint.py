@@ -8,6 +8,7 @@ import os
 from pathlib import Path, PurePosixPath
 import re
 import subprocess
+import stat
 import sys
 
 
@@ -210,6 +211,61 @@ def check(root, base, phase, receipt, mapping, required_gates=(), boundary="acce
     return result
 
 
+def check_execution_observations(root, policy, receipt, result):
+    """Optional protected-host evidence extension; never accepts candidate trust flags."""
+    requirements = policy.get('execution_evidence', {})
+    if not requirements:
+        return
+    if not isinstance(requirements, dict):
+        raise ValueError('execution_evidence must be an object')
+    helper = Path(__file__).resolve().with_name('execution_provenance.py')
+    if inside(helper, root) or helper.is_symlink():
+        raise ValueError('provenance validator must be separately protected outside candidate')
+    helper_bytes = helper.read_bytes()
+    pin = policy.get('provenance_validator_sha256')
+    if not isinstance(pin, str) or hashlib.sha256(helper_bytes).hexdigest() != pin:
+        raise ValueError('provenance validator pin mismatch')
+    namespace = {'__name__': 'trusted_execution_provenance', '__file__': str(helper)}
+    exec(compile(helper_bytes, str(helper), 'exec'), namespace)
+    gates = {gate.get('gate'): gate for gate in receipt.get('gates', [])}
+    checks = []
+    for gate_id, requirement in requirements.items():
+        try:
+            if not isinstance(requirement, dict) or set(requirement) != {
+                'observation_path', 'observation_sha256', 'runner', 'check_id', 'environment_sha256'
+            }:
+                raise ValueError('invalid execution observation requirement')
+            observation = Path(requirement['observation_path'])
+            if not observation.is_absolute() or inside(observation, root):
+                raise ValueError('observation must be protected outside candidate')
+            # These path checks do not substitute for the host's protected filesystem.
+            # Leaf no-follow/nonblocking and bounded reads reject ordinary link/FIFO abuse.
+            if any(parent.is_symlink() for parent in (observation, *observation.parents)):
+                raise ValueError('observation path contains symlink')
+            if not getattr(os, 'O_NOFOLLOW', 0) or not getattr(os, 'O_NONBLOCK', 0):
+                raise ValueError('safe observation read unavailable on this platform')
+            fd = os.open(observation, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+            with os.fdopen(fd, 'rb') as handle:
+                metadata = os.fstat(handle.fileno())
+                if not stat.S_ISREG(metadata.st_mode) or metadata.st_nlink != 1 or not 0 < metadata.st_size <= 1048576:
+                    raise ValueError('observation must be a bounded single-link regular file')
+                raw = handle.read(1048577)
+                after = os.fstat(handle.fileno())
+                if len(raw) != metadata.st_size or (metadata.st_dev, metadata.st_ino, metadata.st_size, metadata.st_mtime_ns) != (
+                    after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns
+                ):
+                    raise ValueError('observation changed during read')
+            trusted = {key: value for key, value in requirement.items() if key != 'observation_path'}
+            checks.append({'gate': gate_id, **namespace['validate_execution'](
+                gates.get(gate_id, {}), result['candidate'], trusted, raw)})
+        except (ValueError, OSError, TypeError, KeyError) as exc:
+            result['errors'].append(str(gate_id) + ': ' + str(exc))
+    result['execution_provenance'] = checks
+    if result['errors']:
+        result['status'] = 'rejected'
+        result['next_action'] = 'Resolve required evidence; do not claim verified completion or capture its lesson.'
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--root', required=True, type=Path)
@@ -236,6 +292,7 @@ def main(argv=None):
             raise ValueError('map escapes repository')
         mapping = json.loads(tree_file(root, a.tree, a.map) if a.tree else mapping_path.read_bytes())
         required = []
+        policy = {}
         boundary = "accept"
         if a.phase != 'start' or a.structure:
             if not a.trusted_policy or inside(a.trusted_policy, root) or inside(Path(__file__), root):
@@ -251,12 +308,18 @@ def main(argv=None):
             boundary = policy.get('boundary', 'accept')
             if not isinstance(required, list) or any(not isinstance(x, str) or not x for x in required) or not isinstance(boundary, str) or not boundary:
                 raise ValueError('invalid trusted gate/boundary policy')
+            execution = policy.get('execution_evidence', {})
+            if not isinstance(execution, dict) or len(execution) > 100 or any(not isinstance(key, str) or not key for key in execution):
+                raise ValueError('invalid trusted execution policy')
+            required = list(dict.fromkeys(required + list(execution)))
         if a.structure:
             validate_mapping(root, mapping, a.tree)
             print(json.dumps({'status': 'structure-only', 'runtime': 'unverified', 'policy': a.policy_sha256, 'tree': a.tree}))
             return 0
         receipt = json.loads(a.receipt.read_text()) if a.receipt.exists() else {}
         result = check(root, a.base, a.phase, receipt, mapping, required, boundary)
+        if a.phase != 'start':
+            check_execution_observations(root, policy, receipt, result)
         print(json.dumps(result, indent=2))
         return 1 if result['errors'] else 2 if result.get('deferred') else 0
     except (ValueError, OSError, KeyError, TypeError, subprocess.CalledProcessError) as exc:

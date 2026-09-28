@@ -88,3 +88,7 @@ Use the existing plan or receipt; no extra persistent board is needed. Never
 claim an actual switch merely because the profile was resolved. When no router
 script is available, these steps are a reasoning procedure performed by the host;
 they are not a background routing service or executable enforcement layer.
+
+For capability actions beyond profile selection, apply AQ-01 from the existing
+orchestrator's `references/capability-lifecycle.md` when available. Observed model
+quality, action scope and actual owner permission remain separate decisions.

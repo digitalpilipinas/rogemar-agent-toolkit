@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "status": "local-validated; final source checks and GitHub delivery recorded in PR",
+  "verified_on": "2026-09-28",
+  "repository": "digitalpilipinas/rogemar-agent-toolkit",
+  "baseline_commit": "0b8d9689d8fef5cfae19d1f9691b50e532b86b66",
+  "branch": "codex/toolkit-alignment-v2",
+  "workflow": "integrated-workflow",
+  "execution_entry": "codex-forge",
+  "strategy": "AGILE_FOCUSED",
+  "delivery": "BRANCH + PR + MERGE AUTHORIZED",
+  "review_exception": {
+    "source": "Owner instruction, 2026-09-28: implement through PR merge; skip external reviewers unavailable in this cloud environment.",
+    "scope": [
+      "local CodeRabbit",
+      "external reviewer agents",
+      "manual external PR-review requests"
+    ],
+    "state": "waived-by-owner; not passed",
+    "preserved": [
+      "applicable tests and CI",
+      "repository-required approvals",
+      "inspection of automatically posted actionable PR feedback",
+      "main-agent diff and outcome audit"
+    ]
+  },
+  "profile": {
+    "mode": "no named mode; skill maintenance",
+    "parent_model": "not exposed by current-task metadata",
+    "parent_effort": "not exposed by current-task metadata",
+    "workers": "none; single implementation owner"
+  },
+  "prior_candidate_evidence": {
+    "schema_version": 1,
+    "status": "partial-local-candidate",
+    "verified_on": "2026-09-28",
+    "repository": "digitalpilipinas/rogemar-agent-toolkit",
+    "baseline_commit": "0b8d9689d8fef5cfae19d1f9691b50e532b86b66",
+    "new_helper_tests": {
+      "command": "python3 -B -m unittest discover -s tests -v",
+      "cwd": "overlay",
+      "passed": 49,
+      "failed": 0,
+      "skipped": 0
+    },
+    "package_mechanics_tests": {
+      "command": "python3 -B -m unittest discover -s support/tests -v",
+      "cwd": "package-root",
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0
+    },
+    "actual_runtime": {
+      "python": "3.13.5",
+      "os": "Linux",
+      "machine": "x86_64"
+    },
+    "python39_grammar_check": "passed; not native Python 3.9 execution",
+    "candidate_authoring_checks": "passed; see evidence/authoring-checks.json",
+    "review_coverage": {
+      "complete": 39,
+      "partial": 5,
+      "not-reviewed": 66
+    },
+    "guarded_existing_file_edits": 27,
+    "git_source_clone": "failed: DNS lookup unavailable",
+    "actual_repository_files_changed": false,
+    "toolkit_commit_created": false,
+    "pushed": false,
+    "pr_created": false,
+    "merged": false,
+    "installed": false,
+    "live_protection_changed": false,
+    "not_run": [
+      "full source/resource audit",
+      "actual baseline diff preparation/application",
+      "original repository suite",
+      "lock/verify/native inventory/core and full package checks",
+      "current-candidate CI",
+      "CodeRabbit and other required provider reviews",
+      "native Codex/Cursor/PStack/other host trials",
+      "native Python 3.9/3.11/macOS/Windows/WSL qualification",
+      "Mermaid rendering",
+      "trusted host/runner provisioning",
+      "held-out agent behavior and cost/latency evaluation"
+    ],
+    "note": "Synthetic temporary Git commits in package tests are not toolkit commits. Matching declaration checks do not enforce runtime permissions."
+  },
+  "work_packages": {
+    "W0": "All 110 identities dispositioned; 77 complete body reviews, 33 targeted/partial; resource review scoped, not comprehensive",
+    "W1": "Implemented and validated: source/hash-preserving packages and relevant owner checks",
+    "W2": "Implemented: 110 routes, 47 Forge identities, 23 baseline playbooks; runtime selection qualification scoped",
+    "W3": "Implemented: shared obligations and concrete instruction repairs; no universal model compliance guarantee",
+    "W4": "Implemented and locally exercised: AQ-01 and opt-in registered host adapter; native host enrollment unqualified",
+    "W5": "Source adapters/comparator implemented; independently protected producer/verifier and native enforcement BLOCKED by unavailable host integration",
+    "W6": "Implemented and validated: one writer, lineage, recall, proposal groups, stale-safe apply/recovery/rollback",
+    "W7": "Implemented: precise findings and optional audit method; external reviewers waived for this task",
+    "W8": "Implemented and locally exercised: metadata/query/removal adapters; project runtime store enrollment remains optional",
+    "W9": "AQ-01, UP-01 and ME-01 contracts implemented and tested; no held-out native agent or production benefit claims",
+    "W10": "Local source checks passed; final candidate/CI/merge identity belongs to the delivery PR; Mermaid rendering unavailable locally"
+  },
+  "checks": [
+    {
+      "check": "toolkit lock and verify",
+      "state": "passed",
+      "detail": "110 vendored skills; source integrity and portability checks"
+    },
+    {
+      "check": "README inventory",
+      "state": "passed",
+      "detail": "Generated inventory current"
+    },
+    {
+      "check": "Forge/routing verification",
+      "state": "passed",
+      "detail": "47 Forge identities; 23 playbooks; 2 optional roles; 3 inactive recipes; 110 canonical routes"
+    },
+    {
+      "check": "root unit tests",
+      "state": "passed",
+      "detail": "188 tests; original contracts plus new routing/lifecycle/boundary tests"
+    },
+    {
+      "check": "relevant owner suites",
+      "state": "passed",
+      "detail": "17 Project Learning tests selected from changed executable paths; unrelated terminal/Bun suites not required"
+    },
+    {
+      "check": "selection regression",
+      "state": "passed",
+      "detail": "25 tests, including full archive source-hash preservation and nested selected-package tests"
+    },
+    {
+      "check": "core/full packages",
+      "state": "passed",
+      "detail": "Core: 6 portable and 6 Codex skills. Full: 57 portable and 108 Codex skills"
+    },
+    {
+      "check": "authoring",
+      "state": "passed",
+      "detail": "22 affected Python files parse as Python 3.9 grammar; affected JSON valid; diff whitespace clean"
+    }
+  ],
+  "limitations": [
+    "Native Codex/Cursor/other harness behavior qualification requires those actual runtimes.",
+    "Protected-host enforcement requires host-owned controls; repository fixtures are not deployment proof.",
+    "33 skill bodies retain targeted/partial review labels; optional resource execution is not comprehensively audited.",
+    "Mermaid renderer unavailable locally; diagram sources inspected, no rendered-visual claim.",
+    "Repository rulesets including inherited rules returned empty; effective branch-rules endpoint was unsupported by connector; no administration changed."
+  ],
+  "publication": {
+    "pushed": false,
+    "pr_created": false,
+    "merged": false
+  },
+  "snapshot": "Pre-publication evidence; publication state below is not a live status feed",
+  "local_evidence": [
+    {
+      "artifact": "implementation-root-final.log",
+      "sha256": "884fd96827ce81994ff6a90fde58bf3f24bda9872cd84d633bf0e093db0498aa"
+    },
+    {
+      "artifact": "implementation-owner-suites.log",
+      "sha256": "9fd0dc4947a46bf0ed4eb176e81eda3460402fc702f6eea8869a5600b27eaaf4"
+    },
+    {
+      "artifact": "selection-regression.log",
+      "sha256": "f5ad9115be03500822386821f592ed230f1da5f76288399d4155391702c0dda3"
+    },
+    {
+      "artifact": "package-core.log",
+      "sha256": "d7d27c324e74aae60da724894aa7916df181dbcea7073ae75989484ab1bed04d"
+    },
+    {
+      "artifact": "package-all.log",
+      "sha256": "218674f29f28b6f987467396d90ab33a24bdcc6bbf30df5be9e45a368666dc36"
+    },
+    {
+      "artifact": "precommit-root.log",
+      "sha256": "918c3cf31fc596ba9d8d59f74d58f5a23dbe5de3226434872a4979a1ae114dab"
+    },
+    {
+      "artifact": "final-core.log",
+      "sha256": "7229a15aba76233f8f61932e7742ae9cd3c98066a9208b757aa3fc8a058a59d1"
+    },
+    {
+      "artifact": "final-all.log",
+      "sha256": "22af8a627e094a2ae0ac311379f786519345091a616ef50855941188b0f33b52"
+    }
+  ],
+  "review_findings": [
+    {
+      "finding": "Packaging rewrote a skill routing index after recording its source hash",
+      "resolution": "Preserve canonical payload bytes; selected catalogs verify their subset against unchanged index",
+      "state": "fixed-and-regression-tested"
+    },
+    {
+      "finding": "Instruction still required a new verification harness/phase list for an accepted task",
+      "resolution": "Reuse existing decisive checks and accepted plan; create harness only for missing proof",
+      "state": "fixed; final required source checks repeated"
+    }
+  ],
+  "nested_candidate_sha256": "0a6bd9eb645e8250637c0ffb7a6a64f3080b761e4b2eb4d08063cac8394d35ca",
+  "final_local_gate": "After final instruction repair: 188 tests passed; toolkit verification and both packages passed"
+}

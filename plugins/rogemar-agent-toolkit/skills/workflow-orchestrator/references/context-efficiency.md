@@ -65,6 +65,16 @@ needed. A concise view never replaces authoritative state or the full coverage
 audit. Native compaction may free space while losing detail; verify critical
 state and evidence after uncertain recovery.
 
+## Retained knowledge
+
+Reuse relevant source-linked synthesis when it is authorized, available, and
+fresh enough for the decision. Keep its evidence roots, caveats and unresolved
+disagreements visible. Several derivative pages from one source remain one
+source, not independent corroboration. Verify decisive claims against current
+source and fall back to direct retrieval when the index is missing or stale.
+Do not persist answers without enrollment, expand a source-only request, or
+block unrelated delivery on optional knowledge housekeeping.
+
 ## Evaluate the complete workflow
 
 Compare equivalent tasks with the same starting candidate, model/effort and

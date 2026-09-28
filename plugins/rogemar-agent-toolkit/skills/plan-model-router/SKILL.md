@@ -75,3 +75,8 @@ ambiguity, coupling, invariants, acceptance evidence, and rollback. Propose the
 lowest sufficient available profile with an escalation trigger; a stronger
 model never substitutes for required tests or review. Do not rewrite the plan
 or duplicate its delivery gates.
+
+For capability actions beyond model selection, use AQ-01 in the orchestrator's
+`references/capability-lifecycle.md` when present. Model qualification does not
+grant tool permissions. Preserve this router's native model evidence and limits;
+the orchestrator remains the sole dispatcher.

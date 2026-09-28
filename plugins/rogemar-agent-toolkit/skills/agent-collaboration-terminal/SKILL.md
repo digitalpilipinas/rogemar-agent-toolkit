@@ -5,6 +5,14 @@ description: Coordinate native Grok, Antigravity/Gemini, Cursor Agent, Junie, an
 
 # Agent Collaboration Terminal
 
+The file-backed coordination method can be used by another harness with equivalent
+process and file controls. In that case the current main agent takes the supervisor
+role called Codex below. Keep the original Codex-managed route as the fallback when
+working in Codex. Map only supported native controls; a catalog target is packaging
+metadata, not evidence that a shared method cannot work elsewhere. If a required
+PTY or host runner is absent, use the existing authorized handoff or report that
+specific unavailable execution step. Do not invent APIs or reduce review evidence.
+
 Use this skill when the native provider CLIs are the desired execution surface. Codex prepares the run manifest and prompts, the provider keeps its normal CLI capabilities, and Codex monitors local files. This is a file-backed coordination workflow, not another broker or Supervisor MCP.
 
 ## Core contract

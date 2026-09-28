@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "sources": [{
+    "id": "source-a", "revision": "example-revision", "namespace": "example-project",
+    "root_id": "original-source-a", "locator": "docs/example-source.md",
+    "available": false, "audience": ["example-owner"]
+  }],
+  "pages": [{
+    "id": "example-summary", "kind": "summary", "namespace": "example-project",
+    "audience": ["example-owner"], "sources": [{"id": "source-a", "revision": "example-revision"}],
+    "depends_on": [], "evidence_roots": ["original-source-a"], "links": []
+  }]
+}

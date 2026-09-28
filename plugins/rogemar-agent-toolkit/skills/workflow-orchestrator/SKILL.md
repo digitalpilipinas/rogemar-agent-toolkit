@@ -5,6 +5,16 @@ description: Use for non-trivial coding work that spans brainstorming, research,
 
 # Workflow Orchestrator
 
+Follow the [applicable method contract](references/method-contract.md) at entry, material stage changes,
+resume and acceptance. Select relevant methods automatically; preserve one owner,
+required evidence and the original working fallback. Query the routing index only
+for the current task; do not load or activate the whole catalog.
+
+For material assignments, retries, action binding or intent ambiguity, apply
+[the operating contract](references/operating-contracts.md) within the existing
+plan and receipts. Use its read-only helper for declared-state checks when useful;
+it is not another dispatcher, sandbox, approval system or mandatory small-task gate.
+
 At task start/resume, before acceptance and at verified completion, apply the shared
 automatic checkpoints in the installed `engineering-playbooks/references/agent-friendly-workflow.md` when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence. If that optional pack is absent, inspect the project’s recipes and existing gate record directly; do not install a pack implicitly.
 

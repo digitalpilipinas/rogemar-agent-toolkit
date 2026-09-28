@@ -49,6 +49,12 @@ merely to satisfy a review preference.
 
 ## Use evidence and independent judgment
 
+For security findings, distinguish an established boundary failure from a
+source-grounded unresolved hypothesis and from hardening advice. Identify the
+strongest applicable preventing control before confirmation. Independent candidate
+verifiers may receive the claim they are testing, but not another verifier's
+conclusion. Keep these distinctions in the current finding record.
+
 Verify the author's check results against the reviewed revision and inspect
 whether tests could catch a wrong implementation. Use the installed
 `code-review-tests` companion for deeper test and counterexample selection when

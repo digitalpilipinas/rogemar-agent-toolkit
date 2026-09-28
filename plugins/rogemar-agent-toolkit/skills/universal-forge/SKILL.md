@@ -5,6 +5,16 @@ license: MIT
 ---
 # Universal Forge
 
+Follow the [applicable method contract](../workflow-orchestrator/references/method-contract.md) at entry, material stage changes,
+resume and acceptance. Select relevant methods automatically; preserve one owner,
+required evidence and the original working fallback. Query the routing index only
+for the current task; do not load or activate the whole catalog.
+
+For an approved task, preserve the current plan and effective delivery route.
+Selecting this execution entry does not restart planning or authorize publication.
+When Integrated Workflow owns delivery, contribute methods through its existing
+orchestrator; use the shared operating contract when present.
+
 At task start/resume, before acceptance and at verified completion, apply the shared
 [automatic checkpoints](../engineering-playbooks/references/agent-friendly-workflow.md) when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence.
 

@@ -20,8 +20,16 @@ This skill automates Netlify deployments by:
 - **Netlify CLI**: Installed via npx (no global install required)
 - **Authentication**: Netlify account with active login session
 - **Project**: Valid web project in current directory
-- When sandboxing blocks the deployment network calls, rerun with `sandbox_permissions=require_escalated`.
+- A network or sandbox failure does not authorize escalation or a repeated deployment. Reconcile the outcome first, preserve declined access, and use only supported native permission controls within the exact deployment authority.
 - The deployment might take a few minutes. Use appropriate timeout values.
+
+## Execution boundary
+
+Use CLI commands only when the tool and any installation/network use are already
+authorized. `npx` can fetch packages; it is not a read-only availability check.
+Do not initialize sites, start login, expose token values or install dependencies
+merely to inspect configuration. Preview URLs are publication too. Preserve
+reviewed build settings and reconcile account/site identity before upload.
 
 ## Authentication Pattern
 
@@ -127,7 +135,7 @@ npx netlify deploy
 
 This creates a deploy preview with a unique URL for testing.
 
-**Production Deploy** (for new sites or explicit production deployments):
+**Production Deploy** (only with explicit production authority, including new sites):
 
 ```bash
 npx netlify deploy --prod
@@ -185,7 +193,7 @@ npm install
 # 4. Deploy (preview for testing)
 npx netlify deploy
 
-# 5. Deploy to production (when ready)
+# 5. Deploy to production only when explicitly authorized and required gates pass
 npx netlify deploy --prod
 ```
 
@@ -212,7 +220,7 @@ Common issues and solutions:
 
 ### Escalated Network Access
 
-If deployment fails due to network issues (timeouts, DNS errors, connection resets), rerun the deploy with escalated permissions (use `sandbox_permissions=require_escalated`). The deploy requires escalated network access when sandbox networking blocks outbound requests.
+For a timeout or reset, inspect authorized provider status and reconcile any uncertain remote outcome before retrying. Do not transplant Codex-only permission arguments into another harness or retry declined access. Use only the active host permission flow when additional authority is genuinely required; preserve already granted scope.
 
 Example guidance to the user:
 

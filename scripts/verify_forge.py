@@ -9,13 +9,15 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / 'plugins/rogemar-agent-toolkit/skills'
 
 def verify():
+    from routing_catalog import verify as verify_routes
+    route_errors = verify_routes(ROOT)
     declared = {item['name'] for item in json.loads((ROOT/'catalog/skills.yaml').read_text())['vendored']}
     actual = {p.name for p in SKILLS.iterdir() if p.name=='codex-forge' or p.name.startswith('forge-')}
     if not actual and not any(n=='codex-forge' or n.startswith('forge-') for n in declared):
-        return []
+        return route_errors
     manifest = json.loads((ROOT/'catalog/codex-forge-upstream.json').read_text())
     names = manifest['registered_skills']
-    errors=[]
+    errors=list(route_errors)
     if manifest['expected']['skills'] != 47 or len(names)!=47 or len(set(names.values()))!=47: errors.append('Expected 47 unique mapped skills')
     actual={p.name for p in SKILLS.iterdir() if p.name=='codex-forge' or p.name.startswith('forge-')}
     if actual != set(names.values()): errors.append('Forge skill directories differ from the pinned inventory')
@@ -44,6 +46,19 @@ def verify():
                 errors.append(str(p.relative_to(ROOT))+': unadapted runtime instruction')
     for p in (core/'assets/agents').glob('*.toml'):
         if re.search(r'^(model|model_reasoning_effort)\s*=',p.read_text(),re.M):errors.append(p.name+': model/effort pin blocks inheritance')
+    shared = SKILLS / 'engineering-playbooks'
+    if not shared.is_dir():
+        errors.append('Native Forge requires the shared fallback methods')
+    else:
+        methods = json.loads((shared/'references/source-map.json').read_text())['methods']
+        expected = {p.stem for p in (core/'playbooks').glob('*.md')}
+        if {row['method'] for row in methods} != expected or len(methods) != len(expected):
+            errors.append('Native/shared playbook routing coverage differs')
+        for row in methods:
+            if not all(isinstance(row.get(k), str) and row[k].strip() for k in ('trigger', 'outcome', 'boundary')):
+                errors.append('Incomplete playbook applicability: '+row['method'])
+            if not (shared/row['portable']).is_file():
+                errors.append('Missing shared playbook: '+row['method'])
     return errors
 
 if __name__=='__main__':

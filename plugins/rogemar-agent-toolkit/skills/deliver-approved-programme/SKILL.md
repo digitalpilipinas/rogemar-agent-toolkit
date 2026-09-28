@@ -1,5 +1,6 @@
 ---
 name: deliver-approved-programme
+disable-model-invocation: true
 description: Compatibility entry for prompts that explicitly name deliver-approved-programme. The maintained workflow is integrated-workflow; use that name for new approved implementation and delivery tasks.
 metadata:
   short-description: Compatibility entry for Integrated Workflow

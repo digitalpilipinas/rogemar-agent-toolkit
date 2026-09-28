@@ -9,9 +9,9 @@ description: "CLI fallback for debugging GitHub Actions PR checks when the GitHu
 ## Overview
 
 Use gh to locate failing PR checks, fetch GitHub Actions logs for actionable failures, summarize the failure snippet, then fix them within recorded programme authority or after explicit approval. Prefer the GitHub-plugin `gh-fix-ci` skill when its connected PR context is available; this skill is the connector-independent fallback.
-- If a plan-oriented skill (for example `create-plan`) is available, use it; otherwise draft a concise plan inline and request approval before implementing.
+- Reuse the accepted plan and remediation authority. Use create-plan only when meaningful new work needs planning; do not reopen approval for an already authorized fix.
 
-Prereq: run `gh auth status` normally before triaging checks. Retry only that command with narrowly scoped elevation if a network or sandbox denial blocks it. If authentication is absent, ask the user to authorize or complete `gh auth login` (repo and workflow scopes are typically required).
+Prereq: run `gh auth status` normally before triaging checks. If blocked, use only a supported permission flow; do not invent elevation flags or bypass a denial. If authentication is absent, ask the user to authorize or complete `gh auth login` (repo and workflow scopes are typically required).
 
 ## Inputs
 
@@ -62,7 +62,7 @@ Prereq: run `gh auth status` normally before triaging checks. Retry only that co
 8. Recheck status.
    - After changes, suggest re-running the relevant tests and `gh pr checks` to confirm.
 
-For all later `gh` calls, start normally and elevate only if the exact call is blocked by the sandbox or network.
+For later calls, preserve the actual host permission boundary. A denied operation remains blocked unless the supported authorization flow permits it.
 
 ## Bundled Resources
 

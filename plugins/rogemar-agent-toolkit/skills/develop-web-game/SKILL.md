@@ -1,6 +1,6 @@
 ---
 name: "develop-web-game"
-description: "Use when Codex is building or iterating on a web game (HTML/JS) and needs a reliable development + testing loop: implement small changes, run a Playwright-based test script with short input bursts and intentional pauses, inspect screenshots/text, and review console errors with render_game_to_text."
+description: "Use when an agent is building or iterating on a web game (HTML/JS) and needs a reliable development + testing loop: implement small changes, run a Playwright-based test script with short input bursts and intentional pauses, inspect screenshots/text, and review console errors with render_game_to_text."
 ---
 
 
@@ -27,7 +27,7 @@ change `CODEX_HOME` or assume a particular personal installation root.
 2. **Implement small.** Make the smallest change that moves the game forward.
 3. **Ensure integration points.** Provide a single canvas and `window.render_game_to_text` so the test loop can read state.
 4. **Add `window.advanceTime(ms)`.** Strongly prefer a deterministic step hook so the Playwright script can advance frames reliably; without it, automated tests can be flaky.
-5. **Initialize progress.md.** If `progress.md` exists, read it first and confirm the original user prompt is recorded at the top (prefix with `Original prompt:`). Also note any TODOs and suggestions left by the previous agent. If missing, create it and write `Original prompt: <prompt>` at the top before appending updates.
+5. **Restore progress.** Reuse the current task record with the outcome, constraints, completed checks and next action. Use progress.md only when no adequate record exists; store a concise task summary, not private prompt or transcript content.
 6. **Verify Playwright availability.** Ensure `playwright` is available (local dependency or global install). If unsure, check `npx` first.
 7. **Run the Playwright test script.** You must run `$WEB_GAME_CLIENT` after each meaningful change; do not invent a new client unless required.
 8. **Use the payload reference.** Base actions on `$WEB_GAME_ACTIONS` to avoid guessing keys.

@@ -18,7 +18,7 @@ description: Use when creating SEO briefs, keyword/theme research, competitor he
 - Prioritize useful content over keyword stuffing.
 - Treat keyword volume and difficulty as optional if no reliable source is available.
 - Keep recommendations implementable for the user's stack.
-- For EVERSO, favor water-sports-native topics, safety, conservation, trip planning, gear, and community value.
+- Use the project's actual audience, subject expertise, safety constraints and brand brief to choose useful topics.
 
 ## Outputs
 

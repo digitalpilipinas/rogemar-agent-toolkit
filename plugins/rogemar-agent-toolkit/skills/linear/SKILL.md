@@ -2,7 +2,7 @@
 name: linear
 description: Manage issues, projects & team workflows in Linear. Use when the user wants to read, create or updates tickets in Linear.
 metadata:
-  short-description: Manage Linear issues in Codex
+  short-description: Manage Linear issues through available native tools
 ---
 
 # Linear
@@ -20,23 +20,14 @@ This skill provides a structured workflow for managing issues, projects & team w
 
 **Follow these steps in order. Do not skip steps.**
 
-### Step 0: Set up Linear MCP (if not already configured)
+### Step 0: Resolve the available connection
 
-If setup is authorized and Linear MCP is not connected, pause and set it up:
-
-1. Add the Linear MCP:
-   - `codex mcp add linear --url https://mcp.linear.app/mcp`
-2. Enable remote MCP client:
-   - Set `[features] rmcp_client = true` in `config.toml` **or** run `codex --enable rmcp_client`
-3. Log in with OAuth:
-   - `codex mcp login linear`
-
-After successful login, the user will have to restart codex. You should finish your answer and tell them so when they try again they can continue with Step 1.
-
-**Windows/WSL note:** If you see connection errors on Windows, try configuring the Linear MCP to run via WSL:
-```json
-{"mcpServers": {"linear": {"command": "wsl", "args": ["npx", "-y", "mcp-remote", "https://mcp.linear.app/sse", "--transport", "sse-only"]}}}
-```
+Use the current harness's surfaced Linear integration and supported authentication
+flow. Verify the actual workspace access. If setup is separately authorized, follow
+that host's current setup instructions; Codex CLI commands and configuration are
+not universal controls. Do not silently install a proxy, change global settings or
+clear browser data. When a connection is unavailable, continue from authorized
+local/exported evidence if adequate and report the specific missing operation.
 
 ### Step 1
 Clarify the user's goal and scope (e.g., issue triage, sprint planning, documentation audit, workload balance). Confirm team/project, priority, labels, cycle, and due dates as needed.
@@ -82,7 +73,7 @@ Documentation & Collaboration: `list_documents`, `get_document`, `search_documen
 
 ## Troubleshooting
 
-- Authentication: Clear browser cookies, re-run OAuth, verify workspace permissions, ensure API access is enabled.
+- Authentication: Verify the current connection and workspace permission; use the supported account flow only within authorization.
 - Tool Calling Errors: Confirm the model supports multiple tool calls, provide all required fields, and split complex requests.
 - Missing Data: Refresh token, verify workspace access, check for archived projects, and confirm correct team selection.
 - Performance: Remember Linear API rate limits; batch bulk operations, use specific filters, or cache frequent queries.

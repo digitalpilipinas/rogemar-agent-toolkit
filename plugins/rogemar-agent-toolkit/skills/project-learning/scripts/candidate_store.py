@@ -17,6 +17,19 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+import importlib.util
+
+
+_LIFECYCLE_PATH = Path(__file__).resolve().with_name("lifecycle_metadata.py")
+_LIFECYCLE_SPEC = importlib.util.spec_from_file_location("project_learning_lifecycle", _LIFECYCLE_PATH)
+if _LIFECYCLE_SPEC is None or _LIFECYCLE_SPEC.loader is None:
+    raise RuntimeError("unable to load project-learning lifecycle helper")
+_lifecycle = importlib.util.module_from_spec(_LIFECYCLE_SPEC)
+_LIFECYCLE_SPEC.loader.exec_module(_lifecycle)
+
+_PATCH_SPEC = importlib.util.spec_from_file_location('project_learning_patch', Path(__file__).with_name('proposal_patch.py'))
+_patch = importlib.util.module_from_spec(_PATCH_SPEC)
+_PATCH_SPEC.loader.exec_module(_patch)
 
 
 SCHEMA_VERSION = 1
@@ -96,10 +109,14 @@ def atomic_json(path: Path, value: dict[str, Any]) -> None:
 
 def atomic_text(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    mode = path.stat().st_mode & 0o777 if path.exists() else 0o600
     fd, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
     try:
-        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="") as handle:
             handle.write(content)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.chmod(temp_name, mode)
         os.replace(temp_name, path)
     finally:
         if os.path.exists(temp_name):
@@ -178,6 +195,18 @@ def safe_id(value: Any, field: str) -> str:
     return safe
 
 
+def project_identity(root: Path) -> str:
+    """Opaque identity of this clone, shared by its worktrees, not by basenames.
+
+    No remote URL, credential or machine path is persisted. Moving/recloning a
+    repository requires deliberate provenance reconciliation, not silent merging.
+    """
+    common = subprocess.check_output(['git', '-C', str(root), 'rev-parse', '--git-common-dir'],
+                                     text=True, timeout=5).strip()
+    path = (root / common).resolve()
+    return 'git-common-dir-sha256:' + hashlib.sha256(str(path).encode()).hexdigest()
+
+
 def validate_capture_request(request: dict[str, Any]) -> dict[str, Any]:
     reject_forbidden_keys(request)
     allowed = {
@@ -193,6 +222,8 @@ def validate_capture_request(request: dict[str, Any]) -> dict[str, Any]:
         "source_project",
         "source_lesson_id",
         "proposal",
+        "lifecycle",
+        "harness",
     }
     unexpected = set(request) - allowed
     if unexpected:
@@ -208,7 +239,8 @@ def validate_capture_request(request: dict[str, Any]) -> dict[str, Any]:
         raise StoreError("evidence must contain 1 to 20 items")
     evidence: list[dict[str, str]] = []
     for index, item in enumerate(evidence_raw):
-        if not isinstance(item, dict) or set(item) != {"kind", "reference", "summary"}:
+        if (not isinstance(item, dict) or not {"kind", "reference", "summary"} <= set(item)
+                or set(item) - {"kind", "reference", "summary", "event_id", "derived_from"}):
             raise StoreError(f"evidence[{index}] has invalid fields")
         kind = item.get("kind")
         if kind not in EVIDENCE_KINDS:
@@ -220,6 +252,16 @@ def validate_capture_request(request: dict[str, Any]) -> dict[str, Any]:
                 "summary": validate_text(item.get("summary"), f"evidence[{index}].summary", 700),
             }
         )
+        if 'event_id' in item:
+            evidence[-1]['event_id'] = validate_text(item['event_id'], 'event_id', 300)
+        if 'derived_from' in item:
+            roots = item['derived_from']
+            if not isinstance(roots, list) or not 1 <= len(roots) <= 20:
+                raise StoreError('derived_from requires 1 to 20 source-event IDs')
+            roots = [validate_text(x, 'derived_from', 300) for x in roots]
+            if len(set(roots)) != len(roots) or item.get('event_id') in roots:
+                raise StoreError('duplicate or self-referential evidence roots')
+            evidence[-1]['derived_from'] = roots
 
     milestone = request.get("milestone", False)
     if not isinstance(milestone, bool):
@@ -269,6 +311,10 @@ def validate_capture_request(request: dict[str, Any]) -> dict[str, Any]:
     }
     if proposal is not None:
         result["proposal"] = proposal
+    if "lifecycle" in request:
+        result["lifecycle"] = _lifecycle.validate_lifecycle(request["lifecycle"])
+    if 'harness' in request:
+        result['harness'] = validate_text(request['harness'], 'harness', 200)
     return result
 
 
@@ -367,8 +413,68 @@ def review_due(state_dir: Path, candidates: dict[str, Any], threshold: int, mile
     return due
 
 
+def resolve_lineage(request: dict[str, Any], state_dir: Path) -> None:
+    """Flatten event aliases using the existing writer's project-scoped index.
+
+    Root identities are immutable once used. Unknown parents are recorded as
+    roots, never silently reinterpreted later as independent summary events.
+    This deduplicates declared provenance; it cannot authenticate observations.
+    """
+    path = state_dir / 'evidence-lineage.json'
+    index = load_json(path) if path.exists() else {}
+    namespace = request.get('source_project_identity') or request['project_identity']
+    graph = index.setdefault(namespace, {})
+    for item in request.get('evidence', []):
+        ident = item.get('event_id')
+        parents = sorted(item.get('derived_from') or [])
+        if ident:
+            if ident in graph and graph[ident] != parents:
+                raise StoreError('Evidence event identity has conflicting lineage')
+            graph[ident] = parents
+        for parent in parents:
+            graph.setdefault(parent, [])
+    resolved = {}
+    def roots(ident, visiting):
+        if len(visiting) > 100:
+            raise StoreError('Evidence derivation exceeds supported depth')
+        if ident in visiting:
+            raise StoreError('Circular evidence lineage')
+        if ident in resolved:
+            return resolved[ident]
+        parents = graph.get(ident, [])
+        resolved[ident] = set().union(*(roots(parent, visiting | {ident}) for parent in parents)) if parents else {ident}
+        return resolved[ident]
+    # Validate the whole bounded project index before persisting aliases, including
+    # aliases on duplicate captures that intentionally do not append an event.
+    if len(graph) > 10000:
+        raise StoreError('Evidence lineage index requires maintenance')
+    for ident in graph:
+        roots(ident, set())
+    for item in request.get('evidence', []):
+        identities = item.get('derived_from') or ([item['event_id']] if item.get('event_id') else [])
+        if identities:
+            item['derived_from'] = sorted(set().union(*(roots(x, set()) for x in identities)))
+    lifecycle = request.get('lifecycle', {})
+    if lifecycle.get('evidence_roots'):
+        lifecycle['evidence_roots'] = sorted(set().union(*(roots(x, set()) for x in lifecycle['evidence_roots'])))
+    atomic_json(path, index)
+
+
 def evidence_keys(payload: dict[str, Any]) -> set[tuple[str, str]]:
-    return {(item["kind"], item["reference"]) for item in payload.get("evidence", [])}
+    # Explicit underlying events take precedence over locators, summaries and
+    # session/harness labels. Legacy references remain readable, with unknown
+    # independence; semantic review must not treat them as proven distinct events.
+    namespace = payload.get('source_project_identity') or payload.get('project_identity') or 'legacy'
+    roots = payload.get('lifecycle', {}).get('evidence_roots', [])
+    if roots:
+        return {('event', namespace + ':' + root) for root in roots}
+    result = set()
+    for item in payload.get('evidence', []):
+        roots = item.get('derived_from') or ([item['event_id']] if item.get('event_id') else [])
+        result.update(('event', namespace + ':' + root) for root in roots)
+        if not roots:
+            result.add(('legacy-reference', item['kind'] + ':' + item['reference']))
+    return result
 
 
 def accepted_sections(ledger: Path) -> dict[str, str]:
@@ -376,7 +482,8 @@ def accepted_sections(ledger: Path) -> dict[str, str]:
         return {}
     parts = re.split(r"^## (PL-[A-F0-9]{12})\s*$", ledger.read_text(encoding="utf-8"), flags=re.M)
     return {parts[i]: parts[i + 1] for i in range(1, len(parts), 2)
-            if re.search(r"^Status: (?:Accepted|Reinforced)$", parts[i + 1], re.M)}
+            if re.search(r"^Status: (?:Accepted|Reinforced)$", parts[i + 1], re.M)
+            and _lifecycle.section_active(parts[i + 1])}
 
 
 def ledger_match(ledger: Path, request: dict[str, Any]) -> str | None:
@@ -408,6 +515,13 @@ def validate_proposal_source(args: argparse.Namespace, root: Path, request: dict
     section = accepted_sections(ledger).get(request["source_lesson_id"])
     if not section or not re.search(r"^Evidence strength: (?:verified|reinforced)$", section, re.M):
         raise StoreError("global proposal source must be an accepted, verified lesson")
+    source_identity = project_identity(source)
+    if request.get('source_project_identity') not in {None, source_identity}:
+        raise StoreError('Selected source differs from captured proposal provenance')
+    recorded_identity = re.search(r'^Project identity: (.+)$', section, re.M)
+    if recorded_identity and recorded_identity.group(1) != source_identity:
+        raise StoreError('Accepted source belongs to a different repository identity')
+    request['source_project_identity'] = source_identity
     target = (root / proposal["target_skill"]).resolve()
     if not target.is_relative_to(root) or not target.is_file():
         raise StoreError("global proposal target skill must exist inside the repository")
@@ -430,6 +544,7 @@ def capture(args: argparse.Namespace) -> dict[str, Any]:
     if config.get("enabled") is not True:
         return {"captured": False, "reason": "disabled", "review_due": False}
     request = validate_capture_request(read_request(args.request))
+    request['project_identity'] = project_identity(root)
     if getattr(args, "workflow", False) and request["evidence_level"] not in {"verified", "reinforced"}:
         raise StoreError("workflow capture requires verified or reinforced evidence")
     validate_proposal_source(args, root, request)
@@ -471,6 +586,7 @@ def capture(args: argparse.Namespace) -> dict[str, Any]:
                 "idempotent": True,
             }
 
+    resolve_lineage(request, state_dir)
     digest = fingerprint(request)
     candidates = materialize(events)
     matching = next((item for item in reversed(list(candidates.values()))
@@ -504,6 +620,9 @@ def capture(args: argparse.Namespace) -> dict[str, Any]:
                 "review_due": due, "idempotent": False}
 
     payload = {key: value for key, value in request.items() if key not in {"session_id", "turn_id"}}
+    payload['project_identity'] = project_identity(root)
+    payload['evidence_identity'] = ('source-events' if all(kind == 'event' for kind, _ in evidence_keys(request))
+                                    else 'legacy-references; independence-needs-review')
     if revisits:
         payload["revisits_candidate_id"] = revisits
     event = {
@@ -702,6 +821,7 @@ def ledger_entry(root: Path, request: dict[str, Any], candidate: dict[str, Any])
         *evidence_lines,
         f"Evidence strength: {request['evidence_strength']}",
         f"Scope: {root.name}",
+        f"Project identity: {project_identity(root)}",
         f"Provenance: {provenance}; approved by user",
         f"Last reviewed: {datetime.now(timezone.utc).date().isoformat()}",
         f"Cross-project candidate: {request['cross_project']}",
@@ -713,6 +833,9 @@ def ledger_entry(root: Path, request: dict[str, Any], candidate: dict[str, Any])
             f"Required validation: {payload['proposal']['validation']}",
             "Proposal approval does not execute or authorize changes outside the recorded scope.",
         ])
+    if "lifecycle" in payload:
+        metadata = _lifecycle.validate_lifecycle(payload["lifecycle"])
+        lines.append("Lifecycle: " + json.dumps(metadata, sort_keys=True, ensure_ascii=True, separators=(",", ":")))
     if request.get("supersedes"):
         lines.append(f"Supersedes: {request['supersedes']}")
     return "\n".join(lines) + "\n"
@@ -756,6 +879,172 @@ def promote(args: argparse.Namespace) -> dict[str, Any]:
     }
     append_event(store_path, event)
     return {"candidate_id": request["candidate_id"], "status": "promoted", "idempotent": False}
+
+
+def set_lifecycle(args: argparse.Namespace) -> dict[str, Any]:
+    """Change metadata through the existing lock and sole ledger writer.
+
+    approved_by is provenance, not authentication. The calling host must obtain
+    actual owner approval for this exact metadata change and protect the source.
+    Existing mutation_lock serializes cooperating writers; exclusive workspace
+    ownership is still required against arbitrary external writers.
+    """
+    request = read_request(args.request)
+    reject_forbidden_keys(request)
+    required = {"schema_version", "candidate_id", "expected_ledger_sha256", "lifecycle", "approved_by"}
+    if set(request) != required or type(request.get("schema_version")) is not int or request["schema_version"] != 1:
+        raise StoreError("invalid lifecycle update request")
+    if request.get("approved_by") != "user":
+        raise StoreError("lifecycle update requires recorded user approval")
+    root = resolve_root(args.root)
+    config = config_for(root)
+    _, _, ledger_path = candidate_paths(root, config)
+    previous = ledger_path.read_text(encoding="utf-8")
+    updated = _lifecycle.replace_lifecycle(previous, request["candidate_id"],
+                                          request["lifecycle"], request["expected_ledger_sha256"])
+    # run() already holds this repository's existing mutation_lock.
+    atomic_text(ledger_path, updated)
+    return {"candidate_id": request["candidate_id"],
+            "activity": request["lifecycle"]["activity"],
+            "ledger_sha256": hashlib.sha256(updated.encode("utf-8")).hexdigest(),
+            "guidance_promoted": False}
+
+
+def recall(args: argparse.Namespace) -> dict[str, Any]:
+    """Bounded read-only retrieval; the agent still checks semantic applicability."""
+    root = resolve_root(args.root)
+    _, _, ledger = candidate_paths(root, config_for(root))
+    versions = load_json(Path(args.versions)) if args.versions else {}
+    if not all(isinstance(k, str) and isinstance(v, str) for k, v in versions.items()):
+        raise StoreError('Source versions must map identities to strings')
+    if not 1 <= args.limit <= 20 or not 256 <= args.max_chars <= 20000:
+        raise StoreError('Recall limits must stay within documented bounds')
+    query = set(re.findall(r'\w+', args.query.casefold()))
+    if not query:
+        raise StoreError('A task-scoped recall query is required')
+    identity = project_identity(root)
+    results, excluded = [], []
+    for ident, section in accepted_sections(ledger).items():
+        scope = re.search(r'^Project identity: (.+)$', section, re.M)
+        if scope and scope.group(1) != identity:
+            excluded.append({'candidate_id': ident, 'reason': 'different-project'})
+            continue
+        fields = {}
+        for label in ('Lesson', 'Applies when', 'Does not apply when'):
+            match = re.search(r'^' + label + r': (.+)$', section, re.M)
+            fields[label] = match.group(1) if match else ''
+        score = len(query & set(re.findall(r'\w+', ' '.join(fields.values()).casefold())))
+        if not score:
+            continue
+        lifecycle = _lifecycle.section_lifecycle(section)
+        assessment = (_lifecycle.assess_lifecycle(lifecycle, versions, accepted=True)
+                      if lifecycle else {'freshness': 'legacy-unverified'})
+        if assessment['freshness'] == 'stale':
+            excluded.append({'candidate_id': ident, 'reason': 'stale-source'})
+            continue
+        results.append({'candidate_id': ident, **fields, 'freshness': assessment['freshness'],
+                        'score': score, 'requires_applicability_and_source_check': True})
+    selected, used = [], 0
+    for row in sorted(results, key=lambda x: (-x['score'], x['candidate_id'])):
+        size = len(json.dumps(row, ensure_ascii=False))
+        if len(selected) >= args.limit or used + size > args.max_chars:
+            continue
+        selected.append(row)
+        used += size
+    return {'project_identity': identity, 'lessons': selected, 'excluded_count': len(excluded),
+            'result_characters': used, 'mutated': False, 'grants_authority': False}
+
+
+def stage_proposal(args: argparse.Namespace) -> dict[str, Any]:
+    root = resolve_root(args.root)
+    store, state_dir, _ = candidate_paths(root, config_for(root))
+    request = read_request(args.request)
+    candidate_id = safe_id(request.get('candidate_id'), 'candidate_id')
+    candidate = materialize(load_events(store)).get(candidate_id)
+    if not candidate or candidate['status'] not in {'pending', 'promoted'}:
+        raise StoreError('Proposal candidate is absent or dismissed')
+    validate_proposal_source(args, root, candidate['payload'])
+    proposal = _patch.stage(root, request, candidate)
+    for file in proposal['files']:
+        if any(pattern.search(file['after']) for pattern in SECRET_PATTERNS):
+            raise StoreError('Proposed instruction content contains sensitive-looking material')
+    checksum = _patch.digest(proposal)
+    ident = 'PP-' + checksum[:24]
+    path = state_dir / 'proposals' / (ident + '.json')
+    if not path.exists():
+        atomic_json(path, {'proposal': proposal, 'status': 'staged', 'applied_groups': [],
+                           'history': [{'state': 'staged', 'recorded_at': now_iso()}]})
+    elif _patch.digest(load_json(path)['proposal']) != checksum:
+        raise StoreError('Conflicting staged proposal identity')
+    return {'proposal_id': ident, 'proposal_sha256': checksum,
+            'groups': proposal['groups'], 'diffs': [f['diff'] for f in proposal['files']],
+            'instruction_changes_applied': False}
+
+
+def apply_proposal(args: argparse.Namespace) -> dict[str, Any]:
+    """One writer and lock; durable operation state supports interrupted retries.
+
+    Freshness rejects concurrent edits by non-cooperating writers. Exclusive task
+    ownership is still necessary; this is not an OS permission mechanism.
+    """
+    root = resolve_root(args.root)
+    store, state_dir, _ = candidate_paths(root, config_for(root))
+    decision = read_request(args.request)
+    reject_forbidden_keys(decision)
+    ident = decision.get('proposal_id', '')
+    if not isinstance(ident, str) or not re.fullmatch(r'PP-[0-9a-f]{24}', ident):
+        raise StoreError('Invalid proposal ID')
+    path = state_dir / 'proposals' / (ident + '.json')
+    record = load_json(path)
+    if ident != 'PP-' + _patch.digest(record['proposal'])[:24]:
+        raise StoreError('Staged proposal was modified')
+    rollback = args.command == 'rollback-proposal'
+    files = _patch.selected_files(record, decision, rollback=rollback)
+    if not rollback:
+        candidate = materialize(load_events(store)).get(record['proposal']['candidate_id'])
+        if not candidate or candidate['status'] not in {'pending', 'promoted'}:
+            raise StoreError('Proposal candidate is no longer eligible')
+        validate_proposal_source(args, root, candidate['payload'])
+    operation = {'direction': 'rollback' if rollback else 'apply',
+                 'groups': sorted(decision['groups']), 'owner_decision': decision['owner_decision']}
+    pending = record.get('operation')
+    if pending and pending != operation:
+        raise StoreError('Reconcile the interrupted operation before selecting different groups')
+    current = []
+    for file in files:
+        target = _patch.target(root, file['path'], record['proposal']['allowed_files'])
+        observed = _patch.sha(_patch.read_text(target))
+        before, after = ('after', 'before') if rollback else ('before', 'after')
+        group_applied = any(file['path'] in record['proposal']['groups'][g] for g in record['applied_groups'])
+        idempotent = not rollback and group_applied
+        allowed = {file[before + '_sha256']}
+        if pending or idempotent:
+            allowed.add(file[after + '_sha256'])
+        if observed not in allowed or (idempotent and not pending and observed != file['after_sha256']):
+            raise StoreError('Stale proposal target; preserve and reconcile: ' + file['path'])
+        current.append((target, file, observed, after))
+    record['operation'] = operation
+    record['status'] = 'applying' if not rollback else 'rolling-back'
+    atomic_json(path, record)
+    # A crash leaves the exact operation and before/after snapshots. A retry may
+    # finish only unchanged before/after files; it never overwrites a third state.
+    for target, file, observed, after in current:
+        if _patch.sha(_patch.read_text(target)) != observed:
+            raise StoreError('Target changed after proposal preflight')
+        if observed != file[after + '_sha256']:
+            atomic_text(target, file[after])
+    applied = set(record['applied_groups'])
+    if rollback:
+        applied.difference_update(decision['groups'])
+    else:
+        applied.update(decision['groups'])
+    record['applied_groups'] = sorted(applied)
+    record['status'] = 'applied' if applied else 'rolled-back'
+    record.pop('operation', None)
+    record['history'].append({**operation, 'recorded_at': now_iso(), 'state': record['status']})
+    atomic_json(path, record)
+    return {'proposal_id': ident, 'state': record['status'], 'applied_groups': sorted(applied),
+            'owner_decision': decision['owner_decision'], 'approval_authenticated_by': 'calling-host-required'}
 
 
 def add_root_argument(parser: argparse.ArgumentParser) -> None:
@@ -803,6 +1092,30 @@ def parse_args() -> argparse.Namespace:
     add_root_argument(promote_parser)
     promote_parser.add_argument("--request", required=True)
     promote_parser.set_defaults(handler=promote)
+
+    lifecycle_parser = subparsers.add_parser("set-lifecycle")
+    add_root_argument(lifecycle_parser)
+    lifecycle_parser.add_argument("--request", required=True)
+    lifecycle_parser.add_argument("--permission-mode", choices=("execution", "plan"))
+    lifecycle_parser.add_argument("--read-only", action="store_true")
+    lifecycle_parser.add_argument("--no-learning", action="store_true")
+    lifecycle_parser.set_defaults(handler=set_lifecycle)
+
+    recall_parser = subparsers.add_parser('recall')
+    add_root_argument(recall_parser)
+    recall_parser.add_argument('--query', required=True)
+    recall_parser.add_argument('--versions', help='Current source identity/version JSON')
+    recall_parser.add_argument('--limit', type=int, default=5)
+    recall_parser.add_argument('--max-chars', type=int, default=4000)
+    recall_parser.set_defaults(handler=recall)
+
+    for command in ('stage-proposal', 'apply-proposal', 'rollback-proposal'):
+        proposal_parser = subparsers.add_parser(command)
+        add_root_argument(proposal_parser)
+        proposal_parser.add_argument('--request', required=True)
+        proposal_parser.add_argument('--source-root')
+        add_capture_guards(proposal_parser)
+        proposal_parser.set_defaults(handler=stage_proposal if command == 'stage-proposal' else apply_proposal)
 
     return parser.parse_args()
 
@@ -864,13 +1177,15 @@ def mutation_lock(state_dir: Path):
 
 
 def run(args: argparse.Namespace) -> dict[str, Any]:
-    if args.command in {"list", "status"}:
+    if args.command in {"list", "status", "recall"}:
         return args.handler(args)
     # These checks must precede reading a request or creating state/lock files.
     if getattr(args, "permission_mode", None) == "plan" or getattr(args, "read_only", False):
         return {"captured": False, "reason": "read_only", "review_due": False}
     if getattr(args, "no_learning", False):
         return {"captured": False, "reason": "no_learning", "review_due": False}
+    if args.command in {'stage-proposal', 'apply-proposal', 'rollback-proposal'} and args.permission_mode != 'execution':
+        raise StoreError('Proposal mutations require --permission-mode execution and existing task authority')
     root = resolve_root(args.root)
     config = config_for(root)
     if args.command in {"capture", "mark-no-candidate"}:
@@ -892,7 +1207,7 @@ def main() -> int:
         result = run(args)
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return 0
-    except (StoreError, OSError) as exc:
+    except (StoreError, OSError, ValueError, TypeError, KeyError) as exc:
         print(f"project-learning store failed: {exc}", file=sys.stderr)
         return 1
 

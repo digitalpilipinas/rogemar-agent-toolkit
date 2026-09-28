@@ -17,7 +17,7 @@ Companion to the `forge-how` skill. `forge-how` answers what the code does and h
 
 ## How this skill works
 
-Historical context spreads across seven evidence categories: source control history, issue or ticket tracking, long-form documents, real-time team chat, infrastructure observability, error or exception tracking, and product analytics warehouses. You cannot predict from the question alone which one holds the answer, so the skill enumerates available MCPs at run time, maps each to a category, considers all seven, selects relevant authorized sources, and requests bounded independent investigations through the orchestrator, then synthesizes with explicit confidence calibration. Null results from searched categories are first-class evidence about how the decision was made; report them alongside positive findings. Preserve a coverage map of searched, unavailable and out-of-scope categories. A null search result is not proof that a record never existed.
+Start with the code anchor and the smallest relevant authorized history sources. Possible evidence categories include source control, issues, documents, team chat, observability, errors and analytics. Expand only when it can resolve the question and the task authorizes the source. The orchestrator may select bounded independent investigations when useful and permitted. Record material searched, unavailable and out-of-scope sources. A null result does not prove that a record never existed.
 
 ## Operating Posture
 
@@ -66,7 +66,7 @@ If the target is vague ("why do we do it this way?" with no clear referent), mak
 
 ## Step 2. Establish the Code Anchor
 
-Before spawning investigators, anchor the investigation in concrete code. You need:
+Before any investigation or justified delegation, anchor the investigation in concrete code. You need:
 
 - The relevant file path(s) and line range(s)
 - The key symbols (function names, class names, constants)
