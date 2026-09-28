@@ -37,53 +37,113 @@
   "vendored": [
     {
       "name": "accessibility-auditor",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Applicable accessibility or rendered/interaction behavior needs checking",
+        "outcome": "Use the relevant subset and actual available view/browser tools",
+        "boundary": "Not a mandatory four-skill bundle; no invented screenshot or runtime pass",
+        "activation": "conditional"
+      }
     },
     {
       "name": "activity-schema-guardian",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Canonical data or offline/retry behavior changes",
+        "outcome": "Schema compatibility, isolation, conflict and recovery evidence",
+        "boundary": "Do not add sync architecture to unrelated data work",
+        "activation": "conditional"
+      }
     },
     {
       "name": "agent-collaboration-terminal",
       "source": "approved local user-level snapshot",
       "targets": [
         "codex"
-      ]
+      ],
+      "routing": {
+        "trigger": "Authorized cross-agent work has a concrete benefit",
+        "outcome": "Use observed launch capabilities and bounded existing assignment/result contracts",
+        "boundary": "No automatic provider selection, extra data sharing or delegation for every task",
+        "activation": "conditional"
+      }
     },
     {
       "name": "agent-map",
-      "source": "approved local Codex snapshot"
+      "source": "approved local Codex snapshot",
+      "routing": {
+        "trigger": "An unfamiliar or changed codebase needs orientation",
+        "outcome": "A scoped current map and source pointers",
+        "boundary": "Do not regenerate the whole map after every small edit",
+        "activation": "conditional"
+      }
     },
     {
       "name": "article-creator-2",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Requested writing, search strategy or social content",
+        "outcome": "Project-appropriate content with source and brand constraints",
+        "boundary": "No importing another project's brand or publishing by default",
+        "activation": "conditional"
+      }
     },
     {
       "name": "bug-triage",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Defect or measured performance problem",
+        "outcome": "Focused diagnosis and behavior/measurement evidence",
+        "boundary": "No unrelated optimization or speculative rewrite",
+        "activation": "conditional"
+      }
     },
     {
       "name": "cloudflare-deploy",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "The authorized delivery target needs readiness or deployment work",
+        "outcome": "Choose the actual target and applicable release proof",
+        "boundary": "A PR-to-main request does not deploy or release to every platform",
+        "activation": "conditional"
+      }
     },
     {
       "name": "code-review-and-quality",
       "source": "approved local user-level snapshot",
       "requires": [
         "code-review-tests"
-      ]
+      ],
+      "routing": {
+        "trigger": "A meaningful candidate needs review or evidence design",
+        "outcome": "One finding disposition owner; focused tests; architecture support only for real evidence-design uncertainty",
+        "boundary": "Do not add a panel or architecture exercise for an obvious unit check",
+        "activation": "conditional"
+      }
     },
     {
       "name": "code-review-tests",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "A meaningful candidate needs review or evidence design",
+        "outcome": "One finding disposition owner; focused tests; architecture support only for real evidence-design uncertainty",
+        "boundary": "Do not add a panel or architecture exercise for an obvious unit check",
+        "activation": "conditional"
+      }
     },
     {
       "name": "codex-capability-maintainer",
       "source": "approved local user-level snapshot",
       "targets": [
         "codex"
-      ]
+      ],
+      "routing": {
+        "trigger": "Relevant capability/update/setup need",
+        "outcome": "Existing maintainer and native adaptation, with AQ-01/UP-01 where applicable",
+        "boundary": "Selection grants no new install, watcher, credentials or configuration authority",
+        "activation": "conditional"
+      }
     },
     {
       "name": "codex-forge",
@@ -97,17 +157,36 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "workflow-orchestrator",
-        "plan-model-router"
-      ]
+        "plan-model-router",
+        "engineering-playbooks"
+      ],
+      "routing": {
+        "trigger": "A Forge execution task in the Codex route",
+        "outcome": "Keep one active entry, select the relevant playbook and methods",
+        "boundary": "Cursor/universal use their own entry; do not stack coordinators",
+        "activation": "conditional"
+      }
     },
     {
       "name": "create-plan",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "Planning a material change or requested plan",
+        "outcome": "create-plan owns the plan; route models only when useful and supported",
+        "boundary": "No new plan for accepted continuation; model/provider choice stays with the active authorized harness",
+        "activation": "conditional"
+      }
     },
     {
       "name": "csv-analytics-reporter",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "The actual artifact/data type needs these methods",
+        "outcome": "Usable inspected artifact and relevant analytical checks",
+        "boundary": "No mandatory artifact conversion for a simple answer",
+        "activation": "conditional"
+      }
     },
     {
       "name": "deliver-approved-programme",
@@ -115,11 +194,23 @@
       "requires": [
         "integrated-workflow"
       ],
-      "deprecated_alias_of": "integrated-workflow"
+      "deprecated_alias_of": "integrated-workflow",
+      "routing": {
+        "trigger": "Explicit legacy invocation only",
+        "outcome": "Forward once to the existing Integrated Workflow",
+        "boundary": "Deliberately not implicitly auto-triggered",
+        "activation": "explicit-only"
+      }
     },
     {
       "name": "deploy-checklist",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "The authorized delivery target needs readiness or deployment work",
+        "outcome": "Choose the actual target and applicable release proof",
+        "boundary": "A PR-to-main request does not deploy or release to every platform",
+        "activation": "conditional"
+      }
     },
     {
       "name": "design-brief",
@@ -127,20 +218,44 @@
       "author": "Rogemar; upstream notices preserved",
       "upstream_repository": "https://github.com/digitalpilipinas/open-design",
       "license": "Apache-2.0; per-reference notices preserved",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "An interface task needs scope, journey or visual-reference constraints",
+        "outcome": "The smallest sufficient design/input contract",
+        "boundary": "No design stage for a task whose outcome is already clear",
+        "activation": "conditional"
+      }
     },
     {
       "name": "design-system-steward",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Actual component, design-system or frontend implementation",
+        "outcome": "Respect existing tokens, components and framework choices",
+        "boundary": "No new design system or dependency solely because a skill exists",
+        "activation": "conditional"
+      }
     },
     {
       "name": "develop-web-game",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "The task develops or tests a web game",
+        "outcome": "Project-specific implementation and actual behavior checks",
+        "boundary": "No fixed machine path or assumed tool availability",
+        "activation": "conditional"
+      }
     },
     {
       "name": "dream-team",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Authorized cross-agent work has a concrete benefit",
+        "outcome": "Use observed launch capabilities and bounded existing assignment/result contracts",
+        "boundary": "No automatic provider selection, extra data sharing or delegation for every task",
+        "activation": "conditional"
+      }
     },
     {
       "name": "engineering-playbooks",
@@ -151,16 +266,34 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "workflow-orchestrator"
-      ]
+      ],
+      "routing": {
+        "trigger": "Select the appropriate shared method and one non-Codex entry",
+        "outcome": "Engineering methods and matched native/portable execution",
+        "boundary": "Do not invoke an additional Forge entry or overwrite PStack ownership",
+        "activation": "conditional"
+      }
     },
     {
       "name": "figma",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "The requested design source/workflow uses the corresponding service",
+        "outcome": "Relevant authorized native route, with existing source fallback where adequate",
+        "boundary": "No sign-in, installation or external write implied by selection",
+        "activation": "conditional"
+      }
     },
     {
       "name": "first-time-right-delivery",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Approved multi-stage delivery or a non-trivial execution contract",
+        "outcome": "Lifecycle, sole dispatcher and evidence discipline respectively",
+        "boundary": "No three competing coordinators or mandatory heavy process for small tasks",
+        "activation": "conditional"
+      }
     },
     {
       "name": "forge-architect",
@@ -174,7 +307,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "A material architecture decision with real alternatives",
+        "outcome": "Proportionate options, constraints and a reasoned choice",
+        "boundary": "No redesign of a settled system without new evidence",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#architect"
+      }
     },
     {
       "name": "forge-arena",
@@ -188,7 +328,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Independent alternatives could resolve material uncertainty",
+        "outcome": "Comparable evidence and one accepted result",
+        "boundary": "No mandatory panel, repeated solution race or extra provider by default",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#arena"
+      }
     },
     {
       "name": "forge-automate-me",
@@ -202,7 +349,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Requested recurrence or a proven repeated task worth automating",
+        "outcome": "A bounded automation recommendation or authorized implementation",
+        "boundary": "Ordinary Forge invocation does not schedule work or spend credits",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#automate-me"
+      }
     },
     {
       "name": "forge-blast-radius",
@@ -216,7 +370,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "A change may affect callers, data, interfaces or operations",
+        "outcome": "Affected consumers and proportionate regression checks",
+        "boundary": "No speculative whole-repository audit for an isolated edit",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#blast-radius"
+      }
     },
     {
       "name": "forge-bro",
@@ -230,7 +391,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "The requested conversational tone fits this companion",
+        "outcome": "Helpful discussion consistent with user preferences",
+        "boundary": "Do not automatically replace professional tone or take lifecycle ownership",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#bro"
+      }
     },
     {
       "name": "forge-create-verification-skill",
@@ -244,7 +412,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Missing reusable verification for a recurring meaningful check",
+        "outcome": "A discoverable behavior-based verification recipe",
+        "boundary": "No recipe for every trivial change; preserve the existing verifier owner",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#create-verification-skill"
+      }
     },
     {
       "name": "forge-figure-it-out",
@@ -258,7 +433,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Authorized goal-directed work needs bounded autonomous progress",
+        "outcome": "Small verifiable units, current evidence and safe recovery",
+        "boundary": "No new plan/log owner, speculative scope expansion or authority inference",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#figure-it-out"
+      }
     },
     {
       "name": "forge-how",
@@ -272,7 +454,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "The task needs to understand how an implementation works",
+        "outcome": "Relevant source trace with grounded explanation",
+        "boundary": "Do not load an entire codebase or run a parallel teaching team by default",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#how"
+      }
     },
     {
       "name": "forge-interrogate",
@@ -286,7 +475,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Unresolved requirements materially affect the outcome",
+        "outcome": "The smallest useful clarification or safe labeled assumption",
+        "boundary": "Do not reopen settled requirements or routine approvals",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#interrogate"
+      }
     },
     {
       "name": "forge-maintain-verification-skill",
@@ -300,7 +496,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Verification exists but changed behavior makes it stale",
+        "outcome": "Focused repair and meaningful check",
+        "boundary": "A repair does not require an unrelated complete feature-map audit",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#maintain-verification-skill"
+      }
     },
     {
       "name": "forge-make-bot-ui",
@@ -314,7 +517,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "An agent-facing control or visibility UI is requested or justified",
+        "outcome": "A usable UI bound to real supported capabilities",
+        "boundary": "No invented webhook, backend or permission; no UI for every workflow",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#make-bot-ui"
+      }
     },
     {
       "name": "forge-no-comments",
@@ -328,7 +538,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Changed code has redundant commentary or naming can carry intent",
+        "outcome": "Clearer code retaining necessary rationale and notices",
+        "boundary": "Do not remove safety explanations, legal notices or useful public contracts",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#no-comments"
+      }
     },
     {
       "name": "forge-principle-boundary-discipline",
@@ -342,7 +559,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Work crosses authority, data, API or responsibility boundaries",
+        "outcome": "Explicit inputs, outputs, permissions and failure behavior",
+        "boundary": "No ceremonial new boundary abstraction for an isolated task",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/boundary-discipline.md"
+      }
     },
     {
       "name": "forge-principle-build-the-lever",
@@ -356,7 +580,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "A repeated operation has an economical reusable improvement",
+        "outcome": "Small useful automation with a working direct path",
+        "boundary": "No framework or service for a one-off task",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/build-the-lever.md"
+      }
     },
     {
       "name": "forge-principle-encode-lessons-in-structure",
@@ -370,7 +601,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "A verified recurring failure has a concrete prevention",
+        "outcome": "Prefer a regression, type, invariant or focused accepted lesson",
+        "boundary": "No accumulating prose or global mutation without the learning process",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/encode-lessons-in-structure.md"
+      }
     },
     {
       "name": "forge-principle-exhaust-the-design-space",
@@ -384,7 +622,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "A consequential uncertain choice needs alternatives",
+        "outcome": "Enough credible alternatives to resolve the uncertainty",
+        "boundary": "No fixed prototype count for an obvious change",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/exhaust-the-design-space.md"
+      }
     },
     {
       "name": "forge-principle-experience-first",
@@ -398,7 +643,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "User-visible behavior or ergonomics is affected",
+        "outcome": "Validate the actual user outcome and relevant interaction",
+        "boundary": "No obligatory visual exercise for backend-only work",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/experience-first.md"
+      }
     },
     {
       "name": "forge-principle-fix-root-causes",
@@ -412,7 +664,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "A symptom recurs or evidence points to a shared cause",
+        "outcome": "Bounded causal fix and regression evidence",
+        "boundary": "Do not broaden scope based on speculation",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/fix-root-causes.md"
+      }
     },
     {
       "name": "forge-principle-foundational-thinking",
@@ -426,7 +685,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "An unclear premise or constraint blocks a sound decision",
+        "outcome": "Reduce to relevant facts and rebuild the reasoning",
+        "boundary": "No restarting known project foundations on every task",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/foundational-thinking.md"
+      }
     },
     {
       "name": "forge-principle-guard-the-context-window",
@@ -440,7 +706,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Context volume, handoff or resume threatens correctness",
+        "outcome": "Focused current contract with source pointers and refresh rules",
+        "boundary": "Never omit material constraints just to reduce tokens",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/guard-the-context-window.md"
+      }
     },
     {
       "name": "forge-principle-laziness-protocol",
@@ -454,7 +727,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "The task needs the smallest complete route",
+        "outcome": "Remove unnecessary work while retaining actual acceptance",
+        "boundary": "No skipping required checks or calling partial work done",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/laziness-protocol.md"
+      }
     },
     {
       "name": "forge-principle-make-operations-idempotent",
@@ -468,7 +748,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "An operation can be retried or duplicated",
+        "outcome": "Stable operation identity, reconciliation and bounded retry",
+        "boundary": "No assumption that a helper digest makes an external operation atomic",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/make-operations-idempotent.md"
+      }
     },
     {
       "name": "forge-principle-migrate-callers-then-delete-legacy-apis",
@@ -482,7 +769,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "An API or compatibility route is being replaced",
+        "outcome": "Account for consumers and migrate deliberately",
+        "boundary": "Preserve the required working skill fallback; no premature deletion",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/migrate-callers-then-delete-legacy-apis.md"
+      }
     },
     {
       "name": "forge-principle-minimize-reader-load",
@@ -496,7 +790,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Code, instructions or evidence impose avoidable reading cost",
+        "outcome": "Clear concise structure with essential facts easy to find",
+        "boundary": "Do not hide requirements or exceptions behind terse prose",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/minimize-reader-load.md"
+      }
     },
     {
       "name": "forge-principle-model-the-domain",
@@ -510,7 +811,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "State, vocabulary or schema affects correctness",
+        "outcome": "A small coherent domain model with explicit invariants",
+        "boundary": "No speculative abstraction for an unobserved domain",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/model-the-domain.md"
+      }
     },
     {
       "name": "forge-principle-never-block-on-the-human",
@@ -524,7 +832,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Authorized work can proceed despite an avoidable interruption",
+        "outcome": "Make routine decisions and continue independent work",
+        "boundary": "No bypass of material missing authority or required owner decisions",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/never-block-on-the-human.md"
+      }
     },
     {
       "name": "forge-principle-outcome-oriented-execution",
@@ -538,7 +853,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "A task has a concrete outcome and several possible activities",
+        "outcome": "Work and acceptance tied to the intended result",
+        "boundary": "Do not substitute activity counts, plans or confidence for completion",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/outcome-oriented-execution.md"
+      }
     },
     {
       "name": "forge-principle-prove-it-works",
@@ -552,7 +874,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "A material completion claim needs evidence",
+        "outcome": "The smallest meaningful check of the actual changed behavior",
+        "boundary": "Do not infer live success from fixture tests or a file hash",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/prove-it-works.md"
+      }
     },
     {
       "name": "forge-principle-redesign-from-first-principles",
@@ -566,7 +895,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Evidence shows a local patch cannot solve the fundamental problem",
+        "outcome": "A bounded redesign justified against simpler options",
+        "boundary": "No automatic rewrite of a working system",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/redesign-from-first-principles.md"
+      }
     },
     {
       "name": "forge-principle-separate-before-serializing-shared-state",
@@ -580,7 +916,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Parallel work conflicts over mutable state",
+        "outcome": "Disjoint scope/worktrees where appropriate, then serialize remaining conflicts",
+        "boundary": "A separate branch in one working directory is not isolation",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/separate-before-serializing-shared-state.md"
+      }
     },
     {
       "name": "forge-principle-sequence-verifiable-units",
@@ -594,7 +937,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Work spans dependent meaningful increments",
+        "outcome": "Order independently checkable outcomes and dependencies",
+        "boundary": "No micro-task bureaucracy or phase claims without evidence",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/sequence-verifiable-units.md"
+      }
     },
     {
       "name": "forge-principle-subtract-before-you-add",
@@ -608,7 +958,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "A proposed addition may duplicate an existing capability",
+        "outcome": "Reuse or simplify existing owners before adding machinery",
+        "boundary": "Do not remove a necessary control merely to shrink code",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/subtract-before-you-add.md"
+      }
     },
     {
       "name": "forge-principle-type-system-discipline",
@@ -622,7 +979,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Types and boundary validation can prevent actual errors",
+        "outcome": "Use the project's type discipline and real runtime checks where needed",
+        "boundary": "Do not infer runtime correctness from types alone",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/type-system-discipline.md"
+      }
     },
     {
       "name": "forge-recall",
@@ -636,7 +1000,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Relevant prior task context is needed for continuation",
+        "outcome": "Scoped recovery with refreshed volatile facts",
+        "boundary": "No broad personal-history search or assumption that an old receipt is current",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#recall"
+      }
     },
     {
       "name": "forge-reflect",
@@ -650,7 +1021,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "An observed result supports a useful retrospective",
+        "outcome": "Evidence-backed lesson candidate or task adjustment",
+        "boundary": "No raw transcript capture, second learning writer or automatic promotion",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#reflect"
+      }
     },
     {
       "name": "forge-setup",
@@ -664,7 +1042,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "A relevant setup gap prevents the selected route",
+        "outcome": "Targeted diagnosis and an authorized setup change where needed",
+        "boundary": "Selection does not authorize installation, credentials or global settings",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#setup"
+      }
     },
     {
       "name": "forge-show-me-your-work",
@@ -678,7 +1063,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "A decision, experiment or handoff needs inspectable evidence",
+        "outcome": "Use the existing authoritative trail and useful artifacts",
+        "boundary": "No competing mandatory TSV or activity log for every action",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#show-me-your-work"
+      }
     },
     {
       "name": "forge-swarm",
@@ -692,7 +1084,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Independent inspections offer enough benefit and delegation is authorized",
+        "outcome": "Bounded disjoint assignments through the existing orchestrator",
+        "boundary": "No unconditional agents or multiple shared writers",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#swarm"
+      }
     },
     {
       "name": "forge-tdd",
@@ -706,7 +1105,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Behavioral change or regression warrants test-guided implementation",
+        "outcome": "Focused failing case, working behavior and retained regression where useful",
+        "boundary": "No ritual test for prose or an assertion mirroring implementation",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#tdd"
+      }
     },
     {
       "name": "forge-teach",
@@ -720,7 +1126,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "The user needs a concept or system explained",
+        "outcome": "The smallest understandable source-grounded explanation",
+        "boundary": "No fixed diagram count, image generation or parallelism",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#teach"
+      }
     },
     {
       "name": "forge-technical-writing",
@@ -734,7 +1147,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "The task produces technical instructions or explanation",
+        "outcome": "Clear structure, concrete terms and checked examples",
+        "boundary": "Do not expand a small answer into unnecessary documentation",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#technical-writing"
+      }
     },
     {
       "name": "forge-typescript-best-practices",
@@ -748,7 +1168,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Relevant TypeScript implementation or review",
+        "outcome": "Project-consistent types, boundaries and focused validation",
+        "boundary": "Reading a known .ts file does not require a new architecture or test campaign",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#typescript-best-practices"
+      }
     },
     {
       "name": "forge-unslop",
@@ -762,7 +1189,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "Generated or existing content contains unnecessary complexity or weak prose",
+        "outcome": "Bounded cleanup preserving behavior and useful detail",
+        "boundary": "No unrelated refactor or style-only churn",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#unslop"
+      }
     },
     {
       "name": "forge-why",
@@ -776,7 +1210,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "A decision's rationale requires historical or external evidence",
+        "outcome": "Authorized relevant sources, provenance and labeled inference",
+        "boundary": "No broad connector search or invented intent",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/companion-methods.md#why"
+      }
     },
     {
       "name": "frontend-design",
@@ -784,17 +1225,35 @@
       "author": "Rogemar; upstream notices preserved",
       "upstream_repository": "https://github.com/digitalpilipinas/open-design",
       "license": "Apache-2.0; per-reference notices preserved",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "Actual component, design-system or frontend implementation",
+        "outcome": "Respect existing tokens, components and framework choices",
+        "boundary": "No new design system or dependency solely because a skill exists",
+        "activation": "conditional"
+      }
     },
     {
       "name": "gh-address-comments",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "Actual relevant PR comments or applicable failing CI",
+        "outcome": "Prefer the available GitHub integration; these are existing CLI fallback methods",
+        "boundary": "No requirement to create CI for every PR or duplicate a healthy primary route",
+        "activation": "conditional"
+      }
     },
     {
       "name": "gh-fix-ci",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "Actual relevant PR comments or applicable failing CI",
+        "outcome": "Prefer the available GitHub integration; these are existing CLI fallback methods",
+        "boundary": "No requirement to create CI for every PR or duplicate a healthy primary route",
+        "activation": "conditional"
+      }
     },
     {
       "name": "hatch-pet",
@@ -802,7 +1261,13 @@
       "license_evidence": "LICENSE.txt",
       "targets": [
         "codex"
-      ]
+      ],
+      "routing": {
+        "trigger": "The user requests the corresponding media or pet capability",
+        "outcome": "Use an available authorized provider/runtime and verify the artifact",
+        "boundary": "No default paid generation, private upload or application activation",
+        "activation": "conditional"
+      }
     },
     {
       "name": "integrated-workflow",
@@ -812,41 +1277,95 @@
         "create-plan",
         "first-time-right-delivery",
         "code-review-and-quality"
-      ]
+      ],
+      "routing": {
+        "trigger": "Approved multi-stage delivery or a non-trivial execution contract",
+        "outcome": "Lifecycle, sole dispatcher and evidence discipline respectively",
+        "boundary": "No three competing coordinators or mandatory heavy process for small tasks",
+        "activation": "conditional"
+      }
     },
     {
       "name": "interaction-polish",
-      "source": "approved local user-level snapshot; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)"
+      "source": "approved local user-level snapshot; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)",
+      "routing": {
+        "trigger": "Interaction, motion or vector assets materially affect the task",
+        "outcome": "Task-relevant implementation and visible/export evidence",
+        "boundary": "No decorative work or generated assets when they do not improve the requested outcome",
+        "activation": "conditional"
+      }
     },
     {
       "name": "knowledge-base-answering",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "A task needs source-based answers or synthesis",
+        "outcome": "Relevant sources, provenance, uncertainty and optional maintained views",
+        "boundary": "No mandatory wiki or treating a derived summary as authority",
+        "activation": "conditional"
+      }
     },
     {
       "name": "linear",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "The task explicitly concerns available issue or meeting sources",
+        "outcome": "Read/extract relevant authorized information; mutate only within scope",
+        "boundary": "No broad private source search or publishing tasks/messages without authority",
+        "activation": "conditional"
+      }
     },
     {
       "name": "meeting-notes-task-extractor",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "The task explicitly concerns available issue or meeting sources",
+        "outcome": "Read/extract relevant authorized information; mutate only within scope",
+        "boundary": "No broad private source search or publishing tasks/messages without authority",
+        "activation": "conditional"
+      }
     },
     {
       "name": "mobile-release-manager",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "The authorized delivery target needs readiness or deployment work",
+        "outcome": "Choose the actual target and applicable release proof",
+        "boundary": "A PR-to-main request does not deploy or release to every platform",
+        "activation": "conditional"
+      }
     },
     {
       "name": "motion-animation-engineer",
-      "source": "approved local user-level snapshot; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)"
+      "source": "approved local user-level snapshot; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)",
+      "routing": {
+        "trigger": "Interaction, motion or vector assets materially affect the task",
+        "outcome": "Task-relevant implementation and visible/export evidence",
+        "boundary": "No decorative work or generated assets when they do not improve the requested outcome",
+        "activation": "conditional"
+      }
     },
     {
       "name": "netlify-deploy",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "The authorized delivery target needs readiness or deployment work",
+        "outcome": "Choose the actual target and applicable release proof",
+        "boundary": "A PR-to-main request does not deploy or release to every platform",
+        "activation": "conditional"
+      }
     },
     {
       "name": "offline-sync-auditor",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Canonical data or offline/retry behavior changes",
+        "outcome": "Schema compatibility, isolation, conflict and recovery evidence",
+        "boundary": "Do not add sync architecture to unrelated data work",
+        "activation": "conditional"
+      }
     },
     {
       "name": "opendesign",
@@ -854,36 +1373,78 @@
       "author": "Rogemar; upstream notices preserved",
       "upstream_repository": "https://github.com/digitalpilipinas/open-design",
       "license": "Apache-2.0; per-reference notices preserved",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "The requested design source/workflow uses the corresponding service",
+        "outcome": "Relevant authorized native route, with existing source fallback where adequate",
+        "boundary": "No sign-in, installation or external write implied by selection",
+        "activation": "conditional"
+      }
     },
     {
       "name": "pdf",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "The actual artifact/data type needs these methods",
+        "outcome": "Usable inspected artifact and relevant analytical checks",
+        "boundary": "No mandatory artifact conversion for a simple answer",
+        "activation": "conditional"
+      }
     },
     {
       "name": "performance-profiler",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Defect or measured performance problem",
+        "outcome": "Focused diagnosis and behavior/measurement evidence",
+        "boundary": "No unrelated optimization or speculative rewrite",
+        "activation": "conditional"
+      }
     },
     {
       "name": "plan-model-router",
       "source": "approved local user-level snapshot",
       "targets": [
         "codex"
-      ]
+      ],
+      "routing": {
+        "trigger": "Planning a material change or requested plan",
+        "outcome": "create-plan owns the plan; route models only when useful and supported",
+        "boundary": "No new plan for accepted continuation; model/provider choice stays with the active authorized harness",
+        "activation": "conditional"
+      }
     },
     {
       "name": "playwright",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "Applicable accessibility or rendered/interaction behavior needs checking",
+        "outcome": "Use the relevant subset and actual available view/browser tools",
+        "boundary": "Not a mandatory four-skill bundle; no invented screenshot or runtime pass",
+        "activation": "conditional"
+      }
     },
     {
       "name": "privacy-safety-review",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Change crosses material security/privacy or truthfulness concerns",
+        "outcome": "Appropriate prevention and evidence-backed review",
+        "boundary": "Generic concern is not a confirmed vulnerability or reason for every-task audit",
+        "activation": "conditional"
+      }
     },
     {
       "name": "project-learning",
-      "source": "approved local Codex snapshot"
+      "source": "approved local Codex snapshot",
+      "routing": {
+        "trigger": "An enrolled project has a verified useful outcome or relevant accepted lesson",
+        "outcome": "Single writer, bounded recall, candidate review and governed promotion",
+        "boundary": "Learning remains nonblocking where specified; no raw transcript or silent global mutation",
+        "activation": "conditional"
+      }
     },
     {
       "name": "reference-design-contract",
@@ -891,80 +1452,182 @@
       "author": "Rogemar; upstream notices preserved",
       "upstream_repository": "https://github.com/digitalpilipinas/open-design",
       "license": "Apache-2.0; per-reference notices preserved",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "An interface task needs scope, journey or visual-reference constraints",
+        "outcome": "The smallest sufficient design/input contract",
+        "boundary": "No design stage for a task whose outcome is already clear",
+        "activation": "conditional"
+      }
     },
     {
       "name": "research-synthesizer",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "A task needs source-based answers or synthesis",
+        "outcome": "Relevant sources, provenance, uncertainty and optional maintained views",
+        "boundary": "No mandatory wiki or treating a derived summary as authority",
+        "activation": "conditional"
+      }
     },
     {
       "name": "screenshot",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "Applicable accessibility or rendered/interaction behavior needs checking",
+        "outcome": "Use the relevant subset and actual available view/browser tools",
+        "boundary": "Not a mandatory four-skill bundle; no invented screenshot or runtime pass",
+        "activation": "conditional"
+      }
     },
     {
       "name": "security-best-practices",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "Change crosses material security/privacy or truthfulness concerns",
+        "outcome": "Appropriate prevention and evidence-backed review",
+        "boundary": "Generic concern is not a confirmed vulnerability or reason for every-task audit",
+        "activation": "conditional"
+      }
     },
     {
       "name": "seo-content-strategy",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Requested writing, search strategy or social content",
+        "outcome": "Project-appropriate content with source and brand constraints",
+        "boundary": "No importing another project's brand or publishing by default",
+        "activation": "conditional"
+      }
     },
     {
       "name": "social-content-factory",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Requested writing, search strategy or social content",
+        "outcome": "Project-appropriate content with source and brand constraints",
+        "boundary": "No importing another project's brand or publishing by default",
+        "activation": "conditional"
+      }
     },
     {
       "name": "sora",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "The user requests the corresponding media or pet capability",
+        "outcome": "Use an available authorized provider/runtime and verify the artifact",
+        "boundary": "No default paid generation, private upload or application activation",
+        "activation": "conditional"
+      }
     },
     {
       "name": "speech",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "The user requests the corresponding media or pet capability",
+        "outcome": "Use an available authorized provider/runtime and verify the artifact",
+        "boundary": "No default paid generation, private upload or application activation",
+        "activation": "conditional"
+      }
     },
     {
       "name": "supabase",
       "source": "approved local user-level snapshot",
-      "upstream_repository": "https://github.com/supabase/agent-skills"
+      "upstream_repository": "https://github.com/supabase/agent-skills",
+      "routing": {
+        "trigger": "The actual project/task uses Supabase",
+        "outcome": "Prefer available official/native integration and existing connector-independent fallback as appropriate",
+        "boundary": "No mandatory provider migration or unrequested backend service",
+        "activation": "conditional"
+      }
     },
     {
       "name": "supabase-guardian",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "The actual project/task uses Supabase",
+        "outcome": "Prefer available official/native integration and existing connector-independent fallback as appropriate",
+        "boundary": "No mandatory provider migration or unrequested backend service",
+        "activation": "conditional"
+      }
     },
     {
       "name": "test-architecture-engineer",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "A meaningful candidate needs review or evidence design",
+        "outcome": "One finding disposition owner; focused tests; architecture support only for real evidence-design uncertainty",
+        "boundary": "Do not add a panel or architecture exercise for an obvious unit check",
+        "activation": "conditional"
+      }
     },
     {
       "name": "transcribe",
       "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "The user requests the corresponding media or pet capability",
+        "outcome": "Use an available authorized provider/runtime and verify the artifact",
+        "boundary": "No default paid generation, private upload or application activation",
+        "activation": "conditional"
+      }
     },
     {
       "name": "ux-flow-architect",
-      "source": "approved local user-level snapshot; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)"
+      "source": "approved local user-level snapshot; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)",
+      "routing": {
+        "trigger": "An interface task needs scope, journey or visual-reference constraints",
+        "outcome": "The smallest sufficient design/input contract",
+        "boundary": "No design stage for a task whose outcome is already clear",
+        "activation": "conditional"
+      }
     },
     {
       "name": "vector-asset-pipeline",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Interaction, motion or vector assets materially affect the task",
+        "outcome": "Task-relevant implementation and visible/export evidence",
+        "boundary": "No decorative work or generated assets when they do not improve the requested outcome",
+        "activation": "conditional"
+      }
     },
     {
       "name": "vercel-deploy",
       "source": "approved local user-level snapshot",
       "license_evidence": "LICENSE.txt",
       "author": "Vercel",
-      "upstream_repository": "https://github.com/vercel-labs/agent-skills"
+      "upstream_repository": "https://github.com/vercel-labs/agent-skills",
+      "routing": {
+        "trigger": "The authorized delivery target needs readiness or deployment work",
+        "outcome": "Choose the actual target and applicable release proof",
+        "boundary": "A PR-to-main request does not deploy or release to every platform",
+        "activation": "conditional"
+      }
     },
     {
       "name": "visual-qa",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Applicable accessibility or rendered/interaction behavior needs checking",
+        "outcome": "Use the relevant subset and actual available view/browser tools",
+        "boundary": "Not a mandatory four-skill bundle; no invented screenshot or runtime pass",
+        "activation": "conditional"
+      }
     },
     {
       "name": "workflow-orchestrator",
-      "source": "approved local user-level snapshot"
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Approved multi-stage delivery or a non-trivial execution contract",
+        "outcome": "Lifecycle, sole dispatcher and evidence discipline respectively",
+        "boundary": "No three competing coordinators or mandatory heavy process for small tasks",
+        "activation": "conditional"
+      }
     },
     {
       "name": "universal-forge",
@@ -975,14 +1638,26 @@
         "universal-plan-model-router"
       ],
       "license": "MIT",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "Select the appropriate shared method and one non-Codex entry",
+        "outcome": "Engineering methods and matched native/portable execution",
+        "boundary": "Do not invoke an additional Forge entry or overwrite PStack ownership",
+        "activation": "conditional"
+      }
     },
     {
       "name": "universal-plan-model-router",
       "source": "approved portable Forge expansion, 2026-09-07",
       "requires": [
         "workflow-orchestrator"
-      ]
+      ],
+      "routing": {
+        "trigger": "Planning a material change or requested plan",
+        "outcome": "create-plan owns the plan; route models only when useful and supported",
+        "boundary": "No new plan for accepted continuation; model/provider choice stays with the active authorized harness",
+        "activation": "conditional"
+      }
     },
     {
       "name": "cursor-forge",
@@ -999,7 +1674,13 @@
       "author": "Rogemar (Cursor adapter); Lauren Tan (upstream PStack methods)",
       "license": "Repository license for adapter additions; MIT for upstream PStack methods",
       "license_evidence": "LICENSE.txt",
-      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack"
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
+      "routing": {
+        "trigger": "Select the appropriate shared method and one non-Codex entry",
+        "outcome": "Engineering methods and matched native/portable execution",
+        "boundary": "Do not invoke an additional Forge entry or overwrite PStack ownership",
+        "activation": "conditional"
+      }
     },
     {
       "name": "cursor-forge-setup",
@@ -1014,7 +1695,13 @@
       "author": "Rogemar (Cursor adapter); Lauren Tan (upstream PStack methods)",
       "license": "Repository license for adapter additions; MIT for upstream PStack methods",
       "license_evidence": "LICENSE.txt",
-      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack"
+      "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
+      "routing": {
+        "trigger": "Relevant capability/update/setup need",
+        "outcome": "Existing maintainer and native adaptation, with AQ-01/UP-01 where applicable",
+        "boundary": "Selection grants no new install, watcher, credentials or configuration authority",
+        "activation": "conditional"
+      }
     },
     {
       "name": "shadcn",
@@ -1022,7 +1709,13 @@
       "author": "shadcn; adapted by Rogemar Agent Toolkit",
       "upstream_repository": "https://github.com/shadcn-ui/ui",
       "license": "MIT",
-      "license_evidence": "LICENSE.txt"
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "Actual component, design-system or frontend implementation",
+        "outcome": "Respect existing tokens, components and framework choices",
+        "boundary": "No new design system or dependency solely because a skill exists",
+        "activation": "conditional"
+      }
     },
     {
       "name": "forge-principle-attack-the-premise",
@@ -1036,7 +1729,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "The stated approach may conflict with the actual goal",
+        "outcome": "Challenge the assumption with evidence, then preserve the owner's decision",
+        "boundary": "Do not reopen settled intent without new evidence",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/attack-the-premise.md"
+      }
     },
     {
       "name": "forge-principle-test-behavior-not-implementation",
@@ -1050,7 +1750,14 @@
       "upstream_repository": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
       "requires": [
         "codex-forge"
-      ]
+      ],
+      "routing": {
+        "trigger": "A test or acceptance check is being designed",
+        "outcome": "Observable outcome and a case that can fail meaningfully",
+        "boundary": "No brittle string matching as proof that instructions were followed",
+        "activation": "conditional",
+        "fallback": "engineering-playbooks/references/principles/test-behavior-not-implementation.md"
+      }
     }
   ],
   "external_skill_groups": [

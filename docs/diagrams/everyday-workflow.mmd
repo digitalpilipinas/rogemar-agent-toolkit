@@ -1,0 +1,26 @@
+flowchart TD
+    request[Requested outcome and constraints] --> frame{Existing approved plan?}
+    frame -->|No| plan[create-plan: inspect, frame, acceptance]
+    plan --> approve[Owner approves substantive scope]
+    frame -->|Yes| route[One native or universal execution entry]
+    approve --> route
+    route --> owner[Integrated Workflow; one orchestrator; recorded authority]
+    owner --> build[Implement coherent slice; test during development]
+    build --> risk{Substantive or required review?}
+    risk -->|No| focused[Focused checks and evidence]
+    risk -->|Yes| local[Complete-slice local quality and CodeRabbit review]
+    local --> fix[Validate and fix accepted defects; recheck affected proof]
+    fix --> permitted{PR publication authorized?}
+    focused --> permitted
+    permitted -->|No| localend[Local candidate and honest handoff]
+    permitted -->|Yes| ready[Ready PR after applicable local gates]
+    ready --> cloud[Required CodeRabbit and Codex reviews; CI]
+    cloud --> barrier[Wait for all required reviews in the wave]
+    barrier --> reconcile[One finding record; validate, fix, recheck]
+    reconcile --> follow{Required coverage still due?}
+    follow -->|Within existing allowance| cloud
+    follow -->|Allowance exhausted or blocked| blocked[Preserve progress; report gap; no unsafe merge]
+    follow -->|No| merge{Merge authorized and all required gates met?}
+    merge -->|No| handoff[Stop at authorized boundary]
+    merge -->|Yes| verify[Merge and verify exact target]
+    verify -. Enrolled only .-> learning[Inactive learning candidate; optional knowledge upkeep]

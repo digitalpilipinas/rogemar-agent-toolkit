@@ -8,6 +8,10 @@ metadata:
 
 # Create Plan
 
+For intent, source-mode, or approval ambiguity, apply the bounded
+[task-framing method](references/task-framing.md). Reuse accepted framing; do not
+start a new prompt-approval loop inside authorized execution.
+
 Produce one actionable plan that another capable implementer can use without
 reconstructing the conversation. Reuse an existing approved plan and its task
 IDs rather than creating a competing plan, board, or execution workflow.

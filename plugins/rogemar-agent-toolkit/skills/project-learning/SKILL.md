@@ -5,6 +5,10 @@ description: Initialize and maintain project-local continuous learning, review c
 
 # Project Learning
 
+Apply [lifecycle and evidence maintenance](references/lifecycle-maintenance.md)
+when reading or changing accepted guidance. Quarantined or retired entries are
+history, not active guidance. Keep source freshness and approval separate.
+
 Maintain durable, evidence-backed project lessons without turning unreviewed chat content into instructions.
 
 ## Boundaries
@@ -75,6 +79,11 @@ The existing workflow owner automatically assesses one candidate at a verified t
 - Review reminders appear only when `review_due` is true, once per pending threshold or milestone with new pending material. Reminders do not approve anything.
 
 ### Global improvement proposal
+
+For root-event deduplication, bounded `recall`, concrete proposal staging,
+approved coherent groups and recoverable application/rollback, read
+[lifecycle maintenance](references/lifecycle-maintenance.md). These extend the
+existing writer and do not automatically enroll a project or change old records.
 
 When the owner authorizes evaluating enrolled projects' accepted lessons for shared-skill improvements, inspect an accepted source entry and current canonical target skill. Prefer an existing type, lint, schema or small tested guard when it can prevent the mistake better than prose. Keep context-dependent rules as bounded guidance.
 

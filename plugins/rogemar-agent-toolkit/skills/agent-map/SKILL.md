@@ -7,6 +7,10 @@ description: Use a local, on-demand repository map to reduce exploratory file re
 
 ## Purpose
 
+Code navigation is distinct from maintained research. Keep this index metadata-only;
+source-linked synthesis belongs in an explicitly enrolled knowledge workflow.
+A known-file task still goes directly to source without a wiki or map detour.
+
 Use a small local index as a navigation aid before reading unfamiliar code. The map is a locator, not source-of-truth: always verify decisions against current source and tests.
 
 The skill is intentionally local-only. It does not install Graft, use an LLM, send source over the network, add hooks, register MCP, edit agent configuration, or modify `.gitignore`.

@@ -55,8 +55,9 @@ hosting, deployment, testing, or integration guidance. Do not assume a stack.
 - Use `first-time-right-delivery` for non-trivial implementation or delivery.
 - Use `create-plan` for coding plans and `plan-model-router` when its routing
   policy applies.
-- Use `code-review-tests`, `test-architecture-engineer`, and `bug-triage` for
-  review, test strategy, and diagnosis respectively.
+- Use `code-review-and-quality` for the review owner, with `code-review-tests`
+  contributing focused evidence to the same record. Use `test-architecture-engineer`
+  for test strategy and `bug-triage` for diagnosis.
 - Add privacy, security, accessibility, performance, offline, or release
   skills only when the task makes those risks applicable.
 - Report evidence as Verified, Partial, Unverified, Blocked, or Deferred.

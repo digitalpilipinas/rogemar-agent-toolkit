@@ -7,9 +7,9 @@ metadata:
 
 # PR Comment Handler
 
-Guide to find the open PR for the current branch and address its comments with gh CLI. Prefer the GitHub-plugin `gh-address-comments` skill for connected review-thread context; this is the connector-independent fallback. Start GitHub CLI calls normally; retry only the exact command with narrowly scoped elevation if a network or sandbox denial blocks it.
+Guide to find the open PR for the current branch and address its comments with gh CLI. Prefer the GitHub-plugin `gh-address-comments` skill for connected review-thread context; this is the connector-independent fallback. Start GitHub CLI calls normally and use only the active host's supported permission flow for a blocked command; do not invent elevation flags or bypass a denial.
 
-Prereq: run `gh auth status` normally. If a network or sandbox denial blocks it, retry with narrowly scoped elevation. If authentication is absent, ask the user to authorize or complete `gh auth login`; do not initiate login automatically.
+Prereq: run `gh auth status` normally. If authentication is absent, use a supported already-authorized account flow or ask the user to authorize or complete `gh auth login`; do not initiate a new login automatically.
 
 ## 1) Inspect comments needing attention
 - Run scripts/fetch_comments.py which will print out all the comments and review threads on the PR
@@ -28,4 +28,4 @@ Prereq: run `gh auth status` normally. If a network or sandbox denial blocks it,
   dispositions so duplicates do not create another work loop.
 
 Notes:
-- If gh hits auth/rate issues mid-run, prompt the user to re-authenticate with `gh auth login`, then retry.
+- Distinguish expired authentication, denied permission and rate limits. Re-authenticate only for a demonstrated authentication problem; honor retry timing for rate limits and preserve blocked operations.

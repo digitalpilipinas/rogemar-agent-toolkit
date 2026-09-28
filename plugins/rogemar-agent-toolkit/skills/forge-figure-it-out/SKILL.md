@@ -11,13 +11,13 @@ Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md) be
 
 
 
-When the task matches no playbook, design one. The deliverable before any code is the workflow itself: a sequence of phases that scales rigor to the task, runs the scientific method, and leaves a decision trail a human can audit after stepping away. Bias toward more rigor. The cost of building the wrong thing dwarfs the cost of being careful.
+When the task matches no playbook, design one. When no approved workflow exists, the first deliverable is a proportionate workflow: a sequence of phases that scales rigor to the task, runs the scientific method, and leaves a decision trail a human can audit after stepping away. Bias toward more rigor. The cost of building the wrong thing dwarfs the cost of being careful.
 
 Don't reinvent a playbook you already have. A focused single-unit task that matches Bug fix, Perf, Feature, Visual parity, Eval, or Multi-phase plan routes there. But a large or cross-cutting version of one (a migration across many call sites, an ambitious multi-part change), or work the user reviews after stepping away, belongs here even though a single-unit version would be a Feature. The rigor and the audit trail are the point.
 
 ## Start
 
-Open a todolist whose first item is to read the Principles section of the **codex-forge** skill. Then add the phases below as todos.
+Reuse the accepted plan, task IDs and evidence record. Read applicable Forge principles and add only missing work to that existing plan. Do not restart an approved programme or open a competing todo list.
 
 ## Phase A: Frame
 
@@ -27,18 +27,18 @@ Ground first, then commit. Don't start the run until you can state:
 - Scope, quantified: rough units and effort, plus the blockers grounding surfaced. Raise them before spending hours, not after fifty doomed commits.
 - The rigor level, biased high. One-way doors and high blast radius get more; reversible low-stakes steps get less. Rigor is gates and artifacts, not "try harder".
 
-Present the framing and tradeoffs before committing to a long run. Reversible work proceeds (the **never-block-on-the-human** principle skill), but a multi-hour run earns one checkpoint.
+Present the framing and tradeoffs before committing to a long run. Continue already authorized work. Ask only when a material new scope, authority or consequential decision is unresolved; duration alone does not require another approval.
 
 ## Phase B: Design the workflow
 
 Decompose into atomic, independently-landable units. Sequence riskiest-unknown-first so option value stays high. Scaffold and verification come before features (the **foundational-thinking** principle skill).
 
-- Build the verification harness before the work, with the baseline captured from the pre-change state, so the check reads as "old value vs new value".
+- Choose the decisive existing check and capture a relevant baseline before changing behavior. Build a small verification harness only when existing checks cannot establish the outcome.
 - For one-way-door design decisions, ask the orchestrator to select **forge-architect** skill (it runs **forge-arena**) with diverse, isolated, opinionated candidates and an independent read-only judge requested through the orchestrator under the active routing policy, preserving explicit user and host limits. Skip it for mechanical work whose shape is already concrete. A second arena over a settled design is over-engineering (the **laziness-protocol** principle skill).
-- Decide what fans out. Parallelize only across genuine seams, and give each worker its own worktree or branch (the **separate-before-serializing-shared-state** principle skill). Don't over-fan.
+- Decide what fans out. Parallelize only across genuine seams, and isolate concurrent writers in separate worktrees with disjoint ownership; branches in one working directory do not isolate writes (the **separate-before-serializing-shared-state** principle skill). Don't over-fan.
 - Write the designed phase list down. That list is what the human reviews.
 
-Then put the design into motion. Add its steps to the todolist as concrete items, after the Phase C entry and before Phase D. Run each under the Phase C loop discipline, and weave the Phase D log through them, a row as each step lands, rather than saving the whole trail for the end.
+Then execute those steps through the existing accepted plan and task IDs. Apply the Phase C loop discipline and record material decisions and evidence as they occur. Do not create a second phase list or require a new row for every routine action.
 
 ## Phase C: Run the loop
 
@@ -46,12 +46,12 @@ Each unit is an experiment: state the hypothesis, make the smallest change, meas
 Apply the **sequence-verifiable-units** principle skill, verifying each unit before starting the next instead of batching checks at the end.
 
 - Verify by inspecting the artifact, never a self-report. When something passes too easily, suspect the observation method before the system. A blank screenshot passes a lazy gate.
-- Pair delegated work with a judge and audit the delegates' artifacts yourself before trusting them. If a worker games the gate, reset and harden the contract. If the gate itself is wrong, fix the gate in its own change rather than routing around it.
+- Inspect delegated artifacts yourself. Request independent review only when the accepted contract or material risk warrants it; reuse the existing review owner. If a worker games the gate, reset and harden the contract. If the gate itself is wrong, fix the gate in its own change rather than routing around it.
 - A verdict is VERIFIED, NOT VERIFIED, or INCONCLUSIVE. Inconclusive is not a pass. Don't hide a negative.
 
 ## Phase D: Keep the audit trail
 
-Log the run via the **forge-show-me-your-work** skill, one canonical TSV with a row per decision and per unit, evidence as links. forge-figure-it-out's work is usually ambitious enough to commit the trail so the reviewer can read it in the PR; commit it when confidence has to be shown. Prefer evidence produced by committed scripts so a reviewer can re-run it. The trail plus the diff is what lets the human come back and trust the work.
+Log the run via the **forge-show-me-your-work** skill, the existing authoritative task/evidence record, with material decisions and evidence links. A TSV is an optional export, not another required log. forge-figure-it-out's work is usually ambitious enough to commit the trail so the reviewer can read it in the PR; commit it when confidence has to be shown. Prefer evidence produced by committed scripts so a reviewer can re-run it. The trail plus the diff is what lets the human come back and trust the work.
 
 ## Phase E: Verify and hand back
 

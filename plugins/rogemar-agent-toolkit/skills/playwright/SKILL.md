@@ -11,13 +11,20 @@ Treat this skill as CLI-first automation. Do not pivot to `@playwright/test` unl
 
 ## Prerequisite check (required)
 
+This check applies to the CLI route. If the active host already provides a suitable
+browser tool, it may perform the same snapshot, interaction and evidence loop when
+the CLI is unavailable. Keep the existing wrapper as the CLI fallback. Loading this
+skill does not authorize a new global installation or a permission bypass.
+
 Before proposing commands, check whether `npx` is available (the wrapper depends on it):
 
 ```bash
 command -v npx >/dev/null 2>&1
 ```
 
-If it is not available, pause and ask the user to install Node.js/npm (which provides `npx`). Provide these steps verbatim:
+If it is not available and no suitable native browser route exists, report the
+missing runtime. When setup is within the task's authority, use the supported
+installation flow; otherwise provide these optional setup steps:
 
 ```bash
 # Verify Node/npm are installed

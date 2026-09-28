@@ -5,6 +5,11 @@ description: Use when auditing, adding, updating, or troubleshooting Codex skill
 
 # Codex Capability Maintainer
 
+The inspection, source-maintenance and qualification method is reusable in Cursor
+and other harnesses. Use the current host's actual capability controls. Preserve
+the existing Codex commands as its native route; names and catalog grouping do not
+make the shared method Codex-only.
+
 ## Workflow
 
 1. Inspect the capabilities relevant to the request: installed skill instructions,
@@ -47,9 +52,16 @@ description: Use when auditing, adding, updating, or troubleshooting Codex skill
    exercises for one exploration handoff, one authorized implementation-routing
    example, and one independent-review handoff. Report them as separate
    evidence from structural validation.
-10. Verify registrations with `codex mcp list` or `codex mcp get <name>` after
-    MCP changes. Tell the user when a restart or login is required before new
-    tools appear in future turns.
+10. Verify changed registrations through the active host. For Codex, retain
+    `codex mcp list` or `codex mcp get <name>`. Report a restart or login only when
+    the actual integration requires it.
+
+For external capability updates, apply UP-01 in the orchestrator's
+`references/capability-lifecycle.md` when available: source/version, applicability,
+concrete proposal, regression/qualification, actual approval, bounded pilot,
+observed promotion and rollback. Reuse this workflow if that optional helper is
+absent. Record AQ-01 scope/limits separately from permission and ME-01 observations
+only when useful. Keep project-derived instruction proposals with Project Learning.
 
 For discovery drift, explicit-only imports, or service/skill overlap, read
 [trigger maintenance](references/trigger-maintenance.md). Preserve working

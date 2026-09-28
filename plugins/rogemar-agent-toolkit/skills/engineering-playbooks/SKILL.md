@@ -5,6 +5,11 @@ license: MIT
 ---
 # Engineering playbooks
 
+Follow the [applicable method contract](../workflow-orchestrator/references/method-contract.md) at entry, material stage changes,
+resume and acceptance. Select relevant methods automatically; preserve one owner,
+required evidence and the original working fallback. Query the routing index only
+for the current task; do not load or activate the whole catalog.
+
 At task start/resume, before acceptance and at verified completion, apply the shared
 [automatic checkpoints](references/agent-friendly-workflow.md) when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence.
 
@@ -45,6 +50,20 @@ When selected by Universal Forge or a native adapter, stay in this method librar
 - [trace-forensics](playbooks/trace-forensics.md)
 - [visual-parity](playbooks/visual-parity.md)
 - [worktree-cleanup](playbooks/worktree-cleanup.md)
+
+## Additional portable methods
+
+These additions are separate from the 23 retained native playbook mappings:
+
+- [Knowledge maintenance](playbooks/knowledge-maintenance.md): enrolled ingest,
+  read-only query, and bounded lint; no second learning store.
+- [Focused or comprehensive security review](playbooks/security-audit.md):
+  source-grounded findings, bounded coverage, actual execution isolation.
+- [External collaboration](playbooks/external-collaboration.md): native provider
+  handoff with explicit identity, permissions, full agreed review and recovery.
+
+Select only the method needed. These entries do not install services, start
+background tasks, grant writes, or dispatch another coordinator.
 
 ## Companion methods
 

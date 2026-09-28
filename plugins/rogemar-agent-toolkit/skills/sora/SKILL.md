@@ -29,7 +29,7 @@ Creates or manages short video clips for the current project (product demos, mar
 5. Run the bundled CLI (`scripts/sora.py`) with sensible defaults (see references/cli.md). For long prompts, prefer `--prompt-file` to avoid shell-escaping issues; pair with `--no-augment` if the prompt is already structured.
 6. For async jobs, poll until complete (or use create-and-poll).
 7. Download assets (video/thumbnail/spritesheet) and save locally.
-8. Remove intermediate files created during invocation (for example `prompt.txt`, `remix_job.json`, temp JSONL). If the sandbox blocks `rm`, skip cleanup or truncate the files without surfacing an error.
+8. Remove only authorized intermediate files created during this invocation (for example `prompt.txt`, `remix_job.json`, temp JSONL). If the host denies cleanup, preserve the files and report remaining cleanup when material; never use truncation to evade a deletion denial.
 9. Iterate with a single targeted change per prompt.
 
 ## Authentication

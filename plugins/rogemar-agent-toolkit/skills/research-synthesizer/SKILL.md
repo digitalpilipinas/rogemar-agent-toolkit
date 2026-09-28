@@ -8,7 +8,7 @@ description: Use when the user asks for deep research, competitive analysis, cur
 ## Workflow
 
 1. Define the question, decision, audience, and time sensitivity.
-2. Search current sources when facts may have changed. Prefer primary sources, official docs, papers, filings, or vendor docs over commentary.
+2. Preserve the requested source boundary. For source-only summaries use the supplied material; mark its age rather than importing outside facts. When current research is authorized, prefer primary sources, official documentation, papers or filings.
 3. Collect source URLs and note what each source actually proves.
 4. Synthesize into the requested shape: brief, memo, table, recommendation, or Markdown notes.
 5. Separate confirmed facts, reasoned inferences, and open questions.
@@ -19,7 +19,14 @@ description: Use when the user asks for deep research, competitive analysis, cur
 - Do not hide uncertainty. Say what is unknown or conflicting.
 - Avoid over-weighting one source when multiple independent sources are needed.
 - For technical answers, rely on official docs, source code, standards, or primary research.
-- For EVERSO, connect research back to product value, cost, privacy, and implementation risk.
+- Connect recommendations to the actual project decision, value, cost, privacy and implementation risk. Keep project-specific policy in the project.
+
+## Retaining useful research
+
+Retain useful synthesis only within authorized knowledge enrollment. Use the
+installed knowledge-maintenance playbook when available; otherwise preserve
+source lineage, caveats and disagreements in the requested output without
+creating a store. Source summaries are not accepted behavioral lessons or policy.
 
 ## Helpful MCPs
 

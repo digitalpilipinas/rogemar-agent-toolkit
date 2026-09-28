@@ -7,6 +7,15 @@ metadata:
 
 # Integrated Workflow
 
+Follow the [applicable method contract](../workflow-orchestrator/references/method-contract.md) at entry, material stage changes,
+resume and acceptance. Select relevant methods automatically; preserve one owner,
+required evidence and the original working fallback. Query the routing index only
+for the current task; do not load or activate the whole catalog.
+
+Use [execution provenance](references/execution-provenance.md) only when the
+protected acceptance policy requires that evidence tier. Preserve the existing
+receipt and review waves; the extension creates no runner or publication authority.
+
 At task start/resume, before acceptance and at verified completion, apply the shared
 [automatic checkpoints](../engineering-playbooks/references/agent-friendly-workflow.md) when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence.
 

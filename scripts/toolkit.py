@@ -318,6 +318,15 @@ def structural_errors(check_lock: bool = True) -> list[str]:
             errors.append(f"README.md inventory is missing vendored skill: {name}")
 
     entry_by_name = {entry.get("name"): entry for entry in vendored_catalog()}
+    # Installed references are generated from the same catalog used for selection.
+    import importlib.util
+    route_spec = importlib.util.spec_from_file_location("toolkit_routing", ROOT / "scripts/routing_catalog.py")
+    if route_spec is None or route_spec.loader is None:
+        errors.append("routing verifier unavailable")
+    else:
+        routing = importlib.util.module_from_spec(route_spec)
+        route_spec.loader.exec_module(routing)
+        errors.extend(routing.verify(ROOT))
     for name in sorted(set(names) & set(tree_names)):
         skill_dir = SKILLS_ROOT / name
         skill_path = skill_dir / "SKILL.md"
@@ -329,6 +338,13 @@ def structural_errors(check_lock: bool = True) -> list[str]:
             errors.append(f"{name}: frontmatter name is {parsed_name!r}")
         if not has_description:
             errors.append(f"{name}: frontmatter description is missing")
+        if entry_by_name[name].get("routing", {}).get("activation") == "explicit-only":
+            frontmatter = skill_path.read_text().split("\n---", 1)[0]
+            if not re.search(r"(?m)^disable-model-invocation:\s*true\s*$", frontmatter):
+                errors.append(f"{name}: explicit-only frontmatter policy is missing")
+            metadata = skill_dir / "agents/openai.yaml"
+            if not metadata.is_file() or not re.search(r"allow_implicit_invocation:\s*false", metadata.read_text()):
+                errors.append(f"{name}: explicit-only Codex policy is missing")
         license_evidence = entry_by_name[name].get("license_evidence")
         if license_evidence and not (skill_dir / str(license_evidence)).is_file():
             errors.append(f"{name}: missing license evidence {license_evidence}")

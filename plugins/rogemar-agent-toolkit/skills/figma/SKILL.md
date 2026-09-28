@@ -12,7 +12,10 @@ Use the Figma MCP only when it is surfaced and authenticated for the current tas
 Use the Figma MCP server for Figma-driven implementation. For setup and debugging details (env vars, config, verification), see `references/figma-mcp-config.md`.
 
 ## Figma MCP Integration Rules
-These rules define how to translate Figma inputs into code for this project and must be followed for every Figma-driven change.
+These rules define the available MCP route. When using the capability fallback
+above, obtain equivalent node/design context and visual reference from the supplied
+exports, then retain the same implementation and visual validation requirements.
+Do not claim unavailable MCP calls or unverified design parity.
 
 ### Required flow (do not skip)
 1. Run get_design_context first to fetch the structured representation for the exact node(s).

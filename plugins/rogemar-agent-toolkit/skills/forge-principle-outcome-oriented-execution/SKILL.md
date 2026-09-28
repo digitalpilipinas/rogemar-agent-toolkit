@@ -1,6 +1,6 @@
 ---
 name: forge-principle-outcome-oriented-execution
-description: "Apply during planned rewrites and migrations with explicit phase boundaries. Converge on the target architecture; don't preserve smooth intermediate states with throwaway compatibility code."
+description: "Apply to approved rewrites and migrations. Converge on the target through verifiable units while preserving required compatibility, data and supported callers."
 license: MIT
 ---
 # Outcome-oriented execution

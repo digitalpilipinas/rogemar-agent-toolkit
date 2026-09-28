@@ -9,7 +9,7 @@ Consolidated skill for building on the Cloudflare platform. Use decision trees b
 
 ## Prerequisites
 
-- When sandboxing blocks the deployment network calls, rerun with `sandbox_permissions=require_escalated`.
+- A network or sandbox failure does not authorize escalation or a repeated deployment. Reconcile the outcome first, preserve any declined access, and use only the active harness's supported permission flow when the exact operation is already authorized.
 - The deployment might take a few minutes. Use appropriate timeout values.
 
 ## Authentication (Required Before Deploy)
@@ -215,7 +215,7 @@ Need IaC? → pulumi/ (Pulumi), terraform/ (Terraform), or api/ (REST API)
 
 ### Escalated Network Access
 
-If deployment fails due to network issues (timeouts, DNS errors, connection resets), rerun the deploy with escalated permissions (use `sandbox_permissions=require_escalated`). The deploy requires escalated network access when sandbox networking blocks outbound requests.
+For a timeout, DNS error or reset, distinguish a definite pre-execution failure from an uncertain remote outcome. Inspect authorized provider status before retrying a possible side effect. Use only supported native permission controls; never transplant a Codex-only tool argument into another harness or retry declined access. Escalation, authentication, installation and deployment each retain their applicable authorization.
 
 Example guidance to the user:
 

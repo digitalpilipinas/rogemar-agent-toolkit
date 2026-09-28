@@ -18,7 +18,7 @@ description: Use when repurposing long-form content, launch notes, articles, doc
 - LinkedIn: practical insight, founder/product angle, clear takeaway.
 - X/Twitter: crisp thread or standalone posts with one idea per post.
 - Instagram: concise caption, visual-first framing, carousel slide script if requested.
-- EVERSO: premium, ocean-aware, community-forward, never fake social proof.
+- Follow the supplied project brand and audience; never invent testimonials or social proof.
 
 ## Guardrails
 

@@ -5,6 +5,11 @@ license: MIT
 ---
 # Codex Forge
 
+Follow the [applicable method contract](../workflow-orchestrator/references/method-contract.md) at entry, material stage changes,
+resume and acceptance. Select relevant methods automatically; preserve one owner,
+required evidence and the original working fallback. Query the routing index only
+for the current task; do not load or activate the whole catalog.
+
 Read `references/forge-mode-status.md` from the installed `workflow-orchestrator`
 skill and follow that shared contract at entry,
 resume and dispatch: explicit request → task mode → saved preference; ask once
@@ -130,8 +135,8 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 - **Minimize Reader Load** (**forge-principle-minimize-reader-load**). Reviewing or shaping code that's hard to trace. Count layers and hidden state, collapse one-caller wrappers, shrink mutable scope.
 - **Outcome-Oriented Execution** (**forge-principle-outcome-oriented-execution**). Planned rewrites and migrations with explicit phase boundaries. Converge on the approved target while preserving required client and data compatibility.
 - **Experience First** (**forge-principle-experience-first**). Product, UX, or feature-scope tradeoffs. Choose user delight over implementation convenience.
-- **Exhaust the Design Space** (**forge-principle-exhaust-the-design-space**). A novel interaction or architectural decision with no precedent. Build 2-3 competing prototypes and compare before committing.
-- **Build the Lever** (**forge-principle-build-the-lever**). Any non-trivial work. Use a reusable tool when it materially improves correctness or repeated work.
+- **Exhaust the Design Space** (**forge-principle-exhaust-the-design-space**). A novel interaction or architectural decision with no precedent. Compare credible alternatives; prototype only the material uncertainty.
+- **Build the Lever** (**forge-principle-build-the-lever**). Repeated work or a meaningful verification gap. Use a reusable tool when it materially improves correctness or repeated work.
 
 **Architecture**
 

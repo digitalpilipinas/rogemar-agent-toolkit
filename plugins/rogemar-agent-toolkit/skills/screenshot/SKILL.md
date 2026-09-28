@@ -259,9 +259,13 @@ gnome-screenshot -w -f output/window.png
 
 ## Error handling
 
+Permission recovery uses only the current host's supported flow. If elevation or
+desktop access is unavailable, retain the native command as a documented fallback
+and report that missing capability; do not bypass a denial or pretend a capture ran.
+
 - On macOS, run `bash <path-to-skill>/scripts/ensure_macos_permissions.sh` first to request Screen Recording in one place.
-- If you see "screen capture checks are blocked in the sandbox", "could not create image from display", or Swift `ModuleCache` permission errors in a sandboxed run, rerun the command with escalated permissions.
+- For sandbox, display or Swift `ModuleCache` permission errors, use the supported scoped permission flow if available; otherwise report the blocked capture.
 - If macOS app/window capture returns no matches, run `--list-windows --app "AppName"` and retry with `--window-id`, and make sure the app is visible on screen.
 - If Linux region/window capture fails, check tool availability with `command -v scrot`, `command -v gnome-screenshot`, and `command -v import`.
-- If saving to the OS default location fails with permission errors in a sandbox, rerun the command with escalated permissions.
+- If the destination is blocked, use another authorized output location or the supported scoped permission flow; preserve the user's requested destination when required.
 - Always report the saved file path in the response.

@@ -5,11 +5,11 @@ description: Deploy applications and websites to Vercel using the bundled `scrip
 
 # Vercel Deploy
 
-Deploy any project to Vercel instantly. No authentication required.
+This entry describes a claimable-preview workflow. Inspect the actual upload endpoint, bundled script, account/claim behavior, permitted source and publication scope before using it; the absence of a login step is not a privacy or trust guarantee.
 
 ## Prerequisites
 
-- When sandboxing blocks the deployment network calls, rerun with `sandbox_permissions=require_escalated`.
+- A network or sandbox failure does not authorize escalation or a repeated deployment. Reconcile the outcome first, preserve declined access, and use only supported native permission controls within the exact deployment authority.
 - The deployment might take a few minutes. Use appropriate timeout values.
 
 ## How It Works
@@ -96,7 +96,7 @@ For projects without a `package.json`:
 
 ## Present Results to User
 
-Always show both URLs:
+Return the preview URL only after verifying the actual result. Treat a claim URL as a potentially sensitive transfer capability: disclose it only to the authorized owner in the intended channel, not public logs. The following is an example format, not execution evidence:
 
 ```
 ✓ Deployment successful!
@@ -112,7 +112,7 @@ To transfer this deployment to your Vercel account, visit the Claim URL.
 
 ### Escalated Network Access
 
-If deployment fails due to network issues (timeouts, DNS errors, connection resets), rerun the deploy with escalated permissions (use `sandbox_permissions=require_escalated`). The deploy requires escalated network access when sandbox networking blocks outbound requests.
+For a timeout or reset, inspect authorized provider status and reconcile any uncertain remote outcome before retrying. Do not transplant Codex-only permission arguments into another harness or retry declined access. Use only the active host permission flow when additional authority is genuinely required; preserve already granted scope.
 
 Example guidance to the user:
 

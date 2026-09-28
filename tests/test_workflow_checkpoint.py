@@ -53,6 +53,16 @@ class CheckpointTests(unittest.TestCase):
     def check(self, receipt=None, phase='accept'):
         return cp.check(self.root, self.base, phase, receipt or self.receipt, self.mapping)
 
+    def test_selected_method_required_evidence_cannot_disappear_on_resume(self):
+        required = ['method:security-review']
+        result = cp.check(self.root, self.base, 'accept', self.receipt, self.mapping, required)
+        self.assertEqual(result['status'], 'rejected')
+        self.assertTrue(any('method:security-review' in error for error in result['errors']))
+        gate = dict(self.receipt['gates'][0], gate=required[0], source='selected method contract',
+                    trigger='security-sensitive change', owner='main agent')
+        self.receipt['gates'].append(gate)
+        self.assertEqual(cp.check(self.root, self.base, 'accept', self.receipt, self.mapping, required)['status'], 'validated-record')
+
     def test_valid_identity_selection_and_resume(self):
         self.assertEqual(self.check()['status'], 'validated-record')
         self.assertEqual(self.check(phase='start')['selected'][0]['id'], 'open')
