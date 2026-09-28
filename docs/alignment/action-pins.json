@@ -26,7 +26,7 @@
       "primary_release": "https://github.com/oven-sh/bun/releases/tag/bun-v1.3.14"
     }
   ],
-  "candidate_ci_run": null,
-  "runtime_verified": false,
-  "required_before_release": "Run the resulting candidate CI and review relevant action source/release suitability. Do not infer authentication, provenance or runtime success from a pinned ref."
+  "candidate_ci_run": "ae0973d51e108c3ae54b53752a01da17a0558f84: jobs 108908168663, 108908168576, 108908168516, 108908168315",
+  "runtime_verified": true,
+  "required_before_release": "Repeat applicable checks on a changed candidate; these successful CI jobs establish action/runtime execution, not a general dependency security certification."
 }

@@ -10,11 +10,10 @@
   "strategy": "AGILE_FOCUSED",
   "delivery": "BRANCH + PR + MERGE AUTHORIZED",
   "review_exception": {
-    "source": "Owner instruction, 2026-09-28: implement through PR merge; skip external reviewers unavailable in this cloud environment.",
+    "source": "Owner instruction, 2026-09-28: skip unavailable external pre-commit reviewers, and follow the remaining Integrated Workflow through PR merge.",
     "scope": [
-      "local CodeRabbit",
-      "external reviewer agents",
-      "manual external PR-review requests"
+      "local pre-commit CodeRabbit",
+      "unavailable local pre-commit reviewer agents"
     ],
     "state": "waived-by-owner; not passed",
     "preserved": [
@@ -97,7 +96,7 @@
     "W7": "Implemented: precise findings and optional audit method; external reviewers waived for this task",
     "W8": "Implemented and locally exercised: metadata/query/removal adapters; project runtime store enrollment remains optional",
     "W9": "AQ-01, UP-01 and ME-01 contracts implemented and tested; no held-out native agent or production benefit claims",
-    "W10": "Local source checks passed; final candidate/CI/merge identity belongs to the delivery PR; Mermaid rendering unavailable locally"
+    "W10": "Source and all four-platform CI gates passed; PR follow-up approved. Final evidence-only commit and merge identity are recorded in PR 11; Mermaid rendering unavailable locally."
   },
   "checks": [
     {
@@ -122,8 +121,8 @@
     },
     {
       "check": "relevant owner suites",
-      "state": "partial-local; Bun awaits CI",
-      "detail": "17 Project Learning, 44 terminal collaboration and 3 Forge plan checks passed locally; Bun unavailable here. CI provisions exact Bun only when selected. All four owners selected because runner infrastructure changed."
+      "state": "passed-in-CI",
+      "detail": "70 native Forge + 3 Forge plan + 17 Project Learning + 44 terminal collaboration tests passed on each of four Ubuntu/macOS Python 3.9/3.11 jobs. Bun was blocked locally and verified in CI instead."
     },
     {
       "check": "selection regression",
@@ -153,7 +152,7 @@
     "pr_url": "https://github.com/digitalpilipinas/rogemar-agent-toolkit/pull/11",
     "merged": false
   },
-  "snapshot": "PR remediation snapshot before publishing this correction; PR records subsequent check and merge identities",
+  "snapshot": "Pre-merge evidence snapshot. GitHub PR 11 records subsequent documentation commit, current-head checks and merge identity; merged=false here is this snapshot, not a live status feed.",
   "local_evidence": [
     {
       "artifact": "implementation-root-final.log",
@@ -222,7 +221,7 @@
     }
   ],
   "nested_candidate_sha256": "0a6bd9eb645e8250637c0ffb7a6a64f3080b761e4b2eb4d08063cac8394d35ca",
-  "final_local_gate": "192 root tests passed; lock/verify/README/routing/Forge and both core/full packages passed. Learning, terminal and Forge plan owner suites passed. Native Bun owner suite blocked locally, current-head CI required before merge.",
+  "final_local_gate": "192 root tests and 64 available owner tests passed locally; 70 native Forge tests passed in CI. Lock/verify/README/routing/Forge and both package profiles passed locally and on all four CI jobs.",
   "ci_remediation": {
     "run_id": 36413556895,
     "head": "34ef8b151bc10641ef8da0e06010b14341a7a09f",
@@ -234,11 +233,13 @@
   "automatic_reviews": {
     "codex": {
       "head": "34ef8b151bc10641ef8da0e06010b14341a7a09f",
-      "state": "completed without posted findings"
+      "state": "completed without posted findings",
+      "coverage_reuse": "Initial unchanged-source coverage retained; correction reviewed separately by main agent, targeted regressions, CI and approved CodeRabbit delta review. No current-head full Codex review claim."
     },
     "coderabbit": {
       "head": "a560fece3e624fc616c83929cd3e12084610f021",
-      "state": "initial review complete; nine findings validated and fixed in this correction; subsequent feedback belongs to PR"
+      "state": "Initial nine findings fixed and auto-resolved; follow-up APPROVED at ae0973d51e108c3ae54b53752a01da17a0558f84",
+      "approval_review_id": 5338057432
     }
   },
   "automatic_review_dispositions": [
@@ -246,55 +247,55 @@
       "comment_id": 4121569983,
       "finding": "README generated inventory",
       "resolution": "README-only PRs retain validation; docs/CHANGELOG exclusions preserved",
-      "state": "fixed; verify correction in PR"
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
     },
     {
       "comment_id": 4121570031,
       "finding": "Bun absent from CI",
       "resolution": "Pinned conditional Bun 1.3.14 setup and frozen dependencies; selector/workflow changes exercise all owner runners; missing runtime never counts as pass",
-      "state": "fixed; verify correction in PR"
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
     },
     {
       "comment_id": 4121570042,
       "finding": "Conflicting progress record instructions",
       "resolution": "Reuse existing task record throughout; no private-prompt copying",
-      "state": "fixed; verify correction in PR"
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
     },
     {
       "comment_id": 4121570055,
       "finding": "Source-free derived page",
       "resolution": "Require a resolved evidence root before serving a derived page; regression covers no content read",
-      "state": "fixed; verify correction in PR"
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
     },
     {
       "comment_id": 4121570064,
       "finding": "Recursive page dependency traversal",
       "resolution": "Iterative worklist; 1000-page chain regression",
-      "state": "fixed; verify correction in PR"
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
     },
     {
       "comment_id": 4121570070,
       "finding": "Conflicting elevation instruction",
       "resolution": "Use only actual host permission flow throughout",
-      "state": "fixed; verify correction in PR"
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
     },
     {
       "comment_id": 4121570086,
       "finding": "Lifecycle mutation permission mode",
       "resolution": "Execution mode required before request/state access; no-mutation regression and command example updated",
-      "state": "fixed; verify correction in PR"
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
     },
     {
       "comment_id": 4121570106,
       "finding": "Unconditional security-report file",
       "resolution": "File output conditional on existing task/user authority",
-      "state": "fixed; verify correction in PR"
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
     },
     {
       "comment_id": 4121570113,
       "finding": "Forge verifier import assumes script launch",
       "resolution": "Path-based module load; direct import invocation verified",
-      "state": "fixed; verify correction in PR"
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
     }
   ],
   "advisory_dispositions": [
@@ -302,5 +303,16 @@
       "finding": "CodeRabbit generic 80% docstring coverage warning",
       "resolution": "Not a repository-required merge check. Retained useful boundary/ownership docstrings; did not add boilerplate to 209 touched functions solely to reach a style percentage."
     }
-  ]
+  ],
+  "verified_ci": {
+    "head": "ae0973d51e108c3ae54b53752a01da17a0558f84",
+    "jobs": [
+      108908168663,
+      108908168576,
+      108908168516,
+      108908168315
+    ],
+    "conclusion": "all four passed",
+    "scope": "192 root tests, 134 owner tests, verification/inventories, core/full packages; final documentation-only correction still requires fresh current-head checks"
+  }
 }
