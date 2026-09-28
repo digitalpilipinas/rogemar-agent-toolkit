@@ -6,139 +6,208 @@
       "method": "authoring-a-skill",
       "source": "codex-forge/playbooks/authoring-a-skill.md",
       "source_sha256": "89481fcd8c3341160c0419bed91aec30ebcb4fcfcc334367ba54aca09dd1c7f2",
-      "portable": "playbooks/authoring-a-skill.md"
+      "portable": "playbooks/authoring-a-skill.md",
+      "trigger": "Create or revise an actual reusable skill",
+      "outcome": "Inspect its existing owner, instructions, references and distribution; verify changed behavior",
+      "boundary": "No new skill when a reference or existing skill suffices"
     },
     {
       "method": "autonomous-run",
       "source": "codex-forge/playbooks/autonomous-run.md",
       "source_sha256": "ec85fc8e06eafefd3486622d21e90589a2cd154e8518f04b7e13f8a36784983d",
-      "portable": "playbooks/autonomous-run.md"
+      "portable": "playbooks/autonomous-run.md",
+      "trigger": "Authorized work needs sustained independent progress",
+      "outcome": "Bounded units, resource/budget checks, proof and recovery",
+      "boundary": "Autonomy does not expand authority"
     },
     {
       "method": "autopilot-full",
       "source": "codex-forge/playbooks/autopilot-full.md",
       "source_sha256": "8e4837199c6e61c46997423dfc7193787efb3248c6b5da137afd6a25b09cb4a6",
-      "portable": "playbooks/autopilot-full.md"
+      "portable": "playbooks/autopilot-full.md",
+      "trigger": "A coherent authorized end-to-end delivery task",
+      "outcome": "Use the Integrated Workflow lifecycle and applicable quality/review gates",
+      "boundary": "No bypass of current delivery boundary"
     },
     {
       "method": "autopilot-stack",
       "source": "codex-forge/playbooks/autopilot-stack.md",
       "source_sha256": "56955a859630fe438d575225ac10c8495eefc60d1953fd0f62a164aeedfe08ef",
-      "portable": "playbooks/autopilot-stack.md"
+      "portable": "playbooks/autopilot-stack.md",
+      "trigger": "Work crosses a real stack or dependent set of changes",
+      "outcome": "Preserve dependency order and integrated acceptance",
+      "boundary": "No second coordinator or unconditional whole-stack rewrite"
     },
     {
       "method": "babysit",
       "source": "codex-forge/playbooks/babysit.md",
       "source_sha256": "ad38bd367f2ad414c2388e109b1a9951a54da4f0042ab1f3964527df37f2b9e2",
-      "portable": "playbooks/babysit.md"
+      "portable": "playbooks/babysit.md",
+      "trigger": "An already authorized asynchronous job or PR needs monitoring",
+      "outcome": "Observe the actual job, bounded polling, reconcile failures",
+      "boundary": "No unrelated new run, review trigger or indefinite loop"
     },
     {
       "method": "bug-fix",
       "source": "codex-forge/playbooks/bug-fix.md",
       "source_sha256": "a57883a204e00a5e2d9b64b69a661428773d623fe58b2ee8779a390621009884",
-      "portable": "playbooks/bug-fix.md"
+      "portable": "playbooks/bug-fix.md",
+      "trigger": "A reproducible or well-evidenced defect",
+      "outcome": "Triage, causal fix and meaningful regression evidence",
+      "boundary": "Do not relabel unrelated hardening as the reported defect"
     },
     {
       "method": "eval",
       "source": "codex-forge/playbooks/eval.md",
       "source_sha256": "fec0524ce21dd073a8420ad80144514606e3b3655e9872d627d3aeb1927cf9de",
-      "portable": "playbooks/eval.md"
+      "portable": "playbooks/eval.md",
+      "trigger": "A material choice requires comparative evidence",
+      "outcome": "Comparable tasks, baseline/candidate identity, positive and negative cases",
+      "boundary": "No invented benchmark, arbitrary threshold or evaluation of every trivial edit"
     },
     {
       "method": "feature",
       "source": "codex-forge/playbooks/feature.md",
       "source_sha256": "02478eb03a657edc06fff844e578e99640febcd0cf0cd973a43a5eeab8595221",
-      "portable": "playbooks/feature.md"
+      "portable": "playbooks/feature.md",
+      "trigger": "An approved new behavior is being implemented",
+      "outcome": "User-visible acceptance, dependencies and focused checks",
+      "boundary": "Preserve scope; no speculative adjacent features"
     },
     {
       "method": "hillclimb",
       "source": "codex-forge/playbooks/hillclimb.md",
       "source_sha256": "f6873340f466310127bb9f65d32f7705a3c3552429a0af74a216e729a52b6c23",
-      "portable": "playbooks/hillclimb.md"
+      "portable": "playbooks/hillclimb.md",
+      "trigger": "A defined outcome can improve through useful measured iterations",
+      "outcome": "A valid baseline, bounded experiments and retained best evidence",
+      "boundary": "No optimizing a proxy while correctness or authority regresses"
     },
     {
       "method": "investigation",
       "source": "codex-forge/playbooks/investigation.md",
       "source_sha256": "48a278ca2249b7a10fd64f7d161bd910d4446d50c8d580700604f3a235b3579e",
-      "portable": "playbooks/investigation.md"
+      "portable": "playbooks/investigation.md",
+      "trigger": "The task asks for understanding or diagnosis before a change",
+      "outcome": "Relevant source/evidence, hypotheses and explicit uncertainty",
+      "boundary": "Do not implement under a read-only investigation scope"
     },
     {
       "method": "multi-phase-plan",
       "source": "codex-forge/playbooks/multi-phase-plan.md",
       "source_sha256": "136839850c2319b8055b3f7c5875d80e4880929d7c7377cdef4e633dbc723efd",
-      "portable": "playbooks/multi-phase-plan.md"
+      "portable": "playbooks/multi-phase-plan.md",
+      "trigger": "Substantial work needs ordered coherent phases",
+      "outcome": "Reuse create-plan and accepted IDs with dependencies and evidence",
+      "boundary": "No competing programme or replanning approved work by default"
     },
     {
       "method": "opening-a-pr",
       "source": "codex-forge/playbooks/opening-a-pr.md",
       "source_sha256": "a687be0452152eb6d13adca905ccf281b3af232f395c894952d925b156f47176",
-      "portable": "playbooks/opening-a-pr.md"
+      "portable": "playbooks/opening-a-pr.md",
+      "trigger": "The authorized slice is ready for a PR",
+      "outcome": "Clean intentional diff, current evidence, correct base/head and review-ready description",
+      "boundary": "PR creation does not certify required review or merge"
     },
     {
       "method": "orchestrate",
       "source": "codex-forge/playbooks/orchestrate.md",
       "source_sha256": "23dcce2b39097fab21c9f63db8fa46b6579d17fdd8cc06224b7c1bb1399ad008",
-      "portable": "playbooks/orchestrate.md"
+      "portable": "playbooks/orchestrate.md",
+      "trigger": "Distinct dependent or specialist work warrants coordination",
+      "outcome": "One workflow-orchestrator, bounded roles, shared authority and one acceptance owner",
+      "boundary": "No mandatory delegation when one agent is sufficient"
     },
     {
       "method": "pause-safely",
       "source": "codex-forge/playbooks/pause-safely.md",
       "source_sha256": "e658705fa9e71f66dfdd879958e345547f32336eaedae968047cf23ec9fcef22",
-      "portable": "playbooks/pause-safely.md"
+      "portable": "playbooks/pause-safely.md",
+      "trigger": "A stop, limitation or interruption requires a durable handoff",
+      "outcome": "Preserve state, side effects, evidence and exact next action",
+      "boundary": "No cancellation claim without observing actual job state"
     },
     {
       "method": "perf-issue",
       "source": "codex-forge/playbooks/perf-issue.md",
       "source_sha256": "5fb061c0170bae351ba64a61fddd7e401bcfa803390f1978ec37b9da1a550856",
-      "portable": "playbooks/perf-issue.md"
+      "portable": "playbooks/perf-issue.md",
+      "trigger": "A measured performance problem needs diagnosis",
+      "outcome": "Relevant baseline, bottleneck evidence and outcome check",
+      "boundary": "No unmeasured tuning or behavior regression for speed"
     },
     {
       "method": "prototype",
       "source": "codex-forge/playbooks/prototype.md",
       "source_sha256": "37461e7d1ac60eef91b57652eaa89e7380933001bc6d294b20365adceca0ee47",
-      "portable": "playbooks/prototype.md"
+      "portable": "playbooks/prototype.md",
+      "trigger": "A bounded uncertain idea needs a useful disposable experiment",
+      "outcome": "State what question the prototype resolves and its limitations",
+      "boundary": "No prototype presented as production-ready proof"
     },
     {
       "method": "refactoring",
       "source": "codex-forge/playbooks/refactoring.md",
       "source_sha256": "2b3dc3efc9bb1ff63d0d13605ed3d05f3ec3ab1bb7ee08960afdc0c5e9b70b8e",
-      "portable": "playbooks/refactoring.md"
+      "portable": "playbooks/refactoring.md",
+      "trigger": "Internal structure needs change with intended behavior preserved",
+      "outcome": "Consumer scope, behavior evidence and compatible migration",
+      "boundary": "No unintended public behavior change"
     },
     {
       "method": "runtime-forensics",
       "source": "codex-forge/playbooks/runtime-forensics.md",
       "source_sha256": "96ac9a3a368e6a31d8a7aa56055e6f7f75e8e773c21b65c0f941c26403c8d105",
-      "portable": "playbooks/runtime-forensics.md"
+      "portable": "playbooks/runtime-forensics.md",
+      "trigger": "Live/runtime behavior needs permitted investigation",
+      "outcome": "Actual environment identity, observed evidence and data minimization",
+      "boundary": "No unauthorized production access or copied secrets"
     },
     {
       "method": "session-pickup",
       "source": "codex-forge/playbooks/session-pickup.md",
-      "source_sha256": "1f294943c26955c4f5e018f458688dded558f06cb8f1672320c9c937fefc8684",
-      "portable": "playbooks/session-pickup.md"
+      "source_sha256": "8de836e4b8887833944f27bd35d660c2c4d52ce0d708d72c0dc07636d96e9aff",
+      "portable": "playbooks/session-pickup.md",
+      "trigger": "Resume after interruption, handoff or context loss",
+      "outcome": "Recover current contract and refresh changed/volatile evidence",
+      "boundary": "Old trails do not override current code, grants or task state"
     },
     {
       "method": "shipping",
       "source": "codex-forge/playbooks/shipping.md",
       "source_sha256": "78f013f312045f3501a8843a68c1c4442705d4947d27225767bb502cadecd52e",
-      "portable": "playbooks/shipping.md"
+      "portable": "playbooks/shipping.md",
+      "trigger": "The authorized candidate is ready for its selected delivery target",
+      "outcome": "Applicable reviews/checks, exact target and observed final result",
+      "boundary": "Local completion does not imply publication, release or deployment"
     },
     {
       "method": "trace-forensics",
       "source": "codex-forge/playbooks/trace-forensics.md",
       "source_sha256": "195cf8860b71c3e8a0a627220dcbac9b09580fe276a1a8a28f6e6cdb86d8724b",
-      "portable": "playbooks/trace-forensics.md"
+      "portable": "playbooks/trace-forensics.md",
+      "trigger": "A trace or event sequence can explain the problem",
+      "outcome": "Source identity, causal sequence and supported conclusions",
+      "boundary": "No transcript hoarding or invented runtime observations"
     },
     {
       "method": "visual-parity",
       "source": "codex-forge/playbooks/visual-parity.md",
       "source_sha256": "35883b7ffd029f028033cb3214b15f342acbf3bff581869fb7c5dfa93d14cdb2",
-      "portable": "playbooks/visual-parity.md"
+      "portable": "playbooks/visual-parity.md",
+      "trigger": "A requested visual reference must be matched",
+      "outcome": "Relevant rendered views and dimensions with observable comparison",
+      "boundary": "No pixel-parity demand for unrelated content work"
     },
     {
       "method": "worktree-cleanup",
       "source": "codex-forge/playbooks/worktree-cleanup.md",
       "source_sha256": "cecb335fbd9036021ed38a7872820725c3534f96e1b80537f160d297a979ee19",
-      "portable": "playbooks/worktree-cleanup.md"
+      "portable": "playbooks/worktree-cleanup.md",
+      "trigger": "Task-owned worktrees or branches can be safely retired",
+      "outcome": "Verify ownership, unmerged work, active jobs and intended destination",
+      "boundary": "Never discard unrelated user work or treat a branch name as sufficient proof"
     }
   ],
   "principles": [

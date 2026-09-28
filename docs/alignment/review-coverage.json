@@ -1,0 +1,1132 @@
+{
+  "schema_version": 1,
+  "repository": "digitalpilipinas/rogemar-agent-toolkit",
+  "baseline_commit": "0b8d9689d8fef5cfae19d1f9691b50e532b86b66",
+  "source_review_date": "2026-09-28",
+  "review_kind": "Main-agent full skill-body alignment review; resource review scoped separately; automatic PR findings handled in delivery",
+  "coverage_complete": true,
+  "counts": {
+    "complete": 110,
+    "partial": 0,
+    "not-reviewed": 0
+  },
+  "catalog_identity_method": "Canonical catalog reconciled to the actual checkout; route contracts cover all 110 identities. Mechanical hashes do not prove semantic review.",
+  "skills": [
+    {
+      "skill": "accessibility-auditor",
+      "path": "plugins/rogemar-agent-toolkit/skills/accessibility-auditor/SKILL.md",
+      "git_blob": "4be5cadb628c750f62b5f3e510125a66a09680c7",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "activity-schema-guardian",
+      "path": "plugins/rogemar-agent-toolkit/skills/activity-schema-guardian/SKILL.md",
+      "git_blob": "0333f689ba7d0a724a3a82daf0037dbdeaca0ded",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "agent-collaboration-terminal",
+      "path": "plugins/rogemar-agent-toolkit/skills/agent-collaboration-terminal/SKILL.md",
+      "git_blob": "881e82bb009a210bc74714650b15924f5e43e344",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "agent-map",
+      "path": "plugins/rogemar-agent-toolkit/skills/agent-map/SKILL.md",
+      "git_blob": "54bb3306f9b2efeda5d91e18f27992275e114b89",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "article-creator-2",
+      "path": "plugins/rogemar-agent-toolkit/skills/article-creator-2/SKILL.md",
+      "git_blob": "ebffa4ed09241a7a84e39435869ddb6c21d4349f",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "bug-triage",
+      "path": "plugins/rogemar-agent-toolkit/skills/bug-triage/SKILL.md",
+      "git_blob": "4ce51aab6620613137aca7466c5811c9196f99cc",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "cloudflare-deploy",
+      "path": "plugins/rogemar-agent-toolkit/skills/cloudflare-deploy/SKILL.md",
+      "git_blob": "3105880c0d7fb530e3ee6767496469eae8f3bc0a",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "code-review-and-quality",
+      "path": "plugins/rogemar-agent-toolkit/skills/code-review-and-quality/SKILL.md",
+      "git_blob": "adbdfff680e0ef6046cc89d474c7af5d38cda56a",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "code-review-tests",
+      "path": "plugins/rogemar-agent-toolkit/skills/code-review-tests/SKILL.md",
+      "git_blob": "9b183b5132ec3a55cac8bb93191cfe7abc5710ff",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "codex-capability-maintainer",
+      "path": "plugins/rogemar-agent-toolkit/skills/codex-capability-maintainer/SKILL.md",
+      "git_blob": "2cc109f7c745e6b094e98be0c6b1bf0458548002",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "codex-forge",
+      "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/SKILL.md",
+      "git_blob": "ce62ffc9ae14a1d1ae093c356ec560c1593eee98",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "create-plan",
+      "path": "plugins/rogemar-agent-toolkit/skills/create-plan/SKILL.md",
+      "git_blob": "d87eee510ba274f1594bd109b6b2827445dd9c42",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "csv-analytics-reporter",
+      "path": "plugins/rogemar-agent-toolkit/skills/csv-analytics-reporter/SKILL.md",
+      "git_blob": "f9df71ca2041db1303be6bf81c021d736a474382",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "cursor-forge",
+      "path": "plugins/rogemar-agent-toolkit/skills/cursor-forge/SKILL.md",
+      "git_blob": "b075385fd38f2f04085c17aa73a961049b4b7ab9",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "cursor-forge-setup",
+      "path": "plugins/rogemar-agent-toolkit/skills/cursor-forge-setup/SKILL.md",
+      "git_blob": "eb30dcb66a844a27d3922169eae2ad47374bdb98",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "deliver-approved-programme",
+      "path": "plugins/rogemar-agent-toolkit/skills/deliver-approved-programme/SKILL.md",
+      "git_blob": "c31ffc15d0b9816e4607dc5d5376744fba972cff",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "deploy-checklist",
+      "path": "plugins/rogemar-agent-toolkit/skills/deploy-checklist/SKILL.md",
+      "git_blob": "641a7e48de2ed49fc22105ebcd21e968f5423826",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "design-brief",
+      "path": "plugins/rogemar-agent-toolkit/skills/design-brief/SKILL.md",
+      "git_blob": "91d41427228b4b8579464010e7bbcf006e2c69e1",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "design-system-steward",
+      "path": "plugins/rogemar-agent-toolkit/skills/design-system-steward/SKILL.md",
+      "git_blob": "a897a157eb47a00b3b8b83ccec94990446039abb",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "develop-web-game",
+      "path": "plugins/rogemar-agent-toolkit/skills/develop-web-game/SKILL.md",
+      "git_blob": "7fb4c1463da6d020547d106e159d33d9f1c15ac9",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "dream-team",
+      "path": "plugins/rogemar-agent-toolkit/skills/dream-team/SKILL.md",
+      "git_blob": "472b9bdd5f4c3b0c75fcce82c0661f8495f70d6a",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "engineering-playbooks",
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/SKILL.md",
+      "git_blob": "960d132ce095d894e4606f1503faca822f65f312",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "figma",
+      "path": "plugins/rogemar-agent-toolkit/skills/figma/SKILL.md",
+      "git_blob": "1c2a285e5b3b56d048e189c62d89840544aa314d",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "first-time-right-delivery",
+      "path": "plugins/rogemar-agent-toolkit/skills/first-time-right-delivery/SKILL.md",
+      "git_blob": "c03ab9c24d30b54176a66605c3e07535315699c7",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-architect",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-architect/SKILL.md",
+      "git_blob": "614061d0a625bad59b2f417afac839b7ed25fb28",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-arena",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-arena/SKILL.md",
+      "git_blob": "38512ec30b3f64d146446eeb849362b9f476edc7",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-automate-me",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-automate-me/SKILL.md",
+      "git_blob": "646cafe3f4a82bf8f2db2d984d59dd2cc6f8e21c",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-blast-radius",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-blast-radius/SKILL.md",
+      "git_blob": "e2bd86b03cb9fbafab5e38b7982609752c631d5f",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-bro",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-bro/SKILL.md",
+      "git_blob": "aa9289b0dc008ea0261bab357e663a763a6f8411",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-create-verification-skill",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-create-verification-skill/SKILL.md",
+      "git_blob": "e0fbf3693a8ab678d517771e9f5537451cf30c66",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-figure-it-out",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-figure-it-out/SKILL.md",
+      "git_blob": "f4f52dc4d7bba2722e5f11824944c7470f366676",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-how",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-how/SKILL.md",
+      "git_blob": "ee9e2534efbdfec2b43fe217666a39a9f6c5b4bd",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-interrogate",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-interrogate/SKILL.md",
+      "git_blob": "bdda08eb93ae37f10df15d4af31c41abbd1fe374",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-maintain-verification-skill",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-maintain-verification-skill/SKILL.md",
+      "git_blob": "58c031890a0d292f2bd7392f2c20ba25e4ed21b4",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-make-bot-ui",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-make-bot-ui/SKILL.md",
+      "git_blob": "5ab4996c9f32819d0a9f1a8fac764af23ebaafc2",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-no-comments",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-no-comments/SKILL.md",
+      "git_blob": "48b292970acaddfe16e029cf64eb342ae08a4a17",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-attack-the-premise",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-attack-the-premise/SKILL.md",
+      "git_blob": "cabd42932e1a7e3f1b6eb93d0b3131feabee0b81",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-boundary-discipline",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-boundary-discipline/SKILL.md",
+      "git_blob": "05573fb36c07b0cc32154f20b91e87c8cd1e909f",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-build-the-lever",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-build-the-lever/SKILL.md",
+      "git_blob": "3950f19fcde6f893a4ef6d6fb58292f12ab6acb8",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-encode-lessons-in-structure",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-encode-lessons-in-structure/SKILL.md",
+      "git_blob": "2d65c7e5b517c53a48b94d60cbebc4aa42754410",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-exhaust-the-design-space",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-exhaust-the-design-space/SKILL.md",
+      "git_blob": "3e265917f1e5cf8dafe9aad4de0274f7c626e7a3",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-experience-first",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-experience-first/SKILL.md",
+      "git_blob": "ef46c75a47254a3889d67effe1d39c0cba2a5232",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-fix-root-causes",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-fix-root-causes/SKILL.md",
+      "git_blob": "50857052d71db14bebd3c6dd44d55b1af3317193",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-foundational-thinking",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-foundational-thinking/SKILL.md",
+      "git_blob": "e8451f4146c6538f86c907c513ed825e4c7e2b51",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-guard-the-context-window",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-guard-the-context-window/SKILL.md",
+      "git_blob": "57314a70f4e96f3aadeac73faad06abaf1b25e84",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-laziness-protocol",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-laziness-protocol/SKILL.md",
+      "git_blob": "d762321afa542d5b29f57c1fd58f89bfb95025f2",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-make-operations-idempotent",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-make-operations-idempotent/SKILL.md",
+      "git_blob": "cb9ece89337131ce9fdf39f5523e42a70d9545d8",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-migrate-callers-then-delete-legacy-apis",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "git_blob": "3e5bba947a72eb06a2c51d26a49eff4ca18ce692",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-minimize-reader-load",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-minimize-reader-load/SKILL.md",
+      "git_blob": "04cf64189a088880a5cd5b7db69cb7f7fb26c224",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-model-the-domain",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-model-the-domain/SKILL.md",
+      "git_blob": "7c96bd2a0b5c093ec93ade1a9198951a453d5959",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-never-block-on-the-human",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-never-block-on-the-human/SKILL.md",
+      "git_blob": "4ed5902f8e2c188ca3c90e708640d1f0987080d0",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-outcome-oriented-execution",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-outcome-oriented-execution/SKILL.md",
+      "git_blob": "d0e5874ea8ceffe75f955074292dc2bbf6f58f57",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-prove-it-works",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-prove-it-works/SKILL.md",
+      "git_blob": "ee4fbd237efb4a9a94786ba6d92b74662d96c540",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-redesign-from-first-principles",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-redesign-from-first-principles/SKILL.md",
+      "git_blob": "22a595d3be91efc400c1cb2759083af19e396048",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-separate-before-serializing-shared-state",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-separate-before-serializing-shared-state/SKILL.md",
+      "git_blob": "b3d1ae5114197be1bc86f40ad5b32aa179841228",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-sequence-verifiable-units",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-sequence-verifiable-units/SKILL.md",
+      "git_blob": "8ab58d89ea0253a5945285dba1ed813c078ddf6a",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-subtract-before-you-add",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-subtract-before-you-add/SKILL.md",
+      "git_blob": "4e39e6f587895b4439a108278e12df77e470414e",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-test-behavior-not-implementation",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-test-behavior-not-implementation/SKILL.md",
+      "git_blob": "6750ac64fd0b5e7ccbcbae805814c603435c017c",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-principle-type-system-discipline",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-type-system-discipline/SKILL.md",
+      "git_blob": "94449cf246a0d86113f00f7ec54e1ced63be226a",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-recall",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-recall/SKILL.md",
+      "git_blob": "505ff8edda1756818617773c2218b850ea5a582d",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-reflect",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-reflect/SKILL.md",
+      "git_blob": "240a427f958ae9d1b590482dc6b0e6667dc4b012",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-setup",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-setup/SKILL.md",
+      "git_blob": "469dab65bec6d7ef0f2bc8f7b05753d8f908302a",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-show-me-your-work",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-show-me-your-work/SKILL.md",
+      "git_blob": "2af16bfd10e1ed4ff111bd43402de4d1a1093b30",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-swarm",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-swarm/SKILL.md",
+      "git_blob": "5975df71d46cae155670d7019d2deae13e0c0076",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-tdd",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-tdd/SKILL.md",
+      "git_blob": "483f38d3f64567cb5d93e1fe8a742d26ecac7d8b",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-teach",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-teach/SKILL.md",
+      "git_blob": "e12384c6548b135f3faebaffe36f77d4b5bffa17",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-technical-writing",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-technical-writing/SKILL.md",
+      "git_blob": "e09ad5865eacf4563373562c6287ba6cf5549ca4",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-typescript-best-practices",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-typescript-best-practices/SKILL.md",
+      "git_blob": "031266c3c9426fb38959ddba56fe7ce0e241a326",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-unslop",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-unslop/SKILL.md",
+      "git_blob": "f2b04add431c852d26526a7c48178bdc9ce2f11a",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "forge-why",
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-why/SKILL.md",
+      "git_blob": "66086531b796ac1ed944d0c4bd8a18adac24d4ef",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "frontend-design",
+      "path": "plugins/rogemar-agent-toolkit/skills/frontend-design/SKILL.md",
+      "git_blob": "b7878bcb877ae1a3c4324c02d58d943b3e9f5e44",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "gh-address-comments",
+      "path": "plugins/rogemar-agent-toolkit/skills/gh-address-comments/SKILL.md",
+      "git_blob": "90dc9c3dc6bd68754800c0d2ebe13a2bbd4dc4da",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "gh-fix-ci",
+      "path": "plugins/rogemar-agent-toolkit/skills/gh-fix-ci/SKILL.md",
+      "git_blob": "39d7a55c8d6955b340d4c8a6334f5bd73aa6e6bd",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "hatch-pet",
+      "path": "plugins/rogemar-agent-toolkit/skills/hatch-pet/SKILL.md",
+      "git_blob": "636750ad1c631a91ea8f6ce77e3cacdaee05d86b",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "integrated-workflow",
+      "path": "plugins/rogemar-agent-toolkit/skills/integrated-workflow/SKILL.md",
+      "git_blob": "b305f457f1f2b58bb752f5fdc535c4cf49bc8185",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "interaction-polish",
+      "path": "plugins/rogemar-agent-toolkit/skills/interaction-polish/SKILL.md",
+      "git_blob": "77780434d7f825adc379a434f5364196698855c4",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "knowledge-base-answering",
+      "path": "plugins/rogemar-agent-toolkit/skills/knowledge-base-answering/SKILL.md",
+      "git_blob": "c7eeb2ed003956d1e0b033575c3ca68789a16af8",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "linear",
+      "path": "plugins/rogemar-agent-toolkit/skills/linear/SKILL.md",
+      "git_blob": "b4cccbea949bba974d2ec24b40233c2a1c49817e",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "meeting-notes-task-extractor",
+      "path": "plugins/rogemar-agent-toolkit/skills/meeting-notes-task-extractor/SKILL.md",
+      "git_blob": "d2bc69732b6caabb414e612a91f7059ae01d4df0",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "mobile-release-manager",
+      "path": "plugins/rogemar-agent-toolkit/skills/mobile-release-manager/SKILL.md",
+      "git_blob": "1197624c260d8655e96f11a01045e294fe3f7e21",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "motion-animation-engineer",
+      "path": "plugins/rogemar-agent-toolkit/skills/motion-animation-engineer/SKILL.md",
+      "git_blob": "8a4ed35af5b73b6952be034b920e9254dcc4a741",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "netlify-deploy",
+      "path": "plugins/rogemar-agent-toolkit/skills/netlify-deploy/SKILL.md",
+      "git_blob": "07aea3d6a0e5ecd16219683425d98308b68478d3",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "offline-sync-auditor",
+      "path": "plugins/rogemar-agent-toolkit/skills/offline-sync-auditor/SKILL.md",
+      "git_blob": "82cfae0e3cd3cf67cc9cd1457dbcf12587ecfabe",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "opendesign",
+      "path": "plugins/rogemar-agent-toolkit/skills/opendesign/SKILL.md",
+      "git_blob": "b9a785792ba913514be4ae3fcb4af63414429208",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "pdf",
+      "path": "plugins/rogemar-agent-toolkit/skills/pdf/SKILL.md",
+      "git_blob": "db93e1bf25d3ff0be35df16fa8610773ac0a67b4",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "performance-profiler",
+      "path": "plugins/rogemar-agent-toolkit/skills/performance-profiler/SKILL.md",
+      "git_blob": "27297d6b3231856bae98bf31af1469307c1e15fe",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "plan-model-router",
+      "path": "plugins/rogemar-agent-toolkit/skills/plan-model-router/SKILL.md",
+      "git_blob": "063643b0c9c8b5e4ee09961de075a5d41eb9d45b",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "playwright",
+      "path": "plugins/rogemar-agent-toolkit/skills/playwright/SKILL.md",
+      "git_blob": "9d6a278fe833f0bebaec0191de351505d613abfc",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "privacy-safety-review",
+      "path": "plugins/rogemar-agent-toolkit/skills/privacy-safety-review/SKILL.md",
+      "git_blob": "66092928f9ceb42d1b4989f7769f004f728b2787",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "project-learning",
+      "path": "plugins/rogemar-agent-toolkit/skills/project-learning/SKILL.md",
+      "git_blob": "43d8a3a13636b67ef365e60417ee0056ad535903",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "reference-design-contract",
+      "path": "plugins/rogemar-agent-toolkit/skills/reference-design-contract/SKILL.md",
+      "git_blob": "2563f71f509ef0af2c3cc37e070738493b167ffe",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "research-synthesizer",
+      "path": "plugins/rogemar-agent-toolkit/skills/research-synthesizer/SKILL.md",
+      "git_blob": "eb8b898d9c93cfa53976dbd76b5804df2a9411b6",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "screenshot",
+      "path": "plugins/rogemar-agent-toolkit/skills/screenshot/SKILL.md",
+      "git_blob": "767bf529500871a6345466f1bb1a85c4447c31be",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "security-best-practices",
+      "path": "plugins/rogemar-agent-toolkit/skills/security-best-practices/SKILL.md",
+      "git_blob": "c9d0ce07c89cfd69e458ea17579f8ccd2bffd576",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "seo-content-strategy",
+      "path": "plugins/rogemar-agent-toolkit/skills/seo-content-strategy/SKILL.md",
+      "git_blob": "a3209a0d9f87c1800139f7ad4454bb687348e47c",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "shadcn",
+      "path": "plugins/rogemar-agent-toolkit/skills/shadcn/SKILL.md",
+      "git_blob": "73e2283917e70a7b6593458631d73c68c8c6acc2",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "social-content-factory",
+      "path": "plugins/rogemar-agent-toolkit/skills/social-content-factory/SKILL.md",
+      "git_blob": "dc5fd4e2131bda88bf0fea321422b06933df8fa8",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "sora",
+      "path": "plugins/rogemar-agent-toolkit/skills/sora/SKILL.md",
+      "git_blob": "cb143f327475064b6965665b4eda6a4a27c466de",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "speech",
+      "path": "plugins/rogemar-agent-toolkit/skills/speech/SKILL.md",
+      "git_blob": "54727b1f84831739e7262b4db8271ada026d20c7",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "supabase",
+      "path": "plugins/rogemar-agent-toolkit/skills/supabase/SKILL.md",
+      "git_blob": "b89c03ded11045d73beebf174dcda8a527fbadb5",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "supabase-guardian",
+      "path": "plugins/rogemar-agent-toolkit/skills/supabase-guardian/SKILL.md",
+      "git_blob": "8ec62c08abbb9a56e1d61e5a41e5deebfddc9b75",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "test-architecture-engineer",
+      "path": "plugins/rogemar-agent-toolkit/skills/test-architecture-engineer/SKILL.md",
+      "git_blob": "2a36f5954d05043a9f26b87632dd3979a7fff9ae",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "transcribe",
+      "path": "plugins/rogemar-agent-toolkit/skills/transcribe/SKILL.md",
+      "git_blob": "68e1f75ac888b295ed650c87a147dbb25ad88133",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "universal-forge",
+      "path": "plugins/rogemar-agent-toolkit/skills/universal-forge/SKILL.md",
+      "git_blob": "9d9eae40d254c2670ca52985805c8ca620e7590f",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "universal-plan-model-router",
+      "path": "plugins/rogemar-agent-toolkit/skills/universal-plan-model-router/SKILL.md",
+      "git_blob": "4469358e00cf081d714af035dae7e6f526112036",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "ux-flow-architect",
+      "path": "plugins/rogemar-agent-toolkit/skills/ux-flow-architect/SKILL.md",
+      "git_blob": "43b022f8e10965ca8049b44de45de4015bc28a4e",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "vector-asset-pipeline",
+      "path": "plugins/rogemar-agent-toolkit/skills/vector-asset-pipeline/SKILL.md",
+      "git_blob": "cf6975777c3d80c1af074221f50448b0e61b1474",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "vercel-deploy",
+      "path": "plugins/rogemar-agent-toolkit/skills/vercel-deploy/SKILL.md",
+      "git_blob": "4aa56d3cef0ef6ada9c4526d98290b6c01b8465d",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "visual-qa",
+      "path": "plugins/rogemar-agent-toolkit/skills/visual-qa/SKILL.md",
+      "git_blob": "0e8ce4795bff98b120d19886180cf9c2a796bcfc",
+      "body_review": "complete",
+      "disposition": "retain-working-source-with-contextual-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    },
+    {
+      "skill": "workflow-orchestrator",
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/SKILL.md",
+      "git_blob": "ff416824cefe0caaf0b4ffb4553bbc6b077420aa",
+      "body_review": "complete",
+      "disposition": "aligned-source-and-route",
+      "resource_review": "Affected resources inspected selectively; unchanged optional integrations not comprehensively audited or executed",
+      "runtime_qualification": "Local helper/packaging tests where relevant; native harness trials not run",
+      "note": "Full skill body reviewed for applicability, ownership, fallback and required evidence; resource depth and native runtime qualification remain separate."
+    }
+  ],
+  "limitations": [
+    "Complete skill-body review is not comprehensive reference/script execution or native runtime certification.",
+    "Receipts bind the reviewed body bytes; a later body edit invalidates its receipt.",
+    "External declared dependencies were not installed or audited as vendored skills."
+  ],
+  "prior_candidate_counts": {
+    "complete": 39,
+    "partial": 5,
+    "not-reviewed": 66
+  },
+  "identity_disposition_complete": true,
+  "prior_delivery_counts": {
+    "complete": 77,
+    "partial": 33,
+    "not-reviewed": 0
+  }
+}

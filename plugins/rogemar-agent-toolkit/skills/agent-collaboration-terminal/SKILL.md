@@ -20,6 +20,10 @@ never bypass approval or switch to a different machine/worktree silently.
 References to Codex synthesis or Codex-owned review mean the supervising host's
 responsibility elsewhere. The `codex` provider itself is still a separate process,
 and its native flags, credentials and model IDs are never translated to the host.
+Keep the original Codex-managed route as the fallback in Codex. Elsewhere, use
+the existing authorized handoff when a required runner is absent; report the
+unavailable step without reducing review evidence.
+
 
 Use this skill when the native provider CLIs are the desired execution surface. Codex prepares the run manifest and prompts, the provider keeps its normal CLI capabilities, and Codex monitors local files. This is a file-backed coordination workflow, not another broker or Supervisor MCP.
 

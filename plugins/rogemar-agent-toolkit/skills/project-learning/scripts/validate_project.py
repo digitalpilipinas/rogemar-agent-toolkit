@@ -105,6 +105,7 @@ def main() -> int:
                 is not None,
                 f"ledger entry {match.group(1)} has invalid status",
             )
+            candidate_store._lifecycle.section_lifecycle(section)
 
         events = candidate_store.load_events(store_path)
         candidate_store.materialize(events)
@@ -148,6 +149,7 @@ def main() -> int:
     except (
         ValidationFailure,
         candidate_store.StoreError,
+        candidate_store._lifecycle.LifecycleError,
         OSError,
         py_compile.PyCompileError,
     ) as exc:

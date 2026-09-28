@@ -1,5 +1,9 @@
 # Compatibility and evidence boundary
 
+The [alignment compatibility supplement](alignment/compatibility.md) records the
+new helper boundaries and remaining runtime qualification. It does not replace
+these native installation paths or claim that source-level portability is live proof.
+
 The installer targets Python 3.9+ on macOS, Linux and WSL. It copies selected complete skill trees and resolves declared hard skill dependencies. File placement is testable separately from whether a running agent discovers or executes a skill.
 
 ## Harness adapters
@@ -19,7 +23,7 @@ The installer targets Python 3.9+ on macOS, Linux and WSL. It copies selected co
 | droid | `.factory/skills` | `.factory/skills` | Native `/skills` discovery and runtime checks required |
 
 Codex places native-only entries in `.codex/skills`; shared methods live once in
-`.agents/skills`. Its full 45-skill Forge family uses `plan-model-router` to qualify
+`.agents/skills`. Its full 47-skill Forge family uses `plan-model-router` to qualify
 worker assignments. Cursor uses `cursor-forge` and `cursor-forge-setup` for native
 role/model mappings; the universal router is a fallback when that route is
 unavailable. Upstream PStack/poteto-mode remains a separate, unchanged entry.

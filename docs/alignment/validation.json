@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "status": "Source alignment and initial PR remediation; exact current-head CI and merge outcome belong to PR 11",
+  "verified_on": "2026-09-28",
+  "repository": "digitalpilipinas/rogemar-agent-toolkit",
+  "baseline_commit": "0b8d9689d8fef5cfae19d1f9691b50e532b86b66",
+  "branch": "codex/toolkit-alignment-v2",
+  "workflow": "integrated-workflow",
+  "execution_entry": "codex-forge",
+  "strategy": "AGILE_FOCUSED",
+  "delivery": "BRANCH + PR + MERGE AUTHORIZED",
+  "review_exception": {
+    "source": "Owner instruction, 2026-09-28: skip unavailable external pre-commit reviewers, and follow the remaining Integrated Workflow through PR merge.",
+    "scope": [
+      "local pre-commit CodeRabbit",
+      "unavailable local pre-commit reviewer agents"
+    ],
+    "state": "waived-by-owner; not passed",
+    "preserved": [
+      "applicable tests and CI",
+      "repository-required approvals",
+      "inspection of automatically posted actionable PR feedback",
+      "main-agent diff and outcome audit"
+    ]
+  },
+  "profile": {
+    "mode": "no named mode; skill maintenance",
+    "parent_model": "not exposed by current-task metadata",
+    "parent_effort": "not exposed by current-task metadata",
+    "workers": "none; single implementation owner"
+  },
+  "prior_candidate_evidence": {
+    "schema_version": 1,
+    "status": "partial-local-candidate",
+    "verified_on": "2026-09-28",
+    "repository": "digitalpilipinas/rogemar-agent-toolkit",
+    "baseline_commit": "0b8d9689d8fef5cfae19d1f9691b50e532b86b66",
+    "new_helper_tests": {
+      "command": "python3 -B -m unittest discover -s tests -v",
+      "cwd": "overlay",
+      "passed": 49,
+      "failed": 0,
+      "skipped": 0
+    },
+    "package_mechanics_tests": {
+      "command": "python3 -B -m unittest discover -s support/tests -v",
+      "cwd": "package-root",
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0
+    },
+    "actual_runtime": {
+      "python": "3.13.5",
+      "os": "Linux",
+      "machine": "x86_64"
+    },
+    "python39_grammar_check": "passed; not native Python 3.9 execution",
+    "candidate_authoring_checks": "passed; see evidence/authoring-checks.json",
+    "review_coverage": {
+      "complete": 39,
+      "partial": 5,
+      "not-reviewed": 66
+    },
+    "guarded_existing_file_edits": 27,
+    "git_source_clone": "failed: DNS lookup unavailable",
+    "actual_repository_files_changed": false,
+    "toolkit_commit_created": false,
+    "pushed": false,
+    "pr_created": false,
+    "merged": false,
+    "installed": false,
+    "live_protection_changed": false,
+    "not_run": [
+      "full source/resource audit",
+      "actual baseline diff preparation/application",
+      "original repository suite",
+      "lock/verify/native inventory/core and full package checks",
+      "current-candidate CI",
+      "CodeRabbit and other required provider reviews",
+      "native Codex/Cursor/PStack/other host trials",
+      "native Python 3.9/3.11/macOS/Windows/WSL qualification",
+      "Mermaid rendering",
+      "trusted host/runner provisioning",
+      "held-out agent behavior and cost/latency evaluation"
+    ],
+    "note": "Synthetic temporary Git commits in package tests are not toolkit commits. Matching declaration checks do not enforce runtime permissions."
+  },
+  "work_packages": {
+    "W0": "All 110 canonical skill bodies completely reviewed and dispositioned; references/scripts reviewed selectively, with runtime boundaries explicit",
+    "W1": "Implemented and validated: source/hash-preserving packages and relevant owner checks",
+    "W2": "Implemented: 110 routes, 47 Forge identities, 23 baseline playbooks; runtime selection qualification scoped",
+    "W3": "Implemented: shared obligations and concrete instruction repairs; no universal model compliance guarantee",
+    "W4": "Implemented and locally exercised: AQ-01 and opt-in registered host adapter; native host enrollment unqualified",
+    "W5": "Source adapters/comparator implemented; independently protected producer/verifier and native enforcement BLOCKED by unavailable host integration",
+    "W6": "Implemented and validated: one writer, lineage, recall, proposal groups, stale-safe apply/recovery/rollback",
+    "W7": "Implemented: precise findings and optional audit method; external reviewers waived for this task",
+    "W8": "Implemented and locally exercised: metadata/query/removal adapters; project runtime store enrollment remains optional",
+    "W9": "AQ-01, UP-01 and ME-01 contracts implemented and tested; no held-out native agent or production benefit claims",
+    "W10": "Source and all four-platform CI gates passed; PR follow-up approved. Final evidence-only commit and merge identity are recorded in PR 11; Mermaid rendering unavailable locally."
+  },
+  "checks": [
+    {
+      "check": "toolkit lock and verify",
+      "state": "passed",
+      "detail": "110 vendored skills; source integrity and portability checks"
+    },
+    {
+      "check": "README inventory",
+      "state": "passed",
+      "detail": "Generated inventory current"
+    },
+    {
+      "check": "Forge/routing verification",
+      "state": "passed",
+      "detail": "47 Forge identities; 23 playbooks; 2 optional roles; 3 inactive recipes; 110 canonical routes"
+    },
+    {
+      "check": "root unit tests",
+      "state": "passed",
+      "detail": "192 tests; includes four remediation regressions"
+    },
+    {
+      "check": "relevant owner suites",
+      "state": "passed-in-CI",
+      "detail": "70 native Forge + 3 Forge plan + 17 Project Learning + 44 terminal collaboration tests passed on each of four Ubuntu/macOS Python 3.9/3.11 jobs. Bun was blocked locally and verified in CI instead."
+    },
+    {
+      "check": "selection regression",
+      "state": "passed",
+      "detail": "25 tests, including full archive source-hash preservation and nested selected-package tests"
+    },
+    {
+      "check": "core/full packages",
+      "state": "passed",
+      "detail": "Core: 6 portable and 6 Codex skills. Full: 57 portable and 108 Codex skills"
+    },
+    {
+      "check": "authoring",
+      "state": "passed",
+      "detail": "22 affected Python files parse as Python 3.9 grammar; affected JSON valid; diff whitespace clean"
+    }
+  ],
+  "limitations": [
+    "Native Codex/Cursor/other harness behavior qualification requires those actual runtimes.",
+    "Protected-host enforcement requires host-owned controls; repository fixtures are not deployment proof.",
+    "Mermaid renderer unavailable locally; diagram sources inspected, no rendered-visual claim.",
+    "Repository rulesets including inherited rules returned empty; effective branch-rules endpoint was unsupported by connector; no administration changed."
+  ],
+  "publication": {
+    "pushed": true,
+    "pr_created": true,
+    "pr_url": "https://github.com/digitalpilipinas/rogemar-agent-toolkit/pull/11",
+    "merged": false
+  },
+  "snapshot": "Pre-merge evidence snapshot. GitHub PR 11 records subsequent documentation commit, current-head checks and merge identity; merged=false here is this snapshot, not a live status feed.",
+  "local_evidence": [
+    {
+      "artifact": "implementation-root-final.log",
+      "sha256": "884fd96827ce81994ff6a90fde58bf3f24bda9872cd84d633bf0e093db0498aa"
+    },
+    {
+      "artifact": "implementation-owner-suites.log",
+      "sha256": "9fd0dc4947a46bf0ed4eb176e81eda3460402fc702f6eea8869a5600b27eaaf4"
+    },
+    {
+      "artifact": "selection-regression.log",
+      "sha256": "f5ad9115be03500822386821f592ed230f1da5f76288399d4155391702c0dda3"
+    },
+    {
+      "artifact": "package-core.log",
+      "sha256": "d7d27c324e74aae60da724894aa7916df181dbcea7073ae75989484ab1bed04d"
+    },
+    {
+      "artifact": "package-all.log",
+      "sha256": "218674f29f28b6f987467396d90ab33a24bdcc6bbf30df5be9e45a368666dc36"
+    },
+    {
+      "artifact": "precommit-root.log",
+      "sha256": "918c3cf31fc596ba9d8d59f74d58f5a23dbe5de3226434872a4979a1ae114dab"
+    },
+    {
+      "artifact": "final-core.log",
+      "sha256": "7229a15aba76233f8f61932e7742ae9cd3c98066a9208b757aa3fc8a058a59d1"
+    },
+    {
+      "artifact": "final-all.log",
+      "sha256": "22af8a627e094a2ae0ac311379f786519345091a616ef50855941188b0f33b52"
+    },
+    {
+      "artifact": "remediation-root.log",
+      "sha256": "0c14c8b83c2576b18dbbdc2e1316c2dd42463a7dc4001acc6b823671b58986f6"
+    },
+    {
+      "artifact": "remediation-owners.log",
+      "sha256": "8f9c21472851d7d23505b2f56310cccf4cd145b83431582a8a94b79d2717df7e"
+    },
+    {
+      "artifact": "remediation-core.log",
+      "sha256": "faad5acf9102321601de36ac05c480b6844fb9f1aea76320e0ec5c0a0eb998b6"
+    },
+    {
+      "artifact": "remediation-all.log",
+      "sha256": "06f5aa9a3b988acf6294a0b6b898b701532e09f21f9441378555007155961b49"
+    }
+  ],
+  "review_findings": [
+    {
+      "finding": "Packaging rewrote a skill routing index after recording its source hash",
+      "resolution": "Preserve canonical payload bytes; selected catalogs verify their subset against unchanged index",
+      "state": "fixed-and-regression-tested"
+    },
+    {
+      "finding": "Instruction still required a new verification harness/phase list for an accepted task",
+      "resolution": "Reuse existing decisive checks and accepted plan; create harness only for missing proof",
+      "state": "fixed; final required source checks repeated"
+    },
+    {
+      "finding": "Remaining skill-body authority, fallback and duplicate-record conflicts",
+      "resolution": "Completed remaining 33 bodies; reconciled browser/Figma/auth/runtime routes, pet generation delegation, cleanup authority and PostgreSQL RLS wording while preserving original routes and independent QA",
+      "state": "source-reviewed; native execution qualification unchanged"
+    }
+  ],
+  "nested_candidate_sha256": "0a6bd9eb645e8250637c0ffb7a6a64f3080b761e4b2eb4d08063cac8394d35ca",
+  "final_local_gate": "192 root tests and 64 available owner tests passed locally; 70 native Forge tests passed in CI. Lock/verify/README/routing/Forge and both package profiles passed locally and on all four CI jobs.",
+  "ci_remediation": {
+    "run_id": 36413556895,
+    "head": "34ef8b151bc10641ef8da0e06010b14341a7a09f",
+    "finding": "macOS /var alias in a new direct-call test fixture; production CLI already canonicalizes root",
+    "fix": "Resolve the fixture root before passing it to internal path-boundary helpers",
+    "validation": "Focused lifecycle tests and all four Ubuntu/macOS Python 3.9/3.11 jobs passed at a560fece3e624fc616c83929cd3e12084610f021; this correction requires fresh CI",
+    "other_jobs": "Cancelled by existing matrix fail-fast after macOS 3.11 failure"
+  },
+  "automatic_reviews": {
+    "codex": {
+      "head": "34ef8b151bc10641ef8da0e06010b14341a7a09f",
+      "state": "completed without posted findings",
+      "coverage_reuse": "Initial unchanged-source coverage retained; correction reviewed separately by main agent, targeted regressions, CI and approved CodeRabbit delta review. No current-head full Codex review claim."
+    },
+    "coderabbit": {
+      "head": "a560fece3e624fc616c83929cd3e12084610f021",
+      "state": "Initial nine findings fixed and auto-resolved; follow-up APPROVED at ae0973d51e108c3ae54b53752a01da17a0558f84",
+      "approval_review_id": 5338057432
+    }
+  },
+  "automatic_review_dispositions": [
+    {
+      "comment_id": 4121569983,
+      "finding": "README generated inventory",
+      "resolution": "README-only PRs retain validation; docs/CHANGELOG exclusions preserved",
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
+    },
+    {
+      "comment_id": 4121570031,
+      "finding": "Bun absent from CI",
+      "resolution": "Pinned conditional Bun 1.3.14 setup and frozen dependencies; selector/workflow changes exercise all owner runners; missing runtime never counts as pass",
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
+    },
+    {
+      "comment_id": 4121570042,
+      "finding": "Conflicting progress record instructions",
+      "resolution": "Reuse existing task record throughout; no private-prompt copying",
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
+    },
+    {
+      "comment_id": 4121570055,
+      "finding": "Source-free derived page",
+      "resolution": "Require a resolved evidence root before serving a derived page; regression covers no content read",
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
+    },
+    {
+      "comment_id": 4121570064,
+      "finding": "Recursive page dependency traversal",
+      "resolution": "Iterative worklist; 1000-page chain regression",
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
+    },
+    {
+      "comment_id": 4121570070,
+      "finding": "Conflicting elevation instruction",
+      "resolution": "Use only actual host permission flow throughout",
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
+    },
+    {
+      "comment_id": 4121570086,
+      "finding": "Lifecycle mutation permission mode",
+      "resolution": "Execution mode required before request/state access; no-mutation regression and command example updated",
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
+    },
+    {
+      "comment_id": 4121570106,
+      "finding": "Unconditional security-report file",
+      "resolution": "File output conditional on existing task/user authority",
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
+    },
+    {
+      "comment_id": 4121570113,
+      "finding": "Forge verifier import assumes script launch",
+      "resolution": "Path-based module load; direct import invocation verified",
+      "state": "fixed at ae0973d; verified by tests and auto-resolved by CodeRabbit"
+    }
+  ],
+  "advisory_dispositions": [
+    {
+      "finding": "CodeRabbit generic 80% docstring coverage warning",
+      "resolution": "Not a repository-required merge check. Retained useful boundary/ownership docstrings; did not add boilerplate to 209 touched functions solely to reach a style percentage."
+    }
+  ],
+  "verified_ci": {
+    "head": "ae0973d51e108c3ae54b53752a01da17a0558f84",
+    "jobs": [
+      108908168663,
+      108908168576,
+      108908168516,
+      108908168315
+    ],
+    "conclusion": "all four passed",
+    "scope": "192 root tests, 134 owner tests, verification/inventories, core/full packages; final documentation-only correction still requires fresh current-head checks"
+  }
+}

@@ -1,0 +1,17 @@
+flowchart TD
+    source[Permitted original evidence] --> derived[Source-linked derived knowledge]
+    source --> observed[Observed task outcome]
+    derived --> query[Scoped query and direct-source verification]
+    observed --> candidate[Inactive project-learning candidate]
+    candidate --> approval[Evidence and explicit promotion approval]
+    approval --> lesson[Scoped accepted guidance]
+    lesson --> review[Version, applicability and counterexample review]
+    review -->|Changed or contradicted| quarantine[Quarantine, supersede or retire]
+    review -->|Still applicable| lesson
+    derived --> lint[Bounded structural lint and semantic review]
+    lint -->|Affected sources only| derived
+    lesson --> proposal[Bounded shared-skill improvement proposal]
+    proposal --> qualification[Separate approval; tests; host qualification; rollback]
+    qualification --> policy[Maintained canonical skill]
+    authority[Externally enforced authority] -. Governs every write and action .-> qualification
+    authority -. Knowledge cannot rewrite policy .-> derived

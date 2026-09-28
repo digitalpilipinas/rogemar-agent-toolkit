@@ -5,6 +5,15 @@ description: "Perform language and framework specific security best-practice rev
 
 # Security Best Practices
 
+## Evidence and review mode
+
+Apply [finding precision](references/finding-precision.md). Distinguish confirmed
+security defects, source-grounded leads needing validation, and hardening advice.
+A checklist deviation alone is not a vulnerability. Keep this skill's supported
+languages and existing review owner; use the optional engineering security-audit
+playbook for a separately scoped broader audit. A focused review does not
+authorize a full audit, target execution, report-file creation, or fixes.
+
 ## Overview
 
 This skill provides a description of how to identify the language and frameworks used by the current context, and then to load information from this skill's references directory about the security best practices for this language and or frameworks.
@@ -43,11 +52,11 @@ While these references contain the security best practices for languages and fra
 
 # Report Format
 
-When producing a report, you should write the report as a markdown file in `security_best_practices_report.md` or some other location if provided by the user. You can ask the user where they would like the report to be written to.
+When the user or task scope authorizes a report file, write Markdown to the requested location or `security_best_practices_report.md`. Otherwise return the report in the response without creating a file. Reuse existing authorization; do not add a routine confirmation step.
 
 The report should have a short executive summary at the top.
 
-The report should be clearly delineated into multiple sections based on severity of the vulnerability. The report should focus on the most critical findings as these have the highest impact for the user. All findings should be noted with an numeric ID to make them easier to reference.
+Separate established vulnerabilities, source-grounded leads requiring validation, and hardening recommendations. Use the repository priority scheme for established defects; give unresolved leads investigation priority without presenting it as confirmed vulnerability severity. Preserve existing finding IDs and link each claim to its actual boundary, source, conditions, and observed result or decisive missing fact.
 
 For critical findings include a one sentence impact statement.
 
@@ -55,9 +64,7 @@ Once the report is written, also report it to the user directly, although you ma
 
 Important: When referencing code in the report, make sure to find and include line numbers for the code you are referencing.
 
-After you write the report file, summarize the findings to the user.
-
-Also tell the user where the final report was written to
+Summarize the findings to the user and, when a file was authorized and written, provide its location.
 
 # Fixes
 

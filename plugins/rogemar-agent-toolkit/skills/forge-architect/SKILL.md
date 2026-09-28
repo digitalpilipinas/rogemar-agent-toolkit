@@ -15,7 +15,7 @@ Design before implementing. Sketch types, function signatures, class shapes, and
 
 ## Start
 
-Open a todolist with one entry per phase before starting. Autonomous mode without checkpoints needs the list to show phase position and keep phases from silently disappearing.
+Reuse the active plan and task IDs. Track relevant design phases there rather than opening a competing board or restarting accepted work. A short design question needs only the phases that can change its outcome.
 
 1. Ground
 2. Sketch
@@ -35,9 +35,9 @@ Skip Phase A only when the work is genuinely greenfield with no surrounding syst
 
 Ask the orchestrator to select **forge-arena** skill with the design-sketch task and the Phase A grounding artifacts. Pass `references/runner-prompt.md` as each runner's prompt. Each candidate produces a design package shaped per `references/rationale-template.md`: the caller's usage written first, then the type sketch, function signatures, module map, and prose rationale derived from it.
 
-Request bounded design candidates through the orchestrator using the `architect-runners` preference pool. Resolve profiles under the active Forge mode when selected; its qualified pool may permit profiles above parent defaults. Without a mode, inherit the parent or resolve a justified profile within its model and effort ceilings. Explicit user and host limits always apply. The parent can sketch alternatives sequentially when delegation adds no independent value.
+Request bounded design candidates through the orchestrator using the `architect-runners` preference pool. Resolve profiles through the active router. Normal assignments obey the mode and accepted-parent ceilings; only the router’s qualified exact-role exceptions may exceed those ceilings. A preference pool alone is not an exception. Without a mode, preserve the parent model and effort ceilings. Explicit user and host limits always apply. The parent can sketch alternatives sequentially when delegation adds no independent value.
 
-Design it twice. Require at least two structurally distinct candidates before synthesis, even when the first looks sufficient. This is the **exhaust-the-design-space** principle skill made concrete. Whole-shape alternatives, not point fixes inside one shape.
+Compare distinct whole-shape alternatives when a consequential design fork or explicit exploration request justifies the cost. Use the smallest useful comparison; two candidates can be sufficient, but neither multiple prototypes nor workers are mandatory for a settled or obvious design. Preserve explicitly requested comparison coverage.
 
 Screen every candidate against [`references/design-red-flags.md`](references/design-red-flags.md) before synthesis. Reject or revise shallow modules, information leakage, temporal decomposition, and pass-through methods.
 

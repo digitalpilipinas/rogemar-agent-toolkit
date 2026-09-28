@@ -26,7 +26,7 @@ Treat character art, generated images, standard or v2 atlases, contact sheets, a
 
 Use `$imagegen` for all normal visual generation.
 
-Before generating base art, row strips, or repair rows, load and follow the installed image generation skill:
+Before generating base art, row strips, or repair rows, discover and follow the active host's installed image generation skill. The native Codex location remains a supported route:
 
 ```text
 ${CODEX_HOME:-$HOME/.codex}/skills/.system/imagegen/SKILL.md
@@ -40,21 +40,21 @@ Use this skill's scripts for deterministic image work only: preparing layout gui
 
 ## Runtime Dependencies
 
-Before running any bundled script, call `load_workspace_dependencies`. Set `PYTHON` to the exact Python executable path returned by that tool and use `"$PYTHON"` for every command below. The bundled runtime includes Pillow, which these scripts require. Do not use a bare system `python`; if workspace dependencies are unavailable, stop and report that the bundled runtime is required.
+When available, call `load_workspace_dependencies` and set `PYTHON` to its exact Python executable. Otherwise resolve an existing host Python executable and verify that it can import Pillow before using it. Use that verified `"$PYTHON"` for every command below. Dependency installation follows existing task and host authority; an unavailable managed-runtime tool alone does not disqualify a working runtime. If no suitable runtime is available, report the missing dependency without claiming script execution.
 
 ## Storage Controls
 
 The built-in `$imagegen` path stores generated PNG bytes in the rollout that invokes it, even when it also writes a file under `${CODEX_HOME:-$HOME/.codex}/generated_images`. Deleting files later reduces filesystem use, but it does not shrink an already-written rollout. Keep image generation isolated and bounded:
 
-- Use one lightweight generation worker per visual job. Do not batch multiple base/row jobs into the same worker.
+- When delegation is available and authorized, use one qualified generation worker per visual job through the active orchestrator. Otherwise generate jobs sequentially in the main agent with the same image-generation contract and checks.
 - Workers must return only `selected_source=...` and `qa_note=...`; they must not include Markdown image previews, base64, or extra visual attachments in their final response.
-- The parent must not open every generated PNG visually. Use worker QA for each job and inspect only the final contact sheet.
-- After copying the selected generated output into `decoded/`, remove the selected original from `${CODEX_HOME:-$HOME/.codex}/generated_images` when it lives there, then remove its now-empty generation directory if possible.
+- In the worker route, use worker QA for each job and inspect the final contact sheet in the parent. In the sequential route, inspect each output directly before accepting it.
+- After copying an output into `decoded/`, remove its original only when it is owned by this run and cleanup is authorized under the host's retention rules. Preserve user references and provider-managed retained artifacts.
 - For storage-sensitive full runs, ask the user whether to use the `$imagegen` CLI fallback when available. That path requires local API credentials and explicit user confirmation, but it can avoid built-in image payloads being embedded in rollout events.
 
 ## Brand Discovery
 
-If the user provides a brand, company, product, or prospect name rather than a concrete avatar description or reference image, run a lightweight discovery subagent before preparing the pet run. The discovery worker must use web search and prefer official sources such as the brand site, product pages, docs, about pages, press pages, or brand pages. Use reputable secondary sources only when official pages are too thin. Keep the search narrow: enough to extract visual and personality cues, not a market-research brief.
+If the user provides a brand, company, product, or prospect name rather than a concrete avatar description or reference image, perform discovery before preparing the pet run. Use a qualified discovery worker when authorized and available, or perform the same bounded research directly. Use web search and prefer official sources such as the brand site, product pages, docs, about pages, press pages, or brand pages. Use reputable secondary sources only when official pages are too thin. Keep the search narrow: enough to extract visual and personality cues, not a market-research brief. References below to a discovery worker include this direct fallback.
 
 Skip discovery when the user already provides a concrete mascot/avatar description or reference images, unless the user explicitly asks for brand research.
 
@@ -232,7 +232,7 @@ Never use the time target to skip blind direction QA, labeled semantics, continu
 1. Prepare a pet run folder and imagegen job manifest:
 
 ```bash
-SKILL_DIR="${CODEX_HOME:-$HOME/.codex}/skills/hatch-pet"
+SKILL_DIR="/absolute/path/to/the/loaded/hatch-pet"
 "$PYTHON" "$SKILL_DIR/scripts/prepare_pet_run.py" \
   --pet-name "<Name>" \
   --description "<one sentence>" \
@@ -257,7 +257,7 @@ For brand-only requests, run the discovery worker first, save the markdown brief
 jq '.jobs[] | {id, kind, status, depends_on, prompt_file, retry_prompt_file, input_images, output_path, derivation_policy}' /absolute/path/to/run/imagegen-jobs.json
 ```
 
-3. Generate visual jobs with lightweight workers by default:
+3. Generate visual jobs with the qualified worker route below, or sequentially in the main agent when that route is unavailable. The same dependencies and visual checks apply:
 
 - Generate and copy `base` first, using a lightweight base worker.
 - Generate and copy `idle` and `running-right` next as the identity and gait check, using one lightweight worker per row.
@@ -336,7 +336,7 @@ mv "$TMP_MANIFEST" "$RUN_DIR/imagegen-jobs.json"
 
 After `decoded/look-anchors-approved.png` exists and all four cardinals have passed semantic review, mark `look-cardinals` complete. Row 9 then becomes ready immediately.
 
-If the copied source is under `${CODEX_HOME:-$HOME/.codex}/generated_images`, delete the original generated file after the decoded copy exists:
+Only for a verified current-run-owned source whose cleanup is authorized, the native Codex route can remove the original after verifying the decoded copy. Do not run this example for user references or provider-managed retained artifacts:
 
 ```bash
 GENERATED_ROOT="${CODEX_HOME:-$HOME/.codex}/generated_images"
@@ -672,11 +672,11 @@ After all QA and packaging succeed, keep `pet_request.json`, `final/spritesheet-
 
 ## Lightweight Visual Workers
 
-Use lightweight subagents for image-heavy work by default. This bounds each `$imagegen` rollout to one selected image, keeps contact-sheet vision payloads out of the parent thread, and reduces cost while preserving the full v2 contract.
+Use qualified subagents for image-heavy work when the active host and task permit delegation. This bounds each `$imagegen` rollout to one selected image. Otherwise use the sequential generation fallback; do not simulate worker calls or independent verdicts.
 
 ## Subagent Delegation
 
-Use lightweight workers unless the user specifically prohibits delegation.
+The active orchestrator selects available, authorized workers based on actual capabilities. Instructions below describe that route. The sequential fallback covers generation and discovery only: the three isolated blind verdicts remain mandatory. If independent blind QA is unavailable, retain the work and report packaging blocked. Keep the existing explicit-user-inspection alternative for final semantic review; it does not replace the blind verdicts.
 
 Parent responsibilities:
 
@@ -727,10 +727,8 @@ Final visual QA worker responsibilities:
 
 Model choice for workers:
 
-- Prefer a smaller capable model for brand discovery, since it returns a compact research brief rather than doing orchestration.
-- Prefer a smaller capable model for visual workers, such as `gpt-5.4-mini` with medium reasoning, when model override is available.
-- Use the parent/default model only for orchestration or when a smaller worker model is unavailable.
-- Dynamically keep up to three generation workers active while at least three independent jobs are ready and capacity permits; backfill slots as workers finish. Use fewer workers when dependencies expose fewer jobs. Run final visual QA as a single worker after deterministic image processing. Close workers after their result has been consumed.
+- Select a qualified model for discovery and visual work using the active router and actual host controls. Do not require a provider-specific model name or invent a reasoning-level override.
+- Delegate independent ready generation jobs only when it benefits the task and stays within its budget, with at most three concurrent generation workers. Dependencies and independent QA requirements take precedence over occupancy. Close workers after their result has been consumed.
 - Once `look-cardinals` passes, start row 9 immediately. Start row 10 only after row 9 has passed deterministic registration, post-registration edge, semantic, and continuity QA; give row 10 the completed row 9 strip as continuity evidence.
 
 Use this base worker prompt:
@@ -867,7 +865,7 @@ If frame inspection or final visual QA fails, read `qa/review.json`, regenerate 
 - Use `$imagegen` as the only visual generation layer. Do not invoke image APIs, image CLIs, local raster generators, or one-off generation scripts from this skill.
 - Keep reference images attached/visible for `$imagegen` whenever the chosen path supports references.
 - Attach the row's `references/layout-guides/<state>.png` image to every row-strip job as a layout-only guide, and do not accept outputs that copy guide pixels.
-- Use lightweight visual workers for base generation, row-strip visual generation, and final contact-sheet QA by default; the parent owns manifest updates, deterministic image scripts, packaging, and cleanup.
+- Use the authorized worker route or sequential generation fallback described above; preserve independent QA gates. The main agent owns manifest updates, deterministic image scripts, packaging, and cleanup.
 - Generate every normal visual job with `$imagegen`: base plus all row strips that are not explicitly approved `running-left` mirror derivations.
 - Treat only the base job as eligible for prompt-only generation; every row job must attach its listed grounding images.
 - Generate `running-right` before deciding whether `running-left` can be mirrored.

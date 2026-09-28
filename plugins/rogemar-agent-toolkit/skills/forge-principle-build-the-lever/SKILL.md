@@ -1,6 +1,6 @@
 ---
 name: forge-principle-build-the-lever
-description: "Apply to any non-trivial work, not just bulk work: edits, migrations, analyses, checks. Build the tool that does it or proves it (codemod, script, generator, or a skill your subagents follow) instead of working by hand. The tool is the artifact a reviewer can rerun."
+description: "Use a repeatable tool when repeated operations, observations or a meaningful verification gap justify it. Reuse existing instruments; keep a direct route for simple work."
 license: MIT
 ---
 # Build the lever

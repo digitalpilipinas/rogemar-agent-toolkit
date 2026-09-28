@@ -8,7 +8,7 @@ description: Use when creating researched long-form content, blog posts, documen
 ## Workflow
 
 1. Clarify the audience, goal, brand voice, target format, and required citations if they are not obvious from the request.
-2. Research current facts with available search tools. Prefer Perplexity or web search for live facts; use Firecrawl or browser tooling when the user provides competitor or reference URLs.
+2. Preserve the requested evidence mode. For a source-only draft, use the supplied sources without adding external claims. When research is authorized, use the smallest suitable available route for current facts and reference URLs; do not install or authenticate a service merely because it is named here.
 3. Build a tight outline before drafting. Include search intent, key claims, evidence, and asset needs.
 4. Draft in the requested format. Default to Markdown for editorial work, HTML for web-ready pages, and a short asset brief when visuals are needed.
 5. Add source links for factual claims. Keep quotes short and use paraphrase for copyrighted material.
@@ -20,7 +20,7 @@ description: Use when creating researched long-form content, blog posts, documen
 - Make the first draft usable, not merely a plan.
 - Do not fabricate statistics, quotes, citations, or screenshots.
 - Separate confirmed facts from strategic recommendations.
-- Preserve EVERSO tone when the content is for EVERSO: premium, water-sports-native, practical, and honest.
+- Preserve the actual project's supplied brand voice and approved content requirements. Project-specific brand rules belong in that project, not this reusable skill.
 
 ## Helpful MCPs
 

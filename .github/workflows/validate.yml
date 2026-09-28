@@ -2,6 +2,9 @@ name: Validate toolkit
 
 on:
   pull_request:
+    paths-ignore:
+      - 'docs/**'
+      - 'CHANGELOG.md'
   push:
     branches: [main]
     tags: ["v*"]
@@ -17,8 +20,10 @@ jobs:
         python: ["3.9", "3.11"]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4; exact tag resolution recorded in docs/alignment/action-pins.json
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5; exact tag resolution recorded in docs/alignment/action-pins.json
         with:
           python-version: ${{ matrix.python }}
       - name: Verify bundle
@@ -27,6 +32,31 @@ jobs:
         run: python3 scripts/inventory_readme.py --check
       - name: Run tests
         run: python3 -m unittest discover -s tests -v
+      - name: Select change-relevant owner suites
+        id: owner_checks
+        env:
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+        shell: bash
+        run: |
+          validation_base="${PR_BASE:-HEAD^}"
+          python3 -B scripts/select_checks.py --base "$validation_base" > "$RUNNER_TEMP/owner-checks.json"
+          python3 -c 'import json, os; data = json.load(open(os.environ["RUNNER_TEMP"] + "/owner-checks.json")); selected = any(x["check"] == "forge-native" for x in data["checks"]); print("needs_bun=" + str(selected).lower())' >> "$GITHUB_OUTPUT"
+      - name: Set up Bun for selected native Forge checks
+        if: steps.owner_checks.outputs.needs_bun == 'true'
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.3.14
+      - name: Install selected native Forge dependencies
+        if: steps.owner_checks.outputs.needs_bun == 'true'
+        working-directory: plugins/rogemar-agent-toolkit/skills/codex-forge/scripts
+        run: bun install --frozen-lockfile --ignore-scripts
+      - name: Run change-relevant owner suites
+        env:
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+        shell: bash
+        run: |
+          validation_base="${PR_BASE:-HEAD^}"
+          python3 -B scripts/select_checks.py --base "$validation_base" --run
       - name: Verify complete native Forge inventory
         run: python3 scripts/verify_forge.py
       - name: Build core release archives
