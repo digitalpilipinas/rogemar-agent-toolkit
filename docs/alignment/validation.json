@@ -201,5 +201,13 @@
     }
   ],
   "nested_candidate_sha256": "0a6bd9eb645e8250637c0ffb7a6a64f3080b761e4b2eb4d08063cac8394d35ca",
-  "final_local_gate": "After final instruction repair: 188 tests passed; toolkit verification and both packages passed"
+  "final_local_gate": "After final instruction repair: 188 tests passed; toolkit verification and both packages passed",
+  "ci_remediation": {
+    "run_id": 36413556895,
+    "head": "34ef8b151bc10641ef8da0e06010b14341a7a09f",
+    "finding": "macOS /var alias in a new direct-call test fixture; production CLI already canonicalizes root",
+    "fix": "Resolve the fixture root before passing it to internal path-boundary helpers",
+    "validation": "All 9 focused lifecycle tests pass locally; rerun current-head CI before merge",
+    "other_jobs": "Cancelled by existing matrix fail-fast after macOS 3.11 failure"
+  }
 }

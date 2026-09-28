@@ -29,7 +29,8 @@ class LearningLifecycleTests(unittest.TestCase):
         self.fixture = FIXTURE.ProjectLearningTest()
         self.fixture.setUp()
         self.fixture.initialize()
-        self.root = self.fixture.root
+        # Match the CLI's canonical repository root, including macOS /var aliases.
+        self.root = self.fixture.root.resolve()
         self.addCleanup(self.fixture.tearDown)
 
     def request(self, data, name='request.json'):
