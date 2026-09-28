@@ -101,7 +101,7 @@ def members_cell(members: list[Any]) -> str:
 def packs_section(catalog: dict[str, Any]) -> list[str]:
     rows = [
         "### Pack membership", "",
-        "Direct members are listed in full; the installer also resolves required skill dependencies and filters native targets. A skill can belong to several packs. External dependencies are declared, not installed.", "",
+        "Direct members are listed in full; the installer also resolves required skill dependencies and filters native targets. A skill can belong to several packs. Missing catalog-pinned external skill files are installed automatically for selected packs; runtime/plugin activation remains separate.", "",
         "| Pack | Purpose | Canonical skill members | External dependencies |",
         "| --- | --- | --- | --- |",
     ]

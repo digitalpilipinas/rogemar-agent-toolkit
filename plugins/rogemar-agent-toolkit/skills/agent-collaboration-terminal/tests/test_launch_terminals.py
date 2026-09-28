@@ -33,6 +33,23 @@ validate = load_module("validate_run", SKILL_DIR / "scripts" / "validate_run.py"
 
 
 class InteractiveLaunchTests(unittest.TestCase):
+    def test_droid_alias_and_native_commands(self) -> None:
+        import argparse
+        self.assertEqual(prepare.canonical_provider("Factory", argparse.ArgumentParser()), "droid")
+        entry = {"id": "droid", "command": "droid", "artifact_dir": "droid",
+                 "model": "native-model", "effort": "high"}
+        self.assertIn("exec droid", self.script_for(entry))
+        for automatic in (False, True):
+            command = runner.build_command(entry, workspace=Path("/tmp/worktree"),
+                run_dir=Path("/tmp/run"), prompt="private task", timeout_seconds=60,
+                auto_approve=automatic, mode="review")
+            self.assertEqual(command[:4], ["droid", "exec", "--cwd", "/tmp/worktree"])
+            self.assertEqual(command[-2:], ["--file", "/tmp/run/droid/prompt.md"])
+            self.assertEqual("--auto" in command, automatic)
+            self.assertIn("--reasoning-effort", command)
+            self.assertNotIn("--skip-permissions-unsafe", command)
+            self.assertNotIn("private task", command)
+
     def script_for(self, provider: dict[str, object]) -> str:
         script, _ = launch.shell_script(
             provider=provider,

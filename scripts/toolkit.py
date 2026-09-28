@@ -766,6 +766,106 @@ def command_select(args: argparse.Namespace) -> int:
     return 0
 
 
+def external_skill_plan(selection: dict[str, Any], skills_root: Path) -> list[dict[str, Any]]:
+    """Only catalog-pinned skill files are provisioned; runtimes stay separate."""
+    result = []
+    for name, dependency in selection["dependencies"].items():
+        recipe = dependency.get("auto_install")
+        if not recipe:
+            continue
+        if not re.fullmatch(r"https://github.com/[\w.-]+/[\w.-]+\.git", recipe["repository"]):
+            raise ToolkitError(f"invalid external repository: {name}")
+        if not re.fullmatch(r"[0-9a-f]{40}", recipe["commit"]):
+            raise ToolkitError(f"external revision must be pinned: {name}")
+        missing = {}
+        for skill, source in recipe["skills"].items():
+            safe_name(skill)
+            if Path(source).is_absolute() or ".." in Path(source).parts:
+                raise ToolkitError(f"invalid external source path: {name}/{skill}")
+            target = skills_root / skill
+            if exists(target):
+                # Never overwrite a managed, personal, or provider-owned copy.
+                if not (target / "SKILL.md").is_file():
+                    raise ToolkitError(f"external skill destination is incomplete: {target}")
+                continue
+            missing[skill] = source
+        result.append({"dependency": name, **recipe, "missing": missing})
+    return result
+
+
+def fetch_external_source(recipe: dict[str, Any], checkout: Path) -> None:
+    """Fetch objects without running upstream installers or checkout hooks."""
+    commands = (["git", "init", "--quiet", str(checkout)],
+                ["git", "-C", str(checkout), "fetch", "--quiet", "--depth=1",
+                 recipe["repository"], recipe["commit"]])
+    for command in commands:
+        completed = subprocess.run(command, capture_output=True, timeout=180, check=False,
+                                   env={**os.environ, "GIT_TERMINAL_PROMPT": "0"})
+        if completed.returncode:
+            raise ToolkitError(f"external fetch failed: {recipe['dependency']}; managed skills remain installed; retry install")
+
+
+def install_external_skills(selection: dict[str, Any], skills_root: Path, *, skip: bool = False) -> None:
+    if skip:
+        print("External skill provisioning skipped explicitly; external readiness is unverified.")
+        return
+    for recipe in external_skill_plan(selection, skills_root):
+        if not recipe["missing"]:
+            continue
+        with tempfile.TemporaryDirectory(prefix="toolkit-external-") as temporary:
+            checkout = Path(temporary) / "source"
+            fetch_external_source(recipe, checkout)
+            result = subprocess.run(["git", "-C", str(checkout), "archive", recipe["commit"]],
+                                    capture_output=True, timeout=180, check=False,
+                                    env={**os.environ, "GIT_NO_REPLACE_OBJECTS": "1"})
+            if result.returncode:
+                raise ToolkitError(f"external archive failed: {recipe['dependency']}")
+            with tarfile.open(fileobj=io.BytesIO(result.stdout), mode="r:") as archive:
+                for skill, source in recipe["missing"].items():
+                    staged = Path(temporary) / "skills" / skill
+                    staged.mkdir(parents=True)
+                    for member in archive.getmembers():
+                        path = Path(member.name)
+                        if path.is_absolute() or ".." in path.parts:
+                            raise ToolkitError("unsafe external archive path")
+                        try:
+                            relative = path.relative_to(source)
+                        except ValueError:
+                            # Preserve upstream notices outside the skill directory.
+                            if path.parent not in (Path(source), *Path(source).parents):
+                                continue
+                            if not path.name.upper().startswith(("LICENSE", "NOTICE", "COPYING")):
+                                continue
+                            relative = Path("upstream-notices") / path
+                        if member.isdir() or should_ignore(relative):
+                            continue
+                        if not member.isfile():
+                            raise ToolkitError(f"non-regular external skill member: {member.name}")
+                        handle = archive.extractfile(member)
+                        assert handle is not None
+                        destination = staged / relative
+                        destination.parent.mkdir(parents=True, exist_ok=True)
+                        destination.write_bytes(handle.read())
+                        destination.chmod(0o755 if member.mode & 0o111 else 0o644)
+                    if not (staged / "SKILL.md").is_file():
+                        raise ToolkitError(f"pinned external skill is missing: {skill}")
+                    write_json_atomic(staged / ".toolkit-upstream.json", {
+                        "repository": recipe["repository"], "commit": recipe["commit"], "source": source})
+                    target = checked_path(skills_root, Path(skill))
+                    # Exclusive creation preserves even an empty concurrent destination.
+                    target.mkdir()
+                    try:
+                        shutil.copytree(staged, target, dirs_exist_ok=True)
+                    except Exception:
+                        shutil.rmtree(target)
+                        raise
+                    print(f"Installed external skill {skill} ({recipe['commit'][:12]})")
+    runtime = [name for name, item in selection["dependencies"].items()
+               if item.get("kind") != "skills"]
+    if runtime:
+        print("Native plugins, runtimes and authentication require separate setup/verification: " + ", ".join(runtime))
+
+
 def command_install(args: argparse.Namespace) -> int:
     if structural_errors(check_lock=True):
         raise ToolkitError("bundle verification failed; run toolkit.py verify")
@@ -774,6 +874,8 @@ def command_install(args: argparse.Namespace) -> int:
     if state and state.get("schema_version") == 1 and not args.harness:
         raise ToolkitError("legacy installation: specify --harness explicitly before migration")
     selection = install_selection(args, state)
+    catalog = load_json(CATALOG_PATH)
+    selection["dependencies"] = {name: catalog["dependencies"][name] for name in selection["external"]}
     _skills_root, state_path, control_root = target_paths(args)
     state_bytes = state_path.read_bytes() if state_path.exists() else None
     managed = (state or {}).get("skills", {})
@@ -816,6 +918,8 @@ def command_install(args: argparse.Namespace) -> int:
             "unchanged": len(names) - len(changed), "conflicts": conflicts,
             "destinations": {name: str(destination_for(name, args)) for name in names}}
     if args.dry_run:
+        plan["external_skill_install"] = external_skill_plan(selection, _skills_root)
+        plan["skip_external"] = args.skip_external
         print(json.dumps(plan, indent=2))
         return 1 if conflicts else 0
     if conflicts:
@@ -829,6 +933,7 @@ def command_install(args: argparse.Namespace) -> int:
                   if key not in {"installed_at", "last_backup"}}
     if not changed and not removed and new_state == comparable:
         print(f"Installed {len(names)} managed skills (0 changed); already current.")
+        install_external_skills(selection, _skills_root, skip=args.skip_external)
         return 0
     control_root.mkdir(parents=True, exist_ok=True)
     lock_path = control_root / "operation.lock"
@@ -888,8 +993,7 @@ def command_install(args: argparse.Namespace) -> int:
         lock_path.unlink()
     print(f"Installed {len(names)} managed skills ({len(changed)} changed, {len(removed)} removed).")
     print(f"Recoverable backup: {backup_path}")
-    if selection["external"]:
-        print("External dependencies are declared, not installed or authenticated: " + ", ".join(selection["external"]))
+    install_external_skills(selection, _skills_root, skip=args.skip_external)
     return 0
 
 
@@ -1099,6 +1203,7 @@ def build_parser() -> argparse.ArgumentParser:
             subparser.add_argument("--adopt-identical", action="store_true", help="manage exact existing copies after comparing every file")
             subparser.add_argument("--backup-conflicts", action="store_true", help="explicitly replace differing copies after review, retaining a recoverable backup")
             subparser.add_argument("--link", action="store_true", help="development-only symlink install")
+            subparser.add_argument("--skip-external", action="store_true", help="explicit offline/vendor-only install; skip automatic external skill provisioning")
         else:
             subparser.add_argument("--harness")
 
@@ -1131,7 +1236,7 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
         return COMMANDS[args.command](args)
-    except (ToolkitError, OSError, tarfile.TarError) as exc:
+    except (ToolkitError, OSError, tarfile.TarError, subprocess.TimeoutExpired) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
 

@@ -38,7 +38,8 @@ class SelectionInstallTests(unittest.TestCase):
     def cli(self, *args):
         out, err = io.StringIO(), io.StringIO()
         with redirect_stdout(out), redirect_stderr(err):
-            code = toolkit.main(list(args))
+            # Managed-install tests are offline; external fetching has its own fixtures.
+            code = toolkit.main(list(args) + (["--skip-external"] if args[0] in {"install", "upgrade"} else []))
         return code, out.getvalue(), err.getvalue()
 
     def state(self, project):

@@ -186,7 +186,8 @@ def set_enabled(root: Path, enabled: bool, check: bool) -> list[str]:
     return [f"{'would ' if check else ''}set enabled={str(enabled).lower()}"]
 
 
-def initialize(root: Path, check: bool, capture_mode: str | None = None) -> list[str]:
+def initialize(root: Path, check: bool, capture_mode: str | None = None,
+               harness: str = "codex") -> list[str]:
     skill_root = Path(__file__).resolve().parents[1]
     assets = skill_root / "assets"
     changes: list[tuple[Path, str, int | None, str]] = []
@@ -199,8 +200,10 @@ def initialize(root: Path, check: bool, capture_mode: str | None = None) -> list
         config = load_json(assets / "config.json")
     selected_mode = capture_mode or config.get("capture_mode", "explicit")
     config["capture_mode"] = selected_mode
+    if harness != "codex":
+        config["passive_hook"] = False
     desired_config = json.dumps(config, indent=2, ensure_ascii=False) + "\n"
-    if not config_path.exists() or (capture_mode is not None and load_json(config_path) != config):
+    if not config_path.exists() or load_json(config_path) != config:
         label = "set project-learning capture mode " + selected_mode
         changes.append((config_path, desired_config, None, label))
         messages.append(label)
@@ -227,7 +230,7 @@ def initialize(root: Path, check: bool, capture_mode: str | None = None) -> list
         changes.append((ignore_path, ignore_content, None, message))
 
     managed_assets = [(assets / "lessons.md", root / "docs/project-learning/lessons.md", None)]
-    if selected_mode == "explicit":
+    if selected_mode == "explicit" and config.get("passive_hook", True):
         hooks_path = root / ".codex/hooks.json"
         hooks_content, message = merged_hooks(hooks_path)
         messages.append(message)
@@ -235,7 +238,7 @@ def initialize(root: Path, check: bool, capture_mode: str | None = None) -> list
             changes.append((hooks_path, hooks_content, None, message))
         managed_assets.append((assets / HOOK_SCRIPT_NAME, root / ".codex/hooks" / HOOK_SCRIPT_NAME, 0o755))
     else:
-        messages.append("workflow capture uses checkpoints; existing hooks preserved")
+        messages.append("portable capture installs no hooks; existing hooks preserved")
 
     for source, destination, mode in managed_assets:
         desired = source.read_text(encoding="utf-8")
@@ -267,6 +270,7 @@ def initialize(root: Path, check: bool, capture_mode: str | None = None) -> list
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", help="Repository path; defaults to the current repository")
+    parser.add_argument("--harness", default="codex", help="Receiving harness; non-Codex setup never installs hooks")
     parser.add_argument("--capture-mode", choices=("explicit", "workflow"), help="Explicitly enroll checkpoint capture without installing hooks")
     parser.add_argument("--check", action="store_true", help="Report changes without writing")
     parser.add_argument(
@@ -284,7 +288,7 @@ def main() -> int:
         if args.set_enabled is not None:
             messages = set_enabled(root, args.set_enabled == "true", args.check)
         else:
-            messages = initialize(root, args.check, args.capture_mode)
+            messages = initialize(root, args.check, args.capture_mode, args.harness)
         print(json.dumps({"root": str(root), "check": args.check, "results": messages}, indent=2))
         return 0
     except InitializationError as exc:

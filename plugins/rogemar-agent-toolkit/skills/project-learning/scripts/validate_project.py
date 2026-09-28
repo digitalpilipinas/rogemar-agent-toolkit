@@ -79,7 +79,7 @@ def main() -> int:
                 stack.extend(value.values())
             elif isinstance(value, list):
                 stack.extend(value)
-        if config.get("capture_mode", "explicit") == "explicit":
+        if config.get("capture_mode", "explicit") == "explicit" and config.get("passive_hook", True):
             require(len(commands) == 1, "exactly one project-learning hook command is required")
 
         hook_path = root / ".codex/hooks" / HOOK_SCRIPT_NAME

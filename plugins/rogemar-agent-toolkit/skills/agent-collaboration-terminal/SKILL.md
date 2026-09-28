@@ -1,17 +1,29 @@
 ---
 name: agent-collaboration-terminal
-description: Coordinate native Grok, Antigravity/Gemini, Cursor Agent, Junie, and Codex CLI sessions from Codex for research, planning, implementation, review, validation, or other bounded external-agent work. Prepare exact worktree prompts, Codex-managed PTY or background execution with physical fallback, frozen repository fingerprints, Markdown artifacts, monitoring, handoffs, and Codex synthesis without routing through the Agent Collaboration MCP broker.
+description: Coordinate native Grok, Antigravity/Gemini, Cursor Agent, Junie, Droid (Factory), and Codex CLI sessions from a terminal-capable harness for bounded external-agent work, with frozen scope, provider artifacts, and independent supervisor validation.
 ---
 
 # Agent Collaboration Terminal
 
-The file-backed coordination method can be used by another harness with equivalent
-process and file controls. In that case the current main agent takes the supervisor
-role called Codex below. Keep the original Codex-managed route as the fallback when
-working in Codex. Map only supported native controls; a catalog target is packaging
-metadata, not evidence that a shared method cannot work elsewhere. If a required
-PTY or host runner is absent, use the existing authorized handoff or report that
-specific unavailable execution step. Do not invent APIs or reduce review evidence.
+## Host portability
+
+This skill is shared across harnesses. The host agent owns preparation, monitoring
+and final validation. The Codex examples below describe its verified host adapter;
+outside Codex, use the current harness's observed terminal/background/PTY tools.
+Do not invent `exec_command`, `write_stdin`, model controls or native dispatch in
+another harness. The Python manifest, runner, monitor and validator remain shared.
+For portable headless execution, run `scripts/run_provider.py --run <run-dir>
+--provider <id>` with the host's process tool and record the actual session handle.
+The bundled launch scripts require zsh; Terminal.app is a macOS-only fallback.
+Without a supported interactive surface, record interactive work as unavailable;
+never bypass approval or switch to a different machine/worktree silently.
+References to Codex synthesis or Codex-owned review mean the supervising host's
+responsibility elsewhere. The `codex` provider itself is still a separate process,
+and its native flags, credentials and model IDs are never translated to the host.
+Keep the original Codex-managed route as the fallback in Codex. Elsewhere, use
+the existing authorized handoff when a required runner is absent; report the
+unavailable step without reducing review evidence.
+
 
 Use this skill when the native provider CLIs are the desired execution surface. Codex prepares the run manifest and prompts, the provider keeps its normal CLI capabilities, and Codex monitors local files. This is a file-backed coordination workflow, not another broker or Supervisor MCP.
 
@@ -57,7 +69,7 @@ Run commands from this skill directory (the folder containing `SKILL.md`) so
 the bundled `scripts/...` paths resolve portably. Provider names are
 case-insensitive; the user-facing keyword `Codex` resolves to the verified
 native lowercase `codex` executable. Generated commands preserve the verified
-native CLI entrypoints: `grok`, `agy`, `agent`, `junie`, and `codex`.
+native CLI entrypoints: `grok`, `agy`, `agent`, `junie`, `droid`, and `codex`.
 
 ```bash
 python3 scripts/prepare_run.py \
@@ -120,7 +132,7 @@ Every actionable provider finding uses one semantic root cause and reports sever
 The run contains:
 
 - `manifest.json`: immutable objective, intent, authority, execution policy, provider commands/models, Codex role models, scope, monitor policy, and repository fingerprints.
-- `grok/`, `agy/`, `cursor/`, `junie/`, or `codex/`: provider prompt, status, events, and final result.
+- `grok/`, `agy/`, `cursor/`, `junie/`, `droid/`, or `codex/`: provider prompt, status, events, and final result.
 - `owner_notice.md`: owner-facing map of the exact prompts, launch scripts, status/events/result paths, logs, windows, and timeouts. The launcher also prints this map in its Codex task output.
 - `comparison.md`: reserved for Codex synthesis; provider reports remain unchanged.
 - `handoff/to-<provider>.md`: placeholder until Codex reviews source artifacts and prepares a sequential handoff.
@@ -304,6 +316,25 @@ Native entry commands are fail-closed to one-shot `agent --print` runs. Use a
 Codex-managed PTY for the native interaction, or the explicit physical
 Terminal.app fallback. Ordinary Cursor tasks that do not require a native
 slash command may use the managed background runner.
+
+### Droid / Factory CLI
+
+Select `--provider droid` (`factory` is an alias). Verify `droid --version` and
+`droid exec --help` on the receiving host. Use exact live model IDs and supported
+reasoning levels; the supervisor's profile and authentication are not inherited.
+Managed background runs use `droid exec --cwd <workspace> --file <prompt.md>`
+and optional `--model` / `--reasoning-effort`. Manual background execution remains
+Droid's default read-only mode; edits requiring approval need the managed PTY
+fallback. Interactive launch starts bare `droid`, then submits the prepared brief.
+Full-auto, only with the existing explicit isolated-worktree authority, uses
+`--auto high`; it retains Droid's hard checks. Never add `--skip-permissions-unsafe`,
+`--mission`, a new worktree, or service credentials implicitly. CLI installation
+alone does not prove authentication, model access, or MCP availability. Native
+permission/authentication failures remain incomplete evidence. Timeout: 30 minutes.
+Droid code reviews use the same complete-candidate contract and separate artifacts.
+
+Reference: https://docs.factory.ai/droid-exec/overview (flags also checked against
+installed Droid 0.228.0). This adapter does not launch Droid merely by installing it.
 
 ### CodeRabbit local CLI
 

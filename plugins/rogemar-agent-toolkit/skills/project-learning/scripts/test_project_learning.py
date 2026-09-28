@@ -77,6 +77,17 @@ class ProjectLearningTest(unittest.TestCase):
     def tearDown(self) -> None:
         self.temp.cleanup()
 
+    def test_portable_explicit_capture_preserves_hooks_without_enrollment(self):
+        before = (self.root / ".codex/hooks.json").read_bytes()
+        run_command("python3", "-I", str(INITIALIZER), "--root", str(self.root),
+                    "--harness", "droid", cwd=self.root)
+        config = json.loads((self.root / ".codex/project-learning/config.json").read_text())
+        self.assertEqual(config["capture_mode"], "explicit")
+        self.assertFalse(config["passive_hook"])
+        self.assertEqual((self.root / ".codex/hooks.json").read_bytes(), before)
+        self.assertFalse((self.root / ".codex/hooks/project-learning-stop.py").exists())
+        run_command("python3", "-I", str(VALIDATOR), "--root", str(self.root), cwd=self.root)
+
     def initialize(self) -> dict:
         result = run_command(
             "python3", "-I", str(INITIALIZER), "--root", str(self.root), cwd=self.root
