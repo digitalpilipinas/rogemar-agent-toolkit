@@ -63,7 +63,7 @@ When working on any Supabase task that touches auth, RLS, views, storage, or use
     to authenticated
     using ( (select auth.uid()) = user_id );
     ```
-  - **UPDATE policies require both `USING` and `WITH CHECK`.** Without `WITH CHECK`, a user can reassign a row's `user_id` to another user:
+  - **Check both existing-row access and allowed new values for UPDATE.** PostgreSQL reuses `USING` when an UPDATE/ALL policy omits `WITH CHECK`; omission alone is not an ownership-bypass finding. Explicit clauses help express distinct predicates clearly. Inspect all applicable policies and test unauthorized ownership changes. See [CREATE POLICY](https://www.postgresql.org/docs/16/sql-createpolicy.html). For an owner-scoped policy:
     ```sql
     create policy "example" on table_name for update
     to authenticated
@@ -135,7 +135,7 @@ Use this when `supabase/schemas/` exists or `config.toml` sets `schema_paths`. E
 
 Use this when the project does not use declarative schemas.
 
-**To make schema changes, use `execute_sql` (MCP) or `supabase db query` (CLI).** These run SQL directly on the database without creating migration history entries, so you can iterate freely and generate a clean migration when ready.
+**For authorized local schema iteration, use `execute_sql` (MCP) or `supabase db query` (CLI) only after verifying the actual target is the intended disposable/local database.** A hosted MCP connection is not a local database. Shared or production changes follow the project's reviewed migration and delivery process; this local iteration method grants no remote mutation authority.
 
 Do NOT use `apply_migration` to change a local database schema — it writes a migration history entry on every call, which means you can't iterate, and `supabase db diff` / `supabase db pull` will produce empty or conflicting diffs. If you use it, you'll be stuck with whatever SQL you passed on the first try.
 

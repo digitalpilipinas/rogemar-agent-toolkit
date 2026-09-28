@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "local-validated; final source checks and GitHub delivery recorded in PR",
+  "status": "Source alignment and initial PR remediation; exact current-head CI and merge outcome belong to PR 11",
   "verified_on": "2026-09-28",
   "repository": "digitalpilipinas/rogemar-agent-toolkit",
   "baseline_commit": "0b8d9689d8fef5cfae19d1f9691b50e532b86b66",
@@ -87,7 +87,7 @@
     "note": "Synthetic temporary Git commits in package tests are not toolkit commits. Matching declaration checks do not enforce runtime permissions."
   },
   "work_packages": {
-    "W0": "All 110 identities dispositioned; 77 complete body reviews, 33 targeted/partial; resource review scoped, not comprehensive",
+    "W0": "All 110 canonical skill bodies completely reviewed and dispositioned; references/scripts reviewed selectively, with runtime boundaries explicit",
     "W1": "Implemented and validated: source/hash-preserving packages and relevant owner checks",
     "W2": "Implemented: 110 routes, 47 Forge identities, 23 baseline playbooks; runtime selection qualification scoped",
     "W3": "Implemented: shared obligations and concrete instruction repairs; no universal model compliance guarantee",
@@ -118,12 +118,12 @@
     {
       "check": "root unit tests",
       "state": "passed",
-      "detail": "188 tests; original contracts plus new routing/lifecycle/boundary tests"
+      "detail": "192 tests; includes four remediation regressions"
     },
     {
       "check": "relevant owner suites",
-      "state": "passed",
-      "detail": "17 Project Learning tests selected from changed executable paths; unrelated terminal/Bun suites not required"
+      "state": "partial-local; Bun awaits CI",
+      "detail": "17 Project Learning, 44 terminal collaboration and 3 Forge plan checks passed locally; Bun unavailable here. CI provisions exact Bun only when selected. All four owners selected because runner infrastructure changed."
     },
     {
       "check": "selection regression",
@@ -144,16 +144,16 @@
   "limitations": [
     "Native Codex/Cursor/other harness behavior qualification requires those actual runtimes.",
     "Protected-host enforcement requires host-owned controls; repository fixtures are not deployment proof.",
-    "33 skill bodies retain targeted/partial review labels; optional resource execution is not comprehensively audited.",
     "Mermaid renderer unavailable locally; diagram sources inspected, no rendered-visual claim.",
     "Repository rulesets including inherited rules returned empty; effective branch-rules endpoint was unsupported by connector; no administration changed."
   ],
   "publication": {
-    "pushed": false,
-    "pr_created": false,
+    "pushed": true,
+    "pr_created": true,
+    "pr_url": "https://github.com/digitalpilipinas/rogemar-agent-toolkit/pull/11",
     "merged": false
   },
-  "snapshot": "Pre-publication evidence; publication state below is not a live status feed",
+  "snapshot": "PR remediation snapshot before publishing this correction; PR records subsequent check and merge identities",
   "local_evidence": [
     {
       "artifact": "implementation-root-final.log",
@@ -186,6 +186,22 @@
     {
       "artifact": "final-all.log",
       "sha256": "22af8a627e094a2ae0ac311379f786519345091a616ef50855941188b0f33b52"
+    },
+    {
+      "artifact": "remediation-root.log",
+      "sha256": "0c14c8b83c2576b18dbbdc2e1316c2dd42463a7dc4001acc6b823671b58986f6"
+    },
+    {
+      "artifact": "remediation-owners.log",
+      "sha256": "8f9c21472851d7d23505b2f56310cccf4cd145b83431582a8a94b79d2717df7e"
+    },
+    {
+      "artifact": "remediation-core.log",
+      "sha256": "faad5acf9102321601de36ac05c480b6844fb9f1aea76320e0ec5c0a0eb998b6"
+    },
+    {
+      "artifact": "remediation-all.log",
+      "sha256": "06f5aa9a3b988acf6294a0b6b898b701532e09f21f9441378555007155961b49"
     }
   ],
   "review_findings": [
@@ -198,16 +214,93 @@
       "finding": "Instruction still required a new verification harness/phase list for an accepted task",
       "resolution": "Reuse existing decisive checks and accepted plan; create harness only for missing proof",
       "state": "fixed; final required source checks repeated"
+    },
+    {
+      "finding": "Remaining skill-body authority, fallback and duplicate-record conflicts",
+      "resolution": "Completed remaining 33 bodies; reconciled browser/Figma/auth/runtime routes, pet generation delegation, cleanup authority and PostgreSQL RLS wording while preserving original routes and independent QA",
+      "state": "source-reviewed; native execution qualification unchanged"
     }
   ],
   "nested_candidate_sha256": "0a6bd9eb645e8250637c0ffb7a6a64f3080b761e4b2eb4d08063cac8394d35ca",
-  "final_local_gate": "After final instruction repair: 188 tests passed; toolkit verification and both packages passed",
+  "final_local_gate": "192 root tests passed; lock/verify/README/routing/Forge and both core/full packages passed. Learning, terminal and Forge plan owner suites passed. Native Bun owner suite blocked locally, current-head CI required before merge.",
   "ci_remediation": {
     "run_id": 36413556895,
     "head": "34ef8b151bc10641ef8da0e06010b14341a7a09f",
     "finding": "macOS /var alias in a new direct-call test fixture; production CLI already canonicalizes root",
     "fix": "Resolve the fixture root before passing it to internal path-boundary helpers",
-    "validation": "All 9 focused lifecycle tests pass locally; rerun current-head CI before merge",
+    "validation": "Focused lifecycle tests and all four Ubuntu/macOS Python 3.9/3.11 jobs passed at a560fece3e624fc616c83929cd3e12084610f021; this correction requires fresh CI",
     "other_jobs": "Cancelled by existing matrix fail-fast after macOS 3.11 failure"
-  }
+  },
+  "automatic_reviews": {
+    "codex": {
+      "head": "34ef8b151bc10641ef8da0e06010b14341a7a09f",
+      "state": "completed without posted findings"
+    },
+    "coderabbit": {
+      "head": "a560fece3e624fc616c83929cd3e12084610f021",
+      "state": "initial review complete; nine findings validated and fixed in this correction; subsequent feedback belongs to PR"
+    }
+  },
+  "automatic_review_dispositions": [
+    {
+      "comment_id": 4121569983,
+      "finding": "README generated inventory",
+      "resolution": "README-only PRs retain validation; docs/CHANGELOG exclusions preserved",
+      "state": "fixed; verify correction in PR"
+    },
+    {
+      "comment_id": 4121570031,
+      "finding": "Bun absent from CI",
+      "resolution": "Pinned conditional Bun 1.3.14 setup and frozen dependencies; selector/workflow changes exercise all owner runners; missing runtime never counts as pass",
+      "state": "fixed; verify correction in PR"
+    },
+    {
+      "comment_id": 4121570042,
+      "finding": "Conflicting progress record instructions",
+      "resolution": "Reuse existing task record throughout; no private-prompt copying",
+      "state": "fixed; verify correction in PR"
+    },
+    {
+      "comment_id": 4121570055,
+      "finding": "Source-free derived page",
+      "resolution": "Require a resolved evidence root before serving a derived page; regression covers no content read",
+      "state": "fixed; verify correction in PR"
+    },
+    {
+      "comment_id": 4121570064,
+      "finding": "Recursive page dependency traversal",
+      "resolution": "Iterative worklist; 1000-page chain regression",
+      "state": "fixed; verify correction in PR"
+    },
+    {
+      "comment_id": 4121570070,
+      "finding": "Conflicting elevation instruction",
+      "resolution": "Use only actual host permission flow throughout",
+      "state": "fixed; verify correction in PR"
+    },
+    {
+      "comment_id": 4121570086,
+      "finding": "Lifecycle mutation permission mode",
+      "resolution": "Execution mode required before request/state access; no-mutation regression and command example updated",
+      "state": "fixed; verify correction in PR"
+    },
+    {
+      "comment_id": 4121570106,
+      "finding": "Unconditional security-report file",
+      "resolution": "File output conditional on existing task/user authority",
+      "state": "fixed; verify correction in PR"
+    },
+    {
+      "comment_id": 4121570113,
+      "finding": "Forge verifier import assumes script launch",
+      "resolution": "Path-based module load; direct import invocation verified",
+      "state": "fixed; verify correction in PR"
+    }
+  ],
+  "advisory_dispositions": [
+    {
+      "finding": "CodeRabbit generic 80% docstring coverage warning",
+      "resolution": "Not a repository-required merge check. Retained useful boundary/ownership docstrings; did not add boilerplate to 209 touched functions solely to reach a style percentage."
+    }
+  ]
 }

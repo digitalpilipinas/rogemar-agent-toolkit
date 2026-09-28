@@ -15,6 +15,10 @@ class CheckSelectionTests(unittest.TestCase):
     def test_learning_writer_selects_the_existing_owner_suite(self):
         self.assertEqual(SELECT.select([SELECT.S + 'project-learning/scripts/candidate_store.py']), ['learning'])
 
+    def test_owner_check_infrastructure_changes_exercise_every_affected_runner(self):
+        for path in ['scripts/select_checks.py', '.github/workflows/validate.yml']:
+            self.assertEqual(SELECT.select([path]), sorted(SELECT.CHECKS))
+
     def test_terminal_and_plan_helpers_select_distinct_suites(self):
         paths = [SELECT.S + 'agent-collaboration-terminal/scripts/provider.py',
                  SELECT.S + 'codex-forge/scripts/check-plan.mjs']

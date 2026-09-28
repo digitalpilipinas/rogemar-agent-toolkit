@@ -1184,8 +1184,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         return {"captured": False, "reason": "read_only", "review_due": False}
     if getattr(args, "no_learning", False):
         return {"captured": False, "reason": "no_learning", "review_due": False}
-    if args.command in {'stage-proposal', 'apply-proposal', 'rollback-proposal'} and args.permission_mode != 'execution':
-        raise StoreError('Proposal mutations require --permission-mode execution and existing task authority')
+    if args.command in {'set-lifecycle', 'stage-proposal', 'apply-proposal', 'rollback-proposal'} and args.permission_mode != 'execution':
+        raise StoreError('Lifecycle and proposal mutations require --permission-mode execution and existing task authority')
     root = resolve_root(args.root)
     config = config_for(root)
     if args.command in {"capture", "mark-no-candidate"}:

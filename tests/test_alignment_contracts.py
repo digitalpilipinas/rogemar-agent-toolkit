@@ -342,6 +342,31 @@ class KnowledgeTests(unittest.TestCase):
         value = knowledge(); value['pages'][1]['evidence_roots'].append('invented-root')
         with self.assertRaises(K.KnowledgeError): K.inspect(value)
 
+    def test_source_free_derived_page_cannot_be_served(self):
+        value = knowledge()
+        value['pages'] = [dict(value['pages'][0], sources=[], depends_on=[], evidence_roots=[], links=[])]
+        reads = []
+        with self.assertRaisesRegex(K.KnowledgeError, 'at least one evidence root'):
+            K.query_page(value, 'page-a', 'owner', observe_source=lambda *_: {},
+                         authorize_page=lambda *_: True, read_page=lambda *args: reads.append(args))
+        self.assertEqual(reads, [])
+
+    def test_maximum_dependency_chain_queries_without_recursion(self):
+        value = knowledge()
+        template = dict(value['pages'][0], links=[])
+        value['pages'] = [dict(template, id='page-0', depends_on=[])]
+        for index in range(1, 1000):
+            value['pages'].append(dict(template, id='page-' + str(index), sources=[],
+                                       depends_on=['page-' + str(index - 1)]))
+        checked = []
+        result = K.query_page(value, 'page-999', 'owner',
+                              observe_source=lambda *_: dict(allowed=True, available=True, revision=value['sources'][0]['revision']),
+                              authorize_page=lambda ident, _: checked.append(ident) or True,
+                              read_page=lambda *_: 'bounded view')
+        self.assertEqual(result['content'], 'bounded view')
+        self.assertEqual(len(set(checked)), 1000)
+        self.assertEqual(result['sources_checked'], ['source-a'])
+
     def test_private_audience_and_namespace_preserved(self):
         for field, value in [('audience', ['*']), ('namespace', 'other-project')]:
             record = knowledge(); record['pages'][1][field] = value

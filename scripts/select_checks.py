@@ -20,13 +20,15 @@ CHECKS = {
     'terminal': [sys.executable, '-B', '-m', 'unittest', 'discover', '-s',
                  S + 'agent-collaboration-terminal/tests', '-v'],
     'forge-plan': ['node', '--test', S + 'codex-forge/scripts/check-plan.test.mjs'],
-    'forge-native': ['bun', 'test'],
+    'forge-native': ['bun', 'run', 'test'],
 }
 
 
 def select(paths):
     selected = set()
     for path in paths:
+        if path in {'scripts/select_checks.py', '.github/workflows/validate.yml'}:
+            selected.update(CHECKS)
         if path.startswith(S + 'project-learning/scripts/'):
             selected.add('learning')
         if path.startswith(S + 'agent-collaboration-terminal/') and path.endswith(('.py', '.sh', '.json')):

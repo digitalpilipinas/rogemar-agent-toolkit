@@ -132,6 +132,7 @@ def inspect(record: Any, changed_sources: list[str] | None = None) -> dict[str, 
             if dep in stale: stale.add(ident)
             if dep in unavailable: unavailable.add(ident)
             if dep in impacted: impacted.add(ident)
+        require(bool(roots[ident]), 'derived pages require at least one evidence root')
         require(set(page['evidence_roots']) == roots[ident], 'declared evidence roots do not match derivation')
     return {'status': 'metadata-valid', 'review_required': bool(stale or unavailable), 'stale_pages': sorted(stale), 'unavailable_pages': sorted(unavailable),
             'affected_pages': sorted(impacted), 'declared_root_counts': {key: len(roots[key]) for key in order},
@@ -149,14 +150,14 @@ def query_page(record, page_id, principal, *, observe_source, authorize_page, re
     pages = {p['id']: p for p in record['pages']}
     require(page_id in pages, 'Unknown page')
     needed, source_ids = set(), set()
-    def visit(ident):
+    pending = [page_id]
+    while pending:
+        ident = pending.pop()
         if ident in needed:
-            return
+            continue
         needed.add(ident)
         source_ids.update(x['id'] for x in pages[ident]['sources'])
-        for dep in pages[ident].get('depends_on', []):
-            visit(dep)
-    visit(page_id)
+        pending.extend(pages[ident].get('depends_on', []))
     live = deepcopy(record)
     for ident in needed:
         require(authorize_page(ident, principal) is True, 'Page unavailable or access denied')

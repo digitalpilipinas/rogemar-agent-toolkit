@@ -3192,7 +3192,7 @@
     },
     "develop-web-game": {
       "file_count": 7,
-      "sha256": "0fb0cfa5d5e82a3f9da6774869680127ef08b1396326feb441aa75e6556f59ff"
+      "sha256": "a4b34ddda7562a6ef206c3bc9d0f2382e4d83511e1ddbba3623f1e82e4e960d3"
     },
     "dream-team": {
       "file_count": 7,
@@ -3200,11 +3200,11 @@
     },
     "engineering-playbooks": {
       "file_count": 57,
-      "sha256": "c62a7f28129af91d6ae95d1aded2905b66904b272ac1258577cdd4edf01e431e"
+      "sha256": "4448d0b5c1a7d5fcc06080285392892d58132170a7dbb91df9b807cdb32e81ee"
     },
     "figma": {
       "file_count": 8,
-      "sha256": "fab4f6767fa430803cba9bfbcca63738166e25853467cf29aaa22dfad8dc3a61"
+      "sha256": "1d7f2c9824b7241d7fccb7182859ccc3b510175146a490fda9d27d589ae18b0d"
     },
     "first-time-right-delivery": {
       "file_count": 3,
@@ -3400,15 +3400,15 @@
     },
     "gh-address-comments": {
       "file_count": 6,
-      "sha256": "cfd85f4249bd0efca1c210c346c18373ff7346ee902287403e5a43f508679307"
+      "sha256": "577cc2124fd07fbf5292b31a17ddac3db14a1050e4fb9efd9690ab18dceafee8"
     },
     "gh-fix-ci": {
       "file_count": 6,
-      "sha256": "dbebe109ce02267547c985259c6df619979bcf455e61f0968e80e712d90c43cd"
+      "sha256": "312a7cd0c8ee0e982a00910c75d097a55c8d9f047be764e0c7f0c57530fa96a7"
     },
     "hatch-pet": {
       "file_count": 29,
-      "sha256": "2f011b9660a5393827c266b79fe5a6d7a4ce4b298125218409ab45e86f96f140"
+      "sha256": "fb9fbd76638be6d7b9ce978d0c0983b0f0672d67132bdb101c475f70704b7051"
     },
     "integrated-workflow": {
       "file_count": 10,
@@ -3464,7 +3464,7 @@
     },
     "playwright": {
       "file_count": 9,
-      "sha256": "2cee1548b84fa49c4479c6999ef85d8fd088251101eb741f14703d9764df93b6"
+      "sha256": "f0a4fe8a7d3bd0fe7ed952f4b99d1557f3f1021563d0da0e0103401fc1047f18"
     },
     "privacy-safety-review": {
       "file_count": 2,
@@ -3472,7 +3472,7 @@
     },
     "project-learning": {
       "file_count": 18,
-      "sha256": "07b61b396ef1addab631bdf59a8a639a75d6ff6e36517f0255beeb6acf173a7a"
+      "sha256": "1137a73d5f60ab026c1c8ef6490871bb018d6a0e20a89704a8596190aa6e00f4"
     },
     "reference-design-contract": {
       "file_count": 7,
@@ -3484,11 +3484,11 @@
     },
     "screenshot": {
       "file_count": 11,
-      "sha256": "d1ca7b1adb08e1841847da4bc2205ccad1fcf4f4af0ce610a8a1361945ef412c"
+      "sha256": "b615952e36aa5a36c842cd4418467318a5fa117180b5c3bb99bdd5ac7a201157"
     },
     "security-best-practices": {
       "file_count": 14,
-      "sha256": "29d23d0d18d8c4dbb27df7fade64acfb491024e82c8b67e4d79c484dd7c44fcb"
+      "sha256": "c8a4ecf495976803b3651997d7b3f185e931462777667c9e3ff22f369510eb56"
     },
     "seo-content-strategy": {
       "file_count": 2,
@@ -3504,7 +3504,7 @@
     },
     "sora": {
       "file_count": 14,
-      "sha256": "844ccce47f656246d37a591eabc48bdf255d4f8d260be81846bb27f91e698ac6"
+      "sha256": "b21ef9351370e1356d808923326d592f343af7333071cf3e87325e9715ff4449"
     },
     "speech": {
       "file_count": 16,
@@ -3512,7 +3512,7 @@
     },
     "supabase": {
       "file_count": 4,
-      "sha256": "a9cd631d1580ba7858e81596b54349cfd311cb745364e6b220bcd7e939544c5b"
+      "sha256": "8eff81cfcfed45d97798b9958d278e87498c2432318cf4a1efc54c6bd3685378"
     },
     "supabase-guardian": {
       "file_count": 2,

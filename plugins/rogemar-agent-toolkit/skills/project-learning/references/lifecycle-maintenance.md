@@ -49,7 +49,7 @@ use the existing candidate-store command:
 
 ```sh
 python3 -B <project-learning-skill>/scripts/candidate_store.py set-lifecycle \
-  --root <project> --request <approved-request.json>
+  --root <project> --request <approved-request.json> --permission-mode execution
 ```
 
 The request contains exactly:

@@ -125,10 +125,10 @@ window.advanceTime = (ms) => {
 
 ## Progress Tracking
 
-Create a `progress.md` file if it doesn't exist, and append TODOs, notes, gotchas, and loose ends as you go so another agent can pick up seamlessly.
-If a `progress.md` file already exists, read it first, including the original user prompt at the top (you may be continuing another agent's work). Do not overwrite the original prompt; preserve it.
-Update `progress.md` after each meaningful chunk of work (feature added, bug found, test run, or decision made).
-At the end of your work, leave TODOs and suggestions for the next agent in `progress.md`.
+Reuse the current task record for goals, constraints, material changes, proof and
+unfinished work. Create `progress.md` only when no adequate record exists. Preserve
+existing user-authored material, but do not copy private prompts or transcripts
+into a new log. Leave a concise next-action handoff in that same record.
 
 ## Playwright Prerequisites
 
@@ -137,7 +137,10 @@ At the end of your work, leave TODOs and suggestions for the next agent in `prog
   ```
   command -v npx >/dev/null 2>&1
   ```
-- If `npx` is missing, install Node/npm and then install Playwright globally:
+- If `npx` is missing, use an already available compatible browser route when it
+  supplies the same action/state/screenshot evidence. Otherwise report the missing
+  runtime. Install dependencies only within the task's setup authority; a global
+  installation is optional, not implied by loading this skill:
   ```
   npm install -g @playwright/mcp@latest
   ```

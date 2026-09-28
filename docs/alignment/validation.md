@@ -8,8 +8,12 @@ Required source checks are `toolkit.py lock`, `toolkit.py verify`, README invent
 Forge/routing verification, root unit tests, relevant owner suites and both core/full
 release-package checks. `select_checks.py --base <commit> --run` selects owner suites
 from changed paths; inspect semantic dependencies as well. This repository's source
-maintenance gates remain required, while documentation-only PRs need not start CI
-unless effective repository policy requires it.
+maintenance gates remain required. Documentation-only PRs under `docs/` and
+`CHANGELOG.md` need not start CI unless effective policy requires it; README changes
+retain the generated-inventory check. Changes to the owner selector or validation
+workflow exercise every affected owner runner. Bun and its locked dependencies are
+provisioned only when native Forge checks are selected; missing local runtimes are
+reported as blocked, never passed.
 
 The tests exercise original installation/rollback contracts and new routing,
 learning/proposal recovery, qualification, update, replay/budget and source lifecycle

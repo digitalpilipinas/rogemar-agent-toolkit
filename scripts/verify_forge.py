@@ -9,8 +9,11 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / 'plugins/rogemar-agent-toolkit/skills'
 
 def verify():
-    from routing_catalog import verify as verify_routes
-    route_errors = verify_routes(ROOT)
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('forge_routing', ROOT / 'scripts/routing_catalog.py')
+    routing = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(routing)
+    route_errors = routing.verify(ROOT)
     declared = {item['name'] for item in json.loads((ROOT/'catalog/skills.yaml').read_text())['vendored']}
     actual = {p.name for p in SKILLS.iterdir() if p.name=='codex-forge' or p.name.startswith('forge-')}
     if not actual and not any(n=='codex-forge' or n.startswith('forge-') for n in declared):

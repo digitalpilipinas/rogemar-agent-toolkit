@@ -183,6 +183,18 @@ class LearningLifecycleTests(unittest.TestCase):
         result = self.fixture.store('apply-proposal', '--request', 'absent.json', '--read-only')
         self.assertEqual(json.loads(result.stdout)['reason'], 'read_only')
 
+    def test_lifecycle_mutation_requires_execution_before_request_or_state_access(self):
+        before = {p.relative_to(self.root): p.read_bytes() for p in self.root.rglob('*')
+                  if p.is_file() and '.git' not in p.parts}
+        result = self.fixture.store('set-lifecycle', '--request', 'absent.json', check=False)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('--permission-mode execution', result.stderr)
+        result = self.fixture.store('set-lifecycle', '--request', 'absent.json', '--permission-mode', 'plan')
+        self.assertEqual(json.loads(result.stdout)['reason'], 'read_only')
+        after = {p.relative_to(self.root): p.read_bytes() for p in self.root.rglob('*')
+                 if p.is_file() and '.git' not in p.parts}
+        self.assertEqual(after, before)
+
     def test_recall_excludes_stale_and_retired_guidance_and_is_read_only(self):
         ledger = self.root / 'docs/project-learning/lessons.md'
         config = STORE.config_for(self.root)

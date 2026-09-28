@@ -27,7 +27,7 @@ Prereq: run `gh auth status` normally before triaging checks. If blocked, use on
 ## Workflow
 
 1. Verify gh authentication.
-   - Run `gh auth status` in the repo with normal permissions; retry only on a network or sandbox denial using narrowly scoped elevation.
+   - Run `gh auth status` in the repo with normal permissions; on denial use only the active host's supported authorization flow and preserve an unresolved block.
    - If unauthenticated, ask the user to run `gh auth login` (ensuring repo + workflow scopes) before proceeding.
 2. Resolve the PR.
    - Prefer the current branch PR: `gh pr view --json number,url`.

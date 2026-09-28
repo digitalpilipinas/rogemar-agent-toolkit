@@ -52,7 +52,7 @@ While these references contain the security best practices for languages and fra
 
 # Report Format
 
-When producing a report, you should write the report as a markdown file in `security_best_practices_report.md` or some other location if provided by the user. You can ask the user where they would like the report to be written to.
+When the user or task scope authorizes a report file, write Markdown to the requested location or `security_best_practices_report.md`. Otherwise return the report in the response without creating a file. Reuse existing authorization; do not add a routine confirmation step.
 
 The report should have a short executive summary at the top.
 
@@ -64,9 +64,7 @@ Once the report is written, also report it to the user directly, although you ma
 
 Important: When referencing code in the report, make sure to find and include line numbers for the code you are referencing.
 
-After you write the report file, summarize the findings to the user.
-
-Also tell the user where the final report was written to
+Summarize the findings to the user and, when a file was authorized and written, provide its location.
 
 # Fixes
 
