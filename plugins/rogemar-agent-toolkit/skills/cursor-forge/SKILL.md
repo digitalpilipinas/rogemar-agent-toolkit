@@ -72,3 +72,11 @@ Cursor Forge is ready for native trials, not a claim of verified Cursor model
 switching. Record the exact runtime, requested/observed profiles, tools used,
 checks and limitations. No additional provider, installation, external action
 or recurring monitor is authorized by invoking this adapter.
+
+## Affected capability maintenance
+
+For changed skill dependencies, broken recipes or an explicit update, route through
+`workflow-orchestrator` to portable `codex-capability-maintainer` and the applicable
+`forge-create-verification-skill` or `forge-maintain-verification-skill`. Their entry
+names are retained across harnesses. Scope checks to affected behavior; reuse valid
+evidence and native controls without a full audit or new delivery owner.

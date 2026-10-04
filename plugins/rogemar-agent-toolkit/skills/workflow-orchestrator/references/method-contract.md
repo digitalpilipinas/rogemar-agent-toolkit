@@ -35,3 +35,6 @@ If a fallback could repeat an external action, reconcile the prior outcome first
 Keep the existing working route available when an enhancement is disabled or fails.
 Host permissions and independently protected verification enforce external action
 boundaries. Agent-readable contracts do not sandbox an unrestricted shell.
+
+For Swift/E2E alternatives, portable maintenance and mechanical validation, use
+[selected route and readiness](route-readiness.md) when that scope applies.

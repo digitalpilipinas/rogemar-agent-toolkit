@@ -206,3 +206,11 @@ Use exact-generation model labels and qualifications from the router. New native
 availability is not evidence that an old assignment or consultant exception transfers.
 
 For measured claims use [Explain the Number](../engineering-playbooks/references/principles/explain-the-number.md) and its scoped benchmark checklist.
+
+## Affected capability maintenance
+
+For changed skill dependencies, broken recipes or an explicit update, route through
+`workflow-orchestrator` to portable `codex-capability-maintainer` and the applicable
+`forge-create-verification-skill` or `forge-maintain-verification-skill`. Their entry
+names are retained across harnesses. Scope checks to affected behavior; reuse valid
+evidence and native controls without a full audit or new delivery owner.

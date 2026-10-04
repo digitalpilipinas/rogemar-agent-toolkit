@@ -509,38 +509,56 @@ def run_probe(command: list[str]) -> tuple[bool, str]:
     return result.returncode == 0, output
 
 
-def command_doctor(_args: argparse.Namespace) -> int:
-    verify_ok = not structural_errors(check_lock=True)
-    print(f"bundle: {'ready' if verify_ok else 'invalid'}")
-    print(f"platform: {platform.system()} {platform.machine()}")
-    print(f"python: {sys.version.split()[0]} ({'ready' if sys.version_info >= (3, 9) else 'unsupported'})")
-    for executable in ("git", "codex", "cursor-agent", "agent"):
-        resolved = shutil.which(executable)
-        print(f"{executable}: {resolved if resolved else 'missing'}")
-
+def command_doctor(args: argparse.Namespace) -> int:
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("toolkit_doctor", ROOT / "scripts/capability_doctor.py")
+    doctor = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(doctor)
+    errors = structural_errors(check_lock=True)
     catalog = load_json(CATALOG_PATH)
-    codex = shutil.which("codex")
-    plugin_output = ""
-    plugin_list_ready = False
-    if codex:
-        plugin_list_ready, plugin_output = run_probe([codex, "plugin", "list"])
-    print(f"codex plugin catalog: {'readable' if plugin_list_ready else 'unavailable'}")
-    installed_plugins = {
-        match.group(1)
-        for line in plugin_output.splitlines()
-        if (match := re.match(r"^(\S+)\s+installed, enabled\s+", line))
-    }
-    for package in catalog.get("external_packages", []):
-        package_id = str(package.get("id", ""))
-        ready = plugin_list_ready and package_id in installed_plugins
-        print(f"external {package_id}: {'detected' if ready else 'not detected'}")
-    for runtime in catalog.get("runtime_integrations", []):
-        runtime_id = str(runtime.get("id", "unknown"))
-        status = str(runtime.get("status", "runtime-managed"))
-        version = str(runtime.get("version", "unversioned"))
-        print(f"runtime {runtime_id}: {version} (catalog observation; {status})")
-    print("connector authentication: not inspected (intentionally out of scope)")
-    return 0 if verify_ok and sys.version_info >= (3, 9) else 1
+    if args.harness not in catalog["harnesses"]:
+        raise ToolkitError("unknown harness: " + args.harness)
+    try:
+        result = doctor.inspect_capabilities(args.capability or [], auth_check=args.auth_check,
+                                             exercise=args.exercise, candidate=args.candidate,
+                                             project_root=args.project_root)
+    except ValueError as exc:
+        raise ToolkitError(str(exc)) from exc
+    result.update(harness=args.harness, bundle="invalid" if errors else "verified", errors=errors)
+    if args.method:
+        skills_root, state_path, _ = target_paths(args)
+        state = read_optional_state(state_path) or {}
+        entries = {item["name"]: item for item in catalog["vendored"]}
+        inventory = {}
+        for name in args.method:
+            safe_name(name)
+            entry = entries.get(name)
+            record = state.get("skills", {}).get(name) or state.get("external_skills", {}).get(name)
+            path = destination_for(name, args, record) if record else skills_root / name
+            resources = ["SKILL.md", *(entry or {}).get("required_resources", [])]
+            missing = [resource for resource in resources if not (path / resource).is_file()]
+            actual = tree_digest(path)[0] if path.is_symlink() and path.is_dir() else installed_digest(path)
+            inventory[name] = {"installed": not missing, "missing_resources": missing,
+                               "managed_hash_matches": actual == record["sha256"] if record else None,
+                               "harness_discovery": "unverified", "path": str(path)}
+        result["skills"] = inventory
+    blocked = bool(errors) or any(not r["installed"] or not r["discoverable"]
+               or (args.auth_check and r["authenticated"] in ("failed", "unverified"))
+               or (args.exercise and r["exercised"] != "passed" and name not in ("e2e-web", "e2e-mobile"))
+               for name, r in result["capabilities"].items())
+    blocked |= any(not r["installed"] or r["managed_hash_matches"] is False for r in result.get("skills", {}).values())
+    result["status"] = "blocked" if blocked else "observed"
+    result["execution_and_acceptance"] = "unverified; probes and file hashes do not prove a completed journey"
+    if args.json:
+        print(json.dumps(result, indent=2))
+    else:
+        print(f"bundle: {result['bundle']}; harness: {args.harness}; status: {result['status']}")
+        for name, row in result["capabilities"].items():
+            print(f"{name}: installed={row['installed']}, discoverable={row['discoverable']}, authentication={row['authenticated']}, exercised={row['exercised']}")
+        for name, row in result.get("skills", {}).items():
+            print(f"{name}: installed={row['installed']}, managed hash match={row['managed_hash_matches']}; host discovery unverified")
+        print(result["execution_and_acceptance"])
+    return int(blocked)
 
 
 def resource_fingerprint(path: Path) -> str | None:
@@ -1294,7 +1312,16 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("inventory", help="summarize vendored and external capabilities")
     subparsers.add_parser("lock", help="regenerate deterministic skill content hashes")
     subparsers.add_parser("verify", help="validate manifests, skills, paths, and hashes")
-    subparsers.add_parser("doctor", help="report bundle and local harness readiness")
+    doctor_parser = subparsers.add_parser("doctor", help="scoped read-only capability and installation checks")
+    doctor_parser.add_argument("--harness", default="agent-skills")
+    doctor_parser.add_argument("--target", choices=("project", "user"), default="project")
+    doctor_parser.add_argument("--project-root")
+    doctor_parser.add_argument("--method", action="append")
+    doctor_parser.add_argument("--capability", action="append")
+    doctor_parser.add_argument("--candidate")
+    doctor_parser.add_argument("--auth-check", action="store_true", help="run selected known read-only authentication status probes; never log in")
+    doctor_parser.add_argument("--exercise", action="store_true", help="run selected CLI version probes; not functional acceptance")
+    doctor_parser.add_argument("--json", action="store_true")
 
     def selection_options(subparser: argparse.ArgumentParser) -> None:
         subparser.add_argument("--harness", help="receiving harness; defaults to agent-skills or installed state")

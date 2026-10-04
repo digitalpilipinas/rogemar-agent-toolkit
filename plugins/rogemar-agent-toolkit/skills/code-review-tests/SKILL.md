@@ -54,3 +54,12 @@ unverified hypotheses. A missing test alone is not proof of a defect.
 Deduplicate with other review results before reporting. Include required but
 unavailable checks and any owner-approved deferrals. Do not produce a second
 overall approval or run another external reviewer from this companion.
+
+## Suitable E2E journeys
+
+For new supported browser/iOS/Android coverage, prefer the installed `e2e` method
+(TesterArmy), preserving existing runners and tests. Use deterministic assertions
+first; agent-driven steps require the existing approved provider, authentication
+and bounded execution. Keep unit, UI, accessibility and device evidence separate.
+Missing devices, unavailable authentication and failed assertions remain explicit;
+never replace a failed journey with a source-only completion claim.

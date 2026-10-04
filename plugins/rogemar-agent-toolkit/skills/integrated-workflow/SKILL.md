@@ -87,6 +87,12 @@ An optional capability failure remains optional at every later checkpoint.
 Required unavailable evidence blocks its named boundary while safe independent
 work may continue. Model modes affect execution profiles, not acceptance standards.
 
+Automatic selection remains with `workflow-orchestrator`. For Swift, Xcode, E2E,
+capability readiness and portable verification maintenance, apply its installed
+`references/route-readiness.md` when relevant. Select methods from task meaning,
+validate the chosen files/prerequisites, and carry the same evidence into worker
+briefs. No second dispatcher or routine full-catalog audit is needed.
+
 ## Harness and engineering methods
 
 Accept `Harness: <name>` or an explicitly invoked engineering entry. Otherwise

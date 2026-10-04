@@ -1,13 +1,29 @@
 ---
 name: forge-maintain-verification-skill
-description: "Periodic pass that keeps a project's verification skill and feature map honest: bounded source inspection and a live coverage pass with proven local corrections. Use for $forge-maintain-verification-skill or \\\"audit the verify skill\\\"."
+description: "Focused update or explicitly requested full pass that keeps a project's verification skill and feature map honest: bounded source inspection and a live coverage pass with proven local corrections. Use for $forge-maintain-verification-skill or \\\"audit the verify skill\\\"."
 license: MIT
 ---
 # Maintain a verification skill
 
-## Codex execution contract
+## Portable execution contract
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md) before dispatch or a runtime action. This skill supplies methods and bounded collaboration hints; `workflow-orchestrator` alone selects specialists and subagents. `plan-model-router` resolves task profiles under the active Forge mode, or parent defaults and ceilings when no mode is selected.
+This entry is available in Codex, Cursor and other supported harnesses. Read the
+active Forge adapter only when its harness matches. Codex uses its native runtime
+contract and qualified model router; other harnesses use their observed native
+controls and the shared engineering methods. `workflow-orchestrator` alone selects
+specialists and dispatches workers. Keep one delivery owner and acceptance record.
+
+Select this method automatically only when changed behavior needs new coverage,
+a recipe breaks, relevant dependencies change, or the owner requests an update.
+Reuse current verification recipes and unchanged readiness evidence. Do not perform
+a full skill audit, create a new verifier or demand a new login on every task.
+
+For supported browser/iOS/Android journeys, prefer the installed `e2e` method for
+new relevant coverage. Preserve existing runners and tests. Use deterministic
+assertions first; model-driven steps require approved provider/auth/budgets. Preserve
+run artifacts and execution counts. Missing devices, unsupported capabilities,
+stale evidence and failures stay blocked or failed, never silently passed.
+
 
 
 
@@ -33,6 +49,10 @@ Pick one, and say which:
 Only edit the verification skill's own directory (its SKILL.md, features/, and any harness scripts it owns). Never edit product code during a run: a behavior the map describes that the app no longer does is either doc drift (fix the map) or a product regression (report it, don't paper over it in docs).
 
 ## Pass
+
+For an automatic drift repair, scope these steps to the affected recipes and
+report targeted coverage. The full-map pass below applies only when the task
+requests that scope; never call targeted coverage a complete map audit.
 
 0. **Locate the target.** Find the verification skill to maintain: the project-local skill whose body has launch/drive sections and a feature map (usually `.agents/skills/verify-*/`). Several candidates → ask which one; none → stop and point at `$forge-create-verification-skill` instead of inventing a target.
 

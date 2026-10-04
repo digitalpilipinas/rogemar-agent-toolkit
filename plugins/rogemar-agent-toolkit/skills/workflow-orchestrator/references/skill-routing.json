@@ -10,7 +10,9 @@
       "activation": "conditional",
       "source": "accessibility-auditor/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "activity-schema-guardian": {
       "trigger": "Canonical data or offline/retry behavior changes",
@@ -19,7 +21,9 @@
       "activation": "conditional",
       "source": "activity-schema-guardian/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "agent-collaboration-terminal": {
       "trigger": "Authorized cross-agent work has a concrete benefit",
@@ -28,7 +32,9 @@
       "activation": "conditional",
       "source": "agent-collaboration-terminal/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "agent-map": {
       "trigger": "An unfamiliar or changed codebase needs orientation",
@@ -37,7 +43,9 @@
       "activation": "conditional",
       "source": "agent-map/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "architect": {
       "source": "architect/SKILL.md",
@@ -47,7 +55,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "arena": {
       "source": "arena/SKILL.md",
@@ -57,7 +68,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "argent-android-emulator-setup": {
       "source": "argent-android-emulator-setup/SKILL.md",
@@ -67,7 +81,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-create-flow": {
       "source": "argent-create-flow/SKILL.md",
@@ -77,7 +104,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-device-interact": {
       "source": "argent-device-interact/SKILL.md",
@@ -87,7 +127,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-ios-device-interact": {
       "source": "argent-ios-device-interact/SKILL.md",
@@ -97,7 +150,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-ios-device-setup": {
       "source": "argent-ios-device-setup/SKILL.md",
@@ -107,7 +173,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-ios-simulator-setup": {
       "source": "argent-ios-simulator-setup/SKILL.md",
@@ -117,7 +196,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-lens": {
       "source": "argent-lens/SKILL.md",
@@ -127,7 +219,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-metro-debugger": {
       "source": "argent-metro-debugger/SKILL.md",
@@ -137,7 +242,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-native-profiler": {
       "source": "argent-native-profiler/SKILL.md",
@@ -147,7 +265,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-qa-flows": {
       "source": "argent-qa-flows/SKILL.md",
@@ -157,7 +288,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-react-native-app-workflow": {
       "source": "argent-react-native-app-workflow/SKILL.md",
@@ -167,7 +311,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-react-native-optimization": {
       "source": "argent-react-native-optimization/SKILL.md",
@@ -177,7 +334,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-react-native-profiler": {
       "source": "argent-react-native-profiler/SKILL.md",
@@ -187,7 +357,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-screen-recording": {
       "source": "argent-screen-recording/SKILL.md",
@@ -197,7 +380,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-screenshot-diff": {
       "source": "argent-screenshot-diff/SKILL.md",
@@ -207,7 +403,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-settings-permissions": {
       "source": "argent-settings-permissions/SKILL.md",
@@ -217,7 +426,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-test-ui-flow": {
       "source": "argent-test-ui-flow/SKILL.md",
@@ -227,7 +449,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "argent-tv-interact": {
       "source": "argent-tv-interact/SKILL.md",
@@ -237,7 +472,20 @@
       "trigger": "All 16 skills remain useful workflow definitions; live device operations require Argent and platform tools.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "article-creator-2": {
       "trigger": "Requested writing, search strategy or social content",
@@ -246,7 +494,9 @@
       "activation": "conditional",
       "source": "article-creator-2/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "autofix": {
       "source": "autofix/SKILL.md",
@@ -256,7 +506,20 @@
       "trigger": "Independent provider review; do not replace or rename its own workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "automate-me": {
       "source": "automate-me/SKILL.md",
@@ -266,7 +529,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "benchmark-checklist": {
       "source": "benchmark-checklist/SKILL.md",
@@ -276,7 +542,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "blast-radius": {
       "source": "blast-radius/SKILL.md",
@@ -286,7 +555,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "bro": {
       "source": "bro/SKILL.md",
@@ -296,7 +568,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "bug-triage": {
       "trigger": "Defect or measured performance problem",
@@ -305,7 +580,9 @@
       "activation": "conditional",
       "source": "bug-triage/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "cloudflare-deploy": {
       "trigger": "The authorized delivery target needs readiness or deployment work",
@@ -314,7 +591,9 @@
       "activation": "conditional",
       "source": "cloudflare-deploy/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "code-review": {
       "source": "code-review/SKILL.md",
@@ -324,7 +603,20 @@
       "trigger": "Independent provider review; do not replace or rename its own workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "code-review-and-quality": {
       "trigger": "A meaningful candidate needs review or evidence design",
@@ -333,7 +625,11 @@
       "activation": "conditional",
       "source": "code-review-and-quality/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "code-review-tests"
+      ],
+      "targets": []
     },
     "code-review-tests": {
       "trigger": "A meaningful candidate needs review or evidence design",
@@ -342,13 +638,21 @@
       "activation": "conditional",
       "source": "code-review-tests/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "codebase-design": {
       "trigger": "Material module or interface design decision",
       "outcome": "Project-specific evidence using the matching references and available tools",
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
+      "task_tags_any": [
+        "architecture"
+      ],
+      "required_evidence": [
+        "affected-behavior"
+      ],
       "source": "codebase-design/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -356,7 +660,9 @@
         "DESIGN-IT-TWICE.md",
         "agents/openai.yaml",
         "upstream-notices/LICENSE"
-      ]
+      ],
+      "required_skills": [],
+      "targets": []
     },
     "codex-capability-maintainer": {
       "trigger": "Relevant capability/update/setup need",
@@ -365,7 +671,12 @@
       "activation": "conditional",
       "source": "codex-capability-maintainer/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "workflow-orchestrator",
+        "engineering-playbooks"
+      ],
+      "targets": []
     },
     "codex-forge": {
       "trigger": "A Forge execution task in the Codex route",
@@ -374,7 +685,15 @@
       "activation": "conditional",
       "source": "codex-forge/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "workflow-orchestrator",
+        "plan-model-router",
+        "engineering-playbooks"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "convex": {
       "source": "convex/SKILL.md",
@@ -384,7 +703,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-add": {
       "source": "convex-add/SKILL.md",
@@ -394,7 +726,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-advisor": {
       "source": "convex-advisor/SKILL.md",
@@ -404,7 +749,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-agent": {
       "source": "convex-agent/SKILL.md",
@@ -414,7 +772,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-auth": {
       "source": "convex-auth/SKILL.md",
@@ -424,7 +795,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-authz": {
       "source": "convex-authz/SKILL.md",
@@ -434,7 +818,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-backup": {
       "source": "convex-backup/SKILL.md",
@@ -444,7 +841,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-billing": {
       "source": "convex-billing/SKILL.md",
@@ -454,7 +864,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-cost": {
       "source": "convex-cost/SKILL.md",
@@ -464,7 +887,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-create-component": {
       "source": "convex-create-component/SKILL.md",
@@ -474,7 +910,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-crons": {
       "source": "convex-crons/SKILL.md",
@@ -484,7 +933,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-deploy-guard": {
       "source": "convex-deploy-guard/SKILL.md",
@@ -494,7 +956,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-design": {
       "source": "convex-design/SKILL.md",
@@ -504,7 +979,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-docs": {
       "source": "convex-docs/SKILL.md",
@@ -514,7 +1002,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-domains": {
       "source": "convex-domains/SKILL.md",
@@ -524,7 +1025,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-env": {
       "source": "convex-env/SKILL.md",
@@ -534,7 +1048,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-expert": {
       "source": "convex-expert/SKILL.md",
@@ -544,7 +1071,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-explain-app": {
       "source": "convex-explain-app/SKILL.md",
@@ -554,7 +1094,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-improve-convex-plugin": {
       "source": "convex-improve-convex-plugin/SKILL.md",
@@ -564,7 +1117,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-insights": {
       "source": "convex-insights/SKILL.md",
@@ -574,7 +1140,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-launch-readiness": {
       "source": "convex-launch-readiness/SKILL.md",
@@ -584,7 +1163,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-migrate": {
       "source": "convex-migrate/SKILL.md",
@@ -594,7 +1186,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-migrate-rehearse": {
       "source": "convex-migrate-rehearse/SKILL.md",
@@ -604,7 +1209,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-monitor": {
       "source": "convex-monitor/SKILL.md",
@@ -614,7 +1232,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-optimize": {
       "source": "convex-optimize/SKILL.md",
@@ -624,7 +1255,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-quickstart": {
       "source": "convex-quickstart/SKILL.md",
@@ -634,7 +1278,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-reviewer": {
       "source": "convex-reviewer/SKILL.md",
@@ -644,7 +1301,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-seed": {
       "source": "convex-seed/SKILL.md",
@@ -654,7 +1324,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-self-heal": {
       "source": "convex-self-heal/SKILL.md",
@@ -664,7 +1347,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-sentinel": {
       "source": "convex-sentinel/SKILL.md",
@@ -674,7 +1370,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-suggest": {
       "source": "convex-suggest/SKILL.md",
@@ -684,7 +1393,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-test": {
       "source": "convex-test/SKILL.md",
@@ -694,7 +1416,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "convex-verify": {
       "source": "convex-verify/SKILL.md",
@@ -704,7 +1439,20 @@
       "trigger": "Choose one maintained Convex family; cached versions are not separate workflow owners.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "correct": {
       "source": "correct/SKILL.md",
@@ -714,7 +1462,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "create-plan": {
       "trigger": "Planning a material change or requested plan",
@@ -723,7 +1474,9 @@
       "activation": "conditional",
       "source": "create-plan/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "create-verification-skill": {
       "source": "create-verification-skill/SKILL.md",
@@ -733,7 +1486,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "csv-analytics-reporter": {
       "trigger": "The actual artifact/data type needs these methods",
@@ -742,7 +1498,9 @@
       "activation": "conditional",
       "source": "csv-analytics-reporter/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "cursor-forge": {
       "trigger": "Select the appropriate shared method and one non-Codex entry",
@@ -751,7 +1509,16 @@
       "activation": "conditional",
       "source": "cursor-forge/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "universal-forge",
+        "universal-plan-model-router",
+        "workflow-orchestrator",
+        "cursor-forge-setup"
+      ],
+      "targets": [
+        "cursor"
+      ]
     },
     "cursor-forge-setup": {
       "trigger": "Relevant capability/update/setup need",
@@ -760,7 +1527,14 @@
       "activation": "conditional",
       "source": "cursor-forge-setup/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "universal-forge",
+        "workflow-orchestrator"
+      ],
+      "targets": [
+        "cursor"
+      ]
     },
     "deliver-approved-programme": {
       "trigger": "Explicit legacy invocation only",
@@ -769,7 +1543,11 @@
       "activation": "explicit-only",
       "source": "deliver-approved-programme/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "integrated-workflow"
+      ],
+      "targets": []
     },
     "deploy-checklist": {
       "trigger": "The authorized delivery target needs readiness or deployment work",
@@ -778,7 +1556,9 @@
       "activation": "conditional",
       "source": "deploy-checklist/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "design-brief": {
       "trigger": "An interface task needs scope, journey or visual-reference constraints",
@@ -787,7 +1567,9 @@
       "activation": "conditional",
       "source": "design-brief/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "design-system-steward": {
       "trigger": "Actual component, design-system or frontend implementation",
@@ -796,7 +1578,9 @@
       "activation": "conditional",
       "source": "design-system-steward/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "develop-web-game": {
       "trigger": "The task develops or tests a web game",
@@ -805,7 +1589,9 @@
       "activation": "conditional",
       "source": "develop-web-game/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "dream-team": {
       "trigger": "Authorized cross-agent work has a concrete benefit",
@@ -814,13 +1600,25 @@
       "activation": "conditional",
       "source": "dream-team/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "e2e": {
       "trigger": "Supported browser, iOS or Android end-to-end journey",
       "outcome": "Deterministic assertions and actual execution artifacts; approved bounded AI only where necessary",
       "boundary": "No implicit provider, telemetry, MCP registration or coverage migration",
       "activation": "conditional",
+      "task_tags_any": [
+        "e2e"
+      ],
+      "required_evidence": [
+        "journey-run"
+      ],
+      "runtime_capabilities": [
+        "node",
+        "e2e"
+      ],
       "source": "e2e/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -834,7 +1632,9 @@
         "references/writing-tests.md",
         "upstream-notices/LICENSE",
         "upstream-notices/NOTICE"
-      ]
+      ],
+      "required_skills": [],
+      "targets": []
     },
     "eas-app-stores": {
       "source": "eas-app-stores/SKILL.md",
@@ -844,7 +1644,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "eas-hosting": {
       "source": "eas-hosting/SKILL.md",
@@ -854,7 +1667,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "eas-observe": {
       "source": "eas-observe/SKILL.md",
@@ -864,7 +1690,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "eas-simulator": {
       "source": "eas-simulator/SKILL.md",
@@ -874,7 +1713,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "eas-update": {
       "source": "eas-update/SKILL.md",
@@ -884,7 +1736,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "eas-update-insights": {
       "source": "eas-update-insights/SKILL.md",
@@ -894,7 +1759,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "eas-workflows": {
       "source": "eas-workflows/SKILL.md",
@@ -904,7 +1782,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "engineering-playbooks": {
       "trigger": "Select the appropriate shared method and one non-Codex entry",
@@ -913,7 +1804,11 @@
       "activation": "conditional",
       "source": "engineering-playbooks/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "workflow-orchestrator"
+      ],
+      "targets": []
     },
     "expo-animation": {
       "source": "expo-animation/SKILL.md",
@@ -923,7 +1818,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-app-clip": {
       "source": "expo-app-clip/SKILL.md",
@@ -933,7 +1841,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-brownfield": {
       "source": "expo-brownfield/SKILL.md",
@@ -943,7 +1864,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-data-fetching": {
       "source": "expo-data-fetching/SKILL.md",
@@ -953,7 +1887,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-design-system": {
       "source": "expo-design-system/SKILL.md",
@@ -963,7 +1910,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-dev-client": {
       "source": "expo-dev-client/SKILL.md",
@@ -973,7 +1933,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-dom": {
       "source": "expo-dom/SKILL.md",
@@ -983,7 +1956,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-examples": {
       "source": "expo-examples/SKILL.md",
@@ -993,7 +1979,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-migrate-module": {
       "source": "expo-migrate-module/SKILL.md",
@@ -1003,7 +2002,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-module": {
       "source": "expo-module/SKILL.md",
@@ -1013,7 +2025,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-native-ui": {
       "source": "expo-native-ui/SKILL.md",
@@ -1023,7 +2048,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-overview": {
       "source": "expo-overview/SKILL.md",
@@ -1033,7 +2071,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-project-structure": {
       "source": "expo-project-structure/SKILL.md",
@@ -1043,7 +2094,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-router": {
       "source": "expo-router/SKILL.md",
@@ -1053,7 +2117,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-skill-feedback": {
       "source": "expo-skill-feedback/SKILL.md",
@@ -1063,7 +2140,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-ui": {
       "source": "expo-ui/SKILL.md",
@@ -1073,7 +2163,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-upgrade": {
       "source": "expo-upgrade/SKILL.md",
@@ -1083,7 +2186,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "expo-web-to-native": {
       "source": "expo-web-to-native/SKILL.md",
@@ -1093,7 +2209,20 @@
       "trigger": "Expo methods do not inherently require an MCP; native runs need the matching build/device toolchain.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "figma": {
       "trigger": "The requested design source/workflow uses the corresponding service",
@@ -1102,7 +2231,9 @@
       "activation": "conditional",
       "source": "figma/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "figure-it-out": {
       "source": "figure-it-out/SKILL.md",
@@ -1112,7 +2243,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "first-time-right-delivery": {
       "trigger": "Approved multi-stage delivery or a non-trivial execution contract",
@@ -1121,7 +2255,9 @@
       "activation": "conditional",
       "source": "first-time-right-delivery/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "forge-architect": {
       "trigger": "A material architecture decision with real alternatives",
@@ -1131,7 +2267,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#architect",
       "source": "forge-architect/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-arena": {
       "trigger": "Independent alternatives could resolve material uncertainty",
@@ -1141,7 +2283,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#arena",
       "source": "forge-arena/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-automate-me": {
       "trigger": "Requested recurrence or a proven repeated task worth automating",
@@ -1151,7 +2299,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#automate-me",
       "source": "forge-automate-me/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-blast-radius": {
       "trigger": "A change may affect callers, data, interfaces or operations",
@@ -1161,7 +2315,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#blast-radius",
       "source": "forge-blast-radius/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-bro": {
       "trigger": "The requested conversational tone fits this companion",
@@ -1171,7 +2331,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#bro",
       "source": "forge-bro/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-create-verification-skill": {
       "trigger": "Missing reusable verification for a recurring meaningful check",
@@ -1181,7 +2347,12 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#create-verification-skill",
       "source": "forge-create-verification-skill/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "workflow-orchestrator",
+        "engineering-playbooks"
+      ],
+      "targets": []
     },
     "forge-figure-it-out": {
       "trigger": "Authorized goal-directed work needs bounded autonomous progress",
@@ -1191,7 +2362,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#figure-it-out",
       "source": "forge-figure-it-out/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-how": {
       "trigger": "The task needs to understand how an implementation works",
@@ -1201,7 +2378,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#how",
       "source": "forge-how/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-interrogate": {
       "trigger": "Unresolved requirements materially affect the outcome",
@@ -1211,7 +2394,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#interrogate",
       "source": "forge-interrogate/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-maintain-verification-skill": {
       "trigger": "Verification exists but changed behavior makes it stale",
@@ -1221,7 +2410,12 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#maintain-verification-skill",
       "source": "forge-maintain-verification-skill/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "workflow-orchestrator",
+        "engineering-playbooks"
+      ],
+      "targets": []
     },
     "forge-make-bot-ui": {
       "trigger": "An agent-facing control or visibility UI is requested or justified",
@@ -1231,7 +2425,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#make-bot-ui",
       "source": "forge-make-bot-ui/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-no-comments": {
       "trigger": "Changed code has redundant commentary or naming can carry intent",
@@ -1241,7 +2441,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#no-comments",
       "source": "forge-no-comments/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-attack-the-premise": {
       "trigger": "The stated approach may conflict with the actual goal",
@@ -1251,7 +2457,13 @@
       "fallback": "engineering-playbooks/references/principles/attack-the-premise.md",
       "source": "forge-principle-attack-the-premise/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-boundary-discipline": {
       "trigger": "Work crosses authority, data, API or responsibility boundaries",
@@ -1261,7 +2473,13 @@
       "fallback": "engineering-playbooks/references/principles/boundary-discipline.md",
       "source": "forge-principle-boundary-discipline/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-build-the-lever": {
       "trigger": "A repeated operation has an economical reusable improvement",
@@ -1271,7 +2489,13 @@
       "fallback": "engineering-playbooks/references/principles/build-the-lever.md",
       "source": "forge-principle-build-the-lever/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-encode-lessons-in-structure": {
       "trigger": "A verified recurring failure has a concrete prevention",
@@ -1281,7 +2505,13 @@
       "fallback": "engineering-playbooks/references/principles/encode-lessons-in-structure.md",
       "source": "forge-principle-encode-lessons-in-structure/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-exhaust-the-design-space": {
       "trigger": "A consequential uncertain choice needs alternatives",
@@ -1291,7 +2521,13 @@
       "fallback": "engineering-playbooks/references/principles/exhaust-the-design-space.md",
       "source": "forge-principle-exhaust-the-design-space/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-experience-first": {
       "trigger": "User-visible behavior or ergonomics is affected",
@@ -1301,7 +2537,13 @@
       "fallback": "engineering-playbooks/references/principles/experience-first.md",
       "source": "forge-principle-experience-first/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-fix-root-causes": {
       "trigger": "A symptom recurs or evidence points to a shared cause",
@@ -1311,7 +2553,13 @@
       "fallback": "engineering-playbooks/references/principles/fix-root-causes.md",
       "source": "forge-principle-fix-root-causes/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-foundational-thinking": {
       "trigger": "An unclear premise or constraint blocks a sound decision",
@@ -1321,7 +2569,13 @@
       "fallback": "engineering-playbooks/references/principles/foundational-thinking.md",
       "source": "forge-principle-foundational-thinking/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-guard-the-context-window": {
       "trigger": "Context volume, handoff or resume threatens correctness",
@@ -1331,7 +2585,13 @@
       "fallback": "engineering-playbooks/references/principles/guard-the-context-window.md",
       "source": "forge-principle-guard-the-context-window/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-laziness-protocol": {
       "trigger": "The task needs the smallest complete route",
@@ -1341,7 +2601,13 @@
       "fallback": "engineering-playbooks/references/principles/laziness-protocol.md",
       "source": "forge-principle-laziness-protocol/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-make-operations-idempotent": {
       "trigger": "An operation can be retried or duplicated",
@@ -1351,7 +2617,13 @@
       "fallback": "engineering-playbooks/references/principles/make-operations-idempotent.md",
       "source": "forge-principle-make-operations-idempotent/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-migrate-callers-then-delete-legacy-apis": {
       "trigger": "An API or compatibility route is being replaced",
@@ -1361,7 +2633,13 @@
       "fallback": "engineering-playbooks/references/principles/migrate-callers-then-delete-legacy-apis.md",
       "source": "forge-principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-minimize-reader-load": {
       "trigger": "Code, instructions or evidence impose avoidable reading cost",
@@ -1371,7 +2649,13 @@
       "fallback": "engineering-playbooks/references/principles/minimize-reader-load.md",
       "source": "forge-principle-minimize-reader-load/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-model-the-domain": {
       "trigger": "State, vocabulary or schema affects correctness",
@@ -1381,7 +2665,13 @@
       "fallback": "engineering-playbooks/references/principles/model-the-domain.md",
       "source": "forge-principle-model-the-domain/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-never-block-on-the-human": {
       "trigger": "Authorized work can proceed despite an avoidable interruption",
@@ -1391,7 +2681,13 @@
       "fallback": "engineering-playbooks/references/principles/never-block-on-the-human.md",
       "source": "forge-principle-never-block-on-the-human/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-outcome-oriented-execution": {
       "trigger": "A task has a concrete outcome and several possible activities",
@@ -1401,7 +2697,13 @@
       "fallback": "engineering-playbooks/references/principles/outcome-oriented-execution.md",
       "source": "forge-principle-outcome-oriented-execution/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-prove-it-works": {
       "trigger": "A material completion claim needs evidence",
@@ -1411,7 +2713,13 @@
       "fallback": "engineering-playbooks/references/principles/prove-it-works.md",
       "source": "forge-principle-prove-it-works/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-redesign-from-first-principles": {
       "trigger": "Evidence shows a local patch cannot solve the fundamental problem",
@@ -1421,7 +2729,13 @@
       "fallback": "engineering-playbooks/references/principles/redesign-from-first-principles.md",
       "source": "forge-principle-redesign-from-first-principles/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-separate-before-serializing-shared-state": {
       "trigger": "Parallel work conflicts over mutable state",
@@ -1431,7 +2745,13 @@
       "fallback": "engineering-playbooks/references/principles/separate-before-serializing-shared-state.md",
       "source": "forge-principle-separate-before-serializing-shared-state/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-sequence-verifiable-units": {
       "trigger": "Work spans dependent meaningful increments",
@@ -1441,7 +2761,13 @@
       "fallback": "engineering-playbooks/references/principles/sequence-verifiable-units.md",
       "source": "forge-principle-sequence-verifiable-units/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-subtract-before-you-add": {
       "trigger": "A proposed addition may duplicate an existing capability",
@@ -1451,7 +2777,13 @@
       "fallback": "engineering-playbooks/references/principles/subtract-before-you-add.md",
       "source": "forge-principle-subtract-before-you-add/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-test-behavior-not-implementation": {
       "trigger": "A test or acceptance check is being designed",
@@ -1461,7 +2793,13 @@
       "fallback": "engineering-playbooks/references/principles/test-behavior-not-implementation.md",
       "source": "forge-principle-test-behavior-not-implementation/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-principle-type-system-discipline": {
       "trigger": "Types and boundary validation can prevent actual errors",
@@ -1471,7 +2809,13 @@
       "fallback": "engineering-playbooks/references/principles/type-system-discipline.md",
       "source": "forge-principle-type-system-discipline/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-recall": {
       "trigger": "Relevant prior task context is needed for continuation",
@@ -1481,7 +2825,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#recall",
       "source": "forge-recall/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-reflect": {
       "trigger": "An observed result supports a useful retrospective",
@@ -1491,7 +2841,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#reflect",
       "source": "forge-reflect/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-setup": {
       "trigger": "A relevant setup gap prevents the selected route",
@@ -1501,7 +2857,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#setup",
       "source": "forge-setup/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-show-me-your-work": {
       "trigger": "A decision, experiment or handoff needs inspectable evidence",
@@ -1511,7 +2873,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#show-me-your-work",
       "source": "forge-show-me-your-work/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-swarm": {
       "trigger": "Independent inspections offer enough benefit and delegation is authorized",
@@ -1521,7 +2889,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#swarm",
       "source": "forge-swarm/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-tdd": {
       "trigger": "Behavioral change or regression warrants test-guided implementation",
@@ -1531,7 +2905,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#tdd",
       "source": "forge-tdd/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-teach": {
       "trigger": "The user needs a concept or system explained",
@@ -1541,7 +2921,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#teach",
       "source": "forge-teach/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-technical-writing": {
       "trigger": "The task produces technical instructions or explanation",
@@ -1551,7 +2937,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#technical-writing",
       "source": "forge-technical-writing/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-typescript-best-practices": {
       "trigger": "Relevant TypeScript implementation or review",
@@ -1561,7 +2953,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#typescript-best-practices",
       "source": "forge-typescript-best-practices/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-unslop": {
       "trigger": "Generated or existing content contains unnecessary complexity or weak prose",
@@ -1571,7 +2969,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#unslop",
       "source": "forge-unslop/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "forge-why": {
       "trigger": "A decision's rationale requires historical or external evidence",
@@ -1581,7 +2985,13 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#why",
       "source": "forge-why/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "codex-forge"
+      ],
+      "targets": [
+        "codex"
+      ]
     },
     "frontend-design": {
       "trigger": "Actual component, design-system or frontend implementation",
@@ -1590,7 +3000,9 @@
       "activation": "conditional",
       "source": "frontend-design/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "gh-address-comments": {
       "trigger": "Actual relevant PR comments or applicable failing CI",
@@ -1599,7 +3011,9 @@
       "activation": "conditional",
       "source": "gh-address-comments/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "gh-fix-ci": {
       "trigger": "Actual relevant PR comments or applicable failing CI",
@@ -1608,7 +3022,9 @@
       "activation": "conditional",
       "source": "gh-fix-ci/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "hatch-pet": {
       "trigger": "The user requests the corresponding media or pet capability",
@@ -1617,7 +3033,11 @@
       "activation": "conditional",
       "source": "hatch-pet/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": [
+        "codex"
+      ]
     },
     "how": {
       "source": "how/SKILL.md",
@@ -1627,7 +3047,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "integrated-workflow": {
       "trigger": "Approved multi-stage delivery or a non-trivial execution contract",
@@ -1636,7 +3059,14 @@
       "activation": "conditional",
       "source": "integrated-workflow/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "workflow-orchestrator",
+        "create-plan",
+        "first-time-right-delivery",
+        "code-review-and-quality"
+      ],
+      "targets": []
     },
     "interaction-polish": {
       "trigger": "Interaction, motion or vector assets materially affect the task",
@@ -1645,7 +3075,9 @@
       "activation": "conditional",
       "source": "interaction-polish/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "interrogate": {
       "source": "interrogate/SKILL.md",
@@ -1655,7 +3087,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "knowledge-base-answering": {
       "trigger": "A task needs source-based answers or synthesis",
@@ -1664,7 +3099,9 @@
       "activation": "conditional",
       "source": "knowledge-base-answering/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "linear": {
       "trigger": "The task explicitly concerns available issue or meeting sources",
@@ -1673,7 +3110,9 @@
       "activation": "conditional",
       "source": "linear/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "maintain-verification-skill": {
       "source": "maintain-verification-skill/SKILL.md",
@@ -1683,7 +3122,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "make-bot-ui": {
       "source": "make-bot-ui/SKILL.md",
@@ -1693,7 +3135,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "meeting-notes-task-extractor": {
       "trigger": "The task explicitly concerns available issue or meeting sources",
@@ -1702,7 +3147,9 @@
       "activation": "conditional",
       "source": "meeting-notes-task-extractor/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "mobile-release-manager": {
       "trigger": "The authorized delivery target needs readiness or deployment work",
@@ -1711,7 +3158,9 @@
       "activation": "conditional",
       "source": "mobile-release-manager/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "motion-animation-engineer": {
       "trigger": "Interaction, motion or vector assets materially affect the task",
@@ -1720,7 +3169,9 @@
       "activation": "conditional",
       "source": "motion-animation-engineer/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "netlify-deploy": {
       "trigger": "The authorized delivery target needs readiness or deployment work",
@@ -1729,7 +3180,9 @@
       "activation": "conditional",
       "source": "netlify-deploy/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "no-comments": {
       "source": "no-comments/SKILL.md",
@@ -1739,7 +3192,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "offline-sync-auditor": {
       "trigger": "Canonical data or offline/retry behavior changes",
@@ -1748,7 +3204,9 @@
       "activation": "conditional",
       "source": "offline-sync-auditor/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "opendesign": {
       "trigger": "The requested design source/workflow uses the corresponding service",
@@ -1757,7 +3215,9 @@
       "activation": "conditional",
       "source": "opendesign/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "pdf": {
       "trigger": "The actual artifact/data type needs these methods",
@@ -1766,7 +3226,9 @@
       "activation": "conditional",
       "source": "pdf/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "performance-profiler": {
       "trigger": "Defect or measured performance problem",
@@ -1775,7 +3237,9 @@
       "activation": "conditional",
       "source": "performance-profiler/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "plan-model-router": {
       "trigger": "Planning a material change or requested plan",
@@ -1784,7 +3248,11 @@
       "activation": "conditional",
       "source": "plan-model-router/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": [
+        "codex"
+      ]
     },
     "playwright": {
       "trigger": "Applicable accessibility or rendered/interaction behavior needs checking",
@@ -1793,7 +3261,9 @@
       "activation": "conditional",
       "source": "playwright/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "ponytail": {
       "source": "ponytail/SKILL.md",
@@ -1803,7 +3273,20 @@
       "trigger": "Optional minimality methods for Integrated Workflow: challenge speculative work and review for unnecessary complexity. Not a correctness, security or merge gate.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "ponytail-audit": {
       "source": "ponytail-audit/SKILL.md",
@@ -1813,7 +3296,20 @@
       "trigger": "Optional minimality methods for Integrated Workflow: challenge speculative work and review for unnecessary complexity. Not a correctness, security or merge gate.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "ponytail-debt": {
       "source": "ponytail-debt/SKILL.md",
@@ -1823,7 +3319,20 @@
       "trigger": "Optional minimality methods for Integrated Workflow: challenge speculative work and review for unnecessary complexity. Not a correctness, security or merge gate.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "ponytail-gain": {
       "source": "ponytail-gain/SKILL.md",
@@ -1833,7 +3342,20 @@
       "trigger": "Optional minimality methods for Integrated Workflow: challenge speculative work and review for unnecessary complexity. Not a correctness, security or merge gate.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "ponytail-help": {
       "source": "ponytail-help/SKILL.md",
@@ -1843,7 +3365,20 @@
       "trigger": "Optional minimality methods for Integrated Workflow: challenge speculative work and review for unnecessary complexity. Not a correctness, security or merge gate.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "ponytail-review": {
       "source": "ponytail-review/SKILL.md",
@@ -1853,7 +3388,20 @@
       "trigger": "Optional minimality methods for Integrated Workflow: challenge speculative work and review for unnecessary complexity. Not a correctness, security or merge gate.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "poteto-mode": {
       "source": "poteto-mode/SKILL.md",
@@ -1863,7 +3411,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-attack-the-premise": {
       "source": "principle-attack-the-premise/SKILL.md",
@@ -1873,7 +3424,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-boundary-discipline": {
       "source": "principle-boundary-discipline/SKILL.md",
@@ -1883,7 +3437,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-build-the-lever": {
       "source": "principle-build-the-lever/SKILL.md",
@@ -1893,7 +3450,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-encode-lessons-in-structure": {
       "source": "principle-encode-lessons-in-structure/SKILL.md",
@@ -1903,7 +3463,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-exhaust-the-design-space": {
       "source": "principle-exhaust-the-design-space/SKILL.md",
@@ -1913,7 +3476,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-experience-first": {
       "source": "principle-experience-first/SKILL.md",
@@ -1923,7 +3489,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-explain-the-number": {
       "source": "principle-explain-the-number/SKILL.md",
@@ -1933,7 +3502,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-fix-root-causes": {
       "source": "principle-fix-root-causes/SKILL.md",
@@ -1943,7 +3515,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-foundational-thinking": {
       "source": "principle-foundational-thinking/SKILL.md",
@@ -1953,7 +3528,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-guard-the-context-window": {
       "source": "principle-guard-the-context-window/SKILL.md",
@@ -1963,7 +3541,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-laziness-protocol": {
       "source": "principle-laziness-protocol/SKILL.md",
@@ -1973,7 +3554,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-make-operations-idempotent": {
       "source": "principle-make-operations-idempotent/SKILL.md",
@@ -1983,7 +3567,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-migrate-callers-then-delete-legacy-apis": {
       "source": "principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
@@ -1993,7 +3580,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-minimize-reader-load": {
       "source": "principle-minimize-reader-load/SKILL.md",
@@ -2003,7 +3593,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-model-the-domain": {
       "source": "principle-model-the-domain/SKILL.md",
@@ -2013,7 +3606,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-never-block-on-the-human": {
       "source": "principle-never-block-on-the-human/SKILL.md",
@@ -2023,7 +3619,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-outcome-oriented-execution": {
       "source": "principle-outcome-oriented-execution/SKILL.md",
@@ -2033,7 +3632,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-prove-it-works": {
       "source": "principle-prove-it-works/SKILL.md",
@@ -2043,7 +3645,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-redesign-from-first-principles": {
       "source": "principle-redesign-from-first-principles/SKILL.md",
@@ -2053,7 +3658,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-separate-before-serializing-shared-state": {
       "source": "principle-separate-before-serializing-shared-state/SKILL.md",
@@ -2063,7 +3671,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-sequence-verifiable-units": {
       "source": "principle-sequence-verifiable-units/SKILL.md",
@@ -2073,7 +3684,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-subtract-before-you-add": {
       "source": "principle-subtract-before-you-add/SKILL.md",
@@ -2083,7 +3697,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-test-behavior-not-implementation": {
       "source": "principle-test-behavior-not-implementation/SKILL.md",
@@ -2093,7 +3710,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "principle-type-system-discipline": {
       "source": "principle-type-system-discipline/SKILL.md",
@@ -2103,7 +3723,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "privacy-safety-review": {
       "trigger": "Change crosses material security/privacy or truthfulness concerns",
@@ -2112,7 +3735,9 @@
       "activation": "conditional",
       "source": "privacy-safety-review/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "project-learning": {
       "trigger": "An enrolled project has a verified useful outcome or relevant accepted lesson",
@@ -2121,7 +3746,9 @@
       "activation": "conditional",
       "source": "project-learning/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "recall": {
       "source": "recall/SKILL.md",
@@ -2131,7 +3758,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "reference-design-contract": {
       "trigger": "An interface task needs scope, journey or visual-reference constraints",
@@ -2140,7 +3770,9 @@
       "activation": "conditional",
       "source": "reference-design-contract/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "reflect": {
       "source": "reflect/SKILL.md",
@@ -2150,7 +3782,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "research-synthesizer": {
       "trigger": "A task needs source-based answers or synthesis",
@@ -2159,7 +3794,9 @@
       "activation": "conditional",
       "source": "research-synthesizer/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "screenshot": {
       "trigger": "Applicable accessibility or rendered/interaction behavior needs checking",
@@ -2168,7 +3805,9 @@
       "activation": "conditional",
       "source": "screenshot/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "security-best-practices": {
       "trigger": "Change crosses material security/privacy or truthfulness concerns",
@@ -2177,7 +3816,9 @@
       "activation": "conditional",
       "source": "security-best-practices/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "seo-content-strategy": {
       "trigger": "Requested writing, search strategy or social content",
@@ -2186,7 +3827,9 @@
       "activation": "conditional",
       "source": "seo-content-strategy/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "setup-pstack": {
       "source": "setup-pstack/SKILL.md",
@@ -2196,7 +3839,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "shadcn": {
       "trigger": "Actual component, design-system or frontend implementation",
@@ -2205,7 +3851,9 @@
       "activation": "conditional",
       "source": "shadcn/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "show-me-your-work": {
       "source": "show-me-your-work/SKILL.md",
@@ -2215,7 +3863,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "social-content-factory": {
       "trigger": "Requested writing, search strategy or social content",
@@ -2224,7 +3875,9 @@
       "activation": "conditional",
       "source": "social-content-factory/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "sora": {
       "trigger": "The user requests the corresponding media or pet capability",
@@ -2233,7 +3886,9 @@
       "activation": "conditional",
       "source": "sora/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "speech": {
       "trigger": "The user requests the corresponding media or pet capability",
@@ -2242,13 +3897,27 @@
       "activation": "conditional",
       "source": "speech/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "spm-build-analysis": {
       "trigger": "Measured Xcode build performance work: spm-build-analysis",
       "outcome": "Project-specific evidence using the matching references and available tools",
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
+      "task_tags_any": [
+        "xcode-performance"
+      ],
+      "required_evidence": [
+        "benchmark-comparison"
+      ],
+      "runtime_capabilities": [
+        "xcode"
+      ],
+      "runtime_platforms": [
+        "darwin"
+      ],
       "source": "spm-build-analysis/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -2257,7 +3926,9 @@
         "references/spm-analysis-checks.md",
         "scripts/check_spm_pins.py",
         "upstream-notices/LICENSE"
-      ]
+      ],
+      "required_skills": [],
+      "targets": []
     },
     "supabase": {
       "trigger": "The actual project/task uses Supabase",
@@ -2266,7 +3937,9 @@
       "activation": "conditional",
       "source": "supabase/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "supabase-guardian": {
       "trigger": "The actual project/task uses Supabase",
@@ -2275,7 +3948,9 @@
       "activation": "conditional",
       "source": "supabase-guardian/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "supabase-postgres-best-practices": {
       "source": "supabase-postgres-best-practices/SKILL.md",
@@ -2285,7 +3960,20 @@
       "trigger": "Portable SQL methods; CLI/MCP and account access only for requested live actions.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "swarm": {
       "source": "swarm/SKILL.md",
@@ -2295,13 +3983,30 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "swift-concurrency": {
       "trigger": "Swift concurrency implementation, migration or diagnostics",
       "outcome": "Project-specific evidence using the matching references and available tools",
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
+      "task_tags_any": [
+        "swift-concurrency"
+      ],
+      "alternative_group": "swift-concurrency",
+      "required_evidence": [
+        "affected-behavior"
+      ],
+      "runtime_capabilities": [
+        "swift"
+      ],
+      "runtime_platforms": [
+        "darwin",
+        "linux"
+      ],
       "source": "swift-concurrency/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -2325,13 +4030,29 @@
         "references/testing.md",
         "references/threading.md",
         "upstream-notices/LICENSE"
-      ]
+      ],
+      "required_skills": [],
+      "targets": []
     },
     "swift-concurrency-pro": {
       "trigger": "Focused Swift concurrency review",
       "outcome": "Project-specific evidence using the matching references and available tools",
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
+      "task_tags_any": [
+        "swift-concurrency"
+      ],
+      "alternative_group": "swift-concurrency",
+      "required_evidence": [
+        "affected-behavior"
+      ],
+      "runtime_capabilities": [
+        "swift"
+      ],
+      "runtime_platforms": [
+        "darwin",
+        "linux"
+      ],
       "source": "swift-concurrency-pro/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -2351,13 +4072,28 @@
         "references/testing.md",
         "references/unstructured.md",
         "upstream-notices/LICENSE"
-      ]
+      ],
+      "required_skills": [],
+      "targets": []
     },
     "swift-testing-pro": {
       "trigger": "Swift Testing unit or integration tests",
       "outcome": "Project-specific evidence using the matching references and available tools",
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
+      "task_tags_any": [
+        "swift-testing"
+      ],
+      "required_evidence": [
+        "affected-behavior"
+      ],
+      "runtime_capabilities": [
+        "swift"
+      ],
+      "runtime_platforms": [
+        "darwin",
+        "linux"
+      ],
       "source": "swift-testing-pro/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -2370,13 +4106,27 @@
         "references/new-features.md",
         "references/writing-better-tests.md",
         "upstream-notices/LICENSE"
-      ]
+      ],
+      "required_skills": [],
+      "targets": []
     },
     "swiftdata-pro": {
       "trigger": "Changes in a project using SwiftData",
       "outcome": "Project-specific evidence using the matching references and available tools",
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
+      "task_tags_any": [
+        "swiftdata"
+      ],
+      "required_evidence": [
+        "affected-behavior"
+      ],
+      "runtime_capabilities": [
+        "xcode"
+      ],
+      "runtime_platforms": [
+        "darwin"
+      ],
       "source": "swiftdata-pro/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -2389,13 +4139,28 @@
         "references/indexing.md",
         "references/predicates.md",
         "upstream-notices/LICENSE"
-      ]
+      ],
+      "required_skills": [],
+      "targets": []
     },
     "swiftui-expert-skill": {
       "trigger": "SwiftUI implementation or diagnostics",
       "outcome": "Project-specific evidence using the matching references and available tools",
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
+      "task_tags_any": [
+        "swiftui"
+      ],
+      "alternative_group": "swiftui",
+      "required_evidence": [
+        "affected-behavior"
+      ],
+      "runtime_capabilities": [
+        "xcode"
+      ],
+      "runtime_platforms": [
+        "darwin"
+      ],
       "source": "swiftui-expert-skill/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -2450,13 +4215,28 @@
         "scripts/instruments_parser/xml_utils.py",
         "scripts/record_trace.py",
         "upstream-notices/LICENSE"
-      ]
+      ],
+      "required_skills": [],
+      "targets": []
     },
     "swiftui-pro": {
       "trigger": "Focused SwiftUI review",
       "outcome": "Project-specific evidence using the matching references and available tools",
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
+      "task_tags_any": [
+        "swiftui"
+      ],
+      "alternative_group": "swiftui",
+      "required_evidence": [
+        "affected-behavior"
+      ],
+      "runtime_capabilities": [
+        "xcode"
+      ],
+      "runtime_platforms": [
+        "darwin"
+      ],
       "source": "swiftui-pro/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -2473,7 +4253,9 @@
         "references/swift.md",
         "references/views.md",
         "upstream-notices/LICENSE"
-      ]
+      ],
+      "required_skills": [],
+      "targets": []
     },
     "tdd": {
       "source": "tdd/SKILL.md",
@@ -2483,7 +4265,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "teach": {
       "source": "teach/SKILL.md",
@@ -2493,7 +4278,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "technical-writing": {
       "source": "technical-writing/SKILL.md",
@@ -2503,7 +4291,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "test-architecture-engineer": {
       "trigger": "A meaningful candidate needs review or evidence design",
@@ -2512,7 +4303,9 @@
       "activation": "conditional",
       "source": "test-architecture-engineer/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "transcribe": {
       "trigger": "The user requests the corresponding media or pet capability",
@@ -2521,7 +4314,9 @@
       "activation": "conditional",
       "source": "transcribe/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "typescript-best-practices": {
       "source": "typescript-best-practices/SKILL.md",
@@ -2531,7 +4326,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "universal-forge": {
       "trigger": "Select the appropriate shared method and one non-Codex entry",
@@ -2540,7 +4338,13 @@
       "activation": "conditional",
       "source": "universal-forge/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "workflow-orchestrator",
+        "engineering-playbooks",
+        "universal-plan-model-router"
+      ],
+      "targets": []
     },
     "universal-plan-model-router": {
       "trigger": "Planning a material change or requested plan",
@@ -2549,7 +4353,11 @@
       "activation": "conditional",
       "source": "universal-plan-model-router/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [
+        "workflow-orchestrator"
+      ],
+      "targets": []
     },
     "unlazy": {
       "source": "unlazy/SKILL.md",
@@ -2559,7 +4367,20 @@
       "trigger": "Optional runnable completion gates through First-Time-Right Delivery; reuse the programme acceptance record.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     },
     "unslop": {
       "source": "unslop/SKILL.md",
@@ -2569,7 +4390,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "ux-flow-architect": {
       "trigger": "An interface task needs scope, journey or visual-reference constraints",
@@ -2578,7 +4402,9 @@
       "activation": "conditional",
       "source": "ux-flow-architect/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "vector-asset-pipeline": {
       "trigger": "Interaction, motion or vector assets materially affect the task",
@@ -2587,7 +4413,9 @@
       "activation": "conditional",
       "source": "vector-asset-pipeline/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "vercel-deploy": {
       "trigger": "The authorized delivery target needs readiness or deployment work",
@@ -2596,7 +4424,9 @@
       "activation": "conditional",
       "source": "vercel-deploy/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "visual-qa": {
       "trigger": "Applicable accessibility or rendered/interaction behavior needs checking",
@@ -2605,7 +4435,9 @@
       "activation": "conditional",
       "source": "visual-qa/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "why": {
       "source": "why/SKILL.md",
@@ -2615,7 +4447,10 @@
       "trigger": "Complete Cursor-native engineering workflow.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
-      "activation": "conditional"
+      "activation": "conditional",
+      "targets": [
+        "cursor"
+      ]
     },
     "workflow-orchestrator": {
       "trigger": "Approved multi-stage delivery or a non-trivial execution contract",
@@ -2624,13 +4459,27 @@
       "activation": "conditional",
       "source": "workflow-orchestrator/SKILL.md",
       "kind": "vendored",
-      "required_resources": []
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
     },
     "xcode-build-benchmark": {
       "trigger": "Measured Xcode build performance work: xcode-build-benchmark",
       "outcome": "Project-specific evidence using the matching references and available tools",
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
+      "task_tags_any": [
+        "xcode-performance"
+      ],
+      "required_evidence": [
+        "benchmark-comparison"
+      ],
+      "runtime_capabilities": [
+        "xcode"
+      ],
+      "runtime_platforms": [
+        "darwin"
+      ],
       "source": "xcode-build-benchmark/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -2639,13 +4488,27 @@
         "schemas/build-benchmark.schema.json",
         "scripts/benchmark_builds.py",
         "upstream-notices/LICENSE"
-      ]
+      ],
+      "required_skills": [],
+      "targets": []
     },
     "xcode-build-fixer": {
       "trigger": "Measured Xcode build performance work: xcode-build-fixer",
       "outcome": "Project-specific evidence using the matching references and available tools",
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
+      "task_tags_any": [
+        "xcode-performance"
+      ],
+      "required_evidence": [
+        "benchmark-comparison"
+      ],
+      "runtime_capabilities": [
+        "xcode"
+      ],
+      "runtime_platforms": [
+        "darwin"
+      ],
       "source": "xcode-build-fixer/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -2654,13 +4517,29 @@
         "references/recommendation-format.md",
         "scripts/benchmark_builds.py",
         "upstream-notices/LICENSE"
-      ]
+      ],
+      "required_skills": [
+        "xcode-build-benchmark"
+      ],
+      "targets": []
     },
     "xcode-build-orchestrator": {
       "trigger": "Measured Xcode build performance work: xcode-build-orchestrator",
       "outcome": "Project-specific evidence using the matching references and available tools",
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
+      "task_tags_any": [
+        "xcode-performance"
+      ],
+      "required_evidence": [
+        "benchmark-comparison"
+      ],
+      "runtime_capabilities": [
+        "xcode"
+      ],
+      "runtime_platforms": [
+        "darwin"
+      ],
       "source": "xcode-build-orchestrator/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -2672,13 +4551,34 @@
         "scripts/diagnose_compilation.py",
         "scripts/generate_optimization_report.py",
         "upstream-notices/LICENSE"
-      ]
+      ],
+      "required_skills": [
+        "xcode-build-benchmark",
+        "workflow-orchestrator",
+        "xcode-compilation-analyzer",
+        "xcode-project-analyzer",
+        "spm-build-analysis",
+        "xcode-build-fixer"
+      ],
+      "targets": []
     },
     "xcode-compilation-analyzer": {
       "trigger": "Measured Xcode build performance work: xcode-compilation-analyzer",
       "outcome": "Project-specific evidence using the matching references and available tools",
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
+      "task_tags_any": [
+        "xcode-performance"
+      ],
+      "required_evidence": [
+        "benchmark-comparison"
+      ],
+      "runtime_capabilities": [
+        "xcode"
+      ],
+      "runtime_platforms": [
+        "darwin"
+      ],
       "source": "xcode-compilation-analyzer/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -2687,13 +4587,27 @@
         "references/recommendation-format.md",
         "scripts/diagnose_compilation.py",
         "upstream-notices/LICENSE"
-      ]
+      ],
+      "required_skills": [],
+      "targets": []
     },
     "xcode-project-analyzer": {
       "trigger": "Measured Xcode build performance work: xcode-project-analyzer",
       "outcome": "Project-specific evidence using the matching references and available tools",
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
+      "task_tags_any": [
+        "xcode-performance"
+      ],
+      "required_evidence": [
+        "benchmark-comparison"
+      ],
+      "runtime_capabilities": [
+        "xcode"
+      ],
+      "runtime_platforms": [
+        "darwin"
+      ],
       "source": "xcode-project-analyzer/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -2702,7 +4616,9 @@
         "references/project-audit-checks.md",
         "references/recommendation-format.md",
         "upstream-notices/LICENSE"
-      ]
+      ],
+      "required_skills": [],
+      "targets": []
     }
   }
 }

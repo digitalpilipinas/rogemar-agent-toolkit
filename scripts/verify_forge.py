@@ -16,7 +16,7 @@ def verify():
     route_errors = routing.verify(ROOT)
     declared = {item['name'] for item in json.loads((ROOT/'catalog/skills.yaml').read_text())['vendored']}
     actual = {p.name for p in SKILLS.iterdir() if p.name=='codex-forge' or p.name.startswith('forge-')}
-    if not actual and not any(n=='codex-forge' or n.startswith('forge-') for n in declared):
+    if actual.issubset({'forge-create-verification-skill', 'forge-maintain-verification-skill'}) and 'codex-forge' not in declared:
         return route_errors
     manifest = json.loads((ROOT/'catalog/codex-forge-upstream.json').read_text())
     names = manifest['registered_skills']

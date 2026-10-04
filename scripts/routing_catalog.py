@@ -23,6 +23,8 @@ def expected_index(root):
         route['source'] = item['name'] + '/SKILL.md'
         route['kind'] = 'vendored'
         route['required_resources'] = item.get('required_resources', [])
+        route['required_skills'] = item.get('requires', [])
+        route['targets'] = item.get('targets', [])
         routes[item['name']] = route
     for dependency, item in catalog['dependencies'].items():
         recipe = item.get('auto_install', {})
@@ -33,7 +35,7 @@ def expected_index(root):
                            'dependency': dependency, 'commit': recipe['commit'],
                            'trigger': item['purpose'], 'outcome': 'Use applicable upstream method after reading its installed source',
                            'boundary': 'Files do not establish live tools, authentication or permission',
-                           'activation': 'conditional'}
+                           'activation': 'conditional', 'targets': item.get('targets', [])}
     return {'schema_version': 1, 'generated_by': 'scripts/routing_catalog.py',
             'dispatcher': 'workflow-orchestrator',
             'skills': dict(sorted(routes.items()))}
