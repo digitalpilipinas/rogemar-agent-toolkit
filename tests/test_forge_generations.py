@@ -23,8 +23,8 @@ class GenerationTests(unittest.TestCase):
             json.loads(path.read_text(), object_hook=check)
 
     def test_named_pools_and_targets_are_exact(self):
-        pools = {'peak': ['gpt-6-astra', 'gpt-6-sol', 'gpt-5.6-sol', 'gpt-6-luna'],
-                 'balanced': ['gpt-6-sol', 'gpt-5.6-sol', 'gpt-6-luna'],
+        pools = {'peak': ['gpt-6-astra', 'gpt-6.1-sol', 'gpt-5.6-sol', 'gpt-6-luna'],
+                 'balanced': ['gpt-6.1-sol', 'gpt-5.6-sol', 'gpt-6-luna'],
                  'lean': ['gpt-5.6-sol', 'gpt-6-luna'], 'economy': ['gpt-6-luna']}
         for mode, models in pools.items():
             self.assertEqual(set(r.MODE_PROFILES[mode]), set(models))
@@ -34,15 +34,15 @@ class GenerationTests(unittest.TestCase):
             for allowed in r.MODE_PROFILES[mode].values():
                 self.assertEqual(set(allowed), set(list(r.EFFORT_RANK)[:r.EFFORT_RANK[level]+1]))
         self.assertLess(r.MODEL_RANK['gpt-6-luna'], r.MODEL_RANK['gpt-5.6-sol'])
-        self.assertLess(r.MODEL_RANK['gpt-5.6-sol'], r.MODEL_RANK['gpt-6-sol'])
-        self.assertLess(r.MODEL_RANK['gpt-6-sol'], r.MODEL_RANK['gpt-6-astra'])
+        self.assertLess(r.MODEL_RANK['gpt-5.6-sol'], r.MODEL_RANK['gpt-6.1-sol'])
+        self.assertLess(r.MODEL_RANK['gpt-6.1-sol'], r.MODEL_RANK['gpt-6-astra'])
 
     def test_exact_default_preserves_generations_and_legacy_profiles(self):
         for model, config in r.ROUTING_CATALOG['models'].items():
             for level in config['supported_efforts']:
                 q = self.request(model, level)
                 self.assertEqual(r.resolve(q)['expected_from_config'], q['parent'])
-                other = 'gpt-6-sol' if model != 'gpt-6-sol' else 'gpt-5.6-sol'
+                other = 'gpt-6.1-sol' if model != 'gpt-6.1-sol' else 'gpt-5.6-sol'
                 q['candidates'] = [{'model': other, 'effort': level, 'reason': 'successor'}]
                 self.assertEqual(r.resolve(q)['status'], 'blocked')
         q = self.request('gpt-5.5')
@@ -50,6 +50,45 @@ class GenerationTests(unittest.TestCase):
         self.assertEqual(r.resolve(q)['expected_from_config'], q['parent'])
         q['candidates'] = [{'model': 'gpt-5.5', 'effort': 'high', 'reason': 'Lower usage'}]
         self.assertEqual(r.resolve(q)['status'], 'blocked')
+
+    def test_sol_successor_uses_provisional_parent_without_relabeling_evidence(self):
+        for mode in ('peak', 'balanced'):
+            parent = r.ROUTING_CATALOG['parent_targets'][mode]
+            for role in ('bug-fix', 'perf-issue', 'ui-designer', 'validation-runner'):
+                q = self.request(parent['model'], parent['effort'], mode, role)
+                result = r.resolve(q)
+                self.assertEqual(result['status'], 'ready', result)
+                self.assertEqual(result['expected_from_config'], parent)
+                if mode == 'balanced':
+                    self.assertIsNone(result['qualification_id'])
+                    self.assertEqual(result['quality_status'], 'parent-profile-provisional')
+        for records in r.ROUTING_CATALOG['qualified_profiles'].values():
+            self.assertFalse(any(p['model'] == 'gpt-6.1-sol' for p in records))
+        q = self.request('gpt-6.1-sol', mode='balanced', role='bug-fix')
+        q['candidates'] = [{'model': 'gpt-6.1-sol', 'effort': 'high', 'reason': 'new generation'}]
+        self.assertEqual(r.resolve(q)['status'], 'blocked')
+
+    def test_retired_sol_is_exact_default_only_not_an_active_consultant(self):
+        self.assertTrue(r.ROUTING_CATALOG['models']['gpt-6-sol']['preset_retired'])
+        q = self.request('gpt-6-sol')
+        self.assertEqual(r.resolve(q)['expected_from_config'], q['parent'])
+        q = self.request('gpt-6.1-sol', mode='balanced', role='hardest-tasks')
+        q.update(candidates=[{'model': 'gpt-6-sol', 'effort': 'max', 'reason': 'old consultant'}],
+                 implementation=True, difficult_task=True, evidence_contract='notes-store',
+                 exception_evidence_id='v6-routine-hardest-tasks-gpt-6-sol-max',
+                 exception_reason='Old evidence must not retain a retired preset route')
+        self.assertEqual(r.resolve(q)['status'], 'blocked')
+        q['candidates'][0]['model'] = 'gpt-6.1-sol'
+        self.assertEqual(r.resolve(q)['status'], 'blocked')
+
+    def test_missing_successor_does_not_silently_substitute_old_sol(self):
+        q = self.request('gpt-6.1-sol', mode='balanced')
+        q['catalog'] = [p for p in q['catalog'] if p['model'] != 'gpt-6.1-sol']
+        self.assertEqual(r.resolve(q)['status'], 'blocked')
+        q = self.request('gpt-6-sol', mode='balanced')
+        result = r.resolve(q)
+        self.assertEqual(result['status'], 'parent-choice-required')
+        self.assertEqual(result['parent_adaptation']['desired']['model'], 'gpt-6.1-sol')
 
     def test_luna_ultra_rejected_even_with_overbroad_runtime_fixture(self):
         q = self.request('gpt-6-luna', 'ultra')
@@ -64,7 +103,7 @@ class GenerationTests(unittest.TestCase):
                  'active_mode': 'balanced', 'default_profile': {'model': 'gpt-5.6-terra', 'effort': 'max'},
                  'roles': {'how-explorer': {'preferred_models': ['gpt-5.6-luna'], 'effort_hint': 'low'}}}
         self.assertEqual(r.migrate_preferences(prefs), prefs)
-        result = r.resolve({**self.request('gpt-6-sol', mode='balanced'), 'preferences': prefs})
+        result = r.resolve({**self.request('gpt-6.1-sol', mode='balanced'), 'preferences': prefs})
         self.assertEqual(result['status'], 'blocked')
         self.assertEqual(result['rejected'][0]['candidate']['model'], 'gpt-5.6-luna')
         self.assertTrue(any('normal pool' in reason for reason in result['rejected'][0]['reasons']))
@@ -72,7 +111,7 @@ class GenerationTests(unittest.TestCase):
         self.assertEqual(r.normalize_mode('budget'), 'lean')
 
     def test_explicit_legacy_limit_is_not_upgraded(self):
-        q = self.request('gpt-6-sol', mode='balanced', role='architect-runners')
+        q = self.request('gpt-6.1-sol', mode='balanced', role='architect-runners')
         q['limits'] = {'model': 'gpt-5.6-sol'}
         result = r.resolve(q)
         self.assertEqual(result['status'], 'blocked')
@@ -86,12 +125,12 @@ class GenerationTests(unittest.TestCase):
                                   'profile': p, 'profile_verified': True, 'passed': True} for i in (1, 2)]}
         record['coding_validation'] = copy.deepcopy(record['validation'])
         with patch.dict(r.ROUTING_CATALOG['qualified_profiles'], {'ui-designer': [record]}):
-            self.assertIsNone(r.qualification('ui-designer', {'model': 'gpt-6-sol', 'effort': 'high'}, True))
-            q = self.request('gpt-6-sol', mode='balanced', role='ui-designer')
+            self.assertIsNone(r.qualification('ui-designer', {'model': 'gpt-6.1-sol', 'effort': 'high'}, True))
+            q = self.request('gpt-6.1-sol', mode='balanced', role='ui-designer')
             q.update(implementation=True, evidence_contract='note-editor-ui',
                      candidates=[{**p, 'reason': 'fixture'}])
             self.assertEqual(r.resolve(q)['status'], 'blocked')
-            record['model'] = 'gpt-6-sol'
+            record['model'] = 'gpt-6.1-sol'
             self.assertFalse(r.paired(record))
 
     def test_review_support_uses_catalogue_owned_profile(self):
@@ -99,7 +138,7 @@ class GenerationTests(unittest.TestCase):
         record = {**p, 'status': 'verified', 'evidence_id': 'support-fixture-only',
                   'validation': [{'assignment_id': str(i), 'repetition': i, 'packet_sha256': 'support',
                                   'profile': p, 'profile_verified': True, 'passed': True} for i in (1, 2)]}
-        q = self.request('gpt-6-sol', mode='balanced', role='status-monitor')
+        q = self.request('gpt-6.1-sol', mode='balanced', role='status-monitor')
         q['candidates'] = [{**p, 'reason': 'Clerical status only'}]
         with patch.dict(r.ROUTING_CATALOG['qualified_profiles'], {'status-monitor': [record]}):
             self.assertEqual(r.resolve(q)['status'], 'ready')
@@ -145,7 +184,7 @@ class GenerationTests(unittest.TestCase):
                                 'desired': {'model': 'gpt-5.6-sol', 'effort': 'xhigh'}, 'accepted': True}
         result = r.resolve(q)
         self.assertEqual(result['status'], 'parent-choice-required')
-        self.assertEqual(result['parent_adaptation']['desired']['model'], 'gpt-6-sol')
+        self.assertEqual(result['parent_adaptation']['desired']['model'], 'gpt-6.1-sol')
         self.assertFalse(result['parent_adaptation']['runtime_switch_performed'])
 
 

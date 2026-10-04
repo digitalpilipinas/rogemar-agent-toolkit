@@ -230,7 +230,7 @@ save your choice. At entry and useful dispatch, a short label shows role, model,
 effort and mode; requested profiles stay distinct from runtime-verified identity.
 
 In Codex, use `$forge-setup Use Balanced` to save a preference, or specify a mode in
-the current Forge request. Codex presets include GPT-6 Sol and GPT-6 Luna;
+the current Forge request. Codex presets include GPT-6.1 Sol and GPT-6 Luna;
 existing explicit model choices are never silently renamed. Exact profiles are
 qualified against the task, runtime, explicit limits and both mode/accepted-parent
 ceilings. Only exact, evidence-qualified hillclimb and hardest-task exceptions can

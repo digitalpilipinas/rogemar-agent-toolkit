@@ -30,8 +30,9 @@ exercise a role or change the model.
 
 The executable source is `scripts/routing_catalog.json`: five policies, parent
 targets, exact-generation model tiers and supported efforts, group defaults, role overrides and verified exceptions. Use `--list-modes`
-and `--role-map` to inspect it. `references/role-evidence.json` records all 225
-role/mode decisions, historical findings and focused validation. Read
+and `--role-map` to inspect it. `references/role-evidence.json` records the historical 225
+role/mode decisions, findings and focused validation; the executable catalogue
+and role map define current presets. Read
 [role-mapping.md](references/role-mapping.md) for contracts and evidence limits.
 
 Normal assignments obey both parent model-tier and reasoning ceilings, using
@@ -54,7 +55,7 @@ worker-only usage is a proxy and excludes full coordination/retry/review costs.
 Pass `implementation: true` for code-producing assignments and `consequential: true`
 for security or architectural judgment within any role. Paired explanatory answers
 cannot qualify implementation without the matching executable coding checks.
-See [validation-v6.md](references/validation-v6.md) for the current comparison,
+See [validation-v6.md](references/validation-v6.md) for the historical GPT-6 comparison,
 fresh qualification and limitations. Return the qualification's actual scope:
 a readiness answer is not runtime evidence, and a SQLite pass is not a UI test.
 Alternate implementation and exact exceptions require the matching

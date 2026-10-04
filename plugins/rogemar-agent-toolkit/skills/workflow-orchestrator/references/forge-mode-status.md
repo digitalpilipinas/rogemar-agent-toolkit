@@ -97,7 +97,7 @@ this execution question. Do not persist a fallback preference unless requested.
 
 At initial entry and resume, show one compact coordinator label, for example:
 
-`Coordinator · GPT-6 Sol / xhigh · Balanced · model verified · source: saved preference`
+`Coordinator · GPT-6.1 Sol / xhigh · Balanced · model verified · source: saved preference`
 
 Use the actual available model identifier or an unambiguous friendly name,
 including its generation when multiple generations share a family name.

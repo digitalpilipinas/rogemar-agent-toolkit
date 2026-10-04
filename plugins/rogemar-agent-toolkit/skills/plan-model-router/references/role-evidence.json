@@ -51291,5 +51291,24 @@
       ],
       "limitations": "One proposal supports only narrow preparation Paired evidence covers its specific contract only. Whole-batch usage is not per-role delivered-task cost."
     }
-  ]
+  ],
+  "snapshot_parent_targets": {
+    "peak": {
+      "model": "gpt-6-astra",
+      "effort": "xhigh"
+    },
+    "balanced": {
+      "model": "gpt-6-sol",
+      "effort": "xhigh"
+    },
+    "lean": {
+      "model": "gpt-5.6-sol",
+      "effort": "xhigh"
+    },
+    "economy": {
+      "model": "gpt-6-luna",
+      "effort": "medium"
+    }
+  },
+  "snapshot_note": "Historical v6 assessment. Active presets are in scripts/routing_catalog.json; GPT-6.1 Sol has no transferred qualification or measured usage."
 }

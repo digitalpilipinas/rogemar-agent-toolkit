@@ -12,7 +12,7 @@ from test_forge import router as r
 
 class ModeTests(unittest.TestCase):
     def request(self, mode='balanced', role='feature'):
-        return {'parent': dict(r.ROUTING_CATALOG['parent_targets'].get(mode, {'model': 'gpt-6-sol', 'effort': 'xhigh'})),
+        return {'parent': dict(r.ROUTING_CATALOG['parent_targets'].get(mode, {'model': 'gpt-6.1-sol', 'effort': 'xhigh'})),
                 'mode': mode, 'role': role, 'task_reason': 'bounded task fits recorded contract',
                 'evidence_contract': 'note-editor-ui' if role in ('ui-designer', 'ux-flow-designer', 'interaction-designer') else 'notes-store',
                 'catalog': [{'model': m, 'efforts': list(r.EFFORT_RANK)} for m in r.MODEL_RANK]}
@@ -66,7 +66,7 @@ class ModeTests(unittest.TestCase):
                         self.assertEqual(r.resolve(q)['status'] == 'ready', allowed, (mode, role, model, effort))
 
     def test_default_exact_and_supported_ultra(self):
-        for model in ('gpt-6-astra', 'gpt-6-sol', 'gpt-5.6-sol', 'gpt-5.6-terra'):
+        for model in ('gpt-6-astra', 'gpt-6.1-sol', 'gpt-5.6-sol', 'gpt-5.6-terra'):
             q = self.request('default'); q['parent'] = {'model': model, 'effort': 'ultra'}
             self.assertEqual(r.resolve(q)['expected_from_config'], q['parent'])
             q['candidates'] = [dict(model=model, effort='max', reason='cheaper')]
@@ -85,7 +85,7 @@ class ModeTests(unittest.TestCase):
             if x['qualification_id']:
                 self.assertIn('form', x['qualification_scope'])
                 self.assertEqual(x['evidence_contract'], 'note-editor-ui')
-        self.assertFalse(r.qualification('visual-reviewer', {'model': 'gpt-6-sol', 'effort': 'xhigh'}, True))
+        self.assertFalse(r.qualification('visual-reviewer', {'model': 'gpt-6.1-sol', 'effort': 'xhigh'}, True))
 
     def test_qualification_requires_matching_executable_contract(self):
         with self.qualified_fixture('refactoring', executable=True) as record:
@@ -161,7 +161,7 @@ class ModeTests(unittest.TestCase):
             p = Path(tmp)/'forge.json'; p.write_text(json.dumps({'schema_version': 2, 'policy': 'adaptive', 'parent_policy': 'mode-adaptive', 'active_mode': 'sprint', 'roles': {}})); before = p.read_bytes()
             x = r.set_mode(p, 'economy'); self.assertEqual(Path(x['backup']).read_bytes(), before); self.assertEqual(json.loads(p.read_text())['schema_version'], 3)
             with self.assertRaises(ValueError): r.set_mode(p, 'default')
-            r.set_mode(p, 'default', {'model': 'gpt-6-sol', 'effort': 'Extra High'})
+            r.set_mode(p, 'default', {'model': 'gpt-6.1-sol', 'effort': 'Extra High'})
             self.assertEqual(json.loads(p.read_text())['default_profile']['effort'], 'xhigh'); self.assertEqual(r.set_mode(p, 'default')['status'], 'unchanged')
             p.write_text('{bad'); before = p.read_bytes()
             with self.assertRaises(ValueError): r.set_mode(p, 'peak')
@@ -190,8 +190,8 @@ class ModeTests(unittest.TestCase):
     def test_qualified_consequential_default_can_reduce_reasoning_only(self):
         role = 'acceptance-auditor'; previous = r.ROLE_PROFILES['balanced'][role]
         try:
-            with self.qualified_fixture(role, 'gpt-6-sol', 'high'):
-                r.ROLE_PROFILES['balanced'][role] = {'model': 'gpt-6-sol', 'effort': 'high'}
+            with self.qualified_fixture(role, 'gpt-6.1-sol', 'high'):
+                r.ROLE_PROFILES['balanced'][role] = {'model': 'gpt-6.1-sol', 'effort': 'high'}
                 self.assertEqual(r.resolve(self.request('balanced', role))['expected_from_config'], r.ROLE_PROFILES['balanced'][role])
                 q = self.request('balanced', role); q.update(consequential=False, candidates=[dict(model='gpt-6-luna', effort='low', reason='cheap')])
                 self.assertEqual(r.resolve(q)['status'], 'blocked')
@@ -204,7 +204,7 @@ class ModeTests(unittest.TestCase):
                 q = self.request(mode, role); x = r.resolve(q)
                 self.assertEqual(x['expected_from_config'], q['parent']); self.assertFalse(x['exception_applied'])
         for mode in ('lean', 'economy'):
-            with self.qualified_fixture('hardest-tasks', 'gpt-6-sol', 'max', True, mode) as ex:
+            with self.qualified_fixture('hardest-tasks', 'gpt-6.1-sol', 'max', True, mode) as ex:
                 q = self.request(mode, 'hardest-tasks'); q.update(candidates=[dict(model=ex['model'], effort=ex['effort'], reason='bounded consultant')], difficult_task=True, exception_reason='Concurrent retry requirement not met', exception_evidence_id=ex['evidence_id'])
                 self.assertTrue(r.resolve(q)['exception_applied'])
                 q['limits'] = {'model': q['parent']['model']}; self.assertEqual(r.resolve(q)['status'], 'blocked')
