@@ -1,6 +1,6 @@
 ---
 name: xcode-build-orchestrator
-description: Orchestrate Xcode build optimization by benchmarking first, running the specialist analysis skills, prioritizing findings, requesting explicit approval, delegating approved fixes to xcode-build-fixer, and re-benchmarking after changes. Use when a developer wants an end-to-end build optimization workflow, asks to speed up Xcode builds, wants a full build audit, or needs a recommend-first optimization pass covering compilation, project settings, and packages.
+description: Coordinate evidence-based Xcode build analysis as a specialist under the existing workflow owner, reusing approved scope and dispatch.
 ---
 
 # Xcode build analysis coordination

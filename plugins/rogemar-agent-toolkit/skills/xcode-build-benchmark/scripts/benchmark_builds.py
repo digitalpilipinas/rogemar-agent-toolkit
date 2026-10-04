@@ -9,6 +9,7 @@ import statistics
 import subprocess
 import tempfile
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -125,7 +126,7 @@ def main():
     output = Path(args.output_dir).resolve()
     output.mkdir(parents=True, exist_ok=True)
     evidence = Path(tempfile.mkdtemp(prefix="run-", dir=output))
-    artifact = {"schema_version": "2.0.0", "status": "failed", "repeats": args.repeats,
+    artifact = {"schema_version": "2.0.0", "created_at": datetime.now(timezone.utc).isoformat(), "status": "failed", "repeats": args.repeats,
                 "build": {"path": args.workspace or args.project, "scheme": args.scheme,
                           "configuration": args.configuration, "destination": args.destination},
                 "runs": {"clean": [], "incremental": []}, "phases": [],

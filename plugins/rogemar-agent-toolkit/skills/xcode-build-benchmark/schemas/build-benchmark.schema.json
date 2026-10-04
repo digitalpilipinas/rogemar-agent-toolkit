@@ -4,15 +4,21 @@
   "type": "object",
   "required": [
     "schema_version",
+    "status",
     "created_at",
+    "repeats",
     "build",
     "runs",
-    "summary"
+    "summary",
+    "phases",
+    "incremental_kind"
   ],
   "properties": {
     "schema_version": {
       "type": "string",
-      "enum": ["1.0.0", "1.1.0", "1.2.0"]
+      "enum": [
+        "2.0.0"
+      ]
     },
     "created_at": {
       "type": "string",
@@ -21,11 +27,10 @@
     "build": {
       "type": "object",
       "required": [
-        "entrypoint",
+        "path",
         "scheme",
         "configuration",
-        "destination",
-        "command"
+        "destination"
       ],
       "properties": {
         "entrypoint": {
@@ -45,13 +50,19 @@
           "type": "string"
         },
         "destination": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "derived_data_path": {
           "type": "string"
         },
         "command": {
-          "type": "string"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "additionalProperties": true
@@ -123,6 +134,28 @@
       "items": {
         "type": "string"
       }
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "failed"
+      ]
+    },
+    "repeats": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/run"
+      }
+    },
+    "incremental_kind": {
+      "enum": [
+        "edit",
+        "zero-change"
+      ]
     }
   },
   "definitions": {
@@ -130,10 +163,11 @@
       "type": "object",
       "required": [
         "id",
-        "build_type",
         "duration_seconds",
         "success",
-        "command"
+        "exit_code",
+        "command",
+        "raw_log_path"
       ],
       "properties": {
         "id": {
@@ -155,7 +189,10 @@
           "type": "boolean"
         },
         "command": {
-          "type": "string"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "exit_code": {
           "type": "integer"
@@ -197,10 +234,7 @@
       "type": "object",
       "required": [
         "count",
-        "min_seconds",
-        "max_seconds",
-        "median_seconds",
-        "average_seconds"
+        "median_seconds"
       ],
       "properties": {
         "count": {
@@ -216,7 +250,10 @@
           "minimum": 0
         },
         "median_seconds": {
-          "type": "number",
+          "type": [
+            "number",
+            "null"
+          ],
           "minimum": 0
         },
         "average_seconds": {

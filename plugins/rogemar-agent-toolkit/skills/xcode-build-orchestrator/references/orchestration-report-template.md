@@ -104,7 +104,7 @@ Compare the new wall-clock medians against the baseline. Report results as:
 | 1 | Description of change | repo-local | Clean: X.Xs→Y.Ys, Incr: X.Xs→Y.Ys | Kept / Reverted / Blocked |
 | 2 | ... | ... | ... | ... |
 
-Status values: `Kept`, `Kept (best practice)`, `Reverted`, `Blocked`, `No improvement`
+Status values: `Kept`, `Kept (approved non-performance reason)`, `Reverted`, `Blocked`, `No improvement`
 
 ### Final Cumulative Result
 - Post-change clean build: X.Xs (was Y.Ys) -- Z.Zs faster/slower
@@ -138,6 +138,6 @@ Open a PR: https://github.com/AvdLee/Xcode-Build-Optimization-Agent-Skill/edit/m
 - If results are noisy, say that the verification is inconclusive instead of overstating success.
 - The Build Settings Audit scope is strictly build performance. Do not flag language-migration settings like `SWIFT_STRICT_CONCURRENCY` or `SWIFT_UPCOMING_FEATURE_*`.
 - The Compilation Diagnostics section is populated by `diagnose_compilation.py`. If not run, note that it was skipped.
-- `COMPILATION_CACHE_ENABLE_CACHING` has been measured at 5-14% faster clean builds across tested projects. The benefit compounds in real developer workflows (branch switching, pulling changes, CI with persistent DerivedData). The benchmark script auto-detects this setting and runs a cached clean phase for validation.
+- Validate compilation-cache behavior with this project’s measured clean and cached-clean runs; no generic percentage establishes a local benefit.
 - When recommending SPM version pins, verify that tagged versions exist (`git ls-remote --tags`) before suggesting a pin-to-tag change. If no tags exist, recommend pinning to a commit revision hash.
 - Before including a local package in a build-time recommendation, verify it is referenced in `project.pbxproj` via `XCLocalSwiftPackageReference`. Packages that exist on disk but are not linked do not affect build time.

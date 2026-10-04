@@ -4130,15 +4130,15 @@
     },
     "xcode-build-benchmark": {
       "file_count": 6,
-      "sha256": "225f7cc270b6a54f226f4d042efd02c8d616f0e4c080924594557592edf938fb"
+      "sha256": "c91e99c3d4d0907193b10bbb8dca0b26d3f6748a1637fa7c825d20426a2813bb"
     },
     "xcode-build-fixer": {
       "file_count": 6,
-      "sha256": "72044d138890bcaba20972ba80e272321003a0c7934432a69b970593b5167f8c"
+      "sha256": "5225c39752a95a21aa0168b4d78555da16fe3d3f6dd810ca9dae43f688f68285"
     },
     "xcode-build-orchestrator": {
       "file_count": 9,
-      "sha256": "9e4280f42a70d5dec361d4e45c9c182153a12ce27d15ca8b5eceaafbbd44df8e"
+      "sha256": "328135b800461f013f115da88c84d7d7bf112ec83a906a42404430bb6b54e07a"
     },
     "xcode-compilation-analyzer": {
       "file_count": 6,
@@ -4146,7 +4146,7 @@
     },
     "xcode-project-analyzer": {
       "file_count": 6,
-      "sha256": "b84023755b37592bc23ef15e7e78b29175205dcac79a735d3f4e38fbcef42710"
+      "sha256": "e32e660ce521c92819734054a948b8dbbc5398e5ce492dc9559a6b13fc31f479"
     }
   },
   "version": "1.0.0"

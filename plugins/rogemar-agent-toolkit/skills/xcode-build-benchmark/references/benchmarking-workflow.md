@@ -29,7 +29,7 @@ Produce a benchmark artifact that another skill can trust without rerunning the 
 ## Incremental Build Rules
 
 - Use the same build command after a successful baseline build.
-- Do not clean between incremental runs.
+- Each incremental run follows its paired successful clean build; do not clean between that baseline and its incremental measurement.
 - If the user wants edit-loop benchmarking, note the file change strategy explicitly in the artifact.
 - If there are no source edits between runs, label the result as no-edit incremental timing.
 
