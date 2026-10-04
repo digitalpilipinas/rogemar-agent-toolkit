@@ -206,7 +206,8 @@ evidence separately. After reviewer-driven UI changes, rerun affected UI checks.
 ## Local and cloud review assignments
 
 Use the orchestrator's [review support/decision roles](../workflow-orchestrator/references/provider-routing.md#review-support-and-decision-roles)
-for local complete-slice reviews and ready-PR review waves. Separate low-usage status
+for authorized local pre-commit reviews, complete-slice reviews and ready-PR review
+waves. Separate low-usage status
 monitoring and feedback consolidation from correctness validation, minimum-viable
 scope decisions and implementation. Consolidation preserves every provider finding
 and its provenance; a qualified decision owner validates and disposes the combined

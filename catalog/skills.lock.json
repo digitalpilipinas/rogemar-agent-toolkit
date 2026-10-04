@@ -3390,7 +3390,7 @@
     },
     "agent-collaboration-terminal": {
       "file_count": 8,
-      "sha256": "dcb7fd785ec7b7888f9a879c9316bf3483330a0d4f137f556caf9a7e18b521d3"
+      "sha256": "4bae2f2848f024d95378bf5db9884cfc47503f30851418235080261fa79258a8"
     },
     "agent-map": {
       "file_count": 3,
@@ -3678,7 +3678,7 @@
     },
     "integrated-workflow": {
       "file_count": 10,
-      "sha256": "7a9162591401e798e2a8d80753d8fcf2f5de3b929c2fe0965b3c38bf875caf36"
+      "sha256": "7e3c750d55c7b70aa230d0615548fd6f39a83056e061d968dc89c84bd54d30e9"
     },
     "interaction-polish": {
       "file_count": 10,

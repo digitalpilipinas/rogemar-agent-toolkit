@@ -324,10 +324,19 @@ Select `--provider droid` (`factory` is an alias). Verify `droid --version` and
 reasoning levels; the supervisor's profile and authentication are not inherited.
 Managed background runs use `droid exec --cwd <workspace> --file <prompt.md>`
 and optional `--model` / `--reasoning-effort`. Manual background execution remains
-Droid's default read-only mode; edits requiring approval need the managed PTY
-fallback. Interactive launch starts bare `droid`, then submits the prepared brief.
-Full-auto, only with the existing explicit isolated-worktree authority, uses
-`--auto high`; it retains Droid's hard checks. Never add `--skip-permissions-unsafe`,
+Droid's default read-only mode; manual implementation is rejected before a headless
+launch and needs interactive execution in the managed PTY or visible fallback.
+Interactive launch starts bare `droid`. Before submitting the prepared
+brief, open `/model`, select the configured native model and supported reasoning
+level, and verify both active values in the interface. Stop if a requested value
+is unavailable; the launcher's printed settings are instructions, not proof of
+application. Do not change account defaults for this run.
+Full-auto requires implementation mode, explicit isolated-worktree authority and
+external authority `authorized-write`; review, plan, validation, missing authority,
+`none`, and `read-only` are rejected before launch. It uses `--auto high`, retaining
+Droid's hard checks. These authority records do not sandbox external actions;
+use manual approval when narrower external restrictions must be preserved.
+Never add `--skip-permissions-unsafe`,
 `--mission`, a new worktree, or service credentials implicitly. CLI installation
 alone does not prove authentication, model access, or MCP availability. Native
 permission/authentication failures remain incomplete evidence. Timeout: 30 minutes.

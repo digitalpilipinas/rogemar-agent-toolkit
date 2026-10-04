@@ -13,6 +13,51 @@ spec.loader.exec_module(toolkit)
 
 
 class ExternalSkillsTests(unittest.TestCase):
+    def test_failed_upstream_does_not_block_later_install_and_retry_preserves_success(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "repo"
+            (source / "skills/example").mkdir(parents=True)
+            (source / "skills/example/SKILL.md").write_text("fixture")
+            for command in (["init", "-q"], ["add", "."],
+                            ["-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "commit", "-qm", "fixture"]):
+                subprocess.run(["git", "-C", str(source), *command], check=True, capture_output=True)
+            commit = subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True).strip()
+            selection = {"dependencies": {
+                name: {"kind": "skills", "auto_install": {
+                    "repository": "https://github.com/example/skills.git", "commit": commit,
+                    "skills": {name: "skills/example"}}}
+                for name in ("broken", "healthy")}}
+            for failure in ("fetch", "archive", "timeout"):
+                with self.subTest(failure=failure):
+                    target = root / failure
+                    target.mkdir()
+                    calls = []
+
+                    def fetch(recipe, destination):
+                        calls.append(recipe["dependency"])
+                        if recipe["dependency"] == "broken":
+                            if failure == "fetch":
+                                raise toolkit.ToolkitError("upstream unavailable")
+                            if failure == "timeout":
+                                raise subprocess.TimeoutExpired(["git", "fetch"], 180)
+                            destination.mkdir()  # No Git archive can be produced.
+                            return
+                        subprocess.run(["git", "clone", "-q", str(source), str(destination)], check=True)
+
+                    with patch.object(toolkit, "fetch_external_source", side_effect=fetch):
+                        with self.assertRaisesRegex(toolkit.ToolkitError, "broken"):
+                            toolkit.install_external_skills(selection, target)
+                        self.assertEqual(calls, ["broken", "healthy"])
+                        self.assertEqual((target / "healthy/SKILL.md").read_text(), "fixture")
+                        self.assertFalse((target / "broken").exists())
+                        (target / "healthy/SKILL.md").write_text("preserved local edit")
+                        calls.clear()
+                        with self.assertRaisesRegex(toolkit.ToolkitError, "broken"):
+                            toolkit.install_external_skills(selection, target)
+                        self.assertEqual(calls, ["broken"])
+                        self.assertEqual((target / "healthy/SKILL.md").read_text(), "preserved local edit")
+
     def test_missing_only_preserves_resources_license_and_user_edits(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

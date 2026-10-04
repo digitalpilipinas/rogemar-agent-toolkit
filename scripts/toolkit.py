@@ -805,65 +805,75 @@ def fetch_external_source(recipe: dict[str, Any], checkout: Path) -> None:
             raise ToolkitError(f"external fetch failed: {recipe['dependency']}; managed skills remain installed; retry install")
 
 
+def install_external_recipe(recipe: dict[str, Any], skills_root: Path) -> None:
+    with tempfile.TemporaryDirectory(prefix="toolkit-external-") as temporary:
+        checkout = Path(temporary) / "source"
+        fetch_external_source(recipe, checkout)
+        result = subprocess.run(["git", "-C", str(checkout), "archive", recipe["commit"]],
+                                capture_output=True, timeout=180, check=False,
+                                env={**os.environ, "GIT_NO_REPLACE_OBJECTS": "1"})
+        if result.returncode:
+            raise ToolkitError(f"external archive failed: {recipe['dependency']}")
+        with tarfile.open(fileobj=io.BytesIO(result.stdout), mode="r:") as archive:
+            for skill, source in recipe["missing"].items():
+                staged = Path(temporary) / "skills" / skill
+                staged.mkdir(parents=True)
+                for member in archive.getmembers():
+                    path = Path(member.name)
+                    if path.is_absolute() or ".." in path.parts:
+                        raise ToolkitError("unsafe external archive path")
+                    try:
+                        relative = path.relative_to(source)
+                    except ValueError:
+                        # Preserve upstream notices outside the skill directory.
+                        if path.parent not in (Path(source), *Path(source).parents):
+                            continue
+                        if not path.name.upper().startswith(("LICENSE", "NOTICE", "COPYING")):
+                            continue
+                        relative = Path("upstream-notices") / path
+                    if member.isdir() or should_ignore(relative):
+                        continue
+                    if not member.isfile():
+                        raise ToolkitError(f"non-regular external skill member: {member.name}")
+                    handle = archive.extractfile(member)
+                    assert handle is not None
+                    destination = staged / relative
+                    destination.parent.mkdir(parents=True, exist_ok=True)
+                    destination.write_bytes(handle.read())
+                    destination.chmod(0o755 if member.mode & 0o111 else 0o644)
+                if not (staged / "SKILL.md").is_file():
+                    raise ToolkitError(f"pinned external skill is missing: {skill}")
+                write_json_atomic(staged / ".toolkit-upstream.json", {
+                    "repository": recipe["repository"], "commit": recipe["commit"], "source": source})
+                target = checked_path(skills_root, Path(skill))
+                # Exclusive creation preserves even an empty concurrent destination.
+                target.mkdir()
+                try:
+                    shutil.copytree(staged, target, dirs_exist_ok=True)
+                except Exception:
+                    shutil.rmtree(target)
+                    raise
+                print(f"Installed external skill {skill} ({recipe['commit'][:12]})")
+
+
 def install_external_skills(selection: dict[str, Any], skills_root: Path, *, skip: bool = False) -> None:
     if skip:
         print("External skill provisioning skipped explicitly; external readiness is unverified.")
         return
+    failures: list[str] = []
     for recipe in external_skill_plan(selection, skills_root):
         if not recipe["missing"]:
             continue
-        with tempfile.TemporaryDirectory(prefix="toolkit-external-") as temporary:
-            checkout = Path(temporary) / "source"
-            fetch_external_source(recipe, checkout)
-            result = subprocess.run(["git", "-C", str(checkout), "archive", recipe["commit"]],
-                                    capture_output=True, timeout=180, check=False,
-                                    env={**os.environ, "GIT_NO_REPLACE_OBJECTS": "1"})
-            if result.returncode:
-                raise ToolkitError(f"external archive failed: {recipe['dependency']}")
-            with tarfile.open(fileobj=io.BytesIO(result.stdout), mode="r:") as archive:
-                for skill, source in recipe["missing"].items():
-                    staged = Path(temporary) / "skills" / skill
-                    staged.mkdir(parents=True)
-                    for member in archive.getmembers():
-                        path = Path(member.name)
-                        if path.is_absolute() or ".." in path.parts:
-                            raise ToolkitError("unsafe external archive path")
-                        try:
-                            relative = path.relative_to(source)
-                        except ValueError:
-                            # Preserve upstream notices outside the skill directory.
-                            if path.parent not in (Path(source), *Path(source).parents):
-                                continue
-                            if not path.name.upper().startswith(("LICENSE", "NOTICE", "COPYING")):
-                                continue
-                            relative = Path("upstream-notices") / path
-                        if member.isdir() or should_ignore(relative):
-                            continue
-                        if not member.isfile():
-                            raise ToolkitError(f"non-regular external skill member: {member.name}")
-                        handle = archive.extractfile(member)
-                        assert handle is not None
-                        destination = staged / relative
-                        destination.parent.mkdir(parents=True, exist_ok=True)
-                        destination.write_bytes(handle.read())
-                        destination.chmod(0o755 if member.mode & 0o111 else 0o644)
-                    if not (staged / "SKILL.md").is_file():
-                        raise ToolkitError(f"pinned external skill is missing: {skill}")
-                    write_json_atomic(staged / ".toolkit-upstream.json", {
-                        "repository": recipe["repository"], "commit": recipe["commit"], "source": source})
-                    target = checked_path(skills_root, Path(skill))
-                    # Exclusive creation preserves even an empty concurrent destination.
-                    target.mkdir()
-                    try:
-                        shutil.copytree(staged, target, dirs_exist_ok=True)
-                    except Exception:
-                        shutil.rmtree(target)
-                        raise
-                    print(f"Installed external skill {skill} ({recipe['commit'][:12]})")
+        try:
+            install_external_recipe(recipe, skills_root)
+        except (ToolkitError, subprocess.TimeoutExpired, tarfile.TarError, OSError) as exc:
+            failures.append(f"{recipe['dependency']}: {exc}")
     runtime = [name for name, item in selection["dependencies"].items()
                if item.get("kind") != "skills"]
     if runtime:
         print("Native plugins, runtimes and authentication require separate setup/verification: " + ", ".join(runtime))
+    if failures:
+        raise ToolkitError("External provisioning incomplete; successful installs preserved; retry missing skills:\n" + "\n".join(failures))
 
 
 def command_install(args: argparse.Namespace) -> int:
