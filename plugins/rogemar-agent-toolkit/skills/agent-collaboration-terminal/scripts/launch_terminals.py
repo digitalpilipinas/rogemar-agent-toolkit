@@ -19,6 +19,7 @@ DEFAULT_TIMEOUTS = {
     "junie": 30 * 60,
     "cursor": 30 * 60,
     "codex": 30 * 60,
+    "droid": 30 * 60,
 }
 
 INTERACTIVE_COMMANDS = {
@@ -26,6 +27,7 @@ INTERACTIVE_COMMANDS = {
     "antigravity": "agy",
     "cursor": "agent",
     "codex": "codex",
+    "droid": "droid",
 }
 APPROVAL_POLICIES = {"manual", "full-auto"}
 EXECUTION_MODES = {"visible", "background", "managed-pty"}
@@ -269,6 +271,15 @@ exec {command_line}
         if managed_pty
         else "Wait until the native CLI is ready, then paste and submit the prepared prompt above."
     )
+    if provider_id == "droid":
+        ready_note = (
+            "Before submitting the brief, open /model and select the configured model "
+            f"({provider.get('model') or 'not specified: verify the intended native model'}); "
+            "select the supported reasoning level "
+            f"({provider.get('effort') or 'not specified: verify the intended native level'}). "
+            "Verify both active values in Droid. If either requested value is unavailable, "
+            "stop and report it; do not submit the brief using defaults. Then submit the prepared prompt."
+        )
     script = f"""#!/bin/zsh
 set -u
 cd -- {shlex.quote(str(workspace))}

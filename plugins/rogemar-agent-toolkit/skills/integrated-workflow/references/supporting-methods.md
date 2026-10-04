@@ -38,7 +38,9 @@ edits, memory writes, hooks or background collection. Capture failures are nonbl
 ## Ponytail
 
 Use through the current minimality owner when installed and useful. Select only
-one applicable method; never install/vendor its external plugin implicitly.
+one applicable method. Toolkit installation provisions missing compatible external
+skill files from catalog-pinned upstreams. Task-time discovery does not authorize
+a new installation or plugin activation.
 
 - `ponytail`: challenge speculation, trace callers and prefer existing code,
   standard-library or native features before new custom abstractions/dependencies.
@@ -121,3 +123,19 @@ pending. Preserve each helper's standalone scope and authorization boundaries.
 Do not assume a push triggers review or promise a fixed completion time; inspect
 configured triggers and actual provider status. Runtime-owned helper packages
 remain external dependencies, with this maintained adapter governing integration.
+
+## Installation across harnesses
+
+The toolkit installer provisions missing catalog-declared external skill files for
+selected packs by default, including Unlazy, Ponytail and Cursor's PStack methods.
+Use the actual receiving harness and `--profile all` for the full compatible set;
+`--skip-external` is an explicit offline exception, not a complete installation.
+Shared methods (including Project Learning) stay portable. Codex/Cursor-specific
+adapters remain native; other harnesses use Universal Forge and the universal
+router. Do not copy native model IDs, hooks, or platform controls across harnesses.
+PStack's native plugin remains Cursor-specific; static files do not supply its
+subagents, tools or plugin runtime. Droid is an optional, explicitly selected
+terminal provider, with the same authority and full-review contract as its peers.
+Provisioning does not authorize logins, provider runs, hooks or paid services.
+Verify readable skill resources and live tools separately in the receiving
+local/container/Cloud runtime; a local install or upload is not remote proof.

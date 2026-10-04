@@ -177,8 +177,16 @@ def append_event(provider_dir: Path, event: dict[str, object]) -> None:
 
 def build_command(entry: dict[str, object], *, workspace: Path, run_dir: Path,
                   prompt: str, timeout_seconds: int, auto_approve: bool,
-                  mode: str | None = None) -> list[str]:
+                  mode: str | None = None,
+                  external_authority: str | None = None) -> list[str]:
     provider_id = str(entry["id"]).lower()
+    if provider_id == "droid" and mode == "implementation" and not auto_approve:
+        raise ValueError("Droid manual implementation requires interactive execution; headless exec cannot request edit approval")
+    if provider_id == "droid" and auto_approve:
+        if mode != "implementation":
+            raise ValueError("Droid full-auto requires implementation mode; review, plan and validation remain read-only")
+        if external_authority != "authorized-write":
+            raise ValueError("Droid full-auto requires explicit external authority authorized-write; use manual approval otherwise")
     if entry.get("entry_command"):
         raise ValueError(
             "provider-native entry commands require visible interactive launch; "
@@ -243,6 +251,16 @@ def build_command(entry: dict[str, object], *, workspace: Path, run_dir: Path,
         # Cursor accepts the initial prompt as a positional argument. MCP
         # approval remains interactive; never add --approve-mcps implicitly.
         args.append(prompt)
+    elif provider_id == "droid":
+        args.extend(["exec", "--cwd", str(workspace), "--output-format", "text"])
+        if model:
+            args.extend(["--model", str(model)])
+        if effort:
+            args.extend(["--reasoning-effort", str(effort)])
+        if auto_approve:
+            # High retains Droid's hard safety checks; never bypass permissions.
+            args.extend(["--auto", "high"])
+        args.extend(["--file", str(run_dir / str(entry["artifact_dir"]) / "prompt.md")])
     elif provider_id == "codex":
         # Use the non-interactive subcommand for host-owned runs. The prompt
         # is supplied through stdin so a large brief is not exposed in argv.
@@ -377,15 +395,20 @@ def main() -> int:
     prompt_path = provider_dir / "prompt.md"
     prompt = prompt_path.read_text(encoding="utf-8")
     workspace = Path(str(manifest["workspace"])).expanduser().resolve(strict=True)
-    command = build_command(
-        entry,
-        workspace=workspace,
-        run_dir=run_dir,
-        prompt=prompt,
-        timeout_seconds=args.timeout_seconds,
-        auto_approve=approval_policy == "full-auto",
-        mode=str(manifest.get("mode")) if manifest.get("mode") is not None else None,
-    )
+    authority = manifest.get("authority")
+    try:
+        command = build_command(
+            entry,
+            workspace=workspace,
+            run_dir=run_dir,
+            prompt=prompt,
+            timeout_seconds=args.timeout_seconds,
+            auto_approve=approval_policy == "full-auto",
+            mode=str(manifest.get("mode")) if manifest.get("mode") is not None else None,
+            external_authority=authority.get("external") if isinstance(authority, dict) else None,
+        )
+    except ValueError as exc:
+        parser.error(str(exc))
     if args.dry_run:
         print(json.dumps({"provider": entry["id"], "timeout_seconds": args.timeout_seconds,
                           "approval_policy": approval_policy,

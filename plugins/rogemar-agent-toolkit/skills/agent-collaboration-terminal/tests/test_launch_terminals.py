@@ -33,6 +33,64 @@ validate = load_module("validate_run", SKILL_DIR / "scripts" / "validate_run.py"
 
 
 class InteractiveLaunchTests(unittest.TestCase):
+    def test_droid_alias_and_native_commands(self) -> None:
+        import argparse
+        self.assertEqual(prepare.canonical_provider("Factory", argparse.ArgumentParser()), "droid")
+        entry = {"id": "droid", "command": "droid", "artifact_dir": "droid",
+                 "model": "native-model", "effort": "high"}
+        script = self.script_for(entry)
+        self.assertIn("exec droid", script)
+        self.assertIn("open /model", script)
+        self.assertIn("native-model", script)
+        self.assertIn("high", script)
+        self.assertIn("do not submit the brief using defaults", script)
+        for automatic in (False, True):
+            command = runner.build_command(entry, workspace=Path("/tmp/worktree"),
+                run_dir=Path("/tmp/run"), prompt="private task", timeout_seconds=60,
+                auto_approve=automatic, mode="implementation" if automatic else "review",
+                external_authority="authorized-write" if automatic else "none")
+            self.assertEqual(command[:4], ["droid", "exec", "--cwd", "/tmp/worktree"])
+            self.assertEqual(command[-2:], ["--file", "/tmp/run/droid/prompt.md"])
+            self.assertEqual("--auto" in command, automatic)
+            self.assertIn("--reasoning-effort", command)
+            self.assertNotIn("--skip-permissions-unsafe", command)
+            self.assertNotIn("private task", command)
+
+    def test_droid_full_auto_rejects_read_only_modes_and_external_authority(self) -> None:
+        entry = {"id": "droid", "command": "droid", "artifact_dir": "droid"}
+        for mode in (None, "plan", "review", "validation", "implementation"):
+            for authority in (None, "none", "read-only", "authorized-write"):
+                with self.subTest(mode=mode, authority=authority):
+                    kwargs = dict(workspace=Path("/tmp/worktree"), run_dir=Path("/tmp/run"),
+                                  prompt="review", timeout_seconds=60, auto_approve=True,
+                                  mode=mode, external_authority=authority)
+                    if mode == "implementation" and authority == "authorized-write":
+                        self.assertIn("--auto", runner.build_command(entry, **kwargs))
+                    else:
+                        with self.assertRaisesRegex(ValueError, "Droid full-auto requires"):
+                            runner.build_command(entry, **kwargs)
+        with self.assertRaisesRegex(ValueError, "manual implementation requires interactive"):
+            runner.build_command(entry, workspace=Path("/tmp/worktree"), run_dir=Path("/tmp/run"),
+                                 prompt="implement", timeout_seconds=60, auto_approve=False,
+                                 mode="implementation", external_authority="authorized-write")
+
+    def test_droid_runner_checks_manifest_authority_before_process_creation(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            run = Path(temporary)
+            (run / "droid").mkdir()
+            (run / "droid/prompt.md").write_text("bounded task")
+            manifest = {"workspace": str(run), "mode": "implementation",
+                        "authority": {"workspace": "isolated-worktree", "external": "none"},
+                        "providers": [{"id": "droid", "command": "droid", "artifact_dir": "droid"}]}
+            (run / "manifest.json").write_text(json.dumps(manifest))
+            with mock.patch.object(sys, "argv", ["run_provider.py", "--run", str(run),
+                    "--provider", "droid", "--timeout-seconds", "60", "--approval-policy", "full-auto"]), \
+                    mock.patch.object(runner.subprocess, "Popen") as spawn, \
+                    contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as error:
+                runner.main()
+            self.assertEqual(error.exception.code, 2)
+            spawn.assert_not_called()
+
     def script_for(self, provider: dict[str, object]) -> str:
         script, _ = launch.shell_script(
             provider=provider,

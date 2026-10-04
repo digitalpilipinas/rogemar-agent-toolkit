@@ -25,7 +25,7 @@ When an accepted lesson conflicts with current evidence, do not silently apply i
 
 ## Hook Coexistence
 
-The passive Stop handler is a Codex hook; other harnesses use enrolled workflow capture and install no hook. Codex runs all matching hook handlers. The project-learning Stop handler therefore:
+The passive Stop handler is a Codex hook; other harnesses pass `--harness <name>` and use explicit or enrolled workflow capture without installing a hook. `passive_hook: false` records that choice; legacy configs retain Codex hook validation. Codex runs all matching hook handlers. The project-learning Stop handler therefore:
 
 - Never blocks the current task or emits a model continuation prompt.
 - Records only bounded session, turn, signal, milestone, and transcript-path metadata in the ignored queue for a dedicated learning task.
