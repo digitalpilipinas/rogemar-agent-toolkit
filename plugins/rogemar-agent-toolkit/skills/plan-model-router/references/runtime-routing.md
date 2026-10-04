@@ -8,8 +8,8 @@ worker launch or proof of effective identity. Other harnesses use native routers
 | Mode | Desired parent | Normal worker policy |
 | --- | --- | --- |
 | Default | Exact user-selected model and effort | Same exact profile for all ordinary roles |
-| Peak | GPT-6 Astra / xhigh | GPT-6 Astra, GPT-6 Sol, GPT-5.6 Sol, GPT-6 Luna |
-| Balanced | GPT-6 Sol / xhigh | GPT-6 Sol, GPT-5.6 Sol, GPT-6 Luna |
+| Peak | GPT-6 Astra / xhigh | GPT-6 Astra, GPT-6.1 Sol, GPT-5.6 Sol, GPT-6 Luna |
+| Balanced | GPT-6.1 Sol / xhigh | GPT-6.1 Sol, GPT-5.6 Sol, GPT-6 Luna |
 | Lean | GPT-5.6 Sol / xhigh | GPT-5.6 Sol, GPT-6 Luna |
 | Economy | GPT-6 Luna / medium | GPT-6 Luna only |
 
@@ -18,7 +18,10 @@ These pools permit qualified candidates; availability alone is not qualification
 The catalogue owns exact-generation IDs, supported efforts and the support profile.
 GPT-6 Luna supports low through max, not ultra. Retired preset models remain valid
 explicit Default choices when available; never translate a user pin or its evidence
-to a successor. Historical GPT-5.6 results do not qualify GPT-6 assignments.
+to a successor. Historical GPT-5.6 and GPT-6 Sol results do not qualify GPT-6.1 Sol assignments.
+GPT-6 Sol is retired from preset pools and consultant exceptions. Until GPT-6.1
+Sol has fresh paired evidence, affected role defaults use their mode parent at
+xhigh; no prior low/medium/high qualification or measured cost is transferred.
 
 Model tier and effort are independent ceilings. Use the stricter mode target and
 accepted actual parent for normal workers. A lower family at higher effort still
@@ -72,7 +75,7 @@ Optional fields:
   exact verified exception for a justified assignment. Naming a role is insufficient.
 
 Here, retaining the parent family means the exact model ID, including generation;
-GPT-5.6 Sol is not interchangeable with a GPT-6 Sol parent for consequential work.
+GPT-5.6 Sol is not interchangeable with a GPT-6.1 Sol parent for consequential work.
 
 Routine implementation, refactoring, synthesis, design and ordinary reviews may
 use evidence-qualified lower profiles. Consequential defaults and main-owned
@@ -119,7 +122,8 @@ a blanket worker model. Their participant still resolves through the actual role
 
 ## Evidence and fallback
 
-`role-evidence.json` preserves all 225 role/mode decisions. The historical record
+`role-evidence.json` preserves the historical 225 role/mode decisions and their
+snapshot parent targets. The active catalogue and role map supersede those defaults. The historical record
 supports candidate selection, not general intelligence or parent coordination
 claims. Native cases and main-owned roles lack comparable isolated measurements.
 New focused validation is separate and candidates need two successful repetitions

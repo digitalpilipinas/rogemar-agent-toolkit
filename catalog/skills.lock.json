@@ -3948,7 +3948,7 @@
     },
     "forge-setup": {
       "file_count": 3,
-      "sha256": "44e663c88a639a2e38eedc30035f62ce821db13ad301b4c3f72e555dfcc07b7c"
+      "sha256": "04a40155e15e35e3ca922a060d68282245554cb6b56aea847445c6028e6676fe"
     },
     "forge-show-me-your-work": {
       "file_count": 5,
@@ -4048,7 +4048,7 @@
     },
     "plan-model-router": {
       "file_count": 18,
-      "sha256": "6b9bc6c183802070171b8b276518094ab9d21ec17a8e59acde32e8f68aebe320"
+      "sha256": "92efc37dea820947196399cbf9daceb7dca13bb301e53f748f99fe17712b67c8"
     },
     "playwright": {
       "file_count": 9,
@@ -4168,7 +4168,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 17,
-      "sha256": "2d02258baf74866c4343da645ea5dfdf91ed38e4784d6dbe60d7aa0582b35dd0"
+      "sha256": "e2f4cc070c8798c12452875453077a31a2e0ae7b404184e67d8b95c01549c8dc"
     },
     "xcode-build-benchmark": {
       "file_count": 6,
