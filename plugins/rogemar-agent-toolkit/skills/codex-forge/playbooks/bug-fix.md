@@ -1,5 +1,8 @@
 # Bug fix
 
+Apply the [task-handoff method contract](../../workflow-orchestrator/references/method-contract.md).
+Select diagnosis and regression methods for the reproduced failure; retain the failure case and affected-caller evidence.
+
 Tie the fix to evidence of the causal mechanism. The main agent owns investigation, implementation and verification and may request bounded independent help through the orchestrator.
 
 1. Reproduce on the matching surface using an exposed control tool or repository-native harness. Synthesize triggers or add bounded instrumentation when needed. If the environment is unavailable, collect the strongest static/repro evidence and label the runtime gap; do not invent a reproduction or weaken the criterion.

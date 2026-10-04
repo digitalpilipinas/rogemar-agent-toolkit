@@ -1,5 +1,8 @@
 ### Investigation
 
+Apply the [task-handoff method contract](../../workflow-orchestrator/references/method-contract.md).
+Select source tracing, domain or diagnostic methods for the bounded uncertainty; separate hypotheses from observed facts.
+
 **You own the answer. Plan, route, write.**
 
 Read-only requests: "how does X work?", "why was Y built this way?", "are we sure about Z?", "should we do X or Y?". They produce a cited explanation or a recommendation, not a code change.

@@ -1,5 +1,8 @@
 # Feature
 
+Apply the [task-handoff method contract](../../workflow-orchestrator/references/method-contract.md).
+Select specialists for the changed platform and behavior; distinguish unit, interaction, accessibility and device evidence.
+
 Own the behavior, design and final verification. Use `forge-how` to trace affected flows and `forge-architect` when a contested or consequential design needs exploration. Skip formal design machinery for a clear small change.
 
 1. State observable acceptance, compatibility constraints, allowed scope and meaningful checks.

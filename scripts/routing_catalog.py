@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = Path('plugins/rogemar-agent-toolkit/skills')
@@ -28,14 +29,42 @@ def expected_index(root):
         routes[item['name']] = route
     for dependency, item in catalog['dependencies'].items():
         recipe = item.get('auto_install', {})
+        if not recipe:
+            continue
+        metadata = recipe.get('metadata', {})
+        if metadata.get('commit') != recipe['commit']:
+            raise ValueError(dependency + ': external metadata pin differs from installation pin')
+        if set(metadata.get('skills', {})) != set(recipe['skills']):
+            raise ValueError(dependency + ': external metadata membership differs from installation')
+        overrides = recipe.get('routing_overrides', {})
+        if set(overrides) - set(recipe['skills']):
+            raise ValueError(dependency + ': routing override names an uninstalled skill')
         for name in recipe.get('skills', {}):
             if name in routes:
                 raise ValueError('Duplicate external/vendored route: ' + name)
+            source = metadata['skills'][name]
+            if (source.get('source') != recipe['skills'][name]
+                    or not re.fullmatch('[0-9a-f]{64}', source.get('skill_sha256', ''))
+                    or not isinstance(source.get('description'), str) or not source['description'].strip()):
+                raise ValueError(name + ': invalid pinned source metadata')
+            for resource in source.get('required_resources', []):
+                if not isinstance(resource, str) or Path(resource).is_absolute() or '..' in Path(resource).parts:
+                    raise ValueError(name + ': unsafe external resource')
             routes[name] = {'source': name + '/SKILL.md', 'kind': 'external',
                            'dependency': dependency, 'commit': recipe['commit'],
-                           'trigger': item['purpose'], 'outcome': 'Use applicable upstream method after reading its installed source',
+                           'source_sha256': source['skill_sha256'],
+                           'trigger': source['description'], 'outcome': 'Use applicable upstream method after reading its installed source',
                            'boundary': 'Files do not establish live tools, authentication or permission',
-                           'activation': 'conditional', 'targets': item.get('targets', [])}
+                           'activation': source['activation'], 'targets': item.get('targets', []),
+                           'required_resources': source.get('required_resources', [])}
+            override = overrides.get(name, {})
+            if override:
+                if not override.get('reason') or set(override) - {'reason', 'activation', 'boundary', 'alternative_group'}:
+                    raise ValueError(name + ': invalid reviewed routing override')
+                if source['activation'] == 'explicit-only' and override.get('activation', 'explicit-only') != 'explicit-only':
+                    raise ValueError(name + ': cannot relax upstream explicit invocation')
+                routes[name].update({k: v for k, v in override.items() if k != 'reason'})
+                routes[name]['adaptation'] = override['reason']
     return {'schema_version': 1, 'generated_by': 'scripts/routing_catalog.py',
             'dispatcher': 'workflow-orchestrator',
             'skills': dict(sorted(routes.items()))}

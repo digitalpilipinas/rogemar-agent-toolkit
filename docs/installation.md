@@ -225,3 +225,22 @@ discovery, authenticated services and exercised journeys are separate evidence.
 See the orchestrator’s `references/route-readiness.md` for context and worker briefs.
 Run the same install/upgrade inside each reachable cloud environment; matching
 repository revisions or local sync indicators do not prove VM installation.
+
+
+### Maintaining routing source metadata
+
+External installation recipes carry per-skill descriptions, invocation policy,
+instruction hashes and required files from the exact pinned source. During an
+approved source update, fetch the reviewed revision into an inspection checkout,
+then inspect `python3 scripts/external_metadata.py --dependency NAME --checkout PATH`.
+After reviewing the result, repeat with `--write` and regenerate
+`python3 scripts/routing_catalog.py --write`. Run the normal lock/verify and package
+checks. Neither helper fetches or executes upstream code; ordinary verification
+is offline. Reviewed `routing_overrides` record stricter toolkit boundaries
+separately and cannot relax an upstream explicit-only flag.
+
+The routing resolver flags installed instructions that differ from their reviewed
+external hash. Preserve local copies and investigate ownership through the managed
+installer; do not overwrite them to make a readiness check pass. A matched hash
+establishes instruction identity; required-file checks establish resource presence.
+Neither proves host discovery, unchanged resource content or authentication.

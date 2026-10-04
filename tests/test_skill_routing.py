@@ -3,6 +3,11 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+import copy
+import hashlib
+import io
+import tarfile
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / 'plugins/rogemar-agent-toolkit/skills'
@@ -17,6 +22,7 @@ def module(name, path):
 
 ROUTING = module('routing_catalog_test', ROOT / 'scripts/routing_catalog.py')
 SELECT = module('select_methods_test', SKILLS / 'workflow-orchestrator/scripts/select_methods.py')
+METADATA = module('external_metadata_test', ROOT / 'scripts/external_metadata.py')
 
 
 class SkillRoutingTests(unittest.TestCase):
@@ -75,6 +81,56 @@ class SkillRoutingTests(unittest.TestCase):
     def test_unrelated_skills_are_not_added_to_a_focused_selection(self):
         result = SELECT.resolve(self.index, ['create-plan', 'create-plan'], SKILLS)
         self.assertEqual([r['method'] for r in result['methods']], ['create-plan'])
+
+    def test_distinct_external_routes_preserve_source_policy(self):
+        routes=self.index['skills']
+        self.assertNotEqual(routes['convex-backup']['trigger'],routes['convex-auth']['trigger'])
+        self.assertEqual(routes['interrogate']['activation'],'explicit-only')
+        with self.assertRaisesRegex(ValueError,'explicit invocation'):
+            SELECT.resolve(self.index,['interrogate'],SKILLS)
+        for name,route in routes.items():
+            if route.get('kind')=='external':
+                self.assertRegex(route['source_sha256'],r'^[0-9a-f]{64}$')
+
+    def test_changed_pin_or_missing_member_rejects_stale_metadata(self):
+        catalog=json.loads((ROOT/'catalog/skills.yaml').read_text())
+        for mutation in ('pin','member','resource'):
+            changed=copy.deepcopy(catalog)
+            recipe=changed['dependencies']['coderabbit']['auto_install']
+            if mutation=='pin': recipe['commit']='0'*40
+            if mutation=='member': recipe['metadata']['skills'].pop('autofix')
+            if mutation=='resource': recipe['metadata']['skills']['autofix']['required_resources']=['../outside']
+            with tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp);(root/'catalog').mkdir()
+                (root/'catalog/skills.yaml').write_text(json.dumps(changed))
+                with self.assertRaises(ValueError): ROUTING.expected_index(root)
+
+    def test_reviewed_override_cannot_relax_source_invocation_policy(self):
+        catalog=json.loads((ROOT/'catalog/skills.yaml').read_text())
+        catalog['dependencies']['pstack']['auto_install']['routing_overrides']={
+            'interrogate':{'activation':'conditional','reason':'invalid relaxation'}}
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);(root/'catalog').mkdir()
+            (root/'catalog/skills.yaml').write_text(json.dumps(catalog))
+            with self.assertRaisesRegex(ValueError,'cannot relax'):
+                ROUTING.expected_index(root)
+
+    def test_metadata_reads_pinned_instructions_and_resources_without_execution(self):
+        data=b'---\nname: example\ndescription:\n  Inspect a scoped fixture.\n  Preserve its evidence.\ndisable-model-invocation: true # require explicit invocation\n---\nRead refs/check.md'
+        archive=io.BytesIO()
+        with tarfile.open(fileobj=archive,mode='w') as tar:
+            for path,body in [('SKILL.md',data),('refs/check.md',b'evidence')]:
+                info=tarfile.TarInfo(path);info.size=len(body);tar.addfile(info,io.BytesIO(body))
+        recipe={'commit':'1'*40,'skills':{'example':'.'}}
+        with patch.object(METADATA,'git',side_effect=[b'1'*40+b'\n',archive.getvalue()]) as git:
+            result=METADATA.extract(recipe,Path('/fixture'))
+        row=result['skills']['example']
+        self.assertEqual(row['description'],'Inspect a scoped fixture. Preserve its evidence.')
+        self.assertEqual(row['activation'],'explicit-only')
+        self.assertEqual(row['required_resources'],['refs/check.md'])
+        self.assertEqual(row['skill_sha256'],hashlib.sha256(data).hexdigest())
+        self.assertEqual(git.call_count,2)
+        self.assertEqual(git.call_args.args[1],'archive')
 
 
 if __name__ == '__main__':

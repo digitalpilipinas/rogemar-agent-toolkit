@@ -7,6 +7,7 @@ does not infer relevance, grant actions, install missing skills or dispatch agen
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 from datetime import datetime, timezone
@@ -67,11 +68,13 @@ def resolve(index, names, skills_root, *, explicit=(), entry=None, context=None,
                 continue
             path = matches[0]
             issues = []
-            if kind == 'source' and re.search(r'^disable-model-invocation:\s*true\s*$', path.read_text().split('---', 2)[1] if path.read_text().startswith('---') else '', re.M) and name not in explicit:
+            if kind == 'source' and re.search(r'^disable-model-invocation:[ \t]*true(?:[ \t]+#.*)?[ \t]*$', path.read_text().split('---', 2)[1] if path.read_text().startswith('---') else '', re.M | re.I) and name not in explicit:
                 raise ValueError('Installed method requires explicit invocation: ' + name)
             if len({p.resolve() for p in matches}) > 1:
                 issues.append('duplicate discovery copies; reconcile the selected roots')
             if kind == 'source':
+                if route.get('source_sha256') and hashlib.sha256(path.read_bytes()).hexdigest() != route['source_sha256']:
+                    issues.append('installed external instructions differ from the reviewed source pin')
                 for item in route.get('required_resources', []):
                     resource_path = path.parent / item
                     if not resource_path.resolve().is_relative_to(path.parent.resolve()):
@@ -101,6 +104,21 @@ def resolve(index, names, skills_root, *, explicit=(), entry=None, context=None,
         result.append(selected or {'method': name, 'status': 'unavailable',
                                    'boundary': route['boundary']})
     brief = validate_brief(worker_brief, names, candidate) if worker_brief is not None else None
+    if brief and runtime:
+        worker_context = worker_brief.get('context')
+        worker_issues = []
+        if worker_context is None:
+            worker_issues.append('worker runtime context has not been observed')
+        else:
+            validate_context(worker_context)
+            for name in worker_brief['methods']:
+                route = index['skills'][name]
+                selected_route = next(r for r in result if r['method'] == name)
+                if selected_route.get('route') == 'source' and route.get('targets') and worker_context.get('harness') not in route['targets']:
+                    worker_issues.append(name + ': unsupported or unverified worker harness')
+                worker_issues += issues_for(route, worker_context, candidate, runtime=True)
+        if worker_issues:
+            brief.update(status='blocked-by-worker-readiness', issues=worker_issues)
     if brief and any(r['status'] in ('blocked', 'unavailable') for r in result):
         brief['status'] = 'blocked-by-selected-route'
     return {'dispatcher': 'workflow-orchestrator', 'entry': entry,
@@ -130,7 +148,9 @@ def main():
                          additional_roots=args.additional_skills_root,
                          worker_brief=json.loads(args.worker_brief.read_text()) if args.worker_brief else None)
         print(json.dumps(result, indent=2))
-        return 2 if any(m['status'] in ('unavailable', 'blocked') for m in result['methods']) else 0
+        blocked = any(m['status'] in ('unavailable', 'blocked') for m in result['methods'])
+        blocked |= (result.get('worker_brief') or {}).get('status', '').startswith('blocked')
+        return 2 if blocked else 0
     except (OSError, ValueError, TypeError, KeyError) as exc:
         print(json.dumps({'status': 'invalid', 'error': str(exc)}))
         return 1

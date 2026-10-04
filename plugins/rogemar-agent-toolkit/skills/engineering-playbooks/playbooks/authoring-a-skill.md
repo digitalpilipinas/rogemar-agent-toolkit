@@ -1,5 +1,8 @@
 ### Authoring or modifying a skill
 
+Apply the [task-handoff method contract](../../workflow-orchestrator/references/method-contract.md).
+Check that descriptions, body instructions, invocation policy, routing and portable fallbacks agree; verify referenced resources.
+
 **You own the skill's voice.** Agent-facing prose has a higher bar than human prose; unhelpful sentences become instructions.
 
 1. Use an installed skill-authoring validator when available for authoring and validating SKILL.md files.

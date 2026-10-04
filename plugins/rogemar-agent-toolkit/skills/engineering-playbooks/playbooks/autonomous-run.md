@@ -1,5 +1,8 @@
 # Autonomous run
 
+Apply the [task-handoff method contract](../../workflow-orchestrator/references/method-contract.md).
+Reassess or reuse methods for each approved task; advance while dependencies and authority permit, without starting a scheduler.
+
 Drive an explicitly authorized outcome to a checkable exit condition. Do not expand the task into global skill maintenance or unrelated fixes.
 
 1. Define the observable predicate, allowed actions, resource limits and stop conditions. A goal tool is used only when the user explicitly requests a persistent goal.
