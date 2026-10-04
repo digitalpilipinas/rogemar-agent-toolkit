@@ -919,6 +919,16 @@
         "pr",
         "handoff"
       ],
+      "paths": [
+        "skills/productivity/grilling",
+        "skills/engineering/retro",
+        "skills/productivity/writing-for-agents",
+        "skills/engineering/domain-modeling",
+        "skills/engineering/diagnosing-bugs",
+        "skills/engineering/tdd",
+        "skills/engineering/pr",
+        "skills/productivity/handoff"
+      ],
       "owners": [
         "create-plan",
         "bug-triage",

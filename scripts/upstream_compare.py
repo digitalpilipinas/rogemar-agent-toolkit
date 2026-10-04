@@ -27,8 +27,12 @@ def sources(root):
                                 paths=list(recipe['skills'].values()))
     for item in imported['sources']:
         repo = item['repository']
-        result[repo] = dict(repository=repo, pinned=item['commit'], paths=sorted({
-            skill['source'] for skill in imported['skills'] if skill['repository'] == repo}))
+        paths = {skill['source'] for skill in imported['skills'] if skill['repository'] == repo}
+        for adaptation in imported.get('adaptations', []):
+            if adaptation['repository'] == repo:
+                paths.update(adaptation.get('paths', ['.']))
+        # Archive-only sources have no individual skill rows: inspect all changes.
+        result[repo] = dict(repository=repo, pinned=item['commit'], paths=sorted(paths or {'.'}))
     return result
 
 

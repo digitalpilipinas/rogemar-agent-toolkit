@@ -71,6 +71,22 @@ class UpstreamCompareTests(unittest.TestCase):
             for p, original in before.items(): self.assertEqual(p.read_bytes(), original)
             self.assertEqual(set(root.iterdir()), {root / 'catalog'})
 
+    def test_adapted_methods_are_selected_for_maintenance(self):
+        source = upstream.sources(ROOT)['mattpocock/skills']
+        request = Mock(side_effect=[{'sha': 'b' * 40}, dict(status='ahead', files=[
+            dict(filename='skills/productivity/grilling/SKILL.md', status='modified'),
+            dict(filename='skills/engineering/retro/SKILL.md', status='modified')])])
+        result = upstream.compare(source, request)
+        self.assertEqual(result['scope'], 'selected-content')
+        self.assertEqual(len(result['selected_files']), 2)
+
+    def test_sources_without_skill_rows_conservatively_compare_whole_repository(self):
+        source = upstream.sources(ROOT)['tester-army/e2e']
+        request = Mock(side_effect=[{'sha': 'b' * 40}, dict(status='ahead', files=[
+            dict(filename='instructions/SKILL.md', status='modified')])])
+        result = upstream.compare(source, request)
+        self.assertEqual(result['scope'], 'selected-content')
+
 
 if __name__ == '__main__':
     unittest.main()
