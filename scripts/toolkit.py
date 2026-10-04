@@ -345,6 +345,12 @@ def structural_errors(check_lock: bool = True) -> list[str]:
             metadata = skill_dir / "agents/openai.yaml"
             if not metadata.is_file() or not re.search(r"allow_implicit_invocation:\s*false", metadata.read_text()):
                 errors.append(f"{name}: explicit-only Codex policy is missing")
+        for resource in entry_by_name[name].get("required_resources", []):
+            relative = Path(resource)
+            if relative.is_absolute() or ".." in relative.parts or not (skill_dir / relative).is_file():
+                errors.append(f"{name}: missing or unsafe required resource {resource}")
+        if len(list(skill_dir.rglob("SKILL.md"))) != 1:
+            errors.append(f"{name}: duplicate or missing discovery entry")
         license_evidence = entry_by_name[name].get("license_evidence")
         if license_evidence and not (skill_dir / str(license_evidence)).is_file():
             errors.append(f"{name}: missing license evidence {license_evidence}")
@@ -718,7 +724,9 @@ def read_optional_state(path: Path) -> dict[str, Any] | None:
     state = load_json(path)
     if state.get("package") != PACKAGE_NAME or not isinstance(state.get("skills"), dict):
         raise ToolkitError("invalid managed installation state")
-    for name, record in state["skills"].items():
+    if not isinstance(state.get("external_skills", {}), dict):
+        raise ToolkitError("invalid external installation state")
+    for name, record in {**state["skills"], **state.get("external_skills", {})}.items():
         safe_name(name)
         if not isinstance(record, dict) or not re.fullmatch(r"[0-9a-f]{64}", str(record.get("sha256", ""))):
             raise ToolkitError(f"invalid managed hash for {name}")
@@ -766,30 +774,74 @@ def command_select(args: argparse.Namespace) -> int:
     return 0
 
 
+def external_payload_digest(path: Path) -> str:
+    digest = hashlib.sha256()
+    for item in skill_files(path):
+        if item.name == ".toolkit-upstream.json" and item.parent == path:
+            continue
+        digest.update(item.relative_to(path).as_posix().encode() + b"\0")
+        digest.update(b"x\0" if item.stat().st_mode & 0o111 else b"-\0")
+        digest.update(item.read_bytes() + b"\0")
+    return digest.hexdigest()
+
+
+def valid_external_source(recipe):
+    return (re.fullmatch(r"https://github.com/[\w.-]+/[\w.-]+\.git", str(recipe.get("repository", "")))
+            and re.fullmatch(r"[0-9a-f]{40}", str(recipe.get("commit", ""))))
+
+
 def external_skill_plan(selection: dict[str, Any], skills_root: Path) -> list[dict[str, Any]]:
-    """Only catalog-pinned skill files are provisioned; runtimes stay separate."""
-    result = []
+    """Offline plan. A legacy marker alone cannot establish unchanged ownership."""
+    result, seen = [], set()
+    state_file = skills_root.parent / f"{PACKAGE_NAME}.lock.json"
+    recorded = (read_optional_state(state_file) or {}).get("external_skills", {})
     for name, dependency in selection["dependencies"].items():
         recipe = dependency.get("auto_install")
         if not recipe:
             continue
-        if not re.fullmatch(r"https://github.com/[\w.-]+/[\w.-]+\.git", recipe["repository"]):
-            raise ToolkitError(f"invalid external repository: {name}")
-        if not re.fullmatch(r"[0-9a-f]{40}", recipe["commit"]):
-            raise ToolkitError(f"external revision must be pinned: {name}")
-        missing = {}
+        if not valid_external_source(recipe):
+            raise ToolkitError(f"invalid or unpinned external repository: {name}")
+        plan = {"dependency": name, **recipe, "missing": {}, "upgrade": {}, "legacy": {}, "conflicts": [], "fingerprints": {}}
         for skill, source in recipe["skills"].items():
             safe_name(skill)
+            if skill in seen:
+                raise ToolkitError(f"duplicate external skill: {skill}")
+            seen.add(skill)
             if Path(source).is_absolute() or ".." in Path(source).parts:
                 raise ToolkitError(f"invalid external source path: {name}/{skill}")
             target = skills_root / skill
-            if exists(target):
-                # Never overwrite a managed, personal, or provider-owned copy.
-                if not (target / "SKILL.md").is_file():
-                    raise ToolkitError(f"external skill destination is incomplete: {target}")
+            try:
+                plan["fingerprints"][skill] = installed_digest(target)
+            except ToolkitError as exc:
+                plan["conflicts"].append(f"{skill}: {exc}")
                 continue
-            missing[skill] = source
-        result.append({"dependency": name, **recipe, "missing": missing})
+            if not exists(target):
+                plan["missing"][skill] = source
+                continue
+            if target.is_symlink() or not (target / "SKILL.md").is_file():
+                plan["conflicts"].append(f"{skill}: independently linked or incomplete copy")
+                continue
+            marker_path = target / ".toolkit-upstream.json"
+            if not marker_path.is_file() or marker_path.is_symlink():
+                plan["conflicts"].append(f"{skill}: independently installed copy")
+                continue
+            try:
+                marker = load_json(marker_path)
+            except ToolkitError as exc:
+                plan["conflicts"].append(f"{skill}: {exc}")
+                continue
+            if skill in recorded and plan["fingerprints"][skill] != recorded[skill]["sha256"]:
+                plan["conflicts"].append(f"{skill}: locally modified copy or provenance")
+                continue
+            if not valid_external_source(marker) or marker.get("repository") != recipe["repository"] or marker.get("source") != source:
+                plan["conflicts"].append(f"{skill}: conflicting provenance")
+            elif "payload_sha256" not in marker:
+                plan["legacy"][skill] = source
+            elif marker.get("package") != PACKAGE_NAME or external_payload_digest(target) != marker["payload_sha256"]:
+                plan["conflicts"].append(f"{skill}: locally modified copy")
+            elif marker["commit"] != recipe["commit"]:
+                plan["upgrade"][skill] = source
+        result.append(plan)
     return result
 
 
@@ -805,7 +857,7 @@ def fetch_external_source(recipe: dict[str, Any], checkout: Path) -> None:
             raise ToolkitError(f"external fetch failed: {recipe['dependency']}; managed skills remain installed; retry install")
 
 
-def install_external_recipe(recipe: dict[str, Any], skills_root: Path) -> None:
+def stage_external_recipe(recipe: dict[str, Any], skills_root: Path, *, legacy=False) -> None:
     with tempfile.TemporaryDirectory(prefix="toolkit-external-") as temporary:
         checkout = Path(temporary) / "source"
         fetch_external_source(recipe, checkout)
@@ -843,37 +895,134 @@ def install_external_recipe(recipe: dict[str, Any], skills_root: Path) -> None:
                     destination.chmod(0o755 if member.mode & 0o111 else 0o644)
                 if not (staged / "SKILL.md").is_file():
                     raise ToolkitError(f"pinned external skill is missing: {skill}")
-                write_json_atomic(staged / ".toolkit-upstream.json", {
-                    "repository": recipe["repository"], "commit": recipe["commit"], "source": source})
-                target = checked_path(skills_root, Path(skill))
-                # Exclusive creation preserves even an empty concurrent destination.
-                target.mkdir()
-                try:
-                    shutil.copytree(staged, target, dirs_exist_ok=True)
-                except Exception:
-                    shutil.rmtree(target)
-                    raise
-                print(f"Installed external skill {skill} ({recipe['commit'][:12]})")
+                marker = {"repository": recipe["repository"], "commit": recipe["commit"], "source": source}
+                if not legacy:
+                    marker.update(package=PACKAGE_NAME, schema_version=2, payload_sha256=tree_digest(staged)[0])
+                write_json_atomic(staged / ".toolkit-upstream.json", marker)
+                shutil.copytree(staged, skills_root / skill)
 
 
 def install_external_skills(selection: dict[str, Any], skills_root: Path, *, skip: bool = False) -> None:
     if skip:
         print("External skill provisioning skipped explicitly; external readiness is unverified.")
         return
-    failures: list[str] = []
+    failures = []
     for recipe in external_skill_plan(selection, skills_root):
-        if not recipe["missing"]:
+        failures.extend(recipe["conflicts"])
+        wanted = {**recipe["missing"], **recipe["upgrade"], **recipe["legacy"]}
+        if not wanted:
             continue
         try:
-            install_external_recipe(recipe, skills_root)
+            install_external_recipe({**recipe, "missing": wanted}, skills_root)
         except (ToolkitError, subprocess.TimeoutExpired, tarfile.TarError, OSError) as exc:
             failures.append(f"{recipe['dependency']}: {exc}")
-    runtime = [name for name, item in selection["dependencies"].items()
-               if item.get("kind") != "skills"]
+    runtime = [name for name, item in selection["dependencies"].items() if item.get("kind") != "skills"]
     if runtime:
         print("Native plugins, runtimes and authentication require separate setup/verification: " + ", ".join(runtime))
     if failures:
-        raise ToolkitError("External provisioning incomplete; successful installs preserved; retry missing skills:\n" + "\n".join(failures))
+        raise ToolkitError("External provisioning incomplete; successful installs preserved; conflicts were not overwritten:\n" + "\n".join(failures))
+
+
+def install_external_recipe(recipe, skills_root):
+    skills_root = skills_root.resolve()
+    state_path = checked_path(skills_root.parent, Path(f"{PACKAGE_NAME}.lock.json"))
+    control_root = checked_path(skills_root.parent, Path(f".{PACKAGE_NAME}"))
+    state = read_optional_state(state_path)
+    state_bytes = state_path.read_bytes() if state_path.exists() else None
+    wanted = dict(recipe["missing"])
+    paths = {name: checked_path(skills_root, Path(name)) for name in wanted}
+    fingerprints = {name: installed_digest(path) for name, path in paths.items()}
+    if any(fingerprints[name] != recipe.get("fingerprints", {}).get(name) for name in wanted):
+        raise ToolkitError("external destination changed since planning; preserved")
+    with tempfile.TemporaryDirectory(prefix="toolkit-external-stage-") as temporary:
+        stage = Path(temporary)
+        # Reconstruct legacy content from its recorded pin before treating it as owned.
+        for name, source in recipe.get("legacy", {}).items():
+            marker = load_json(paths[name] / ".toolkit-upstream.json")
+            old = stage / ("old-" + name)
+            old.mkdir()
+            stage_external_recipe({**recipe, **marker, "missing": {name: source}}, old, legacy=True)
+            if tree_digest(old / name)[0] != fingerprints[name]:
+                raise ToolkitError(f"{name}: legacy copy differs from its recorded source; preserved")
+        prepared = stage / "new"
+        prepared.mkdir()
+        stage_external_recipe(recipe, prepared)
+        desired = {name: {"sha256": tree_digest(prepared / name)[0], "native": False,
+                          "repository": recipe["repository"], "commit": recipe["commit"], "source": source}
+                   for name, source in wanted.items()}
+        new_state = dict(state or {"schema_version": 2, "package": PACKAGE_NAME, "harness": "agent-skills", "skills": {}})
+        new_state["external_skills"] = {**new_state.get("external_skills", {}), **desired}
+        backup = apply_prepared_install(
+            skills_root=skills_root, state_path=state_path, control_root=control_root,
+            state=state, state_bytes=state_bytes, desired=desired,
+            sources={name: prepared / name for name in wanted}, destinations=paths,
+            previous_paths=paths, fingerprints=fingerprints, changed=list(wanted),
+            removed=[], new_state=new_state)
+        print(f"Installed/updated {len(wanted)} external skills; recoverable backup: {backup}")
+
+
+def apply_prepared_install(*, skills_root, state_path, control_root, state, state_bytes,
+                           desired, sources, destinations, previous_paths, fingerprints,
+                           changed, removed, new_state, link=False):
+    """Shared staged transaction and recovery record for vendored and external copies."""
+    _skills_root = skills_root
+    control_root.mkdir(parents=True, exist_ok=True)
+    lock_path = control_root / "operation.lock"
+    try:
+        lock_fd = os.open(lock_path, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+    except FileExistsError as exc:
+        raise ToolkitError(f"another install is active, or a prior process stopped: inspect {lock_path}") from exc
+    os.close(lock_fd)
+    stage_root = control_root / f"stage-{uuid.uuid4().hex}"
+    backup_path = control_root / "backups" / f"{utc_stamp()}-{uuid.uuid4().hex[:8]}"
+    moved: list[str] = []
+    installed: list[str] = []
+    try:
+        checked_path(control_root, backup_path.relative_to(control_root))
+        stage_root.mkdir()
+        for name in changed:
+            copy_or_link(sources[name], stage_root / name, link)
+            if not link and tree_digest(stage_root / name)[0] != desired[name]["sha256"]:
+                raise ToolkitError(f"staged content changed: {name}")
+        if (state_path.read_bytes() if state_path.exists() else None) != state_bytes:
+            raise ToolkitError("managed state changed during preparation; retry after inspecting it")
+        for name, path in previous_paths.items():
+            if installed_digest(path) != fingerprints[name]:
+                raise ToolkitError(f"installed content changed during preparation: {name}")
+        replaced = [name for name in changed + removed if fingerprints[name] is not None]
+        created = [name for name in changed if name not in replaced]
+        backup_path.mkdir(parents=True)
+        # Record placement as a boolean, never accept an arbitrary restore path.
+        write_json_atomic(backup_path / "backup.json", {
+            "schema_version": 2, "replaced": replaced, "created": created,
+            "before_placements": {name: {"native": previous_paths[name] != _skills_root / name} for name in replaced},
+            "after_placements": {name: desired[name] for name in changed},
+            "state_before": state})
+        recovery = control_root / "failed-installs" / uuid.uuid4().hex
+        checked_path(control_root, recovery.relative_to(control_root))
+        recovery.mkdir(parents=True)
+        try:
+            for name in replaced:
+                os.replace(previous_paths[name], backup_path / name)
+                moved.append(name)
+            for name in changed:
+                destination = destinations[name]
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                os.replace(stage_root / name, destination)
+                installed.append(name)
+            new_state.update(installed_at=datetime.now(timezone.utc).isoformat(), last_backup=str(backup_path))
+            write_json_atomic(state_path, new_state)
+        except Exception:
+            for name in reversed(installed):
+                os.replace(destinations[name], recovery / name)
+            for name in reversed(moved):
+                os.replace(backup_path / name, previous_paths[name])
+            raise
+    finally:
+        if stage_root.exists():
+            shutil.rmtree(stage_root)
+        lock_path.unlink()
+    return backup_path
 
 
 def command_install(args: argparse.Namespace) -> int:
@@ -931,76 +1080,28 @@ def command_install(args: argparse.Namespace) -> int:
         plan["external_skill_install"] = external_skill_plan(selection, _skills_root)
         plan["skip_external"] = args.skip_external
         print(json.dumps(plan, indent=2))
-        return 1 if conflicts else 0
+        return 1 if conflicts or any(r["conflicts"] for r in plan["external_skill_install"]) else 0
     if conflicts:
         raise ToolkitError("\n".join(conflicts))
     new_state = {"schema_version": 2, "package": PACKAGE_NAME, "version": package_version(),
                  "harness": args.harness, "profile": selection["profile"],
                  "requested_packs": args.pack if args.pack is not None else (state or {}).get("requested_packs", []),
                  "packs": selection["packs"], "external": selection["external"],
-                 "mode": "link" if args.link else "copy", "skills": desired}
+                 "mode": "link" if args.link else "copy", "skills": desired,
+                 "external_skills": (state or {}).get("external_skills", {})}
     comparable = {key: value for key, value in (state or {}).items()
                   if key not in {"installed_at", "last_backup"}}
     if not changed and not removed and new_state == comparable:
         print(f"Installed {len(names)} managed skills (0 changed); already current.")
         install_external_skills(selection, _skills_root, skip=args.skip_external)
         return 0
-    control_root.mkdir(parents=True, exist_ok=True)
-    lock_path = control_root / "operation.lock"
-    try:
-        lock_fd = os.open(lock_path, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
-    except FileExistsError as exc:
-        raise ToolkitError(f"another install is active, or a prior process stopped: inspect {lock_path}") from exc
-    os.close(lock_fd)
-    stage_root = control_root / f"stage-{uuid.uuid4().hex}"
-    backup_path = control_root / "backups" / f"{utc_stamp()}-{uuid.uuid4().hex[:8]}"
-    moved: list[str] = []
-    installed: list[str] = []
-    try:
-        checked_path(control_root, backup_path.relative_to(control_root))
-        stage_root.mkdir()
-        for name in changed:
-            copy_or_link(SKILLS_ROOT / name, stage_root / name, args.link)
-            if not args.link and tree_digest(stage_root / name)[0] != desired[name]["sha256"]:
-                raise ToolkitError(f"staged content changed: {name}")
-        if (state_path.read_bytes() if state_path.exists() else None) != state_bytes:
-            raise ToolkitError("managed state changed during preparation; retry after inspecting it")
-        for name, path in previous_paths.items():
-            if installed_digest(path) != fingerprints[name]:
-                raise ToolkitError(f"installed content changed during preparation: {name}")
-        replaced = [name for name in changed + removed if fingerprints[name] is not None]
-        created = [name for name in changed if name not in replaced]
-        backup_path.mkdir(parents=True)
-        # Record placement as a boolean, never accept an arbitrary restore path.
-        write_json_atomic(backup_path / "backup.json", {
-            "schema_version": 2, "replaced": replaced, "created": created,
-            "before_placements": {name: {"native": previous_paths[name] != _skills_root / name} for name in replaced},
-            "after_placements": {name: desired[name] for name in changed},
-            "state_before": state})
-        recovery = control_root / "failed-installs" / uuid.uuid4().hex
-        checked_path(control_root, recovery.relative_to(control_root))
-        recovery.mkdir(parents=True)
-        try:
-            for name in replaced:
-                os.replace(previous_paths[name], backup_path / name)
-                moved.append(name)
-            for name in changed:
-                destination = destination_for(name, args)
-                destination.parent.mkdir(parents=True, exist_ok=True)
-                os.replace(stage_root / name, destination)
-                installed.append(name)
-            new_state.update(installed_at=datetime.now(timezone.utc).isoformat(), last_backup=str(backup_path))
-            write_json_atomic(state_path, new_state)
-        except Exception:
-            for name in reversed(installed):
-                os.replace(destination_for(name, args), recovery / name)
-            for name in reversed(moved):
-                os.replace(backup_path / name, previous_paths[name])
-            raise
-    finally:
-        if stage_root.exists():
-            shutil.rmtree(stage_root)
-        lock_path.unlink()
+    backup_path = apply_prepared_install(
+        skills_root=_skills_root, state_path=state_path, control_root=control_root,
+        state=state, state_bytes=state_bytes, desired=desired,
+        sources={name: SKILLS_ROOT / name for name in changed},
+        destinations={name: destination_for(name, args) for name in changed},
+        previous_paths=previous_paths, fingerprints=fingerprints, changed=changed,
+        removed=removed, new_state=new_state, link=args.link)
     print(f"Installed {len(names)} managed skills ({len(changed)} changed, {len(removed)} removed).")
     print(f"Recoverable backup: {backup_path}")
     install_external_skills(selection, _skills_root, skip=args.skip_external)

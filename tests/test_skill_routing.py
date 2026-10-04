@@ -27,7 +27,7 @@ class SkillRoutingTests(unittest.TestCase):
         self.assertEqual(ROUTING.verify(ROOT), [])
 
     def test_all_selected_methods_resolve_to_original_working_skills(self):
-        names = [n for n in self.index['skills'] if n not in SELECT.ENTRIES]
+        names = [n for n in self.index['skills'] if n not in SELECT.ENTRIES and self.index['skills'][n].get('kind') != 'external']
         result = SELECT.resolve(self.index, names, SKILLS,
                                 explicit=['deliver-approved-programme'])
         self.assertTrue(all(r['route'] == 'source' for r in result['methods']))

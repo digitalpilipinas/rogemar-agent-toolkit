@@ -1543,14 +1543,16 @@
       "pstack": {
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
         "auto_install": {
-          "commit": "ecc249f1e306fc64ddf83c7bed16cacf7c2239db",
+          "commit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
           "repository": "https://github.com/cursor/plugins.git",
           "skills": {
             "architect": "pstack/skills/architect",
             "arena": "pstack/skills/arena",
             "automate-me": "pstack/skills/automate-me",
+            "benchmark-checklist": "pstack/skills/benchmark-checklist",
             "blast-radius": "pstack/skills/blast-radius",
             "bro": "pstack/skills/bro",
+            "correct": "pstack/skills/correct",
             "create-verification-skill": "pstack/skills/create-verification-skill",
             "figure-it-out": "pstack/skills/figure-it-out",
             "how": "pstack/skills/how",
@@ -1565,6 +1567,7 @@
             "principle-encode-lessons-in-structure": "pstack/skills/principle-encode-lessons-in-structure",
             "principle-exhaust-the-design-space": "pstack/skills/principle-exhaust-the-design-space",
             "principle-experience-first": "pstack/skills/principle-experience-first",
+            "principle-explain-the-number": "pstack/skills/principle-explain-the-number",
             "principle-fix-root-causes": "pstack/skills/principle-fix-root-causes",
             "principle-foundational-thinking": "pstack/skills/principle-foundational-thinking",
             "principle-guard-the-context-window": "pstack/skills/principle-guard-the-context-window",
@@ -1878,7 +1881,8 @@
           "performance-profiler",
           "test-architecture-engineer",
           "universal-forge",
-          "universal-plan-model-router"
+          "universal-plan-model-router",
+          "codebase-design"
         ]
       },
       "expo": {
@@ -1904,7 +1908,19 @@
           "ios-toolchain"
         ],
         "skills": [
-          "mobile-release-manager"
+          "mobile-release-manager",
+          "swiftui-pro",
+          "swift-concurrency-pro",
+          "swiftdata-pro",
+          "swift-testing-pro",
+          "swiftui-expert-skill",
+          "swift-concurrency",
+          "spm-build-analysis",
+          "xcode-build-benchmark",
+          "xcode-build-fixer",
+          "xcode-build-orchestrator",
+          "xcode-compilation-analyzer",
+          "xcode-project-analyzer"
         ]
       },
       "mobile": {
@@ -1915,7 +1931,8 @@
         "skills": [
           "mobile-release-manager",
           "offline-sync-auditor",
-          "activity-schema-guardian"
+          "activity-schema-guardian",
+          "e2e"
         ]
       },
       "opendesign": {
@@ -1974,6 +1991,26 @@
           "shadcn"
         ]
       },
+      "swift": {
+        "description": "12 portable Swift and Xcode specialist skills; runtime builds require a compatible toolchain.",
+        "external": [
+          "ios-toolchain"
+        ],
+        "skills": [
+          "swiftui-pro",
+          "swift-concurrency-pro",
+          "swiftdata-pro",
+          "swift-testing-pro",
+          "swiftui-expert-skill",
+          "swift-concurrency",
+          "spm-build-analysis",
+          "xcode-build-benchmark",
+          "xcode-build-fixer",
+          "xcode-build-orchestrator",
+          "xcode-compilation-analyzer",
+          "xcode-project-analyzer"
+        ]
+      },
       "web": {
         "description": "Browser verification and web implementation helpers.",
         "external": [
@@ -1984,7 +2021,8 @@
           "screenshot",
           "develop-web-game",
           "accessibility-auditor",
-          "visual-qa"
+          "visual-qa",
+          "e2e"
         ]
       }
     },
@@ -2009,7 +2047,8 @@
         "codex",
         "external-agents",
         "compatibility",
-        "shadcn"
+        "shadcn",
+        "swift"
       ],
       "core": [
         "core"
@@ -2148,6 +2187,22 @@
       ]
     },
     "code-review-tests": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "codebase-design": {
       "requires": [],
       "targets": [
         "agent-skills",
@@ -2314,6 +2369,22 @@
       ]
     },
     "dream-team": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "e2e": {
       "requires": [],
       "targets": [
         "agent-skills",
@@ -3196,6 +3267,22 @@
         "droid"
       ]
     },
+    "spm-build-analysis": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
     "supabase": {
       "requires": [],
       "targets": [
@@ -3213,6 +3300,102 @@
       ]
     },
     "supabase-guardian": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "swift-concurrency": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "swift-concurrency-pro": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "swift-testing-pro": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "swiftdata-pro": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "swiftui-expert-skill": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "swiftui-pro": {
       "requires": [],
       "targets": [
         "agent-skills",
@@ -3377,6 +3560,95 @@
         "claude",
         "droid"
       ]
+    },
+    "xcode-build-benchmark": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "xcode-build-fixer": {
+      "requires": [
+        "xcode-build-benchmark"
+      ],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "xcode-build-orchestrator": {
+      "requires": [
+        "xcode-build-benchmark",
+        "workflow-orchestrator",
+        "xcode-compilation-analyzer",
+        "xcode-project-analyzer",
+        "spm-build-analysis",
+        "xcode-build-fixer"
+      ],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "xcode-compilation-analyzer": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "xcode-project-analyzer": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
     }
   },
   "skills": {
@@ -3416,13 +3688,17 @@
       "file_count": 2,
       "sha256": "ec05b6b8651d31abd109821f6dc1594342fbaabca52972bb8d3d6dd3bfb3cdf8"
     },
+    "codebase-design": {
+      "file_count": 5,
+      "sha256": "1fce67c0454ccbe4cf01bcfab59bb4f4980ce4f7bd4d95ecf48c38a0443e25b1"
+    },
     "codex-capability-maintainer": {
       "file_count": 3,
       "sha256": "b14512bc947a4863be36fa44a91250899d17fc3527b4d7a9ba70e965a63e6d8d"
     },
     "codex-forge": {
       "file_count": 67,
-      "sha256": "2ffc1ca2b9512596cebcb9a672969ce7d7a3307242233d97201d2c41b2cf2188"
+      "sha256": "77d014e0bb2a8073f0dfafa2533b724ae264f830bf4e1dc81ed28fb37d0a0777"
     },
     "create-plan": {
       "file_count": 5,
@@ -3464,9 +3740,13 @@
       "file_count": 7,
       "sha256": "822be590a7ca05cbf186efef05a23231ed8f9856ccc7a44b3eb717359b898302"
     },
+    "e2e": {
+      "file_count": 11,
+      "sha256": "0df7b5d8e0f5eab3e19beb865588239fc57926455a8149e57357e71089aba1ed"
+    },
     "engineering-playbooks": {
-      "file_count": 57,
-      "sha256": "4448d0b5c1a7d5fcc06080285392892d58132170a7dbb91df9b807cdb32e81ee"
+      "file_count": 59,
+      "sha256": "f79b5f5e5d56b3f72f6b0a3aa1e6fdd9756f57ab590f7a6735271ae2210aa217"
     },
     "figma": {
       "file_count": 8,
@@ -3478,7 +3758,7 @@
     },
     "forge-architect": {
       "file_count": 6,
-      "sha256": "4ee66463bc8a650eb3d544c6f331785923d2ff71f21d399f8574bc4d824205a5"
+      "sha256": "8666cea2d5bf1998ccf9758a9b7d3dadf0dfe7be722eac1613603c7d1435268a"
     },
     "forge-arena": {
       "file_count": 3,
@@ -3538,7 +3818,7 @@
     },
     "forge-principle-encode-lessons-in-structure": {
       "file_count": 3,
-      "sha256": "6d6f09d40f63d28ebac63eaab92ada0b060c6d9def2ba2754119965d92eabc0f"
+      "sha256": "4be01ea5d6b2636bac59170b31ce20079cd9869c885ac65aeb44eeeede77b440"
     },
     "forge-principle-exhaust-the-design-space": {
       "file_count": 3,
@@ -3776,6 +4056,10 @@
       "file_count": 16,
       "sha256": "85c44eb0baa5ecb510ec1ffbcf9afd0c0f6c79d0b596b7edf47e03d3367ee0bb"
     },
+    "spm-build-analysis": {
+      "file_count": 6,
+      "sha256": "856382f8ffac46278725332b66c1ce4b3c2ec1eaf7f44263c5fc6cc195a30de7"
+    },
     "supabase": {
       "file_count": 4,
       "sha256": "8eff81cfcfed45d97798b9958d278e87498c2432318cf4a1efc54c6bd3685378"
@@ -3783,6 +4067,30 @@
     "supabase-guardian": {
       "file_count": 2,
       "sha256": "36aca2463421a22b9836d961e6ea066fc5ac4c2a0af5d941dfdca01e8f1bfa03"
+    },
+    "swift-concurrency": {
+      "file_count": 21,
+      "sha256": "bbcab2798f8afd4eff1fcef2137c01f3514632bcbad34e7d89f0e7cf095db41c"
+    },
+    "swift-concurrency-pro": {
+      "file_count": 17,
+      "sha256": "294bf992760b80dbb4fb65b503d1b8c40d117e545cc56d94750ef36c43686b07"
+    },
+    "swift-testing-pro": {
+      "file_count": 10,
+      "sha256": "3637fa49342a5e876f2926917d8eb59f6d94d3c8bd8f96f70e4088fbc45aa471"
+    },
+    "swiftdata-pro": {
+      "file_count": 10,
+      "sha256": "096832cf1e577b7daa4ecde2db9d28af9af60f316d8a7b6a453c6c3f6b31eb4d"
+    },
+    "swiftui-expert-skill": {
+      "file_count": 52,
+      "sha256": "14d2bb4a16dcfcada14c907bdc592c9f0cb2644f6482b80a3702e62a84f27c4c"
+    },
+    "swiftui-pro": {
+      "file_count": 14,
+      "sha256": "afe25c5ad446f8a8888bcc97f265d19282d367bdd451b1910b2e0339be0fe562"
     },
     "test-architecture-engineer": {
       "file_count": 2,
@@ -3818,7 +4126,27 @@
     },
     "workflow-orchestrator": {
       "file_count": 16,
-      "sha256": "05b7d9cea08dcbd5576dc7739e365de19f811d52aac1b8240abdfe39487d383b"
+      "sha256": "ded416d2061fb996413cc2449148b53232b2be030d1208317469caf3e74737fc"
+    },
+    "xcode-build-benchmark": {
+      "file_count": 6,
+      "sha256": "225f7cc270b6a54f226f4d042efd02c8d616f0e4c080924594557592edf938fb"
+    },
+    "xcode-build-fixer": {
+      "file_count": 6,
+      "sha256": "72044d138890bcaba20972ba80e272321003a0c7934432a69b970593b5167f8c"
+    },
+    "xcode-build-orchestrator": {
+      "file_count": 9,
+      "sha256": "9e4280f42a70d5dec361d4e45c9c182153a12ce27d15ca8b5eceaafbbd44df8e"
+    },
+    "xcode-compilation-analyzer": {
+      "file_count": 6,
+      "sha256": "e7797ca260fd6912b21a2570f4ed09ba5e3e26cc1d96d585a53b9c8e032b6fa7"
+    },
+    "xcode-project-analyzer": {
+      "file_count": 6,
+      "sha256": "b84023755b37592bc23ef15e7e78b29175205dcac79a735d3f4e38fbcef42710"
     }
   },
   "version": "1.0.0"

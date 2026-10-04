@@ -86,12 +86,12 @@ class ExternalSkillsTests(unittest.TestCase):
                 self.assertEqual((target / "example/upstream-notices/LICENSE").read_text(), "fixture license")
                 self.assertEqual(json.loads((target / "example/.toolkit-upstream.json").read_text())["commit"], commit)
                 (target / "example/SKILL.md").write_text("personal edit")
-                toolkit.install_external_skills(selection, target)
+                with self.assertRaisesRegex(toolkit.ToolkitError, "locally modified"):
+                    toolkit.install_external_skills(selection, target)
                 self.assertEqual(fetcher.call_count, 1)
                 self.assertEqual((target / "example/SKILL.md").read_text(), "personal edit")
             (target / "example/SKILL.md").unlink()
-            with self.assertRaisesRegex(toolkit.ToolkitError, "incomplete"):
-                toolkit.external_skill_plan(selection, target)
+            self.assertIn("incomplete", str(toolkit.external_skill_plan(selection, target)[0]["conflicts"]))
             selection["dependencies"]["example"]["auto_install"]["skills"] = {"bad": "../escape"}
             with self.assertRaisesRegex(toolkit.ToolkitError, "invalid external source"):
                 toolkit.external_skill_plan(selection, target)
@@ -107,6 +107,77 @@ class ExternalSkillsTests(unittest.TestCase):
                 provision.reset_mock()
                 self.assertEqual(toolkit.main(args + ["--dry-run"]), 0)
                 provision.assert_not_called()
+
+    def test_upgrade_rollback_preserves_modified_and_independent_copies(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "source"
+            source.mkdir()
+            (source / "SKILL.md").write_text("version one")
+            def git(*args):
+                return subprocess.check_output(["git", "-C", str(source), *args], text=True).strip()
+            git("init", "-q")
+            git("add", ".")
+            git("-c", "user.name=Fixture", "-c", "user.email=f@example.invalid", "commit", "-qm", "one")
+            first = git("rev-parse", "HEAD")
+            (source / "SKILL.md").write_text("version two")
+            git("add", ".")
+            git("-c", "user.name=Fixture", "-c", "user.email=f@example.invalid", "commit", "-qm", "two")
+            second = git("rev-parse", "HEAD")
+            selection = {"dependencies": {"fixture": {"kind": "skills", "auto_install": {
+                "repository": "https://github.com/example/fixture.git", "commit": first,
+                "skills": {"fixture": "."}}}}}
+            target = root / "project/.agents/skills"
+            target.mkdir(parents=True)
+            def fetch(recipe, destination):
+                subprocess.run(["git", "clone", "-q", str(source), str(destination)], check=True)
+            with patch.object(toolkit, "fetch_external_source", side_effect=fetch):
+                toolkit.install_external_skills(selection, target)
+                selection["dependencies"]["fixture"]["auto_install"]["commit"] = second
+                toolkit.install_external_skills(selection, target)
+                self.assertEqual((target / "fixture/SKILL.md").read_text(), "version two")
+                self.assertEqual(toolkit.main(["rollback", "--project-root", str(root / "project"), "--harness", "agent-skills"]), 0)
+                self.assertEqual((target / "fixture/SKILL.md").read_text(), "version one")
+                (target / "fixture/SKILL.md").write_text("local edit")
+                with self.assertRaisesRegex(toolkit.ToolkitError, "locally modified"):
+                    toolkit.install_external_skills(selection, target)
+                self.assertEqual((target / "fixture/SKILL.md").read_text(), "local edit")
+                (target / "fixture/.toolkit-upstream.json").unlink()
+                with self.assertRaisesRegex(toolkit.ToolkitError, "independently installed"):
+                    toolkit.install_external_skills(selection, target)
+
+    def test_legacy_provenance_is_reconstructed_and_concurrent_destination_is_preserved(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "source"
+            source.mkdir()
+            (source / "SKILL.md").write_text("old source")
+            for args in (["init", "-q"], ["add", "."], ["-c", "user.name=Fixture", "-c", "user.email=f@example.invalid", "commit", "-qm", "one"]):
+                subprocess.run(["git", "-C", str(source), *args], check=True, capture_output=True)
+            commit = subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True).strip()
+            recipe = {"repository": "https://github.com/example/fixture.git", "commit": commit,
+                      "skills": {"fixture": "."}, "missing": {"fixture": "."}, "dependency": "fixture"}
+            selection = {"dependencies": {"fixture": {"kind": "skills", "auto_install": recipe}}}
+            target = root / "project/.agents/skills"
+            target.mkdir(parents=True)
+            def fetch(recipe, destination):
+                subprocess.run(["git", "clone", "-q", str(source), str(destination)], check=True)
+            with patch.object(toolkit, "fetch_external_source", side_effect=fetch):
+                toolkit.stage_external_recipe(recipe, target, legacy=True)
+                (target / "fixture/SKILL.md").write_text("edited legacy")
+                with self.assertRaisesRegex(toolkit.ToolkitError, "legacy copy differs"):
+                    toolkit.install_external_skills(selection, target)
+                (target / "fixture/SKILL.md").write_text("old source")
+                toolkit.install_external_skills(selection, target)
+                self.assertEqual(json.loads((target / "fixture/.toolkit-upstream.json").read_text())["schema_version"], 2)
+            other = root / "other"
+            other.mkdir()
+            plan = toolkit.external_skill_plan(selection, other)[0]
+            (other / "fixture").mkdir()
+            (other / "fixture/SKILL.md").write_text("concurrent")
+            with self.assertRaisesRegex(toolkit.ToolkitError, "changed since planning"):
+                toolkit.install_external_recipe(plan, other)
+            self.assertEqual((other / "fixture/SKILL.md").read_text(), "concurrent")
 
     def test_shared_learning_and_droid_selection(self):
         catalog = toolkit.load_json(toolkit.CATALOG_PATH)

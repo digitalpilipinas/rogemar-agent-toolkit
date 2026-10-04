@@ -22,3 +22,5 @@
 For sustained improvement against a metric rather than a one-off fix, use the Hillclimb playbook (`playbooks/hillclimb.md`).
 
 **Reply:** baseline number, post-fix number, delta, artifact path.
+
+For reported performance claims, use the [benchmark checklist](../../engineering-playbooks/references/benchmark-checklist.md). Start with the cheapest discriminating measurement; stop when the approved target is met. Preserve work/error counts and compare relevant end-to-end behavior.

@@ -24,3 +24,5 @@
 
 - [attack-the-premise](principles/attack-the-premise.md)
 - [test-behavior-not-implementation](principles/test-behavior-not-implementation.md)
+
+- [Explain the Number](principles/explain-the-number.md): verify executed work, errors, variability and the measured limiter.

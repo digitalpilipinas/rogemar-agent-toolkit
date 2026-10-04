@@ -378,7 +378,8 @@ class SelectionInstallTests(unittest.TestCase):
                     for document in (skillroot / name).rglob('*.md'):
                         if 'automations' in document.parts:
                             continue  # Native inactive recipes are deliberately retained as upstream evidence.
-                        for link in re.findall(r'\]\(([^)]+)\)', document.read_text()):
+                        text = re.sub(r'```.*?```|`[^`]*`', '', document.read_text(), flags=re.DOTALL)
+                        for link in re.findall(r'\]\(([^)]+)\)', text):
                             link = link.split('#')[0]
                             if link and '://' not in link and not link.startswith(('mailto:', '<')):
                                 self.assertTrue((document.parent / link).exists(), str(document.relative_to(root)) + ': ' + link)

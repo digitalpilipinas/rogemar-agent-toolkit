@@ -8,3 +8,14 @@ license: MIT
 When the same mistake recurs, identify the owning boundary and prefer a type, lint rule, metadata check, script or runtime invariant that makes it harder to repeat. Compare enforcement cost with the failure it prevents; do not build a framework around a one-off correction. Reference existing owners instead of duplicating policy. Within approved scope, implement and verify a structural improvement. Global skill changes, memory writes, unrelated repairs and external backlog submissions require explicit authority; otherwise return a concrete local proposal. Never silently update personal memory or every future task.
 
 Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md) for authority, delegation, routing and evidence boundaries.
+
+## Recurring mistakes
+
+For a repeated, evidenced failure class, reproduce a real past mistake before
+adding a prevention check. Prefer one state owner and supported path, then types
+or a focused lint that names the correct path, then a behavioral regression test.
+Use documentation for judgment that cannot be enforced economically. Preserve
+compatibility and tests that cover real behavior; do not delete them wholesale.
+Connect the reproducer and disposition to the existing Project Learning candidate
+and promotion process. This does not authorize global memory writes, extra commits
+or a full repository audit on each correction. Stop when the concrete class is covered.
