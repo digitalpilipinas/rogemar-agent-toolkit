@@ -15,10 +15,10 @@ if not (SKILLS / 'codex-forge').is_dir():
 class PStackAdaptationTests(unittest.TestCase):
     def test_pinned_delta_dispositions_cover_added_and_removed_resources(self):
         manifest = json.loads((ROOT / 'catalog/codex-forge-upstream.json').read_text())
-        self.assertEqual(manifest['commit'], '12d587dfb20741cafc376c42c696c5f6e2a64487')
-        self.assertEqual(manifest['previous_commit'], '93b00b89ef425a9c1bac0d0b317dfc49c930ac99')
+        self.assertEqual(manifest['commit'], 'e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a')
+        self.assertEqual(manifest['previous_commit'], '12d587dfb20741cafc376c42c696c5f6e2a64487')
         deltas = manifest['deltas']
-        self.assertEqual(len({row['path'] for row in deltas}), 100)
+        self.assertEqual(len({row['path'] for row in deltas}), 21)
         files = {row['upstream']: row for row in manifest['files']}
         legacy = {row['upstream']: row for row in manifest['legacy_compatibility']}
         for delta in deltas:
@@ -31,7 +31,7 @@ class PStackAdaptationTests(unittest.TestCase):
                 self.assertEqual(delta['old'], legacy[delta['path']]['upstream_sha256'])
             else:
                 self.assertEqual(delta['new'], files[delta['path']]['upstream_sha256'])
-        self.assertEqual(len(files), 158)
+        self.assertEqual(len(files), 161)
         self.assertEqual(len(legacy), 2)
         catalog = json.loads((ROOT / 'catalog/skills.yaml').read_text())
         registered = manifest['registered_skills']

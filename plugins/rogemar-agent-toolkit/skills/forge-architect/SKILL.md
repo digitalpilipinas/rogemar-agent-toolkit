@@ -86,3 +86,8 @@ When you scrap:
 ## Outputs
 
 The caller's usage is written first and the type sketch derived from it. One file with new types and signatures for small changes; module map plus type definitions for larger work. The rationale ships alongside, shaped per `references/rationale-template.md`, including the usage sketch and the synthesis decision.
+
+Prefer one authoritative state owner and one supported path for each task. Keep
+implementation internals private, generate repeated lists from one source, and
+check drift when duplication cannot be removed. Migrate supported callers before
+removing a legacy path; the presence of two adapters alone is not proof of waste.

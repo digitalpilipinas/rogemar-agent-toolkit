@@ -1,0 +1,908 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "repository": "twostraws/SwiftUI-Agent-Skill",
+      "commit": "be297ff80dddec529af1f9b1f1f114aab6c9d11c",
+      "sha256": "6f3aaff263775b98005cc7927f632313ab5aa4d38bd7eafc80c667884bdc9bac",
+      "bytes": 24703
+    },
+    {
+      "repository": "twostraws/Swift-Concurrency-Agent-Skill",
+      "commit": "bee3f69ba17142da148d3c5406f148ed62592b69",
+      "sha256": "99f4c8539f953af1becd05e39d372912bff83ae4c8cd7c10a342e745908a8013",
+      "bytes": 35197
+    },
+    {
+      "repository": "twostraws/SwiftData-Agent-Skill",
+      "commit": "922d989473a9914210b41529a1ac5636aff4b8c1",
+      "sha256": "3c4b9f5d7ea341a0f4517f13ecbf1e62d5d8702947a9f0d655a44d33b0e0733f",
+      "bytes": 18027
+    },
+    {
+      "repository": "twostraws/Swift-Testing-Agent-Skill",
+      "commit": "2d6bba14a3c8bf3694f218b92fffe617c41ae43e",
+      "sha256": "bb7d97f85ee144d5e2698553948a75de16383129a9528a1904a7d1b027527a64",
+      "bytes": 29385
+    },
+    {
+      "repository": "AvdLee/SwiftUI-Agent-Skill",
+      "commit": "9897311e3e42cc77e87603226e74bea711092fbd",
+      "sha256": "ce1ab6f5d4fb4575b6e8f847930ebb35cf2962278563235ed5715443c105b015",
+      "bytes": 574179
+    },
+    {
+      "repository": "AvdLee/Swift-Concurrency-Agent-Skill",
+      "commit": "d5770817d2622e1585b1f7eaebc791a9cb0959c8",
+      "sha256": "6b6aea2a2adaf4198dfde554a00a98f03c503141c1dd5576619c7ffaf7eb8bd9",
+      "bytes": 579399
+    },
+    {
+      "repository": "AvdLee/Xcode-Build-Optimization-Agent-Skill",
+      "commit": "6bd7b596cd688b1127ded00e812b1b6937ec35d6",
+      "sha256": "d52e0de1601e8afc464ba35bed81fb7b70abf3cf7c57eed64e1dac7404179d14",
+      "bytes": 1100197
+    },
+    {
+      "repository": "cursor/plugins",
+      "commit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "sha256": "a4503f824892dd8f7db58ee152481dd6cbd74b594e83dfe70eda2c0e0e2d4d5e",
+      "bytes": 4858598
+    },
+    {
+      "repository": "mattpocock/skills",
+      "commit": "24fe0ef7737efae15c87225755e9f6f5965e4888",
+      "sha256": "437d7190285d6c7fd5a5dd65176c0868a35277f12cde46bec21714e5eefc0cf3",
+      "bytes": 248738
+    },
+    {
+      "repository": "tester-army/e2e",
+      "commit": "f99e80ebc04f8194f967244198783db871390e06",
+      "sha256": "3acdaf2269020bfd8110a6a58584d44b6f07212465b575ec223ade9edfe2e935",
+      "bytes": 3948158
+    }
+  ],
+  "skills": [
+    {
+      "name": "swiftui-pro",
+      "repository": "twostraws/SwiftUI-Agent-Skill",
+      "commit": "be297ff80dddec529af1f9b1f1f114aab6c9d11c",
+      "source": "swiftui-pro",
+      "files": {
+        "SKILL.md": {
+          "sha256": "8b58a171afc1dcf9c42d85414af2dc506c8c92bf2c77527adb4d52b884f4d715",
+          "executable": false
+        },
+        "agents/openai.yaml": {
+          "sha256": "429c39b71692d4dc86e2b616f28b7e7f56207361c5b5a0b06df4746af96d5fa3",
+          "executable": false
+        },
+        "assets/swiftui-pro-icon.png": {
+          "sha256": "51a28a5834e6d251def3c562712db1e2124e6d67b62be89fe4c1ca628e37a70a",
+          "executable": false
+        },
+        "assets/swiftui-pro-icon.svg": {
+          "sha256": "a15c0a3030f08ffcc442aed9b7f2f19840877e43f980ad4dfdef515e9aeb44b3",
+          "executable": false
+        },
+        "references/accessibility.md": {
+          "sha256": "708d09a35c950fd4c118bbb3cfcab13bb146e7d02084615307bbabc19e00a0e3",
+          "executable": false
+        },
+        "references/api.md": {
+          "sha256": "12fa73d65a19c9d08224f925801db8eec914b1cedf5b2f86a38cdda04a66377a",
+          "executable": false
+        },
+        "references/data.md": {
+          "sha256": "5cc50484c525f748839e12174c065f7ea5fdd4380ce04b6885a906ecd6e6a318",
+          "executable": false
+        },
+        "references/design.md": {
+          "sha256": "03e35d46865cc6807255f3c8481cdbac7b3b0f61924185af84c1913d6c983c69",
+          "executable": false
+        },
+        "references/hygiene.md": {
+          "sha256": "91d96f45f3ffa02f5553c288415f3c3d5f317cab7d8d9c6c60240ea6c44a2b01",
+          "executable": false
+        },
+        "references/navigation.md": {
+          "sha256": "a3adb302455993aff85bbb6b5845ed2fcffa137c8b2ded99c937f3e4b7fcd77b",
+          "executable": false
+        },
+        "references/performance.md": {
+          "sha256": "1b503e3807e216d6b34b45f18bfba89214cea2fa1b88dd7ae8f482ebf0f03616",
+          "executable": false
+        },
+        "references/swift.md": {
+          "sha256": "8c31c5f5f99b3fa9586f0260cd1a4b1688dc7bda5e8de2891eb3f9d6a791125a",
+          "executable": false
+        },
+        "references/views.md": {
+          "sha256": "79a166f6507e86744c0f73cfb583100f61a5da37e313ef4586b3b31136a73627",
+          "executable": false
+        }
+      },
+      "notices": [
+        "LICENSE"
+      ],
+      "excluded_wrappers": [
+        ".claude-plugin",
+        ".claude-plugin/plugin.json",
+        "skills",
+        "skills/swiftui-pro",
+        "skills/swiftui-pro/SKILL.md",
+        "skills/swiftui-pro/references"
+      ]
+    },
+    {
+      "name": "swift-concurrency-pro",
+      "repository": "twostraws/Swift-Concurrency-Agent-Skill",
+      "commit": "bee3f69ba17142da148d3c5406f148ed62592b69",
+      "source": "swift-concurrency-pro",
+      "files": {
+        "SKILL.md": {
+          "sha256": "95d3098b038a38f163259cb7404070f786fed846a5e8b864e6b34fa7600247f9",
+          "executable": false
+        },
+        "agents/openai.yaml": {
+          "sha256": "c9aeb1a570575ef05eecfabf4657236591081f7c13cb832d6029981f7d72e0dc",
+          "executable": false
+        },
+        "assets/swift-concurrency-pro-icon.png": {
+          "sha256": "f1552e2844ae6382bd2575f40c48e0f199db2b42574aa1bdcb87ec92ddc901a1",
+          "executable": false
+        },
+        "assets/swift-concurrency-pro-icon.svg": {
+          "sha256": "da92910ec6329966729d6e9bcd27bb2be8c079d95b779c1081641dd9b64a344a",
+          "executable": false
+        },
+        "references/actors.md": {
+          "sha256": "7a77a0f06d0040a6813ec02cd4b1360df4bcfa501f93710bfb4296de9911d64f",
+          "executable": false
+        },
+        "references/async-streams.md": {
+          "sha256": "589ba0dad544b28b158702e239fe6a4077b6d1484c83b8fd51290192bf1ffc9a",
+          "executable": false
+        },
+        "references/bridging.md": {
+          "sha256": "c8eb60dcdd90f67cb3b8b1213fc55a56dd5c4a04f465d7aff7fdbd5c451e0498",
+          "executable": false
+        },
+        "references/bug-patterns.md": {
+          "sha256": "2233f58e784a9b6cf13620133485fcf7e3150192a40e713369ebbddc820dec85",
+          "executable": false
+        },
+        "references/cancellation.md": {
+          "sha256": "c83b4134b44ea5a0ee06e785bd0cb85616234469833f9677297b6fcddea1e1fa",
+          "executable": false
+        },
+        "references/diagnostics.md": {
+          "sha256": "cc2debc6f430ed13fc3be3a7ce942e55bb1cf02a9804ebfb272f295b502c9569",
+          "executable": false
+        },
+        "references/hotspots.md": {
+          "sha256": "199a9fa4beea4a550b3f63e07cddd441d72fd41d1e17e6f3255071a661ce1e6d",
+          "executable": false
+        },
+        "references/interop.md": {
+          "sha256": "b86cd716bd22b38d718e86b37b3d7dd1225b5ce93a53f88842ff6993e93ca566",
+          "executable": false
+        },
+        "references/new-features.md": {
+          "sha256": "c721a187b57e9d94112972c9685c57f7129187df2d36add4df1a9c9e9aa9e541",
+          "executable": false
+        },
+        "references/structured.md": {
+          "sha256": "1655b610fd1dafb7cf42b61457ff8229117c06879d0e9cc40460f437ba97895b",
+          "executable": false
+        },
+        "references/testing.md": {
+          "sha256": "4a1fc1aefb572bbdbd75a502a74df795af7e2212eec6836a4f353f9b725abffc",
+          "executable": false
+        },
+        "references/unstructured.md": {
+          "sha256": "d8063edf18bbe5abc9c628548b0100c4dd8defe3340c017d6fa4936eca17c456",
+          "executable": false
+        }
+      },
+      "notices": [
+        "LICENSE"
+      ],
+      "excluded_wrappers": [
+        ".claude-plugin",
+        ".claude-plugin/plugin.json",
+        "skills",
+        "skills/swift-concurrency-pro",
+        "skills/swift-concurrency-pro/SKILL.md",
+        "skills/swift-concurrency-pro/references"
+      ]
+    },
+    {
+      "name": "swiftdata-pro",
+      "repository": "twostraws/SwiftData-Agent-Skill",
+      "commit": "922d989473a9914210b41529a1ac5636aff4b8c1",
+      "source": "swiftdata-pro",
+      "files": {
+        "SKILL.md": {
+          "sha256": "79164f3bc4942b8ca384057cbe951ca7715aecee4970bea38781d91ddb1c442e",
+          "executable": false
+        },
+        "agents/openai.yaml": {
+          "sha256": "4293560a9ce8fe893a81c8d64b2b472b47b4c679023ade972f4129636dd406d5",
+          "executable": false
+        },
+        "assets/swiftdata-pro-icon.png": {
+          "sha256": "6be448484728cd09655bd877e7b450fff8b12839e7fd281f1edc406748ebc51d",
+          "executable": false
+        },
+        "assets/swiftdata-pro-icon.svg": {
+          "sha256": "876f9b502c4565f51a9ef1e57c15fb0821e3272d28da32d2d42e13ecd9992425",
+          "executable": false
+        },
+        "references/class-inheritance.md": {
+          "sha256": "05b22c87e9864a47517ba095c9a870dc320f0e6f4cd85ff9f0b54c5ca356a41d",
+          "executable": false
+        },
+        "references/cloudkit.md": {
+          "sha256": "52a549b1713d55be183b79af595d37729426af0abea36ed05f932b718d8ee11f",
+          "executable": false
+        },
+        "references/core-rules.md": {
+          "sha256": "8bf45a2af28bfb0648303bb520d3d317d2794b56fcfabe599c4785ccdf02f80a",
+          "executable": false
+        },
+        "references/indexing.md": {
+          "sha256": "909167e538461bf517f8fc6b00bfe70d1c8ea19b12a4749088823c275de52a82",
+          "executable": false
+        },
+        "references/predicates.md": {
+          "sha256": "623c3195fccdec0ec95c0291223ced7491025b04e59c0b4f4fe5ffd23eb1019b",
+          "executable": false
+        }
+      },
+      "notices": [
+        "LICENSE"
+      ],
+      "excluded_wrappers": []
+    },
+    {
+      "name": "swift-testing-pro",
+      "repository": "twostraws/Swift-Testing-Agent-Skill",
+      "commit": "2d6bba14a3c8bf3694f218b92fffe617c41ae43e",
+      "source": "swift-testing-pro",
+      "files": {
+        "SKILL.md": {
+          "sha256": "ad4f1bff44b5b7fce20b282481e651876efce024d13b16cb969bc433036ac059",
+          "executable": false
+        },
+        "agents/openai.yaml": {
+          "sha256": "f7a35b0befd4eb136cf87047543379a63efebb4f0f7eb4490489325d09383c4f",
+          "executable": false
+        },
+        "assets/swift-testing-pro-icon.png": {
+          "sha256": "13cbe2849191cc3fda400fc065d5fe6afa5b78f09e347d783bfa2b6d852a2b66",
+          "executable": false
+        },
+        "assets/swift-testing-pro-icon.svg": {
+          "sha256": "92d3d0b2855da2404beaacd3ea574b79a26535c9d99a0739edfd5e35d764a9e0",
+          "executable": false
+        },
+        "references/async-tests.md": {
+          "sha256": "bc6e0eabd10377b5796e9e554a4965a78b7d1aaba8f11021c2a63b6e8a9e669a",
+          "executable": false
+        },
+        "references/core-rules.md": {
+          "sha256": "2271efdca6c2b7b3365501172147884b6e786bcee7bef680fb4f4718929d6180",
+          "executable": false
+        },
+        "references/migrating-from-xctest.md": {
+          "sha256": "35b64812402ad1d15b496993e1721daaf4e80672bf9cce47078f772fd271f93f",
+          "executable": false
+        },
+        "references/new-features.md": {
+          "sha256": "988df5cb556893c789f9aecdc4c8773fdbbda787ab1dad766bf1182a7b9a4819",
+          "executable": false
+        },
+        "references/writing-better-tests.md": {
+          "sha256": "25da3455f6cec4f10d3dff0bf3e8e1372568c75691916541b4d517f451cb8bf1",
+          "executable": false
+        }
+      },
+      "notices": [
+        "LICENSE"
+      ],
+      "excluded_wrappers": [
+        ".claude-plugin",
+        ".claude-plugin/plugin.json",
+        "skills",
+        "skills/swift-testing-pro",
+        "skills/swift-testing-pro/SKILL.md",
+        "skills/swift-testing-pro/references"
+      ]
+    },
+    {
+      "name": "swiftui-expert-skill",
+      "repository": "AvdLee/SwiftUI-Agent-Skill",
+      "commit": "9897311e3e42cc77e87603226e74bea711092fbd",
+      "source": "skills/swiftui-expert-skill",
+      "files": {
+        "SKILL.md": {
+          "sha256": "3b794f9cb46efb016eafcad2fcedce7127c74d60c50a949619e0bcd2bc38351f",
+          "executable": false
+        },
+        "agents/openai.yaml": {
+          "sha256": "48dc200e480dac5598a4b7d3e3635fd5431e21d9dfef77e08b724fbb9871ced0",
+          "executable": false
+        },
+        "assets/logo-small.png": {
+          "sha256": "befad5069b4c95bbb3612e41e2b7fde601de7e022d8cc0d07570f0c7ec234d11",
+          "executable": false
+        },
+        "assets/logo.png": {
+          "sha256": "ab58235e3739a6c83ea8e29f5847ddc65895a6aa3772e17e901dacee101258a6",
+          "executable": false
+        },
+        "assets/logo.svg": {
+          "sha256": "d51b96d6df3ba250f7a47e7d74f9491ab891363e130cdd3f4e35b3fe132178d4",
+          "executable": false
+        },
+        "references/accessibility-patterns.md": {
+          "sha256": "bb942dd3b31fa24aa051943a6b7754a2de45a263dda0da3ac9dc2c7ce43b14d2",
+          "executable": false
+        },
+        "references/animation-advanced.md": {
+          "sha256": "ed395dcc1d26730dd45b166e98442cac008ab4714de70b32f41b23b7a995e8e5",
+          "executable": false
+        },
+        "references/animation-basics.md": {
+          "sha256": "5c6e8911c4011d772db061d3438ec07491bf1c467ab87af4d56e21720a189c9f",
+          "executable": false
+        },
+        "references/animation-transitions.md": {
+          "sha256": "20e5685f50588a48816d2f8d475db82109c528bf603c4a54f4a545f1b914f896",
+          "executable": false
+        },
+        "references/charts-accessibility.md": {
+          "sha256": "772d1c1099a5cc7eef172a206ae60c9269da5d8b6c6a1f885854a1b04f6f619b",
+          "executable": false
+        },
+        "references/charts.md": {
+          "sha256": "32dd76aae9ccfafa817bb5d6862e509ee3966d40653ab28d715348b3859c3158",
+          "executable": false
+        },
+        "references/document-apps.md": {
+          "sha256": "fc392cf67384f3b4ac9be81c49560b7454d0455adef08d75da11779618d3fb1c",
+          "executable": false
+        },
+        "references/environment-patterns.md": {
+          "sha256": "0425978dc6aceb1c009ff35ebd789caca6aae1315b39f3aacbd748f5b4a5a2e6",
+          "executable": false
+        },
+        "references/focus-patterns.md": {
+          "sha256": "35e411675ba93ce92b9b652c804d8349b7f693a9928017b201ae802077e73ab6",
+          "executable": false
+        },
+        "references/image-optimization.md": {
+          "sha256": "1b2fd159a815e4afdf6288341d3a377aa0b5f8d8fc4551c73409bd64228fb806",
+          "executable": false
+        },
+        "references/iphone-duo.md": {
+          "sha256": "f1129c5806860b0d66c9855ab10e964f75c24a98fd8702c1510f64ba4ec2c19f",
+          "executable": false
+        },
+        "references/latest-apis.md": {
+          "sha256": "19ba6a56dd5bf7f13c7c3032756a75a5ec04a56ca956a48c2ed4e6af530026b2",
+          "executable": false
+        },
+        "references/layout-best-practices.md": {
+          "sha256": "95b8b6df0111301d4ea75c5db7b6eed2cb01bf69c4468b1cde5ef8f90f3298b7",
+          "executable": false
+        },
+        "references/liquid-glass.md": {
+          "sha256": "a96ff9cbd81c37ab268cdba9971b80e7ca7c2e75a141582c60ee78fa334ae89e",
+          "executable": false
+        },
+        "references/list-patterns.md": {
+          "sha256": "2002b89b5c869e54b69f4ab3e61f9a3d715fd6b56a1d5284fe900dc2353f0537",
+          "executable": false
+        },
+        "references/localization.md": {
+          "sha256": "f6adcf85da40bd011e9aa585cd45cca96223f2d8f9ec4f55b5bda87c2538d574",
+          "executable": false
+        },
+        "references/macos-scenes.md": {
+          "sha256": "ac464e1f81b97638d799b1482196b553e85a27d7599fe5d571f8e9dad37d1fdf",
+          "executable": false
+        },
+        "references/macos-views.md": {
+          "sha256": "a82101901fadee2f6cf7b1400fedaea73bab0a07f5aafef38631cdaeee6af63d",
+          "executable": false
+        },
+        "references/macos-window-styling.md": {
+          "sha256": "0c9fc677599d5488e9c58a05d6a5a4a61001d439db4cf7626c222601493437bf",
+          "executable": false
+        },
+        "references/modifier-patterns.md": {
+          "sha256": "24d08e954398da0787e8dbac764bb20c53447e33260cf890c025fc915c2037cc",
+          "executable": false
+        },
+        "references/performance-patterns.md": {
+          "sha256": "2e2643503ae283f2a99f31b5a97abbf141d15c61f1c6271640cfef9333940818",
+          "executable": false
+        },
+        "references/previews.md": {
+          "sha256": "fdf50f169607ddb7e9c03218957df2b2d733e211f591ac86c99816ca058ede01",
+          "executable": false
+        },
+        "references/scroll-patterns.md": {
+          "sha256": "82bc253cccc9f4ff11fe7af49259246dfaf8ad4d06960c90dfdeacaa97ab5bd6",
+          "executable": false
+        },
+        "references/sheet-navigation-patterns.md": {
+          "sha256": "48349b929e54bf2bbc7213cc20af8bb56d2bfa5de452b58a3ea9056dbb2d8ef6",
+          "executable": false
+        },
+        "references/soft-deprecation.md": {
+          "sha256": "ac907d3729e75747c6b19e9cc6a911337c05b8ff1c25695495ce7cda9d2f5548",
+          "executable": false
+        },
+        "references/state-management.md": {
+          "sha256": "49a0e00334f94176d5c5a4835061238fdbc9c67dd8dce73b847718eab8a1c5a2",
+          "executable": false
+        },
+        "references/styled-text-editing.md": {
+          "sha256": "f8dc9bb560107ff8f9e286e3876929f0285c2548195e0c7dda0daa6de70e58fd",
+          "executable": false
+        },
+        "references/text-patterns.md": {
+          "sha256": "26b960e9c8c7f5e15e9b2e297b6bd36eb872ec4ab8a0a84f61aa9c64d50191b8",
+          "executable": false
+        },
+        "references/toolbar-patterns.md": {
+          "sha256": "e57a64be79177888325ece20a4f7cf74d0b2d8d7793b7a2cf8f20ed347bfb1a1",
+          "executable": false
+        },
+        "references/trace-analysis.md": {
+          "sha256": "7b0aba8e633a079bad03597c51657fc9b744035ea064fe4198b55e41e5ec4bc1",
+          "executable": false
+        },
+        "references/trace-recording.md": {
+          "sha256": "8035631402352b8682ef64155ee7462365de5eea0dd2de7dbcda61bfaa8541a9",
+          "executable": false
+        },
+        "references/view-structure.md": {
+          "sha256": "bf5716d78c7fc460b849d55aa8347716ec7ab8049b95900b10d5d888da10248b",
+          "executable": false
+        },
+        "references/webkit-integration.md": {
+          "sha256": "73a893af77b52c05b3ea8e3e378c82bb9066cb887a2ab7485ec128bb95ba9541",
+          "executable": false
+        },
+        "scripts/analyze_trace.py": {
+          "sha256": "f40d49cfd4b5afcea717560787c34dcef1574f831a55a7d846303910df539636",
+          "executable": false
+        },
+        "scripts/instruments_parser/__init__.py": {
+          "sha256": "fdf7c99bed236e0fb71524b155be864a00a71af4997d6848c6c33f49fce62861",
+          "executable": false
+        },
+        "scripts/instruments_parser/causes.py": {
+          "sha256": "cf6e067e5f47130562522ed27ca4f2551d0b2de669b5063db950e220e19cbd1f",
+          "executable": false
+        },
+        "scripts/instruments_parser/correlate.py": {
+          "sha256": "c4bd0c6d14cc96e03cf058ae134c661ace6de5d9b95d417e742278a9c86d064b",
+          "executable": false
+        },
+        "scripts/instruments_parser/events.py": {
+          "sha256": "e389fed14c398732aadb04bddeed399d4856eca24741396e3c845d4a4a95be57",
+          "executable": false
+        },
+        "scripts/instruments_parser/hangs.py": {
+          "sha256": "af779727b7342186606021acad8f38dfb88778ee068a95d0a9b119f415bc5162",
+          "executable": false
+        },
+        "scripts/instruments_parser/hitches.py": {
+          "sha256": "39c4a6d96fa4447709eeff98f033a2a6cac1a70b205fd543b7711e1d4759dd2f",
+          "executable": false
+        },
+        "scripts/instruments_parser/summary.py": {
+          "sha256": "dc856a29008aa2218cf30fc82db133f75efc1f67580b27fb3077f17ccc365296",
+          "executable": false
+        },
+        "scripts/instruments_parser/swiftui.py": {
+          "sha256": "f499b222b24c2129208284ccc61d6d0ac27bfe67831a5f7db51848f83d20fdd5",
+          "executable": false
+        },
+        "scripts/instruments_parser/time_profiler.py": {
+          "sha256": "dd3ab3f6e8e41b8ad00bbbd38ac96ada12a945bd82e51c923ac912fc46bff9b6",
+          "executable": false
+        },
+        "scripts/instruments_parser/xctrace.py": {
+          "sha256": "b680bddb80d7f63ff97b7ba69b1c9ddda57d4080d601e9a1a47f09e81c2870ce",
+          "executable": false
+        },
+        "scripts/instruments_parser/xml_utils.py": {
+          "sha256": "f0f4476f0f1f0ce9ad5779509b59c2c77b0f7438a57d358aa76e715e7a23b4d6",
+          "executable": false
+        },
+        "scripts/record_trace.py": {
+          "sha256": "7d9c33de1146a274f6ca45790a25f4421ea697893e18a0a6b2ccfb401e245891",
+          "executable": false
+        }
+      },
+      "notices": [
+        "LICENSE"
+      ],
+      "excluded_wrappers": []
+    },
+    {
+      "name": "swift-concurrency",
+      "repository": "AvdLee/Swift-Concurrency-Agent-Skill",
+      "commit": "d5770817d2622e1585b1f7eaebc791a9cb0959c8",
+      "source": "skills/swift-concurrency",
+      "files": {
+        "SKILL.md": {
+          "sha256": "8c667b2ff988251c7c291abe046b77d7b8fcfbe3b5ed36961e25e224b1ead491",
+          "executable": false
+        },
+        "agents/openai.yaml": {
+          "sha256": "ee6afe3f6c048fa77f73510f5536abc8f399bc48c8641dc308343ed37ee53cfc",
+          "executable": false
+        },
+        "assets/logo-small.png": {
+          "sha256": "f1f69d278df362306d16809151486fad79fc08d6b3018aeabea4580507392f93",
+          "executable": false
+        },
+        "assets/logo.png": {
+          "sha256": "7eeb6005c4ce9d1ab514418cc645c463fa6b84536527dfac715676ee878cf7b1",
+          "executable": false
+        },
+        "references/_index.md": {
+          "sha256": "7e9e076d885ef05402a67aa8a84b83e63a3c29b3d005816f6acb4c30b6d76531",
+          "executable": false
+        },
+        "references/actors.md": {
+          "sha256": "2de7cebbdd1cbc2b7c9312c7b59a3f44ada0456b6e74579aae7fba3e02b0b5fe",
+          "executable": false
+        },
+        "references/async-algorithms.md": {
+          "sha256": "9e16790e9b81850a37b3de995220074491f3efd5accab1f5daa0a633625fed40",
+          "executable": false
+        },
+        "references/async-await-basics.md": {
+          "sha256": "e550aba692af77cf660ad6f754a65c52b01505cad234d159a6d47a919faaf536",
+          "executable": false
+        },
+        "references/async-sequences.md": {
+          "sha256": "33d853118e37c1ac380c253200571efa44fe7127b9b6512ba95b43e670a5f453",
+          "executable": false
+        },
+        "references/core-data.md": {
+          "sha256": "c89c4846fa64a2389abf807684ed373a6c0e6d16351dfa051e1fd71b85444d00",
+          "executable": false
+        },
+        "references/glossary.md": {
+          "sha256": "20dd1f05717810944af675db215d758efa5d1c7b487ee007faae1ec4e2a7c36f",
+          "executable": false
+        },
+        "references/linting.md": {
+          "sha256": "ead994f6e254208acf298a588ad9a49bbd9779530f31e01c74c4d32d06a7bd4a",
+          "executable": false
+        },
+        "references/memory-management.md": {
+          "sha256": "28dcb8a7ff7411390ca0b7f1b0db16d6b00c3705bd6ed1f9b649c476bf0a7554",
+          "executable": false
+        },
+        "references/migration.md": {
+          "sha256": "9115da8228d3a19426869627c28b7ed444f8d783723039293cceb46a1fc1c570",
+          "executable": false
+        },
+        "references/observation.md": {
+          "sha256": "940c085d43e2e067848d7caf95731fb1335c3f16f83ebe43b06549021a29f1b1",
+          "executable": false
+        },
+        "references/performance.md": {
+          "sha256": "dfd74c1c592ce42c520b54a309ba2b50e228608efa055fd6b597067e9ad71668",
+          "executable": false
+        },
+        "references/sendable.md": {
+          "sha256": "af8e026b3c205d3c3acb58bf9a59e456f063f564845f38020a91cac511a08ca8",
+          "executable": false
+        },
+        "references/tasks.md": {
+          "sha256": "0401a762683454149d5ca532684901f4fb5597a6821acacc8d49d037db9a37e9",
+          "executable": false
+        },
+        "references/testing.md": {
+          "sha256": "3df9e839b3338dd473115d9ac8787a42d91b50a537fe40c55cf66d21034679db",
+          "executable": false
+        },
+        "references/threading.md": {
+          "sha256": "0a4e44bd27fdf852cf5f8f5aa64cfe15ba229fb7c885b3f69ed2afdbfac8752a",
+          "executable": false
+        }
+      },
+      "notices": [
+        "LICENSE"
+      ],
+      "excluded_wrappers": []
+    },
+    {
+      "name": "spm-build-analysis",
+      "repository": "AvdLee/Xcode-Build-Optimization-Agent-Skill",
+      "commit": "6bd7b596cd688b1127ded00e812b1b6937ec35d6",
+      "source": "skills/spm-build-analysis",
+      "files": {
+        "SKILL.md": {
+          "sha256": "4ac9f10fac0ead182a0caa86f5e36eb11436db327f6b47c08c655ea5eb1afa48",
+          "executable": false
+        },
+        "references/build-optimization-sources.md": {
+          "sha256": "77abb87a6ac6608a2db1a5415559f85df8f6f33d0a4767dd5ab62db939d217e6",
+          "executable": false
+        },
+        "references/recommendation-format.md": {
+          "sha256": "ad8eb87228be739d2dd53d0b927558fc9e68b2135e1b1eec475a981c4cd1feb2",
+          "executable": false
+        },
+        "references/spm-analysis-checks.md": {
+          "sha256": "6677c6f10fe359548a8a0092f78468977d7cdd7539f61ba4b99cd1940885f94a",
+          "executable": false
+        },
+        "scripts/check_spm_pins.py": {
+          "sha256": "913fe3cb2e79f39b7790fc4afd75570dfb1d8540af59422f8e2d3ec60107809d",
+          "executable": true
+        }
+      },
+      "notices": [
+        "LICENSE"
+      ],
+      "excluded_wrappers": []
+    },
+    {
+      "name": "xcode-build-benchmark",
+      "repository": "AvdLee/Xcode-Build-Optimization-Agent-Skill",
+      "commit": "6bd7b596cd688b1127ded00e812b1b6937ec35d6",
+      "source": "skills/xcode-build-benchmark",
+      "files": {
+        "SKILL.md": {
+          "sha256": "91b85f1b9b7344123178d23896f5cc7e0c6bcfdbb05aa670c0ba1411ba72a3bd",
+          "executable": false
+        },
+        "references/benchmark-artifacts.md": {
+          "sha256": "8087ebebff618af462200af9a49f825281ea039feaa7c5d5e3dbc49afe425798",
+          "executable": false
+        },
+        "references/benchmarking-workflow.md": {
+          "sha256": "036c6b7de76974dd6648d0edc64cf6d950b079a3a2e509b61138dba560518c9d",
+          "executable": false
+        },
+        "schemas/build-benchmark.schema.json": {
+          "sha256": "473b377e7677bc4aeeac8cc16ea09b90b6e3ea00c23ee7f027e1f9a5c96a27ba",
+          "executable": false
+        },
+        "scripts/benchmark_builds.py": {
+          "sha256": "efb10cb4702243a69441692d6fc49106618ad693ad26333a8b0c29f0e5425227",
+          "executable": true
+        }
+      },
+      "notices": [
+        "LICENSE"
+      ],
+      "excluded_wrappers": []
+    },
+    {
+      "name": "xcode-build-fixer",
+      "repository": "AvdLee/Xcode-Build-Optimization-Agent-Skill",
+      "commit": "6bd7b596cd688b1127ded00e812b1b6937ec35d6",
+      "source": "skills/xcode-build-fixer",
+      "files": {
+        "SKILL.md": {
+          "sha256": "0904653e787129bdf7a2dbeb3df8928406bbf766742af961b523c14b402dde35",
+          "executable": false
+        },
+        "references/build-settings-best-practices.md": {
+          "sha256": "26f1a3a23b3fece4b067fb094ab12fb6bd7dee33e97044d515db3cf70bc9b8a4",
+          "executable": false
+        },
+        "references/fix-patterns.md": {
+          "sha256": "fe39f595180f803de46e7040155475e60681376beb039a6a666804fb3480bc9c",
+          "executable": false
+        },
+        "references/recommendation-format.md": {
+          "sha256": "ad8eb87228be739d2dd53d0b927558fc9e68b2135e1b1eec475a981c4cd1feb2",
+          "executable": false
+        },
+        "scripts/benchmark_builds.py": {
+          "sha256": "efb10cb4702243a69441692d6fc49106618ad693ad26333a8b0c29f0e5425227",
+          "executable": true
+        }
+      },
+      "notices": [
+        "LICENSE"
+      ],
+      "excluded_wrappers": []
+    },
+    {
+      "name": "xcode-build-orchestrator",
+      "repository": "AvdLee/Xcode-Build-Optimization-Agent-Skill",
+      "commit": "6bd7b596cd688b1127ded00e812b1b6937ec35d6",
+      "source": "skills/xcode-build-orchestrator",
+      "files": {
+        "SKILL.md": {
+          "sha256": "e919677be70ad7ddf4b0e5be5c5d5275d4e820490233f6084ce1ab3a9555404b",
+          "executable": false
+        },
+        "references/benchmark-artifacts.md": {
+          "sha256": "ec3a5ed992db24e945255c87361ab347f925ef94b474fd3f002fde650fbd4392",
+          "executable": false
+        },
+        "references/build-settings-best-practices.md": {
+          "sha256": "26f1a3a23b3fece4b067fb094ab12fb6bd7dee33e97044d515db3cf70bc9b8a4",
+          "executable": false
+        },
+        "references/orchestration-report-template.md": {
+          "sha256": "78bead992d838c737088ec2f98cfba620a7a32569f1f525d281f7500c479b72e",
+          "executable": false
+        },
+        "references/recommendation-format.md": {
+          "sha256": "ad8eb87228be739d2dd53d0b927558fc9e68b2135e1b1eec475a981c4cd1feb2",
+          "executable": false
+        },
+        "scripts/benchmark_builds.py": {
+          "sha256": "efb10cb4702243a69441692d6fc49106618ad693ad26333a8b0c29f0e5425227",
+          "executable": true
+        },
+        "scripts/diagnose_compilation.py": {
+          "sha256": "5d3783b053ae54f0e3730d40cf3931a4261625daa5893ad4a942b55303a9cdc6",
+          "executable": true
+        },
+        "scripts/generate_optimization_report.py": {
+          "sha256": "7c03d61fbce2c7ae44eaa752fbf65ce5256ddba336690a9265976dd9c0a69a85",
+          "executable": false
+        }
+      },
+      "notices": [
+        "LICENSE"
+      ],
+      "excluded_wrappers": []
+    },
+    {
+      "name": "xcode-compilation-analyzer",
+      "repository": "AvdLee/Xcode-Build-Optimization-Agent-Skill",
+      "commit": "6bd7b596cd688b1127ded00e812b1b6937ec35d6",
+      "source": "skills/xcode-compilation-analyzer",
+      "files": {
+        "SKILL.md": {
+          "sha256": "c49d8bf206d6ea2d575dbfa95cd623b1970e796c59819cc83865bd3a15f19e65",
+          "executable": false
+        },
+        "references/build-optimization-sources.md": {
+          "sha256": "77abb87a6ac6608a2db1a5415559f85df8f6f33d0a4767dd5ab62db939d217e6",
+          "executable": false
+        },
+        "references/code-compilation-checks.md": {
+          "sha256": "250c97fa472bab473b7b9e67e4f396dbaebebc13471b2dc1358252a580925019",
+          "executable": false
+        },
+        "references/recommendation-format.md": {
+          "sha256": "ad8eb87228be739d2dd53d0b927558fc9e68b2135e1b1eec475a981c4cd1feb2",
+          "executable": false
+        },
+        "scripts/diagnose_compilation.py": {
+          "sha256": "5d3783b053ae54f0e3730d40cf3931a4261625daa5893ad4a942b55303a9cdc6",
+          "executable": true
+        }
+      },
+      "notices": [
+        "LICENSE"
+      ],
+      "excluded_wrappers": []
+    },
+    {
+      "name": "xcode-project-analyzer",
+      "repository": "AvdLee/Xcode-Build-Optimization-Agent-Skill",
+      "commit": "6bd7b596cd688b1127ded00e812b1b6937ec35d6",
+      "source": "skills/xcode-project-analyzer",
+      "files": {
+        "SKILL.md": {
+          "sha256": "1fb85b5556ba85950073231c893c63db9231bb684052e4838e96a80cdd6e8866",
+          "executable": false
+        },
+        "references/build-optimization-sources.md": {
+          "sha256": "77abb87a6ac6608a2db1a5415559f85df8f6f33d0a4767dd5ab62db939d217e6",
+          "executable": false
+        },
+        "references/build-settings-best-practices.md": {
+          "sha256": "26f1a3a23b3fece4b067fb094ab12fb6bd7dee33e97044d515db3cf70bc9b8a4",
+          "executable": false
+        },
+        "references/project-audit-checks.md": {
+          "sha256": "eb61ac8e1329eccac33e7d8b4c466003f50cca6b1a23e2be118d1f6a9af62e53",
+          "executable": false
+        },
+        "references/recommendation-format.md": {
+          "sha256": "ad8eb87228be739d2dd53d0b927558fc9e68b2135e1b1eec475a981c4cd1feb2",
+          "executable": false
+        }
+      },
+      "notices": [
+        "LICENSE"
+      ],
+      "excluded_wrappers": []
+    },
+    {
+      "name": "codebase-design",
+      "repository": "mattpocock/skills",
+      "commit": "24fe0ef7737efae15c87225755e9f6f5965e4888",
+      "source": "skills/engineering/codebase-design",
+      "files": {
+        "DEEPENING.md": {
+          "sha256": "f3dd099ce99289bd213914d8ee3e2429b78309c3957ca4583f7659551b1d53c1",
+          "executable": false
+        },
+        "DESIGN-IT-TWICE.md": {
+          "sha256": "52b52e75655a27aea59c6966b410bac82448968ad46ef1ebb9f07c274e3ae010",
+          "executable": false
+        },
+        "SKILL.md": {
+          "sha256": "2c20617f87ec8af6a434859f381b2f061a69b530444e74eb39e78bb016a6d1e2",
+          "executable": false
+        },
+        "agents/openai.yaml": {
+          "sha256": "edebc9e4fcfe102114012575eaa9600b9b5fd08c311664f389c36e7bc717740f",
+          "executable": false
+        }
+      },
+      "notices": [
+        "LICENSE"
+      ],
+      "excluded_wrappers": []
+    }
+  ],
+  "testerarmy": [
+    {
+      "name": "e2e",
+      "version": "0.17.0",
+      "integrity": "sha512-Q8pgMUgp0wY7f5Zs2w0CLmFr1s95rdYyIquEFH8sjU7dYOTSVzvq/xkXCO2FVZFHdcgeO4mvFkdMg+7NyNG+LA==",
+      "tarball": "https://registry.npmjs.org/e2e/-/e2e-0.17.0.tgz",
+      "engines": {
+        "node": ">=22.12.0"
+      },
+      "peers": {
+        "ai": "^7.0.0",
+        "@ai-sdk/xai": "^5.0.0",
+        "@ai-sdk/google": "^4.0.0",
+        "@ai-sdk/openai": "^4.0.0",
+        "@ai-sdk/anthropic": "^4.0.0",
+        "@ai-sdk/openai-compatible": "^3.0.0"
+      }
+    },
+    {
+      "name": "@e2e-dev/web",
+      "version": "0.12.0",
+      "integrity": "sha512-Ee5QaVZHSvjhVx5p2/kcYCxFerNr8BA8zLbja7OsvzF5Jp4Ku2mEri2KoMRol7i+DpCmfSUPSxI4KrzIPpJqdg==",
+      "tarball": "https://registry.npmjs.org/@e2e-dev/web/-/web-0.12.0.tgz",
+      "engines": {
+        "node": ">=22.12.0"
+      },
+      "peers": {
+        "e2e": ">=0.15.0 <1"
+      }
+    },
+    {
+      "name": "@e2e-dev/mobile",
+      "version": "0.9.2",
+      "integrity": "sha512-aY09M1ckxtezydmTI6/R72R/RVuwZn42+phGekQLCkZWID1EXNQi19+leYyyZJWdH4p+E2EVgYm4k8EcilYM0Q==",
+      "tarball": "https://registry.npmjs.org/@e2e-dev/mobile/-/mobile-0.9.2.tgz",
+      "engines": {
+        "node": ">=22.12.0"
+      },
+      "peers": {
+        "ai": "^7.0.0",
+        "e2e": ">=0.15.0 <1"
+      }
+    }
+  ]
+}

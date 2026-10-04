@@ -1,5 +1,5 @@
 {
-  "upstream": "https://github.com/cursor/plugins/tree/12d587dfb20741cafc376c42c696c5f6e2a64487/pstack",
+  "upstream": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
   "adapted_from": "Codex Forge local approved adaptation",
   "methods": [
     {
@@ -59,7 +59,7 @@
     {
       "method": "eval",
       "source": "codex-forge/playbooks/eval.md",
-      "source_sha256": "fec0524ce21dd073a8420ad80144514606e3b3655e9872d627d3aeb1927cf9de",
+      "source_sha256": "fe0a404d74f827c88540c4605445179379358da7e435858ae8a22330d22307c1",
       "portable": "playbooks/eval.md",
       "trigger": "A material choice requires comparative evidence",
       "outcome": "Comparable tasks, baseline/candidate identity, positive and negative cases",
@@ -77,7 +77,7 @@
     {
       "method": "hillclimb",
       "source": "codex-forge/playbooks/hillclimb.md",
-      "source_sha256": "f6873340f466310127bb9f65d32f7705a3c3552429a0af74a216e729a52b6c23",
+      "source_sha256": "7661a9fb207d0517f812efa577146741b7edd137320c153bc8bb7a21c04c2e7c",
       "portable": "playbooks/hillclimb.md",
       "trigger": "A defined outcome can improve through useful measured iterations",
       "outcome": "A valid baseline, bounded experiments and retained best evidence",
@@ -131,7 +131,7 @@
     {
       "method": "perf-issue",
       "source": "codex-forge/playbooks/perf-issue.md",
-      "source_sha256": "5fb061c0170bae351ba64a61fddd7e401bcfa803390f1978ec37b9da1a550856",
+      "source_sha256": "cffef204723b57101b6eacf018034076ffc235cdccd589e5dabda83cb055adb0",
       "portable": "playbooks/perf-issue.md",
       "trigger": "A measured performance problem needs diagnosis",
       "outcome": "Relevant baseline, bottleneck evidence and outcome check",

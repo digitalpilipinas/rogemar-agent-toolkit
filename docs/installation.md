@@ -179,22 +179,30 @@ the chosen harness independently of package installation.
 
 ## Automatic external skill provisioning
 
-`install` and `upgrade` now fetch missing compatible external skill files for the
+`install` and `upgrade` now install and update compatible external skill files for the
 selected packs, by default. Use `--profile all` for all compatible packs. The core
 profile still installs only core skills. This works in local, CI and Cloud
 filesystems, using Git and Python; it does not depend on Mac paths or personal sync.
-`--dry-run` lists exact missing names and pinned revisions without network access.
+`--dry-run` lists missing, upgradable, legacy and conflicting names and pinned revisions without network access.
 `--skip-external` explicitly requests a vendor-only/offline installation.
 
 The catalog pins upstream commits for Unlazy, Ponytail, Expo, CodeRabbit, Argent,
 Supabase's Postgres guide, Convex and Cursor PStack. Skill resources and license
 notices are copied directly from upstream Git objects; no upstream installer is
-executed. Existing same-name skills are preserved, including managed Supabase and
-personal modifications. A readable existing skill is not proof it is current.
-Each newly installed external skill records its source revision. External copies
-are outside the managed rollback/update transaction; upgrading does not overwrite
-them. An incomplete destination fails rather than being silently skipped. Network
-failure exits nonzero with managed skills retained; rerunning retries missing skills.
+executed. Unchanged toolkit-installed copies are upgraded when their pin changes.
+Provenance and executable/content hashes are checked before replacement. Independent,
+symlinked or locally edited copies are reported as conflicts and preserved, even
+with `--backup-conflicts`. Legacy markers without hashes are compared to their
+recorded upstream source before adoption; unavailable evidence cannot authorize replacement.
+
+External updates use the same staged transaction, operation lock, backups and
+`rollback` command as vendored updates. Each successful dependency is a recoverable
+operation: rollback reverses the latest operation, and can be repeated to reach its
+predecessor. A failed dependency does not discard successfully installed dependencies;
+installation exits nonzero and lists unresolved conflicts/failures. Retry only after
+reviewing the reported cause. Dry-run does not fetch legacy evidence and reports it
+as unverified. `--skip-external` preserves installed external copies unchanged.
+
 
 Native plugins, MCPs, CLIs, platform toolchains, authentication and paid-provider
 runs are separate. For example, installing PStack skill files is not installing

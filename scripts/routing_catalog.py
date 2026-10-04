@@ -21,7 +21,19 @@ def expected_index(root):
     for item in catalog['vendored']:
         route = dict(item['routing'])
         route['source'] = item['name'] + '/SKILL.md'
+        route['kind'] = 'vendored'
+        route['required_resources'] = item.get('required_resources', [])
         routes[item['name']] = route
+    for dependency, item in catalog['dependencies'].items():
+        recipe = item.get('auto_install', {})
+        for name in recipe.get('skills', {}):
+            if name in routes:
+                raise ValueError('Duplicate external/vendored route: ' + name)
+            routes[name] = {'source': name + '/SKILL.md', 'kind': 'external',
+                           'dependency': dependency, 'commit': recipe['commit'],
+                           'trigger': item['purpose'], 'outcome': 'Use applicable upstream method after reading its installed source',
+                           'boundary': 'Files do not establish live tools, authentication or permission',
+                           'activation': 'conditional'}
     return {'schema_version': 1, 'generated_by': 'scripts/routing_catalog.py',
             'dispatcher': 'workflow-orchestrator',
             'skills': dict(sorted(routes.items()))}
@@ -41,6 +53,8 @@ def verify(root=ROOT):
             for field in ('source', 'fallback'):
                 value = route.get(field)
                 if not value:
+                    continue
+                if field == 'source' and route.get('kind') == 'external':
                     continue
                 relative, _, anchor = value.partition('#')
                 path = root / SKILLS / relative

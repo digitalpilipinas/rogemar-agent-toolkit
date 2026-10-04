@@ -204,3 +204,5 @@ playbook. The [focused comparison](../plan-model-router/references/validation-v6
 distinguishes working UI/source-tracing evidence from readiness-only answers.
 Use exact-generation model labels and qualifications from the router. New native
 availability is not evidence that an old assignment or consultant exception transfers.
+
+For measured claims use [Explain the Number](../engineering-playbooks/references/principles/explain-the-number.md) and its scoped benchmark checklist.

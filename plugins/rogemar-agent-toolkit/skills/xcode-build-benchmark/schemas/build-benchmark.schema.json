@@ -1,0 +1,267 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Xcode Build Benchmark Artifact",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "status",
+    "created_at",
+    "repeats",
+    "build",
+    "runs",
+    "summary",
+    "phases",
+    "incremental_kind"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": [
+        "2.0.0"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "build": {
+      "type": "object",
+      "required": [
+        "path",
+        "scheme",
+        "configuration",
+        "destination"
+      ],
+      "properties": {
+        "entrypoint": {
+          "type": "string",
+          "enum": [
+            "project",
+            "workspace"
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "scheme": {
+          "type": "string"
+        },
+        "configuration": {
+          "type": "string"
+        },
+        "destination": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "derived_data_path": {
+          "type": "string"
+        },
+        "command": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "environment": {
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "xcode_version": {
+          "type": "string"
+        },
+        "macos_version": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "runs": {
+      "type": "object",
+      "required": [
+        "clean",
+        "incremental"
+      ],
+      "properties": {
+        "clean": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/run"
+          }
+        },
+        "cached_clean": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/run"
+          }
+        },
+        "incremental": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/run"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "clean",
+        "incremental"
+      ],
+      "properties": {
+        "clean": {
+          "$ref": "#/definitions/stats"
+        },
+        "cached_clean": {
+          "$ref": "#/definitions/stats"
+        },
+        "incremental": {
+          "$ref": "#/definitions/stats"
+        }
+      },
+      "additionalProperties": false
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "failed"
+      ]
+    },
+    "repeats": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/run"
+      }
+    },
+    "incremental_kind": {
+      "enum": [
+        "edit",
+        "zero-change"
+      ]
+    }
+  },
+  "definitions": {
+    "run": {
+      "type": "object",
+      "required": [
+        "id",
+        "duration_seconds",
+        "success",
+        "exit_code",
+        "command",
+        "raw_log_path"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "build_type": {
+          "type": "string",
+          "enum": [
+            "clean",
+            "cached-clean",
+            "incremental"
+          ]
+        },
+        "duration_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "success": {
+          "type": "boolean"
+        },
+        "command": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exit_code": {
+          "type": "integer"
+        },
+        "raw_log_path": {
+          "type": "string"
+        },
+        "timing_summary_categories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/category"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "category": {
+      "type": "object",
+      "required": [
+        "name",
+        "seconds"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "task_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "stats": {
+      "type": "object",
+      "required": [
+        "count",
+        "median_seconds"
+      ],
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "min_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "median_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "average_seconds": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

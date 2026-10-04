@@ -7,6 +7,11 @@ contract. A method does not authorize an extra provider, worker or side effect.
 
 ## Architect
 
+Prefer one authoritative state owner and one supported path for each task. Keep
+implementation internals private, generate repeated lists from one source, and
+check drift when duplication cannot be removed. Migrate supported callers before
+removing a legacy path; the presence of two adapters alone is not proof of waste.
+
 Identify the material decision, consumers, constraints and uncertainty. Compare
 credible alternatives against those constraints; prototype only a question that
 evidence can resolve. Select and explain one proportionate design, recording
