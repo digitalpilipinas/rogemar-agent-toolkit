@@ -35,6 +35,13 @@ explicit request or an explicitly enrolled workflow completion checkpoint; pendi
 candidates remain inactive. Enrollment does not authorize promotion, shared-skill
 edits, memory writes, hooks or background collection. Capture failures are nonblocking.
 
+## Bounded retro
+
+At verified milestones with useful friction evidence, select the shared
+[bounded retro method](../../engineering-playbooks/references/companion-methods.md#reflect)
+inside the same receipt. Skip empty retrospectives; retain the existing learning
+writer, review boundaries and next approved task.
+
 ## Ponytail
 
 Use through the current minimality owner when installed and useful. Select only

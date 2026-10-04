@@ -244,3 +244,20 @@ external hash. Preserve local copies and investigate ownership through the manag
 installer; do not overwrite them to make a readiness check pass. A matched hash
 establishes instruction identity; required-file checks establish resource presence.
 Neither proves host discovery, unchanged resource content or authentication.
+
+### Comparing selected upstreams
+
+During approved toolkit maintenance, run `python3 scripts/upstream_compare.py
+--source coderabbit --source mattpocock/skills` on one line. Select dependency IDs
+or imported repository names from the existing catalogs. The helper performs
+unauthenticated read-only requests to public GitHub; it never installs, repins,
+logs in or executes downloaded code. It reports observed commits, changed paths,
+selected-content relevance, release-metadata-only changes and unavailable or
+incomplete comparisons. Rate limits remain unavailable evidence, not “current.”
+
+Review instruction/resource/license changes before updating a recipe and metadata.
+A pinned recipe provisions selected compatible skill files. Native plugins, tools,
+accounts and paid services remain conditional runtime integrations. Entries with
+only a repository link or runtime-managed provenance remain references, not a
+promise of copied skill files. Run comparisons for affected sources at maintenance
+time; ordinary tasks reuse installed, qualified methods.

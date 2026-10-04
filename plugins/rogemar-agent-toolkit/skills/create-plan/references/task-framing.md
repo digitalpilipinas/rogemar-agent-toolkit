@@ -22,6 +22,25 @@ framing, not a compulsory prompt-review checkpoint. The optional orchestrator
 `workflow_contracts.py framing` operation validates this selection from explicit
 inputs; it does not infer intent or grant authority.
 
+## Bounded decision questioning
+
+For a consequential design fork or an explicit grilling request, investigate
+discoverable facts first. Group only independent, unresolved owner decisions into
+a small round; give a recommendation and tradeoff for each. Questions depending
+on an unanswered choice wait until that choice is settled. Reuse settled answers
+and continue independent approved work. End when the material decisions needed
+for the next authorized step are resolved. A fuller interview is an explicit
+option, not a requirement for ordinary tasks or every sprint.
+
+When the work changes domain meaning, compare the project's existing terms with
+code and concrete edge cases. Resolve ambiguous ownership or overloaded terms
+before they affect interfaces. Reuse existing documentation conventions; record
+only useful durable definitions or consequential, hard-to-reverse tradeoffs.
+
+Adapted from Matt Pocock's grilling and domain-modeling methods at
+`24fe0ef7737efae15c87225755e9f6f5965e4888`; bounded to this workflow's scope and
+approval rules. See [MIT notice](../upstream-notices/mattpocock-LICENSE).
+
 ## Smallest complete brief
 
 Carry the requested deliverable, relevant baseline, accepted scope/non-goals,

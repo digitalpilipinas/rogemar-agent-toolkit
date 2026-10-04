@@ -75,7 +75,7 @@ These paths combine official format support and the local inventory's observed u
 
 OpenDesign keeps its real project/run, scenario admission, snapshots, critique and connector mechanisms. It needs Node 24.x, the pinned pnpm/build lock, native SQLite/PTY/media packages, and the chosen provider. Headless project/HTML workflows are source-supported. PDF/image/PPTX need the Electron renderer; its absence is an unsupported dependency path. The Docker source omits agent CLIs and template copies; selected resource import does not provision a whole runnable image. See [design integration](design-integration.md).
 
-Argent is a full external 16-skill family. Methods may be read without MCP; device actions require its supported tool server and device runtime. iOS simulators require a Mac/Xcode host. Android requires the matching SDK/JDK and a usable device or emulator; ordinary cloud containers may lack virtualization. Web checks need a supported browser driver. Expo's current upstream entry names differ from the recorded local cache and are updated by its owner. Codex Security remains a separate optional provider.
+Argent is an external skill family whose complete membership comes from its pinned installation recipe. Methods may be read without MCP; device actions require its supported tool server and device runtime. iOS simulators require a Mac/Xcode host. Android requires the matching SDK/JDK and a usable device or emulator; ordinary cloud containers may lack virtualization. Web checks need a supported browser driver. Expo's current upstream entry names differ from the recorded local cache and are updated by its owner. Codex Security remains a separate optional provider.
 
 ## Provenance and updates
 

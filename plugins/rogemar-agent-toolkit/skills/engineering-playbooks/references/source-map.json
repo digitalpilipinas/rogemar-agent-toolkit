@@ -5,7 +5,7 @@
     {
       "method": "authoring-a-skill",
       "source": "codex-forge/playbooks/authoring-a-skill.md",
-      "source_sha256": "3a58f43ddb7a2072115167150334b67901c1f95faf44b2d271e1ecc8ed82ce0d",
+      "source_sha256": "c0f199dd64e304271761000a0f886f855e93661fb55cd2a22d1cca057dafd2f3",
       "portable": "playbooks/authoring-a-skill.md",
       "trigger": "Create or revise an actual reusable skill",
       "outcome": "Inspect its existing owner, instructions, references and distribution; verify changed behavior",
@@ -104,7 +104,7 @@
     {
       "method": "opening-a-pr",
       "source": "codex-forge/playbooks/opening-a-pr.md",
-      "source_sha256": "a687be0452152eb6d13adca905ccf281b3af232f395c894952d925b156f47176",
+      "source_sha256": "5cdd9aa3f1f43d60584b02128a270669c6d6c32452e23cc81b85474f167770d5",
       "portable": "playbooks/opening-a-pr.md",
       "trigger": "The authorized slice is ready for a PR",
       "outcome": "Clean intentional diff, current evidence, correct base/head and review-ready description",
