@@ -44,3 +44,8 @@ Do not copy its model table here or change saved preferences during inspection.
 Explain the qualification scope and any known failure alongside the profile.
 Swarm/Arena select each participant by its actual assignment; no fixed worker
 model or automatic worker count is implied by the setup table.
+
+The current preset catalogue uses GPT-6.1 Sol in place of GPT-6 Sol. Read the
+router’s `references/runtime-routing.md` for generation and qualification limits.
+Keep the saved mode and explicit Default/role choices; updating presets does not
+rewrite user pins or switch the running parent.

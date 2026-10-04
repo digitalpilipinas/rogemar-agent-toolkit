@@ -50,7 +50,8 @@ class RoleEvidenceTests(unittest.TestCase):
                 self.assertEqual(record.get('evidence_contract'), 'notes-store' if artifact == 'sqlite' else 'note-editor-ui')
 
     def test_evidence_covers_all_policies_and_roles(self):
-        evidence=json.loads((FILE.parents[1]/'references/role-evidence.json').read_text())['rows']
+        snapshot=json.loads((FILE.parents[1]/'references/role-evidence.json').read_text())
+        evidence=snapshot['rows']
         self.assertEqual(len(evidence),225)
         self.assertEqual(len({(x['mode'],x['role']) for x in evidence}),225)
         for x in evidence:
@@ -61,7 +62,7 @@ class RoleEvidenceTests(unittest.TestCase):
                 self.assertEqual(x['evidence_status'],'task-dependent')
                 continue
             if x['mode']=='default':continue
-            if x['kind']=='consequential':self.assertEqual(x['normal']['model'],r.ROUTING_CATALOG['parent_targets'][x['mode']]['model'])
+            if x['kind']=='consequential':self.assertEqual(x['normal']['model'],snapshot['snapshot_parent_targets'][x['mode']]['model'])
             self.assertTrue(x['rationale'])
             if x['qualification_id']:
                 self.assertTrue(r.qualification(x['role'],x['normal'],x['role'] in r.ROUTING_CATALOG['coding_roles']))

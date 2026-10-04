@@ -21,13 +21,13 @@
         "high",
         "xhigh"
       ],
-      "gpt-6-sol": [
+      "gpt-6-astra": [
         "low",
         "medium",
         "high",
         "xhigh"
       ],
-      "gpt-6-astra": [
+      "gpt-6.1-sol": [
         "low",
         "medium",
         "high",
@@ -47,7 +47,7 @@
         "high",
         "xhigh"
       ],
-      "gpt-6-sol": [
+      "gpt-6.1-sol": [
         "low",
         "medium",
         "high",
@@ -86,7 +86,7 @@
         "effort": "xhigh"
       },
       "balanced": {
-        "model": "gpt-6-sol",
+        "model": "gpt-6.1-sol",
         "effort": "xhigh"
       },
       "lean": {
@@ -108,7 +108,7 @@
         "effort": "xhigh"
       },
       "balanced": {
-        "model": "gpt-6-sol",
+        "model": "gpt-6.1-sol",
         "effort": "xhigh"
       },
       "lean": {
@@ -130,7 +130,7 @@
         "effort": "xhigh"
       },
       "balanced": {
-        "model": "gpt-6-sol",
+        "model": "gpt-6.1-sol",
         "effort": "xhigh"
       },
       "lean": {
@@ -152,7 +152,7 @@
         "effort": "xhigh"
       },
       "balanced": {
-        "model": "gpt-6-sol",
+        "model": "gpt-6.1-sol",
         "effort": "xhigh"
       },
       "lean": {
@@ -174,7 +174,7 @@
         "effort": "xhigh"
       },
       "balanced": {
-        "model": "gpt-6-sol",
+        "model": "gpt-6.1-sol",
         "effort": "xhigh"
       },
       "lean": {
@@ -196,7 +196,7 @@
         "effort": "xhigh"
       },
       "balanced": {
-        "model": "gpt-6-sol",
+        "model": "gpt-6.1-sol",
         "effort": "xhigh"
       },
       "lean": {
@@ -220,7 +220,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -249,7 +249,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -278,7 +278,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -332,7 +332,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -386,7 +386,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -413,7 +413,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -436,12 +436,12 @@
       "skill_hints": [],
       "overrides": {
         "peak": {
-          "model": "gpt-6-sol",
-          "effort": "high"
+          "model": "gpt-6-astra",
+          "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
-          "effort": "high"
+          "model": "gpt-6.1-sol",
+          "effort": "xhigh"
         },
         "lean": {
           "model": "gpt-5.6-sol",
@@ -463,12 +463,12 @@
       "skill_hints": [],
       "overrides": {
         "peak": {
-          "model": "gpt-6-sol",
-          "effort": "medium"
+          "model": "gpt-6-astra",
+          "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
-          "effort": "medium"
+          "model": "gpt-6.1-sol",
+          "effort": "xhigh"
         },
         "lean": {
           "model": "gpt-5.6-sol",
@@ -494,7 +494,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -521,7 +521,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -548,7 +548,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -575,7 +575,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -602,7 +602,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -685,7 +685,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -742,7 +742,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -823,8 +823,8 @@
           "effort": "medium"
         },
         "balanced": {
-          "model": "gpt-6-sol",
-          "effort": "high"
+          "model": "gpt-6.1-sol",
+          "effort": "xhigh"
         },
         "lean": {
           "model": "gpt-5.6-sol",
@@ -849,12 +849,12 @@
       ],
       "overrides": {
         "peak": {
-          "model": "gpt-6-sol",
-          "effort": "low"
+          "model": "gpt-6-astra",
+          "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
-          "effort": "low"
+          "model": "gpt-6.1-sol",
+          "effort": "xhigh"
         },
         "lean": {
           "model": "gpt-5.6-sol",
@@ -879,12 +879,12 @@
       ],
       "overrides": {
         "peak": {
-          "model": "gpt-6-sol",
-          "effort": "low"
+          "model": "gpt-6-astra",
+          "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
-          "effort": "low"
+          "model": "gpt-6.1-sol",
+          "effort": "xhigh"
         },
         "lean": {
           "model": "gpt-5.6-sol",
@@ -912,7 +912,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -938,12 +938,12 @@
       ],
       "overrides": {
         "peak": {
-          "model": "gpt-6-sol",
-          "effort": "low"
+          "model": "gpt-6-astra",
+          "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
-          "effort": "low"
+          "model": "gpt-6.1-sol",
+          "effort": "xhigh"
         },
         "lean": {
           "model": "gpt-5.6-sol",
@@ -996,11 +996,11 @@
       ],
       "overrides": {
         "peak": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6-astra",
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -1029,7 +1029,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -1090,7 +1090,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -1121,7 +1121,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -1182,7 +1182,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -1209,8 +1209,8 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
-          "effort": "medium"
+          "model": "gpt-6.1-sol",
+          "effort": "xhigh"
         },
         "lean": {
           "model": "gpt-5.6-sol",
@@ -1236,7 +1236,7 @@
           "effort": "medium"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -1263,8 +1263,8 @@
           "effort": "medium"
         },
         "balanced": {
-          "model": "gpt-6-sol",
-          "effort": "high"
+          "model": "gpt-6.1-sol",
+          "effort": "xhigh"
         },
         "lean": {
           "model": "gpt-5.6-sol",
@@ -1290,7 +1290,7 @@
           "effort": "medium"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -1315,12 +1315,12 @@
       ],
       "overrides": {
         "peak": {
-          "model": "gpt-6-sol",
-          "effort": "high"
+          "model": "gpt-6-astra",
+          "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
-          "effort": "high"
+          "model": "gpt-6.1-sol",
+          "effort": "xhigh"
         },
         "lean": {
           "model": "gpt-5.6-sol",
@@ -1345,12 +1345,12 @@
       ],
       "overrides": {
         "peak": {
-          "model": "gpt-6-sol",
-          "effort": "medium"
+          "model": "gpt-6-astra",
+          "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
-          "effort": "medium"
+          "model": "gpt-6.1-sol",
+          "effort": "xhigh"
         },
         "lean": {
           "model": "gpt-5.6-sol",
@@ -1379,8 +1379,8 @@
           "effort": "medium"
         },
         "balanced": {
-          "model": "gpt-6-sol",
-          "effort": "high"
+          "model": "gpt-6.1-sol",
+          "effort": "xhigh"
         },
         "lean": {
           "model": "gpt-5.6-sol",
@@ -1409,7 +1409,7 @@
           "effort": "xhigh"
         },
         "balanced": {
-          "model": "gpt-6-sol",
+          "model": "gpt-6.1-sol",
           "effort": "xhigh"
         },
         "lean": {
@@ -1491,7 +1491,7 @@
       "effort": "xhigh"
     },
     "balanced": {
-      "model": "gpt-6-sol",
+      "model": "gpt-6.1-sol",
       "effort": "xhigh"
     },
     "lean": {
@@ -1697,66 +1697,6 @@
           "scope": "Harbor Notes supplied contract and focus only; task-fit and required runtime evidence remain separate.",
           "need_required": "Concrete unresolved parent-task counterexample or demonstrated insufficiency; a passing higher profile alone is not need.",
           "evidence_contract": "notes-store"
-        },
-        {
-          "model": "gpt-6-sol",
-          "effort": "max",
-          "status": "verified",
-          "evidence_id": "v6-routine-hardest-tasks-gpt-6-sol-max",
-          "source": "v6",
-          "validation": [
-            {
-              "repetition": 1,
-              "passed": true,
-              "profile_verified": true,
-              "profile": {
-                "model": "gpt-6-sol",
-                "effort": "max"
-              },
-              "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
-              "assignment_id": "665321d0ec48"
-            },
-            {
-              "repetition": 2,
-              "passed": true,
-              "profile_verified": true,
-              "profile": {
-                "model": "gpt-6-sol",
-                "effort": "max"
-              },
-              "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
-              "assignment_id": "03a734c39779"
-            }
-          ],
-          "executable": true,
-          "coding_validation": [
-            {
-              "repetition": 1,
-              "passed": true,
-              "profile_verified": true,
-              "profile": {
-                "model": "gpt-6-sol",
-                "effort": "max"
-              },
-              "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
-              "assignment_id": "v6-routine-gpt-6-sol-max-1:sqlite"
-            },
-            {
-              "repetition": 2,
-              "passed": true,
-              "profile_verified": true,
-              "profile": {
-                "model": "gpt-6-sol",
-                "effort": "max"
-              },
-              "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
-              "assignment_id": "v6-routine-gpt-6-sol-max-2:sqlite"
-            }
-          ],
-          "scope": "Supplied Harbor Notes focus, source and contract only; readiness responses do not establish live QA or full playbook competence. Separate paired SQLite notes-store exercise also passed; not a production migration or measured speedup.",
-          "evidence_contract": "notes-store",
-          "allowed_assignment": "bounded-implementation-or-consultation",
-          "need_required": "Concrete unmet requirement or justified bounded consultation; exact evidence contract and explicit user hard limits apply. A difficult role name or passing higher profile alone is insufficient."
         }
       ]
     },
@@ -2059,66 +1999,6 @@
           "scope": "Implemented single-note form: validation, pending/success/failure/retry, keyboard, two viewports and accessible semantics. Not a whole product design, independent audit, screen-reader or device qualification.",
           "need_required": "A concrete UI implementation requirement the normal parent cannot adequately meet, or a justified bounded UI consultation with expected benefit. Role name and a passing higher profile are insufficient.",
           "evidence_contract": "note-editor-ui"
-        },
-        {
-          "model": "gpt-6-sol",
-          "effort": "max",
-          "status": "verified",
-          "evidence_id": "v6-routine-hardest-tasks-gpt-6-sol-max",
-          "source": "v6",
-          "validation": [
-            {
-              "repetition": 1,
-              "passed": true,
-              "profile_verified": true,
-              "profile": {
-                "model": "gpt-6-sol",
-                "effort": "max"
-              },
-              "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
-              "assignment_id": "665321d0ec48"
-            },
-            {
-              "repetition": 2,
-              "passed": true,
-              "profile_verified": true,
-              "profile": {
-                "model": "gpt-6-sol",
-                "effort": "max"
-              },
-              "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
-              "assignment_id": "03a734c39779"
-            }
-          ],
-          "executable": true,
-          "coding_validation": [
-            {
-              "repetition": 1,
-              "passed": true,
-              "profile_verified": true,
-              "profile": {
-                "model": "gpt-6-sol",
-                "effort": "max"
-              },
-              "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
-              "assignment_id": "v6-routine-gpt-6-sol-max-1:sqlite"
-            },
-            {
-              "repetition": 2,
-              "passed": true,
-              "profile_verified": true,
-              "profile": {
-                "model": "gpt-6-sol",
-                "effort": "max"
-              },
-              "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
-              "assignment_id": "v6-routine-gpt-6-sol-max-2:sqlite"
-            }
-          ],
-          "scope": "Supplied Harbor Notes focus, source and contract only; readiness responses do not establish live QA or full playbook competence. Separate paired SQLite notes-store exercise also passed; not a production migration or measured speedup.",
-          "evidence_contract": "notes-store",
-          "allowed_assignment": "bounded-implementation-or-consultation",
-          "need_required": "Concrete unmet requirement or justified bounded consultation; exact evidence contract and explicit user hard limits apply. A difficult role name or passing higher profile alone is insufficient."
         }
       ]
     },
@@ -2487,68 +2367,7 @@
           "need_required": "Concrete unmet requirement or justified bounded consultation; exact evidence contract and explicit user hard limits apply. A difficult role name or passing higher profile alone is insufficient."
         }
       ],
-      "hardest-tasks": [
-        {
-          "model": "gpt-6-sol",
-          "effort": "max",
-          "status": "verified",
-          "evidence_id": "v6-routine-hardest-tasks-gpt-6-sol-max",
-          "source": "v6",
-          "validation": [
-            {
-              "repetition": 1,
-              "passed": true,
-              "profile_verified": true,
-              "profile": {
-                "model": "gpt-6-sol",
-                "effort": "max"
-              },
-              "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
-              "assignment_id": "665321d0ec48"
-            },
-            {
-              "repetition": 2,
-              "passed": true,
-              "profile_verified": true,
-              "profile": {
-                "model": "gpt-6-sol",
-                "effort": "max"
-              },
-              "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
-              "assignment_id": "03a734c39779"
-            }
-          ],
-          "executable": true,
-          "coding_validation": [
-            {
-              "repetition": 1,
-              "passed": true,
-              "profile_verified": true,
-              "profile": {
-                "model": "gpt-6-sol",
-                "effort": "max"
-              },
-              "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
-              "assignment_id": "v6-routine-gpt-6-sol-max-1:sqlite"
-            },
-            {
-              "repetition": 2,
-              "passed": true,
-              "profile_verified": true,
-              "profile": {
-                "model": "gpt-6-sol",
-                "effort": "max"
-              },
-              "packet_sha256": "89d436fd1c2e3c823e0b130cf029525e8d9ea607540c9c5519ed04f327bd0500",
-              "assignment_id": "v6-routine-gpt-6-sol-max-2:sqlite"
-            }
-          ],
-          "scope": "Supplied Harbor Notes focus, source and contract only; readiness responses do not establish live QA or full playbook competence. Separate paired SQLite notes-store exercise also passed; not a production migration or measured speedup.",
-          "evidence_contract": "notes-store",
-          "allowed_assignment": "bounded-implementation-or-consultation",
-          "need_required": "Concrete unmet requirement or justified bounded consultation; exact evidence contract and explicit user hard limits apply. A difficult role name or passing higher profile alone is insufficient."
-        }
-      ]
+      "hardest-tasks": []
     }
   },
   "evidence_file": "../references/role-evidence.json",
@@ -30251,9 +30070,21 @@
         "max",
         "ultra"
       ],
-      "preset_retired": false
+      "preset_retired": true
     },
     "gpt-6-astra": {
+      "tier": 6,
+      "supported_efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ],
+      "preset_retired": false
+    },
+    "gpt-6.1-sol": {
       "tier": 5,
       "supported_efforts": [
         "low",
