@@ -5,7 +5,7 @@
     {
       "method": "authoring-a-skill",
       "source": "codex-forge/playbooks/authoring-a-skill.md",
-      "source_sha256": "89481fcd8c3341160c0419bed91aec30ebcb4fcfcc334367ba54aca09dd1c7f2",
+      "source_sha256": "3a58f43ddb7a2072115167150334b67901c1f95faf44b2d271e1ecc8ed82ce0d",
       "portable": "playbooks/authoring-a-skill.md",
       "trigger": "Create or revise an actual reusable skill",
       "outcome": "Inspect its existing owner, instructions, references and distribution; verify changed behavior",
@@ -14,7 +14,7 @@
     {
       "method": "autonomous-run",
       "source": "codex-forge/playbooks/autonomous-run.md",
-      "source_sha256": "ec85fc8e06eafefd3486622d21e90589a2cd154e8518f04b7e13f8a36784983d",
+      "source_sha256": "edae742c4f60a1d7556386ce8a67bc4c76cf52e3472a280c1707ab95d498e24d",
       "portable": "playbooks/autonomous-run.md",
       "trigger": "Authorized work needs sustained independent progress",
       "outcome": "Bounded units, resource/budget checks, proof and recovery",
@@ -23,7 +23,7 @@
     {
       "method": "autopilot-full",
       "source": "codex-forge/playbooks/autopilot-full.md",
-      "source_sha256": "8e4837199c6e61c46997423dfc7193787efb3248c6b5da137afd6a25b09cb4a6",
+      "source_sha256": "fc5a15db354c8b4dc3a76e55f768c53ca0183dd05d3a0c871fe2f33d5bb7e9ea",
       "portable": "playbooks/autopilot-full.md",
       "trigger": "A coherent authorized end-to-end delivery task",
       "outcome": "Use the Integrated Workflow lifecycle and applicable quality/review gates",
@@ -32,7 +32,7 @@
     {
       "method": "autopilot-stack",
       "source": "codex-forge/playbooks/autopilot-stack.md",
-      "source_sha256": "56955a859630fe438d575225ac10c8495eefc60d1953fd0f62a164aeedfe08ef",
+      "source_sha256": "43ecf6102d6e8caf8c1d620fede16be3798e2202d92b0c663945e001c3ecb1ae",
       "portable": "playbooks/autopilot-stack.md",
       "trigger": "Work crosses a real stack or dependent set of changes",
       "outcome": "Preserve dependency order and integrated acceptance",
@@ -50,7 +50,7 @@
     {
       "method": "bug-fix",
       "source": "codex-forge/playbooks/bug-fix.md",
-      "source_sha256": "a57883a204e00a5e2d9b64b69a661428773d623fe58b2ee8779a390621009884",
+      "source_sha256": "3217e0fa3e71890baf401ee6b099505496d28cafefc87b2fabd9bb3e873b0b6d",
       "portable": "playbooks/bug-fix.md",
       "trigger": "A reproducible or well-evidenced defect",
       "outcome": "Triage, causal fix and meaningful regression evidence",
@@ -68,7 +68,7 @@
     {
       "method": "feature",
       "source": "codex-forge/playbooks/feature.md",
-      "source_sha256": "02478eb03a657edc06fff844e578e99640febcd0cf0cd973a43a5eeab8595221",
+      "source_sha256": "b7944be4f8105411b5dec11260e8456506b213f84e72be33887d152bac4745df",
       "portable": "playbooks/feature.md",
       "trigger": "An approved new behavior is being implemented",
       "outcome": "User-visible acceptance, dependencies and focused checks",
@@ -86,7 +86,7 @@
     {
       "method": "investigation",
       "source": "codex-forge/playbooks/investigation.md",
-      "source_sha256": "48a278ca2249b7a10fd64f7d161bd910d4446d50c8d580700604f3a235b3579e",
+      "source_sha256": "459fa8bd8b74b19dcf980321cad88c2543847a6520ffaf18dc2317707edf05f3",
       "portable": "playbooks/investigation.md",
       "trigger": "The task asks for understanding or diagnosis before a change",
       "outcome": "Relevant source/evidence, hypotheses and explicit uncertainty",
@@ -113,7 +113,7 @@
     {
       "method": "orchestrate",
       "source": "codex-forge/playbooks/orchestrate.md",
-      "source_sha256": "23dcce2b39097fab21c9f63db8fa46b6579d17fdd8cc06224b7c1bb1399ad008",
+      "source_sha256": "c7d899ee94587753a6f22cf3e494a5412875b6bc77f9290ff93456319631c183",
       "portable": "playbooks/orchestrate.md",
       "trigger": "Distinct dependent or specialist work warrants coordination",
       "outcome": "One workflow-orchestrator, bounded roles, shared authority and one acceptance owner",
@@ -131,7 +131,7 @@
     {
       "method": "perf-issue",
       "source": "codex-forge/playbooks/perf-issue.md",
-      "source_sha256": "cffef204723b57101b6eacf018034076ffc235cdccd589e5dabda83cb055adb0",
+      "source_sha256": "82486b1e26cce48239c6d3a39bd55abe7bf4c804db8256aaabb4360263f52ac9",
       "portable": "playbooks/perf-issue.md",
       "trigger": "A measured performance problem needs diagnosis",
       "outcome": "Relevant baseline, bottleneck evidence and outcome check",
@@ -149,7 +149,7 @@
     {
       "method": "refactoring",
       "source": "codex-forge/playbooks/refactoring.md",
-      "source_sha256": "2b3dc3efc9bb1ff63d0d13605ed3d05f3ec3ab1bb7ee08960afdc0c5e9b70b8e",
+      "source_sha256": "48a84c18cdc921c3c75e3dda6e974628d6b7f8727935a1a5b8252bb56ef3560e",
       "portable": "playbooks/refactoring.md",
       "trigger": "Internal structure needs change with intended behavior preserved",
       "outcome": "Consumer scope, behavior evidence and compatible migration",
@@ -167,7 +167,7 @@
     {
       "method": "session-pickup",
       "source": "codex-forge/playbooks/session-pickup.md",
-      "source_sha256": "8de836e4b8887833944f27bd35d660c2c4d52ce0d708d72c0dc07636d96e9aff",
+      "source_sha256": "eee7d72ac727704a6779289bc14a01fdbbf204a7e924c2fb1e6aa189e4b8f23a",
       "portable": "playbooks/session-pickup.md",
       "trigger": "Resume after interruption, handoff or context loss",
       "outcome": "Recover current contract and refresh changed/volatile evidence",

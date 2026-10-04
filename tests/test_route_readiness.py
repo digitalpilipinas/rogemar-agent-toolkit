@@ -70,6 +70,56 @@ class SelectedReadinessTests(unittest.TestCase):
         result = SELECT.resolve(self.index, ['swiftui-pro', 'swiftui-expert-skill'], SKILLS, context=self.context)
         self.assertEqual(len(result['methods']), 2)
 
+    def test_task_handoffs_reselect_and_reuse_only_applicable_methods(self):
+        # Behavioral fixture, not proof of native agent dispatch or compliance.
+        if 'swiftui-expert-skill' not in self.index['skills']:
+            self.skipTest('Swift pack absent')
+        first = self.route(runtime=True)
+        self.assertNotEqual(first['status'], 'blocked')
+        self.assertEqual(self.route(runtime=True), first)  # unchanged observations
+        self.context['task_tags'] = ['e2e']
+        self.assertEqual(self.route()['status'], 'blocked')  # stale method choice
+        self.context['execution'] = {'surface':'browser', 'mode':'deterministic'}
+        for name in ('node', 'e2e', 'e2e-web'):
+            self.context['readiness']['capabilities'][name] = {'installed':True, 'discoverable':True, 'exercised':'passed'}
+        self.assertNotEqual(self.route('e2e', runtime=True)['status'], 'blocked')
+        self.context = {'task_tags':['small-doc-fix']}
+        result = SELECT.resolve(self.index, [], SKILLS, context=self.context)
+        self.assertEqual(result['methods'], [])  # no forced specialist or login
+
+    def test_external_pin_conflict_and_missing_reference_are_blocked(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); skill=root/'sample'; skill.mkdir()
+            data='---\nname: sample\ndescription: Scoped method\n---\nRead reference.md'
+            (skill/'SKILL.md').write_text(data)
+            route={'source':'sample/SKILL.md', 'activation':'conditional', 'outcome':'method',
+                   'boundary':'scope', 'source_sha256':hashlib.sha256(data.encode()).hexdigest(),
+                   'required_resources':['reference.md']}
+            index={'schema_version':1, 'dispatcher':'workflow-orchestrator', 'skills':{'sample':route}}
+            def resolve(): return SELECT.resolve(index,['sample'],root)['methods'][0]
+            self.assertEqual(resolve()['status'],'blocked')
+            (skill/'reference.md').write_text('instructions')
+            self.assertNotEqual(resolve()['status'],'blocked')
+            (skill/'SKILL.md').write_text(data+' local edit')
+            self.assertEqual(resolve()['status'],'blocked')
+
+    def test_worker_runtime_does_not_inherit_parent_capabilities(self):
+        if 'swiftui-expert-skill' not in self.index['skills']:
+            self.skipTest('Swift pack absent')
+        brief={'owner':'main','role':'implementation','allowed_files':['view.swift'],
+               'non_goals':['deployment'],'authority':'approved-task-write',
+               'required_evidence':['affected behavior'],'instructions':['read selected skill'],
+               'candidate':'current','methods':['swiftui-expert-skill']}
+        def resolve():
+            return SELECT.resolve(self.index,brief['methods'],SKILLS,context=self.context,
+                candidate='current',runtime=True,worker_brief=brief)
+        self.assertEqual(resolve()['worker_brief']['status'],'blocked-by-worker-readiness')
+        brief['context']={'task_tags':['swiftui'],'platform':'linux','readiness':{}}
+        self.assertEqual(resolve()['worker_brief']['status'],'blocked-by-worker-readiness')
+        brief['context']=self.context
+        self.assertEqual(resolve()['worker_brief']['status'],'contract-complete')
+        self.assertEqual(resolve()['worker_brief']['runtime_dispatch'],'unverified')
+
     def test_missing_resources_duplicates_and_explicit_external(self):
         with tempfile.TemporaryDirectory() as tmp:
             a, b = Path(tmp)/'one', Path(tmp)/'two'
@@ -88,6 +138,32 @@ class SelectedReadinessTests(unittest.TestCase):
             (a/'external/SKILL.md').write_text('---\nname: external\ndisable-model-invocation: true\n---\nInstructions')
             with self.assertRaises(ValueError): SELECT.resolve(index,['external'],a)
             SELECT.resolve(index,['external'],a,explicit=['external'])
+            for value in ('true # explicit invocation required', 'TRUE # explicit'):
+                (a/'external/SKILL.md').write_text('---\nname: external\ndisable-model-invocation: '+value+'\n---\nInstructions')
+                with self.assertRaisesRegex(ValueError, 'explicit invocation'):
+                    SELECT.resolve(index,['external'],a)
+                SELECT.resolve(index,['external'],a,explicit=['external'])
+
+    def test_worker_harness_must_support_selected_source_but_not_native_fallback(self):
+        if 'forge-how' not in self.index['skills']:
+            self.skipTest('Native companion not selected in this distribution')
+        brief={'owner':'main','role':'investigation','allowed_files':['source.py'],
+               'non_goals':['writes'],'authority':'read-only',
+               'required_evidence':['source trace'],'instructions':['read selected method'],
+               'candidate':'current','methods':['forge-how'],
+               'context':{'harness':'cursor'}}
+        def resolve(harness):
+            return SELECT.resolve(self.index,brief['methods'],SKILLS,context={'harness':harness},
+                                  candidate='current',runtime=True,worker_brief=brief)
+        result=resolve('codex')
+        self.assertEqual(result['methods'][0]['route'],'source')
+        self.assertEqual(result['worker_brief']['status'],'blocked-by-worker-readiness')
+        brief['context']['harness']='codex'
+        self.assertEqual(resolve('codex')['worker_brief']['status'],'contract-complete')
+        brief['context']['harness']='cursor'
+        result=resolve('cursor')
+        self.assertEqual(result['methods'][0]['route'],'fallback')
+        self.assertEqual(result['worker_brief']['status'],'contract-complete')
 
     def test_e2e_provider_and_mobile_are_separate(self):
         self.context.update(task_tags=['e2e'], execution={'surface':'browser','mode':'deterministic'})

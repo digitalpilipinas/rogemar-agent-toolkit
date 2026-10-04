@@ -4,8 +4,8 @@ description: Adapt native Cursor PStack methods to the shared Forge roles, modes
 ---
 # Cursor Forge
 
-Follow the [applicable method contract](../workflow-orchestrator/references/method-contract.md) at entry, material stage changes,
-resume and acceptance. Select relevant methods automatically; preserve one owner,
+Follow the [applicable method contract](../workflow-orchestrator/references/method-contract.md) at entry, every task handoff and delegation,
+material changes, resume and acceptance. Select relevant methods automatically; preserve one owner,
 required evidence and the original working fallback. Query the routing index only
 for the current task; do not load or activate the whole catalog.
 

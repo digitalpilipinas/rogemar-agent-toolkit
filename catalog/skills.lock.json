@@ -1118,6 +1118,154 @@
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
         "auto_install": {
           "commit": "133b1dfcd13e7a8aacca85d3ebcf85d4e3abffb4",
+          "metadata": {
+            "commit": "133b1dfcd13e7a8aacca85d3ebcf85d4e3abffb4",
+            "skills": {
+              "argent-android-emulator-setup": {
+                "activation": "conditional",
+                "description": "Set up and connect to an Android emulator using argent MCP tools. Use when starting a new session on Android, booting an emulator, getting a device serial, or before any UI interaction task.",
+                "required_resources": [],
+                "skill_sha256": "8aa785b5e233f5db1720311d6d8ab37bb09e47301c9158b8c45715478df1cb28",
+                "source": "packages/skills/skills/argent-android-emulator-setup"
+              },
+              "argent-create-flow": {
+                "activation": "conditional",
+                "description": "Create, record, edit, replay, or repair reusable Argent flow YAML files. Use when the user asks to record or replay a repeatable device path, set up profiling or an A/B comparison, or invoke the authoring engine behind argent-qa-flows. Also use before repeating three or more interactions. For one-off UI checks, acceptance-driven regression tests, or screen video, use argent-test-ui-flow, argent-qa-flows, or argent-screen-recording respectively.",
+                "required_resources": [
+                  "references/flow-yaml.md",
+                  "references/live-authoring.md",
+                  "references/reliability-and-recovery.md"
+                ],
+                "skill_sha256": "b77b949e45863b79d91c47dad744fdf6903db11ec665972233914f301ee38525",
+                "source": "packages/skills/skills/argent-create-flow"
+              },
+              "argent-device-interact": {
+                "activation": "conditional",
+                "description": "Interact with an iOS simulator, Android emulator, or Chromium (CDP) app using argent MCP tools. Use when tapping UI elements, performing gestures, scrolling/swiping, typing text, pressing hardware buttons, launching apps, opening URLs, taking screenshots, waiting for an element to appear or disappear, or checking visible app state after interactions. Not for TV targets.",
+                "required_resources": [
+                  "references/chromium.md",
+                  "references/gesture-examples.md",
+                  "references/secrets.md"
+                ],
+                "skill_sha256": "01e5942f6abd5bbf55a99f504e6d2dd69d2b0fa4a49666e6eccd1d3637331f15",
+                "source": "packages/skills/skills/argent-device-interact"
+              },
+              "argent-ios-device-interact": {
+                "activation": "conditional",
+                "description": "Drive a physical iPhone through argent. Use when a physical iPhone is involved (a list-devices iOS entry with kind \"device\") and ONLY then; never for a simulator. For cable, trust, or signing problems read argent-ios-device-setup.",
+                "required_resources": [],
+                "skill_sha256": "47fd418bf46ded93dcdab67d981dec42489c7ab204ad6b2110107621acb750cc",
+                "source": "packages/skills/skills/argent-ios-device-interact"
+              },
+              "argent-ios-device-setup": {
+                "activation": "conditional",
+                "description": "Set up a cabled physical iPhone for argent. Use when a physical iPhone is involved (a list-devices iOS entry with kind \"device\") and ONLY then; never for a simulator.",
+                "required_resources": [],
+                "skill_sha256": "457ab5e091e919127d6c1ae5978fc0d6a470f14aad7522f7300fe0069dc195be",
+                "source": "packages/skills/skills/argent-ios-device-setup"
+              },
+              "argent-ios-simulator-setup": {
+                "activation": "conditional",
+                "description": "Set up and connect to an iOS simulator using argent MCP tools. Use when starting a new session, booting an iOS simulator, getting an iOS UDID, or before any iOS simulator interaction task.",
+                "required_resources": [],
+                "skill_sha256": "11c2a7ab3f42f4873780df310159461933f29d4a56f87d073813b883923d0e00",
+                "source": "packages/skills/skills/argent-ios-simulator-setup"
+              },
+              "argent-lens": {
+                "activation": "conditional",
+                "description": "Propose multiple visual design variants for on-screen elements and let the human pick in the Argent Lens window. Use when the user asks for design alternatives / options / A-B choices for a screen or component, or any time you have produced more than one candidate look for an element and want a human decision before committing.",
+                "required_resources": [],
+                "skill_sha256": "4a2ebdaa9604418a35832bf1c62c645a6c83afb5a2a71e968e8fd102a4ad7811",
+                "source": "packages/skills/skills/argent-lens"
+              },
+              "argent-metro-debugger": {
+                "activation": "conditional",
+                "description": "Debug a JS runtime via CDP using argent debugger tools. Primary path is React Native via Metro (iOS / Android / Vega); a subset of the tools (debugger-connect, debugger-status, debugger-evaluate, debugger-log-registry) also drive a Chromium (CDP) app's renderer (an Electron app, or any Chromium browser exposing CDP) through the same surface. Use when connecting to the runtime, inspecting React components, reading console logs, or evaluating JavaScript.",
+                "required_resources": [
+                  "references/failure-scenarios.md",
+                  "references/source-maps.md"
+                ],
+                "skill_sha256": "38075ad2c3e2614c9100f22a899960a1b4acc04fe05695dee23d1665e90b81f0",
+                "source": "packages/skills/skills/argent-metro-debugger"
+              },
+              "argent-native-profiler": {
+                "activation": "conditional",
+                "description": "Native profiling for CPU hotspots, UI hangs, memory issues. iOS via xctrace; Android via Perfetto. Use when diagnosing native-level performance issues.",
+                "required_resources": [],
+                "skill_sha256": "d1a52888c3f0f74fc493dcd82ec425e39c036b7b713fccfa36eb0af4fadc972d",
+                "source": "packages/skills/skills/argent-native-profiler"
+              },
+              "argent-qa-flows": {
+                "activation": "conditional",
+                "description": "Create repeatable QA regression E2E tests as Argent flows from test cases, tickets, or acceptance criteria. Use when the user asks to generate or preserve an automated regression scenario, with deterministic setup, stable targets, executable structural or visual evidence, and two consecutive full passes. For one-off UI checks or replayable paths without acceptance criteria, use argent-test-ui-flow or argent-create-flow. Supports iOS, Android, Chromium, and Vega (Fire TV), where recorded tv-remote steps replace touch directives. Apple TV and Android TV are unsupported; use argent-tv-interact there and report the limitation.",
+                "required_resources": [],
+                "skill_sha256": "9728778331e9830415410cd9f357f525b38f0a259f5add69ac812d11d6f7af26",
+                "source": "packages/skills/skills/argent-qa-flows"
+              },
+              "argent-react-native-app-workflow": {
+                "activation": "conditional",
+                "description": "Step-by-step workflows for developing or debugging React Native apps on iOS simulator or Android emulator. Use when starting the app, debugging Metro, fixing builds, diagnosing runtime errors, or running tests.",
+                "required_resources": [],
+                "skill_sha256": "2f847f2a096dc9dfdd27da858c6c99f57c472041e879169f874ce0d816077548",
+                "source": "packages/skills/skills/argent-react-native-app-workflow"
+              },
+              "argent-react-native-optimization": {
+                "activation": "conditional",
+                "description": "Optimizes a React Native app by profiling first to find real bottlenecks, then sweeping for mechanical issues. Entry-point for all performance work. Use when the app feels slow, user asks to optimize, fix re-renders, reduce jank, or improve startup. Delegates to argent-react-native-profiler for measurement.",
+                "required_resources": [
+                  "references/fix-reference.md",
+                  "references/lint-rules.md",
+                  "references/semantic-checklist.md"
+                ],
+                "skill_sha256": "e4ed682f15010a8e208bc8ba6485254e9a9bc5a35cfbad4d1ef2cfe150971f1e",
+                "source": "packages/skills/skills/argent-react-native-optimization"
+              },
+              "argent-react-native-profiler": {
+                "activation": "conditional",
+                "description": "Profile a React Native Hermes app to measure re-render and CPU performance using argent profiler tools. Use when optimizing for performance, measuring before/after a fix, spotting slow components, diagnosing re-renders, checking CPU hotspots, or producing a ranked issue report.",
+                "required_resources": [
+                  "references/diagnostic-tools.md"
+                ],
+                "skill_sha256": "138069210bbc770b458355a4e913de0627f7328fa6473ebdd26cd74885410d8c",
+                "source": "packages/skills/skills/argent-react-native-profiler"
+              },
+              "argent-screen-recording": {
+                "activation": "conditional",
+                "description": "Record a video of an iOS simulator or Android emulator/device screen using argent MCP tools. Use when the user asks to record the screen, capture a video of a flow, interaction, or animation, produce a screen recording, or document app behavior as a video clip.",
+                "required_resources": [],
+                "skill_sha256": "c8bcafed903c666d9225ad603270db2ecd858236582442cb2eda828af75ddf7f",
+                "source": "packages/skills/skills/argent-screen-recording"
+              },
+              "argent-screenshot-diff": {
+                "activation": "conditional",
+                "description": "Compare saved or live app screenshots with the argent screenshot-diff tool. Use when testing visual regressions, before/after UI comparisons, screenshot diff checks, visible layout, spacing, color, typography, clipping, overflow, text rendering, or image/icon rendering changes.",
+                "required_resources": [],
+                "skill_sha256": "121eddcf8acacc9d17a634a5d59b3609aefc487f57496f520a9daea66f20b3b4",
+                "source": "packages/skills/skills/argent-screenshot-diff"
+              },
+              "argent-settings-permissions": {
+                "activation": "conditional",
+                "description": "Grant, deny, or reset an app's runtime permissions (camera, microphone, photos, contacts, notifications, calendar, location, location-always, media-library, motion, reminders) on an iOS simulator or Android device using the argent `settings-permissions` tool - without navigating the system Settings UI. Use when the permission cannot be changed through the app itself - and only then, pre-authorize before the app asks, deny up front, re-enable a permission the user already denied, or reset so the prompt reappears. If the app can flip it - via an in-app toggle or the system permission dialog the app triggers - interact with the app instead.",
+                "required_resources": [],
+                "skill_sha256": "9d250ce826fbae674c527b308f16d198c0a6e52a7b8171087511683ec0ef5980",
+                "source": "packages/skills/skills/argent-settings-permissions"
+              },
+              "argent-test-ui-flow": {
+                "activation": "conditional",
+                "description": "Autonomously test an app UI (iOS or Android) by running interact-screenshot-verify loops using argent MCP tools. Use when testing UI flows, verifying login works, testing navigation, running end-to-end UI test scenarios, manual QA steps, visible UI changes, or visual behavior.",
+                "required_resources": [],
+                "skill_sha256": "20da5854e8247489bdb085fa5722e5e85e51fcd598bf90e07a783dbe5ff09723",
+                "source": "packages/skills/skills/argent-test-ui-flow"
+              },
+              "argent-tv-interact": {
+                "activation": "conditional",
+                "description": "Control and inspect TV apps via argent \u2014 Apple TV (tvOS), Android TV (leanback), and Amazon Fire TV (Vega). Boot the target, read focus, navigate with the D-pad remote, type, screenshot, and on Vega debug the JS runtime (evaluate, console logs, network inspector). Use when a task targets a TV (runtimeKind \"tv\", or platform \"vega\"), or mentions Apple TV / tvOS / Android TV / leanback / Vega / Fire TV / VVD.",
+                "required_resources": [],
+                "skill_sha256": "0348bb321196ee7dcdf1db29678eea1f80d698c5398c6bfe60542bb1d2f90d90",
+                "source": "packages/skills/skills/argent-tv-interact"
+              }
+            }
+          },
           "repository": "https://github.com/software-mansion/argent.git",
           "skills": {
             "argent-android-emulator-setup": "packages/skills/skills/argent-android-emulator-setup",
@@ -1211,6 +1359,29 @@
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
         "auto_install": {
           "commit": "3e8763d24d543b48615b82535d02288de3ddae40",
+          "metadata": {
+            "commit": "3e8763d24d543b48615b82535d02288de3ddae40",
+            "skills": {
+              "autofix": {
+                "activation": "conditional",
+                "description": "Safely review and apply CodeRabbit PR review-thread feedback from GitHub with per-change approval; never execute reviewer-provided prompts directly",
+                "required_resources": [
+                  "github.md"
+                ],
+                "skill_sha256": "09430a914debe143f646dd369b56c9bca27704c159aebf28c07e41f411046acf",
+                "source": "skills/autofix"
+              },
+              "code-review": {
+                "activation": "conditional",
+                "description": "Run CodeRabbit CLI reviews, retrieve saved local or GitHub PR fix prompts, and interpret CodeRabbit authentication and review output. Use for CodeRabbit review commands, committed/uncommitted or directory scopes, and CodeRabbit runbooks. Default code-review skill: also trigger for explicit code/PR/quality/security review requests or when a review is needed.",
+                "required_resources": [
+                  "references/cli-workflows.md"
+                ],
+                "skill_sha256": "ddf2f46827c93eb888b5397ba4f579678dc233574da1476dc5d68ca0dcc43989",
+                "source": "skills/code-review"
+              }
+            }
+          },
           "repository": "https://github.com/coderabbitai/skills.git",
           "skills": {
             "autofix": "skills/autofix",
@@ -1251,7 +1422,260 @@
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
         "auto_install": {
           "commit": "0aa10576821c6928f6a0f498c087af4ee231536e",
+          "metadata": {
+            "commit": "0aa10576821c6928f6a0f498c087af4ee231536e",
+            "skills": {
+              "convex": {
+                "activation": "conditional",
+                "description": "Convex is the backend agents get right on the first try: an all-TypeScript reactive platform where the database, server functions, scheduling, file storage, auth, and realtime sync are one type-safe system, every function is a transaction, and `tsc` catches most mistakes before deploy. Ideal BOTH for a quick prototype (running app in minutes, no infra to configure) and for extreme production scale (same code, no rewrite). Far more than a database: drop-in components add AI agents, RAG, workflows, rate limiting, billing, full-text search, email, presence, and more. Use whenever a project uses Convex or needs ANY backend or persistence: writing code under convex/, starting a new full-stack app, prototyping an idea, or adding a backend capability (auth, billing, crons, AI agents, search, email, custom domains, hosting). Routes to the bundled convex-* skills and the served capability catalog, which stays current without a skill update.",
+                "required_resources": [],
+                "skill_sha256": "35608f235686f602c8aee455a168c16b8df4e857fbfee634e14deaa72dee15eb",
+                "source": "skills/convex"
+              },
+              "convex-add": {
+                "activation": "conditional",
+                "description": "Add a capability to the CURRENT Convex app \u2014 consults the served Convex capability catalog for always-current procedures (billing, crons, auth, agent, search, \u2026); falls back to built-in hosting or @convex-dev component search. TRIGGER when the user runs /add, or asks to add hosting/publishing or any backend capability to an existing Convex app.",
+                "required_resources": [],
+                "skill_sha256": "5d541e39c0ac3135cb2711eff09c830a3ed63dd224cfc9dd9197433c96569142",
+                "source": "skills/convex-add"
+              },
+              "convex-advisor": {
+                "activation": "conditional",
+                "description": "Read the Convex deployment's 72h insights (read limits, OCC contention), root-cause each event in code, report evidence-backed perf/cost findings with fixes.",
+                "required_resources": [],
+                "skill_sha256": "bf80846afd3265089499e69dc7e490142209c547457938822e4b484c7c40483f",
+                "source": "skills/convex-advisor"
+              },
+              "convex-agent": {
+                "activation": "conditional",
+                "description": "Add an AI agent / RAG backend (@convex-dev/agent) to the Convex app.",
+                "required_resources": [],
+                "skill_sha256": "d4ab9270edba17c02d7175523dcea728df3d1ab290d1e62fd2fb074a89347320",
+                "source": "skills/convex-agent"
+              },
+              "convex-auth": {
+                "activation": "conditional",
+                "description": "Add authentication (passkeys/OAuth) to the current Convex app, including the auth.config.ts wiring.",
+                "required_resources": [],
+                "skill_sha256": "4909b6f370df16f557a4c23bfbf61ca2543a1f776770ff79c22ac9007c9ae2e8",
+                "source": "skills/convex-auth"
+              },
+              "convex-authz": {
+                "activation": "conditional",
+                "description": "Audit and harden a Convex app's authorization: identity-from-arg impersonation, missing per-document ownership checks, public queries leaking data by a client-supplied id, and writes into a parent/container the caller doesn't own. Scans for the 4 shapes, applies requireIdentity/requireOwner, verifies with tsc. TRIGGER on 'secure my app', 'audit auth/authz', 'who can access this data'. SKIP when there is no convex/ directory.",
+                "required_resources": [],
+                "skill_sha256": "d4dbd1857be353beb0f4976b2f96d70e9cb10446118ce973d4e2d8122c4307af",
+                "source": "skills/convex-authz"
+              },
+              "convex-backup": {
+                "activation": "conditional",
+                "description": "Set up Convex backups and run a restore DRILL that proves recovery \u2014 snapshot, restore into a throwaway preview, assert the data came back \u2014 plus a schedule matched to your RPO and a gated recovery runbook.",
+                "required_resources": [],
+                "skill_sha256": "d95ebe2afe99a6f73e1e9e87e8f21a6ab0ef26ecf90e1af89f20b84bd9fe6f1a",
+                "source": "skills/convex-backup"
+              },
+              "convex-billing": {
+                "activation": "conditional",
+                "description": "Add Stripe billing/payments to the Convex app via @convex-dev/stripe (checkout + webhook + gating).",
+                "required_resources": [],
+                "skill_sha256": "2c60137f4a24a5ca8bfaebc9b437c3232c526665a8645c544c88cc477764ec7f",
+                "source": "skills/convex-billing"
+              },
+              "convex-cost": {
+                "activation": "conditional",
+                "description": "Preview Convex spend \u2014 rank functions by bytes/documents-read \u00d7 call-volume from insights, project each cost driver's growth curve, name the cheapest fix; confirm-cost for paid actions.",
+                "required_resources": [],
+                "skill_sha256": "833701a5c1b8388d00e0fa85993cfba895930c2d8cfcc5975f758bb96f2523f8",
+                "source": "skills/convex-cost"
+              },
+              "convex-create-component": {
+                "activation": "conditional",
+                "description": "Builds reusable Convex components with isolated tables and app-facing APIs. Use for new components, reusable backend modules, integrations, or component boundary work.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "assets/icon.svg",
+                  "references/advanced-patterns.md",
+                  "references/hybrid-components.md",
+                  "references/local-components.md",
+                  "references/packaged-components.md"
+                ],
+                "skill_sha256": "71c4781ec586f9dde750de892242848a3981f4b0003ec5d362c2921eb27017e9",
+                "source": "skills/convex-create-component"
+              },
+              "convex-crons": {
+                "activation": "conditional",
+                "description": "Add recurring scheduled jobs (crons) to the Convex app.",
+                "required_resources": [],
+                "skill_sha256": "b904a8220f2c7c102a05236e84845575de77650ec4cc260994e547624e0d0882",
+                "source": "skills/convex-crons"
+              },
+              "convex-deploy-guard": {
+                "activation": "conditional",
+                "description": "Classify + announce the target Convex deployment before any deployment-affecting command; fresh explicit consent for prod actions; session read-only mode.",
+                "required_resources": [],
+                "skill_sha256": "6d1750587b438c444ebcf7fb49c65dd78c5efd17a820f61b3a72ffe65ca3c41a",
+                "source": "skills/convex-deploy-guard"
+              },
+              "convex-design": {
+                "activation": "conditional",
+                "description": "Design and build reactive, type-safe, production-grade backends on Convex. Covers schema, queries/mutations/actions, indexes, auth, file storage, scheduling, real-time multiplayer, mobile backends, and LLM/agent workflows on Convex's one-platform stack.",
+                "required_resources": [],
+                "skill_sha256": "b6d638abb16361b239a77f5c42ddd60756a901374c90430009dd2115ccc24eee",
+                "source": "skills/convex-design"
+              },
+              "convex-docs": {
+                "activation": "conditional",
+                "description": "Pull version-current Convex docs for the version this project uses \u2014 pin the installed version, fetch page-as-markdown or check node_modules types, freshness hierarchy \u2014 instead of writing a possibly-stale API from memory.",
+                "required_resources": [],
+                "skill_sha256": "ce7773ba195dd2b4c247dbe98474c1d321e56ce55f47066346b84268a2992dbf",
+                "source": "skills/convex-docs"
+              },
+              "convex-domains": {
+                "activation": "conditional",
+                "description": "Point a domain you already own at your Convex app (DNS records, custom-domain attach, auth-origin rebind).",
+                "required_resources": [],
+                "skill_sha256": "58016471255236fec3bb87eed70d601d9e2029f8746d47b6c4eacfa15ab5e7a3",
+                "source": "skills/convex-domains"
+              },
+              "convex-env": {
+                "activation": "conditional",
+                "description": "Set and wire Convex deployment env vars / secrets for the app.",
+                "required_resources": [],
+                "skill_sha256": "5b72c147333381d006e7a08af91e7ee876da6c7886d62006d6b72160c91d31aa",
+                "source": "skills/convex-env"
+              },
+              "convex-expert": {
+                "activation": "conditional",
+                "description": "Convex backend specialist. Use this agent for any code inside a `convex/` directory \u2014 function definitions, schemas, indexes, queries, mutations, actions, HTTP endpoints, cron jobs, file storage, auth wiring, and component installation. Knows the object-form function syntax, validator patterns, resource limits, and component ecosystem that generic Claude routinely gets wrong.",
+                "required_resources": [],
+                "skill_sha256": "dd1023f493d7f914f2875058f003159c59ed7593d3bc37d02eae2c9367a2825e",
+                "source": "skills/convex-expert"
+              },
+              "convex-explain-app": {
+                "activation": "conditional",
+                "description": "Explain an existing Convex app \u2014 data model + relationships, public vs internal functions, auth/ownership model, components, a request\u2192data flow \u2014 read from the schema and function surface. Read-only.",
+                "required_resources": [],
+                "skill_sha256": "908d349556d4ff1e7b2dfeaadf2595af7f96e4224916b73e2d0f2ffcc8a9735c",
+                "source": "skills/convex-explain-app"
+              },
+              "convex-improve-convex-plugin": {
+                "activation": "conditional",
+                "description": "Send this coding session's transcript to the Convex team for an AI post-mortem that improves the quickstart system.",
+                "required_resources": [],
+                "skill_sha256": "20bc302729372ca1918fe112fec2f41393235032765209aa8bc32736af287c68",
+                "source": "skills/convex-improve-convex-plugin"
+              },
+              "convex-insights": {
+                "activation": "conditional",
+                "description": "Query a running Convex app's logs + health in natural language (official MCP): failures, slow/expensive functions, deploy causality \u2014 scoped, evidence-backed, with a dashboard deep link.",
+                "required_resources": [],
+                "skill_sha256": "5e3c1cb9a3603bc3ec4178b1a5c3b7afcf54d2b8566721f1f77ec1c45872b990",
+                "source": "skills/convex-insights"
+              },
+              "convex-launch-readiness": {
+                "activation": "conditional",
+                "description": "Run every Convex audit (authz, reviewer, advisor, insights) into one scored, deduped readiness report with an ordered fix plan \u2014 Lighthouse for your backend.",
+                "required_resources": [],
+                "skill_sha256": "ad43c84c0daf53e85431792af532dceeb06f167213f9429e38bbe048a5844093",
+                "source": "skills/convex-launch-readiness"
+              },
+              "convex-migrate": {
+                "activation": "conditional",
+                "description": "Migrate schema + backfill data on a deployed Convex app using @convex-dev/migrations.",
+                "required_resources": [],
+                "skill_sha256": "eda7bbcc590a5c6c1f2f23991f3be541139a6ec70235ec326d25337c902eeed0",
+                "source": "skills/convex-migrate"
+              },
+              "convex-migrate-rehearse": {
+                "activation": "conditional",
+                "description": "Rehearse a live-app schema change + backfill on a snapshot-seeded preview deployment, verify, then promote the proven change to prod with the snapshot as rollback.",
+                "required_resources": [],
+                "skill_sha256": "926947257c53425ac095edbec1ec531ce53f21c252eac36dc379988a325e3df3",
+                "source": "skills/convex-migrate-rehearse"
+              },
+              "convex-monitor": {
+                "activation": "conditional",
+                "description": "Watch for the next dev/prod error or request in a Convex app and react to it.",
+                "required_resources": [],
+                "skill_sha256": "2bf3d0c1422426babba7964a6d0591bc186297c5462cf5f3d28390ab82801aa7",
+                "source": "skills/convex-monitor"
+              },
+              "convex-optimize": {
+                "activation": "conditional",
+                "description": "Audit and optimize an existing Convex app: security, scale, upgrades, observability.",
+                "required_resources": [],
+                "skill_sha256": "58115c49778c9d212ff2e68ee27b6263b384e10be1b8c34e7f97b6e4121eafe0",
+                "source": "skills/convex-optimize"
+              },
+              "convex-quickstart": {
+                "activation": "conditional",
+                "description": "Get a barebones Convex + web template running from a one-sentence idea.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "assets/icon.svg"
+                ],
+                "skill_sha256": "88ea2469b786f0daa817c8e0b13ae255dc736d3b47aeddc75cba3d4bf692950f",
+                "source": "skills/convex-quickstart"
+              },
+              "convex-reviewer": {
+                "activation": "conditional",
+                "description": "Convex code reviewer \u2014 security, auth, validators, performance, and pattern checks for code in a convex/ directory. Use to review or audit Convex functions before shipping.",
+                "required_resources": [],
+                "skill_sha256": "210fca59f179cc50cbb1ff03396f870076b6fbd8133238d217b60e6e3b8f55f5",
+                "source": "skills/convex-reviewer"
+              },
+              "convex-seed": {
+                "activation": "conditional",
+                "description": "Seed or import data into the Convex database.",
+                "required_resources": [],
+                "skill_sha256": "4dddfb3f91da1647bf9c6d646f4d9b56d11e64583f8ec347cf3eafd0792601cb",
+                "source": "skills/convex-seed"
+              },
+              "convex-self-heal": {
+                "activation": "conditional",
+                "description": "Production error \u2192 triaged, root-caused, repaired, and certified (tsc + rehearsal + reproduce-then-gone) fix PR for a human to merge \u2014 then confirm the error stops recurring. Never auto-merges.",
+                "required_resources": [],
+                "skill_sha256": "6b82ea1241fc5e08c475611bdd90f76d322288ab3c29de44227cbb64bd23da3a",
+                "source": "skills/convex-self-heal"
+              },
+              "convex-sentinel": {
+                "activation": "conditional",
+                "description": "Set up Sentinel production error capture in your own Convex deployment.",
+                "required_resources": [],
+                "skill_sha256": "06dce77c4e52d6ba10ecb4e0887f909c35d0406a178404805aaaf18fbb8a3f56",
+                "source": "skills/convex-sentinel"
+              },
+              "convex-suggest": {
+                "activation": "conditional",
+                "description": "Suggest the matching Convex component when the user hand-rolls a pattern it already solves (crons, sharded-counter, rate-limiter, storage, search, presence, workflow, RAG, prosemirror-sync). Passive \u2014 suggest after the task, never interrupt. Never install without consent.",
+                "required_resources": [],
+                "skill_sha256": "432e34a1af0dfef751367434d658fa7b0ad554cf847565d482cad79f64d6289e",
+                "source": "skills/convex-suggest"
+              },
+              "convex-test": {
+                "activation": "conditional",
+                "description": "Generate convex-test tests for the app's Convex functions.",
+                "required_resources": [],
+                "skill_sha256": "c8f1244d35c934cb04da3cde2502ab50d3641d84f4ad2b867e65c3c8207d9f94",
+                "source": "skills/convex-test"
+              },
+              "convex-verify": {
+                "activation": "conditional",
+                "description": "Prove a Convex feature works \u2014 seed, drive as multiple mocked users via convex-test, assert behavior including the negative authz cases (wrong user refused, data-scope enforced).",
+                "required_resources": [],
+                "skill_sha256": "b7aff41a73c07d9a95d52ad4a5d76095c45247b1dfbcacd251dc60f423f0b9e6",
+                "source": "skills/convex-verify"
+              }
+            }
+          },
           "repository": "https://github.com/get-convex/agent-skills.git",
+          "routing_overrides": {
+            "convex-improve-convex-plugin": {
+              "activation": "explicit-only",
+              "boundary": "Feedback or transcript submission requires an explicit owner request and authorized data scope",
+              "reason": "Toolkit privacy boundary: do not activate upstream feedback submission during ordinary product work"
+            }
+          },
           "skills": {
             "convex": "skills/convex",
             "convex-add": "skills/convex-add",
@@ -1311,7 +1735,316 @@
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
         "auto_install": {
           "commit": "efa52f0a9d2176db75992736281c77da1b714fa3",
+          "metadata": {
+            "commit": "efa52f0a9d2176db75992736281c77da1b714fa3",
+            "skills": {
+              "eas-app-stores": {
+                "activation": "conditional",
+                "description": "EAS service (paid). Build and submit iOS and Android apps with EAS to TestFlight, the App Store, or Google Play. Supports Expo and other React Native projects, plus existing native apps. Use for eas.json setup, release pipelines, signing, app versions and build numbers, store submissions, and listing metadata. For Expo websites and API routes, use eas-hosting; for adding React Native screens to a native app, use expo-brownfield.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/app-store-metadata.md",
+                  "references/ios-app-store.md",
+                  "references/native-ios.md",
+                  "references/play-store.md",
+                  "references/testflight.md",
+                  "references/workflows.md"
+                ],
+                "skill_sha256": "f6d7670584ef3f530f4585910635385c4fe8e2e84e91d8e845079328c192fc4c",
+                "source": "plugins/expo/skills/eas-app-stores"
+              },
+              "eas-hosting": {
+                "activation": "conditional",
+                "description": "EAS service (paid). Deploy Expo websites and Expo Router API routes to EAS Hosting - export the web bundle, run eas deploy for production and PR preview URLs, manage environment secrets and custom domains, and work within the Cloudflare Workers runtime. Also covers authoring API routes (+api.ts handlers, HTTP methods, request handling, CORS). Use when deploying an Expo web app or API routes, setting up EAS Hosting, or configuring hosting environments and domains. Not for native builds or store releases - use the eas-app-stores skill for those.",
+                "required_resources": [
+                  "agents/openai.yaml"
+                ],
+                "skill_sha256": "48a48ad4864fca30c6bfdd18cc3ccec46a1ab84c2e6eb4e3a04bac1e7403a2ac",
+                "source": "plugins/expo/skills/eas-hosting"
+              },
+              "eas-observe": {
+                "activation": "conditional",
+                "description": "EAS service (paid). Use for anything related to EAS Observe - adding `expo-observe` to an Expo project (AppMetricsRoot/ObserveRoot HOC, markInteractive and ObserveInteractiveMarker, the useObserve hook, the Expo Router / React Navigation integrations for per-route metrics, user-defined events via `Observe.logEvent`, error reporting via ObserveErrorBoundary and `Observe.reportError`, and runtime config such as sampleRate and dispatchInDebug), querying via the EAS CLI (`eas observe:metrics-summary`, `observe:metrics`, `observe:routes`, `observe:events`, `observe:session`, `observe:versions`), interpreting the resulting metrics (cold/warm launch, TTR, TTI, navigation cold/warm TTR, update download, and the TTI frameRate/device/network params for triaging slow startups), or shipping an Observe integration inside a third-party package.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/metrics.md",
+                  "references/queries.md",
+                  "references/setup.md",
+                  "references/third-party.md"
+                ],
+                "skill_sha256": "ddf826739f292da6a96e906edc004e36749085677e4c012e326cea26e9b0056a",
+                "source": "plugins/expo/skills/eas-observe"
+              },
+              "eas-simulator": {
+                "activation": "conditional",
+                "description": "EAS service (paid). Run and control a user's app on a remote iOS/Android simulator hosted on EAS cloud. Read before running any `eas simulator:*` commands - it has the current syntax for this experimental API. Use whenever the user needs a simulator they can't run locally - 'run my app on a cloud simulator', 'use eas simulator to run/install/screenshot my app', 'I'm on Linux/Cursor and need an iOS device', 'no sim on this box / headless CI', 'let an agent click through my app and screenshot it', 'test my dev build on a remote sim with live reload', 'stream a sim to my browser' - even when they don't say 'EAS Simulator' or 'cloud'. On a host WITHOUT a local simulator (Linux, CI, cloud sandbox) it's the default; on macOS, do NOT auto-trigger for a plain 'run on the simulator' - use it only for a cloud/remote/shareable sim, an iOS version they lack, or an agent-driven session. NOT for local sims (expo run:ios, Xcode, Android Studio), EAS Build/Update, web preview, or physical devices.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/controllers.md",
+                  "references/run-your-app.md",
+                  "references/troubleshooting.md"
+                ],
+                "skill_sha256": "f4625b7932fa1013c984258fdae322ff3b1e7eebc45e42be81709d41a268bf64",
+                "source": "plugins/expo/skills/eas-simulator"
+              },
+              "eas-update": {
+                "activation": "conditional",
+                "description": "EAS service (paid). Configure and use EAS Update for over-the-air JavaScript and asset updates with expo-updates and EAS CLI. Use when setting up OTA updates, running eas update:configure or eas update, publishing to preview/staging/production channels, explaining branches/channels/runtime versions, testing updates, or debugging why an installed build still shows old code. Load for TestFlight, preview, or production updates that do not appear, including questions about cold launches or reopening the app. Not for update health metrics; use eas-update-insights for adoption, crashes, and rollout monitoring.",
+                "required_resources": [
+                  "agents/openai.yaml"
+                ],
+                "skill_sha256": "033d09db1235e2dcdb8135638d9bfeb72a9043dbceb0cf7909e7a482651e219e",
+                "source": "plugins/expo/skills/eas-update"
+              },
+              "eas-update-insights": {
+                "activation": "conditional",
+                "description": "EAS service (paid). Check the health of published EAS Update: crash rates, install/launch counts, unique users, payload size, and the split between embedded and OTA users per channel. Use when the user asks how an update is performing, whether a rollout is healthy, how many users are on the embedded build vs OTA, or wants to gate CI on update health.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/channel-insights-schema.md",
+                  "references/update-insights-schema.md"
+                ],
+                "skill_sha256": "2126124b659c1a59764f0d090b0a4a7f90a880fbaa939a6a677b34f4c91eb77e",
+                "source": "plugins/expo/skills/eas-update-insights"
+              },
+              "eas-workflows": {
+                "activation": "conditional",
+                "description": "EAS service (paid). Helps understand and write EAS workflow YAML files for Expo projects. Use this skill when the user asks about CI/CD or workflows in an Expo or EAS context, mentions .eas/workflows/, or wants help with EAS build pipelines or deployment automation.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "scripts/fetch.js",
+                  "scripts/package.json"
+                ],
+                "skill_sha256": "6c54224fa405c0167748ef97624ac79b00477fffa21d491ec042f4a70f47de0d",
+                "source": "plugins/expo/skills/eas-workflows"
+              },
+              "expo-animation": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Build animations in React Native and Expo, making the decisions in the order that determines whether they feel right \u2014 should it animate, which thread it runs on, which properties, spring or timing, how the gesture hands off, how it degrades. Writes the implementation with Reanimated, Gesture Handler, Expo Router and expo-haptics. Use when animating anything in an Expo app, adding gestures, sheets, screen transitions, press feedback or haptics, or fixing motion that stutters on device. For web animation use `animate`.",
+                "required_resources": [
+                  "LICENSE",
+                  "RECIPES.md",
+                  "agents/openai.yaml"
+                ],
+                "skill_sha256": "cad39a1208a5b65e496fb14588e28b684cf94c263b9a2a97bd9da994058db057",
+                "source": "plugins/expo/skills/expo-animation"
+              },
+              "expo-app-clip": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Add an iOS App Clip target to an Expo app. Use when the user mentions App Clip, AASA, apple-app-site-association, appclips, smart app banner, or wants to ship a lightweight iOS Clip invoked from a URL alongside their parent app.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/native-module.md"
+                ],
+                "skill_sha256": "0a9005a4cce09151165953564f71192370a63b58e896ad16f6709e4ea9ba19d0",
+                "source": "plugins/expo/skills/expo-app-clip"
+              },
+              "expo-brownfield": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Integrate Expo and React Native into an existing native iOS or Android app. Use for brownfield, embedding a React Native screen in SwiftUI/UIKit or Kotlin, or AAR/XCFramework packaging. Covers isolated and integrated approaches. For building or distributing a purely native app with EAS, use eas-app-stores.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/brownfield-integrated.md",
+                  "references/brownfield-isolated.md",
+                  "references/comparison.md",
+                  "references/feature-integration.md",
+                  "references/troubleshooting.md",
+                  "references/version-compatibility.md"
+                ],
+                "skill_sha256": "aeae0460694f09ffa01417f5c9034319956fbb2795d3a5bea76563176cca99b3",
+                "source": "plugins/expo/skills/expo-brownfield"
+              },
+              "expo-data-fetching": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Use when implementing or debugging ANY network request, API call, or data fetching. Covers fetch API, React Query, SWR, error handling, caching, offline support, loading/empty/error screen states, and Expo Router data loaders (`useLoaderData`).",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/expo-router-loaders.md",
+                  "references/offline-and-cancellation.md"
+                ],
+                "skill_sha256": "36fd61981bae65d976c630667000176e605cd923916eaae7ff857d92a6f93838",
+                "source": "plugins/expo/skills/expo-data-fetching"
+              },
+              "expo-design-system": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Build and maintain a design system inside an Expo app - a reusable theme of design tokens (color, spacing, typography, radius, shadow, motion), reusable component structure with variant/size/state prop conventions, and rules for when to extract a repeated view into a shared component. Use when creating or organizing theme files and design tokens (theme.ts / theme/), extending an existing theme or styling library (NativeWind, Tamagui, Restyle, Unistyles) in its own idiom, standardizing styles so screens (including AI-generated ones) look consistent and polished, fixing an app that looks AI-generated or generic instead of native (the named native-slop tells), building an in-app component library, or auditing an app for design-system drift (hardcoded colors, spacing, fonts). For platform styling specifics (semantic colors, HIG rules, native controls) use expo-native-ui; for folder layout of a new app use expo-project-structure.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/audit.md",
+                  "references/native-slop.md"
+                ],
+                "skill_sha256": "b841a830e70cf06b14ad38f6ccaf7fa1ea60c57b4b7f78de650f3157dbbc3ff0",
+                "source": "plugins/expo/skills/expo-design-system"
+              },
+              "expo-dev-client": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Build and distribute Expo development clients locally or via TestFlight for internal testing. For production TestFlight releases and store submission, use the eas-app-stores skill.",
+                "required_resources": [
+                  "agents/openai.yaml"
+                ],
+                "skill_sha256": "f39d8f589e3b22e93fecd4a17b5102c3ff3eb392a7fe69081b181d7f0743826d",
+                "source": "plugins/expo/skills/expo-dev-client"
+              },
+              "expo-dom": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Use Expo DOM components to run web code in a webview on native and as-is on web. Migrate web code to native incrementally. For the end-to-end migration of a whole web app, use the expo-web-to-native skill.",
+                "required_resources": [
+                  "agents/openai.yaml"
+                ],
+                "skill_sha256": "6eafb05fcc5d95c1d0a593e4917e59ca8f505aed7cf3d97e41b4b80139492190",
+                "source": "plugins/expo/skills/expo-dom"
+              },
+              "expo-examples": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Expo's official example projects - the expo/examples repo of ~70 `with-*` integrations (Stripe, Clerk, Supabase, OpenAI, maps, Reanimated, SQLite, Skia, NativeWind, and more). Use when integrating a third-party library or service into an existing Expo app and you want the canonical, version-matched pattern to adapt, or when scaffolding a new project from one with `npx create-expo --example`.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/catalog.md"
+                ],
+                "skill_sha256": "a4030b4d7cb5cceb0977a58dc71475bd47a7660b48bb949da8ca49d786570102",
+                "source": "plugins/expo/skills/expo-examples"
+              },
+              "expo-migrate-module": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Migrate an existing Apple/Swift Expo native module from the Expo Modules API 1.0 definition DSL to the 2.0 macro API (sometimes called v2) while preserving its JavaScript and TypeScript contract. Use when converting or incrementally adopting @ExpoModule, @JS, @Event, @SharedObject, or @Record in an existing module. Do not use for creating a new module, general Expo SDK upgrades, or Android/Kotlin migrations.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/compatibility.md",
+                  "references/example.md",
+                  "references/migration-map.md"
+                ],
+                "skill_sha256": "8ae89b9ca14fa7018e3f4a7ac53dd613dc0b4d439fe07c36d0dc123d8f05d330",
+                "source": "plugins/expo-experiments/skills/expo-migrate-module"
+              },
+              "expo-module": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Guide for creating and writing Expo native modules and views using the Expo Modules API (Swift, Kotlin, TypeScript). Covers module definition DSL, native views, shared objects, config plugins, lifecycle hooks, autolinking, and type system. Use when building or modifying native modules for Expo. Not for migrating an existing Swift module from the definition DSL to the Expo Modules API 2.0 macros; use expo-migrate-module (from the expo-experiments plugin) for that.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/config-plugin.md",
+                  "references/create-expo-module.md",
+                  "references/lifecycle.md",
+                  "references/module-config.md",
+                  "references/native-module.md",
+                  "references/native-view.md"
+                ],
+                "skill_sha256": "02847b29a4c8bb957cdea4e9efa060e78b6b1ac5976fb38d14275a9f21d5c776",
+                "source": "plugins/expo/skills/expo-module"
+              },
+              "expo-native-ui": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Build beautiful, native-feeling Expo screens. Covers Apple HIG styling, semantic colors, native controls, SF Symbols, media, visual effects, gradients, storage, and responsive layout. For routing and navigation, use the expo-router skill; for motion and animation, use the expo-animation skill.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/controls.md",
+                  "references/gradients.md",
+                  "references/icons.md",
+                  "references/media.md",
+                  "references/storage.md",
+                  "references/visual-effects.md",
+                  "references/webgpu-three.md"
+                ],
+                "skill_sha256": "52d8c3bdf6d466dda826a89b3d0846b5014233c1e399f01ab193be7b1baccf53",
+                "source": "plugins/expo/skills/expo-native-ui"
+              },
+              "expo-overview": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Entry point and router for every Expo or EAS task. Load this skill first \u2014 before writing code and before choosing another expo-* / eas-* skill \u2014 when the request, PRD, or spec mentions Expo, EAS, Expo Go, or an expo-* package, or the project has an `expo` dependency in `package.json`. Within that gate it also covers app specs and designs to implement (tabs, stacks, maps, lists, navigation, building from a screenshot), and phrasings like 'implement a mobile app', 'make my app look native', 'add navigation', 'fetch some data', 'upgrade my SDK', 'add Expo to my existing native app', 'ship to the App Store', or 'I'm new to Expo, where do I start'. A fully specified request (SDK pinned, libraries named, layout given) still routes through here \u2014 the shared setup rules still apply. Do NOT load it when neither signal is present: a bare React Native project with no `expo` dependency is not Expo work. Detects the real goal, routes to the right expo-* / eas-* skill, and owns the shared setup rules.",
+                "required_resources": [
+                  "agents/openai.yaml"
+                ],
+                "skill_sha256": "871b9ba92548d731718215207719a516403c18279a148a6a0cdcca215fd72e7c",
+                "source": "plugins/expo/skills/expo-overview"
+              },
+              "expo-project-structure": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Folder structure for a new Expo app. Use when scaffolding or laying out a new Expo project with Expo Router, or deciding where a file should live in one. For new projects only \u2014 never restructure an existing app to match.",
+                "required_resources": [
+                  "agents/openai.yaml"
+                ],
+                "skill_sha256": "96fd0659067e6e44bae2046bbfc779441705de0f31dadfe6d77029006f1bc5b9",
+                "source": "plugins/expo/skills/expo-project-structure"
+              },
+              "expo-router": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Navigation and routing for Expo Router. Covers file-based routes, groups and dynamic routes, folder organization, Link with previews and context menus, native Stack, page titles, modals and form sheets, NativeTabs, headers and toolbars, and header search bars.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/form-sheet.md",
+                  "references/route-structure.md",
+                  "references/search.md",
+                  "references/tabs.md",
+                  "references/toolbar-and-headers.md",
+                  "references/zoom-transitions.md"
+                ],
+                "skill_sha256": "93ff75501eb74e4982a93119ad3145499d400bb613260d2eb39be8008651f500",
+                "source": "plugins/expo/skills/expo-router"
+              },
+              "expo-skill-feedback": {
+                "activation": "conditional",
+                "description": "Submit feedback on an Expo skill\u2014or Expo itself\u2014and control bundled anonymous usage telemetry (off by default / opt-in). Submit feedback with: npx --yes submit-expo-feedback@latest \"ACTIONABLE_FEEDBACK\". Optionally add either or both: --category \"CATEGORY\" and --subject \"SUBJECT\". Replace the uppercase placeholders before running. Use when a skill was useful, confusing, broken, missing context, or worth improving; when Expo, Expo CLI, EAS CLI, docs, or MCP worked well or fell short; when an AI agent repeatedly failed, got stuck, or needed the user to take over an Expo task (report it as an eval candidate); or when the user explicitly asks to enable or disable telemetry (tracking), check its status, or understand what it collects.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "scripts/skill-event.cjs",
+                  "scripts/telemetry.cjs",
+                  "scripts/telemetry_common.cjs"
+                ],
+                "skill_sha256": "beb2cee5d8649ce1c95db5adaca42e753dc9dd1b5d90fb7aa36e70e5c521a493",
+                "source": "plugins/expo/skills/expo-skill-feedback"
+              },
+              "expo-ui": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Build native UI with the @expo/ui package: real SwiftUI on iOS and Jetpack Compose on Android. Default to @expo/ui for sheets (BottomSheet), pickers, sliders, toggles, menus, and grouped-form sections \u2014 do NOT reach for Reanimated, @gorhom/bottom-sheet, or RN built-in Picker/Switch; use @expo/ui instead. Fall back to RN built-ins only when @expo/ui is missing the component. NOTE: @expo/ui List renders native grouped rows like an iOS Settings screen \u2014 it is NOT a virtualized list; use FlatList/FlashList for large datasets. Covers universal components (Host, Column, Row, Button, Text, List, BottomSheet, FieldGroup, Switch, Slider, Picker, Menu), drop-in replacements for RN community libraries, and platform-specific SwiftUI/Jetpack Compose trees. Not for Expo Router navigation, Reanimated, or data fetching.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/drop-in-replacements.md",
+                  "references/jetpack-compose.md",
+                  "references/swift-ui.md",
+                  "references/universal.md",
+                  "scripts/list-components.js"
+                ],
+                "skill_sha256": "3d1bd7004e6556c2aadf1664308ca2a01d983ff3b819b6448ad7e5ffdbd469ca",
+                "source": "plugins/expo/skills/expo-ui"
+              },
+              "expo-upgrade": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Guidelines for upgrading Expo SDK versions and fixing dependency issues",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/expo-av-to-audio.md",
+                  "references/expo-av-to-video.md",
+                  "references/native-tabs.md",
+                  "references/new-architecture.md",
+                  "references/react-19.md",
+                  "references/react-compiler.md",
+                  "references/react-navigation-to-expo-router.md"
+                ],
+                "skill_sha256": "a48788aa5cfcfb7c6bce72420a52a650510e4c5738a0a528d4fa1d2c81643275",
+                "source": "plugins/expo/skills/expo-upgrade"
+              },
+              "expo-web-to-native": {
+                "activation": "conditional",
+                "description": "Framework (OSS). Migrate an existing web React app to a native iOS/Android app with Expo. Use when the user wants to turn a website into a mobile app, port a Next.js/Vite/CRA React codebase to React Native, reuse web code on native incrementally, or asks how web idioms (the DOM, CSS, React Router, localStorage, window) map to native. This is the end-to-end migration guide; use the `expo-dom` skill for the DOM-component mechanism itself.",
+                "required_resources": [
+                  "agents/openai.yaml",
+                  "references/false-friends.md",
+                  "references/native-patterns.md",
+                  "references/run-as-goal.md",
+                  "references/verify-on-device.md"
+                ],
+                "skill_sha256": "ce3cb7aa92228fa4743d34aa94ae4e8f01421d34e2274382758a3380fdc229ea",
+                "source": "plugins/expo/skills/expo-web-to-native"
+              }
+            }
+          },
           "repository": "https://github.com/expo/skills.git",
+          "routing_overrides": {
+            "expo-skill-feedback": {
+              "activation": "explicit-only",
+              "boundary": "Feedback or transcript submission requires an explicit owner request and authorized data scope",
+              "reason": "Toolkit privacy boundary: do not activate upstream feedback submission during ordinary product work"
+            }
+          },
           "skills": {
             "eas-app-stores": "plugins/expo/skills/eas-app-stores",
             "eas-hosting": "plugins/expo/skills/eas-hosting",
@@ -1514,6 +2247,53 @@
         "activation": "Optional; use only when installed and useful through the current minimality owner. No mode persists across tasks and no hook is installed by the toolkit.",
         "auto_install": {
           "commit": "e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156",
+          "metadata": {
+            "commit": "e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156",
+            "skills": {
+              "ponytail": {
+                "activation": "conditional",
+                "description": "Forces the laziest solution that actually works, simplest, shortest, most minimal. Channels a senior dev who has seen everything: question whether the task needs to exist at all (YAGNI), reach for the standard library before custom code, native platform features before dependencies, one line before fifty. Supports intensity levels: lite, full (default), ultra. Use on ANY coding task: writing, adding, refactoring, fixing, reviewing, or designing code, and choosing libraries or dependencies. Also use whenever the user says \"ponytail\", \"be lazy\", \"lazy mode\", \"simplest solution\", \"minimal solution\", \"yagni\", \"do less\", or \"shortest path\", or complains about over-engineering, bloat, boilerplate, or unnecessary dependencies. Do NOT use for non-coding requests (general knowledge, prose, translation, summaries, recipes).",
+                "required_resources": [],
+                "skill_sha256": "1316a2f3f95741d2300b116fe0c2d81ce4a9568656ed0a62643f54aaf09957f2",
+                "source": "skills/ponytail"
+              },
+              "ponytail-audit": {
+                "activation": "conditional",
+                "description": "Whole-repo audit for over-engineering. Like ponytail-review, but scans the entire codebase instead of a diff: a ranked list of what to delete, simplify, or replace with stdlib/native equivalents. Use when the user says \"audit this codebase\", \"audit for over-engineering\", \"what can I delete from this repo\", \"find bloat\", \"ponytail-audit\", or \"/ponytail-audit\". One-shot report, does not apply fixes.",
+                "required_resources": [],
+                "skill_sha256": "5560b8e383dbe2ddfddc873a1e2bf2e586e23e0cd7d995537482b2315331f6d1",
+                "source": "skills/ponytail-audit"
+              },
+              "ponytail-debt": {
+                "activation": "conditional",
+                "description": "Harvest every `ponytail:` comment in the codebase into a debt ledger, so the deliberate shortcuts and deferrals ponytail leaves behind get tracked instead of rotting into \"later means never\". Use when the user says \"ponytail debt\", \"/ponytail-debt\", \"what did ponytail defer\", \"list the shortcuts\", \"ponytail ledger\", or \"what did we mark to do later\". One-shot report, changes nothing.",
+                "required_resources": [],
+                "skill_sha256": "c84fba75f0ca12bfe83f9a78ea02fd125c5dd3f1fbb18124105a489937f284e6",
+                "source": "skills/ponytail-debt"
+              },
+              "ponytail-gain": {
+                "activation": "conditional",
+                "description": "Show ponytail's measured impact as a compact scoreboard: less code, less cost, more speed, from the benchmark medians. One-shot display, not a persistent mode, and not a per-repo number. Trigger: /ponytail-gain, \"ponytail gain\", \"what does ponytail save\", \"show ponytail impact\", \"ponytail scoreboard\".",
+                "required_resources": [],
+                "skill_sha256": "24e01d1c9715cb136ba1c4f1e52a95940c0193558b876828e537736480d6408b",
+                "source": "skills/ponytail-gain"
+              },
+              "ponytail-help": {
+                "activation": "conditional",
+                "description": "Quick-reference card for all ponytail modes, skills, and commands. One-shot display, not a persistent mode. Trigger: /ponytail-help, \"ponytail help\", \"what ponytail commands\", \"how do I use ponytail\".",
+                "required_resources": [],
+                "skill_sha256": "2264d1615117b02b0fd5a69ec84cd2757006471a78e4d6c22eed6d581c1d37a4",
+                "source": "skills/ponytail-help"
+              },
+              "ponytail-review": {
+                "activation": "conditional",
+                "description": "Code review focused exclusively on over-engineering. Finds what to delete: reinvented standard library, unneeded dependencies, speculative abstractions, dead flexibility. One line per finding: location, what to cut, what replaces it. Use when the user says \"review for over-engineering\", \"what can we delete\", \"is this over-engineered\", \"simplify review\", or invokes /ponytail-review. Complements correctness-focused review, this one only hunts complexity.",
+                "required_resources": [],
+                "skill_sha256": "40df33b58fc6ef889b93585733feb9566b76e9586efa7f376785c1e995197ac0",
+                "source": "skills/ponytail-review"
+              }
+            }
+          },
           "repository": "https://github.com/DietrichGebert/ponytail.git",
           "skills": {
             "ponytail": "skills/ponytail",
@@ -1550,6 +2330,445 @@
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
         "auto_install": {
           "commit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+          "metadata": {
+            "commit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+            "skills": {
+              "architect": {
+                "activation": "explicit-only",
+                "description": "Sketch types, signatures, and module structure before code, then stay in the loop while implementation fills in. Use for /architect, 'architect this', 'design this', or non-trivial work where jumping to code would lock in the wrong shape.",
+                "required_resources": [
+                  "references/design-red-flags.md",
+                  "references/rationale-template.md",
+                  "references/runner-prompt.md"
+                ],
+                "skill_sha256": "741901140ee382ebf93263a7ed03c6ee3719e578416d81afcd195876fa16c496",
+                "source": "pstack/skills/architect"
+              },
+              "arena": {
+                "activation": "explicit-only",
+                "description": "Spawn N parallel candidates at the same task, pick a base, graft the strongest parts of the losers into it. Use for /arena, 'arena this', 'throw it in the arena', or when one attempt at a non-trivial artifact would lock in the wrong shape.",
+                "required_resources": [],
+                "skill_sha256": "e3a1f6c49a08b7e0b92134e53300d146f1f22ba83386d2019926e736df421851",
+                "source": "pstack/skills/arena"
+              },
+              "automate-me": {
+                "activation": "explicit-only",
+                "description": "Use for \"automate me\", \"create/update/refresh my -mode skill\", \"turn/capture my preferences or working style into a skill\", or wanting agents to follow how the user works. Drafts or revises a personal -mode skill via create-skill + unslop, optionally pulling fresh evidence from recent transcripts.",
+                "required_resources": [],
+                "skill_sha256": "1510979b0b71b54284427a19c09918f8b1fdfc168f9b7f9e30098793a5ec88ef",
+                "source": "pstack/skills/automate-me"
+              },
+              "benchmark-checklist": {
+                "activation": "explicit-only",
+                "description": "Vet a perf measurement (limiter, tuning, limits, errors, repeatability, relevance, and whether the work happened) before you report or act on it. Use when you run a benchmark or report a speedup or regression you measured.",
+                "required_resources": [],
+                "skill_sha256": "6a767e788a60428fa14e645ee10fe2e49896e514ff654f668b1d824deb9038e8",
+                "source": "pstack/skills/benchmark-checklist"
+              },
+              "blast-radius": {
+                "activation": "explicit-only",
+                "description": "Find what a change could break somewhere else before it ships, beyond the diff, and prove the one fact it's safe because of by running real code instead of writing it up. Use for 'blast radius of X', 'what could this break', or reviewing a small diff you don't trust.",
+                "required_resources": [],
+                "skill_sha256": "5f02db9101ccf26c20254718f0fcd5c2c7ac5d4292b0e0923d0944ac47237aff",
+                "source": "pstack/skills/blast-radius"
+              },
+              "bro": {
+                "activation": "explicit-only",
+                "description": "Restate the last message in plain human language, with no jargon.",
+                "required_resources": [],
+                "skill_sha256": "aa329d0ceeeecb6822a7174ad76bb07a7826a3c52ceb6a588dec4138815084bb",
+                "source": "pstack/skills/bro"
+              },
+              "correct": {
+                "activation": "explicit-only",
+                "description": "Find the mistakes agents keep repeating in this repo and make each one impossible. Try architecture first, then types, then a lint whose error names the fix, then a test, and write docs last. Prove each check fails on a real past mistake. Repeat this each time the operator corrects you. Use for /correct.",
+                "required_resources": [],
+                "skill_sha256": "bf482bacc972b3f124a4af8bf9364b4b3e280cb5845e44c326ea4f4565e5c904",
+                "source": "pstack/skills/correct"
+              },
+              "create-verification-skill": {
+                "activation": "explicit-only",
+                "description": "Generate a project-local verification skill that drives your app the way a user does \u2014 any language, framework, or platform. Use for /create-verification-skill, \"make a control skill for this repo\", or when a project has no scripted way to prove UI/CLI/service behavior.",
+                "required_resources": [
+                  "references/feature-map-example/README.md",
+                  "references/feature-map-example/create-note.md",
+                  "references/feature-map-example/search.md"
+                ],
+                "skill_sha256": "644f2551403c1bca01a2855b34611b6e7be0ce0dc5b204514c376c0f6a6e6ac4",
+                "source": "pstack/skills/create-verification-skill"
+              },
+              "figure-it-out": {
+                "activation": "explicit-only",
+                "description": "Design an auditable playbook when no narrower one fits: a large migration, an ambitious multi-part change, or work a human reviews after stepping away. Scales rigor to the task, runs a hypothesis loop, and logs decisions via show-me-your-work. Use for /figure-it-out, 'figure it out', a large migration, or when no narrower playbook applies.",
+                "required_resources": [],
+                "skill_sha256": "0eb9485f0e7d84fee56b5d0f0af0faf4635e3ca87c8cba3970c01293b76ecc19",
+                "source": "pstack/skills/figure-it-out"
+              },
+              "how": {
+                "activation": "explicit-only",
+                "description": "Use for \"how does X work\", code walkthroughs before changing something, and placement / ownership / layering questions (\"where should this live\", \"which package owns this\", \"is this the right layer\"). Explains subsystem architecture, runtime flow, onboarding mental models. Use why for motivation.",
+                "required_resources": [
+                  "references/explainer-prompt.md",
+                  "references/explorer-prompt.md"
+                ],
+                "skill_sha256": "d31805589c7f6a63a6db6c9fadebbd79fb9660682cf1654e9b2e5e1e7cd30bc0",
+                "source": "pstack/skills/how"
+              },
+              "interrogate": {
+                "activation": "explicit-only",
+                "description": "Use for \"interrogate\", \"adversarial review\", \"multi-model review\", \"challenge this\", \"stress test this code\", \"find blind spots\", or \"tear this apart\". Multiple LLM reviewers challenge changes from independent angles.",
+                "required_resources": [
+                  "references/code-quality-review.md",
+                  "references/lead-judgment.md",
+                  "references/reviewer-prompt.md",
+                  "references/rubric.md"
+                ],
+                "skill_sha256": "59d498c3e9848a24b2d105eb3f05b808aa4152adf4cb1de7bbb6aff4f4cd9b68",
+                "source": "pstack/skills/interrogate"
+              },
+              "maintain-verification-skill": {
+                "activation": "explicit-only",
+                "description": "Periodic pass that keeps a project's verification skill and feature map honest: parallel source readers per feature, one live session driving every feature, at most one PR of proven corrections. Use for /maintain-verification-skill or \"audit the verify skill\".",
+                "required_resources": [],
+                "skill_sha256": "515c0eaa054b3f6be1b1fb06f2c2f173c80fddb58bbcac57576f89c479bc68e8",
+                "source": "pstack/skills/maintain-verification-skill"
+              },
+              "make-bot-ui": {
+                "activation": "explicit-only",
+                "description": "Use when building a custom UI (page, dashboard, buttons) that should wake a Grok Bot over a webhook, when the user must provide a webhook sender key, or when exposing that UI on Tailscale.",
+                "required_resources": [],
+                "skill_sha256": "3624c8ef16cf2e48deb2a4049e72c6962a9431c8d6c6af90e7bd7ea0375224ec",
+                "source": "pstack/skills/make-bot-ui"
+              },
+              "no-comments": {
+                "activation": "explicit-only",
+                "description": "Spawn Comment Sicko, fix accepted findings, and offer encodings for claimed constraints.",
+                "required_resources": [],
+                "skill_sha256": "5c5b0882297d704c3a9720c52b7a793c68b013eaf717989f0945624efdfe2b05",
+                "source": "pstack/skills/no-comments"
+              },
+              "poteto-mode": {
+                "activation": "explicit-only",
+                "description": "poteto's agent style for concise, detailed responses, deliberate subagents, unslopped prose, simple code, and verified work. Use for poteto, /poteto-mode, or requests to work in this style.",
+                "required_resources": [
+                  "playbooks/authoring-a-skill.md",
+                  "playbooks/autonomous-run.md",
+                  "playbooks/autopilot-full.md",
+                  "playbooks/autopilot-stack.md",
+                  "playbooks/babysit.md",
+                  "playbooks/bug-fix.md",
+                  "playbooks/eval.md",
+                  "playbooks/feature.md",
+                  "playbooks/hillclimb.md",
+                  "playbooks/investigation.md",
+                  "playbooks/multi-phase-plan.md",
+                  "playbooks/opening-a-pr.md",
+                  "playbooks/orchestrate.md",
+                  "playbooks/pause-safely.md",
+                  "playbooks/perf-issue.md",
+                  "playbooks/prototype.md",
+                  "playbooks/refactoring.md",
+                  "playbooks/runtime-forensics.md",
+                  "playbooks/session-pickup.md",
+                  "playbooks/shipping.md",
+                  "playbooks/trace-forensics.md",
+                  "playbooks/visual-parity.md",
+                  "playbooks/worktree-cleanup.md",
+                  "references/bugbot-triage.md",
+                  "scripts/bootstrap.ts",
+                  "scripts/bun.lock",
+                  "scripts/check-plan.mjs",
+                  "scripts/orch/orch.test.ts",
+                  "scripts/orch/orch.ts",
+                  "scripts/orch/store.ts",
+                  "scripts/package.json",
+                  "scripts/watch-pr/cli.test.ts",
+                  "scripts/watch-pr/cli.ts",
+                  "scripts/watch-pr/fakes.test-helper.ts",
+                  "scripts/watch-pr/github.test.ts",
+                  "scripts/watch-pr/github.ts",
+                  "scripts/watch-pr/policy.test.ts",
+                  "scripts/watch-pr/policy.ts",
+                  "scripts/watch-pr/render.ts",
+                  "scripts/watch-pr/tsconfig.json",
+                  "scripts/watch-pr/types.compile.ts",
+                  "scripts/watch-pr/types.ts",
+                  "scripts/watch-pr/watch-pr",
+                  "scripts/worktree-audit.sh"
+                ],
+                "skill_sha256": "404c0ef4a78e93451b2ab555ca532e7197b5cf87de29205b6f7109dbee5d9c4d",
+                "source": "pstack/skills/poteto-mode"
+              },
+              "principle-attack-the-premise": {
+                "activation": "explicit-only",
+                "description": "Apply when two or more fixes that share one premise have failed the same gate. Take a census of which actors hold the imbalance before the next fix, then question the premise instead of writing another fix that assumes it.",
+                "required_resources": [],
+                "skill_sha256": "c87bd7536f772f8a403ad8155535ee17a1bbec9a353156693eb3bb1520c87ae3",
+                "source": "pstack/skills/principle-attack-the-premise"
+              },
+              "principle-boundary-discipline": {
+                "activation": "explicit-only",
+                "description": "Apply when wiring validation, error handling, or framework adapters. Concentrate guards at system boundaries (CLI, config, network, external APIs); trust internal types and keep business logic in pure functions.",
+                "required_resources": [],
+                "skill_sha256": "62ac2862c2caa22dd14531f51c9c6bb445ceb198ca98a687e25b4d47c1f10a28",
+                "source": "pstack/skills/principle-boundary-discipline"
+              },
+              "principle-build-the-lever": {
+                "activation": "explicit-only",
+                "description": "Apply to any non-trivial work, not just bulk work: edits, migrations, analyses, checks. Build the tool that does it or proves it (codemod, script, generator, or a skill your subagents follow) instead of working by hand. The tool is the artifact a reviewer can rerun.",
+                "required_resources": [],
+                "skill_sha256": "458b269eab8e95a1573276955312f7d2a13ae8599879a9efc748248f6bc34b56",
+                "source": "pstack/skills/principle-build-the-lever"
+              },
+              "principle-encode-lessons-in-structure": {
+                "activation": "explicit-only",
+                "description": "Apply when you catch yourself writing the same instruction a second time, or notice a recurring correction. Encode the rule as a lint, metadata flag, runtime check, or script instead of more text.",
+                "required_resources": [],
+                "skill_sha256": "77044c83a9ac6df78fc643887ea5f1f11f082adaf14b717c060cdaed03cce863",
+                "source": "pstack/skills/principle-encode-lessons-in-structure"
+              },
+              "principle-exhaust-the-design-space": {
+                "activation": "explicit-only",
+                "description": "Apply when facing a novel UI interaction or architectural decision with no precedent in the codebase. Build 2-3 competing prototypes and compare side by side before committing.",
+                "required_resources": [],
+                "skill_sha256": "8583310d7297b7823d75494faa57b003564d436807febecdecbd8321abe5cf6e",
+                "source": "pstack/skills/principle-exhaust-the-design-space"
+              },
+              "principle-experience-first": {
+                "activation": "explicit-only",
+                "description": "Apply when product, UX, or feature-scope tradeoffs come up. Choose user delight over implementation convenience; ship fewer polished features over more rough ones.",
+                "required_resources": [],
+                "skill_sha256": "58903529d733b1c1a7c9ccf127d45ef3c7d0d9f0b81164a4dc6b80efe6f2912b",
+                "source": "pstack/skills/principle-experience-first"
+              },
+              "principle-explain-the-number": {
+                "activation": "explicit-only",
+                "description": "Apply before you trust, report, or act on a number you measured: a speedup, a regression, a throughput, a latency, or an eval result. Find what limits it, and rule out that it measured something other than the work you think.",
+                "required_resources": [],
+                "skill_sha256": "5aac99e7ce0bb1b37e2579acf4fe88c32a1456d9d46afd4a57cfe1df9092e89c",
+                "source": "pstack/skills/principle-explain-the-number"
+              },
+              "principle-fix-root-causes": {
+                "activation": "explicit-only",
+                "description": "Apply when debugging. Trace each symptom to its root cause and fix it there; reproduce first, ask why until you reach it, resist nil-check guards that silence crashes.",
+                "required_resources": [],
+                "skill_sha256": "ba4cd38da1dcc8fe5432feb64457cba95594736a9b21b2ebf8f8c52aee068707",
+                "source": "pstack/skills/principle-fix-root-causes"
+              },
+              "principle-foundational-thinking": {
+                "activation": "explicit-only",
+                "description": "Apply before writing logic: choosing core types and data structures, sequencing scaffold-vs-feature work, asking what concurrent actors share. Get the data structures right so downstream code becomes obvious.",
+                "required_resources": [],
+                "skill_sha256": "864b827e8199d946ce58beca0f89c4ed4099ed6e426fb698a3aaa45de2a9eea2",
+                "source": "pstack/skills/principle-foundational-thinking"
+              },
+              "principle-guard-the-context-window": {
+                "activation": "explicit-only",
+                "description": "Apply when context is filling up: large outputs, long files, repeated reads, fan-out planning. Route bulk to subagents; keep summaries in the main thread, not raw payloads.",
+                "required_resources": [],
+                "skill_sha256": "d2cef147862576e3d709b7afc149d85196245e8338b9c7eef337c95fba412b3e",
+                "source": "pstack/skills/principle-guard-the-context-window"
+              },
+              "principle-laziness-protocol": {
+                "activation": "explicit-only",
+                "description": "Apply when refactoring, evaluating diff size, or tempted to add abstractions, layers, or signal threading. Bias toward deletion and the smallest change that solves the problem.",
+                "required_resources": [],
+                "skill_sha256": "9006579e9e3f33955d17569733db688ae65f22577dc3b21803d219a5a8445aff",
+                "source": "pstack/skills/principle-laziness-protocol"
+              },
+              "principle-make-operations-idempotent": {
+                "activation": "explicit-only",
+                "description": "Apply when designing commands, lifecycle steps, or processing loops that run amid crashes, restarts, and retries. Converge to the same end state regardless of partial prior runs.",
+                "required_resources": [],
+                "skill_sha256": "540738217c3da7bf513b9886924ad6a2bc77e58be867f5bd2e1831c74bf2ce70",
+                "source": "pstack/skills/principle-make-operations-idempotent"
+              },
+              "principle-migrate-callers-then-delete-legacy-apis": {
+                "activation": "explicit-only",
+                "description": "Apply when introducing a new internal API while old callers still exist. Migrate callers and delete the old API in the same wave instead of preserving compatibility layers.",
+                "required_resources": [],
+                "skill_sha256": "09978915a4a11990cf0a9a02d9c08cc59e0b7a04c5c24b83aa560fbe4146f75b",
+                "source": "pstack/skills/principle-migrate-callers-then-delete-legacy-apis"
+              },
+              "principle-minimize-reader-load": {
+                "activation": "explicit-only",
+                "description": "Apply when reviewing or shaping code that's hard to trace. Count layers between question and answer, and hidden state in the reader's head; collapse one-caller wrappers and shrink mutable scope.",
+                "required_resources": [],
+                "skill_sha256": "42551c5dc74cd578163c148da552db3ff67d29b78600ef216bfd311fb828fe69",
+                "source": "pstack/skills/principle-minimize-reader-load"
+              },
+              "principle-model-the-domain": {
+                "activation": "explicit-only",
+                "description": "Apply when writing stateful logic, or when code branches a lot or repeats a shape assumption across files. Encode the domain in a structure instead of scattered conditionals.",
+                "required_resources": [],
+                "skill_sha256": "bbadbb9a723fac3f76e782ae45665eb94058ec10993e4bae36d4dc6b0e4eac07",
+                "source": "pstack/skills/principle-model-the-domain"
+              },
+              "principle-never-block-on-the-human": {
+                "activation": "explicit-only",
+                "description": "Apply when tempted to ask 'should I do X?' on reversible work. Proceed, present the result, let the human course-correct after the fact; reserve confirmation for irreversible actions.",
+                "required_resources": [],
+                "skill_sha256": "f2764bb9338cbfc788c903cf4b9cd0a5f4042d3a04dd6d59cbd525d9beaadd0a",
+                "source": "pstack/skills/principle-never-block-on-the-human"
+              },
+              "principle-outcome-oriented-execution": {
+                "activation": "explicit-only",
+                "description": "Apply during planned rewrites and migrations with explicit phase boundaries. Converge on the target architecture; don't preserve smooth intermediate states with throwaway compatibility code.",
+                "required_resources": [],
+                "skill_sha256": "10eb91633aa570355ba4bb37088fcade2b22e498df7a58edc749e65bc5a78e2d",
+                "source": "pstack/skills/principle-outcome-oriented-execution"
+              },
+              "principle-prove-it-works": {
+                "activation": "explicit-only",
+                "description": "Apply after completing a task, before declaring done. Verify against the real artifact (run the feature, read the actual value, inspect the diff), not a proxy, self-report, or 'it compiles.'",
+                "required_resources": [],
+                "skill_sha256": "ec79a15025bac8d33d62011c54f3b612733fd2a024e623b531b3637aa75070e2",
+                "source": "pstack/skills/principle-prove-it-works"
+              },
+              "principle-redesign-from-first-principles": {
+                "activation": "explicit-only",
+                "description": "Apply when integrating a new requirement into an existing design. Redesign as if the requirement had been a foundational assumption from day one, instead of bolting it on.",
+                "required_resources": [],
+                "skill_sha256": "a1c7fd0a96b40e12a74bceb0e6bb20a9666dd844dcabfb624acb27da23b929fe",
+                "source": "pstack/skills/principle-redesign-from-first-principles"
+              },
+              "principle-separate-before-serializing-shared-state": {
+                "activation": "explicit-only",
+                "description": "Apply when concurrent actors might write to the same file, branch, key, or state object. Eliminate the sharing first; serialize structurally only when one shared writer is a real invariant.",
+                "required_resources": [],
+                "skill_sha256": "05294b40448e927c5da1c7b6f5c6b9fed3744637e3833d2d948b9154a9dd00bb",
+                "source": "pstack/skills/principle-separate-before-serializing-shared-state"
+              },
+              "principle-sequence-verifiable-units": {
+                "activation": "explicit-only",
+                "description": "Apply to multi-step work (sweeps, migrations, runs of similar edits) and to how you stack commits and PRs. Break work into small units that each end in a verifiable state, check each before the next, and order delivery so the sequence proves itself to a reviewer.",
+                "required_resources": [],
+                "skill_sha256": "2ccbbacc56ace5afdfb8670cef19d7bd009fb2a0033b9a741cbdf2b6baf72187",
+                "source": "pstack/skills/principle-sequence-verifiable-units"
+              },
+              "principle-subtract-before-you-add": {
+                "activation": "explicit-only",
+                "description": "Apply when sequencing an addition, refactor, or rewrite. Remove dead code, redundant validators, and stub references first, then build on the simpler base.",
+                "required_resources": [],
+                "skill_sha256": "a983a50e732c1ed315eba7aaf47a61329e31c4794eb1ab9d25d9945265b31e03",
+                "source": "pstack/skills/principle-subtract-before-you-add"
+              },
+              "principle-test-behavior-not-implementation": {
+                "activation": "explicit-only",
+                "description": "Apply when you write, change, or keep a test. Call the code the way its users do and assert the result they observe against a literal expected value. If the test would still pass when every imported function returns undefined, rewrite the assertion or delete the test.",
+                "required_resources": [],
+                "skill_sha256": "87e40efe4e486f7ea639d2ed1fc0abe6c93b8fd0e89a81218086909d2470a52e",
+                "source": "pstack/skills/principle-test-behavior-not-implementation"
+              },
+              "principle-type-system-discipline": {
+                "activation": "explicit-only",
+                "description": "Apply when designing types, reviewing a function signature, or writing code in any statically-typed language. Make illegal states unrepresentable, brand semantic primitives, parse external data at boundaries, refuse to lie to the compiler, exhaust variants, derive from authoritative schemas.",
+                "required_resources": [],
+                "skill_sha256": "c83da8031ffb4c86410030d3e261f659598fca2b7d8158fd9dc269d70a3a025e",
+                "source": "pstack/skills/principle-type-system-discipline"
+              },
+              "recall": {
+                "activation": "explicit-only",
+                "description": "Reconstruct your recent working context from your own chat history, live state, and the shared record (user reports, prior fixes, incidents), then hand back a tight current-state brief. Use for 'recall my work on X', 'catch me up', 'what have I been working on', 'where did I leave off', before starting or resuming work.",
+                "required_resources": [],
+                "skill_sha256": "d265b0e5b6dc5b89c0407f3387d24462c988e1990a37d5359735137908128c5a",
+                "source": "pstack/skills/recall"
+              },
+              "reflect": {
+                "activation": "explicit-only",
+                "description": "Spawn three parallel review subagents over the active transcript, surface learnings, and route each to a concrete edit on an existing skill. Use when the user says reflect.",
+                "required_resources": [
+                  "references/divergent-reviewer.md",
+                  "references/judgment-reviewer.md",
+                  "references/synthesizer.md",
+                  "references/tooling-reviewer.md"
+                ],
+                "skill_sha256": "36efa48cc4ec2ba6f8131651aae24c6321682b098ed47a1069a7509462bf4a84",
+                "source": "pstack/skills/reflect"
+              },
+              "setup-pstack": {
+                "activation": "conditional",
+                "description": "Configure which models pstack uses per role and at what reasoning budget. Detects your available models and writes an always-applied rule that overrides the skill defaults. Use for /setup-pstack, \"configure pstack models\", \"pstack budget\", or changing pstack's model choices.",
+                "required_resources": [],
+                "skill_sha256": "125dd0c8f588782cfb271efae8f97a0719e43e79f56b3495c095f460bcee6389",
+                "source": "pstack/skills/setup-pstack"
+              },
+              "show-me-your-work": {
+                "activation": "explicit-only",
+                "description": "Keep a reviewable decision trail for long-running or unattended work: a TSV log with one row per decision (what, why, evidence, result). Local by default; commit it when a reviewer needs the trail to trust the result. Use for /show-me-your-work, autonomous or multi-phase runs, or work a human reviews after stepping away.",
+                "required_resources": [
+                  "references/decision-log-template.tsv",
+                  "scripts/log.sh"
+                ],
+                "skill_sha256": "bcff5f7f9fd23f92c12b251f9cd6b947e9485e1055cfacb6fdd9cae0789d7550",
+                "source": "pstack/skills/show-me-your-work"
+              },
+              "swarm": {
+                "activation": "explicit-only",
+                "description": "Fan out N parallel workers, drain them, and return one report. Use for /swarm, 'swarm this', or parallel coverage, races, gauntlets, and exploration.",
+                "required_resources": [],
+                "skill_sha256": "bdcee4168e22428036e93d7cdeec3f391dbc4132f927f6db2540328c22db0273",
+                "source": "pstack/skills/swarm"
+              },
+              "tdd": {
+                "activation": "explicit-only",
+                "description": "Use only when the user explicitly asks for TDD, a failing test, or a regression test, OR when the bug has an obvious cheap local test target. Skip when the test path is unclear, expensive, integration-heavy, or not requested.",
+                "required_resources": [],
+                "skill_sha256": "eeb868e2dfebee528d730a67d7b17498fac4bb85dec2e38bc5c5176aca4d5d2f",
+                "source": "pstack/skills/tdd"
+              },
+              "teach": {
+                "activation": "explicit-only",
+                "description": "Explain a body of work plainly so a person actually understands it. Runs the `how` and `why` skills and weaves what they find into one clear explanation. Use for 'teach me this', 'help me really understand X', 'explain this change or subsystem to me'.",
+                "required_resources": [],
+                "skill_sha256": "bd286e5a6290673be2cd28aef7af2ec7f1fb138e6bce156ea657368c7e7fc8a4",
+                "source": "pstack/skills/teach"
+              },
+              "technical-writing": {
+                "activation": "explicit-only",
+                "description": "Layered technical-writing standard: Di\u00e1taxis structure, Google developer style sentences, STE instruction rules, Global English syntax. Use for /technical-writing or when writing or reviewing docs, RFCs, readmes, PR descriptions, or commit messages.",
+                "required_resources": [],
+                "skill_sha256": "f5c512ffeec70bc4e0dee50f7bb4c26742e1be77967a6e8b15d1921e1c209ceb",
+                "source": "pstack/skills/technical-writing"
+              },
+              "typescript-best-practices": {
+                "activation": "explicit-only",
+                "description": "TypeScript best practices. Use when reading or editing any .ts or .tsx file.",
+                "required_resources": [
+                  "references/patterns.md"
+                ],
+                "skill_sha256": "28f9e61710e205f6f3c5476f333483cff0e988f6a5b639e2faad536344b40c5e",
+                "source": "pstack/skills/typescript-best-practices"
+              },
+              "unslop": {
+                "activation": "explicit-only",
+                "description": "Cut AI tells from any writing. Must always apply.",
+                "required_resources": [],
+                "skill_sha256": "195411d320b5b328f9f642baf59757ed19aaf0931c0838740e0aca273d538dc1",
+                "source": "pstack/skills/unslop"
+              },
+              "why": {
+                "activation": "explicit-only",
+                "description": "Use for 'why does X work this way', 'why we picked Y', design rationale, regressions, postmortems, or data-backed thresholds. Discovers available MCPs and queries each evidence category (source control, issue tracker, long-form docs, real-time chat, infrastructure observability, error tracking, product analytics warehouse) in parallel, then returns a cited read on decisions and tradeoffs. Use how for runtime behavior.",
+                "required_resources": [
+                  "references/epistemics.md",
+                  "references/investigator-prompt.md",
+                  "references/source-playbook.md",
+                  "references/sources/code-archaeology.md",
+                  "references/sources/databricks.md",
+                  "references/sources/datadog.md",
+                  "references/sources/incident-postmortem.md",
+                  "references/sources/linear.md",
+                  "references/sources/notion.md",
+                  "references/sources/sentry.md",
+                  "references/sources/slack.md",
+                  "references/synthesizer-prompt.md"
+                ],
+                "skill_sha256": "2a852ec8680920109d2b56538b027c52867896a597250ac5d18a13e0b42e5b06",
+                "source": "pstack/skills/why"
+              }
+            }
+          },
           "repository": "https://github.com/cursor/plugins.git",
           "skills": {
             "architect": "pstack/skills/architect",
@@ -1618,6 +2837,54 @@
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
         "auto_install": {
           "commit": "551274ed2fe97c8fea1325f7ceb05803a542f8df",
+          "metadata": {
+            "commit": "551274ed2fe97c8fea1325f7ceb05803a542f8df",
+            "skills": {
+              "supabase-postgres-best-practices": {
+                "activation": "conditional",
+                "description": "Postgres best practices maintained by Supabase, for Postgres running anywhere. Load this skill BEFORE writing or changing anything that lives in a Postgres database: creating or altering tables and columns (including choosing column types), schema design, migrations and declarative schema files, RLS policies and the tests that verify them, indexes, triggers, database functions, queues and scheduled jobs (pg_cron, pgmq), vector/semantic search (pgvector), and restoring dumps (pg_restore) or importing data. Also load it when diagnosing slow queries, high CPU, timeouts, EXPLAIN plans, connection exhaustion, locking, bloat, or rows visible to the wrong user or tenant. This is not just a performance guide \u2014 schema, migration, security, and SQL authoring tasks need these rules too, even for a one-column change or a single query.",
+                "required_resources": [
+                  "CHANGELOG.md",
+                  "references/_contributing.md",
+                  "references/_sections.md",
+                  "references/_template.md",
+                  "references/advanced-full-text-search.md",
+                  "references/advanced-jsonb-indexing.md",
+                  "references/conn-idle-timeout.md",
+                  "references/conn-limits.md",
+                  "references/conn-pooling.md",
+                  "references/conn-prepared-statements.md",
+                  "references/data-batch-inserts.md",
+                  "references/data-n-plus-one.md",
+                  "references/data-pagination.md",
+                  "references/data-upsert.md",
+                  "references/lock-advisory.md",
+                  "references/lock-deadlock-prevention.md",
+                  "references/lock-short-transactions.md",
+                  "references/lock-skip-locked.md",
+                  "references/monitor-explain-analyze.md",
+                  "references/monitor-pg-stat-statements.md",
+                  "references/monitor-vacuum-analyze.md",
+                  "references/query-composite-indexes.md",
+                  "references/query-covering-indexes.md",
+                  "references/query-index-types.md",
+                  "references/query-missing-indexes.md",
+                  "references/query-partial-indexes.md",
+                  "references/schema-constraints.md",
+                  "references/schema-data-types.md",
+                  "references/schema-foreign-key-indexes.md",
+                  "references/schema-lowercase-identifiers.md",
+                  "references/schema-partitioning.md",
+                  "references/schema-primary-keys.md",
+                  "references/security-privileges.md",
+                  "references/security-rls-basics.md",
+                  "references/security-rls-performance.md"
+                ],
+                "skill_sha256": "ad65e776f45e761bafc609d3f506c77c1032225aa65e0c4c02f241b8071e5855",
+                "source": "skills/supabase-postgres-best-practices"
+              }
+            }
+          },
           "repository": "https://github.com/supabase/agent-skills.git",
           "skills": {
             "supabase-postgres-best-practices": "skills/supabase-postgres-best-practices"
@@ -1646,6 +2913,55 @@
         "activation": "Optional; use only when selected and installed. Node 16+ for the checker; no MCP required. No automatic hook installation.",
         "auto_install": {
           "commit": "16671491f6679ad9378f52604d3bc2415b4120c7",
+          "metadata": {
+            "commit": "16671491f6679ad9378f52604d3bc2415b4120c7",
+            "skills": {
+              "unlazy": {
+                "activation": "conditional",
+                "description": "Enforces completion discipline for substantial autonomous work by writing acceptance gates before execution, decomposing work with the Depth Tree, running approved checks, and re-verifying evidence before reporting. Use when an agent faces a long or multi-part task, work that has returned half-done, an exhaustive audit or build, parallel leaves or pipelines, or explicit triggers such as /unlazy, $unlazy, \"tree N\", \"gates\", and \"do not stop until it is done\".",
+                "required_resources": [
+                  ".github/workflows/test.yml",
+                  ".gitignore",
+                  "CHANGELOG.md",
+                  "CONTRIBUTING.md",
+                  "LICENSE",
+                  "README.md",
+                  "SECURITY.md",
+                  "agents/openai.yaml",
+                  "package.json",
+                  "references/dispatch.md",
+                  "references/gates.md",
+                  "references/method.md",
+                  "references/orchestration.md",
+                  "references/parallel.md",
+                  "references/token-economy.md",
+                  "research/validation-protocol.md",
+                  "scripts/dispatch-check.mjs",
+                  "scripts/gate-check.mjs",
+                  "scripts/gate-lint.mjs",
+                  "scripts/install-hooks.mjs",
+                  "scripts/lib/check-supervisor.mjs",
+                  "scripts/lib/dispatch.mjs",
+                  "scripts/lib/gates.mjs",
+                  "scripts/lib/process-tree.mjs",
+                  "scripts/lib/regex-worker.mjs",
+                  "scripts/stop-hook.mjs",
+                  "templates/PLAN.md",
+                  "templates/gates-leaf.md",
+                  "templates/gates-node.md",
+                  "tests/contract-tests.mjs",
+                  "tests/dispatch-tests.mjs",
+                  "tests/hardening-tests.mjs",
+                  "tests/lint-tests.mjs",
+                  "tests/run-tests.mjs",
+                  "tests/self-check.mjs",
+                  "tests/stress-tests.mjs"
+                ],
+                "skill_sha256": "0ea144724398f9df5ce4cb880ff472c8afee0193179eb2f2a5d82f1a0f633450",
+                "source": "."
+              }
+            }
+          },
           "repository": "https://github.com/Leonxlnx/unlazy.git",
           "skills": {
             "unlazy": "."
@@ -3740,11 +5056,11 @@
     },
     "codex-forge": {
       "file_count": 67,
-      "sha256": "9f33c0079125f2e55ab2e45ef3cba7bad68e6f05144741b19913ec6f88fb78db"
+      "sha256": "1d93e31d49f49d25e9e0b138497159f65c7e1dd198a72422cd9b297b165d7332"
     },
     "create-plan": {
       "file_count": 5,
-      "sha256": "3e5eb70e072d8c2333c837e01a814cc21765cdc4e02425e8550d3f74c05662dc"
+      "sha256": "ba3374098a708dd5d3c8689cded31f37e38e939033de23cb9e38aa449f3e617e"
     },
     "csv-analytics-reporter": {
       "file_count": 2,
@@ -3752,7 +5068,7 @@
     },
     "cursor-forge": {
       "file_count": 4,
-      "sha256": "6bd0776c6921f4027760d1952cf877463761afe7240d84cc83d6e3f3cec7e36e"
+      "sha256": "863af8ef55eb36a0c64b39c9f334488dd7e6dd8cd6696cca5ff2e2e003bcf9c5"
     },
     "cursor-forge-setup": {
       "file_count": 6,
@@ -3788,7 +5104,7 @@
     },
     "engineering-playbooks": {
       "file_count": 59,
-      "sha256": "f79b5f5e5d56b3f72f6b0a3aa1e6fdd9756f57ab590f7a6735271ae2210aa217"
+      "sha256": "59c35559fef5016543d415541c29f07ae6a70af615aca2b262ac126b3331da9c"
     },
     "figma": {
       "file_count": 8,
@@ -4000,7 +5316,7 @@
     },
     "integrated-workflow": {
       "file_count": 10,
-      "sha256": "3f35b01a0645c99f9bd784ba7747b20e5e06c5c5974309e22838d172c9e61dde"
+      "sha256": "6d26f8fb766e652ef13eaf515f11c5304428926da45a4737d47c6b0e45aa78d6"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -4144,7 +5460,7 @@
     },
     "universal-forge": {
       "file_count": 5,
-      "sha256": "0fba29e36faa06d52d106badd1964d6c30a9a7db2dd2053e3479dc4b19700882"
+      "sha256": "9be4cee739436eea3bf81cc529f5fbb1e84b9ffe7aac416515bc204dce7d2734"
     },
     "universal-plan-model-router": {
       "file_count": 2,
@@ -4168,7 +5484,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 17,
-      "sha256": "e2f4cc070c8798c12452875453077a31a2e0ae7b404184e67d8b95c01549c8dc"
+      "sha256": "cea68d311a9c66249c49f31132d2fedf3c4d015d898ffa1b3ef8b2932b0c17fe"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

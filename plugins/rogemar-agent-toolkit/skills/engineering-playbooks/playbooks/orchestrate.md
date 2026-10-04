@@ -1,5 +1,8 @@
 # Orchestrate
 
+Apply the [task-handoff method contract](../../workflow-orchestrator/references/method-contract.md).
+Carry selected methods, essential instructions, actual worker prerequisites, authority and required evidence in each bounded brief.
+
 Use for a programme that benefits from bounded parallel work. `workflow-orchestrator` is the sole delegation owner; `integrated-workflow` retains approved-programme authority. Forge supplies briefs, drain discipline and optional local evidence tools.
 
 ## Frame and choose ownership
