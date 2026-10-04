@@ -71,7 +71,10 @@ sprint branch; preserve user work and policy. Local-only work stops locally.
 
 ## 2. Build and validate continuously
 
-The orchestrator selects one native/portable engineering playbook and justified
+At each task handoff and delegation, apply the shared
+[method contract](../../workflow-orchestrator/references/method-contract.md): select
+or reuse applicable methods, check changed prerequisites, execute, verify, record
+evidence and advance. The orchestrator selects one native/portable playbook and justified
 skills; apply the selected harness's routing contract when dispatching. Forge's
 artifacts supplement the approved plan and cannot activate tasks or pass gates.
 

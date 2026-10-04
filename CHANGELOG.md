@@ -1,5 +1,17 @@
 # Changelog
 
+## Continuous method selection (unreleased)
+
+- Select or deliberately reuse applicable methods at each approved task and worker
+  handoff, carrying changed prerequisites, authority, evidence and the next action
+  through the existing workflow, playbooks and templates.
+- Correct Forge adversarial-review, profile-setup and personal-style routing;
+  align portable fallbacks and retain proportionate testing and writing scope.
+- Generate distinct external routes from pinned source descriptions, invocation
+  policy and resource inventories. Preserve stricter feedback-submission limits.
+- Detect changed external instructions and missing worker runtime prerequisites
+  without confusing file integrity, native discovery or execution evidence.
+
 ## Toolkit alignment (unreleased; native host qualification remains scoped)
 
 - Add catalog-generated contextual routes for all 110 skills, original-skill fallbacks, and concise entry/resume/acceptance contracts.

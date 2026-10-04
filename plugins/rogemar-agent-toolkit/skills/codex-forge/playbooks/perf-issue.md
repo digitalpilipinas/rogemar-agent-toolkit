@@ -1,5 +1,8 @@
 ### Perf issue
 
+Apply the [task-handoff method contract](../../workflow-orchestrator/references/method-contract.md).
+Select the relevant profiler or Xcode method for a measured bottleneck; explain comparable before/after evidence.
+
 **You own the measurement story. Plan, review, verify the numbers.** Tie every fix to a measurement, don't read source instead of measuring.
 
 1. Capture a baseline trace via the matching control skill.

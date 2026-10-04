@@ -28,10 +28,11 @@ self-review an independent panel or change the rubric to favor an answer.
 
 ## Automate me
 
-Identify the repeated operation, frequency, current cost and failure boundary.
-Compare a small automation with the direct route. Propose or implement only within
-existing scope; schedule, install or connect services only with actual authority.
-Retain a direct/manual path and a way to disable the automation.
+Turn explicitly requested working conventions into a personal mode skill. Inspect
+the existing owner and current instructions, use only authorized history, preserve
+settled preferences, and draft the smallest useful change. Reuse the applicable
+authoring method and user approval. This is personal-style capture, not scheduling;
+selection grants no history, persistence, global settings or publication authority.
 
 ## Blast radius
 
@@ -69,10 +70,12 @@ Do not confuse reading a test with executing it.
 
 ## Interrogate
 
-Identify assumptions that could materially change the result. Resolve repository
-facts directly and ask only consequential unanswered questions. Preserve settled
-decisions and safe labeled assumptions. Independent critique is optional; never
-reopen approved work merely because this method was selected.
+Adversarially review the stated code, diff or design against its intent. Trace
+material claims through contracts and callers; distinguish defects from preferences.
+Use independent read-only reviewers only when justified and available through the
+existing orchestrator, then reconcile a single evidence-backed verdict. Disclose
+single-agent coverage. Review grants no fix authority. Use create-plan for ordinary
+requirements clarification, not this review method.
 
 ## Maintain verification skill
 
@@ -112,11 +115,12 @@ reflection does not approve a global instruction change.
 
 ## Setup
 
-Inspect only the configuration needed by the actual harness/task. Distinguish
-installed files, surfaced tools, authentication and observed execution. Explain
-the concrete gap and use an existing working route where adequate. A settings,
-installation, provider or credential change needs its applicable authorization;
-preserve backups and user choices.
+Inspect the active harness's Forge model/profile preferences and observed native
+controls. Codex uses forge-setup and plan-model-router; Cursor uses cursor-forge-setup;
+other harnesses use their supported controls or retain native defaults. Preserve
+user choices and governing limits. A saved preference is not a live model switch.
+Use codex-capability-maintainer for general capability preparation. This method
+grants no installation, credential, provider or configuration authority.
 
 ## Show me your work
 
@@ -134,10 +138,11 @@ agent, perform useful checks sequentially and disclose the absence of independen
 
 ## Tdd
 
-For a meaningful behavior change, select an observable example that fails for the
-right reason. Make the smallest implementation that satisfies it and preserve
-relevant regression coverage. Inspect integration effects. Skip ritual tests for
-prose or checks that merely mirror the implementation.
+Use when TDD/regression testing is explicitly requested or a bug has an obvious
+cheap local test target. Reproduce the intended behavior with a meaningful failing
+check, fix the defect and re-run relevant coverage. If the test would require broad
+unrelated setup, explain the practical limit and use the closest useful verification.
+Do not weaken existing assertions or force tests that mirror the implementation.
 
 ## Teach
 
@@ -162,10 +167,10 @@ Do not introduce a framework, type layer or full audit merely for reading a file
 
 ## Unslop
 
-Inspect the relevant prose or code for repetition, unnecessary structure and
-unsupported claims. Make bounded improvements that preserve behavior, meaning,
-licenses, rationale and the user's voice. Verify meaningful changed behavior;
-avoid unrelated refactoring or subjective style churn.
+Edit requested prose for clarity, specificity and economy. Preserve factual meaning,
+technical constraints, licenses and the user's voice; remove repetition and unsupported
+claims. Inspect the actual text and relevant source references. This is not an
+unrequested code cleanup or permission to invent a different voice.
 
 ## Why
 

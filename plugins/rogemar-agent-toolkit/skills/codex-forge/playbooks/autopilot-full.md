@@ -1,5 +1,8 @@
 # Autopilot full
 
+Apply the [task-handoff method contract](../../workflow-orchestrator/references/method-contract.md).
+Continue approved tasks across sprints and PR boundaries through Integrated Workflow; retain one owner and its review gates.
+
 Execute an approved programme through verified landing only when merge authority is explicit. Use `integrated-workflow` for the lifecycle and the orchestrator for bounded work. A request to state a plan does not authorize its execution.
 
 1. Establish the outcome, allowed publication/merge actions, operator-owned gates and stop conditions. Reuse the authoritative plan and any existing goal. Do not create a recurring audit job implicitly.

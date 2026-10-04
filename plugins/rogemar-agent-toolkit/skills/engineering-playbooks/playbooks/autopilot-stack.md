@@ -1,5 +1,8 @@
 # Autopilot stack
 
+Apply the [task-handoff method contract](../../workflow-orchestrator/references/method-contract.md).
+Follow approved dependency order, refresh the target after each merge, and select the next safe task without a second coordinator.
+
 Build and verify a linear PR chain for the user to review and land. `integrated-workflow` owns the approved delivery contract; the orchestrator owns delegation.
 
 1. Verify implementation and publication authority separately. If publication is outside scope, prepare the local changes and proposed topology. Preserve user-owned review and merge decisions. Do not create a goal or monitor unless requested.

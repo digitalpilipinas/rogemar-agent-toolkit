@@ -1,5 +1,8 @@
 ### Session pickup
 
+Apply the [task-handoff method contract](../../workflow-orchestrator/references/method-contract.md).
+Restore the last accepted task and unfinished gates; refresh invalidated facts before reusing preparation or advancing.
+
 **You own the resume point. Read the prior trail, don't redo it.** For "take over this", "resume this conversation", "continue from <transcript path>", "you're taking over", "pick up where X left off", a cloud-agent URL handoff, or a pushed branch you're meant to continue.
 
 A pickup is inheritance. The prior agent already paid the cost of reading the code, running the repros, making the design choices. Redoing loses the bias check and burns context. Resist the urge to re-derive; read.

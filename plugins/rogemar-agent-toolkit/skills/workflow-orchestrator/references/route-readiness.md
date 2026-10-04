@@ -2,7 +2,8 @@
 
 The current agent selects methods from the task, changed files, project conventions
 and the routing index. Integrated Workflow invokes that selection through this
-orchestrator at entry and material phase changes. The resolver validates a selected
+orchestrator at every task handoff under the [shared method contract](method-contract.md).
+Select again or deliberately reuse a still-applicable route. The resolver validates a selected
 route; it does not infer relevance, launch workers or make a model obey instructions.
 Use the smallest sufficient selection and retain the active delivery owner.
 
@@ -33,6 +34,10 @@ optional `--entry`. Source-only resolution verifies files/resources and hard ski
 dependencies. Supply additional installation roots with `--additional-skills-root`;
 Codex's standard shared/native roots are understood. Different physical copies in
 those roots are conflicts; symlink aliases to one copy are not duplicate sources.
+External routes use each pinned skill's own description, explicit invocation policy
+and resource inventory. A differing installed instruction hash is a conflict to
+inspect, not permission to overwrite it. Static resource resolution is not runtime
+or semantic selection proof.
 
 For material runtime work, use `--context receipt.json --candidate ID --runtime`.
 Context is an object containing `harness`, `task_tags`, `platform` and `readiness`.
@@ -87,6 +92,10 @@ List-valued fields contain concrete strings. Authority is `read-only` or an exis
 `approved-task-write` grant. The helper cannot verify dispatch, enforce filesystem
 boundaries or replace native sandbox/permissions. Pass essential instructions and
 observed capability limitations to the worker, not just the skill names.
+With `--runtime --worker-brief`, also supply the worker's observed `context` using
+the same readiness shape. Missing or incompatible worker capabilities block that
+handoff even when the parent has a working route. Native dispatch and actual worker
+file discovery remain separately observed evidence.
 
 At acceptance, optional `--acceptance` checks each route's required evidence in
 `context.evidence`: status, candidate, artifact path and SHA-256. These are integrity

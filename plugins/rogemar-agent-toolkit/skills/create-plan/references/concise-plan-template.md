@@ -29,3 +29,8 @@ For a handoff, include essential starting source pointers and refresh conditions
 in the existing scope or steps when useful. Do not copy the full conversation.
 
 Modified by Rogemar Agent Toolkit on 2026-09-07 for portable, proportionate planning.
+
+In the existing task steps or handoff, carry applicable methods (or a reason to
+reuse none), changed prerequisites, authority, required evidence and the next
+dependency-ready action. Reuse the [method contract](../../workflow-orchestrator/references/method-contract.md);
+this adds no separate workbook or mandatory record to a small correction.

@@ -5,6 +5,12 @@ implementation, review, or delivery. It defines entry packages, not additional
 permission. `workflow-orchestrator` remains the only skill that selects
 specialists or Workers.
 
+Apply the [task-handoff method contract](method-contract.md) within every execution
+stage. With operator authorization for the destination, environment preparation
+installs the approved compatible selection; otherwise report the missing installation.
+Reuse existing authorization. Task preparation checks only current prerequisites. Reuse valid preparation and continue
+approved dependency-ready tasks within the existing delivery boundary.
+
 ## Entry packages
 
 | Stage | User-facing entry | Default internal contract | Output or handoff |

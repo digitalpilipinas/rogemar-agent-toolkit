@@ -45,7 +45,9 @@ Each optional hint should provide:
 
 1. `AGENTS.md` directs non-trivial work to `workflow-orchestrator`.
 2. The orchestrator classifies the lifecycle phase, affected surfaces, and risks.
-3. The orchestrator selects applicable specialist skills.
+3. At each task handoff, the orchestrator selects or deliberately reuses applicable
+   methods under [the shared contract](method-contract.md). Pass essential instructions,
+   evidence and actual worker readiness; parent capabilities do not establish worker access.
 4. Specialist skills run sequentially when they require shared context.
 5. The orchestrator may run authorized independent evidence streams in parallel.
    Bounded implementation packages require existing user-authorized execution
