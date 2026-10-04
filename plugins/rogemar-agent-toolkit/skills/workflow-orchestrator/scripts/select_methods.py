@@ -68,7 +68,7 @@ def resolve(index, names, skills_root, *, explicit=(), entry=None, context=None,
                 continue
             path = matches[0]
             issues = []
-            if kind == 'source' and re.search(r'^disable-model-invocation:\s*true\s*$', path.read_text().split('---', 2)[1] if path.read_text().startswith('---') else '', re.M) and name not in explicit:
+            if kind == 'source' and re.search(r'^disable-model-invocation:[ \t]*true(?:[ \t]+#.*)?[ \t]*$', path.read_text().split('---', 2)[1] if path.read_text().startswith('---') else '', re.M | re.I) and name not in explicit:
                 raise ValueError('Installed method requires explicit invocation: ' + name)
             if len({p.resolve() for p in matches}) > 1:
                 issues.append('duplicate discovery copies; reconcile the selected roots')
@@ -112,7 +112,11 @@ def resolve(index, names, skills_root, *, explicit=(), entry=None, context=None,
         else:
             validate_context(worker_context)
             for name in worker_brief['methods']:
-                worker_issues += issues_for(index['skills'][name], worker_context, candidate, runtime=True)
+                route = index['skills'][name]
+                selected_route = next(r for r in result if r['method'] == name)
+                if selected_route.get('route') == 'source' and route.get('targets') and worker_context.get('harness') not in route['targets']:
+                    worker_issues.append(name + ': unsupported or unverified worker harness')
+                worker_issues += issues_for(route, worker_context, candidate, runtime=True)
         if worker_issues:
             brief.update(status='blocked-by-worker-readiness', issues=worker_issues)
     if brief and any(r['status'] in ('blocked', 'unavailable') for r in result):

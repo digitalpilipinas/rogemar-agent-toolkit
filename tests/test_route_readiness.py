@@ -138,6 +138,32 @@ class SelectedReadinessTests(unittest.TestCase):
             (a/'external/SKILL.md').write_text('---\nname: external\ndisable-model-invocation: true\n---\nInstructions')
             with self.assertRaises(ValueError): SELECT.resolve(index,['external'],a)
             SELECT.resolve(index,['external'],a,explicit=['external'])
+            for value in ('true # explicit invocation required', 'TRUE # explicit'):
+                (a/'external/SKILL.md').write_text('---\nname: external\ndisable-model-invocation: '+value+'\n---\nInstructions')
+                with self.assertRaisesRegex(ValueError, 'explicit invocation'):
+                    SELECT.resolve(index,['external'],a)
+                SELECT.resolve(index,['external'],a,explicit=['external'])
+
+    def test_worker_harness_must_support_selected_source_but_not_native_fallback(self):
+        if 'forge-how' not in self.index['skills']:
+            self.skipTest('Native companion not selected in this distribution')
+        brief={'owner':'main','role':'investigation','allowed_files':['source.py'],
+               'non_goals':['writes'],'authority':'read-only',
+               'required_evidence':['source trace'],'instructions':['read selected method'],
+               'candidate':'current','methods':['forge-how'],
+               'context':{'harness':'cursor'}}
+        def resolve(harness):
+            return SELECT.resolve(self.index,brief['methods'],SKILLS,context={'harness':harness},
+                                  candidate='current',runtime=True,worker_brief=brief)
+        result=resolve('codex')
+        self.assertEqual(result['methods'][0]['route'],'source')
+        self.assertEqual(result['worker_brief']['status'],'blocked-by-worker-readiness')
+        brief['context']['harness']='codex'
+        self.assertEqual(resolve('codex')['worker_brief']['status'],'contract-complete')
+        brief['context']['harness']='cursor'
+        result=resolve('cursor')
+        self.assertEqual(result['methods'][0]['route'],'fallback')
+        self.assertEqual(result['worker_brief']['status'],'contract-complete')
 
     def test_e2e_provider_and_mobile_are_separate(self):
         self.context.update(task_tags=['e2e'], execution={'surface':'browser','mode':'deterministic'})

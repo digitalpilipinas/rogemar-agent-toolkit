@@ -32,6 +32,10 @@ def scalar(text, key):
         if not line.startswith(key + ':'):
             continue
         value = line.partition(':')[2].strip()
+        if key == 'disable-model-invocation':
+            boolean = re.fullmatch(r'(true|false)(?:[ \t]+#.*)?', value, re.I)
+            if boolean:
+                return boolean[1].lower()
         if value in ('', '>', '>-', '|', '|-'):
             parts = []
             for following in lines[i + 1:]:

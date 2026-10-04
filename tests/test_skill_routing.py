@@ -116,7 +116,7 @@ class SkillRoutingTests(unittest.TestCase):
                 ROUTING.expected_index(root)
 
     def test_metadata_reads_pinned_instructions_and_resources_without_execution(self):
-        data=b'---\nname: example\ndescription:\n  Inspect a scoped fixture.\n  Preserve its evidence.\ndisable-model-invocation: true\n---\nRead refs/check.md'
+        data=b'---\nname: example\ndescription:\n  Inspect a scoped fixture.\n  Preserve its evidence.\ndisable-model-invocation: true # require explicit invocation\n---\nRead refs/check.md'
         archive=io.BytesIO()
         with tarfile.open(fileobj=archive,mode='w') as tar:
             for path,body in [('SKILL.md',data),('refs/check.md',b'evidence')]:
