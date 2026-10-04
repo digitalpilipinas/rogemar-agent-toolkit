@@ -96,3 +96,11 @@ native control and observed effect, independent of worker routing.
 
 Inspired by Lauren Tan (poteto)'s PStack/poteto-mode. The shared method library
 preserves upstream provenance and MIT notices. This is an independent adaptation.
+
+## Affected capability maintenance
+
+For changed skill dependencies, broken recipes or an explicit update, route through
+`workflow-orchestrator` to portable `codex-capability-maintainer` and the applicable
+`forge-create-verification-skill` or `forge-maintain-verification-skill`. Their entry
+names are retained across harnesses. Scope checks to affected behavior; reuse valid
+evidence and native controls without a full audit or new delivery owner.

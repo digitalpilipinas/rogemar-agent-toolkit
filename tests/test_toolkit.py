@@ -63,8 +63,8 @@ class ToolkitTests(unittest.TestCase):
             "codex-router-skills",
         ):
             self.assertIn(name, groups)
-        self.assertEqual(groups["pstack"]["status"].split(";", 1)[0], "audit-observed")
-        self.assertEqual(len(groups["pstack"]["members"]), 44)
+        self.assertEqual(groups["pstack"]["status"].split(";", 1)[0], "pinned-source")
+        self.assertEqual(set(groups["pstack"]["members"]), set(catalog["dependencies"]["pstack"]["auto_install"]["skills"]))
         runtimes = {entry["id"] for entry in catalog["runtime_integrations"]}
         self.assertTrue(
             {"cursor", "antigravity-gemini", "grok-build", "junie", "command-code", "codex-router"}.issubset(runtimes)

@@ -46,3 +46,12 @@ risk matrix, repository test conventions, parent model and reasoning ceilings,
 and required output format. Require exact proposed checks and evidence gaps.
 Keep the worker below the parent ceilings; return unresolved test sufficiency,
 security, migration, or concurrency judgments to the main agent.
+
+## Suitable E2E journeys
+
+For new supported browser/iOS/Android coverage, prefer the installed `e2e` method
+(TesterArmy), preserving existing runners and tests. Use deterministic assertions
+first; agent-driven steps require the existing approved provider, authentication
+and bounded execution. Keep unit, UI, accessibility and device evidence separate.
+Missing devices, unavailable authentication and failed assertions remain explicit;
+never replace a failed journey with a source-only completion claim.

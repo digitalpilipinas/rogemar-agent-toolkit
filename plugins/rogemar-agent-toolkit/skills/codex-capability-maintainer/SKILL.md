@@ -1,14 +1,18 @@
 ---
 name: codex-capability-maintainer
-description: Use when auditing, adding, updating, or troubleshooting Codex skills, MCP servers, plugins, connectors, automations, hooks, AGENTS.md, global config, or secret-safe local agent capabilities.
+description: Use when auditing, adding, updating, or troubleshooting agent skills, MCP servers, plugins, connectors, automations, hooks, AGENTS.md, global config, or secret-safe local agent capabilities.
 ---
 
-# Codex Capability Maintainer
+# Capability Maintainer (portable; retained entry name)
 
 The inspection, source-maintenance and qualification method is reusable in Cursor
 and other harnesses. Use the current host's actual capability controls. Preserve
 the existing Codex commands as its native route; names and catalog grouping do not
 make the shared method Codex-only.
+
+Select automatically for a changed skill dependency, broken capability recipe, or
+explicit update. Inspect only affected capabilities; do not audit every tool or
+require logins on ordinary tasks.
 
 ## Workflow
 

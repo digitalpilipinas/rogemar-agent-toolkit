@@ -5,9 +5,25 @@ license: MIT
 ---
 # Create a verification skill
 
-## Codex execution contract
+## Portable execution contract
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md) before dispatch or a runtime action. This skill supplies methods and bounded collaboration hints; `workflow-orchestrator` alone selects specialists and subagents. `plan-model-router` resolves task profiles under the active Forge mode, or parent defaults and ceilings when no mode is selected.
+This entry is available in Codex, Cursor and other supported harnesses. Read the
+active Forge adapter only when its harness matches. Codex uses its native runtime
+contract and qualified model router; other harnesses use their observed native
+controls and the shared engineering methods. `workflow-orchestrator` alone selects
+specialists and dispatches workers. Keep one delivery owner and acceptance record.
+
+Select this method automatically only when changed behavior needs new coverage,
+a recipe breaks, relevant dependencies change, or the owner requests an update.
+Reuse current verification recipes and unchanged readiness evidence. Do not perform
+a full skill audit, create a new verifier or demand a new login on every task.
+
+For supported browser/iOS/Android journeys, prefer the installed `e2e` method for
+new relevant coverage. Preserve existing runners and tests. Use deterministic
+assertions first; model-driven steps require approved provider/auth/budgets. Preserve
+run artifacts and execution counts. Missing devices, unsupported capabilities,
+stale evidence and failures stay blocked or failed, never silently passed.
+
 
 
 

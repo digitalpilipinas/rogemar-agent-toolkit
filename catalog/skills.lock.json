@@ -300,20 +300,25 @@
           "architect",
           "arena",
           "automate-me",
+          "benchmark-checklist",
           "blast-radius",
           "bro",
+          "correct",
           "create-verification-skill",
           "figure-it-out",
           "how",
           "interrogate",
           "maintain-verification-skill",
+          "make-bot-ui",
           "no-comments",
           "poteto-mode",
+          "principle-attack-the-premise",
           "principle-boundary-discipline",
           "principle-build-the-lever",
           "principle-encode-lessons-in-structure",
           "principle-exhaust-the-design-space",
           "principle-experience-first",
+          "principle-explain-the-number",
           "principle-fix-root-causes",
           "principle-foundational-thinking",
           "principle-guard-the-context-window",
@@ -329,6 +334,7 @@
           "principle-separate-before-serializing-shared-state",
           "principle-sequence-verifiable-units",
           "principle-subtract-before-you-add",
+          "principle-test-behavior-not-implementation",
           "principle-type-system-discipline",
           "recall",
           "reflect",
@@ -344,13 +350,13 @@
         ],
         "mode": "external-cursor-plugin",
         "name": "pstack",
-        "notes": "The audit recorded 44 SKILL.md files and 22 playbooks. It is intentionally not copied into the portable bundle; the cached version may be newer than the active version.",
+        "notes": "Native Cursor skill sources are installed at the pinned revision. Plugin registration, model controls and tool access require separate runtime evidence.",
         "purpose": "Cursor-native /poteto-mode and /setup-pstack playbooks, principles, quality practices, and companion skills.",
         "redistribution_status": "Not vendored; Cursor-managed install",
         "repository": "https://github.com/cursor/plugins/tree/main/pstack",
         "source": "Cursor plugin repository",
-        "status": "audit-observed; activation-unverified; Cursor-managed",
-        "version": "0.14.2 local; 0.14.5 cached"
+        "status": "pinned-source; runtime-unverified",
+        "version": "0.15.9"
       },
       {
         "author": "Cursor",
@@ -1882,7 +1888,8 @@
           "test-architecture-engineer",
           "universal-forge",
           "universal-plan-model-router",
-          "codebase-design"
+          "codebase-design",
+          "codex-capability-maintainer"
         ]
       },
       "expo": {
@@ -2219,9 +2226,22 @@
       ]
     },
     "codex-capability-maintainer": {
-      "requires": [],
+      "requires": [
+        "workflow-orchestrator",
+        "engineering-playbooks"
+      ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "codex-forge": {
@@ -2492,10 +2512,21 @@
     },
     "forge-create-verification-skill": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator",
+        "engineering-playbooks"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-figure-it-out": {
@@ -2524,10 +2555,21 @@
     },
     "forge-maintain-verification-skill": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator",
+        "engineering-playbooks"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-make-bot-ui": {
@@ -3686,7 +3728,7 @@
     },
     "code-review-tests": {
       "file_count": 2,
-      "sha256": "ec05b6b8651d31abd109821f6dc1594342fbaabca52972bb8d3d6dd3bfb3cdf8"
+      "sha256": "95f5618d184af5cca5e6d272254ddcff3e5bebd4efa1cc5aa285197bd8d2adec"
     },
     "codebase-design": {
       "file_count": 5,
@@ -3694,11 +3736,11 @@
     },
     "codex-capability-maintainer": {
       "file_count": 3,
-      "sha256": "b14512bc947a4863be36fa44a91250899d17fc3527b4d7a9ba70e965a63e6d8d"
+      "sha256": "f2e99f31e6b9e6a1d14390d6b95847a2b3c8ada292ddb76a5b0bb6c44428f412"
     },
     "codex-forge": {
       "file_count": 67,
-      "sha256": "77d014e0bb2a8073f0dfafa2533b724ae264f830bf4e1dc81ed28fb37d0a0777"
+      "sha256": "9f33c0079125f2e55ab2e45ef3cba7bad68e6f05144741b19913ec6f88fb78db"
     },
     "create-plan": {
       "file_count": 5,
@@ -3710,7 +3752,7 @@
     },
     "cursor-forge": {
       "file_count": 4,
-      "sha256": "0f78f3a6210baaa320851cc6eac7e2efacb85c2539349a87cd8c54d782d3b9e9"
+      "sha256": "6bd0776c6921f4027760d1952cf877463761afe7240d84cc83d6e3f3cec7e36e"
     },
     "cursor-forge-setup": {
       "file_count": 6,
@@ -3778,7 +3820,7 @@
     },
     "forge-create-verification-skill": {
       "file_count": 6,
-      "sha256": "a74846d87e88a687d612d98a4ac5e66cb120729eec6c31c03090f7ef52b11f50"
+      "sha256": "b26e2a27192d308d167153a04c08536a94f48126d8599a8bf654edeca362d8b5"
     },
     "forge-figure-it-out": {
       "file_count": 3,
@@ -3794,7 +3836,7 @@
     },
     "forge-maintain-verification-skill": {
       "file_count": 3,
-      "sha256": "e25787ce33f2d2b78a70ae732bd45602a4f23bd15353b8012303a0a23974f40e"
+      "sha256": "a283120785234db9fd83eeabc6dd6ebfbc7d0bf52ea85f6be81a76e48238e542"
     },
     "forge-make-bot-ui": {
       "file_count": 3,
@@ -3958,7 +4000,7 @@
     },
     "integrated-workflow": {
       "file_count": 10,
-      "sha256": "7e3c750d55c7b70aa230d0615548fd6f39a83056e061d968dc89c84bd54d30e9"
+      "sha256": "3f35b01a0645c99f9bd784ba7747b20e5e06c5c5974309e22838d172c9e61dde"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -4094,7 +4136,7 @@
     },
     "test-architecture-engineer": {
       "file_count": 2,
-      "sha256": "8af0ac8047a5e5ef713f415a22a9f25d87d1dbc9d24b8e1f28c5fd5c76a7ad78"
+      "sha256": "1363b8af602a434973b252397c84bee78a17911b557943afe28ac6a943b8cfee"
     },
     "transcribe": {
       "file_count": 7,
@@ -4102,7 +4144,7 @@
     },
     "universal-forge": {
       "file_count": 5,
-      "sha256": "2e735c90c56143a433dd01a92226c49b1c97479024db8105b49ecdd81a798c08"
+      "sha256": "0fba29e36faa06d52d106badd1964d6c30a9a7db2dd2053e3479dc4b19700882"
     },
     "universal-plan-model-router": {
       "file_count": 2,
@@ -4125,8 +4167,8 @@
       "sha256": "4f6e4f6de44a67dd2d28e4cb80c498481baa6f5035f59661756108ce78cf4e32"
     },
     "workflow-orchestrator": {
-      "file_count": 16,
-      "sha256": "ded416d2061fb996413cc2449148b53232b2be030d1208317469caf3e74737fc"
+      "file_count": 17,
+      "sha256": "2d02258baf74866c4343da645ea5dfdf91ed38e4784d6dbe60d7aa0582b35dd0"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

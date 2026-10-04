@@ -214,3 +214,14 @@ Installing this repository does not activate paid services or approve hooks.
 In an existing Cloud environment, run the same install command there (or append it
 to its existing setup script), then inspect actual skill files and resources in that
 runtime. Do not claim all Cloud agents updated from a local directory count.
+
+## Scoped readiness after installation
+
+Use `python3 scripts/toolkit.py doctor --harness cursor --target user --method e2e
+--capability node --exercise --json` (on one line) for selected files and tools.
+Add `--auth-check` only for a selected live service that needs it. Probes never
+log in, expose auth output or prove a completed feature. Installed skills, host
+discovery, authenticated services and exercised journeys are separate evidence.
+See the orchestrator’s `references/route-readiness.md` for context and worker briefs.
+Run the same install/upgrade inside each reachable cloud environment; matching
+repository revisions or local sync indicators do not prove VM installation.

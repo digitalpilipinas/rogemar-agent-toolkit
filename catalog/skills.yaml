@@ -147,21 +147,28 @@
         "trigger": "Material module or interface design decision",
         "outcome": "Project-specific evidence using the matching references and available tools",
         "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "architecture"
+        ],
+        "required_evidence": [
+          "affected-behavior"
+        ]
       }
     },
     {
       "name": "codex-capability-maintainer",
       "source": "approved local user-level snapshot",
-      "targets": [
-        "codex"
-      ],
       "routing": {
         "trigger": "Relevant capability/update/setup need",
         "outcome": "Existing maintainer and native adaptation, with AQ-01/UP-01 where applicable",
         "boundary": "Selection grants no new install, watcher, credentials or configuration authority",
         "activation": "conditional"
-      }
+      },
+      "requires": [
+        "workflow-orchestrator",
+        "engineering-playbooks"
+      ]
     },
     {
       "name": "codex-forge",
@@ -340,7 +347,17 @@
         "trigger": "Supported browser, iOS or Android end-to-end journey",
         "outcome": "Deterministic assertions and actual execution artifacts; approved bounded AI only where necessary",
         "boundary": "No implicit provider, telemetry, MCP registration or coverage migration",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "e2e"
+        ],
+        "required_evidence": [
+          "journey-run"
+        ],
+        "runtime_capabilities": [
+          "node",
+          "e2e"
+        ]
       }
     },
     {
@@ -492,12 +509,10 @@
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator",
+        "engineering-playbooks"
       ],
       "routing": {
         "trigger": "Missing reusable verification for a recurring meaningful check",
@@ -576,12 +591,10 @@
       "author": "Lauren Tan; Codex adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator",
+        "engineering-playbooks"
       ],
       "routing": {
         "trigger": "Verification exists but changed behavior makes it stale",
@@ -1694,7 +1707,19 @@
         "trigger": "Measured Xcode build performance work: spm-build-analysis",
         "outcome": "Project-specific evidence using the matching references and available tools",
         "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "xcode-performance"
+        ],
+        "required_evidence": [
+          "benchmark-comparison"
+        ],
+        "runtime_capabilities": [
+          "xcode"
+        ],
+        "runtime_platforms": [
+          "darwin"
+        ]
       }
     },
     {
@@ -1751,7 +1776,21 @@
         "trigger": "Swift concurrency implementation, migration or diagnostics",
         "outcome": "Project-specific evidence using the matching references and available tools",
         "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "swift-concurrency"
+        ],
+        "alternative_group": "swift-concurrency",
+        "required_evidence": [
+          "affected-behavior"
+        ],
+        "runtime_capabilities": [
+          "swift"
+        ],
+        "runtime_platforms": [
+          "darwin",
+          "linux"
+        ]
       }
     },
     {
@@ -1783,7 +1822,21 @@
         "trigger": "Focused Swift concurrency review",
         "outcome": "Project-specific evidence using the matching references and available tools",
         "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "swift-concurrency"
+        ],
+        "alternative_group": "swift-concurrency",
+        "required_evidence": [
+          "affected-behavior"
+        ],
+        "runtime_capabilities": [
+          "swift"
+        ],
+        "runtime_platforms": [
+          "darwin",
+          "linux"
+        ]
       }
     },
     {
@@ -1808,7 +1861,20 @@
         "trigger": "Swift Testing unit or integration tests",
         "outcome": "Project-specific evidence using the matching references and available tools",
         "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "swift-testing"
+        ],
+        "required_evidence": [
+          "affected-behavior"
+        ],
+        "runtime_capabilities": [
+          "swift"
+        ],
+        "runtime_platforms": [
+          "darwin",
+          "linux"
+        ]
       }
     },
     {
@@ -1833,7 +1899,19 @@
         "trigger": "Changes in a project using SwiftData",
         "outcome": "Project-specific evidence using the matching references and available tools",
         "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "swiftdata"
+        ],
+        "required_evidence": [
+          "affected-behavior"
+        ],
+        "runtime_capabilities": [
+          "xcode"
+        ],
+        "runtime_platforms": [
+          "darwin"
+        ]
       }
     },
     {
@@ -1900,7 +1978,20 @@
         "trigger": "SwiftUI implementation or diagnostics",
         "outcome": "Project-specific evidence using the matching references and available tools",
         "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "swiftui"
+        ],
+        "alternative_group": "swiftui",
+        "required_evidence": [
+          "affected-behavior"
+        ],
+        "runtime_capabilities": [
+          "xcode"
+        ],
+        "runtime_platforms": [
+          "darwin"
+        ]
       }
     },
     {
@@ -1929,7 +2020,20 @@
         "trigger": "Focused SwiftUI review",
         "outcome": "Project-specific evidence using the matching references and available tools",
         "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "swiftui"
+        ],
+        "alternative_group": "swiftui",
+        "required_evidence": [
+          "affected-behavior"
+        ],
+        "runtime_capabilities": [
+          "xcode"
+        ],
+        "runtime_platforms": [
+          "darwin"
+        ]
       }
     },
     {
@@ -2054,7 +2158,19 @@
         "trigger": "Measured Xcode build performance work: xcode-build-benchmark",
         "outcome": "Project-specific evidence using the matching references and available tools",
         "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "xcode-performance"
+        ],
+        "required_evidence": [
+          "benchmark-comparison"
+        ],
+        "runtime_capabilities": [
+          "xcode"
+        ],
+        "runtime_platforms": [
+          "darwin"
+        ]
       }
     },
     {
@@ -2075,7 +2191,19 @@
         "trigger": "Measured Xcode build performance work: xcode-build-fixer",
         "outcome": "Project-specific evidence using the matching references and available tools",
         "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "xcode-performance"
+        ],
+        "required_evidence": [
+          "benchmark-comparison"
+        ],
+        "runtime_capabilities": [
+          "xcode"
+        ],
+        "runtime_platforms": [
+          "darwin"
+        ]
       },
       "requires": [
         "xcode-build-benchmark"
@@ -2102,7 +2230,19 @@
         "trigger": "Measured Xcode build performance work: xcode-build-orchestrator",
         "outcome": "Project-specific evidence using the matching references and available tools",
         "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "xcode-performance"
+        ],
+        "required_evidence": [
+          "benchmark-comparison"
+        ],
+        "runtime_capabilities": [
+          "xcode"
+        ],
+        "runtime_platforms": [
+          "darwin"
+        ]
       },
       "requires": [
         "xcode-build-benchmark",
@@ -2131,7 +2271,19 @@
         "trigger": "Measured Xcode build performance work: xcode-compilation-analyzer",
         "outcome": "Project-specific evidence using the matching references and available tools",
         "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "xcode-performance"
+        ],
+        "required_evidence": [
+          "benchmark-comparison"
+        ],
+        "runtime_capabilities": [
+          "xcode"
+        ],
+        "runtime_platforms": [
+          "darwin"
+        ]
       }
     },
     {
@@ -2152,7 +2304,19 @@
         "trigger": "Measured Xcode build performance work: xcode-project-analyzer",
         "outcome": "Project-specific evidence using the matching references and available tools",
         "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "xcode-performance"
+        ],
+        "required_evidence": [
+          "benchmark-comparison"
+        ],
+        "runtime_capabilities": [
+          "xcode"
+        ],
+        "runtime_platforms": [
+          "darwin"
+        ]
       }
     }
   ],
@@ -2263,31 +2427,36 @@
       "source": "Cursor plugin repository",
       "repository": "https://github.com/cursor/plugins/tree/main/pstack",
       "install_latest": "/add-plugin pstack",
-      "version": "0.14.2 local; 0.14.5 cached",
-      "status": "audit-observed; activation-unverified; Cursor-managed",
+      "version": "0.15.9",
+      "status": "pinned-source; runtime-unverified",
       "purpose": "Cursor-native /poteto-mode and /setup-pstack playbooks, principles, quality practices, and companion skills.",
       "author": "Lauren Tan (poteto persona)",
       "license_status": "MIT (upstream manifest)",
       "redistribution_status": "Not vendored; Cursor-managed install",
-      "notes": "The audit recorded 44 SKILL.md files and 22 playbooks. It is intentionally not copied into the portable bundle; the cached version may be newer than the active version.",
+      "notes": "Native Cursor skill sources are installed at the pinned revision. Plugin registration, model controls and tool access require separate runtime evidence.",
       "members": [
         "architect",
         "arena",
         "automate-me",
+        "benchmark-checklist",
         "blast-radius",
         "bro",
+        "correct",
         "create-verification-skill",
         "figure-it-out",
         "how",
         "interrogate",
         "maintain-verification-skill",
+        "make-bot-ui",
         "no-comments",
         "poteto-mode",
+        "principle-attack-the-premise",
         "principle-boundary-discipline",
         "principle-build-the-lever",
         "principle-encode-lessons-in-structure",
         "principle-exhaust-the-design-space",
         "principle-experience-first",
+        "principle-explain-the-number",
         "principle-fix-root-causes",
         "principle-foundational-thinking",
         "principle-guard-the-context-window",
@@ -2303,6 +2472,7 @@
         "principle-separate-before-serializing-shared-state",
         "principle-sequence-verifiable-units",
         "principle-subtract-before-you-add",
+        "principle-test-behavior-not-implementation",
         "principle-type-system-discipline",
         "recall",
         "reflect",
@@ -3367,7 +3537,8 @@
         "test-architecture-engineer",
         "universal-forge",
         "universal-plan-model-router",
-        "codebase-design"
+        "codebase-design",
+        "codex-capability-maintainer"
       ],
       "external": [
         "pstack",
