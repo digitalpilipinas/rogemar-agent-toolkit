@@ -13,6 +13,9 @@ Extract durable lessons from the current task and propose improvements to the sk
 
 ## 1. Ground the reflection
 
+Use the shared [bounded retro method](../engineering-playbooks/references/companion-methods.md#reflect)
+for evidenced environment, navigation, tooling and recurring-error friction.
+
 Use the supplied current conversation or a verified task-specific transcript mapping per `forge-recall`. Limit any history access to the authorized workspace and time window. If no transcript is available, create a short in-task digest of observed decisions, corrections and outcomes. Do not scan unrelated conversations.
 
 ## 2. Apply independent lenses

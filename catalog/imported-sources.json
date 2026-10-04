@@ -904,5 +904,46 @@
         "e2e": ">=0.15.0 <1"
       }
     }
+  ],
+  "adaptations": [
+    {
+      "repository": "mattpocock/skills",
+      "commit": "24fe0ef7737efae15c87225755e9f6f5965e4888",
+      "methods": [
+        "grilling",
+        "retro",
+        "writing-for-agents",
+        "domain-modeling",
+        "diagnosing-bugs",
+        "tdd",
+        "pr",
+        "handoff"
+      ],
+      "paths": [
+        "skills/productivity/grilling",
+        "skills/engineering/retro",
+        "skills/productivity/writing-for-agents",
+        "skills/engineering/domain-modeling",
+        "skills/engineering/diagnosing-bugs",
+        "skills/engineering/tdd",
+        "skills/engineering/pr",
+        "skills/productivity/handoff"
+      ],
+      "owners": [
+        "create-plan",
+        "bug-triage",
+        "code-review-tests",
+        "engineering-playbooks",
+        "codex-forge"
+      ],
+      "changes": "Bounded methods in existing owners; reuse settled decisions, proportional checks, existing learning writer and task authority. No competing execution commands, forced interviews, test-seam approvals or mandatory retro reports.",
+      "notices": [
+        "plugins/rogemar-agent-toolkit/skills/create-plan/upstream-notices/mattpocock-LICENSE",
+        "plugins/rogemar-agent-toolkit/skills/bug-triage/upstream-notices/mattpocock-LICENSE",
+        "plugins/rogemar-agent-toolkit/skills/code-review-tests/upstream-notices/mattpocock-LICENSE",
+        "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/upstream-notices/mattpocock-LICENSE",
+        "plugins/rogemar-agent-toolkit/skills/codex-forge/upstream-notices/mattpocock-LICENSE"
+      ]
+    }
   ]
 }

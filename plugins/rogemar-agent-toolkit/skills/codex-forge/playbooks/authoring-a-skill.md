@@ -12,4 +12,11 @@ Check that descriptions, body instructions, invocation policy, routing and porta
 
 When in doubt, delete; prose earns its keep by changing a decision. Tell it to do the thing and skip the reason. Explain only when the rule is confusing without one. Match tone to scope. Point at structural sources (types, READMEs, config); hardcoded details go stale (the **encode-lessons-in-structure** principle skill). Delegate to other skills by path; don't restate. A workflow you keep hitting but isn't captured → propose a new skill.
 
+For agent-facing instructions, make each step end in an observable completion
+condition. Keep one authoritative definition and conditional links that name the
+cases needing them. Remove duplicate guidance and cheap environment lookups that
+can go stale. Adapted from Matt Pocock's `writing-for-agents` at
+`24fe0ef7737efae15c87225755e9f6f5965e4888`
+([MIT notice](../upstream-notices/mattpocock-LICENSE)).
+
 **Reply:** summary of the skill, key design decisions, validation notes.

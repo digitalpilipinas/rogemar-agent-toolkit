@@ -1,5 +1,14 @@
 # Changelog
 
+## Maintained sources and bounded supporting methods (unreleased)
+
+- Refresh pinned CodeRabbit, Argent, Expo, Convex and Ponytail skill instructions
+  and resource metadata; preserve separate runtime and authentication boundaries.
+- Add selected-source, read-only upstream comparisons with explicit incomplete
+  evidence; correct GoalBuddy source identity and pinned family inventories.
+- Adapt attributed grilling, retro, writing, domain, diagnosis, testing and handoff
+  methods inside existing owners with settled decisions and proportional checks.
+
 ## Continuous method selection (unreleased)
 
 - Select or deliberately reuse applicable methods at each approved task and worker

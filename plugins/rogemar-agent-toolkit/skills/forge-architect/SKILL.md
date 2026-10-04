@@ -25,6 +25,9 @@ Reuse the active plan and task IDs. Track relevant design phases there rather th
 
 ## Phase A: Ground the problem
 
+When domain meaning changes, use create-plan's
+[bounded decision and domain method](../create-plan/references/task-framing.md#bounded-decision-questioning).
+
 Build a real mental model of every system the new code touches. Ask the orchestrator to select **forge-how** skill over the relevant subsystems. Critique mode if existing structure is the constraint or the design must push back on it.
 
 Naming a file isn't grounding. Produce the traced model `forge-how` prescribes. If the design redefines ownership or layering, also ask the orchestrator to select **forge-why** skill on the existing shape so the rationale becomes a constraint, not a guess.

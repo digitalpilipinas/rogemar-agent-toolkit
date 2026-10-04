@@ -21,6 +21,10 @@ than claiming a complete five-axis review.
    conventions. A regression test should fail for the original bug or a plausible
    wrong behavior. Avoid tests that merely repeat implementation details,
    assertions with no meaningful failure, or mock-only proof of a real boundary.
+   Derive expected results from requirements or an independent known-good example.
+   For test-first work, alternate a meaningful failing behavior and its minimal
+   implementation; avoid bulk tests for an imagined design. Use the approved
+   public boundary without requesting another approval for each test.
 3. Exercise applicable counterexamples. For sensitive or stateful changes,
    consider malformed, unauthorized, legacy, duplicate, concurrent, private,
    disabled, offline, retry, and rollback inputs. Select the cases that can
@@ -56,6 +60,10 @@ unavailable checks and any owner-approved deferrals. Do not produce a second
 overall approval or run another external reviewer from this companion.
 
 ## Suitable E2E journeys
+
+The behavioral test guidance incorporates Matt Pocock's `tdd` method at
+`24fe0ef7737efae15c87225755e9f6f5965e4888` ([MIT notice](upstream-notices/mattpocock-LICENSE));
+existing project conventions and proportional verification remain authoritative.
 
 For new supported browser/iOS/Android coverage, prefer the installed `e2e` method
 (TesterArmy), preserving existing runners and tests. Use deterministic assertions

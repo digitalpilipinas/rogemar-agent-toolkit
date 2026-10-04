@@ -8,7 +8,7 @@ metadata:
 
 # Create Plan
 
-For intent, source-mode, or approval ambiguity, apply the bounded
+For intent, source-mode or approval ambiguity, or an explicit grilling request, apply the bounded
 [task-framing method](references/task-framing.md). Reuse accepted framing; do not
 start a new prompt-approval loop inside authorized execution.
 

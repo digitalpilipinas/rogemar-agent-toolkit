@@ -18,6 +18,9 @@ evidence can resolve. Select and explain one proportionate design, recording
 compatibility and reversal. Reuse an accepted architecture unless new evidence
 changes it. Independent alternatives are optional and orchestrator-owned.
 
+For changes to domain meaning, reuse create-plan's
+[bounded decision and domain method](../../create-plan/references/task-framing.md#bounded-decision-questioning).
+
 ## Arena
 
 Define equivalent inputs, a bounded question and an outcome-based comparison
@@ -112,6 +115,19 @@ environment, verifier, context, routing and authority causes before proposing a
 lesson. Prefer a regression or structural prevention where useful. Route an
 evidenced candidate to the existing Project Learning writer when enrolled;
 reflection does not approve a global instruction change.
+
+At a verified milestone with meaningful friction, inspect the actual session's
+navigation, environment, tooling, broken or unwired checks and repeated mistakes.
+Prefer repairing an existing check or pointer before adding instructions. Compare
+the prevention cost with the observed problem; no finding or retro report is
+required when there is no useful lesson. Keep broader changes as proposals and
+apply small corrections already covered by task authority. Project Learning's
+enrollment, candidate review and promotion boundaries remain intact.
+
+This bounded retro adapts Matt Pocock's `retro` at
+`24fe0ef7737efae15c87225755e9f6f5965e4888`
+([MIT notice](../upstream-notices/mattpocock-LICENSE)). The upstream command remains
+explicit-only; this adaptation creates no new command, reviewer or memory writer.
 
 ## Setup
 

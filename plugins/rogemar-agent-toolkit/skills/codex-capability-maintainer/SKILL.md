@@ -71,6 +71,18 @@ For discovery drift, explicit-only imports, or service/skill overlap, read
 [trigger maintenance](references/trigger-maintenance.md). Preserve working
 entrypoints and provider workflows; repair concrete paths and controls.
 
+During approved toolkit source maintenance, run `python3 scripts/upstream_compare.py
+--source NAME` from the canonical toolkit checkout (on one line). Select declared
+dependency IDs or imported owner/repository names; repeat the option as needed.
+It reports public upstream revisions and changed paths without installing,
+repinning or authenticating. Unavailable or incomplete comparisons remain unknown;
+review relevant instructions, resources and notices before updating a pin and its
+metadata. Runtime-managed plugins and unpinned references need their owner's route.
+
+For observed workflow friction, reuse the shared
+[bounded retro method](../engineering-playbooks/references/companion-methods.md#reflect).
+Scope maintenance to the changed dependency or evidenced failure.
+
 ## Conditional integrations
 
 These are examples to consider only when the task needs them and a suitable

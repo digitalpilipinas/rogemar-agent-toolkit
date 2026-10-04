@@ -9,9 +9,19 @@ description: Use when investigating errors, logs, failed tests, crashes, CI fail
 
 1. Gather the exact error, command, environment, recent changes, and reproduction path.
 2. Read logs and relevant code before proposing fixes.
+   Build the smallest repeatable check that catches the reported symptom, rather
+   than merely exiting successfully. Minimize inputs while retaining that failure;
+   if reproduction is unavailable, name the missing evidence and keep hypotheses
+   provisional. Redact captured credentials and personal data.
 3. Form a small ranked set of hypotheses with evidence for and against each.
 4. Test the highest-signal hypothesis first using the repo's normal commands.
 5. Implement the smallest safe fix when the user wants action, then verify.
+   Rerun the original scenario as well as the narrowed regression, and remove
+   task-owned diagnostic instrumentation. A performance fix needs measurements.
+
+The focused reproduction method is adapted from Matt Pocock's `diagnosing-bugs`
+at `24fe0ef7737efae15c87225755e9f6f5965e4888` ([MIT notice](upstream-notices/mattpocock-LICENSE)).
+It adds no mandatory hypothesis count, human checkpoint, or production access.
 
 ## Output
 
