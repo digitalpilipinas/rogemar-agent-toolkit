@@ -601,10 +601,15 @@ class ProjectLearningTest(unittest.TestCase):
         )
         self.assertNotEqual(failed.returncode, 0)
         self.assertFalse((self.root / ".codex/project-learning/state" / "session-9-turn-9.json").exists())
+        data["lesson"] = "Replacement wording that must not be accepted"
+        data["evidence"] = [{"kind": "decision", "reference": "chat", "summary": "A later rewrite"}]
+        request.write_text(json.dumps(data))
         ledger.write_text(original, encoding="utf-8")
         accepted = self.workflow_capture(request)
         self.assertTrue(accepted["promoted"])
-        self.assertIn("Retry a legitimate lesson after the ledger is restored", ledger.read_text(encoding="utf-8"))
+        restored = ledger.read_text(encoding="utf-8")
+        self.assertIn("Retry a legitimate lesson after the ledger is restored", restored)
+        self.assertNotIn("Replacement wording that must not be accepted", restored)
 
         for index in range(1, 5):
             held = self.capture_request(index, lesson=f"Held decision {index}")

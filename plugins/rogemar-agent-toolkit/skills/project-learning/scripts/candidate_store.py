@@ -375,12 +375,14 @@ def materialize(events: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
 
 
 def append_event(path: Path, event: dict[str, Any]) -> None:
+    """Add one event by replacing the log, so a crash cannot leave a partial line."""
     path.parent.mkdir(parents=True, exist_ok=True)
+    existing = path.read_text(encoding="utf-8") if path.exists() else ""
+    if existing and not existing.endswith("\n"):
+        head, separator, _tail = existing.rpartition("\n")
+        existing = head + "\n" if separator else ""
     encoded = json.dumps(event, ensure_ascii=False, separators=(",", ":")) + "\n"
-    with path.open("a", encoding="utf-8") as handle:
-        handle.write(encoded)
-        handle.flush()
-        os.fsync(handle.fileno())
+    atomic_text(path, existing + encoded)
 
 
 def marker_path(state_dir: Path, session_id: str, turn_id: str) -> Path:
@@ -539,6 +541,7 @@ def candidate_paths(root: Path, config: dict[str, Any]) -> tuple[Path, Path, Pat
 
 
 def capture(args: argparse.Namespace) -> dict[str, Any]:
+    """Record one lesson candidate and accept it when workflow evidence is in the repository."""
     root = resolve_root(args.root)
     config = config_for(root)
     if config.get("enabled") is not True:
@@ -820,6 +823,7 @@ def validate_promotion_request(request: dict[str, Any]) -> dict[str, Any]:
 
 
 def ledger_entry(root: Path, request: dict[str, Any], candidate: dict[str, Any]) -> str:
+    """Format one accepted lesson for the project ledger."""
     payload = candidate["payload"]
     evidence_lines = [
         f"- [{item['kind']}] {item['reference']} — {item['summary']}"
@@ -909,18 +913,23 @@ def accept_legitimate(
     candidate: dict[str, Any],
     request: dict[str, Any],
 ) -> None:
-    """Append one accepted lesson when the workflow legitimacy check passed."""
+    """Append the stored lesson when the workflow legitimacy check passed.
+
+    A later retry may carry different wording. Acceptance uses the stored
+    candidate, not that replacement text.
+    """
     store_path, _, ledger_path = candidate_paths(root, config)
     if not ledger_path.exists() or LEDGER_MARKER not in ledger_path.read_text(encoding="utf-8"):
         raise StoreError(f"accepted ledger marker is missing: {ledger_path}")
+    payload = candidate["payload"]
     promotion = {
         "schema_version": SCHEMA_VERSION,
         "candidate_id": candidate["candidate_id"],
-        "status": "Reinforced" if request["evidence_level"] == "reinforced" else "Accepted",
-        "lesson": request["lesson"],
-        "applies_when": request["applies_when"],
-        "does_not_apply_when": request["does_not_apply_when"],
-        "evidence_strength": request["evidence_level"],
+        "status": "Reinforced" if payload.get("evidence_level") == "reinforced" else "Accepted",
+        "lesson": payload["lesson"],
+        "applies_when": payload["applies_when"],
+        "does_not_apply_when": payload["does_not_apply_when"],
+        "evidence_strength": payload["evidence_level"],
         "cross_project": "No",
         "approved_by": "workflow",
         "supersedes": None,
