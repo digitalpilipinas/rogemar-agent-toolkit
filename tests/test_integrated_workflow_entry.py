@@ -8,6 +8,7 @@ SKILLS = ROOT / "plugins/rogemar-agent-toolkit/skills"
 
 class IntegratedWorkflowEntryTests(unittest.TestCase):
     def test_entry_names_one_file_per_situation(self):
+        """The entry names one file per situation and defines sprint strategies."""
         path = SKILLS / "integrated-workflow/SKILL.md"
         if not path.is_file():
             self.skipTest("Integrated Workflow was not selected for this distribution")
@@ -25,10 +26,19 @@ class IntegratedWorkflowEntryTests(unittest.TestCase):
             self.assertTrue((SKILLS / "integrated-workflow" / target).is_file(), target)
         self.assertIn("plan-model-router", text)
         self.assertIn("universal-plan-model-router", text)
+        self.assertIn("one vertical slice, or one task inside that slice", text)
+        self.assertIn("more than one vertical slice or task", text)
+        self.assertNotIn("one write-capable owner per worktree", text)
+        self.assertNotIn("one writer at a time", text)
 
     def test_forge_mode_includes_claude(self):
+        """Forge mode applies on Claude as well as Codex, Cursor, and Universal."""
         text = (SKILLS / "workflow-orchestrator/SKILL.md").read_text()
         self.assertIn("Codex, Cursor, Claude, or Universal Forge", text)
+        self.assertIn("One vertical slice, or one task inside that slice", text)
+        self.assertIn("more than one vertical slice or task", text)
+        self.assertNotIn("serializes writers in one worktree", text)
+        self.assertNotIn("one-writer limits", text)
 
 
 if __name__ == "__main__":
