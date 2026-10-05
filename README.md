@@ -34,14 +34,16 @@ Your assistant still uses its own models, tools and accounts.
   decisions, evidence and delivery boundaries.
 
 A **skill** is a reusable set of instructions. A **pack** groups related skills.
-A **harness** means the assistant environment, such as Codex or Cursor. A plugin
-or MCP connection may provide live tools, but copying a skill does not install
-that connection or sign in to an account.
+A **harness** means the assistant environment, such as Codex, Cursor or Claude.
+A plugin or MCP connection may provide live tools, but copying a skill does not
+install that connection or sign in to an account.
 
 Installation copies missing skill files from the pinned third-party repositories
 for the packs you select. `--profile all` selects every compatible pack and
 therefore every pinned repository that pack is allowed to copy. `--skip-external`
-skips that copy for an offline install. Existing external copies are preserved.
+skips that copy for an offline install. Toolkit-managed copies are upgraded when
+their pinned commit changes. Conflicting, symlinked and locally edited copies
+are left in place.
 Native apps, accounts and plugin registration stay separate.
 See [installation and recovery](docs/installation.md#automatic-external-skill-provisioning)
 and [third-party sources](#credits-and-upstream-sources).
