@@ -23,6 +23,28 @@ Deliver the approved outcome with one plan, one implementation owner, one eviden
 record and one consolidated review process. Infer ordinary project details; the
 owner need not name every supporting skill or fill out a configuration form.
 
+## Open only the file this task needs
+
+Classify the task first. `workflow-orchestrator` remains the only skill router.
+It reads `skill-routing.json` for the current task. Do not open the rest of the
+catalog, and do not open every file linked from this skill.
+
+| Situation | Open |
+| --- | --- |
+| Small bounded correction | The proportional-checks section below. Leave the review, UI, and delivery files closed. |
+| Approved implementation on a named harness | The harness table below, then that harness's Forge entry. |
+| Visible or interactive UI | [UI/UX implementation](references/ui-ux-implementation.md) |
+| Unlazy, Ponytail, navigation, or project learning | [Supporting methods](references/supporting-methods.md) |
+| Gate evidence, commit, or merge | [Execution loop](references/execution-loop.md) |
+| CodeRabbit or a ready-PR review | [CodeRabbit review](references/coderabbit-review.md) |
+| A selected tool is missing | [Capability fallbacks](references/capability-fallbacks.md) |
+| Swift, Xcode, or an end-to-end journey | [Route readiness](../workflow-orchestrator/references/route-readiness.md) |
+
+`e2e`, the SwiftUI skills, and `opendesign` are selected only for those situations.
+They install with the `web`, `mobile`, `swift`, `ios`, and `opendesign` packs.
+`plan-model-router` is the Codex router. Cursor uses `cursor-forge-setup`, Claude
+uses `claude-forge-setup`, and every other harness uses `universal-plan-model-router`.
+
 ## Scope and ownership
 
 Start after plan approval. During Goal Prep, preserve its preparation-only
