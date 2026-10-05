@@ -546,6 +546,33 @@ class ProjectLearningTest(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertFalse((self.root / ".codex/project-learning/candidates.jsonl").exists())
 
+    def test_append_preserves_a_valid_unterminated_event(self) -> None:
+        """A complete final event without a newline is kept when the next event is added."""
+        self.initialize()
+        store = self.root / ".codex/project-learning/candidates.jsonl"
+        event = {
+            "schema_version": 1,
+            "event_id": "kept-event",
+            "candidate_id": "PL-KEEP",
+            "event_type": "captured",
+            "recorded_at": "2026-01-01T00:00:00Z",
+            "fingerprint": "abc",
+            "source": {"session_id": "kept-session", "turn_id": "kept-turn"},
+            "payload": {"lesson": "Kept lesson"},
+        }
+        store.write_text(json.dumps(event, separators=(",", ":")), encoding="utf-8")
+        self.assertFalse(store.read_text(encoding="utf-8").endswith("\n"))
+        self.capture_request(1)
+        self.store("capture", "--root", str(self.root), "--request", str(self.root / ".codex/project-learning/state/request-1.json"))
+        text = store.read_text(encoding="utf-8")
+        self.assertNotIn('{"partial"', text)
+        self.assertIn("PL-KEEP", text)
+        self.assertTrue(text.endswith("\n"))
+        lines = [line for line in text.splitlines() if line.strip()]
+        self.assertEqual(len(lines), 2)
+        for line in lines:
+            json.loads(line)
+
     def test_workflow_accepts_repository_evidence_and_holds_chat_decisions(self) -> None:
         """A file or commit in the repository is accepted; a chat decision stays pending."""
         self.enroll()

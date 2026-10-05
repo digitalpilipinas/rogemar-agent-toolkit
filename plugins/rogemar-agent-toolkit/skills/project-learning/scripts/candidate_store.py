@@ -379,8 +379,13 @@ def append_event(path: Path, event: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     existing = path.read_text(encoding="utf-8") if path.exists() else ""
     if existing and not existing.endswith("\n"):
-        head, separator, _tail = existing.rpartition("\n")
-        existing = head + "\n" if separator else ""
+        head, separator, tail = existing.rpartition("\n")
+        try:
+            json.loads(tail)
+        except json.JSONDecodeError:
+            existing = head + "\n" if separator else ""
+        else:
+            existing += "\n"
     encoded = json.dumps(event, ensure_ascii=False, separators=(",", ":")) + "\n"
     atomic_text(path, existing + encoded)
 
