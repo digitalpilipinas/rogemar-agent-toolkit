@@ -8,7 +8,10 @@ SKILLS = ROOT / "plugins/rogemar-agent-toolkit/skills"
 
 class IntegratedWorkflowEntryTests(unittest.TestCase):
     def test_entry_names_one_file_per_situation(self):
-        text = (SKILLS / "integrated-workflow/SKILL.md").read_text()
+        path = SKILLS / "integrated-workflow/SKILL.md"
+        if not path.is_file():
+            self.skipTest("Integrated Workflow was not selected for this distribution")
+        text = path.read_text()
         self.assertIn("## Open only the file this task needs", text)
         for target in (
             "references/ui-ux-implementation.md",
