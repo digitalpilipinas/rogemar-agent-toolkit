@@ -67,8 +67,9 @@ class SelectionInstallTests(unittest.TestCase):
         self.assertNotIn('pstack', codex['external'])
         for harness in ('codex', 'cursor', 'claude', 'gemini'):
             external = toolkit.resolve_selection(harness, 'core', ['engineering'])['external']
-            for name in ('unlazy', 'ponytail', 'coderabbit'):
+            for name in ('unlazy', 'ponytail'):
                 self.assertIn(name, external, harness)
+            self.assertNotIn('coderabbit', external, harness)
         for harness in ('cursor', 'claude', 'gemini', 'agent-skills'):
             selected = toolkit.resolve_selection(harness, 'core', ['engineering'])['skills']
             shared = [n for n in selected if n.startswith('forge-')]

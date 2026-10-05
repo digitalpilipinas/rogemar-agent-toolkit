@@ -186,9 +186,9 @@ filesystems, using Git and Python; it does not depend on Mac paths or personal s
 `--dry-run` lists missing, upgradable, legacy and conflicting names and pinned revisions without network access.
 `--skip-external` explicitly requests a vendor-only/offline installation.
 
-The engineering pack selects Unlazy, Ponytail and CodeRabbit on every harness,
-and PStack on Cursor. Other packs select their own pinned repositories, including
-Expo, Argent, Supabase and Convex. The catalog pins those commits. Skill resources and license
+The engineering pack selects Unlazy and Ponytail on every harness, and PStack
+on Cursor. The compatibility pack selects CodeRabbit. Other packs select their
+own pinned repositories, including Expo, Argent, Supabase and Convex. The catalog pins those commits. Skill resources and license
 notices are copied directly from upstream Git objects; no upstream installer is
 executed. Unchanged toolkit-installed copies are upgraded when their pin changes.
 Provenance and executable/content hashes are checked before replacement. Independent,

@@ -3153,8 +3153,7 @@
         "external": [
           "pstack",
           "unlazy",
-          "ponytail",
-          "coderabbit"
+          "ponytail"
         ],
         "skills": [
           "agent-map",
