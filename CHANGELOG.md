@@ -1,5 +1,12 @@
 # Changelog
 
+## Integrated Workflow selection map (unreleased)
+
+- Tell the agent which single file to open for the current task. Leave review,
+  UI, and delivery files closed for a small correction.
+- Apply the Forge mode contract on Claude as well as Codex, Cursor, and
+  Universal Forge.
+
 ## Claude Forge (unreleased)
 
 - Add `claude-forge` and `claude-forge-setup` for the Claude harness. The 23
