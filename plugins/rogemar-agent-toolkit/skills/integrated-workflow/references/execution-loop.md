@@ -84,9 +84,11 @@ after native profile qualification, through supported naming controls or the
 handoff fallback. Reuse the existing receipt for full profile IDs,
 mode and observed evidence; names do not establish verification or alter gates.
 
-Default to one main-agent writing/integration lane. Concurrent read-only support
-may earn its cost; concurrent writers require approved independent branches and
-worktrees, exact files/symbols, verification, stop conditions and reconciliation.
+The parent supervises, integrates, and writes. The orchestrator may assign
+sub-agents to search, review, build, and test. Those workers may read and write
+inside their assignment. In one shared worktree, only one writer edits at a time.
+Concurrent writers need separate worktrees, exact files or symbols, verification,
+stop conditions, and reconciliation.
 Apply the orchestrator's [automatic strategy selection](../../workflow-orchestrator/SKILL.md#automatic-execution-strategy).
 Pause and reconcile affected lanes on shared dependencies; preserve their work
 and continue unaffected lanes only when independence remains established.

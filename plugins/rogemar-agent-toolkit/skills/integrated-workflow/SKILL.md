@@ -60,15 +60,19 @@ checks within this same plan and review. One suitable independent review may
 cover correctness, counterexamples and scope; record that coverage. A complexity-
 only review cannot establish correctness or required independence.
 
-The main agent writes, integrates and owns final acceptance. Default to
-`AGILE_FOCUSED`: one write-capable owner per worktree, with useful read-only support.
-The orchestrator automatically selects `AGILE_CONTROLLED_PARALLEL` when existing
+The parent agent supervises, integrates, and writes. It owns final acceptance.
+`workflow-orchestrator` assigns sub-agents when search, QA, building, or testing
+earns a separate context. Those workers may read and write inside the assignment.
+`AGILE_FOCUSED` means one writer at a time in a shared worktree. It does not mean
+workers are read-only. The parent and a worker do not edit the same files together.
+The orchestrator selects `AGILE_CONTROLLED_PARALLEL` when existing
 approval permits delegation and its [strategy selection criteria](../workflow-orchestrator/SKILL.md#automatic-execution-strategy)
-prove independent, isolated and worthwhile write lanes. The owner need not choose
-per package. Explicit strategy or one-writer restrictions take precedence.
-When independence is uncertain, stay focused. On a new conflict, pause affected
-writers, preserve their work and reconcile sequentially; unaffected independent
-lanes may continue. Reviewers remain read-only unless assigned bounded write scope.
+prove independent, isolated write lanes. The owner need not choose
+per package. An explicit one-writer limit still takes precedence.
+When file ownership is unclear, stay in one worktree and serialize the writers.
+On a new conflict, pause affected writers, preserve their work, and reconcile
+sequentially. Unaffected lanes may continue. A worker that only judges a diff
+stays read-only. A worker assigned to build, fix, or add tests writes the files it owns.
 
 For optional scope-review, Ponytail, Unlazy, navigation and Project Learning,
 read [supporting methods](references/supporting-methods.md) only when relevant.

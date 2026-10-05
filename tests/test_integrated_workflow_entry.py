@@ -25,6 +25,8 @@ class IntegratedWorkflowEntryTests(unittest.TestCase):
             self.assertTrue((SKILLS / "integrated-workflow" / target).is_file(), target)
         self.assertIn("plan-model-router", text)
         self.assertIn("universal-plan-model-router", text)
+        self.assertIn("It does not mean\nworkers are read-only.", text)
+        self.assertNotIn("one write-capable owner per worktree", text)
 
     def test_forge_mode_includes_claude(self):
         text = (SKILLS / "workflow-orchestrator/SKILL.md").read_text()

@@ -196,10 +196,12 @@ the active harness's profile controls when a profile is needed; Codex uses insta
   non-goals, acceptance criteria, required verification, stop conditions, and a
   structured evidence contract. Include `allowed_files` (or an equivalent
   exact scope) for write workers.
-- Keep discovery workers read-only by default, but allow authorized workers to
-  implement, edit, test, document, or run scoped validation. Isolate writers,
-  permit sequential workers when dependencies require them, and never allow
-  multiple workers to edit the same file or surface concurrently.
+- Assign search, QA, build, and test work to workers when a separate context
+  helps. Those workers may read and write inside `allowed_files`. A worker that
+  only looks, or only judges a diff, stays read-only. The parent supervises,
+  integrates, and remains a writer. Isolate concurrent writers, permit
+  sequential workers when dependencies require them, and never allow two writers
+  to edit the same file or surface at the same time.
 - In a shared worktree, serialize writers, including the main agent. Parallel
   implementation uses separate worktrees with explicit ownership; separation
   does not isolate shared databases, generated outputs or runtime resources.
@@ -243,10 +245,13 @@ user's explicit constraints.
 
 ## Automatic execution strategy
 
-Default to `AGILE_FOCUSED`. At a new implementation package or a material change
-in dependencies, scope or available isolation, assess the actual repository and
-approved authority; do not continuously poll or create a detector/scoring system.
-Explicit user strategy, one-writer limits and repository restrictions take precedence.
+Default to `AGILE_FOCUSED`. That strategy serializes writers in one worktree.
+It still allows a supervised worker to search, build, test, and edit its assigned
+files. The parent integrates the result. At a new implementation package or a
+material change in dependencies, scope or available isolation, assess the actual
+repository and approved authority. Do not continuously poll or create a
+detector. Explicit user strategy, one-writer limits, and repository restrictions
+take precedence.
 
 Select `AGILE_CONTROLLED_PARALLEL` automatically only when delegation is already
 permitted, independent packages have exact owners/files or symbols, separate

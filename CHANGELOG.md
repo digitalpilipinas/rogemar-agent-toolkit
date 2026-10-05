@@ -1,5 +1,12 @@
 # Changelog
 
+## Supervised writers (unreleased)
+
+- The parent supervises, integrates, and writes. Sub-agents may search, review,
+  build, and test, and they may write the files they own.
+- `AGILE_FOCUSED` means one writer at a time in a shared worktree. It does not
+  mean workers are read-only.
+
 ## Integrated Workflow selection map (unreleased)
 
 - Tell the agent which single file to open for the current task. Leave review,
