@@ -72,7 +72,7 @@ Use in a dedicated learning task, when explicitly asked to harvest a task, or at
 The existing workflow owner automatically assesses one candidate at a verified task/sprint completion. Read the config first: only `capture_mode: workflow` with `enabled: true` enrolls the project. Use native session/turn identifiers from the calling harness; never invent source identity or read another harness's transcripts. If trustworthy source identity is unavailable, skip capture and report that limitation once.
 
 - First honor planning, no-write and no-learning restrictions; do not even create request files. The CLI accepts `--permission-mode plan`, `--read-only` or `--no-learning`, returning before persistence. Use `--request -` with structured JSON on stdin for ordinary capture.
-- Capture only a reusable rule supported by visible verified evidence. Evidence labels are claims checked by the owner, not automatic proof of test execution.
+- Capture only a reusable rule supported by visible verified evidence. A workflow capture is accepted in the same checkpoint when every evidence item is a file, a test file, or a commit that exists in this repository. A chat decision, review note, adaptation, or skill proposal stays pending. Evidence labels alone do not prove the repository object exists.
 - Use `mark-no-candidate` when nothing qualifies. Add `--milestone` at a task/sprint boundary so new pending material can earn one review reminder.
 - Keep candidate failures separate from product acceptance. Skip after a bounded lock timeout; never keep a task alive for learning. A nonzero capture exit is a learning error, not a product gate.
 - Inspect pending, accepted and dismissed matches. A settled lesson stays settled; a new independently verified evidence reference may create a separate pending revision linked to it. Similar wording still needs semantic review by the owner.
@@ -91,7 +91,7 @@ Capture a proposal in the toolkit repository's existing store using `proposal` m
 
 ### Review
 
-Use when asked to review pending lessons or after the user accepts a review cue.
+Workflow enrollment accepts a legitimate lesson during capture. Use this mode for candidates that stayed pending, or when asked to review them.
 
 1. Read [references/schemas.md](references/schemas.md) and [references/operations.md](references/operations.md).
 2. Run `scripts/candidate_store.py list --status pending`.

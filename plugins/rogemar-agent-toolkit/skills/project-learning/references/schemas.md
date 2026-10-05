@@ -54,7 +54,7 @@ Event types are `captured`, `reinforced`, `dismissed`, and `promoted`. A session
 }
 ```
 
-Promotion requires explicit user approval. `approved_by` is provenance, not an identity claim.
+A manual promotion request still requires `approved_by` of `user`. An enrolled workflow capture accepts a legitimate lesson itself and records `approved_by` of `workflow`. That value is provenance for a repository-evidence check, not an identity claim. Cross-project adaptations and skill proposals stay on the manual path.
 
 ## Active Ledger Entry
 

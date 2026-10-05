@@ -546,6 +546,42 @@ class ProjectLearningTest(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertFalse((self.root / ".codex/project-learning/candidates.jsonl").exists())
 
+    def test_workflow_accepts_repository_evidence_and_holds_chat_decisions(self) -> None:
+        """A file or commit in the repository is accepted; a chat decision stays pending."""
+        self.enroll()
+        proof = self.root / "notes" / "proof.txt"
+        proof.parent.mkdir()
+        proof.write_text("observed result\n", encoding="utf-8")
+        run_command("git", "add", "notes/proof.txt", cwd=self.root)
+        run_command(
+            "git", "-c", "user.email=test@example.com", "-c", "user.name=Test",
+            "commit", "-qm", "record proof", cwd=self.root,
+        )
+        commit = run_command("git", "rev-parse", "HEAD", cwd=self.root).stdout.strip()
+        request = self.capture_request(1, lesson="Keep the proof file with the change that created it")
+        data = json.loads(request.read_text())
+        data["evidence"] = [
+            {"kind": "file", "reference": "notes/proof.txt", "summary": "The proof file is in the repository"},
+            {"kind": "commit", "reference": commit, "summary": "The proof commit exists"},
+        ]
+        request.write_text(json.dumps(data))
+        accepted = self.workflow_capture(request)
+        self.assertTrue(accepted["promoted"])
+        self.assertIsNone(accepted["hold_reason"])
+        ledger = (self.root / "docs/project-learning/lessons.md").read_text(encoding="utf-8")
+        self.assertIn("Keep the proof file with the change that created it", ledger)
+        self.assertIn("approved by workflow legitimacy check", ledger)
+        self.assertEqual(json.loads(self.store("list", "--root", str(self.root), "--status", "promoted").stdout)["count"], 1)
+
+        held = self.capture_request(2, lesson="Remember the discussion")
+        held_data = json.loads(held.read_text())
+        held_data["evidence"] = [{"kind": "decision", "reference": "chat", "summary": "Someone said so"}]
+        held.write_text(json.dumps(held_data))
+        pending = self.workflow_capture(held)
+        self.assertFalse(pending["promoted"])
+        self.assertEqual(pending["hold_reason"], "non-repository-evidence")
+        self.assertEqual(json.loads(self.store("list", "--root", str(self.root), "--status", "pending").stdout)["count"], 1)
+
     def test_milestone_only_reminds_for_new_pending_material(self) -> None:
         self.enroll()
         request = self.capture_request(1, milestone=True)

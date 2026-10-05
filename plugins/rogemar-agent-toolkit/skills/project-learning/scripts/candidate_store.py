@@ -651,12 +651,23 @@ def capture(args: argparse.Namespace) -> dict[str, Any]:
             "processed_at": now_iso(),
         },
     )
+    promoted = False
+    hold_reason = None
+    if getattr(args, "workflow", False):
+        hold_reason = legitimacy_hold_reason(root, payload)
+        if hold_reason is None:
+            accept_legitimate(root, config, updated[candidate_id], request)
+            promoted = True
+            pending_count = sum(1 for item in materialize(load_events(store_path)).values() if item["status"] == "pending")
+            due = False
     return {
         "captured": True,
         "candidate_id": candidate_id,
         "event_type": event_type,
         "pending_count": pending_count,
         "review_due": due,
+        "promoted": promoted,
+        "hold_reason": hold_reason,
         "idempotent": False,
     }
 
@@ -822,7 +833,8 @@ def ledger_entry(root: Path, request: dict[str, Any], candidate: dict[str, Any])
         f"Evidence strength: {request['evidence_strength']}",
         f"Scope: {root.name}",
         f"Project identity: {project_identity(root)}",
-        f"Provenance: {provenance}; approved by user",
+        f"Provenance: {provenance}; approved by "
+        + ("workflow legitimacy check" if request.get("approved_by") == "workflow" else "user"),
         f"Last reviewed: {datetime.now(timezone.utc).date().isoformat()}",
         f"Cross-project candidate: {request['cross_project']}",
     ]
@@ -839,6 +851,86 @@ def ledger_entry(root: Path, request: dict[str, Any], candidate: dict[str, Any])
     if request.get("supersedes"):
         lines.append(f"Supersedes: {request['supersedes']}")
     return "\n".join(lines) + "\n"
+
+
+def legitimacy_hold_reason(root: Path, payload: dict[str, Any]) -> str | None:
+    """Return why a workflow capture must stay pending.
+
+    A legitimate lesson cites a file, a test file, or a commit that exists in
+    this repository. Chat decisions, adaptations, and skill proposals stay pending.
+    """
+    if payload.get("proposal") or payload.get("source_project"):
+        return "manual-scope"
+    if payload.get("evidence_level") not in {"verified", "reinforced"}:
+        return "evidence-level"
+    evidence = payload.get("evidence")
+    if not isinstance(evidence, list) or not evidence:
+        return "missing-evidence"
+    resolved_root = root.resolve()
+    for item in evidence:
+        kind = item.get("kind")
+        reference = item.get("reference", "")
+        if kind in {"file", "test"}:
+            candidate = (resolved_root / reference).resolve()
+            try:
+                candidate.relative_to(resolved_root)
+            except ValueError:
+                return "evidence-escapes"
+            if not candidate.is_file():
+                return "evidence-not-in-repository"
+        elif kind == "commit":
+            if not re.fullmatch(r"[0-9a-fA-F]{7,40}", reference):
+                return "evidence-not-in-repository"
+            try:
+                subprocess.check_output(
+                    ["git", "-C", str(resolved_root), "cat-file", "-e", reference + "^{commit}"],
+                    stderr=subprocess.DEVNULL,
+                    timeout=5,
+                )
+            except (subprocess.CalledProcessError, subprocess.TimeoutExpired, OSError):
+                return "evidence-not-in-repository"
+        else:
+            return "non-repository-evidence"
+    return None
+
+
+def accept_legitimate(
+    root: Path,
+    config: dict[str, Any],
+    candidate: dict[str, Any],
+    request: dict[str, Any],
+) -> None:
+    """Append one accepted lesson when the workflow legitimacy check passed."""
+    store_path, _, ledger_path = candidate_paths(root, config)
+    if not ledger_path.exists() or LEDGER_MARKER not in ledger_path.read_text(encoding="utf-8"):
+        raise StoreError(f"accepted ledger marker is missing: {ledger_path}")
+    promotion = {
+        "schema_version": SCHEMA_VERSION,
+        "candidate_id": candidate["candidate_id"],
+        "status": "Reinforced" if request["evidence_level"] == "reinforced" else "Accepted",
+        "lesson": request["lesson"],
+        "applies_when": request["applies_when"],
+        "does_not_apply_when": request["does_not_apply_when"],
+        "evidence_strength": request["evidence_level"],
+        "cross_project": "No",
+        "approved_by": "workflow",
+        "supersedes": None,
+    }
+    ledger = ledger_path.read_text(encoding="utf-8")
+    if not re.search(rf"^##\s+{re.escape(promotion['candidate_id'])}\s*$", ledger, re.M):
+        entry = ledger_entry(root, promotion, candidate)
+        separator = "" if not ledger or ledger.endswith("\n\n") else "\n"
+        atomic_text(ledger_path, ledger + separator + entry)
+    event = {
+        "schema_version": SCHEMA_VERSION,
+        "event_id": str(uuid.uuid4()),
+        "candidate_id": promotion["candidate_id"],
+        "event_type": "promoted",
+        "recorded_at": now_iso(),
+        "source": {"session_id": request["session_id"], "turn_id": request["turn_id"]},
+        "payload": {"ledger_status": promotion["status"], "approved_by": "workflow"},
+    }
+    append_event(store_path, event)
 
 
 def promote(args: argparse.Namespace) -> dict[str, Any]:
