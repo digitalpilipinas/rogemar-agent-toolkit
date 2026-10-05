@@ -3149,7 +3149,7 @@
         ]
       },
       "engineering": {
-        "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor and Universal Forge routes.",
+        "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor, Claude and Universal Forge routes.",
         "external": [
           "pstack",
           "unlazy",
@@ -3157,6 +3157,8 @@
         ],
         "skills": [
           "agent-map",
+          "claude-forge",
+          "claude-forge-setup",
           "codex-forge",
           "cursor-forge",
           "cursor-forge-setup",
@@ -3482,6 +3484,27 @@
         "z-code",
         "claude",
         "droid"
+      ]
+    },
+    "claude-forge": {
+      "requires": [
+        "workflow-orchestrator",
+        "engineering-playbooks",
+        "claude-forge-setup",
+        "universal-forge",
+        "universal-plan-model-router"
+      ],
+      "targets": [
+        "claude"
+      ]
+    },
+    "claude-forge-setup": {
+      "requires": [
+        "workflow-orchestrator",
+        "engineering-playbooks"
+      ],
+      "targets": [
+        "claude"
       ]
     },
     "cloudflare-deploy": {
@@ -5043,6 +5066,14 @@
       "file_count": 3,
       "sha256": "b96a591d19f4baac0bda4267a07774de0fdaef186c69f922ea3dafacb0d19169"
     },
+    "claude-forge": {
+      "file_count": 29,
+      "sha256": "54f0c6e9dc2546f61ec6e269d20bc045a3234b992f1ad2766c0894bb31ebfb94"
+    },
+    "claude-forge-setup": {
+      "file_count": 5,
+      "sha256": "5f93d62e374540421bef5f7c6a1d0a498c92217e7abaa3233251420ff5d04aa2"
+    },
     "cloudflare-deploy": {
       "file_count": 312,
       "sha256": "9eed72712d885d4cd2f582b028d7a3b10161aeb1de633f2133bf051775b2d82a"
@@ -5113,7 +5144,7 @@
     },
     "engineering-playbooks": {
       "file_count": 60,
-      "sha256": "53d649a622931636400934f8b6089a4201a407e31454d0b43c5622c59f02a20e"
+      "sha256": "4d4586e7c93c611fd22ed3c0757df608ad390d8f5917718593d323d03053b588"
     },
     "figma": {
       "file_count": 8,
@@ -5469,11 +5500,11 @@
     },
     "universal-forge": {
       "file_count": 5,
-      "sha256": "9be4cee739436eea3bf81cc529f5fbb1e84b9ffe7aac416515bc204dce7d2734"
+      "sha256": "ae99950c5493d8649336e61b65d4b3f2d84227b9797400ed9f5b08b37202699d"
     },
     "universal-plan-model-router": {
       "file_count": 2,
-      "sha256": "ad0c69e45bd4bc4c34dc627af8ddf0e753a3da1724706286a36cfdd0faa96761"
+      "sha256": "0d955148130b6e200875c328494e5aafbbed3beb519ef3676d67953823609bb4"
     },
     "ux-flow-architect": {
       "file_count": 4,
@@ -5493,7 +5524,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 17,
-      "sha256": "e22b07cd485a56348832580f17ebf81fd161a44edf989951d8500c1b03f3fa53"
+      "sha256": "e03d4d12810f22053ca1839fd3fe144429a5a9efeba8a3fb51d6037535eae14b"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

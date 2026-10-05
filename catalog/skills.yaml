@@ -157,6 +157,51 @@
       }
     },
     {
+      "name": "claude-forge",
+      "source": "approved Claude Forge binding, 2026-10-05",
+      "requires": [
+        "workflow-orchestrator",
+        "engineering-playbooks",
+        "claude-forge-setup",
+        "universal-forge",
+        "universal-plan-model-router"
+      ],
+      "targets": [
+        "claude"
+      ],
+      "author": "Rogemar (Claude adapter); Lauren Tan (upstream PStack methods)",
+      "license": "Repository license for adapter additions; MIT for upstream PStack methods",
+      "license_evidence": "LICENSE.txt",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
+      "routing": {
+        "trigger": "Run Forge engineering methods on Claude with Claude's own models, subagents, and tools. Use for Claude Forge, substantive implementation, diagnosis, refactoring, review, or verification. Preserve Cursor poteto-mode and Codex Forge as separate entries.",
+        "outcome": "Engineering methods and matched native/portable execution",
+        "boundary": "Do not invoke an additional Forge entry or overwrite PStack or Codex Forge ownership",
+        "activation": "conditional"
+      }
+    },
+    {
+      "name": "claude-forge-setup",
+      "source": "approved Claude Forge setup adaptation, 2026-10-05",
+      "targets": [
+        "claude"
+      ],
+      "requires": [
+        "workflow-orchestrator",
+        "engineering-playbooks"
+      ],
+      "author": "Rogemar (Claude adapter); Lauren Tan (upstream PStack methods)",
+      "license": "Repository license for adapter additions; MIT for upstream PStack methods",
+      "license_evidence": "LICENSE.txt",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
+      "routing": {
+        "trigger": "Configure and resolve Claude Forge modes, native model profiles, and role assignments. Use for Claude setup, mode changes, mapping inspection, and automatically before Claude Forge worker dispatch. Universal routing is fallback only.",
+        "outcome": "Existing maintainer and native adaptation, with AQ-01/UP-01 where applicable",
+        "boundary": "Selection grants no new install, watcher, credentials or configuration authority",
+        "activation": "conditional"
+      }
+    },
+    {
       "name": "codex-capability-maintainer",
       "source": "approved local user-level snapshot",
       "routing": {
@@ -2068,7 +2113,7 @@
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "routing": {
-        "trigger": "Apply shared Forge engineering methods across agent harnesses using their own models, skills, tools, and sub-agents. Use for substantive engineering outside a specialized Codex or Cursor route, or when Universal Forge is explicitly requested.",
+        "trigger": "Apply shared Forge engineering methods across agent harnesses using their own models, skills, tools, and sub-agents. Use for substantive engineering outside a specialized Codex, Cursor, or Claude route, or when Universal Forge is explicitly requested.",
         "outcome": "Engineering methods and matched native/portable execution",
         "boundary": "Do not invoke an additional Forge entry or overwrite PStack ownership",
         "activation": "conditional"
@@ -2081,7 +2126,7 @@
         "workflow-orchestrator"
       ],
       "routing": {
-        "trigger": "Qualify task and role profiles using the current harness's native models and controls. Use internally with Universal Forge or as Cursor Forge fallback, or for portable plan routing; keep native defaults when model selection is unavailable.",
+        "trigger": "Qualify task and role profiles using the current harness's native models and controls. Use internally with Universal Forge, or as the Cursor Forge and Claude Forge fallback, or for portable plan routing. Keep native defaults when model selection is unavailable.",
         "outcome": "create-plan owns the plan; route models only when useful and supported",
         "boundary": "No new plan for accepted continuation; model/provider choice stays with the active authorized harness",
         "activation": "conditional"
@@ -3480,9 +3525,11 @@
       ]
     },
     "engineering": {
-      "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor and Universal Forge routes.",
+      "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor, Claude and Universal Forge routes.",
       "skills": [
         "agent-map",
+        "claude-forge",
+        "claude-forge-setup",
         "codex-forge",
         "cursor-forge",
         "cursor-forge-setup",

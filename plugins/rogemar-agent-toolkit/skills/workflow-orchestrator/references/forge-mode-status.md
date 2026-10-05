@@ -1,6 +1,6 @@
 # Forge mode selection and status
 
-Apply this contract at Codex, Cursor and Universal Forge entry, resume and new
+Apply this contract at Codex, Cursor, Claude and Universal Forge entry, resume and new
 worker dispatch. The existing orchestrator owns it; do not create a new agent,
 configuration service or background process. Native routers retain their model
 catalogues, limits and tool controls.

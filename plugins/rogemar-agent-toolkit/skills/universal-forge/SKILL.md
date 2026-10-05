@@ -1,6 +1,6 @@
 ---
 name: universal-forge
-description: Apply shared Forge engineering methods across agent harnesses using their own models, skills, tools, and sub-agents. Use for substantive engineering outside a specialized Codex or Cursor route, or when Universal Forge is explicitly requested.
+description: Apply shared Forge engineering methods across agent harnesses using their own models, skills, tools, and sub-agents. Use for substantive engineering outside a specialized Codex, Cursor, or Claude route, or when Universal Forge is explicitly requested.
 license: MIT
 ---
 # Universal Forge

@@ -4,6 +4,7 @@
 | --- | --- |
 | Codex | codex-forge; its existing plan-model-router and catalogue |
 | Cursor | cursor-forge if installed; otherwise native PStack/poteto-mode |
+| Claude | claude-forge and claude-forge-setup when installed |
 | Other or unknown | universal-forge and universal-plan-model-router |
 
 Explicitly requested entry points take precedence over these defaults, subject
@@ -27,6 +28,8 @@ Keep the current task's authorization, context, evidence record and mode during
 a fallback. Never fall back around missing permission, a rejected profile,
 mandatory independence, or a required acceptance gate.
 
-Cursor Forge uses cursor-forge-setup for native role/profile mappings. The
-universal router is its fallback only; explicit limits and rejected profiles
-remain binding. Universal Forge itself continues to use the universal router.
+Cursor Forge uses cursor-forge-setup for native role/profile mappings. Claude
+Forge uses claude-forge-setup the same way, with Claude's live model catalogue.
+The universal router is the fallback only when that native setup route is
+unavailable. Explicit limits and rejected profiles remain binding. Universal
+Forge itself continues to use the universal router.

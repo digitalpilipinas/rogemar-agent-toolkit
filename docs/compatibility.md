@@ -27,9 +27,12 @@ Codex places native-only entries in `.codex/skills`; shared methods live once in
 worker assignments. Cursor uses `cursor-forge` and `cursor-forge-setup` for native
 role/model mappings; the universal router is a fallback when that route is
 unavailable. Upstream PStack/poteto-mode remains a separate, unchanged entry.
-Other assistants use `universal-forge` with `universal-plan-model-router` and their
-own observed capabilities. Shared engineering methods may run sequentially on the
-current model when worker controls are unavailable.
+Claude uses `claude-forge` and `claude-forge-setup`. Those skills bind the shared
+engineering playbooks to Claude's live model catalogue and worker tool. They do
+not install the Codex `forge-*` family or Cursor PStack. Other assistants use
+`universal-forge` with `universal-plan-model-router` and their own observed
+capabilities. Shared engineering methods may run sequentially on the current
+model when worker controls are unavailable.
 
 Project Learning is shared across harnesses. Pass `--harness <name>` to its
 initializer; non-Codex callers keep explicit capture without installing Codex

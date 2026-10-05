@@ -1,0 +1,6 @@
+interface:
+  display_name: "claude-forge-setup"
+  short_description: "Claude Forge modes and role profiles"
+  default_prompt: "Use $claude-forge-setup to qualify the Claude profile for this assignment."
+policy:
+  allow_implicit_invocation: true

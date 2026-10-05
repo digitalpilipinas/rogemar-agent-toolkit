@@ -13,7 +13,7 @@ for the current task; do not load or activate the whole catalog.
 At task start/resume, before acceptance and at verified completion, apply the shared
 [automatic checkpoints](references/agent-friendly-workflow.md) when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence.
 
-When selected by Universal Forge or a native adapter, stay in this method library; do not redirect recursively to another entry. Select one method for the task below and read only its relevant principles. This is the shared engineering playbook layer used by universal-forge. Codex Forge remains the complete Codex-native implementation; Cursor PStack remains the Cursor-native implementation. Do not activate both native and portable owners for the same work.
+When selected by Universal Forge or a native adapter, stay in this method library; do not redirect recursively to another entry. Select one method for the task below and read only its relevant principles. This is the shared engineering playbook layer used by universal-forge. Codex Forge remains the complete Codex-native implementation. Cursor PStack remains the Cursor-native implementation. Claude Forge is the Claude binding over this library. Do not activate both a native entry and this portable owner for the same work.
 
 `workflow-orchestrator` owns delegation and the final reconciliation. `create-plan` owns planning; `code-review-and-quality` owns independent review. Simple changes can stay in the parent. An installed skill is useful without an MCP when its method only requires files, reasoning or an existing CLI.
 
@@ -21,6 +21,7 @@ When selected by Universal Forge or a native adapter, stay in this method librar
 
 - Before entry selection, Codex normally prefers installed `codex-forge`. Once this portable library is selected, execute its method here without redirecting. The separate Codex implementation and its router remain intact.
 - In Cursor, the entry selector prefers cursor-forge when installed, otherwise native PStack. Once this portable library is selected, execute its method here. Keep Cursor's own model names, tools and supervision rules.
+- On Claude, the entry selector prefers installed `claude-forge`. Once this portable library is selected, execute its method here. Keep Claude's own model names, tools and permission rules.
 - Elsewhere, execute the shared method with the active harness's exposed capabilities. Inherit its current model when no selector exists; never invent a model, effort knob, worker role, browser, watcher or persistent goal. The playbook does not change parent model selection or spend provider credits.
 - Optional workers require authorized delegation, disjoint scope and a supported runtime. If those conditions are absent, the parent executes the same method sequentially. Available model and effort controls remain bounded by the owner's policy.
 - Publications, installs, monitoring and external actions follow the current task's actual authority. Reuse approval already given for the concrete action. A playbook title does not grant it.

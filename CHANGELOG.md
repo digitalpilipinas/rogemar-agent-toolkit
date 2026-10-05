@@ -1,5 +1,14 @@
 # Changelog
 
+## Claude Forge (unreleased)
+
+- Add `claude-forge` and `claude-forge-setup` for the Claude harness. The 23
+  playbooks are generated from the shared engineering playbooks, and Claude
+  profile setup reads the live Claude model catalogue.
+- Keep Cursor on `cursor-forge` and upstream poteto-mode. Keep Codex on
+  `codex-forge` and the `forge-*` family. Universal Forge remains the route
+  outside those three.
+
 ## Maintained sources and bounded supporting methods (unreleased)
 
 - Refresh pinned CodeRabbit, Argent, Expo, Convex and Ponytail skill instructions
