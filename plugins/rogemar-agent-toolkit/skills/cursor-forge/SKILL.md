@@ -43,14 +43,19 @@ qualifies the native profile. Inspect supported naming
 controls; use the handoff fallback when unavailable. Keep mode outside names
 and preserve native model and reasoning settings.
 
-When PStack is installed, read the matching native playbook and needed companion
-methods. Preserve useful PStack rigor and provenance, but route every worker hint
-through the existing `workflow-orchestrator` and primary `cursor-forge-setup`
-role/profile contract. Use `universal-plan-model-router` only when that adapter
-or a relevant mapping is unavailable, never to bypass rejected settings or limits.
-Native PStack tool calls are translated by this same dispatch owner; do not run
-its independent dispatch sequence alongside ours. If a native method cannot be
-reconciled with the active permission/evidence contract, use the corresponding
+Installed `forge-*` skills are the shared methods for Cursor Forge, Universal
+Forge, and Claude Forge. They adapt the pinned PStack skills and follow
+[the shared Forge runtime](../workflow-orchestrator/references/forge-runtime.md).
+`codex-forge` and `forge-setup` stay on Codex. When a PStack skill and its
+`forge-*` skill are both installed, read `forge-*`. Do not also run the
+upstream Task model list.
+
+Route every worker hint through the existing `workflow-orchestrator` and
+primary `cursor-forge-setup` role and profile contract. Use
+`universal-plan-model-router` only when that adapter or a relevant mapping is
+unavailable, never to bypass rejected settings or limits. Do not run PStack's
+independent dispatch sequence alongside ours. If a method cannot be reconciled
+with the active permission and evidence contract, use the corresponding
 portable playbook and report the reason.
 
 Read our `~/.cursor/cursor-forge.json` mappings through `cursor-forge-setup`

@@ -5,9 +5,9 @@ license: MIT
 ---
 # Reflect
 
-## Codex execution contract
+## Forge execution contract
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md). `workflow-orchestrator` owns delegation; `plan-model-router` resolves every worker profile under the active Forge mode, or parent defaults and ceilings when no mode is selected. Role preferences are hints, never model IDs or a fanout requirement. Work locally when delegation adds no useful independent work.
+Read [the shared Forge runtime](../workflow-orchestrator/references/forge-runtime.md) before dispatch or a runtime action. This skill supplies the method. The active Forge entry selects the profile router.
 
 Extract durable lessons from the current task and propose improvements to the skills or structures that own them. Invoke on an explicit reflection request or when a recurring lesson merits a proposal; ordinary task completion does not authorize global edits.
 
@@ -28,7 +28,7 @@ Use `references/synthesizer.md` to produce Accepted, Rejected, and Backlog findi
 
 ## 4. Apply authorized changes
 
-Present the concrete changes before requesting any permission that is actually missing. Honor approval already supplied for the exact scope; do not ask again. Global skill edits and memory writes need explicit user authority. Backlog issues and messages also require authority; otherwise retain local proposals. Use Codex `skill-creator` for substantive skill creation or revision, validate the result, and preserve unrelated edits. Never assume a reflection request also authorizes publication.
+Present the concrete changes before requesting any permission that is actually missing. Honor approval already supplied for the exact scope; do not ask again. Global skill edits and memory writes need explicit user authority. Backlog issues and messages also require authority; otherwise retain local proposals. Use the installed skill-authoring method for substantive skill creation or revision, validate the result, and preserve unrelated edits. Never assume a reflection request also authorizes publication.
 
 ## 5. Report
 

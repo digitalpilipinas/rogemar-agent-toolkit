@@ -5,7 +5,7 @@ license: MIT
 ---
 # Review comments and encode constraints
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md).
+Read [the shared Forge runtime](../workflow-orchestrator/references/forge-runtime.md).
 Ask `workflow-orchestrator` for the read-only `forge-comment-reviewer` role when
 an independent perspective earns its cost. The main agent accepts or rejects
 findings against the code and tests; the reviewer does not edit application code.

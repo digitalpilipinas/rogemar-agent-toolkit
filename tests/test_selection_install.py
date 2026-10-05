@@ -62,8 +62,21 @@ class SelectionInstallTests(unittest.TestCase):
         self.assertNotIn('plan-model-router', generic['skills'])
         self.assertEqual(len([n for n in codex['skills'] if n == 'codex-forge' or n.startswith('forge-')]), 47)
         self.assertIn('plan-model-router', codex['skills'])
+        self.assertIn('forge-setup', codex['skills'])
         self.assertIn('pstack', cursor['external'])
         self.assertNotIn('pstack', codex['external'])
+        for harness in ('codex', 'cursor', 'claude', 'gemini'):
+            external = toolkit.resolve_selection(harness, 'core', ['engineering'])['external']
+            for name in ('unlazy', 'ponytail'):
+                self.assertIn(name, external, harness)
+            self.assertNotIn('coderabbit', external, harness)
+        for harness in ('cursor', 'claude', 'gemini', 'agent-skills'):
+            selected = toolkit.resolve_selection(harness, 'core', ['engineering'])['skills']
+            shared = [n for n in selected if n.startswith('forge-')]
+            self.assertIn('forge-how', shared)
+            self.assertNotIn('forge-setup', shared)
+            self.assertNotIn('codex-forge', selected)
+            self.assertEqual(len(shared), 45)
 
     @unittest.skipIf(SELECTED_DISTRIBUTION, 'cross-harness composition requires the source catalog')
     def test_universal_forge_dependencies_and_native_adapter_isolation(self):
@@ -131,6 +144,9 @@ class SelectionInstallTests(unittest.TestCase):
             native = Path(project) / '.codex/skills/codex-forge/SKILL.md'
             self.assertTrue(native.exists())
             self.assertFalse((Path(project) / '.agents/skills/codex-forge').exists())
+            self.assertTrue((Path(project) / '.agents/skills/forge-how/SKILL.md').is_file())
+            self.assertFalse((Path(project) / '.codex/skills/forge-how').exists())
+            self.assertTrue((Path(project) / '.codex/skills/forge-setup/SKILL.md').is_file())
             before = self.state(project).read_bytes()
             for selection in ((), ('--profile', 'core', '--pack', 'engineering')):
                 code, _, error = self.cli('upgrade', *args, *selection)

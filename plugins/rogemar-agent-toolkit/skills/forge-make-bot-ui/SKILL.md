@@ -1,13 +1,13 @@
 ---
 name: forge-make-bot-ui
-description: Design and build a page or dashboard that triggers an authorized bot through a verified webhook adapter. Use for bot buttons, webhook dashboards, and private network access; gate execution when Codex lacks the necessary live service or secure credential entry.
+description: Design and build a page or dashboard that triggers an authorized bot through a verified webhook adapter. Use for bot buttons, webhook dashboards, and private network access. Gate execution when the live service or secure credential entry is missing.
 license: MIT
 ---
 # Build a bot UI
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md).
-This workflow preserves the UI → local server → bot webhook design. It does
-not assume Codex provides Cursor routines, secret cards, or webhook event types.
+Read [the shared Forge runtime](../workflow-orchestrator/references/forge-runtime.md).
+This workflow preserves the UI to local server to bot webhook design. It does
+not assume the harness provides Cursor routines, secret cards, or webhook event types.
 
 ## Establish the adapter
 

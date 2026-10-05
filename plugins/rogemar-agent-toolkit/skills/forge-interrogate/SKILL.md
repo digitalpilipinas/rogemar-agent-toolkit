@@ -7,7 +7,7 @@ license: MIT
 
 Adversarially review code, a diff or a proposed design against its stated intent. The deliverable is a synthesized verdict; do not auto-apply changes. A separate implementation assignment can act on approved findings afterward.
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md). The orchestrator owns all reviewer requests; the router qualifies profiles under the active Forge mode, or parent model and effort ceilings when no mode is selected. Explicit user and host limits always apply. Another Codex model is optional and must be available. Independent agreement is supporting evidence, never a substitute for tracing the actual issue.
+Read [the shared Forge runtime](../workflow-orchestrator/references/forge-runtime.md). The orchestrator owns all reviewer requests; the router qualifies profiles under the active Forge mode, or parent model and effort ceilings when no mode is selected. Explicit user and host limits always apply. Another model from the active router is optional and must be available. Independent agreement is supporting evidence, never a substitute for tracing the actual issue.
 
 ## 1. Determine scope and intent
 

@@ -5,9 +5,9 @@ license: MIT
 ---
 # Arena
 
-## Codex execution contract
+## Forge execution contract
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md). `workflow-orchestrator` owns delegation; `plan-model-router` resolves every worker profile under the active Forge mode, or parent defaults and ceilings when no mode is selected. Role preferences are hints, never model IDs or a fanout requirement. Work locally when delegation adds no useful independent work.
+Read [the shared Forge runtime](../workflow-orchestrator/references/forge-runtime.md) before dispatch or a runtime action. This skill supplies the method. The active Forge entry selects the profile router.
 
 Produce independent candidates, choose a base against a declared rubric, graft useful ideas, and verify the synthesis. Use this for contested designs or artifacts where one attempt may lock in the wrong shape.
 
@@ -21,7 +21,7 @@ The orchestrator schedules within actual concurrency limits and the router-quali
 
 ## C. Cross-judge
 
-After candidate outputs are complete, request one read-only judge from `arena-cross-judge-pool` when useful. Prefer an independently framed critique; another Codex model is optional and must be available below the ceiling. Blind labels rather than claiming model-family diversity that the runtime cannot provide. The judge evaluates the declared criteria and recommends a base with evidence while the parent reads all candidates.
+After candidate outputs are complete, request one read-only judge from `arena-cross-judge-pool` when useful. Prefer an independently framed critique; another model from the active router is optional and must be available below the ceiling. Blind labels rather than claiming model-family diversity that the runtime cannot provide. The judge evaluates the declared criteria and recommends a base with evidence while the parent reads all candidates.
 
 ## D. Pick a base
 

@@ -1,6 +1,6 @@
 ---
 name: universal-plan-model-router
-description: Qualify task and role profiles using the current harness's native models and controls. Use internally with Universal Forge or as Cursor Forge fallback, or for portable plan routing; keep native defaults when model selection is unavailable.
+description: Qualify task and role profiles using the current harness's native models and controls. Use internally with Universal Forge, or as the Cursor Forge and Claude Forge fallback, or for portable plan routing. Keep native defaults when model selection is unavailable.
 ---
 # Universal Plan Model Router
 
@@ -11,9 +11,11 @@ repeated introductions. Setup inspection alone does not require a mode choice
 or write preferences; apply the prompt when beginning an execution task.
 
 
-Cursor Forge first uses `cursor-forge-setup`. Activate this route there only
-for unavailable native adapter/mappings, carrying explicit limits and reporting
-the fallback. Never bypass a primary rejection or permission boundary.
+Cursor Forge first uses `cursor-forge-setup`. Claude Forge first uses
+`claude-forge-setup`. Activate this route there only for unavailable native
+adapter or mappings, carrying explicit limits and reporting the fallback. Never
+bypass a primary rejection or permission boundary. Do not copy one harness's
+model IDs into the other.
 
 Resolve execution profiles; do not dispatch, create agents, rewrite the plan,
 or serve as a fallback engineering workflow. `workflow-orchestrator` owns

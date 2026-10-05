@@ -1,0 +1,19 @@
+# Bug fix
+
+Read [the Claude runtime contract](../references/claude-runtime.md) before any worker, model, tool, or publication action. Resolve companion names through [the companion index](../references/companions.md). The method below is the shared engineering playbook, with links adjusted so they resolve from this package.
+
+Apply the [task-handoff method contract](../../workflow-orchestrator/references/method-contract.md).
+Select diagnosis and regression methods for the reproduced failure; retain the failure case and affected-caller evidence.
+
+Tie the fix to evidence of the causal mechanism. The main agent owns investigation, implementation and verification and may request bounded independent help through the orchestrator.
+
+1. Reproduce on the matching surface using an exposed control tool or repository-native harness. Synthesize triggers or add bounded instrumentation when needed. If the environment is unavailable, collect the strongest static/repro evidence and label the runtime gap; do not invent a reproduction or weaken the criterion.
+2. Trace with `source tracing`, consult `history investigation` for regression history when useful, and form competing hypotheses. Choose experiments that eliminate the most plausible causes. Confirm the mechanism before investing in a redesign. After two fixes sharing a premise fail the same check, use [Attack the Premise](../../engineering-playbooks/references/principles/attack-the-premise.md) to write the assumption and run a discriminating check.
+3. Plan the smallest justified fix. Use `design exploration` only for a consequential design decision. Request worker role `bug-fix` through the orchestrator when useful; no specialist dispatches directly.
+4. Add a failing-before/passing-after regression test when it can meaningfully guard the bug. Use `regression-first verification` for the cheap local path; do not manufacture tests that mirror a trivial implementation.
+5. Rerun the original reproduction and applicable regression checks. Wrong-surface, inconclusive and unavailable evidence remain distinct from a pass. Remove only the task's disproven experimental changes and temporary instrumentation, preserving unrelated work.
+6. Prepare publication through `opening-a-pr.md` only within explicit authority. Separate test-first history is optional and requires commit authority.
+
+Report broken behavior, causal evidence, fix, before/after checks and any remaining runtime gap.
+
+Choose regression checks with [Test Behavior, Not Implementation](../../engineering-playbooks/references/principles/test-behavior-not-implementation.md). Preserve meaningful negative and static contracts.

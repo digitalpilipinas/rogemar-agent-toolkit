@@ -13,7 +13,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-ENTRIES = {'codex-forge', 'cursor-forge', 'universal-forge'}
+ENTRIES = {'codex-forge', 'cursor-forge', 'claude-forge', 'universal-forge'}
 
 
 def resolve(index, names, skills_root, *, explicit=(), entry=None, context=None, candidate=None,

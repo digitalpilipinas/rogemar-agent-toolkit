@@ -5,9 +5,9 @@ license: MIT
 ---
 # Technical writing
 
-## Codex execution contract
+## Forge execution contract
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md) before dispatch or a runtime action. This skill supplies methods and bounded collaboration hints; `workflow-orchestrator` alone selects specialists and subagents. `plan-model-router` resolves task profiles under the active Forge mode, or parent defaults and ceilings when no mode is selected.
+Read [the shared Forge runtime](../workflow-orchestrator/references/forge-runtime.md) before dispatch or a runtime action. This skill supplies the method. The active Forge entry selects the profile router.
 
 
 

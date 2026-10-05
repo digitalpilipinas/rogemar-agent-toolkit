@@ -5,9 +5,9 @@ license: MIT
 ---
 # Test Behavior, Not Implementation
 
-## Codex execution contract
+## Forge execution contract
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md). `workflow-orchestrator` owns dispatch and `plan-model-router` qualifies every justified worker. Preserve the active mode, native availability and explicit user limits; without a mode, retain parent ceilings. This method grants no additional scope or authority.
+Read [the shared Forge runtime](../workflow-orchestrator/references/forge-runtime.md) before dispatch or a runtime action. This skill supplies the method. The active Forge entry selects the profile router.
 
 A useful test detects a meaningful defect in the behavior or contract it protects. Start with the caller, concrete input, expected observable result and a plausible broken implementation that must fail the test.
 

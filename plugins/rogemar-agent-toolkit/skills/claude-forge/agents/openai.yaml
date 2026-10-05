@@ -1,0 +1,6 @@
+interface:
+  display_name: "claude-forge"
+  short_description: "Forge engineering methods on Claude"
+  default_prompt: "Use $claude-forge for the requested task."
+policy:
+  allow_implicit_invocation: true

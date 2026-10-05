@@ -55,6 +55,11 @@ encoding otherwise; do not send special characters to Codex `task_name`.
   format and limits. Do not send Codex's `task_name` or reasoning arguments by
   analogy, rewrite a native role definition, or change PStack settings to add a
   label. The primary Cursor route remains the profile authority.
+- **Claude:** after `claude-forge-setup` qualifies the profile, inspect the live
+  Claude worker tool for a caller-controlled naming field. Use that field's
+  format and limits. Do not send Codex `task_name` values or Cursor model slugs.
+  The Claude setup route remains the profile authority. Universal routing is the
+  fallback only when that route is unavailable.
 - **Universal/other harnesses:** after native qualification, use only the surfaced
   caller-controlled naming field and its constraints. Unknown host identity is
   not permission to assume Codex or Cursor syntax. Keep native model/setting

@@ -5,9 +5,9 @@ license: MIT
 ---
 # How
 
-## Codex execution contract
+## Forge execution contract
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md). `workflow-orchestrator` owns delegation; `plan-model-router` resolves every worker profile under the active Forge mode, or parent defaults and ceilings when no mode is selected. Role preferences are hints, never model IDs or a fanout requirement. Work locally when delegation adds no useful independent work.
+Read [the shared Forge runtime](../workflow-orchestrator/references/forge-runtime.md) before dispatch or a runtime action. This skill supplies the method. The active Forge entry selects the profile router.
 
 Explain how a subsystem works from current source. Use `forge-why` for the forces that led to its design.
 

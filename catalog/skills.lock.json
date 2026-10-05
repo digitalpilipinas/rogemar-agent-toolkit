@@ -3149,7 +3149,7 @@
         ]
       },
       "engineering": {
-        "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor and Universal Forge routes.",
+        "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor, Claude and Universal Forge routes.",
         "external": [
           "pstack",
           "unlazy",
@@ -3157,6 +3157,8 @@
         ],
         "skills": [
           "agent-map",
+          "claude-forge",
+          "claude-forge-setup",
           "codex-forge",
           "cursor-forge",
           "cursor-forge-setup",
@@ -3484,6 +3486,27 @@
         "droid"
       ]
     },
+    "claude-forge": {
+      "requires": [
+        "workflow-orchestrator",
+        "engineering-playbooks",
+        "claude-forge-setup",
+        "universal-forge",
+        "universal-plan-model-router"
+      ],
+      "targets": [
+        "claude"
+      ]
+    },
+    "claude-forge-setup": {
+      "requires": [
+        "workflow-orchestrator",
+        "engineering-playbooks"
+      ],
+      "targets": [
+        "claude"
+      ]
+    },
     "cloudflare-deploy": {
       "requires": [],
       "targets": [
@@ -3797,42 +3820,92 @@
     },
     "forge-architect": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-arena": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-automate-me": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-blast-radius": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-bro": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-create-verification-skill": {
@@ -3856,26 +3929,56 @@
     },
     "forge-figure-it-out": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-how": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-interrogate": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-maintain-verification-skill": {
@@ -3899,218 +4002,488 @@
     },
     "forge-make-bot-ui": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-no-comments": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-attack-the-premise": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-boundary-discipline": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-build-the-lever": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-encode-lessons-in-structure": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-exhaust-the-design-space": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-experience-first": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-fix-root-causes": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-foundational-thinking": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-guard-the-context-window": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-laziness-protocol": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-make-operations-idempotent": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-migrate-callers-then-delete-legacy-apis": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-minimize-reader-load": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-model-the-domain": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-never-block-on-the-human": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-outcome-oriented-execution": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-prove-it-works": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-redesign-from-first-principles": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-separate-before-serializing-shared-state": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-sequence-verifiable-units": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-subtract-before-you-add": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-test-behavior-not-implementation": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-principle-type-system-discipline": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-recall": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-reflect": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-setup": {
@@ -4123,66 +4496,146 @@
     },
     "forge-show-me-your-work": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-swarm": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-tdd": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-teach": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-technical-writing": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-typescript-best-practices": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-unslop": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "forge-why": {
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "targets": [
-        "codex"
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
       ]
     },
     "frontend-design": {
@@ -5043,6 +5496,14 @@
       "file_count": 3,
       "sha256": "b96a591d19f4baac0bda4267a07774de0fdaef186c69f922ea3dafacb0d19169"
     },
+    "claude-forge": {
+      "file_count": 29,
+      "sha256": "9f51cd969480101d3286cd57f5cfad758e89c2b64fbe60730eec300098b60148"
+    },
+    "claude-forge-setup": {
+      "file_count": 5,
+      "sha256": "5f93d62e374540421bef5f7c6a1d0a498c92217e7abaa3233251420ff5d04aa2"
+    },
     "cloudflare-deploy": {
       "file_count": 312,
       "sha256": "9eed72712d885d4cd2f582b028d7a3b10161aeb1de633f2133bf051775b2d82a"
@@ -5077,7 +5538,7 @@
     },
     "cursor-forge": {
       "file_count": 4,
-      "sha256": "863af8ef55eb36a0c64b39c9f334488dd7e6dd8cd6696cca5ff2e2e003bcf9c5"
+      "sha256": "cb7f2b3928f1e9e3c7bbe6e127baddfc92b370d02f09e1946b425c2bd9f82d03"
     },
     "cursor-forge-setup": {
       "file_count": 6,
@@ -5113,7 +5574,7 @@
     },
     "engineering-playbooks": {
       "file_count": 60,
-      "sha256": "53d649a622931636400934f8b6089a4201a407e31454d0b43c5622c59f02a20e"
+      "sha256": "b955225de14b662403dd5b6e652f41df9b91a6bd2add5002dba523a4a5284f57"
     },
     "figma": {
       "file_count": 8,
@@ -5125,151 +5586,151 @@
     },
     "forge-architect": {
       "file_count": 6,
-      "sha256": "e0ad05067ff8410f20142cd41ca016559949a908bc66ef9b5f472d51d7ef860b"
+      "sha256": "4789982443c0da4db8eb429fba902d5abf55e0c47259f678b1b1c737c5225159"
     },
     "forge-arena": {
       "file_count": 3,
-      "sha256": "6e800488de9b9648ebd527da9896104c800deef5c0fae4fc2a1743b97a7a202d"
+      "sha256": "d8c6ccd3e6e3052ce106f4ed9e592be2a7cca8b4f2d628085318484a6fdf4618"
     },
     "forge-automate-me": {
       "file_count": 3,
-      "sha256": "b780b869e4b19c045600bb32c91f26c42d945aa7595ac9c142b25e39647c23a7"
+      "sha256": "5c1b090ace0f60b234a0fa0e190b3fb066c96f6954a3d1852528a703f593221f"
     },
     "forge-blast-radius": {
       "file_count": 3,
-      "sha256": "9213d568bc2b0241af4b6bdbe47c93255a93d6443f055bb0a546fcad6cd7e5c9"
+      "sha256": "ff7a9ff5a1cd3fd1a995bea5852848e7922274d43242bf738adc11ec56d21907"
     },
     "forge-bro": {
       "file_count": 3,
-      "sha256": "4e81d8ef4816380f2a4cc9847b6cb599359477a8ae4824df7a020bc2e1ddfe81"
+      "sha256": "3e935b15b561615155667f7a19eda37eef02b78c51fb24888c9c50166648abc0"
     },
     "forge-create-verification-skill": {
       "file_count": 6,
-      "sha256": "b26e2a27192d308d167153a04c08536a94f48126d8599a8bf654edeca362d8b5"
+      "sha256": "276019fd1e3bd24fc1611144cb9a44ca5edf79f7543c6c1cceb419b5b59e1cd6"
     },
     "forge-figure-it-out": {
       "file_count": 3,
-      "sha256": "f801c87e460a01040f300258ac414e5043c9ee8278ece556cf4faff0338cebed"
+      "sha256": "427f0b57fac2ce3ad626aa73b7834e46b871d18b82baf67455ea56f70a55e3b7"
     },
     "forge-how": {
       "file_count": 7,
-      "sha256": "04450240520359ed028d02f7104f83c9d2bee406988578c2cf9ca98658d7d5f4"
+      "sha256": "6b60e9f2cf3a29ebbf81dc4b069b1cf60fade0af87496b271f92513f91fa82c4"
     },
     "forge-interrogate": {
       "file_count": 7,
-      "sha256": "3443d6a07e6181b5cf97585b6f51f9b3ad4c28d55963c65dd2bbbdb1846eaca7"
+      "sha256": "899c1f783065029aa247f59548fe752bef007b8800a21ac2436ca8ca1b0a765d"
     },
     "forge-maintain-verification-skill": {
       "file_count": 3,
-      "sha256": "a283120785234db9fd83eeabc6dd6ebfbc7d0bf52ea85f6be81a76e48238e542"
+      "sha256": "a607a4c8a219fa87fe8d9135154d8831690573f8c42eaa18cafb483dae0a884d"
     },
     "forge-make-bot-ui": {
       "file_count": 3,
-      "sha256": "4f9abcf575196bbafbbfb3447c498865b469a90758e93167598ae1b609b0b698"
+      "sha256": "c712e159a9abb1abaf6d407e665e453dd57dd1ba95bad61849efaaf3acc98679"
     },
     "forge-no-comments": {
       "file_count": 3,
-      "sha256": "2d186aae94e799ca6b704b2f9adaaf9ecbd742ab56d1a743305eade3591ba2a6"
+      "sha256": "ae212cdd7d6cc8909a3c8b20f57dc5e916ef042685c00eaeb7c57911f3525c20"
     },
     "forge-principle-attack-the-premise": {
       "file_count": 3,
-      "sha256": "ca46f5c61089653645c7958cc14270592ceb43bc4c523e1db79ff92417b4b369"
+      "sha256": "1d710777ec34554adacc4447a204e1d36eecefa830af6579e781b3f9a501c30d"
     },
     "forge-principle-boundary-discipline": {
       "file_count": 3,
-      "sha256": "a0ffd1561c470ac3fe1c94f0c6406ee9297d1e9206840a0c98bbf6309d2a260b"
+      "sha256": "eb366f17cb51faef69532fa545bd0e7ff4398f355cf2e63a4c70465162157f97"
     },
     "forge-principle-build-the-lever": {
       "file_count": 3,
-      "sha256": "ae62d5616314e599a2e1c7feebdd5960dffde71bfdd2da4ed7e34d6be245f743"
+      "sha256": "b1136311593af3d1f8c7474189ca310359a1b1d6bf5effb8774561b0347cc0ee"
     },
     "forge-principle-encode-lessons-in-structure": {
       "file_count": 3,
-      "sha256": "4be01ea5d6b2636bac59170b31ce20079cd9869c885ac65aeb44eeeede77b440"
+      "sha256": "a4eb52adb604ebd736bd0d559583469312f640d527349607925df3e5a2d78642"
     },
     "forge-principle-exhaust-the-design-space": {
       "file_count": 3,
-      "sha256": "74af42dbe74f1a0c2575d73a9ce90fcbec110183b88f6f59b168c012bf9f1cab"
+      "sha256": "d593884fa86008b3012e0346d962fef45ed0d4ca3f78380e4ad128395e2711fe"
     },
     "forge-principle-experience-first": {
       "file_count": 3,
-      "sha256": "1ed1197696a434b2c5151d7c471278a8dce5a70f26939cab72a5bf6783906c09"
+      "sha256": "03db3b41632d2c29afcb4e745acf1605f00441b1b1f86607d2993787a2730df1"
     },
     "forge-principle-fix-root-causes": {
       "file_count": 3,
-      "sha256": "554ce4b33e2c11219f633063aafdd15c492d1927beb0d730d578e92171e2cc5b"
+      "sha256": "dd6e84709f90a0096efe9d877b73feb298b6193c146c59bfe074f65a1a92597e"
     },
     "forge-principle-foundational-thinking": {
       "file_count": 3,
-      "sha256": "fb43d987d830d512e1f44637ac973b98221d02251539f1ee37238083e767a1ba"
+      "sha256": "6ea22aaab20928c7a6fb45b8a8191577cf8dfbd7135f4ceec08c2b43d38ebb74"
     },
     "forge-principle-guard-the-context-window": {
       "file_count": 3,
-      "sha256": "7fc41e5e29299189a817f0f4352c4f6dc89d888a1a963565ff2afe13547d9e7a"
+      "sha256": "a025f8d316067c67adfd8b3e2a0e573be2d451d8ed5a8db0c3e2b66a18e27527"
     },
     "forge-principle-laziness-protocol": {
       "file_count": 3,
-      "sha256": "e9846443184ab876895db7d933a5255b480c48182b9ccafd6aca4e0e9fb60883"
+      "sha256": "ad79aeb6eba99c9ac70cf03c2037df22363e851c85e5b7ca733d8efb187c3da2"
     },
     "forge-principle-make-operations-idempotent": {
       "file_count": 3,
-      "sha256": "baf1a75dfd4b1438cbac331a09d59f33cf0dc829f522c4dfa626990fe3e37eb0"
+      "sha256": "642fdbc9b42e587d4a89d3de206b5741ca34cfae2b727bb2f0b89e705d435c67"
     },
     "forge-principle-migrate-callers-then-delete-legacy-apis": {
       "file_count": 3,
-      "sha256": "6c5cf312d61922588a58e05dc6ee55df9b46075177d9916925846a4594b47624"
+      "sha256": "255c8f3c81e76a02c1ba35569e9f39f2452b7a48cb218c3ce1f33f1e0993047b"
     },
     "forge-principle-minimize-reader-load": {
       "file_count": 3,
-      "sha256": "02d08d3d425cdd8db2206288f35ce48e65b92b166b3e507f28bdb1bace5d710f"
+      "sha256": "9b6562d663404b02e03594b6cd4cae61c982d184190827e8a81c01d7f3c234cb"
     },
     "forge-principle-model-the-domain": {
       "file_count": 3,
-      "sha256": "2db026788a6e24d10c946777579f2f2344608e51fc2c1fffabd9470a27c1b782"
+      "sha256": "bbd3597aea7f809de229af1fce207460d73cb36b88d93c0407bc09ab3f4057a0"
     },
     "forge-principle-never-block-on-the-human": {
       "file_count": 3,
-      "sha256": "e424023bcfb7ac4d4a08266c192c52b9aeb90532c3d801abb1ede9db0112f245"
+      "sha256": "23c2811c8b09f1fea43b096e14440549d23da22ce323f1a3c1d7d501517819ef"
     },
     "forge-principle-outcome-oriented-execution": {
       "file_count": 3,
-      "sha256": "f94c0d385301357312b477d5baa6b95489c03a6efce86319f9c66e16c6edcb78"
+      "sha256": "ad14556d1d6a6f9bf4f13f445dbf2c0bbdba49f4da6a1bc332017ab077a9924e"
     },
     "forge-principle-prove-it-works": {
       "file_count": 3,
-      "sha256": "09a310ddbb28a15d0638b65ba6071521008f738a8f406a6cf79d9c95eb13935e"
+      "sha256": "9a84bc174665a1a571fad4ec2ea0d916d6d7aa96b8f745c4edd06e99b9e3f6ea"
     },
     "forge-principle-redesign-from-first-principles": {
       "file_count": 3,
-      "sha256": "e88ce08ae4a82c04d3a62fe7043d046569a8133a07d9b983c1a8b890be23448b"
+      "sha256": "d101b46fb3615160d02a4af297991357f846028d8b7906bb1dbde31d7a4fde6e"
     },
     "forge-principle-separate-before-serializing-shared-state": {
       "file_count": 3,
-      "sha256": "185c81bff14b26b2d7fedf96eff18b8b48fb441c7c55a801abae41db25d9155c"
+      "sha256": "2a2f979c1200e8ae6ee9a50d40b3db4228f01319966dbfebc9bfb0a84c9a0deb"
     },
     "forge-principle-sequence-verifiable-units": {
       "file_count": 3,
-      "sha256": "d12555b06218fb7fc96daf87aab57a1f29664a210da730a3633f85baadc52cf6"
+      "sha256": "d0a4d4523221d644a3dba0683e7153f9fd75b1a4a569b394bc29c4ac0205e6a7"
     },
     "forge-principle-subtract-before-you-add": {
       "file_count": 3,
-      "sha256": "f7a17c99b29aa5263ef87d005e54fc057f2162df1b3328f41eb9de7e38e351a7"
+      "sha256": "4a73a87f647fa93a3186fb7a9e07b08c20fd7459fc56da0710d12dcd7c133bcb"
     },
     "forge-principle-test-behavior-not-implementation": {
       "file_count": 3,
-      "sha256": "6a781c061e1ffc8e19560d640c38e83d44f0d77fc8dcf7bbbe3a3d04a25468c2"
+      "sha256": "ab9f38fe4c33e8f8f1a2a8adbfca9b21e94b691ce358793be19364e02441512a"
     },
     "forge-principle-type-system-discipline": {
       "file_count": 3,
-      "sha256": "39f7e0a6fccaa30bedb670b2f155856c8ba61f0877fd2fc5f5b3d9f15a215e49"
+      "sha256": "4ceff5405fc80f7017ac5e628f19f31ba66c4420779370eb761e757057a794a4"
     },
     "forge-recall": {
       "file_count": 3,
-      "sha256": "423b51132b896b88218a4886565e8fb9213fcc5eef94f0953318c8a89ebe04ed"
+      "sha256": "e19735dae862c8fe2a18457d11ec633d01c12179739b6af3c3159d8eafbabded"
     },
     "forge-reflect": {
       "file_count": 7,
-      "sha256": "0b30dfa166d13a5c064cd52a1fc149cb0ef2633319ae397cf768836da8467144"
+      "sha256": "cab734463110ae367e9cdeb1c645e5a849626ee6010edb29f4ff13811118a27f"
     },
     "forge-setup": {
       "file_count": 3,
@@ -5277,35 +5738,35 @@
     },
     "forge-show-me-your-work": {
       "file_count": 5,
-      "sha256": "cbc2b5c65c2dc1363068313fbc6a5caaa7e58e831a8af0c1ddd60db6ecf765df"
+      "sha256": "45f26dd3ddc59de767eb578b27e9ad6ef2b09b6eb41b9b63ebc6c3913ac7913a"
     },
     "forge-swarm": {
       "file_count": 3,
-      "sha256": "91ce0facfebea3a807ae092b1e84701d45fff5f9759e213daa48ecc1acf98ae9"
+      "sha256": "2a54977310311574d2f1fbb092153d72fba840df86d569a220eb3af5b1b81228"
     },
     "forge-tdd": {
       "file_count": 3,
-      "sha256": "860c4535a2b32c10607afe54394c63ee6e151aa71dc03b5999ceb095cf07125a"
+      "sha256": "12290522cd7c5ec6cad538d062243d9a5738b88b0a998eea43edecfb4e267c56"
     },
     "forge-teach": {
       "file_count": 3,
-      "sha256": "bb740735332a97b950b0e2f81fb8dac8feb463097e3a3fde4ba1ad14897e665b"
+      "sha256": "8ecf90df8352e9fe729d99e71ddc3c32d5534248efae13cb35d038acccf6ae76"
     },
     "forge-technical-writing": {
       "file_count": 3,
-      "sha256": "c64fda1d227eb1e48d4d92fecfbcd571cd917916e38589bb19273f3ac8e32873"
+      "sha256": "ab927983f3b7ef67312100b25edc7cfb946c9ce3046a071c202e3ff9e2ecaf4f"
     },
     "forge-typescript-best-practices": {
       "file_count": 4,
-      "sha256": "1c988a62527f8e3c62868e7e9b5b942e93efbc2f3b2036e40c1e47ddc79fd49b"
+      "sha256": "5ac160de88455439507bdae7a1ab3d95ba93b11ef37e6939039d2344fb5f241b"
     },
     "forge-unslop": {
       "file_count": 3,
-      "sha256": "092675617f91d66e537387836f0d7d9c11cca1b117a8fce8917c4c3487865aeb"
+      "sha256": "129455a2631c8e5c139275c653f514c28067ad9ec5cb18c9f31e142a50d4a3f7"
     },
     "forge-why": {
       "file_count": 15,
-      "sha256": "e2ab3efb2d8ebad43d0f93e918d5d622168b85deec7c13a15bf1f9fafe08d4b4"
+      "sha256": "07507eac8ebbc1010f6a48436c411a4af2311d39f5f591d21ce9e316e8e0f33f"
     },
     "frontend-design": {
       "file_count": 6,
@@ -5325,7 +5786,7 @@
     },
     "integrated-workflow": {
       "file_count": 10,
-      "sha256": "8aafd0d63bbe91a087f9b94582ec0052b1bf9b888bd5dfce3c112b44ecdb1210"
+      "sha256": "2afc806261db1ba2afce6b915e345a423954ff5b55a9714e85a95f78b992ccc1"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -5469,11 +5930,11 @@
     },
     "universal-forge": {
       "file_count": 5,
-      "sha256": "9be4cee739436eea3bf81cc529f5fbb1e84b9ffe7aac416515bc204dce7d2734"
+      "sha256": "7942e5d7aea8947bbbe656e126d352f4de628c07b48f7138714aad1455470743"
     },
     "universal-plan-model-router": {
       "file_count": 2,
-      "sha256": "ad0c69e45bd4bc4c34dc627af8ddf0e753a3da1724706286a36cfdd0faa96761"
+      "sha256": "0d955148130b6e200875c328494e5aafbbed3beb519ef3676d67953823609bb4"
     },
     "ux-flow-architect": {
       "file_count": 4,
@@ -5492,8 +5953,8 @@
       "sha256": "4f6e4f6de44a67dd2d28e4cb80c498481baa6f5035f59661756108ce78cf4e32"
     },
     "workflow-orchestrator": {
-      "file_count": 17,
-      "sha256": "e22b07cd485a56348832580f17ebf81fd161a44edf989951d8500c1b03f3fa53"
+      "file_count": 18,
+      "sha256": "bfbfcb94d27658845ec5e642eb4a6e634739501c1f05b821ca2bf99628442507"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

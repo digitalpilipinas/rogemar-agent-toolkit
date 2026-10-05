@@ -56,6 +56,15 @@ supported settings to the native worker call. The universal router is fallback
 only for unavailable adapter/mappings; it cannot bypass owner limits, rejected
 configuration or required evidence. Keep this same orchestrator as sole dispatcher.
 
+## Claude Forge dispatch
+
+Claude Forge uses `claude-forge-setup` as the primary role/profile resolver.
+Read its saved Claude mappings, qualify them against the live Claude worker
+tool, then apply only settings that tool accepts. The universal router is
+fallback only for an unavailable adapter or mapping. It cannot bypass owner
+limits, a rejected configuration, or required evidence. Do not import Codex or
+Cursor model IDs. Keep this same orchestrator as sole dispatcher.
+
 ## Core routing
 
 1. Classify the request as answering, research, brainstorming, planning,
@@ -73,7 +82,7 @@ configuration or required evidence. Keep this same orchestrator as sole dispatch
 
 ## Shared methods and native harness bindings
 
-Use the shared `engineering-playbooks` method for substantive engineering work when installed. In Codex, prefer the complete installed `codex-forge` implementation of that method. In Cursor, prefer installed `cursor-forge`, otherwise native PStack with reconciled dispatch ownership. Elsewhere prefer `universal-forge` with `universal-plan-model-router`, falling back to the shared method if absent. Honor an explicit compatible entry choice and a declared `Harness: <name>`; a name does not prove live capabilities. Other harnesses use their own exposed models and tools. Select one execution owner; do not run the native and portable workflows twice.
+Use the shared `engineering-playbooks` method for substantive engineering work when installed. In Codex, prefer the complete installed `codex-forge` implementation of that method. In Cursor, prefer installed `cursor-forge`, otherwise native PStack with reconciled dispatch ownership. On Claude, prefer installed `claude-forge` with `claude-forge-setup`. Elsewhere prefer `universal-forge` with `universal-plan-model-router`, falling back to the shared method if absent. Honor an explicit compatible entry choice and a declared `Harness: <name>`; a name does not prove live capabilities. Other harnesses use their own exposed models and tools. Select one execution owner; do not run the native and portable workflows twice.
 
 This orchestrator alone dispatches specialists and workers. For Codex, classify
 each assignment before resolving: set `implementation: true` for code-producing

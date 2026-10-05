@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "roles": {
+    "parent-coordinator": {
+      "group": "coordination",
+      "assignment": "main-owned",
+      "skill_hints": []
+    },
+    "workflow-coordinator": {
+      "group": "coordination",
+      "assignment": "main-owned",
+      "skill_hints": [
+        "workflow-orchestrator"
+      ]
+    },
+    "integration-owner": {
+      "group": "coordination",
+      "assignment": "main-owned",
+      "skill_hints": [
+        "integrated-workflow"
+      ]
+    },
+    "findings-consolidator": {
+      "group": "coordination",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "why-synthesizer": {
+      "group": "coordination",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "reflect-synthesizer": {
+      "group": "coordination",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "feature": {
+      "group": "engineering",
+      "assignment": "bounded-implementation",
+      "skill_hints": []
+    },
+    "refactoring": {
+      "group": "engineering",
+      "assignment": "bounded-implementation",
+      "skill_hints": []
+    },
+    "bug-fix": {
+      "group": "engineering",
+      "assignment": "bounded-implementation",
+      "skill_hints": []
+    },
+    "perf-issue": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "hillclimb": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "hardest-tasks": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "how-explorer": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "how-explainer": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "why-investigators": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "reflect-tooling": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "swarm-workers": {
+      "group": "engineering",
+      "assignment": "bounded-implementation",
+      "skill_hints": []
+    },
+    "bug-triager": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "bug-triage"
+      ]
+    },
+    "goal-scout": {
+      "group": "engineering",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "goalbuddy:goal-prep"
+      ],
+      "native_contract": "goal_scout"
+    },
+    "judgment-and-prose": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "reflect-divergent": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "arena-runners": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "architect-runners": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "ux-flow-designer": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "ux-flow-architect",
+        "design-brief"
+      ]
+    },
+    "ui-designer": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "frontend-design",
+        "reference-design-contract"
+      ]
+    },
+    "design-system-reviewer": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "design-system-steward"
+      ]
+    },
+    "interaction-designer": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "interaction-polish",
+        "motion-animation-engineer"
+      ]
+    },
+    "accessibility-reviewer": {
+      "group": "design",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "accessibility-auditor"
+      ]
+    },
+    "validation-runner": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "test-architecture-engineer"
+      ]
+    },
+    "visual-reviewer": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "visual-qa"
+      ]
+    },
+    "browser-qa": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "playwright"
+      ],
+      "evidence_surface": "browser-qa"
+    },
+    "simulator-qa": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "argent-ios-simulator-setup",
+        "argent-test-ui-flow"
+      ],
+      "evidence_surface": "simulator-qa"
+    },
+    "emulator-qa": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "argent-android-emulator-setup",
+        "argent-test-ui-flow"
+      ],
+      "evidence_surface": "emulator-qa"
+    },
+    "physical-device-qa": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "argent-device-interact",
+        "argent-test-ui-flow"
+      ],
+      "evidence_surface": "physical-device-qa"
+    },
+    "qa-runner": {
+      "group": "verification",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "visual-qa",
+        "test-architecture-engineer"
+      ]
+    },
+    "how-critics": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "reflect-judgment": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "arena-cross-judge-pool": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "interrogate-reviewers": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": []
+    },
+    "correctness-reviewer": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "code-review-and-quality"
+      ]
+    },
+    "scope-reviewer": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "first-time-right-delivery",
+        "ponytail:ponytail-review"
+      ]
+    },
+    "acceptance-auditor": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "integrated-workflow",
+        "first-time-right-delivery"
+      ]
+    },
+    "goal-judge": {
+      "group": "review",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "goalbuddy:goal-prep"
+      ],
+      "native_contract": "goal_judge"
+    },
+    "status-monitor": {
+      "group": "operations-learning",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [],
+      "activation": "bounded status request; recurring scheduling requires separate explicit request"
+    },
+    "learning-curator": {
+      "group": "operations-learning",
+      "assignment": "read-only-or-test-evidence",
+      "skill_hints": [
+        "project-learning"
+      ],
+      "activation": "explicit project-learning request; no automatic capture or promotion"
+    }
+  }
+}
