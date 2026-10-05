@@ -1,11 +1,13 @@
 # Changelog
 
-## Supervised writers (unreleased)
+## Sprint strategy and supervised writers (unreleased)
 
 - The parent supervises, integrates, and writes. Sub-agents may search, review,
   build, and test, and they may write the files they own.
-- `AGILE_FOCUSED` means one writer at a time in a shared worktree. It does not
-  mean workers are read-only.
+- `AGILE_FOCUSED` means one vertical slice, or one task inside that slice, is
+  active in the sprint.
+- `AGILE_CONTROLLED_PARALLEL` means more than one slice or task is active in
+  the same sprint when they do not conflict.
 
 ## Integrated Workflow selection map (unreleased)
 

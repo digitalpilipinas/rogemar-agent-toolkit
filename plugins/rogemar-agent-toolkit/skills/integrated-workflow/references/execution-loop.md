@@ -86,12 +86,15 @@ mode and observed evidence; names do not establish verification or alter gates.
 
 The parent supervises, integrates, and writes. The orchestrator may assign
 sub-agents to search, review, build, and test. Those workers may read and write
-inside their assignment. In one shared worktree, only one writer edits at a time.
-Concurrent writers need separate worktrees, exact files or symbols, verification,
-stop conditions, and reconciliation.
+inside their assignment. Two writers do not edit the same file at the same time.
+`AGILE_FOCUSED` keeps one vertical slice, or one task inside that slice, active
+in the sprint. `AGILE_CONTROLLED_PARALLEL` allows more than one slice or task
+in the same sprint when they do not share files, contracts, generated outputs,
+databases, or runtime resources.
 Apply the orchestrator's [automatic strategy selection](../../workflow-orchestrator/SKILL.md#automatic-execution-strategy).
-Pause and reconcile affected lanes on shared dependencies; preserve their work
-and continue unaffected lanes only when independence remains established.
+Pause and reconcile affected slices or tasks on a shared dependency; preserve
+their work and continue unaffected slices or tasks only when independence
+remains established.
 
 Use existing primitives and patterns. Keep sensitive decisions server-authoritative.
 Implement coherent increments with focused tests and relevant counterexamples:

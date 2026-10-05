@@ -19,9 +19,11 @@ receipt and review waves; the extension creates no runner or publication authori
 At task start/resume, before acceptance and at verified completion, apply the shared
 [automatic checkpoints](../engineering-playbooks/references/agent-friendly-workflow.md) when a project verification map or learning enrollment exists. Select the actions without waiting for skill names; preserve task authority and required evidence.
 
-Deliver the approved outcome with one plan, one implementation owner, one evidence
-record and one consolidated review process. Infer ordinary project details; the
-owner need not name every supporting skill or fill out a configuration form.
+Deliver the approved outcome with one plan, one accountable implementation
+owner, one evidence record and one consolidated review process. The owner
+supervises the sprint. Assigned workers may write inside their assignment.
+Infer ordinary project details; the owner need not name every supporting skill
+or fill out a configuration form.
 
 ## Open only the file this task needs
 
@@ -60,19 +62,31 @@ checks within this same plan and review. One suitable independent review may
 cover correctness, counterexamples and scope; record that coverage. A complexity-
 only review cannot establish correctness or required independence.
 
-The parent agent supervises, integrates, and writes. It owns final acceptance.
-`workflow-orchestrator` assigns sub-agents when search, QA, building, or testing
-earns a separate context. Those workers may read and write inside the assignment.
-`AGILE_FOCUSED` means one writer at a time in a shared worktree. It does not mean
-workers are read-only. The parent and a worker do not edit the same files together.
-The orchestrator selects `AGILE_CONTROLLED_PARALLEL` when existing
-approval permits delegation and its [strategy selection criteria](../workflow-orchestrator/SKILL.md#automatic-execution-strategy)
-prove independent, isolated write lanes. The owner need not choose
-per package. An explicit one-writer limit still takes precedence.
-When file ownership is unclear, stay in one worktree and serialize the writers.
-On a new conflict, pause affected writers, preserve their work, and reconcile
-sequentially. Unaffected lanes may continue. A worker that only judges a diff
-stays read-only. A worker assigned to build, fix, or add tests writes the files it owns.
+The parent agent supervises, integrates, and writes. It is the accountable
+implementation owner and owns final acceptance. `workflow-orchestrator` assigns
+sub-agents when search, QA, building, or testing earns a separate context.
+Those workers may read and write inside the assignment in either strategy.
+An assignment does not expand the user's grant, host permissions, or release
+authority. A worker that only judges a diff stays read-only. A worker assigned
+to build, fix, or add tests writes the files it owns. Two writers do not edit
+the same file at the same time. That file rule is separate from the sprint strategy.
+
+Default to `AGILE_FOCUSED`: one vertical slice, or one task inside that slice,
+is active in the sprint. The parent and its workers finish that slice or task
+before starting another. A slice may continue into a later sprint on the same
+branch and draft pull request.
+
+The orchestrator selects `AGILE_CONTROLLED_PARALLEL` when the sprint contains
+more than one vertical slice or task, those slices or tasks do not conflict,
+and its [strategy selection criteria](../workflow-orchestrator/SKILL.md#automatic-execution-strategy)
+show the parent can integrate them. Conflict means shared files, contracts,
+generated outputs, databases, or runtime resources. Different filenames alone
+are not enough. The owner need not choose per package. An explicit strategy
+takes precedence.
+
+When independence is unclear, stay focused. On a new conflict, pause the
+affected slices or tasks, preserve their work, and continue them one at a time.
+Unaffected slices or tasks may continue.
 
 For optional scope-review, Ponytail, Unlazy, navigation and Project Learning,
 read [supporting methods](references/supporting-methods.md) only when relevant.
@@ -154,7 +168,7 @@ recorded decisions and ask only for material missing scope or authority:
 
 ```text
 Plan name/path: <approved source, or active GoalBuddy charter>
-Execution strategy: AGILE_FOCUSED | AGILE_CONTROLLED_PARALLEL
+Execution strategy: AGILE_FOCUSED (one slice or task this sprint) | AGILE_CONTROLLED_PARALLEL (several non-conflicting slices or tasks)
 Database or migrations: NONE | LOCAL | STAGING | PRODUCTION
 Delivery to main: LOCAL ONLY | DIRECT COMMIT AUTHORIZED | BRANCH + PR, STOP BEFORE MERGE | BRANCH + PR + MERGE AUTHORIZED
 Independent external review: DISABLED | OPTIONAL: <providers/models> | REQUIRED AT <boundary>: <providers/models>

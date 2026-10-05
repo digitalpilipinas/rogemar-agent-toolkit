@@ -245,34 +245,37 @@ user's explicit constraints.
 
 ## Automatic execution strategy
 
-Default to `AGILE_FOCUSED`. That strategy serializes writers in one worktree.
-It still allows a supervised worker to search, build, test, and edit its assigned
-files. The parent integrates the result. At a new implementation package or a
-material change in dependencies, scope or available isolation, assess the actual
-repository and approved authority. Do not continuously poll or create a
-detector. Explicit user strategy, one-writer limits, and repository restrictions
-take precedence.
+Default to `AGILE_FOCUSED`. One vertical slice, or one task inside that slice,
+is active in the sprint. The parent and its supervised workers finish that
+slice or task before starting another. Workers may search, build, test, and
+edit the files they own. A slice may continue into a later sprint on the same
+branch. At a new implementation package or a material change in dependencies,
+scope, or overlap, assess the actual repository and approved authority. Do not
+continuously poll or create a detector. An explicit strategy and repository
+restrictions take precedence.
 
 Select `AGILE_CONTROLLED_PARALLEL` automatically only when delegation is already
-permitted, independent packages have exact owners/files or symbols, separate
-branches/worktrees are available, and parallel work is likely to justify its
-coordination and integration cost. Check shared contracts, dependency ordering,
-generated outputs, databases and runtime resources; different filenames alone
-are insufficient. Assign acceptance checks, stop conditions and the main-agent
-integration owner before dispatch. Selection grants no additional authority.
+permitted and the sprint can hold more than one vertical slice or task without
+conflict. Conflict means shared files, contracts, dependency order, generated
+outputs, databases, or runtime resources. Different filenames alone are not
+enough. Use separate branches or worktrees when the slices need them, and run
+them together only when that coordination is worthwhile. Assign acceptance
+checks, stop conditions, and the parent as integration owner before dispatch.
+Selection grants no additional authority.
 
-If evidence is insufficient or isolation unavailable, continue focused; useful
-read-only investigation/review may still run concurrently. Briefly record the
-chosen strategy and reason in the existing receipt, without a new board or a
-routine owner confirmation. Ask only when a material scope/authority decision is
-missing and cannot be resolved within the approved task.
+When independence is unclear, stay focused. Search and review may still run on
+the active slice. Briefly record the chosen strategy and reason in the existing
+receipt, without a new board or a routine owner confirmation. Ask only when a
+material scope or authority decision is missing and cannot be resolved within
+the approved task.
 
-If overlap or a shared dependency emerges, pause affected writers at a safe
-checkpoint, retain their edits and receipts, reconcile ownership and continue
-those packages sequentially. Keep unaffected lanes running only while their
-independence remains established. Do not reset, discard work or switch strategy
-merely because a task is taking longer than expected. Reassess parallel eligibility
-when the dependency is resolved; validate the final integrated candidate.
+If overlap or a shared dependency emerges, pause the affected slices or tasks
+at a safe checkpoint, retain their edits and receipts, and continue those
+packages one at a time. Keep unaffected slices or tasks running only while
+their independence remains established. Do not reset, discard work, or switch
+strategy merely because a task is taking longer than expected. Reassess
+parallel eligibility when the dependency is resolved. Validate the final
+integrated candidate.
 
 ## Lifecycle
 
