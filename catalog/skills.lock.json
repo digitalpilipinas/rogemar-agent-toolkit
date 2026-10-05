@@ -3153,7 +3153,8 @@
         "external": [
           "pstack",
           "unlazy",
-          "ponytail"
+          "ponytail",
+          "coderabbit"
         ],
         "skills": [
           "agent-map",
@@ -5786,7 +5787,7 @@
     },
     "integrated-workflow": {
       "file_count": 10,
-      "sha256": "8aafd0d63bbe91a087f9b94582ec0052b1bf9b888bd5dfce3c112b44ecdb1210"
+      "sha256": "2afc806261db1ba2afce6b915e345a423954ff5b55a9714e85a95f78b992ccc1"
     },
     "interaction-polish": {
       "file_count": 10,

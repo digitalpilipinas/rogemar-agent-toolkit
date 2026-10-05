@@ -3463,7 +3463,8 @@
       "external": [
         "pstack",
         "unlazy",
-        "ponytail"
+        "ponytail",
+        "coderabbit"
       ]
     },
     "design": {

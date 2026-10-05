@@ -4,10 +4,11 @@ Reusable skills that help an AI coding assistant plan work, build features, chec
 its results and handle code reviews. Describe the outcome you want; the assistant
 selects the relevant methods and tools without making you remember every skill.
 
-The toolkit works with Codex, Cursor and other compatible assistants. It starts
-with six core skills, with optional packs for engineering, design, mobile apps
-and other work. It supplies instructions and helpers; your assistant still uses
-its own available models, tools and accounts.
+The toolkit works with Codex, Cursor, Claude and other compatible assistants.
+It starts with six core skills. Optional packs add engineering, design, mobile,
+data and release work. Installing a pack also copies the pinned third-party
+skill repositories that pack uses, on every harness those skills support.
+Your assistant still uses its own models, tools and accounts.
 
 ## Table of contents
 
@@ -37,11 +38,13 @@ A **harness** means the assistant environment, such as Codex or Cursor. A plugin
 or MCP connection may provide live tools, but copying a skill does not install
 that connection or sign in to an account.
 
-Installation also provisions missing external skill files from catalog-pinned
-upstreams for the selected packs. `--profile all` selects the full compatible set;
-`--skip-external` explicitly skips that step for offline setups. Existing external
-copies are preserved. Native plugins, runtimes and authentication remain separate.
-See [installation and recovery](docs/installation.md#automatic-external-skill-provisioning).
+Installation copies missing skill files from the pinned third-party repositories
+for the packs you select. `--profile all` selects every compatible pack and
+therefore every pinned repository that pack is allowed to copy. `--skip-external`
+skips that copy for an offline install. Existing external copies are preserved.
+Native apps, accounts and plugin registration stay separate.
+See [installation and recovery](docs/installation.md#automatic-external-skill-provisioning)
+and [third-party sources](#credits-and-upstream-sources).
 
 ## Get started
 
@@ -66,10 +69,13 @@ python3 scripts/toolkit.py install --harness codex --profile core --pack enginee
 python3 scripts/toolkit.py install --harness codex --profile core --pack engineering --pack design --target project --project-root /path/to/project
 ```
 
-For Cursor, replace `codex` with `cursor`. For another assistant, see the
+For Cursor, replace `codex` with `cursor`. For Claude, use `claude`. For another
+assistant, see the
 [available installation targets](docs/compatibility.md#harness-adapters). Use
 `--target user` instead of the project options for a personal installation.
-Start a fresh task afterward and verify that your assistant can discover the skills.
+The engineering pack copies pinned Unlazy, Ponytail and CodeRabbit skills onto
+every harness, and pinned PStack skills onto Cursor. Start a fresh task
+afterward and verify that your assistant can discover the skills.
 
 Want only the basics? Omit both `--pack` options to install the six-skill core.
 Forge and Integrated Workflow belong to the optional engineering pack. On an
@@ -95,6 +101,7 @@ Codex's `$skill-name` notation; other assistants may present skills differently.
 | --- | --- |
 | Build or fix something in Codex | `codex-forge` |
 | The same coordinated approach in Cursor | `cursor-forge` |
+| The same coordinated approach in Claude | `claude-forge` |
 | Engineering in another compatible assistant | `universal-forge` |
 | Plan a substantial change before building | `create-plan` |
 | Carry out an approved multi-step programme | `integrated-workflow` |
@@ -204,7 +211,8 @@ reuse the same acceptance record rather than starting another process.
 | Assistant | Engineering entry | Model selection |
 | --- | --- | --- |
 | Codex | `codex-forge` | `plan-model-router` applies qualified Forge worker profiles. |
-| Cursor | `cursor-forge` | `cursor-forge-setup` supplies native mappings; the universal router is a fallback. Native PStack remains a separate, unchanged entry. |
+| Cursor | `cursor-forge` | `cursor-forge-setup` supplies native mappings. The universal router is the fallback. Shared `forge-*` skills are the method. Upstream PStack stays installed and unchanged. |
+| Claude | `claude-forge` | `claude-forge-setup` qualifies the live Claude catalogue. |
 | Other compatible assistants | `universal-forge` | Uses the assistant's available native models and controls, with defaults when selection controls are absent. |
 
 Codex has five modes for choosing how to spend effort and account usage:
@@ -218,8 +226,8 @@ Codex has five modes for choosing how to spend effort and account usage:
 | Economy | Conserve usage with Luna and minimal unnecessary coordination. |
 
 Codex keeps `sprint` as an alias for Economy and `budget` as an alias for Lean.
-Cursor and Universal Forge retain their native catalogues and mode definitions;
-this Codex update does not replace them. See the [current role mappings](plugins/rogemar-agent-toolkit/skills/plan-model-router/references/role-mapping.md)
+Cursor, Claude and Universal Forge retain their native catalogues and mode
+definitions. This Codex update does not replace them. See the [current role mappings](plugins/rogemar-agent-toolkit/skills/plan-model-router/references/role-mapping.md)
 and [validation report](plugins/rogemar-agent-toolkit/skills/plan-model-router/references/validation-v6.md)
 for parent targets, measured results and remaining gaps.
 
@@ -317,7 +325,7 @@ Direct members are listed in full; the installer also resolves required skill de
 | `core` | Six shared owners for planning, execution discipline, diagnosis and review. | `workflow-orchestrator`<br>`create-plan`<br>`first-time-right-delivery`<br>`bug-triage`<br>`code-review-and-quality`<br>`code-review-tests` | None |
 | `data` | Database and data-analysis helpers. | `supabase`<br>`supabase-guardian`<br>`csv-analytics-reporter` | [supabase](#dependency-supabase)<br>[convex](#dependency-convex) |
 | `design` | Design brief, reference fidelity, UI/UX, frontend implementation, Taste, polish, motion and visual verification. | `design-brief`<br>`reference-design-contract`<br>`frontend-design`<br>`ux-flow-architect`<br>`design-system-steward`<br>`interaction-polish`<br>`motion-animation-engineer`<br>`accessibility-auditor`<br>`visual-qa`<br>`vector-asset-pipeline` | None |
-| `engineering` | 23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor, Claude and Universal Forge routes. | <details><summary>61 members</summary><code>agent-map</code><br><code>claude-forge</code><br><code>claude-forge-setup</code><br><code>codex-forge</code><br><code>cursor-forge</code><br><code>cursor-forge-setup</code><br><code>engineering-playbooks</code><br><code>forge-architect</code><br><code>forge-arena</code><br><code>forge-automate-me</code><br><code>forge-blast-radius</code><br><code>forge-bro</code><br><code>forge-create-verification-skill</code><br><code>forge-figure-it-out</code><br><code>forge-how</code><br><code>forge-interrogate</code><br><code>forge-maintain-verification-skill</code><br><code>forge-make-bot-ui</code><br><code>forge-no-comments</code><br><code>forge-principle-attack-the-premise</code><br><code>forge-principle-boundary-discipline</code><br><code>forge-principle-build-the-lever</code><br><code>forge-principle-encode-lessons-in-structure</code><br><code>forge-principle-exhaust-the-design-space</code><br><code>forge-principle-experience-first</code><br><code>forge-principle-fix-root-causes</code><br><code>forge-principle-foundational-thinking</code><br><code>forge-principle-guard-the-context-window</code><br><code>forge-principle-laziness-protocol</code><br><code>forge-principle-make-operations-idempotent</code><br><code>forge-principle-migrate-callers-then-delete-legacy-apis</code><br><code>forge-principle-minimize-reader-load</code><br><code>forge-principle-model-the-domain</code><br><code>forge-principle-never-block-on-the-human</code><br><code>forge-principle-outcome-oriented-execution</code><br><code>forge-principle-prove-it-works</code><br><code>forge-principle-redesign-from-first-principles</code><br><code>forge-principle-separate-before-serializing-shared-state</code><br><code>forge-principle-sequence-verifiable-units</code><br><code>forge-principle-subtract-before-you-add</code><br><code>forge-principle-test-behavior-not-implementation</code><br><code>forge-principle-type-system-discipline</code><br><code>forge-recall</code><br><code>forge-reflect</code><br><code>forge-setup</code><br><code>forge-show-me-your-work</code><br><code>forge-swarm</code><br><code>forge-tdd</code><br><code>forge-teach</code><br><code>forge-technical-writing</code><br><code>forge-typescript-best-practices</code><br><code>forge-unslop</code><br><code>forge-why</code><br><code>integrated-workflow</code><br><code>project-learning</code><br><code>performance-profiler</code><br><code>test-architecture-engineer</code><br><code>universal-forge</code><br><code>universal-plan-model-router</code><br><code>codebase-design</code><br><code>codex-capability-maintainer</code></details> | [pstack](#dependency-pstack)<br>[unlazy](#dependency-unlazy)<br>[ponytail](#dependency-ponytail) |
+| `engineering` | 23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor, Claude and Universal Forge routes. | <details><summary>61 members</summary><code>agent-map</code><br><code>claude-forge</code><br><code>claude-forge-setup</code><br><code>codex-forge</code><br><code>cursor-forge</code><br><code>cursor-forge-setup</code><br><code>engineering-playbooks</code><br><code>forge-architect</code><br><code>forge-arena</code><br><code>forge-automate-me</code><br><code>forge-blast-radius</code><br><code>forge-bro</code><br><code>forge-create-verification-skill</code><br><code>forge-figure-it-out</code><br><code>forge-how</code><br><code>forge-interrogate</code><br><code>forge-maintain-verification-skill</code><br><code>forge-make-bot-ui</code><br><code>forge-no-comments</code><br><code>forge-principle-attack-the-premise</code><br><code>forge-principle-boundary-discipline</code><br><code>forge-principle-build-the-lever</code><br><code>forge-principle-encode-lessons-in-structure</code><br><code>forge-principle-exhaust-the-design-space</code><br><code>forge-principle-experience-first</code><br><code>forge-principle-fix-root-causes</code><br><code>forge-principle-foundational-thinking</code><br><code>forge-principle-guard-the-context-window</code><br><code>forge-principle-laziness-protocol</code><br><code>forge-principle-make-operations-idempotent</code><br><code>forge-principle-migrate-callers-then-delete-legacy-apis</code><br><code>forge-principle-minimize-reader-load</code><br><code>forge-principle-model-the-domain</code><br><code>forge-principle-never-block-on-the-human</code><br><code>forge-principle-outcome-oriented-execution</code><br><code>forge-principle-prove-it-works</code><br><code>forge-principle-redesign-from-first-principles</code><br><code>forge-principle-separate-before-serializing-shared-state</code><br><code>forge-principle-sequence-verifiable-units</code><br><code>forge-principle-subtract-before-you-add</code><br><code>forge-principle-test-behavior-not-implementation</code><br><code>forge-principle-type-system-discipline</code><br><code>forge-recall</code><br><code>forge-reflect</code><br><code>forge-setup</code><br><code>forge-show-me-your-work</code><br><code>forge-swarm</code><br><code>forge-tdd</code><br><code>forge-teach</code><br><code>forge-technical-writing</code><br><code>forge-typescript-best-practices</code><br><code>forge-unslop</code><br><code>forge-why</code><br><code>integrated-workflow</code><br><code>project-learning</code><br><code>performance-profiler</code><br><code>test-architecture-engineer</code><br><code>universal-forge</code><br><code>universal-plan-model-router</code><br><code>codebase-design</code><br><code>codex-capability-maintainer</code></details> | [pstack](#dependency-pstack)<br>[unlazy](#dependency-unlazy)<br>[ponytail](#dependency-ponytail)<br>[coderabbit](#dependency-coderabbit) |
 | `expo` | Expo skills including routing, builds, deployment, native UI and upgrades. | None; dependency-only pack | [expo](#dependency-expo) |
 | `external-agents` | Explicitly authorized external provider coordination. | `agent-collaboration-terminal` | [external-providers](#dependency-external-providers) |
 | `ios` | iOS build and QA dependencies; macOS/Xcode are required for local simulators. | `mobile-release-manager`<br>`swiftui-pro`<br>`swift-concurrency-pro`<br>`swiftdata-pro`<br>`swift-testing-pro`<br>`swiftui-expert-skill`<br>`swift-concurrency`<br>`spm-build-analysis`<br>`xcode-build-benchmark`<br>`xcode-build-fixer`<br>`xcode-build-orchestrator`<br>`xcode-compilation-analyzer`<br>`xcode-project-analyzer` | [argent](#dependency-argent)<br>[ios-toolchain](#dependency-ios-toolchain) |
@@ -564,40 +572,56 @@ These pinned package references record the capability audit and provenance. The 
 
 ## Credits and upstream sources
 
-Codex Forge is inspired by and adapted from **Lauren Tan (poteto)'s PStack and
-poteto-mode**, published in the [Cursor plugins repository](https://github.com/cursor/plugins/tree/93b00b89ef425a9c1bac0d0b317dfc49c930ac99/pstack).
-It is an independent adaptation; the original MIT notices are preserved.
+Codex, Cursor, Claude and Universal Forge are inspired by Lauren Tan (poteto)'s
+PStack and poteto-mode in the
+[Cursor plugins repository](https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack).
+The shared `forge-*` skills are the maintained adaptation. Upstream PStack
+remains a separate Cursor plugin. MIT notices are preserved.
 
-This public repository combines maintained methods and licensed source snapshots.
-Each component retains its own license and attribution; being listed here does
-not mean a third-party service or proprietary runtime is bundled. The generated
-inventory above records the relevant source and dependency details.
+These third-party skill repositories are copied by `install` and `upgrade`
+when you select a pack that uses them and the harness is one of that
+dependency's targets. The copy uses the pinned commit. It does not run the
+upstream installer, sign in, or register a plugin.
+
+| Repository | What the selected pack copies | License we can name |
+| --- | --- | --- |
+| [PStack](https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack) | Cursor engineering pack only | MIT |
+| [Ponytail](https://github.com/DietrichGebert/ponytail) | Engineering pack, every harness | MIT |
+| [Unlazy](https://github.com/Leonxlnx/unlazy) | Engineering pack, every harness | MIT |
+| [CodeRabbit skills](https://github.com/coderabbitai/skills) | Engineering pack, every harness | Verify current upstream terms |
+| [Expo skills](https://github.com/expo/skills) | Expo pack, every harness | Verify current upstream terms |
+| [Argent](https://github.com/software-mansion/argent) | Argent, mobile and iOS packs, every harness | Verify Software Mansion terms |
+| [Supabase agent skills](https://github.com/supabase/agent-skills) | Data pack, every harness | Verify current upstream terms |
+| [Convex skills](https://github.com/get-convex/agent-skills) | Data pack, every harness | Verify current upstream terms |
+
+Convex files are copied from the pinned commit recorded in the catalog.
+OpenDesign resources use `toolkit.py resources` and are not copied by
+`install`. Toolchains, accounts, native plugin registration and
+runtime-owned skills are not copied.
+
+These public repositories can be named. Their payloads stay with the owner.
+The generated inventory records the install command and the reason they are
+not vendored.
 
 <details>
-<summary>Upstream repositories and projects</summary>
+<summary>Named upstream repositories that this toolkit does not copy</summary>
 
-- [openai-plugins](https://github.com/openai/plugins)
-- [supabase-agent-skills](https://github.com/supabase/agent-skills)
-- [coderabbit-skills](https://github.com/coderabbitai/skills)
-- [argent](https://github.com/software-mansion/argent)
-- [unlazy](https://github.com/Leonxlnx/unlazy)
-- [pstack](https://github.com/cursor/plugins/tree/main/pstack)
-- [goalbuddy](https://github.com/tolibear/goalbuddy)
-- [remotion-skills](https://github.com/remotion-dev/skills)
-- [vercel-agent-skills](https://github.com/vercel-labs/agent-skills)
-- [cursor-plugins](https://github.com/cursor/plugins)
-- [chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)
-- [modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance)
-- [science-skills](https://github.com/google-deepmind/science-skills)
-- [exa-grok-plugin](https://github.com/exa-labs/exa-grok-plugin)
-- [firecrawl-grok-plugin](https://github.com/firecrawl/firecrawl-grok-plugin)
-- [plugin-grok](https://github.com/getsentry/plugin-grok)
-- [superpowers](https://github.com/obra/superpowers)
-- [vercel-plugin](https://github.com/vercel/vercel-plugin)
-- [junie](https://github.com/JetBrains/junie)
-- [codex-router](https://github.com/duolahypercho/codex-router)
-- [open-design](https://github.com/digitalpilipinas/open-design)
-- [expo-skills](https://github.com/expo/skills)
+- [OpenAI plugins](https://github.com/openai/plugins)
+- [GoalBuddy](https://github.com/tolimarchuk/goalbuddy)
+- [Remotion skills](https://github.com/remotion-dev/skills)
+- [Vercel agent skills](https://github.com/vercel-labs/agent-skills)
+- [Cursor plugins](https://github.com/cursor/plugins)
+- [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp)
+- [Modern web guidance](https://github.com/GoogleChrome/modern-web-guidance)
+- [Science skills](https://github.com/google-deepmind/science-skills)
+- [Exa Grok plugin](https://github.com/exa-labs/exa-grok-plugin)
+- [Firecrawl Grok plugin](https://github.com/firecrawl/firecrawl-grok-plugin)
+- [Sentry Grok plugin](https://github.com/getsentry/plugin-grok)
+- [Superpowers](https://github.com/obra/superpowers)
+- [Vercel plugin](https://github.com/vercel/vercel-plugin)
+- [Junie](https://github.com/JetBrains/junie)
+- [Codex Router](https://github.com/duolahypercho/codex-router)
+- [OpenDesign](https://github.com/digitalpilipinas/open-design)
 
 </details>
 
