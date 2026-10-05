@@ -2643,11 +2643,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-arena": {
       "trigger": "Compare independent candidates against a rubric, choose a base, graft useful ideas and verify one synthesis. Request bounded collaboration through workflow-orchestrator.",
@@ -2659,11 +2657,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-automate-me": {
       "trigger": "Use for \"automate me\", \"create/update/refresh my -mode skill\", \"turn/capture my preferences or working style into a skill\", or wanting agents to follow how the user works. Drafts or revises a personal -mode skill via create-skill + unslop, optionally pulling fresh evidence from recent transcripts.",
@@ -2675,11 +2671,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-blast-radius": {
       "trigger": "Find what a change could break somewhere else before it ships, beyond the diff, and prove the one fact it's safe because of by running real code instead of writing it up. Use for 'blast radius of X', 'what could this break', or reviewing a small diff you don't trust.",
@@ -2691,11 +2685,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-bro": {
       "trigger": "Restate the last message in plain human language, with no jargon.",
@@ -2707,11 +2699,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-create-verification-skill": {
       "trigger": "Generate a project-local verification skill that drives your app the way a user does — any language, framework, or platform. Use for $forge-create-verification-skill, \"make a control skill for this repo\", or when a project has no scripted way to prove UI/CLI/service behavior.",
@@ -2738,11 +2728,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-how": {
       "trigger": "Use for \"how does X work\", code walkthroughs before changing something, and placement / ownership / layering questions (\"where should this live\", \"which package owns this\", \"is this the right layer\"). Explains subsystem architecture, runtime flow, onboarding mental models. Routes requested architectural critique to forge-interrogate. Use why for motivation.",
@@ -2754,11 +2742,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-interrogate": {
       "trigger": "Use for \"interrogate\", \"adversarial review\", \"multi-model review\", \"challenge this\", \"stress test this code\", \"find blind spots\", or \"tear this apart\". Multiple LLM reviewers challenge changes from independent angles.",
@@ -2770,11 +2756,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-maintain-verification-skill": {
       "trigger": "Focused update or explicitly requested full pass that keeps a project's verification skill and feature map honest: bounded source inspection and a live coverage pass with proven local corrections. Use for $forge-maintain-verification-skill or \"audit the verify skill\".",
@@ -2801,11 +2785,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-no-comments": {
       "trigger": "Review code comments and suppressions for noise, obsolete explanations, and opportunities to encode constraints. Use for comment cleanup or a focused review; preserve unresolved safety and compatibility requirements.",
@@ -2817,11 +2799,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-attack-the-premise": {
       "trigger": "Apply after two or more fixes sharing a premise fail the same check. Name the premise and run a discriminating experiment before another fix.",
@@ -2833,11 +2813,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-boundary-discipline": {
       "trigger": "Apply when wiring validation, error handling, or framework adapters. Concentrate guards at system boundaries (CLI, config, network, external APIs); trust internal types and keep business logic in pure functions.",
@@ -2849,11 +2827,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-build-the-lever": {
       "trigger": "Use a repeatable tool when repeated operations, observations or a meaningful verification gap justify it. Reuse existing instruments; keep a direct route for simple work.",
@@ -2865,11 +2841,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-encode-lessons-in-structure": {
       "trigger": "Apply when you catch yourself writing the same instruction a second time, or notice a recurring correction. Encode the rule as a lint, metadata flag, runtime check, or script instead of more text.",
@@ -2881,11 +2855,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-exhaust-the-design-space": {
       "trigger": "Compare credible alternatives for a consequential uncertain design. Prototype only when it resolves a material question; there is no fixed candidate count.",
@@ -2897,11 +2869,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-experience-first": {
       "trigger": "Apply when product, UX, or feature-scope tradeoffs come up. Choose user delight over implementation convenience; ship fewer polished features over more rough ones.",
@@ -2913,11 +2883,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-fix-root-causes": {
       "trigger": "Apply when debugging. Trace each symptom to its root cause and fix it there; reproduce first, ask why until you reach it, resist nil-check guards that silence crashes.",
@@ -2929,11 +2897,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-foundational-thinking": {
       "trigger": "Apply before writing logic: choosing core types and data structures, sequencing scaffold-vs-feature work, asking what concurrent actors share. Get the data structures right so downstream code becomes obvious.",
@@ -2945,11 +2911,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-guard-the-context-window": {
       "trigger": "Apply when large outputs, long files, repeated reads or delegation make context handling material. Preserve sufficient evidence and reduce repeated work across the complete task.",
@@ -2961,11 +2925,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-laziness-protocol": {
       "trigger": "Apply when refactoring, evaluating diff size, or tempted to add abstractions, layers, or signal threading. Bias toward deletion and the smallest change that solves the problem.",
@@ -2977,11 +2939,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-make-operations-idempotent": {
       "trigger": "Apply when designing commands, lifecycle steps, or processing loops that run amid crashes, restarts, and retries. Converge to the same end state regardless of partial prior runs.",
@@ -2993,11 +2953,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-migrate-callers-then-delete-legacy-apis": {
       "trigger": "Migrate controlled API callers and remove proven dead paths while preserving supported clients, persisted formats and staged compatibility contracts.",
@@ -3009,11 +2967,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-minimize-reader-load": {
       "trigger": "Apply when reviewing or shaping code that's hard to trace. Count layers between question and answer, and hidden state in the reader's head; collapse one-caller wrappers and shrink mutable scope.",
@@ -3025,11 +2981,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-model-the-domain": {
       "trigger": "Apply when writing stateful logic, or when code branches a lot or repeats a shape assumption across files. Encode the domain in a structure instead of scattered conditionals.",
@@ -3041,11 +2995,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-never-block-on-the-human": {
       "trigger": "Apply when tempted to ask 'should I do X?' on reversible work. Proceed, present the result, let the human course-correct after the fact; reserve confirmation for irreversible actions.",
@@ -3057,11 +3009,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-outcome-oriented-execution": {
       "trigger": "Apply to approved rewrites and migrations. Converge on the target through verifiable units while preserving required compatibility, data and supported callers.",
@@ -3073,11 +3023,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-prove-it-works": {
       "trigger": "Apply after completing a task, before declaring done. Verify against the real artifact (run the feature, read the actual value, inspect the diff), not a proxy, self-report, or 'it compiles'.",
@@ -3089,11 +3037,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-redesign-from-first-principles": {
       "trigger": "Apply when integrating a new requirement into an existing design. Redesign as if the requirement had been a foundational assumption from day one, instead of bolting it on.",
@@ -3105,11 +3051,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-separate-before-serializing-shared-state": {
       "trigger": "Apply when concurrent actors might write to the same file, branch, key, or state object. Eliminate the sharing first; serialize structurally only when one shared writer is a real invariant.",
@@ -3121,11 +3065,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-sequence-verifiable-units": {
       "trigger": "Apply to multi-step work (sweeps, migrations, runs of similar edits) and to how you stack commits and PRs. Break work into small units that each end in a verifiable state, check each before the next, and order delivery so the sequence proves itself to a reviewer.",
@@ -3137,11 +3079,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-subtract-before-you-add": {
       "trigger": "Apply when sequencing an addition, refactor, or rewrite. Remove dead weight, redundant validators, and stub references first, then build on the simpler base.",
@@ -3153,11 +3093,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-test-behavior-not-implementation": {
       "trigger": "Apply when adding or reviewing tests. Identify the meaningful defect a test detects and assert a public result or required contract without deleting valid negative or static tests.",
@@ -3169,11 +3107,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-principle-type-system-discipline": {
       "trigger": "Apply when designing types, reviewing a function signature, or writing code in any statically-typed language. Make illegal states unrepresentable, brand semantic primitives, parse external data at boundaries, refuse to lie to the compiler, exhaust variants, derive from authoritative schemas.",
@@ -3185,11 +3121,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-recall": {
       "trigger": "Reconstruct your recent working context from your own chat history, live state, and the shared record (user reports, prior fixes, incidents), then hand back a tight current-state brief. Use for 'recall my work on X', 'catch me up', 'what have I been working on', 'where did I leave off', before starting or resuming work.",
@@ -3201,11 +3135,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-reflect": {
       "trigger": "Review the current task for durable lessons using judgment, tooling and divergent lenses. Propose or apply explicitly authorized skill improvements with cited evidence.",
@@ -3217,11 +3149,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-setup": {
       "trigger": "Configure adaptive per-role Codex model preferences for Forge. Use when setting up Forge, switching Default, Peak, Balanced, Lean, or Economy modes, changing preferred worker models or reasoning hints, or checking routing readiness. Let a selected mode govern parent and worker profiles; verify actual runtime switches separately.",
@@ -3249,11 +3179,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-swarm": {
       "trigger": "Fan out N parallel workers, drain them, and return one report. Use for $forge-swarm, 'swarm this', or parallel coverage, races, gauntlets, and exploration.",
@@ -3265,11 +3193,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-tdd": {
       "trigger": "Use only when the user explicitly asks for TDD, a failing test, or a regression test, OR when the bug has an obvious cheap local test target. Skip when the test path is unclear, expensive, integration-heavy, or not requested.",
@@ -3281,11 +3207,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-teach": {
       "trigger": "Explain a body of work plainly so a person actually understands it. Runs the `forge-how` and `forge-why` skills and weaves what they find into one clear explanation. Use for 'teach me this', 'help me really understand X', 'explain this change or subsystem to me'.",
@@ -3297,11 +3221,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-technical-writing": {
       "trigger": "Layered forge-technical-writing standard: Diátaxis structure, Google developer style sentences, STE instruction rules, Global English syntax. Use for $forge-technical-writing or when writing or reviewing docs, RFCs, readmes, PR descriptions, or commit messages.",
@@ -3313,11 +3235,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-typescript-best-practices": {
       "trigger": "TypeScript best practices. Use when reading or editing any .ts or .tsx file.",
@@ -3329,11 +3249,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-unslop": {
       "trigger": "Edit requested prose for clarity, specificity and economy while respecting user voice, technical meaning and repository templates.",
@@ -3345,11 +3263,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "forge-why": {
       "trigger": "Investigate design rationale and regression history from authorized source-control, ticket, document, chat, observability, error and analytics evidence. Separate direct evidence, inference and gaps.",
@@ -3361,11 +3277,9 @@
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
-      "targets": [
-        "codex"
-      ]
+      "targets": []
     },
     "frontend-design": {
       "trigger": "Build or redesign working web interfaces with a clear visual direction, usable interaction states and responsive craft. Use for artifact or UI implementation after the task and design direction are understood; use the existing product system where one exists.",

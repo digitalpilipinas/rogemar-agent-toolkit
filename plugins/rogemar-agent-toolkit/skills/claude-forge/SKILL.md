@@ -23,11 +23,11 @@ if none exists. Show role, model, effort, mode and evidence status without
 repeated introductions. Setup inspection alone does not require a mode choice
 or write preferences; apply the prompt when beginning an execution task.
 
-This is the Claude execution entry for the shared Forge methods. It is not a
-second copy of the Codex `forge-*` skills and it does not replace Cursor
-`/cursor-forge` or `/poteto-mode`. Use the installed `engineering-playbooks`
-library for the method text and `claude-forge-setup` for Claude profile
-qualification. `workflow-orchestrator` remains the only dispatcher.
+This is the Claude execution entry for the shared Forge methods. Use the
+installed `forge-*` skills and the `engineering-playbooks` library. Do not use
+`codex-forge` or `forge-setup` here. This entry does not replace Cursor
+`/cursor-forge` or `/poteto-mode`. `claude-forge-setup` qualifies Claude
+profiles. `workflow-orchestrator` remains the only dispatcher.
 
 If this session is not Claude, stop and use the entry for the harness that is
 actually running. Naming Claude does not create Claude tools.

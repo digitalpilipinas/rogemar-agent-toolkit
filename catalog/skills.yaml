@@ -445,16 +445,13 @@
     },
     {
       "name": "forge-architect",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Sketch types, signatures, and module structure before code, then stay in the loop while implementation fills in. Use for $forge-architect, 'architect this', 'design this', or non-trivial work where jumping to code would lock in the wrong shape.",
@@ -466,16 +463,13 @@
     },
     {
       "name": "forge-arena",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Compare independent candidates against a rubric, choose a base, graft useful ideas and verify one synthesis. Request bounded collaboration through workflow-orchestrator.",
@@ -487,16 +481,13 @@
     },
     {
       "name": "forge-automate-me",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Use for \"automate me\", \"create/update/refresh my -mode skill\", \"turn/capture my preferences or working style into a skill\", or wanting agents to follow how the user works. Drafts or revises a personal -mode skill via create-skill + unslop, optionally pulling fresh evidence from recent transcripts.",
@@ -508,16 +499,13 @@
     },
     {
       "name": "forge-blast-radius",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Find what a change could break somewhere else before it ships, beyond the diff, and prove the one fact it's safe because of by running real code instead of writing it up. Use for 'blast radius of X', 'what could this break', or reviewing a small diff you don't trust.",
@@ -529,16 +517,13 @@
     },
     {
       "name": "forge-bro",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Restate the last message in plain human language, with no jargon.",
@@ -550,8 +535,8 @@
     },
     {
       "name": "forge-create-verification-skill",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
@@ -569,16 +554,13 @@
     },
     {
       "name": "forge-figure-it-out",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Design an auditable playbook when no narrower one fits: a large migration, an ambitious multi-part change, or work a human reviews after stepping away. Scales rigor to the task, runs a hypothesis loop, and logs decisions via forge-show-me-your-work. Use for $forge-figure-it-out, 'figure it out', a large migration, or when no narrower playbook applies.",
@@ -590,16 +572,13 @@
     },
     {
       "name": "forge-how",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Use for \"how does X work\", code walkthroughs before changing something, and placement / ownership / layering questions (\"where should this live\", \"which package owns this\", \"is this the right layer\"). Explains subsystem architecture, runtime flow, onboarding mental models. Routes requested architectural critique to forge-interrogate. Use why for motivation.",
@@ -611,16 +590,13 @@
     },
     {
       "name": "forge-interrogate",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Use for \"interrogate\", \"adversarial review\", \"multi-model review\", \"challenge this\", \"stress test this code\", \"find blind spots\", or \"tear this apart\". Multiple LLM reviewers challenge changes from independent angles.",
@@ -632,8 +608,8 @@
     },
     {
       "name": "forge-maintain-verification-skill",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
@@ -651,16 +627,13 @@
     },
     {
       "name": "forge-make-bot-ui",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Design and build a page or dashboard that triggers an authorized bot through a verified webhook adapter. Use for bot buttons, webhook dashboards, and private network access; gate execution when Codex lacks the necessary live service or secure credential entry.",
@@ -672,16 +645,13 @@
     },
     {
       "name": "forge-no-comments",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Review code comments and suppressions for noise, obsolete explanations, and opportunities to encode constraints. Use for comment cleanup or a focused review; preserve unresolved safety and compatibility requirements.",
@@ -693,16 +663,13 @@
     },
     {
       "name": "forge-principle-attack-the-premise",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply after two or more fixes sharing a premise fail the same check. Name the premise and run a discriminating experiment before another fix.",
@@ -714,16 +681,13 @@
     },
     {
       "name": "forge-principle-boundary-discipline",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when wiring validation, error handling, or framework adapters. Concentrate guards at system boundaries (CLI, config, network, external APIs); trust internal types and keep business logic in pure functions.",
@@ -735,16 +699,13 @@
     },
     {
       "name": "forge-principle-build-the-lever",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Use a repeatable tool when repeated operations, observations or a meaningful verification gap justify it. Reuse existing instruments; keep a direct route for simple work.",
@@ -756,16 +717,13 @@
     },
     {
       "name": "forge-principle-encode-lessons-in-structure",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when you catch yourself writing the same instruction a second time, or notice a recurring correction. Encode the rule as a lint, metadata flag, runtime check, or script instead of more text.",
@@ -777,16 +735,13 @@
     },
     {
       "name": "forge-principle-exhaust-the-design-space",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Compare credible alternatives for a consequential uncertain design. Prototype only when it resolves a material question; there is no fixed candidate count.",
@@ -798,16 +753,13 @@
     },
     {
       "name": "forge-principle-experience-first",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when product, UX, or feature-scope tradeoffs come up. Choose user delight over implementation convenience; ship fewer polished features over more rough ones.",
@@ -819,16 +771,13 @@
     },
     {
       "name": "forge-principle-fix-root-causes",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when debugging. Trace each symptom to its root cause and fix it there; reproduce first, ask why until you reach it, resist nil-check guards that silence crashes.",
@@ -840,16 +789,13 @@
     },
     {
       "name": "forge-principle-foundational-thinking",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply before writing logic: choosing core types and data structures, sequencing scaffold-vs-feature work, asking what concurrent actors share. Get the data structures right so downstream code becomes obvious.",
@@ -861,16 +807,13 @@
     },
     {
       "name": "forge-principle-guard-the-context-window",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when large outputs, long files, repeated reads or delegation make context handling material. Preserve sufficient evidence and reduce repeated work across the complete task.",
@@ -882,16 +825,13 @@
     },
     {
       "name": "forge-principle-laziness-protocol",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when refactoring, evaluating diff size, or tempted to add abstractions, layers, or signal threading. Bias toward deletion and the smallest change that solves the problem.",
@@ -903,16 +843,13 @@
     },
     {
       "name": "forge-principle-make-operations-idempotent",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when designing commands, lifecycle steps, or processing loops that run amid crashes, restarts, and retries. Converge to the same end state regardless of partial prior runs.",
@@ -924,16 +861,13 @@
     },
     {
       "name": "forge-principle-migrate-callers-then-delete-legacy-apis",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Migrate controlled API callers and remove proven dead paths while preserving supported clients, persisted formats and staged compatibility contracts.",
@@ -945,16 +879,13 @@
     },
     {
       "name": "forge-principle-minimize-reader-load",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when reviewing or shaping code that's hard to trace. Count layers between question and answer, and hidden state in the reader's head; collapse one-caller wrappers and shrink mutable scope.",
@@ -966,16 +897,13 @@
     },
     {
       "name": "forge-principle-model-the-domain",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when writing stateful logic, or when code branches a lot or repeats a shape assumption across files. Encode the domain in a structure instead of scattered conditionals.",
@@ -987,16 +915,13 @@
     },
     {
       "name": "forge-principle-never-block-on-the-human",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when tempted to ask 'should I do X?' on reversible work. Proceed, present the result, let the human course-correct after the fact; reserve confirmation for irreversible actions.",
@@ -1008,16 +933,13 @@
     },
     {
       "name": "forge-principle-outcome-oriented-execution",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply to approved rewrites and migrations. Converge on the target through verifiable units while preserving required compatibility, data and supported callers.",
@@ -1029,16 +951,13 @@
     },
     {
       "name": "forge-principle-prove-it-works",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply after completing a task, before declaring done. Verify against the real artifact (run the feature, read the actual value, inspect the diff), not a proxy, self-report, or 'it compiles'.",
@@ -1050,16 +969,13 @@
     },
     {
       "name": "forge-principle-redesign-from-first-principles",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when integrating a new requirement into an existing design. Redesign as if the requirement had been a foundational assumption from day one, instead of bolting it on.",
@@ -1071,16 +987,13 @@
     },
     {
       "name": "forge-principle-separate-before-serializing-shared-state",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when concurrent actors might write to the same file, branch, key, or state object. Eliminate the sharing first; serialize structurally only when one shared writer is a real invariant.",
@@ -1092,16 +1005,13 @@
     },
     {
       "name": "forge-principle-sequence-verifiable-units",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply to multi-step work (sweeps, migrations, runs of similar edits) and to how you stack commits and PRs. Break work into small units that each end in a verifiable state, check each before the next, and order delivery so the sequence proves itself to a reviewer.",
@@ -1113,16 +1023,13 @@
     },
     {
       "name": "forge-principle-subtract-before-you-add",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when sequencing an addition, refactor, or rewrite. Remove dead weight, redundant validators, and stub references first, then build on the simpler base.",
@@ -1134,16 +1041,13 @@
     },
     {
       "name": "forge-principle-test-behavior-not-implementation",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when adding or reviewing tests. Identify the meaningful defect a test detects and assert a public result or required contract without deleting valid negative or static tests.",
@@ -1155,16 +1059,13 @@
     },
     {
       "name": "forge-principle-type-system-discipline",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Apply when designing types, reviewing a function signature, or writing code in any statically-typed language. Make illegal states unrepresentable, brand semantic primitives, parse external data at boundaries, refuse to lie to the compiler, exhaust variants, derive from authoritative schemas.",
@@ -1176,16 +1077,13 @@
     },
     {
       "name": "forge-recall",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Reconstruct your recent working context from your own chat history, live state, and the shared record (user reports, prior fixes, incidents), then hand back a tight current-state brief. Use for 'recall my work on X', 'catch me up', 'what have I been working on', 'where did I leave off', before starting or resuming work.",
@@ -1197,16 +1095,13 @@
     },
     {
       "name": "forge-reflect",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Review the current task for durable lessons using judgment, tooling and divergent lenses. Propose or apply explicitly authorized skill improvements with cited evidence.",
@@ -1239,16 +1134,13 @@
     },
     {
       "name": "forge-show-me-your-work",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Keep a local evidence-backed decision trail for long or multi-phase work. Audit actual results and apply publication authority separately.",
@@ -1260,16 +1152,13 @@
     },
     {
       "name": "forge-swarm",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Fan out N parallel workers, drain them, and return one report. Use for $forge-swarm, 'swarm this', or parallel coverage, races, gauntlets, and exploration.",
@@ -1281,16 +1170,13 @@
     },
     {
       "name": "forge-tdd",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Use only when the user explicitly asks for TDD, a failing test, or a regression test, OR when the bug has an obvious cheap local test target. Skip when the test path is unclear, expensive, integration-heavy, or not requested.",
@@ -1302,16 +1188,13 @@
     },
     {
       "name": "forge-teach",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Explain a body of work plainly so a person actually understands it. Runs the `forge-how` and `forge-why` skills and weaves what they find into one clear explanation. Use for 'teach me this', 'help me really understand X', 'explain this change or subsystem to me'.",
@@ -1323,16 +1206,13 @@
     },
     {
       "name": "forge-technical-writing",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Layered forge-technical-writing standard: Diátaxis structure, Google developer style sentences, STE instruction rules, Global English syntax. Use for $forge-technical-writing or when writing or reviewing docs, RFCs, readmes, PR descriptions, or commit messages.",
@@ -1344,16 +1224,13 @@
     },
     {
       "name": "forge-typescript-best-practices",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "TypeScript best practices. Use when reading or editing any .ts or .tsx file.",
@@ -1365,16 +1242,13 @@
     },
     {
       "name": "forge-unslop",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Edit requested prose for clarity, specificity and economy while respecting user voice, technical meaning and repository templates.",
@@ -1386,16 +1260,13 @@
     },
     {
       "name": "forge-why",
-      "source": "Codex adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "author": "Lauren Tan; Codex adaptation by Rogemar",
+      "source": "Shared Forge adaptation of cursor/plugins pstack at e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "author": "Lauren Tan; Forge adaptation by Rogemar",
       "license": "MIT",
       "license_evidence": "LICENSE.txt",
-      "targets": [
-        "codex"
-      ],
       "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
       "requires": [
-        "codex-forge"
+        "workflow-orchestrator"
       ],
       "routing": {
         "trigger": "Investigate design rationale and regression history from authorized source-control, ticket, document, chat, observability, error and analytics evidence. Separate direct evidence, inference and gaps.",

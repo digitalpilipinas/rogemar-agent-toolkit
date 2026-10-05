@@ -5,9 +5,9 @@
 - Add `claude-forge` and `claude-forge-setup` for the Claude harness. The 23
   playbooks are generated from the shared engineering playbooks, and Claude
   profile setup reads the live Claude model catalogue.
-- Keep Cursor on `cursor-forge` and upstream poteto-mode. Keep Codex on
-  `codex-forge` and the `forge-*` family. Universal Forge remains the route
-  outside those three.
+- Share the `forge-*` methods across Codex, Cursor, Claude and Universal Forge.
+  `codex-forge` and `forge-setup` stay on Codex. When PStack and a `forge-*`
+  skill are both installed, follow the `forge-*` skill.
 
 ## Maintained sources and bounded supporting methods (unreleased)
 

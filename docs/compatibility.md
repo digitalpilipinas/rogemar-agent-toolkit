@@ -27,9 +27,11 @@ Codex places native-only entries in `.codex/skills`; shared methods live once in
 worker assignments. Cursor uses `cursor-forge` and `cursor-forge-setup` for native
 role/model mappings; the universal router is a fallback when that route is
 unavailable. Upstream PStack/poteto-mode remains a separate, unchanged entry.
-Claude uses `claude-forge` and `claude-forge-setup`. Those skills bind the shared
-engineering playbooks to Claude's live model catalogue and worker tool. They do
-not install the Codex `forge-*` family or Cursor PStack. Other assistants use
+Claude uses `claude-forge` and `claude-forge-setup`. Shared `forge-*` methods
+install on Codex, Cursor, Claude and Universal Forge. `codex-forge` and
+`forge-setup` stay on Codex and keep `plan-model-router`. Upstream PStack
+remains a separate Cursor plugin. When both are installed, follow the `forge-*`
+skill rather than the upstream Task model list. Other assistants use
 `universal-forge` with `universal-plan-model-router` and their own observed
 capabilities. Shared engineering methods may run sequentially on the current
 model when worker controls are unavailable.

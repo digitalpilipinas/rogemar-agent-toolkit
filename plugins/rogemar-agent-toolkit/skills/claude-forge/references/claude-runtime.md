@@ -78,8 +78,9 @@ does not grant them. This task's existing authority still applies.
 the local change when publication is outside the request.
 
 Do not install hooks, plugins, or MCP servers because a playbook mentions them.
-Do not copy Codex `forge-*` skills into `.claude/skills`. Those skills require
-the Codex runtime contract.
+Shared `forge-*` skills install with this harness. `codex-forge` and
+`forge-setup` do not. Read the shared Forge runtime before those skills
+dispatch a worker.
 
 ## Planning and evidence
 

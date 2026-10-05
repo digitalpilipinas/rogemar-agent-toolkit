@@ -50,6 +50,11 @@ achievable; never claim full PStack coverage from this entry file alone.
 
 `workflow-orchestrator` is the sole dispatch owner. Reuse its active context;
 otherwise the main agent applies that role without creating a second coordinator.
+Installed `forge-*` skills are the shared companion methods. Read
+[the shared Forge runtime](../workflow-orchestrator/references/forge-runtime.md)
+before they dispatch a worker. `codex-forge` and `forge-setup` are not this
+route. Use the portable companion section only when the matching `forge-*`
+skill is absent.
 `integrated-workflow` retains approved programme and delivery gates. Do not
 invoke either entry point recursively or restart the plan when a method returns.
 

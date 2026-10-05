@@ -5,9 +5,9 @@ license: MIT
 ---
 # Attack the Premise
 
-## Codex execution contract
+## Forge execution contract
 
-Read [the Forge runtime contract](../codex-forge/references/codex-runtime.md). `workflow-orchestrator` owns dispatch and `plan-model-router` qualifies every justified worker. Preserve the active mode, native availability and explicit user limits; without a mode, retain parent ceilings. This method grants no additional scope or authority.
+Read [the shared Forge runtime](../workflow-orchestrator/references/forge-runtime.md) before dispatch or a runtime action. This skill supplies the method. The active Forge entry selects the profile router.
 
 When two or more fixes assume the same thing and fail the same check, examine the shared assumption before trying another variation.
 

@@ -7,11 +7,10 @@ license: MIT
 
 ## Portable execution contract
 
-This entry is available in Codex, Cursor and other supported harnesses. Read the
-active Forge adapter only when its harness matches. Codex uses its native runtime
-contract and qualified model router; other harnesses use their observed native
-controls and the shared engineering methods. `workflow-orchestrator` alone selects
-specialists and dispatches workers. Keep one delivery owner and acceptance record.
+This entry is shared by Codex, Cursor, Claude and Universal Forge. Read
+[the shared Forge runtime](../workflow-orchestrator/references/forge-runtime.md)
+before dispatch. `workflow-orchestrator` alone selects specialists and dispatches
+workers. Keep one delivery owner and acceptance record.
 
 Select this method automatically only when changed behavior needs new coverage,
 a recipe breaks, relevant dependencies change, or the owner requests an update.

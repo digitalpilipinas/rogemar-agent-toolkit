@@ -144,7 +144,7 @@ class SelectedReadinessTests(unittest.TestCase):
                     SELECT.resolve(index,['external'],a)
                 SELECT.resolve(index,['external'],a,explicit=['external'])
 
-    def test_worker_harness_must_support_selected_source_but_not_native_fallback(self):
+    def test_shared_forge_methods_run_on_each_forge_and_native_entries_stay_put(self):
         if 'forge-how' not in self.index['skills']:
             self.skipTest('Native companion not selected in this distribution')
         brief={'owner':'main','role':'investigation','allowed_files':['source.py'],
@@ -155,15 +155,16 @@ class SelectedReadinessTests(unittest.TestCase):
         def resolve(harness):
             return SELECT.resolve(self.index,brief['methods'],SKILLS,context={'harness':harness},
                                   candidate='current',runtime=True,worker_brief=brief)
-        result=resolve('codex')
-        self.assertEqual(result['methods'][0]['route'],'source')
-        self.assertEqual(result['worker_brief']['status'],'blocked-by-worker-readiness')
-        brief['context']['harness']='codex'
-        self.assertEqual(resolve('codex')['worker_brief']['status'],'contract-complete')
-        brief['context']['harness']='cursor'
-        result=resolve('cursor')
-        self.assertEqual(result['methods'][0]['route'],'fallback')
-        self.assertEqual(result['worker_brief']['status'],'contract-complete')
+        for harness in ('codex', 'cursor', 'claude', 'agent-skills'):
+            brief['context']['harness'] = harness
+            result = resolve(harness)
+            self.assertEqual(result['methods'][0]['route'], 'source', harness)
+            self.assertEqual(result['worker_brief']['status'], 'contract-complete', harness)
+        brief['methods'] = ['codex-forge']
+        brief['context']['harness'] = 'cursor'
+        result = resolve('cursor')
+        self.assertEqual(result['methods'][0]['status'], 'unavailable')
+        self.assertEqual(result['worker_brief']['status'], 'blocked-by-selected-route')
 
     def test_e2e_provider_and_mobile_are_separate(self):
         self.context.update(task_tags=['e2e'], execution={'surface':'browser','mode':'deterministic'})
