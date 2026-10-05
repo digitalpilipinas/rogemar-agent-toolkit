@@ -15,13 +15,13 @@ Maintain durable, evidence-backed project lessons without turning unreviewed cha
 
 - Keep learning project-local. Never write harness memory (Codex, Cursor or other), global AGENTS.md, or another project's files unless the user explicitly requests adaptation into that target.
 - The store under `.codex/project-learning/` is the shared project location for every harness; the directory name is kept for compatibility with existing projects.
-- Treat candidates as inactive. Only user-approved entries in `docs/project-learning/lessons.md` are usable guidance.
+- Treat candidates as inactive. Entries in `docs/project-learning/lessons.md` are usable guidance when a person approved them or an enrolled workflow accepted them from a repository file, test file, or commit.
 - Current user instructions, repository contracts, tests, and verified current evidence override accepted lessons.
 - Never persist raw transcripts, hidden reasoning, tool output, secrets, credentials, personal data, or quoted conversation text.
 - Do not delegate or invoke workflow skills. `workflow-orchestrator` remains the lifecycle and delegation owner.
 - Normal task chats must not be interrupted for learning. The project Stop hook is a passive signal collector; it may queue bounded turn metadata, but it must never block, prompt, or emit a continuation request.
 - A normal task may include an optional final `Learning note:` summarizing one verified, reusable rule from that task. This is communication in the source chat, not candidate capture, approval, or accepted project guidance.
-- In capture mode, edit only `.codex/project-learning/candidates.jsonl` and `.codex/project-learning/state/`. Never edit product code or the accepted ledger.
+- In explicit capture, edit only `.codex/project-learning/candidates.jsonl` and `.codex/project-learning/state/`. An enrolled workflow may append one accepted lesson. Never edit product code.
 
 ## Select a Mode
 
@@ -59,7 +59,7 @@ Include it only when the rule is genuinely reusable and supported by the task's 
 
 ### Capture
 
-Use in a dedicated learning task, when explicitly asked to harvest a task, or at an explicitly enrolled workflow completion checkpoint. Existing projects default to explicit capture. Automatic capture requires `--workflow --permission-mode execution` and verified or reinforced evidence; it never activates a lesson.
+Use in a dedicated learning task, when explicitly asked to harvest a task, or at an explicitly enrolled workflow completion checkpoint. Existing projects default to explicit capture. Automatic capture requires `--workflow --permission-mode execution` and verified or reinforced evidence. It accepts the lesson only when that evidence is in the repository.
 
 1. Read [references/schemas.md](references/schemas.md).
 2. Inspect only the completed visible turn and current repository evidence.
@@ -96,7 +96,7 @@ Workflow enrollment accepts a legitimate lesson during capture. Use this mode fo
 1. Read [references/schemas.md](references/schemas.md) and [references/operations.md](references/operations.md).
 2. Run `scripts/candidate_store.py list --status pending`.
 3. Present a compact batch using the readable format below. If a proposed lesson is dense or combines multiple rules, show an edited one-sentence lesson and preserve the supporting detail in the boundaries or evidence. Include the recommended action: accept, edit, or dismiss.
-4. Do not modify the ledger until the user approves specific candidate IDs or an explicit batch.
+4. Do not modify the ledger for a held candidate until the user approves specific candidate IDs or an explicit batch.
 5. After approval, use `promote` or `dismiss`, then validate the project.
 
 ### Adapt

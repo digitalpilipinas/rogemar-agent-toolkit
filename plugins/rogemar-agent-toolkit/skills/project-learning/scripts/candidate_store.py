@@ -565,26 +565,10 @@ def capture(args: argparse.Namespace) -> dict[str, Any]:
     for event in events:
         source = event.get("source")
         if isinstance(source, dict) and f"{source.get('session_id')}:{source.get('turn_id')}" == source_key:
-            outcome = event.get("event_type")
-            candidate_id = event.get("candidate_id")
-            atomic_json(
-                processed,
-                {
-                    "schema_version": SCHEMA_VERSION,
-                    "session_id": request["session_id"],
-                    "turn_id": request["turn_id"],
-                    "outcome": outcome,
-                    "candidate_id": candidate_id,
-                    "processed_at": now_iso(),
-                },
+            return complete_capture(
+                args, root, config, store_path, state_dir, request,
+                event.get("candidate_id"), event.get("event_type"), idempotent=True,
             )
-            return {
-                "captured": outcome in {"captured", "reinforced"},
-                "candidate_id": candidate_id,
-                "event_type": outcome,
-                "review_due": False,
-                "idempotent": True,
-            }
 
     resolve_lineage(request, state_dir)
     digest = fingerprint(request)
@@ -636,12 +620,46 @@ def capture(args: argparse.Namespace) -> dict[str, Any]:
         "payload": payload,
     }
     append_event(store_path, event)
-    updated = materialize(events + [event])
-    pending_count = sum(1 for item in updated.values() if item["status"] == "pending")
-    due = review_due(state_dir, updated, config["review_reminder"]["pending_count"],
-                     request["milestone"] and config["review_reminder"].get("milestones") is True)
+    return complete_capture(
+        args, root, config, store_path, state_dir, request, candidate_id, event_type, idempotent=False,
+    )
+
+
+def complete_capture(
+    args: argparse.Namespace,
+    root: Path,
+    config: dict[str, Any],
+    store_path: Path,
+    state_dir: Path,
+    request: dict[str, Any],
+    candidate_id: str | None,
+    event_type: str | None,
+    idempotent: bool,
+) -> dict[str, Any]:
+    """Accept a legitimate workflow lesson before recording the turn as finished."""
+    candidates = materialize(load_events(store_path))
+    candidate = candidates.get(candidate_id) if candidate_id else None
+    promoted = False
+    hold_reason = None
+    if getattr(args, "workflow", False) and candidate is not None:
+        if candidate["status"] == "promoted":
+            promoted = True
+        elif candidate["status"] == "pending":
+            payload = candidate.get("payload") or {}
+            hold_reason = legitimacy_hold_reason(root, payload)
+            if hold_reason is None:
+                accept_legitimate(root, config, candidate, request)
+                promoted = True
+                candidates = materialize(load_events(store_path))
+    pending_count = sum(1 for item in candidates.values() if item["status"] == "pending")
+    due = review_due(
+        state_dir,
+        candidates,
+        config["review_reminder"]["pending_count"],
+        bool(request.get("milestone")) and config["review_reminder"].get("milestones") is True,
+    )
     atomic_json(
-        processed,
+        marker_path(state_dir, request["session_id"], request["turn_id"]),
         {
             "schema_version": SCHEMA_VERSION,
             "session_id": request["session_id"],
@@ -651,24 +669,15 @@ def capture(args: argparse.Namespace) -> dict[str, Any]:
             "processed_at": now_iso(),
         },
     )
-    promoted = False
-    hold_reason = None
-    if getattr(args, "workflow", False):
-        hold_reason = legitimacy_hold_reason(root, payload)
-        if hold_reason is None:
-            accept_legitimate(root, config, updated[candidate_id], request)
-            promoted = True
-            pending_count = sum(1 for item in materialize(load_events(store_path)).values() if item["status"] == "pending")
-            due = False
     return {
-        "captured": True,
+        "captured": event_type in {"captured", "reinforced"},
         "candidate_id": candidate_id,
         "event_type": event_type,
         "pending_count": pending_count,
         "review_due": due,
         "promoted": promoted,
         "hold_reason": hold_reason,
-        "idempotent": False,
+        "idempotent": idempotent,
     }
 
 
