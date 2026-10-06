@@ -1,5 +1,10 @@
 # Changelog
 
+## Open the files a task needs (unreleased)
+
+- Integrated Workflow opens each file for a situation that is active now.
+  It leaves a file closed only when that situation is absent.
+
 ## Forge method selection (unreleased)
 
 - Integrated Workflow names the `forge-*` method for each common situation.

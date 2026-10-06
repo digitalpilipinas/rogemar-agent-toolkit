@@ -25,15 +25,17 @@ supervises the sprint. Assigned workers may write inside their assignment.
 Infer ordinary project details; the owner need not name every supporting skill
 or fill out a configuration form.
 
-## Open only the file this task needs
+## Open the files the active situations need
 
 Classify the task first. `workflow-orchestrator` remains the only skill router.
-It reads `skill-routing.json` for the current task. Do not open the rest of the
-catalog, and do not open every file linked from this skill.
+It reads `skill-routing.json` for the current task. A task may have several
+active situations. Open each file those situations name. Leave a file closed
+only when its situation is absent. Do not open the rest of the catalog, and do
+not open every file linked from this skill at the start.
 
 | Situation | Open |
 | --- | --- |
-| Small bounded correction | The proportional-checks section below. Leave the review, UI, and delivery files closed. |
+| Small bounded correction | The proportional-checks section below. Leave review, UI, and delivery files closed unless that situation is also active. |
 | Approved implementation on a named harness | The harness table below, then that harness's Forge entry. |
 | Visible or interactive UI | [UI/UX implementation](references/ui-ux-implementation.md) |
 | Unlazy, Ponytail, navigation, or project learning | [Supporting methods](references/supporting-methods.md) |

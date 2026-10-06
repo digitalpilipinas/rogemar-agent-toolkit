@@ -13,7 +13,14 @@ class IntegratedWorkflowEntryTests(unittest.TestCase):
         if not path.is_file():
             self.skipTest("Integrated Workflow was not selected for this distribution")
         text = path.read_text()
-        self.assertIn("## Open only the file this task needs", text)
+        self.assertIn("## Open the files the active situations need", text)
+        self.assertIn("A task may have several\nactive situations.", text)
+        self.assertIn(
+            "Open each file those situations name. Leave a file closed\n"
+            "only when its situation is absent.",
+            text,
+        )
+        self.assertNotIn("## Open only the file this task needs", text)
         for target in (
             "references/ui-ux-implementation.md",
             "references/supporting-methods.md",
