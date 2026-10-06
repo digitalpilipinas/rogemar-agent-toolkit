@@ -49,7 +49,9 @@ Queued source-turn metadata is a review cue only. A dedicated learning task must
 
 ## Review and Promotion
 
-List materialized pending candidates as JSON. Propose a batch and wait for approval. For each approved candidate, create a promotion request following `schemas.md`, then run `candidate_store.py promote`. For rejected candidates, run `dismiss` with the approved candidate ID.
+An enrolled workflow capture accepts the lesson immediately when every evidence item is a file, a test file, or a commit in the repository. The capture result sets `promoted` true. A candidate with `hold_reason` stays pending: chat decisions, missing paths, adaptations, and skill proposals are not accepted.
+
+List remaining pending candidates as JSON. Propose a batch and wait for approval. For each approved candidate, create a promotion request following `schemas.md`, then run `candidate_store.py promote`. For rejected candidates, run `dismiss` with the approved candidate ID.
 
 Promotion appends one bounded Markdown entry and one `promoted` event. Re-running the same promotion is idempotent. A candidate cannot be promoted when its evidence does not exist, its record fails validation, or it contains sensitive-looking material.
 
@@ -60,7 +62,7 @@ A capture result may return `review_due: true`:
 - Once when the pending count enters each group of five.
 - At a milestone only when pending material has changed since the last reminder. New turns alone do not earn repeated reminders.
 
-Mention the review availability in one sentence. Do not start review or activate lessons automatically.
+Mention a pending review in one sentence when `review_due` is true. That reminder covers held candidates. It does not repeat a lesson the workflow already accepted.
 
 ## Failure and Rollback
 

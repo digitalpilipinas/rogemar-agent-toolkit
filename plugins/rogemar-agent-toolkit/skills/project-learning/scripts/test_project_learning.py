@@ -546,6 +546,121 @@ class ProjectLearningTest(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertFalse((self.root / ".codex/project-learning/candidates.jsonl").exists())
 
+    def test_append_preserves_a_valid_unterminated_event(self) -> None:
+        """A complete final event without a newline is kept when the next event is added."""
+        self.initialize()
+        store = self.root / ".codex/project-learning/candidates.jsonl"
+        event = {
+            "schema_version": 1,
+            "event_id": "kept-event",
+            "candidate_id": "PL-KEEP",
+            "event_type": "captured",
+            "recorded_at": "2026-01-01T00:00:00Z",
+            "fingerprint": "abc",
+            "source": {"session_id": "kept-session", "turn_id": "kept-turn"},
+            "payload": {"lesson": "Kept lesson"},
+        }
+        store.write_text(json.dumps(event, separators=(",", ":")), encoding="utf-8")
+        self.assertFalse(store.read_text(encoding="utf-8").endswith("\n"))
+        self.capture_request(1)
+        self.store("capture", "--root", str(self.root), "--request", str(self.root / ".codex/project-learning/state/request-1.json"))
+        text = store.read_text(encoding="utf-8")
+        self.assertNotIn('{"partial"', text)
+        self.assertIn("PL-KEEP", text)
+        self.assertTrue(text.endswith("\n"))
+        lines = [line for line in text.splitlines() if line.strip()]
+        self.assertEqual(len(lines), 2)
+        for line in lines:
+            json.loads(line)
+
+    def test_workflow_accepts_repository_evidence_and_holds_chat_decisions(self) -> None:
+        """A file or commit in the repository is accepted; a chat decision stays pending."""
+        self.enroll()
+        proof = self.root / "notes" / "proof.txt"
+        proof.parent.mkdir()
+        proof.write_text("observed result\n", encoding="utf-8")
+        run_command("git", "add", "notes/proof.txt", cwd=self.root)
+        run_command(
+            "git", "-c", "user.email=test@example.com", "-c", "user.name=Test",
+            "commit", "-qm", "record proof", cwd=self.root,
+        )
+        commit = run_command("git", "rev-parse", "HEAD", cwd=self.root).stdout.strip()
+        request = self.capture_request(1, lesson="Keep the proof file with the change that created it")
+        data = json.loads(request.read_text())
+        data["evidence"] = [
+            {"kind": "file", "reference": "notes/proof.txt", "summary": "The proof file is in the repository"},
+            {"kind": "commit", "reference": commit, "summary": "The proof commit exists"},
+        ]
+        request.write_text(json.dumps(data))
+        accepted = self.workflow_capture(request)
+        self.assertTrue(accepted["promoted"])
+        self.assertIsNone(accepted["hold_reason"])
+        ledger = (self.root / "docs/project-learning/lessons.md").read_text(encoding="utf-8")
+        self.assertIn("Keep the proof file with the change that created it", ledger)
+        self.assertIn("approved by workflow legitimacy check", ledger)
+        self.assertEqual(json.loads(self.store("list", "--root", str(self.root), "--status", "promoted").stdout)["count"], 1)
+
+        held = self.capture_request(2, lesson="Remember the discussion")
+        held_data = json.loads(held.read_text())
+        held_data["evidence"] = [{"kind": "decision", "reference": "chat", "summary": "Someone said so"}]
+        held.write_text(json.dumps(held_data))
+        pending = self.workflow_capture(held)
+        self.assertFalse(pending["promoted"])
+        self.assertEqual(pending["hold_reason"], "non-repository-evidence")
+        self.assertEqual(json.loads(self.store("list", "--root", str(self.root), "--status", "pending").stdout)["count"], 1)
+
+    def test_workflow_retries_acceptance_and_keeps_the_review_threshold(self) -> None:
+        """A failed acceptance can be retried, and an accepted lesson does not consume a review reminder."""
+        self.enroll()
+        ledger = self.root / "docs/project-learning/lessons.md"
+        original = ledger.read_text(encoding="utf-8")
+        ledger.write_text(original.replace("<!-- PROJECT-LEARNING:ENTRIES -->", ""), encoding="utf-8")
+        proof = self.root / "notes" / "retry.txt"
+        proof.parent.mkdir(parents=True)
+        proof.write_text("retry proof\n", encoding="utf-8")
+        request = self.capture_request(9, lesson="Retry a legitimate lesson after the ledger is restored")
+        data = json.loads(request.read_text())
+        data["evidence"] = [{"kind": "file", "reference": "notes/retry.txt", "summary": "The retry proof file exists"}]
+        request.write_text(json.dumps(data))
+        failed = self.store(
+            "capture", "--root", str(self.root), "--request", str(request),
+            "--workflow", "--permission-mode", "execution", check=False,
+        )
+        self.assertNotEqual(failed.returncode, 0)
+        self.assertFalse((self.root / ".codex/project-learning/state" / "session-9-turn-9.json").exists())
+        data["lesson"] = "Replacement wording that must not be accepted"
+        data["evidence"] = [{"kind": "decision", "reference": "chat", "summary": "A later rewrite"}]
+        request.write_text(json.dumps(data))
+        ledger.write_text(original, encoding="utf-8")
+        accepted = self.workflow_capture(request)
+        self.assertTrue(accepted["promoted"])
+        restored = ledger.read_text(encoding="utf-8")
+        self.assertIn("Retry a legitimate lesson after the ledger is restored", restored)
+        self.assertNotIn("Replacement wording that must not be accepted", restored)
+
+        for index in range(1, 5):
+            held = self.capture_request(index, lesson=f"Held decision {index}")
+            held_data = json.loads(held.read_text())
+            held_data["evidence"] = [{"kind": "decision", "reference": f"chat-{index}", "summary": "A conversation note"}]
+            held.write_text(json.dumps(held_data))
+            self.assertFalse(self.workflow_capture(held)["review_due"])
+        proof = self.root / "notes" / "fifth-file.txt"
+        proof.write_text("repository evidence\n", encoding="utf-8")
+        file_request = self.capture_request(8, lesson="Accept the fifth capture without using the review reminder")
+        file_data = json.loads(file_request.read_text())
+        file_data["evidence"] = [{"kind": "file", "reference": "notes/fifth-file.txt", "summary": "The file exists"}]
+        file_request.write_text(json.dumps(file_data))
+        accepted_fifth = self.workflow_capture(file_request)
+        self.assertTrue(accepted_fifth["promoted"])
+        self.assertFalse(accepted_fifth["review_due"])
+        fifth = self.capture_request(5, lesson="Fifth held decision")
+        fifth_data = json.loads(fifth.read_text())
+        fifth_data["evidence"] = [{"kind": "decision", "reference": "chat-5", "summary": "A conversation note"}]
+        fifth.write_text(json.dumps(fifth_data))
+        reminded = self.workflow_capture(fifth)
+        self.assertFalse(reminded["promoted"])
+        self.assertTrue(reminded["review_due"])
+
     def test_milestone_only_reminds_for_new_pending_material(self) -> None:
         self.enroll()
         request = self.capture_request(1, milestone=True)

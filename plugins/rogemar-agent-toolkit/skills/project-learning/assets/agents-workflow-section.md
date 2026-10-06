@@ -3,8 +3,8 @@
 
 - Consult relevant accepted entries in `docs/project-learning/lessons.md`; current instructions, contracts, tests and verified evidence take precedence. Pending candidates are never guidance.
 - This project explicitly enrolls workflow capture. At verified task/sprint completion, assess at most one durable lesson per source turn using the installed `project-learning` skill. Capture only verified or reinforced evidence; otherwise omit the candidate.
-- Use the existing candidate store with `capture --workflow --permission-mode execution --request -`. Keep capture nonblocking, deduplicate settled lessons, and remind only when `review_due` is true. Do not run a dedicated learning task or install hooks automatically.
-- Plan Mode, no-write, no-learning and disabled tasks persist nothing, including request files. Pass the appropriate guards; never promote or activate lessons without user approval.
+- Use the existing candidate store with `capture --workflow --permission-mode execution --request -`. Keep capture nonblocking and deduplicate settled lessons. A lesson whose evidence is a file, test file, or commit in this repository is accepted in that same checkpoint. Chat decisions, adaptations, and skill proposals stay pending. Remind only when `review_due` is true. Do not run a dedicated learning task or install hooks automatically.
+- Plan Mode, no-write, no-learning and disabled tasks persist nothing, including request files. Pass the appropriate guards.
 - Keep summaries local and structured; never persist transcripts, hidden reasoning, tool output, secrets, credentials, personal data or conversation quotations.
-- Capture cannot edit product code, delivery status, accepted lessons, shared skills, global instructions or Codex memory. Global proposals require accepted source evidence and a recorded target scope; publication and edits remain separately authorized.
+- Capture cannot edit product code, delivery status, shared skills, global instructions or Codex memory. Legitimate workflow acceptance may append one lesson to the project ledger. Global proposals require accepted source evidence and a recorded target scope; publication and edits remain separately authorized.
 <!-- END PROJECT LEARNING -->

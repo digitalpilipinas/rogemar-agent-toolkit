@@ -1,5 +1,11 @@
 # Changelog
 
+## Legitimate learning acceptance (unreleased)
+
+- An enrolled workflow capture accepts a lesson when every evidence item is a
+  file, a test file, or a commit in the repository.
+- Chat decisions, adaptations, and skill proposals stay pending for review.
+
 ## Sprint strategy and supervised writers (unreleased)
 
 - The parent supervises, integrates, and writes. Sub-agents may search, review,

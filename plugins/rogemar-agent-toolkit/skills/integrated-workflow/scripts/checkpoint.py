@@ -206,7 +206,7 @@ def check(root, base, phase, receipt, mapping, required_gates=(), boundary="acce
     result['status'] = 'rejected' if errors else 'deferred' if result['deferred'] else 'validated-record'
     result['limitations'] = 'Checks recorded identity, coverage and artifact integrity; cannot attest execution, semantic coverage or owner approval.'
     if phase == 'close':
-        result['next_action'] = ('Assess at most one evidenced learning candidate using the enrolled project-learning workflow; retain its native source-turn ID. No automatic activation.'
+        result['next_action'] = ('Assess at most one evidenced learning candidate using the enrolled project-learning workflow; retain its native source-turn ID. Accept it when its evidence is a repository file, test file, or commit.'
                                  if result['status'] == 'validated-record' else 'Resolve outstanding gates; do not capture a verified-completion lesson.')
     return result
 

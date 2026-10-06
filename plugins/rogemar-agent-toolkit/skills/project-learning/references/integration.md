@@ -5,12 +5,12 @@
 Project learning is a post-task evidence consumer and curator. It is not a planner, implementer, reviewer, release manager, or orchestrator.
 
 - `workflow-orchestrator` remains the dispatcher and delegation owner; explicitly invoked `integrated-workflow` owns the approved delivery lifecycle.
-- `first-time-right-delivery` and `integrated-workflow` produce evidence and invoke candidate-only capture at explicitly enrolled workflow checkpoints; they never approve or activate lessons.
+- `first-time-right-delivery` and `integrated-workflow` produce evidence and capture at explicitly enrolled workflow checkpoints. A lesson whose evidence is a repository file, test file, or commit is accepted then. Other candidates stay inactive.
 - `create-plan` remains read-only. The Stop hook skips `permission_mode: plan` and explicit no-write requests.
 - Capture cannot edit product files, task plans, delivery status, existing skills, global AGENTS.md, or harness memory.
 - A normal task agent may include a task-local `Learning note:` in its own final response when the current task establishes a verified reusable rule. That note is communication only; it does not create, approve, or activate a project lesson.
 
-Explicit-capture projects retain their current behavior. Enrolled workflows call the existing candidate store at completion, using native-neutral source IDs and explicit permission/no-write guards. The Stop hook remains an optional passive queue; workflow enrollment does not install it. Review and promotion always require approval. Capture errors cannot change the source task's delivery status.
+Explicit-capture projects retain their current behavior. Enrolled workflows call the existing candidate store at completion, using native-neutral source IDs and explicit permission/no-write guards. The Stop hook remains an optional passive queue; workflow enrollment does not install it. Held candidates, adaptations, and skill proposals still require approval. Capture errors cannot change the source task's delivery status.
 
 ## Instruction Precedence
 
@@ -34,7 +34,7 @@ The passive Stop handler is a Codex hook; other harnesses pass `--harness <name>
 - Fails open on errors and timeouts.
 - Does not use `SessionEnd` for model-assisted synthesis.
 
-An enrolled source workflow may capture candidates; a user-requested dedicated learning task may inspect queued turns and curate them. Promotion remains user-controlled. A queued signal or task-local note is not itself an accepted lesson and must not change the source task's delivery status.
+An enrolled source workflow may accept a legitimate lesson. A user-requested dedicated learning task may inspect queued turns and curate held candidates. A queued signal or task-local note is not itself an accepted lesson and must not change the source task's delivery status.
 
 Project hooks must be reviewed through `/hooks`. Never bypass hook trust.
 

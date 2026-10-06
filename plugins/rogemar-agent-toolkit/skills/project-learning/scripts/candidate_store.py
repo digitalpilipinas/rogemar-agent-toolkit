@@ -375,12 +375,19 @@ def materialize(events: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
 
 
 def append_event(path: Path, event: dict[str, Any]) -> None:
+    """Add one event by replacing the log, so a crash cannot leave a partial line."""
     path.parent.mkdir(parents=True, exist_ok=True)
+    existing = path.read_text(encoding="utf-8") if path.exists() else ""
+    if existing and not existing.endswith("\n"):
+        head, separator, tail = existing.rpartition("\n")
+        try:
+            json.loads(tail)
+        except json.JSONDecodeError:
+            existing = head + "\n" if separator else ""
+        else:
+            existing += "\n"
     encoded = json.dumps(event, ensure_ascii=False, separators=(",", ":")) + "\n"
-    with path.open("a", encoding="utf-8") as handle:
-        handle.write(encoded)
-        handle.flush()
-        os.fsync(handle.fileno())
+    atomic_text(path, existing + encoded)
 
 
 def marker_path(state_dir: Path, session_id: str, turn_id: str) -> Path:
@@ -539,6 +546,7 @@ def candidate_paths(root: Path, config: dict[str, Any]) -> tuple[Path, Path, Pat
 
 
 def capture(args: argparse.Namespace) -> dict[str, Any]:
+    """Record one lesson candidate and accept it when workflow evidence is in the repository."""
     root = resolve_root(args.root)
     config = config_for(root)
     if config.get("enabled") is not True:
@@ -565,26 +573,10 @@ def capture(args: argparse.Namespace) -> dict[str, Any]:
     for event in events:
         source = event.get("source")
         if isinstance(source, dict) and f"{source.get('session_id')}:{source.get('turn_id')}" == source_key:
-            outcome = event.get("event_type")
-            candidate_id = event.get("candidate_id")
-            atomic_json(
-                processed,
-                {
-                    "schema_version": SCHEMA_VERSION,
-                    "session_id": request["session_id"],
-                    "turn_id": request["turn_id"],
-                    "outcome": outcome,
-                    "candidate_id": candidate_id,
-                    "processed_at": now_iso(),
-                },
+            return complete_capture(
+                args, root, config, store_path, state_dir, request,
+                event.get("candidate_id"), event.get("event_type"), idempotent=True,
             )
-            return {
-                "captured": outcome in {"captured", "reinforced"},
-                "candidate_id": candidate_id,
-                "event_type": outcome,
-                "review_due": False,
-                "idempotent": True,
-            }
 
     resolve_lineage(request, state_dir)
     digest = fingerprint(request)
@@ -636,12 +628,46 @@ def capture(args: argparse.Namespace) -> dict[str, Any]:
         "payload": payload,
     }
     append_event(store_path, event)
-    updated = materialize(events + [event])
-    pending_count = sum(1 for item in updated.values() if item["status"] == "pending")
-    due = review_due(state_dir, updated, config["review_reminder"]["pending_count"],
-                     request["milestone"] and config["review_reminder"].get("milestones") is True)
+    return complete_capture(
+        args, root, config, store_path, state_dir, request, candidate_id, event_type, idempotent=False,
+    )
+
+
+def complete_capture(
+    args: argparse.Namespace,
+    root: Path,
+    config: dict[str, Any],
+    store_path: Path,
+    state_dir: Path,
+    request: dict[str, Any],
+    candidate_id: str | None,
+    event_type: str | None,
+    idempotent: bool,
+) -> dict[str, Any]:
+    """Accept a legitimate workflow lesson before recording the turn as finished."""
+    candidates = materialize(load_events(store_path))
+    candidate = candidates.get(candidate_id) if candidate_id else None
+    promoted = False
+    hold_reason = None
+    if getattr(args, "workflow", False) and candidate is not None:
+        if candidate["status"] == "promoted":
+            promoted = True
+        elif candidate["status"] == "pending":
+            payload = candidate.get("payload") or {}
+            hold_reason = legitimacy_hold_reason(root, payload)
+            if hold_reason is None:
+                accept_legitimate(root, config, candidate, request)
+                promoted = True
+                candidates = materialize(load_events(store_path))
+    pending_count = sum(1 for item in candidates.values() if item["status"] == "pending")
+    due = review_due(
+        state_dir,
+        candidates,
+        config["review_reminder"]["pending_count"],
+        bool(request.get("milestone")) and config["review_reminder"].get("milestones") is True,
+    )
     atomic_json(
-        processed,
+        marker_path(state_dir, request["session_id"], request["turn_id"]),
         {
             "schema_version": SCHEMA_VERSION,
             "session_id": request["session_id"],
@@ -652,12 +678,14 @@ def capture(args: argparse.Namespace) -> dict[str, Any]:
         },
     )
     return {
-        "captured": True,
+        "captured": event_type in {"captured", "reinforced"},
         "candidate_id": candidate_id,
         "event_type": event_type,
         "pending_count": pending_count,
         "review_due": due,
-        "idempotent": False,
+        "promoted": promoted,
+        "hold_reason": hold_reason,
+        "idempotent": idempotent,
     }
 
 
@@ -800,6 +828,7 @@ def validate_promotion_request(request: dict[str, Any]) -> dict[str, Any]:
 
 
 def ledger_entry(root: Path, request: dict[str, Any], candidate: dict[str, Any]) -> str:
+    """Format one accepted lesson for the project ledger."""
     payload = candidate["payload"]
     evidence_lines = [
         f"- [{item['kind']}] {item['reference']} — {item['summary']}"
@@ -822,7 +851,8 @@ def ledger_entry(root: Path, request: dict[str, Any], candidate: dict[str, Any])
         f"Evidence strength: {request['evidence_strength']}",
         f"Scope: {root.name}",
         f"Project identity: {project_identity(root)}",
-        f"Provenance: {provenance}; approved by user",
+        f"Provenance: {provenance}; approved by "
+        + ("workflow legitimacy check" if request.get("approved_by") == "workflow" else "user"),
         f"Last reviewed: {datetime.now(timezone.utc).date().isoformat()}",
         f"Cross-project candidate: {request['cross_project']}",
     ]
@@ -839,6 +869,91 @@ def ledger_entry(root: Path, request: dict[str, Any], candidate: dict[str, Any])
     if request.get("supersedes"):
         lines.append(f"Supersedes: {request['supersedes']}")
     return "\n".join(lines) + "\n"
+
+
+def legitimacy_hold_reason(root: Path, payload: dict[str, Any]) -> str | None:
+    """Return why a workflow capture must stay pending.
+
+    A legitimate lesson cites a file, a test file, or a commit that exists in
+    this repository. Chat decisions, adaptations, and skill proposals stay pending.
+    """
+    if payload.get("proposal") or payload.get("source_project"):
+        return "manual-scope"
+    if payload.get("evidence_level") not in {"verified", "reinforced"}:
+        return "evidence-level"
+    evidence = payload.get("evidence")
+    if not isinstance(evidence, list) or not evidence:
+        return "missing-evidence"
+    resolved_root = root.resolve()
+    for item in evidence:
+        kind = item.get("kind")
+        reference = item.get("reference", "")
+        if kind in {"file", "test"}:
+            candidate = (resolved_root / reference).resolve()
+            try:
+                candidate.relative_to(resolved_root)
+            except ValueError:
+                return "evidence-escapes"
+            if not candidate.is_file():
+                return "evidence-not-in-repository"
+        elif kind == "commit":
+            if not re.fullmatch(r"[0-9a-fA-F]{7,40}", reference):
+                return "evidence-not-in-repository"
+            try:
+                subprocess.check_output(
+                    ["git", "-C", str(resolved_root), "cat-file", "-e", reference + "^{commit}"],
+                    stderr=subprocess.DEVNULL,
+                    timeout=5,
+                )
+            except (subprocess.CalledProcessError, subprocess.TimeoutExpired, OSError):
+                return "evidence-not-in-repository"
+        else:
+            return "non-repository-evidence"
+    return None
+
+
+def accept_legitimate(
+    root: Path,
+    config: dict[str, Any],
+    candidate: dict[str, Any],
+    request: dict[str, Any],
+) -> None:
+    """Append the stored lesson when the workflow legitimacy check passed.
+
+    A later retry may carry different wording. Acceptance uses the stored
+    candidate, not that replacement text.
+    """
+    store_path, _, ledger_path = candidate_paths(root, config)
+    if not ledger_path.exists() or LEDGER_MARKER not in ledger_path.read_text(encoding="utf-8"):
+        raise StoreError(f"accepted ledger marker is missing: {ledger_path}")
+    payload = candidate["payload"]
+    promotion = {
+        "schema_version": SCHEMA_VERSION,
+        "candidate_id": candidate["candidate_id"],
+        "status": "Reinforced" if payload.get("evidence_level") == "reinforced" else "Accepted",
+        "lesson": payload["lesson"],
+        "applies_when": payload["applies_when"],
+        "does_not_apply_when": payload["does_not_apply_when"],
+        "evidence_strength": payload["evidence_level"],
+        "cross_project": "No",
+        "approved_by": "workflow",
+        "supersedes": None,
+    }
+    ledger = ledger_path.read_text(encoding="utf-8")
+    if not re.search(rf"^##\s+{re.escape(promotion['candidate_id'])}\s*$", ledger, re.M):
+        entry = ledger_entry(root, promotion, candidate)
+        separator = "" if not ledger or ledger.endswith("\n\n") else "\n"
+        atomic_text(ledger_path, ledger + separator + entry)
+    event = {
+        "schema_version": SCHEMA_VERSION,
+        "event_id": str(uuid.uuid4()),
+        "candidate_id": promotion["candidate_id"],
+        "event_type": "promoted",
+        "recorded_at": now_iso(),
+        "source": {"session_id": request["session_id"], "turn_id": request["turn_id"]},
+        "payload": {"ledger_status": promotion["status"], "approved_by": "workflow"},
+    }
+    append_event(store_path, event)
 
 
 def promote(args: argparse.Namespace) -> dict[str, Any]:
