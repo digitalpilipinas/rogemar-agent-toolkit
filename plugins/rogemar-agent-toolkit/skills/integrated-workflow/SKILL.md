@@ -151,10 +151,12 @@ parent/mode constraints before delegation. A harness name, saved mode or install
 skill does not prove tool access, worker dispatch or a live parent-model switch.
 Keep one engineering owner and never import another harness's model IDs or controls.
 
-The orchestrator selects the matching `forge-*` method from the situation.
-Do not wait for the owner to name it. Open only that method. Leave the rest closed.
-Continue the next matching method and the next incomplete increment until the
-approved slice is accepted.
+The parent selects the playbook and the skills for the current step, then names
+both in the worker brief. Do not wait for the owner to name them. The worker
+applies that set. It may use one narrower skill its slice requires. It does not
+choose another playbook, open the catalog, or start a second orchestrator.
+Open only the selected method. Leave the rest closed. Continue the next matching
+method and the next incomplete increment until the approved slice is accepted.
 
 | Situation | Select |
 | --- | --- |
@@ -171,7 +173,8 @@ approved slice is accepted.
 | Docs, a pull request, or a commit message | `forge-technical-writing`, then `forge-unslop` |
 | Before calling the slice done | `forge-principle-prove-it-works` |
 | The same correction appears twice | `forge-principle-encode-lessons-in-structure` |
-| Missing or drifted app recipe | `forge-create-verification-skill` or `forge-maintain-verification-skill` |
+| No reusable app recipe exists | `forge-create-verification-skill` |
+| An existing app recipe has drifted | `forge-maintain-verification-skill` |
 
 Apply the matching `forge-principle-*` when its trigger fits the current edit.
 A principle guides that edit. It does not start another agent. `forge-automate-me`,

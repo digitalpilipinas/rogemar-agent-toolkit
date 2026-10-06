@@ -30,10 +30,16 @@ class IntegratedWorkflowEntryTests(unittest.TestCase):
         self.assertIn("more than one vertical slice or task", text)
         self.assertNotIn("one write-capable owner per worktree", text)
         self.assertNotIn("one writer at a time", text)
-        self.assertIn("Do not wait for the owner to name it.", text)
+        self.assertIn("The parent selects the playbook and the skills", text)
+        self.assertIn("choose another playbook", text)
+        self.assertIn("No reusable app recipe exists", text)
+        self.assertIn("An existing app recipe has drifted", text)
         self.assertIn("`forge-how`", text)
         self.assertIn("`forge-principle-prove-it-works`", text)
         self.assertIn("benchmark-checklist", text)
+        contract = (SKILLS / "workflow-orchestrator/references/method-contract.md").read_text()
+        self.assertIn("Name\n   the playbook and the skills in that brief.", contract)
+        self.assertIn("does not choose another\n   playbook", contract)
 
     def test_forge_mode_includes_claude(self):
         """Forge mode applies on Claude as well as Codex, Cursor, and Universal."""
