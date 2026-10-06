@@ -1,5 +1,14 @@
 # Changelog
 
+## Forge method selection (unreleased)
+
+- Integrated Workflow names the `forge-*` method for each common situation.
+  The owner does not have to invoke it. Only the matching method is opened.
+- The parent names the playbook and the skills in the worker brief. The worker
+  applies that set and does not start a second selector.
+- A missing app recipe uses the create method. A drifted recipe uses the
+  maintain method.
+
 ## Legitimate learning acceptance (unreleased)
 
 - An enrolled workflow capture accepts a lesson when every evidence item is a

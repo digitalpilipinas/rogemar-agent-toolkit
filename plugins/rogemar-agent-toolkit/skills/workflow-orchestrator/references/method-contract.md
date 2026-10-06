@@ -19,7 +19,10 @@ settings. Keep one plan, dispatcher, implementation owner and acceptance record.
    `scripts/select_methods.py --method ID --entry ENTRY` can check file resolution.
    Check native capabilities separately. Never install or invent a missing route.
 5. Carry purpose, inputs, required steps, conditional triggers, output/evidence,
-   failure boundary and recovery into the existing task or worker brief. Supply
+   failure boundary and recovery into the existing task or worker brief. Name
+   the playbook and the skills in that brief. The worker applies that set. It
+   may use one narrower skill its slice requires. It does not choose another
+   playbook, open the catalog, or start a second orchestrator. Supply
    essential constraints, current source pointers, side-effect status and next
    action after context loss. A link alone is insufficient when the receiver
    cannot access it. Do not copy a full transcript or create another task board.
