@@ -1,5 +1,10 @@
 # Changelog
 
+## Forge method selection (unreleased)
+
+- Integrated Workflow names the `forge-*` method for each common situation.
+  The owner does not have to invoke it. Only the matching method is opened.
+
 ## Legitimate learning acceptance (unreleased)
 
 - An enrolled workflow capture accepts a lesson when every evidence item is a

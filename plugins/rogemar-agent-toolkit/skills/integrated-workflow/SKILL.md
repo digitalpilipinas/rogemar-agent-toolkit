@@ -151,6 +151,34 @@ parent/mode constraints before delegation. A harness name, saved mode or install
 skill does not prove tool access, worker dispatch or a live parent-model switch.
 Keep one engineering owner and never import another harness's model IDs or controls.
 
+The orchestrator selects the matching `forge-*` method from the situation.
+Do not wait for the owner to name it. Open only that method. Leave the rest closed.
+Continue the next matching method and the next incomplete increment until the
+approved slice is accepted.
+
+| Situation | Select |
+| --- | --- |
+| How a subsystem works | `forge-how` |
+| Why the current shape exists | `forge-why` |
+| Design a boundary before coding | `forge-architect` |
+| Compare credible designs | `forge-arena` |
+| Adversarial review of a diff | `forge-interrogate` |
+| What else a change can break | `forge-blast-radius` |
+| No narrower playbook fits | `forge-figure-it-out` |
+| Independent parallel slices | `forge-swarm` |
+| A bug with a cheap regression test | `forge-tdd` |
+| Useful friction at a verified milestone | `forge-reflect` |
+| Docs, a pull request, or a commit message | `forge-technical-writing`, then `forge-unslop` |
+| Before calling the slice done | `forge-principle-prove-it-works` |
+| The same correction appears twice | `forge-principle-encode-lessons-in-structure` |
+| Missing or drifted app recipe | `forge-create-verification-skill` or `forge-maintain-verification-skill` |
+
+Apply the matching `forge-principle-*` when its trigger fits the current edit.
+A principle guides that edit. It does not start another agent. `forge-automate-me`,
+`forge-make-bot-ui`, and `forge-bro` stay off unless the task is a personal mode,
+a bot page, or a plain restatement. `benchmark-checklist`, `correct`, and
+`principle-explain-the-number` are not in this repository. Do not invent them.
+
 ## Invocation and delivery boundaries
 
 Invoking this workflow to execute approved work authorizes the default branch-and-PR

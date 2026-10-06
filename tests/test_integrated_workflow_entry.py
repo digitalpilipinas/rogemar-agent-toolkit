@@ -30,6 +30,10 @@ class IntegratedWorkflowEntryTests(unittest.TestCase):
         self.assertIn("more than one vertical slice or task", text)
         self.assertNotIn("one write-capable owner per worktree", text)
         self.assertNotIn("one writer at a time", text)
+        self.assertIn("Do not wait for the owner to name it.", text)
+        self.assertIn("`forge-how`", text)
+        self.assertIn("`forge-principle-prove-it-works`", text)
+        self.assertIn("benchmark-checklist", text)
 
     def test_forge_mode_includes_claude(self):
         """Forge mode applies on Claude as well as Codex, Cursor, and Universal."""
