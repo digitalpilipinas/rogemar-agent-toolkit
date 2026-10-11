@@ -1,10 +1,28 @@
+<p align="center">
+  <img src="docs/assets/readme/toolkit-mark.svg" width="72" height="72" alt="Rogemar Agent Toolkit: connected modules around a shared center">
+</p>
+
 # Rogemar Agent Toolkit
+
+**One coordinated workflow. The right skills for the work. Evidence before done.**
+
+![Connected cyan and coral toolkit modules for planning, building, inspecting, verifying and packaging, arranged around a central hub.](docs/assets/readme/hero.png)
+
+<p>
+  <a href="#choose-your-assistant-and-mode"><img src="docs/assets/readme/codex.svg" alt="Codex" height="28"></a>
+  <a href="#choose-your-assistant-and-mode"><img src="docs/assets/readme/cursor.svg" alt="Cursor" height="28"></a>
+  <a href="#choose-your-assistant-and-mode"><img src="docs/assets/readme/claude.svg" alt="Claude" height="28"></a>
+  <a href="#choose-your-assistant-and-mode"><img src="docs/assets/readme/droid.svg" alt="Factory / Droid" height="28"></a>
+</p>
+
+[Get started](#get-started) · [Choose your entry](#everyday-use) · [Understand the workflow](#how-delivery-works) · [Browse every skill](#complete-skill-inventory)
 
 Reusable skills that help an AI coding assistant plan work, build features, check
 its results and handle code reviews. Describe the outcome you want; the assistant
 selects the relevant methods and tools without making you remember every skill.
 
-The toolkit works with Codex, Cursor, Claude and other compatible assistants.
+The toolkit provides installation routes for Codex, Cursor, Claude, Factory/Droid
+and other compatible assistants.
 It starts with six core skills. Optional packs add engineering, design, mobile,
 data and release work. Installing a pack also copies the pinned third-party
 skill repositories that pack uses, on every harness those skills support.
@@ -15,9 +33,12 @@ Your assistant still uses its own models, tools and accounts.
 - [What it helps you do](#what-it-helps-you-do)
 - [Get started](#get-started)
 - [Everyday use](#everyday-use)
+- [Who does what](#who-does-what)
 - [How delivery works](#how-delivery-works)
+- [Bounded dynamic workflows](#bounded-dynamic-workflows)
 - [Choose your assistant and mode](#choose-your-assistant-and-mode)
 - [Design and app testing](#design-and-app-testing)
+- [Local and cloud environments](#local-and-cloud-environments)
 - [Update an installation](#update-an-installation)
 - [Complete skill inventory](#complete-skill-inventory)
 - [Credits and upstream sources](#credits-and-upstream-sources)
@@ -25,13 +46,9 @@ Your assistant still uses its own models, tools and accounts.
 
 ## What it helps you do
 
-- Turn a request into a practical plan with clear success criteria.
-- Build or fix a feature using the project's existing patterns.
-- Include relevant design, accessibility and testing work during implementation.
-- Review changes, combine duplicate feedback and fix real problems without
-  expanding every suggestion into more work.
-- Continue an approved project across several tasks or sprints while preserving
-  decisions, evidence and delivery boundaries.
+| Plan | Build | Verify | Continue |
+| --- | --- | --- | --- |
+| Investigate the request, settle meaningful decisions and define success. | Select applicable engineering, design and domain methods. | Exercise affected behavior and challenge review findings. | Carry decisions and evidence across approved tasks, sprints and PRs. |
 
 A **skill** is a reusable set of instructions. A **pack** groups related skills.
 A **harness** means the assistant environment, such as Codex, Cursor or Claude.
@@ -71,7 +88,7 @@ python3 scripts/toolkit.py install --harness codex --profile core --pack enginee
 python3 scripts/toolkit.py install --harness codex --profile core --pack engineering --pack design --target project --project-root /path/to/project
 ```
 
-For Cursor, replace `codex` with `cursor`. For Claude, use `claude`. For another
+For Cursor, replace `codex` with `cursor`. For Claude, use `claude`; for Factory/Droid, use `droid`. For another
 assistant, see the
 [available installation targets](docs/compatibility.md#harness-adapters). Use
 `--target user` instead of the project options for a personal installation.
@@ -88,8 +105,8 @@ preview changes first. See [installation and recovery](docs/installation.md) for
 pack choices, plugin archives, backups and rollback.
 
 Installation does not start agents, authenticate services, install provider apps,
-register monitors or spend provider credits. External requirements are listed for
-you to set up separately when needed.
+register monitors or spend provider credits. Tool and account prerequisites are checked for the selected task;
+static instructions do not require a service login.
 
 ## Everyday use
 
@@ -106,7 +123,7 @@ Codex's `$skill-name` notation; other assistants may present skills differently.
 | Build or fix something in Codex | `codex-forge` |
 | The same coordinated approach in Cursor | `cursor-forge` |
 | The same coordinated approach in Claude | `claude-forge` |
-| Engineering in another compatible assistant | `universal-forge` |
+| Engineering in Factory/Droid or another compatible assistant | `universal-forge` |
 | Plan a substantial change before building | `create-plan` |
 | Carry out an approved multi-step programme | `integrated-workflow` |
 
@@ -138,11 +155,36 @@ You normally invoke one entry skill. It brings in relevant supporting skills and
 requests bounded sub-agents when their work is useful. Small tasks can stay with
 the main agent. You do not need to invoke the orchestrator or model router yourself.
 
-External review has separate jobs: Luna watches progress and organizes feedback;
-qualified decision roles validate findings, check the minimum needed scope and fix
-accepted defects. Keeping a finding in the summary does not mean accepting it.
+External review separates status monitoring and feedback organization from
+correctness judgment, scope decisions and fixes. The active harness router selects
+available, qualified profiles for those jobs; Codex presets use qualified Luna
+routes for monitoring and consolidation. Keeping a finding in the summary does not mean accepting it.
 [Review handoffs](plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/provider-routing.md#review-support-and-decision-roles)
 preserve mode limits and the existing local/ready-PR review cadence.
+
+## Who does what
+
+One delivery owner carries the outcome. The orchestrator selects methods; the
+active Forge adapter applies the receiving assistant's execution and model rules.
+Specialists supply relevant methods, and bounded workers receive explicit assignments.
+They do not create another delivery workflow.
+
+```mermaid
+flowchart TD
+    accTitle: Toolkit ownership
+    accDescr: Planning defines scope. Integrated Workflow owns delivery. The orchestrator selects a Forge adapter, relevant specialists and justified workers. The main owner accepts the result.
+    plan["create-plan<br/>Scope and evidence"] --> delivery["Integrated Workflow<br/>Approved delivery"]
+    delivery --> route["workflow-orchestrator<br/>Methods and workers"]
+    route --> methods["Appropriate Forge adapter<br/>+ selected specialists"]
+    methods --> work["Main agent<br/>+ justified workers"]
+    work --> accept["Main owner<br/>Verification and acceptance"]
+```
+
+Selection is **agent-directed**, supported by routing metadata and validation
+helpers. It is not an independent engine that guarantees every model follows the
+instructions. At each task handoff, select or deliberately reuse applicable
+methods, check changed prerequisites, and carry the scope and evidence into worker
+briefs. Reuse valid preparation instead of auditing every tool on every task.
 
 ## How delivery works
 
@@ -153,6 +195,30 @@ commits while staying on one branch and optional draft PR.
 Planning, Forge and delivery share [context-efficiency guidance](plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/context-efficiency.md)
 for substantial outputs and handoffs. It preserves decisive evidence and current
 constraints while avoiding repeated reads; token savings still require measurement.
+
+```mermaid
+flowchart TD
+    accTitle: The continuous task loop
+    accDescr: Select or reuse methods, check prerequisites, execute, verify and record evidence. Continue until the approved scope is complete. Bounded multi-agent work is conditional.
+    task["Next approved, dependency-ready task"] --> select["Select or reuse applicable methods"]
+    select --> prepare["Check changed prerequisites"]
+    prepare --> execute["Execute within the task grant"]
+    execute --> verify["Verify behavior and required reviews"]
+    verify --> evidence["Record evidence and remaining gaps"]
+    evidence --> done{"Approved scope complete?"}
+    done -->|No| task
+    done -->|Yes| finish["Finish at the authorized delivery boundary"]
+    execute -. "When coordination earns its cost" .-> dynamic["Bounded audit / migration / repair workflow"]
+    dynamic -. "Results and uncovered work" .-> verify
+```
+
+This loop applies to the main agent and assigned workers. Continue across approved
+sprints without requiring another invocation, while keeping one coherent PR per
+slice. Host stops, missing authority and unavailable required evidence remain real
+boundaries; a skill file does not create a background runner.
+
+<details>
+<summary><strong>Full delivery and review sequence</strong></summary>
 
 ```mermaid
 flowchart TD
@@ -210,14 +276,37 @@ explain how planning, coordination and acceptance fit together. Optional
 [Unlazy completion checks](plugins/rogemar-agent-toolkit/skills/first-time-right-delivery/references/unlazy.md)
 reuse the same acceptance record rather than starting another process.
 
+</details>
+
+### Bounded dynamic workflows
+
+For suitable broad audits, independent migrations or repeated failing-check work,
+use the [shared dynamic-workflow method](docs/dynamic-workflows.md). Each package
+has a producer and independent reviewer; audit findings must withstand challenge.
+Track confirmed, rejected, unverified and uncovered results separately. Bound
+attempts and concurrency, preserve failed assignments, and stop after two
+consecutive rounds without evidence-backed progress.
+
+Small or tightly coupled tasks keep the ordinary path. The Claude-specific guide
+contains native execution qualification requirements; the live Claude pilot is
+**deferred**, so these instructions are not proof of runtime enforcement or gains.
+
 ## Choose your assistant and mode
 
 | Assistant | Engineering entry | Model selection |
 | --- | --- | --- |
-| Codex | `codex-forge` | `plan-model-router` applies qualified Forge worker profiles. |
+| Codex | `codex-forge` | `forge-setup` configures preferences; `plan-model-router` qualifies worker profiles. |
 | Cursor | `cursor-forge` | `cursor-forge-setup` supplies native mappings. The universal router is the fallback. Shared `forge-*` skills are the method. Upstream PStack stays installed and unchanged. |
 | Claude | `claude-forge` | `claude-forge-setup` qualifies the live Claude catalogue. |
-| Other compatible assistants | `universal-forge` | Uses the assistant's available native models and controls, with defaults when selection controls are absent. |
+| Factory/Droid and other compatible assistants | `universal-forge` | `universal-plan-model-router` uses the assistant's available native models and controls, with defaults when selection controls are absent. |
+
+Factory/Droid installs to `.factory/skills`. It uses the portable engineering
+route and observed native capabilities, not Codex model IDs. When worker controls
+are unavailable, suitable work may stay with the current agent; a sequential pass
+does not supply required independent review.
+
+<details>
+<summary><strong>Model modes, setup and execution limits</strong></summary>
 
 Codex has five modes for choosing how to spend effort and account usage:
 
@@ -265,7 +354,21 @@ File installation and live execution are different checks. See
 [compatibility and evidence](docs/compatibility.md) for tested boundaries and
 harness-specific paths; support for every assistant/version is not implied.
 
+</details>
+
 ## Design and app testing
+
+| Work | Relevant methods | What still needs a runtime |
+| --- | --- | --- |
+| Swift and Xcode | 12 SwiftUI, concurrency, SwiftData, Swift Testing and Xcode build skills in the `swift` pack and iOS selection. | Compatible compiler/project settings; Xcode and a reachable Mac for Apple build/device evidence. |
+| Interface design | Briefs, reference design, journeys, components, accessibility, motion and visual QA. | The actual rendered interface and applicable interaction/device checks. |
+| Browser and mobile E2E | TesterArmy `e2e` for suitable new journeys; preserve existing tests and project conventions. | Browser/device engines, fixtures and actual assertion artifacts. Model-driven steps additionally need an approved provider. |
+| App and backend work | Selected Expo, Argent, Convex, Supabase and other pinned methods. | The corresponding tools and service access when that task requires them. |
+
+The Swift routes use AvdLee guidance for primary SwiftUI/concurrency implementation
+and diagnostics, and twostraws methods for focused review when useful. SwiftData and
+Swift Testing apply only to matching projects. Respect the project's deployment
+target and architecture; installing a pack does not prescribe a migration.
 
 The design pack helps with briefs, reference designs, user journeys, reusable
 components, frontend implementation, accessibility, interaction polish and visual
@@ -285,6 +388,58 @@ Mobile and browser checks need working tools. Argent, Expo, simulators, emulator
 physical devices and browser drivers are separate dependencies. A passing source
 test is not proof that the interface worked on a device. Missing required runtime
 evidence stays visible as blocked or deferred.
+
+### Supporting methods without another owner
+
+Use architecture and Codebase Design when module/interface reasoning is needed.
+Use applicable Unlazy and Ponytail methods for completion and scope discipline.
+PStack supplies upstream Cursor methods; the Forge adapters preserve their own
+routing rules. Verification maintenance responds to changed behavior, broken
+recipes or dependency changes, rather than a full audit on every task.
+
+Project Learning captures candidates only in an enrolled project. Captured lessons
+are not automatically approved or promoted into shared policy. These methods all
+feed the existing plan and evidence record.
+
+## Local and cloud environments
+
+Install in the environment that will run the agent. Publishing a toolkit revision
+or updating this Mac does not establish that an existing cloud worker received it.
+Keep the existing project and environment; run the managed installer there or append
+it to the environment's existing setup process.
+
+```mermaid
+flowchart TD
+    accTitle: Install and verify in each receiving environment
+    accDescr: A reviewed repository revision is installed locally or inside a cloud environment. Each installation needs file verification, agent discovery and applicable runtime evidence.
+    source["Reviewed revision<br/>+ catalog pins"] --> local["This machine<br/>Install / upgrade"]
+    source --> cloud["Cloud environment<br/>Install / upgrade"]
+    local --> files["Verify files, hashes<br/>and resources"]
+    cloud --> files
+    files --> discovery["Verify agent discovery"]
+    discovery --> runtime["Check needed tools<br/>and service access"]
+    runtime --> proof["Run the actual task<br/>and retain evidence"]
+```
+
+The same file-verification step applies independently to each installation.
+Discovery and runtime checks happen in the corresponding receiving environment.
+A local sync indicator, successful repository push or file count cannot substitute
+for that evidence. An unreachable environment stays unverified.
+
+For an existing Cursor cloud environment, run the following **inside that
+environment**, from its reviewed toolkit checkout. `upgrade` retains the saved pack
+selection. On a first installation, use the install commands above with `cursor`
+and the intended packs instead.
+
+```bash
+python3 scripts/toolkit.py upgrade --harness cursor --target user --dry-run
+python3 scripts/toolkit.py upgrade --harness cursor --target user
+python3 scripts/toolkit.py doctor --harness cursor --target user --method integrated-workflow --json
+```
+
+The doctor example assumes the engineering pack is selected. It verifies files
+and resources, not active-session discovery or a completed workflow. Do not add
+authentication checks for static skills or replace an environment's unrelated setup.
 
 ## Update an installation
 

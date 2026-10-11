@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+<title id="title">Rogemar Agent Toolkit</title>
+<rect width="96" height="96" rx="23" fill="#081525"/>
+<path d="M48 17 75 33v30L48 79 21 63V33Z" fill="none" stroke="#48d7e8" stroke-width="5"/>
+<path d="M48 32 62 40v16L48 64 34 56V40Z" fill="#48d7e8"/>
+<path d="M48 17v15M75 63l-13-7M21 63l13-7" stroke="#ff826c" stroke-width="5"/>
+<circle cx="48" cy="17" r="6" fill="#ff826c"/><circle cx="75" cy="63" r="6" fill="#ff826c"/><circle cx="21" cy="63" r="6" fill="#ff826c"/>
+</svg>
