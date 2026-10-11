@@ -6,14 +6,13 @@ Use installed skills through the actual Codex invocation route. A pasted role or
 
 ## Model routing
 
-
 Without a named Codex Forge mode, the manually selected parent model and reasoning
 are independent ceilings for native Codex workers. Choose the lowest sufficient
 available profile within those limits; report ceiling constraints or unavailable
 identity honestly and keep unresolved work with the main agent when necessary.
 
-For Codex work with an explicitly selected Forge mode (`peak`, `balanced`, `lean`,
-`sprint`; legacy aliases `supreme`, `optimize`, `budget`), the mode's permitted
+For Codex work with an explicitly selected Forge mode (`default`, `peak`, `balanced`,
+`lean`, `economy`; legacy aliases `supreme`, `optimize`, `budget`, `sprint`), the mode's permitted
 profiles supersede these default parent ceilings. Explicit user limits and actual
 runtime availability still apply. `workflow-orchestrator` owns dispatch and
 `plan-model-router` qualifies every justified Forge worker assignment. Keep the
