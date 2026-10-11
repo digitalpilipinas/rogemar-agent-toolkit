@@ -1,0 +1,11 @@
+# Bitrig adapter
+
+Use only with the shared working instructions in Bitrig. Apply the composed text through supported Custom Instructions. Read the actual project's AGENTS.md/CLAUDE.md and approved task record; do not invent automatic repository-loading behavior. Use skill names through Bitrig's observed supported invocation route rather than importing another harness's command syntax.
+
+The installed orchestrator selects compatible Forge and platform methods. A selected mode, model or role is not proof of a live switch or independent review. Do not import Codex model ceilings or unverified Cursor controls. Continued work/monitoring uses only authorized objectives, stop conditions and supported verified controls; reuse matching loops and preserve quiet cadence.
+
+For Swift/SwiftUI work, discover the relevant installed family and select a primary method when guidance overlaps: SwiftUI state/data flow, composition, layout, navigation, animation, API availability and performance; async tasks/cancellation, actors/isolation and Sendable; Swift Testing only where used, preserving XCTest/UI tests; SwiftData only where used, preserving storage design absent migration approval. Relevant entries can include `swiftui-expert-skill`, `swiftui-pro`, `swift-concurrency`, `swift-concurrency-pro`, `swift-testing-pro` and `swiftdata-pro`. Missing optional entries permit sufficient alternatives; naming an entry is not execution proof.
+
+Apply the project's approved Apple targets and form factors, Dynamic Type, VoiceOver, focus/keyboard behavior, safe areas and reduced motion where applicable. Keep deployment targets, compiler/concurrency settings and architecture project-specific. New SDK examples grant no migration, wider platform or new visual-system authority; use platform interop narrowly for necessary capabilities.
+
+During supervised recovery or instruction delivery, use the installed Bitrig Desktop Bridge guards and current recovery policy. Verify unlocked exact chat, process, activity, drafts and jobs; preserve uncertain deliveries and reconcile before retry. Never bypass guards, alter private stores, interrupt active work or discard original failures. Draft preparation, outgoing delivery and new assistant action are distinct evidence.

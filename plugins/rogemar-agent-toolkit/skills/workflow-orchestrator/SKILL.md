@@ -65,6 +65,17 @@ fallback only for an unavailable adapter or mapping. It cannot bypass owner
 limits, a rejected configuration, or required evidence. Do not import Codex or
 Cursor model IDs. Keep this same orchestrator as sole dispatcher.
 
+## Shared instruction maintenance
+
+For an authorized global/project instruction alignment task, use the
+[shared working core](references/global-working-instructions.md) and the matching
+[Codex](references/harness-instructions/codex.md), [Cursor](references/harness-instructions/cursor.md),
+[Claude](references/harness-instructions/claude.md), [Bitrig](references/harness-instructions/bitrig.md)
+or [Devin](references/harness-instructions/devin.md) adapter. They are opt-in
+source templates for supported instruction surfaces, not automatically applied
+settings or authority to overwrite existing guidance. Keep project policy in its
+repository; preserve local differences and verify loading separately from copying.
+
 ## Core routing
 
 1. Classify the request as answering, research, brainstorming, planning,
