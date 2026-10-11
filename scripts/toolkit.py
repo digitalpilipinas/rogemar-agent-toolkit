@@ -30,6 +30,8 @@ LOCK_PATH = ROOT / "catalog" / "skills.lock.json"
 CODEX_MANIFEST = PLUGIN_ROOT / ".codex-plugin" / "plugin.json"
 PORTABLE_MANIFEST = PLUGIN_ROOT / "plugin.json"
 DEVIN_MANIFEST = PLUGIN_ROOT / ".devin-plugin" / "plugin.json"
+CURSOR_MANIFEST = PLUGIN_ROOT / ".cursor-plugin" / "plugin.json"
+CURSOR_MARKETPLACE = ROOT / ".cursor-plugin" / "marketplace.json"
 MARKETPLACE_MANIFEST = ROOT / ".agents" / "plugins" / "marketplace.json"
 README_PATH = ROOT / "README.md"
 PACKAGE_NAME = "rogemar-agent-toolkit"
@@ -232,12 +234,19 @@ def build_lock() -> dict[str, Any]:
     }
 
 
-def devin_manifest(skills: Iterable[str] | None = None) -> dict[str, Any]:
+def selected_plugin_manifest(harness: str, skills: Iterable[str] | None = None) -> dict[str, Any]:
     portable = load_json(PORTABLE_MANIFEST)
-    compatible = set(resolve_selection("agent-skills", "all", [])["skills"])
+    compatible = set(resolve_selection(harness, "all", [])["skills"])
     selected = compatible if skills is None else compatible.intersection(skills)
     return {key: portable[key] for key in ("name", "version", "description", "author", "license")} | {
         "skills": [f"skills/{name}" for name in sorted(selected)]}
+
+
+def cursor_marketplace() -> dict[str, Any]:
+    portable = load_json(PORTABLE_MANIFEST)
+    return {"name": PACKAGE_NAME, "owner": portable["author"],
+            "plugins": [{"name": PACKAGE_NAME, "source": f"plugins/{PACKAGE_NAME}",
+                         "description": portable["description"]}]}
 
 
 def structural_errors(check_lock: bool = True) -> list[str]:
@@ -447,8 +456,12 @@ def structural_errors(check_lock: bool = True) -> list[str]:
 
     if check_lock:
         try:
-            if load_json(DEVIN_MANIFEST) != devin_manifest():
-                errors.append("Devin manifest is stale; run toolkit.py lock")
+            for path, harness, label in ((DEVIN_MANIFEST, "agent-skills", "Devin"),
+                                         (CURSOR_MANIFEST, "cursor", "Cursor")):
+                if load_json(path) != selected_plugin_manifest(harness):
+                    errors.append(f"{label} manifest is stale; run toolkit.py lock")
+            if load_json(CURSOR_MARKETPLACE) != cursor_marketplace():
+                errors.append("Cursor marketplace is stale; run toolkit.py lock")
             expected = build_lock()
             actual = load_json(LOCK_PATH)
             if actual != expected:
@@ -464,7 +477,9 @@ def command_lock(_args: argparse.Namespace) -> int:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)
         return 1
-    write_json_atomic(DEVIN_MANIFEST, devin_manifest())
+    write_json_atomic(DEVIN_MANIFEST, selected_plugin_manifest("agent-skills"))
+    write_json_atomic(CURSOR_MANIFEST, selected_plugin_manifest("cursor"))
+    write_json_atomic(CURSOR_MARKETPLACE, cursor_marketplace())
     write_json_atomic(LOCK_PATH, build_lock())
     print(f"Wrote {LOCK_PATH.relative_to(ROOT)} for {len(vendored_names())} skills.")
     return 0
@@ -1278,7 +1293,8 @@ def command_package(args: argparse.Namespace) -> int:
         portable = temp / "portable" / PACKAGE_NAME
         portable.mkdir(parents=True)
         shutil.copy2(PORTABLE_MANIFEST, portable / "plugin.json")
-        write_json_atomic(portable / ".devin-plugin/plugin.json", devin_manifest(portable_selection["skills"]))
+        write_json_atomic(portable / ".devin-plugin/plugin.json", selected_plugin_manifest("agent-skills", portable_selection["skills"]))
+        write_json_atomic(portable / ".cursor-plugin/plugin.json", selected_plugin_manifest("cursor", portable_selection["skills"]))
         shutil.copy2(ROOT / "LICENSE", portable / "LICENSE")
         for name in portable_selection["skills"]:
             shutil.copytree(SKILLS_ROOT / name, portable / "skills" / name)

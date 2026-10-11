@@ -98,6 +98,14 @@ only with the compatibility pack, including `--profile all`, because the
 catalog does not record a license for that repository. Start a fresh task
 afterward and verify that your assistant can discover the skills.
 
+For **Cursor's native plugin route**, add the repository URL
+`https://github.com/digitalpilipinas/rogemar-agent-toolkit` as a marketplace.
+The root Cursor marketplace points to the existing nested plugin; its generated
+manifest selects Cursor-compatible skills. Refresh an existing marketplace
+instead of adding another copy. See [Cursor plugin setup](docs/installation.md#cursor-native-plugin-and-managed-extras)
+for managed third-party extras and verification. Choose this route **or** the
+complete managed installation above for toolkit skills.
+
 For **Devin**, choose [native Git plugin + managed extras, or complete managed
 installation](docs/installation.md#devin-choose-one-toolkit-owner). The native
 source is the plugin subdirectory:

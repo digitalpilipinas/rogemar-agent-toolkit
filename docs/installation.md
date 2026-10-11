@@ -77,6 +77,60 @@ The portable agent-plugin archive is the other output. It contains selected
 portable skills and a content receipt; it is not a complete machine image with
 browsers, device runtimes or authenticated providers.
 
+## Cursor native plugin and managed extras
+
+For native plugin discovery, add this **repository URL** as a marketplace in
+Cursor's Customize controls:
+
+```text
+https://github.com/digitalpilipinas/rogemar-agent-toolkit
+```
+
+The repository's `.cursor-plugin/marketplace.json` points to
+`plugins/rogemar-agent-toolkit`, whose generated `.cursor-plugin/plugin.json`
+selects the full Cursor-compatible toolkit, including `cursor-forge` and
+`cursor-forge-setup`. Codex-only and Claude-only entries are excluded. Keep this
+folder name: `main` in GitHub's `/tree/main/...` browsing URL is a branch, not a
+directory to create or rename.
+
+The Cursor Agent CLI can register or refresh the marketplace:
+
+```bash
+agent plugin marketplace list --format json
+# Only if this repository is not already registered:
+agent plugin marketplace add https://github.com/digitalpilipinas/rogemar-agent-toolkit
+# For an existing registration, use its name from the listing:
+agent plugin marketplace update <existing-marketplace-name>
+```
+
+Then select and install the toolkit in Cursor's plugin controls. Marketplace
+registration alone does not prove plugin installation or skill discovery. Check
+the installed plugin's skills for `cursor-forge` and `integrated-workflow`, and
+verify their source is this plugin. Use the skill picker for the invocation
+name exposed by your Cursor version.
+
+The native plugin does not run our installer or provision external skill files.
+From a reviewed toolkit checkout, preview its managed extras in each receiving
+environment:
+
+```bash
+python3 scripts/toolkit.py install --harness cursor --profile all --external-only --target project --project-root /path/to/project --dry-run
+```
+
+Remove `--dry-run` to apply the reviewed selection. Existing separately managed
+or runtime-owned copies must be reconciled, not overwritten silently. Upgrade
+these extras using the same target with `toolkit.py upgrade --harness cursor`;
+the saved external-only mode and selection are retained. Verify managed extras
+with scoped `doctor` checks and actual Cursor discovery, separately from the
+native plugin. Installation does not authenticate tools or install device runtimes.
+
+Alternatively, omit the native plugin and use the complete managed `--harness
+cursor` installation. Do not install the same toolkit selection through both
+routes. For an archive, `package --harness cursor --profile all` includes the
+Cursor selection; other archive selections may omit Cursor-native methods.
+The generated manifest always references only compatible skills in that archive.
+See [Cursor's plugin format](https://cursor.com/docs/reference/plugins).
+
 ## Devin: choose one toolkit owner
 
 Devin supports both native Git plugins and `.agents/skills`. Use one of these
@@ -100,7 +154,9 @@ devin plugins info rogemar-agent-toolkit
 
 In Customize → Plugins → Add plugin → From repository, use repository
 `digitalpilipinas/rogemar-agent-toolkit` and subdirectory
-`plugins/rogemar-agent-toolkit`. The generated `.devin-plugin/plugin.json` takes
+`plugins/rogemar-agent-toolkit`. A GitHub `/tree/main/...` browsing URL is not
+a substitute for the repository/subdirectory fields. The Cursor marketplace
+at the repository root does not make that root a Devin plugin. The generated `.devin-plugin/plugin.json` takes
 precedence over the portable manifest and selects compatible skills explicitly.
 It excludes native Codex, Cursor and Claude entries. No repository maintenance
 `AGENTS.md`, hooks, MCP servers or upstream plugin dependencies are registered.

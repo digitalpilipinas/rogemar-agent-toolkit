@@ -68,6 +68,21 @@ new installer `--harness` ID or assume native controls from a product name.
 
 These paths combine official format support and the local inventory's observed user layouts. They are delivery adapters, not certification of every harness version. For a harness whose installed version differs, use its documented skill import path and verify discovery; do not copy into runtime builtin/plugin cache directories. Use only one primary managed installation per shared root. Project overlays are never inferred from global skills.
 
+## Cursor plugin discovery
+
+The root `.cursor-plugin/marketplace.json` discovers the nested
+`plugins/rogemar-agent-toolkit` plugin. Its `.cursor-plugin/plugin.json` selects
+Cursor-compatible skills from the same catalog as managed installation. It
+includes shared methods and Cursor Forge, excluding other native adapters.
+`toolkit.py lock` generates both files; bundle verification rejects drift.
+Selected release archives restrict native manifests to files actually included.
+Portable, Codex and Devin manifests retain their existing routes.
+
+A marketplace refresh, installed plugin, readable skill resources and live tool
+execution are separate checks. Managed external skills require their own
+installation/upgrade in each receiving environment. See
+[Cursor setup](installation.md#cursor-native-plugin-and-managed-extras).
+
 ## Devin plugin and managed routes
 
 Devin uses the existing `agent-skills` adapter for project or user `.agents/skills`;

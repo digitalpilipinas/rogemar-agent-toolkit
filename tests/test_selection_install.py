@@ -45,22 +45,47 @@ class SelectionInstallTests(unittest.TestCase):
     def state(self, project):
         return Path(project) / '.agents/rogemar-agent-toolkit.lock.json'
 
-    def test_devin_manifest_matches_portable_selection_and_drift_fails(self):
-        expected = toolkit.resolve_selection('agent-skills', 'all', [])['skills']
-        manifest = toolkit.load_json(toolkit.DEVIN_MANIFEST)
-        self.assertEqual(manifest['skills'], ['skills/' + name for name in sorted(expected)])
-        for path in manifest['skills']:
-            self.assertTrue((toolkit.PLUGIN_ROOT / path / 'SKILL.md').is_file())
-        self.assertFalse(set(manifest) & {'requiredPlugins', 'hooks', 'mcpServers', 'agents', 'rules'})
+    def test_generated_manifests_match_selection_and_drift_fails(self):
+        for attribute, harness, label in (('DEVIN_MANIFEST', 'agent-skills', 'Devin'),
+                                           ('CURSOR_MANIFEST', 'cursor', 'Cursor')):
+            with self.subTest(harness=harness):
+                expected = toolkit.resolve_selection(harness, 'all', [])['skills']
+                manifest = toolkit.load_json(getattr(toolkit, attribute))
+                self.assertEqual(manifest['skills'], ['skills/' + name for name in sorted(expected)])
+                for path in manifest['skills']:
+                    self.assertTrue((toolkit.PLUGIN_ROOT / path / 'SKILL.md').is_file())
+                self.assertFalse(set(manifest) & {'requiredPlugins', 'hooks', 'mcpServers', 'agents', 'rules'})
+                self.assertNotIn('skills/codex-forge', manifest['skills'])
+                self.assertNotIn('skills/claude-forge', manifest['skills'])
+                if harness == 'cursor' and not SELECTED_DISTRIBUTION:
+                    self.assertIn('skills/cursor-forge', manifest['skills'])
+                    self.assertIn('skills/cursor-forge-setup', manifest['skills'])
+                with tempfile.TemporaryDirectory() as temporary:
+                    drift = Path(temporary) / 'plugin.json'
+                    toolkit.write_json_atomic(drift, {**manifest, 'skills': ['../escape']})
+                    with patch.object(toolkit, attribute, drift):
+                        self.assertIn(label + ' manifest is stale; run toolkit.py lock', toolkit.structural_errors())
+                        self.assertEqual(toolkit.main(['lock']), 0)
+                        self.assertEqual(toolkit.load_json(drift), manifest)
+                        drift.unlink()
+                        self.assertTrue(any('missing required file' in e for e in toolkit.structural_errors()))
+
+    def test_cursor_marketplace_resolves_nested_plugin_and_rejects_wrong_root(self):
+        marketplace = toolkit.load_json(toolkit.CURSOR_MARKETPLACE)
+        self.assertEqual(len(marketplace['plugins']), 1)
+        entry = marketplace['plugins'][0]
+        root = toolkit.ROOT / entry['source']
+        self.assertEqual(root, toolkit.PLUGIN_ROOT)
+        self.assertEqual(toolkit.load_json(root / '.cursor-plugin/plugin.json')['name'], entry['name'])
+        self.assertFalse((root / 'AGENTS.md').exists())
         with tempfile.TemporaryDirectory() as temporary:
-            drift = Path(temporary) / 'plugin.json'
-            toolkit.write_json_atomic(drift, {**manifest, 'skills': ['../escape']})
-            with patch.object(toolkit, 'DEVIN_MANIFEST', drift):
-                self.assertIn('Devin manifest is stale; run toolkit.py lock', toolkit.structural_errors())
+            path = Path(temporary) / 'marketplace.json'
+            wrong = {**marketplace, 'plugins': [{**entry, 'source': '.'}]}
+            toolkit.write_json_atomic(path, wrong)
+            with patch.object(toolkit, 'CURSOR_MARKETPLACE', path):
+                self.assertIn('Cursor marketplace is stale; run toolkit.py lock', toolkit.structural_errors())
                 self.assertEqual(toolkit.main(['lock']), 0)
-                self.assertEqual(toolkit.load_json(drift), manifest)
-                drift.unlink()
-                self.assertTrue(any('missing required file' in e for e in toolkit.structural_errors()))
+                self.assertEqual(toolkit.load_json(path), marketplace)
 
     def test_core_on_every_harness_excludes_native_and_optional_workflows(self):
         catalog = toolkit.load_json(toolkit.CATALOG_PATH)
@@ -375,10 +400,11 @@ class SelectionInstallTests(unittest.TestCase):
                     prefix = 'rogemar-agent-toolkit/'
                     if 'codex-marketplace' in archive.name:
                         prefix += 'plugins/rogemar-agent-toolkit/'
-                    manifest = json.loads(data.read(prefix + '.devin-plugin/plugin.json'))
-                    self.assertEqual(manifest['skills'], ['skills/' + n for n in sorted(receipt['skills'])])
-                    for skill in manifest['skills']:
-                        self.assertIn(prefix + skill + '/SKILL.md', data.namelist())
+                    for folder in ('.devin-plugin', '.cursor-plugin'):
+                        manifest = json.loads(data.read(prefix + folder + '/plugin.json'))
+                        self.assertEqual(manifest['skills'], ['skills/' + n for n in sorted(receipt['skills'])])
+                        for skill in manifest['skills']:
+                            self.assertIn(prefix + skill + '/SKILL.md', data.namelist())
                     self.assertFalse(any('/codex-forge/SKILL.md' in n for n in data.namelist()))
                     if 'codex-marketplace' in archive.name:
                         extracted = Path(temporary) / 'extracted'
@@ -413,10 +439,11 @@ class SelectionInstallTests(unittest.TestCase):
                 else:
                     self.assertNotIn('codex-forge', receipt['skills'])
                     self.assertNotIn('plan-model-router', receipt['skills'])
-                manifest = json.loads((skillroot.parent / '.devin-plugin/plugin.json').read_text())
-                compatible = set(toolkit.resolve_selection('agent-skills', 'all', [])['skills'])
-                exposed = {path.removeprefix('skills/') for path in manifest['skills']}
-                self.assertEqual(exposed, set(receipt['skills']) & compatible)
+                for folder, harness in (('.devin-plugin', 'agent-skills'), ('.cursor-plugin', 'cursor')):
+                    manifest = json.loads((skillroot.parent / folder / 'plugin.json').read_text())
+                    compatible = set(toolkit.resolve_selection(harness, 'all', [])['skills'])
+                    exposed = {path.removeprefix('skills/') for path in manifest['skills']}
+                    self.assertEqual(exposed, set(receipt['skills']) & compatible)
                 for name, expected in receipt['skills'].items():
                     self.assertEqual(toolkit.tree_digest(skillroot / name)[0], expected['sha256'], name)
                     for document in (skillroot / name).rglob('*.md'):
