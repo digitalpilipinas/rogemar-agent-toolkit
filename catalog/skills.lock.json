@@ -5497,12 +5497,12 @@
       "sha256": "b96a591d19f4baac0bda4267a07774de0fdaef186c69f922ea3dafacb0d19169"
     },
     "claude-forge": {
-      "file_count": 29,
-      "sha256": "9f51cd969480101d3286cd57f5cfad758e89c2b64fbe60730eec300098b60148"
+      "file_count": 30,
+      "sha256": "82e0dc2fcc0a47408a0d7c21fea78014160bc402f80e9526484f81bb89f4278d"
     },
     "claude-forge-setup": {
       "file_count": 5,
-      "sha256": "5f93d62e374540421bef5f7c6a1d0a498c92217e7abaa3233251420ff5d04aa2"
+      "sha256": "d4ce434149e01ca97f1c7089b327de74a27265ab1c8bad19bbfe0ce15174faf4"
     },
     "cloudflare-deploy": {
       "file_count": 312,
@@ -5530,7 +5530,7 @@
     },
     "create-plan": {
       "file_count": 6,
-      "sha256": "356951e22b1a5bda4987398d0185bf7c18b4d363710c66b76978f6b27633ed2a"
+      "sha256": "a5829f781097e35a32ca91f168bd28e1975e149f60d573d7d0a77aa80b310959"
     },
     "csv-analytics-reporter": {
       "file_count": 2,
@@ -5574,7 +5574,7 @@
     },
     "engineering-playbooks": {
       "file_count": 60,
-      "sha256": "b955225de14b662403dd5b6e652f41df9b91a6bd2add5002dba523a4a5284f57"
+      "sha256": "dd7e4935381fc569990145f0663ef0cc9b4d2bcb013b048e0d6cfeb9eaacd763"
     },
     "figma": {
       "file_count": 8,
@@ -5742,7 +5742,7 @@
     },
     "forge-swarm": {
       "file_count": 3,
-      "sha256": "2a54977310311574d2f1fbb092153d72fba840df86d569a220eb3af5b1b81228"
+      "sha256": "1d72331bfc8d8de7248ae0eaac8f1b89f4c95e45d9e121a3b968b100267e6e9b"
     },
     "forge-tdd": {
       "file_count": 3,
@@ -5786,7 +5786,7 @@
     },
     "integrated-workflow": {
       "file_count": 10,
-      "sha256": "6e6d6e474964ed42eaea974003daa76fe9b84783e1931e1ffeff3cd869c0e79e"
+      "sha256": "f308e0cd0fd0476573d538b8c2c1cec85bb33cffb05cf88b462c9dd0c84548f3"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -5953,8 +5953,8 @@
       "sha256": "4f6e4f6de44a67dd2d28e4cb80c498481baa6f5035f59661756108ce78cf4e32"
     },
     "workflow-orchestrator": {
-      "file_count": 24,
-      "sha256": "b5b31c22999fdece8039a5ea5a1325911d11b83c31beef278453c80dd7c7d2cc"
+      "file_count": 25,
+      "sha256": "2d048a8efca8e8d2f244a20bb299dbc968a9d7533e2d473d1721f52ee6e8c730"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

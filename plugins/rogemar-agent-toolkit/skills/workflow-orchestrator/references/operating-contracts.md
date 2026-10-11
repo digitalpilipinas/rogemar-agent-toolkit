@@ -63,6 +63,13 @@ retry or reset a provider's existing review allowance. Preserve failed evidence.
 Cancellation stops affected work and preserves recoverable progress. A stalled
 optional learning operation must not keep product delivery alive indefinitely.
 
+For a selected [dynamic workflow](dynamic-workflows.md), supply the optional
+`no_progress_rounds` as a nonnegative integer computed from completed evidence
+waves. Two consecutive rounds without meaningful progress stop that loop with
+`stop-no-progress`. Omission preserves ordinary retry behavior. This is distinct
+from an attempt budget; cancellation, authority and exhausted budgets still stop
+work first. The helper checks declared state, not the truth of progress claims.
+
 ## Consequential-action binding
 
 Permissions and intentional requests are different. A principal may be authorized

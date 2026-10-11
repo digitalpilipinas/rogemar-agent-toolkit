@@ -28,6 +28,7 @@ class IntegratedWorkflowEntryTests(unittest.TestCase):
             "references/coderabbit-review.md",
             "references/capability-fallbacks.md",
             "../workflow-orchestrator/references/route-readiness.md",
+            "../workflow-orchestrator/references/dynamic-workflows.md",
         ):
             self.assertIn(target, text)
             self.assertTrue((SKILLS / "integrated-workflow" / target).is_file(), target)

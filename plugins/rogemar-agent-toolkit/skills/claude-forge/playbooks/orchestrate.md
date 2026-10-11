@@ -9,6 +9,11 @@ Use for a programme that benefits from bounded parallel work. `workflow-orchestr
 
 ## Frame and choose ownership
 
+For selected broad audits, independent migrations and repeated-check repair,
+apply [bounded dynamic workflows](../../workflow-orchestrator/references/dynamic-workflows.md).
+Reuse this plan and receipt for package/reviewer pairs, finding challenges and
+coverage gaps. Use the active harness's supported executor; no second owner.
+
 Define the completion oracle, scope, dependencies, current slice, acceptance and stop conditions. The main agent can own implementation directly. Parallelize independent research or reviews; parallel repository writers require isolated worktrees and reconciliation. Cap concurrency at the lower of the runtime limit and three by default. Avoid a coordinator layer when the main agent can drain the work itself. No worker creates descendants without an explicit bounded exception from the orchestrator.
 
 ## Brief contract

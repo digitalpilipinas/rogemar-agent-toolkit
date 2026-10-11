@@ -63,6 +63,12 @@ IDs rather than creating a competing plan, board, or execution workflow.
 
 ## Keep the boundary clear
 
+When planning a suitable dynamic workflow, use the orchestrator's
+[bounded method](../workflow-orchestrator/references/dynamic-workflows.md).
+State phases, package/reviewer assignments, total attempts versus concurrency,
+scope/exclusions, evidence, a measurable progress baseline and stopping rules.
+Start unfamiliar execution on one directory. Planning does not start that pilot.
+
 For substantial handoffs, use existing context or input fields to identify the
 essential starting sources, why they matter, their candidate/revision and what
 would require refreshing them. Carry the outcome and constraints explicitly;

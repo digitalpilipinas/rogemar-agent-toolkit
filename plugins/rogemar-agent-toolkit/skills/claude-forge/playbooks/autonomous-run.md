@@ -7,6 +7,12 @@ Reassess or reuse methods for each approved task; advance while dependencies and
 
 Drive an explicitly authorized outcome to a checkable exit condition. Do not expand the task into global skill maintenance or unrelated fixes.
 
+For a selected repeated-check workflow, apply
+[the bounded dynamic method](../../workflow-orchestrator/references/dynamic-workflows.md).
+Stop after two consecutive evidence-backed rounds without meaningful progress,
+or earlier at completion, a blocker or the cumulative budget. Preserve failing
+checks and coverage; reducing the test scope is not progress.
+
 1. Define the observable predicate, allowed actions, resource limits and stop conditions. A goal tool is used only when the user explicitly requests a persistent goal.
 2. Use the current task for active work. If unattended event watching or recurrence was requested, discover a matching exposed watcher or automation tool and verify its lifecycle before relying on it. No assumed slash command, sleeper chain or background persistence. If unavailable, save a checkpoint and state the limit.
 3. Each iteration tests a hypothesis, makes the smallest in-scope change, verifies it and records the result. Commit or publish only with the corresponding authority. Undo only task-owned failed experiments.

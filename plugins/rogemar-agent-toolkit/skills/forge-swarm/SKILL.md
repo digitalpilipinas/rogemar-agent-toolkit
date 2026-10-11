@@ -11,6 +11,12 @@ Read [the shared Forge runtime](../workflow-orchestrator/references/forge-runtim
 
 Coordinate bounded coverage, races, or mixed exploration and return one report.
 
+For a selected broad audit, migration or repeated-check workflow, apply
+[the bounded dynamic method](../workflow-orchestrator/references/dynamic-workflows.md).
+It defines independent package review, finding challenges, coverage gaps and
+cumulative stopping budgets. Do not add this review pattern to unrelated races
+or small tasks, and do not replace existing delivery review gates.
+
 1. **Frame.** State the done predicate, deliverable, independent slices, and worker budget. For a race declare first-pass, rank-all, or best-of before dispatch. A requested total number is a coverage target, not permission to exceed concurrency.
 2. **Request assignments.** Give `workflow-orchestrator` each slice, role hint `swarm-workers`, scope, acceptance, non-goals, stop condition, and verification. Resolve `swarm-workers` through the router under the active mode; use parent defaults and ceilings only when no mode is selected. Explicit user and host limits always apply. Read-only workers may share a checkout. Writers need isolated worktrees or sequential ownership. Do not assume cloud agents, background flags, or remote branches exist as tool parameters.
 3. **Run and drain.** The orchestrator schedules the smallest useful rolling window within exposed limits. Use actual status tools; do not invent wakeups. Track every assignment to a terminal receipt. On failure, reassign a narrower slice or absorb it locally and record the coverage change.

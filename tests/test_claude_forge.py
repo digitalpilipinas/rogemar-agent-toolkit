@@ -19,6 +19,25 @@ def load(name, path):
 
 
 class ClaudeForgeTests(unittest.TestCase):
+    def test_dynamic_route_preserves_shared_owner_and_runtime_qualification(self):
+        shared = SKILLS / 'workflow-orchestrator/references/dynamic-workflows.md'
+        native = SKILLS / 'claude-forge/references/dynamic-workflows.md'
+        self.assertTrue(shared.is_file())
+        self.assertTrue(native.is_file())
+        for relative in ('claude-forge/references/claude-runtime.md',
+                         'claude-forge-setup/references/routing-contract.md'):
+            self.assertIn('dynamic-workflows.md', (SKILLS / relative).read_text())
+        text = native.read_text()
+        for boundary in ('workflow-orchestrator', 'claude-forge-setup',
+                         'instructions installed; native execution unverified',
+                         'guideline is advisory', 'automatic restarts'):
+            self.assertIn(boundary, text)
+        method = shared.read_text()
+        for disposition in ('confirmed', 'rejected', 'unverified', 'uncovered'):
+            self.assertIn('`' + disposition + '`', method)
+        self.assertIn('challenger must not be the author', method)
+        self.assertIn('Do not filter them', method)
+
     def test_playbooks_match_the_shared_methods(self):
         sync = load("claude_forge_sync", SKILLS / "claude-forge/scripts/sync_playbooks.py")
         expected = sync.render_all()
