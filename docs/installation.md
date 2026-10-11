@@ -77,6 +77,119 @@ The portable agent-plugin archive is the other output. It contains selected
 portable skills and a content receipt; it is not a complete machine image with
 browsers, device runtimes or authenticated providers.
 
+## Devin: choose one toolkit owner
+
+Devin supports both native Git plugins and `.agents/skills`. Use one of these
+routes in each receiving environment; installing the same toolkit through both
+creates duplicate discovery. Both routes use Universal Forge and the existing
+portable model router. There is no separate `devin` installer harness.
+
+| Route | Toolkit skills | Third-party skill files |
+| --- | --- | --- |
+| Native Git plugin + managed extras | Generated Devin manifest exposes the full compatible portable selection. | Managed `--external-only` installation using selected catalog pins. |
+| Complete managed installation | Managed `agent-skills` selection; core by default, `--profile all` for the full setup. | Provisioned by that same installer. |
+
+### Native Git plugin + managed extras
+
+Install the plugin from its **subdirectory**, not the repository root:
+
+```bash
+devin plugins install "digitalpilipinas/rogemar-agent-toolkit#plugins/rogemar-agent-toolkit"
+devin plugins info rogemar-agent-toolkit
+```
+
+In Customize → Plugins → Add plugin → From repository, use repository
+`digitalpilipinas/rogemar-agent-toolkit` and subdirectory
+`plugins/rogemar-agent-toolkit`. The generated `.devin-plugin/plugin.json` takes
+precedence over the portable manifest and selects compatible skills explicitly.
+It excludes native Codex, Cursor and Claude entries. No repository maintenance
+`AGENTS.md`, hooks, MCP servers or upstream plugin dependencies are registered.
+The existing portable and Codex manifests retain their own behavior.
+
+Invoke toolkit skills with their plugin namespace, for example
+`/rogemar-agent-toolkit:create-plan`, `/rogemar-agent-toolkit:universal-forge`,
+and `/rogemar-agent-toolkit:integrated-workflow`.
+
+The Git plugin does **not** run the Python installer. From a reviewed toolkit
+checkout, provision its compatible third-party skill files separately, inside
+**each** receiving project or cloud environment:
+
+```bash
+python3 scripts/toolkit.py install --harness agent-skills --profile all --external-only --target project --project-root /path/to/project --dry-run
+python3 scripts/toolkit.py install --harness agent-skills --profile all --external-only --target project --project-root /path/to/project
+```
+
+Use `--target user` instead of the project options for a personal installation
+on that machine. External-only mode copies no canonical toolkit skills; it uses
+the existing pinned recipes, resources, notices, conflict checks and backups.
+It does not execute upstream installers or register upstream rules and hooks.
+It does not install or authenticate provider applications, devices or services.
+The native Git plugin always exposes the full compatible toolkit selection;
+external pack choices control only the separately managed extras.
+
+### Complete managed installation
+
+If you prefer one managed installer for the toolkit and extras, omit the native
+plugin installation and `--external-only`:
+
+```bash
+python3 scripts/toolkit.py install --harness agent-skills --profile all --target project --project-root /path/to/project --dry-run
+python3 scripts/toolkit.py install --harness agent-skills --profile all --target project --project-root /path/to/project
+```
+
+Skills live in the receiving project's `.agents/skills`, without the native
+plugin namespace. Omitting `--profile all` retains the normal core default.
+
+### Updating and checking each route
+
+For the native route, update the plugin with
+`devin plugins update rogemar-agent-toolkit`. Check out the newly reviewed toolkit
+revision separately before upgrading managed extras. For either managed route:
+
+```bash
+python3 scripts/toolkit.py upgrade --harness agent-skills --target project --project-root /path/to/project --dry-run
+python3 scripts/toolkit.py upgrade --harness agent-skills --target project --project-root /path/to/project
+```
+
+Upgrades retain the saved external-only/full mode and pack selection. Existing
+installation states remain full installations. A full managed installation cannot
+be converted with `--external-only`; reconcile its ownership before switching
+routes. Omitting the flag on an external-only installation **does not** convert
+it to full mode. `--skip-external` and `--link` conflict with external-only mode,
+including when that mode comes from saved state. Dry runs do not fetch or write.
+Rollback uses the existing command and restores the preceding transaction; each
+external family has its own transaction, so a failed fetch preserves successful
+families and can be retried. Removed external pack selections do not delete
+previously installed external copies; inspect ownership before removing them.
+
+Verify the native and managed layers separately, from the receiving project:
+
+```bash
+devin plugins info rogemar-agent-toolkit  # Native route only
+devin skills list
+devin skills show rogemar-agent-toolkit:integrated-workflow  # Native route only
+devin skills show unlazy  # Both full examples above include this managed extra
+```
+
+Confirm the reported source paths, not just names that might come from another
+installation. From the toolkit checkout, check managed hashes and resources:
+
+```bash
+python3 scripts/toolkit.py doctor --harness agent-skills --target project --project-root /path/to/project --method unlazy --json
+```
+
+For a complete managed installation, also check `--method integrated-workflow`.
+For the native route, that method is owned by the plugin, not the managed state;
+use Devin's plugin/skill commands for it. Discovery is not workflow execution or
+authentication evidence. No engineering task is needed for these checks.
+
+Keep existing cloud projects and environments. Run managed install/upgrade there;
+a native plugin update cannot update managed extras, and a successful Mac check
+does not prove cloud adoption. Missing cloud access remains unverified. Reindex
+in Customize if its listing is stale; CLI content update and web indexing are
+separate operations. See the official [Devin plugin guide](https://docs.devin.ai/cli/extensibility/plugins/overview)
+and [skill locations](https://docs.devin.ai/cli/extensibility/skills/overview).
+
 ## Updates and recovery
 
 Check out the reviewed revision you intend to install. Preview before updating:

@@ -29,6 +29,7 @@ CATALOG_PATH = ROOT / "catalog" / "skills.yaml"
 LOCK_PATH = ROOT / "catalog" / "skills.lock.json"
 CODEX_MANIFEST = PLUGIN_ROOT / ".codex-plugin" / "plugin.json"
 PORTABLE_MANIFEST = PLUGIN_ROOT / "plugin.json"
+DEVIN_MANIFEST = PLUGIN_ROOT / ".devin-plugin" / "plugin.json"
 MARKETPLACE_MANIFEST = ROOT / ".agents" / "plugins" / "marketplace.json"
 README_PATH = ROOT / "README.md"
 PACKAGE_NAME = "rogemar-agent-toolkit"
@@ -229,6 +230,14 @@ def build_lock() -> dict[str, Any]:
             "packages": catalog.get("external_packages", []),
         },
     }
+
+
+def devin_manifest(skills: Iterable[str] | None = None) -> dict[str, Any]:
+    portable = load_json(PORTABLE_MANIFEST)
+    compatible = set(resolve_selection("agent-skills", "all", [])["skills"])
+    selected = compatible if skills is None else compatible.intersection(skills)
+    return {key: portable[key] for key in ("name", "version", "description", "author", "license")} | {
+        "skills": [f"skills/{name}" for name in sorted(selected)]}
 
 
 def structural_errors(check_lock: bool = True) -> list[str]:
@@ -438,6 +447,8 @@ def structural_errors(check_lock: bool = True) -> list[str]:
 
     if check_lock:
         try:
+            if load_json(DEVIN_MANIFEST) != devin_manifest():
+                errors.append("Devin manifest is stale; run toolkit.py lock")
             expected = build_lock()
             actual = load_json(LOCK_PATH)
             if actual != expected:
@@ -453,6 +464,7 @@ def command_lock(_args: argparse.Namespace) -> int:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)
         return 1
+    write_json_atomic(DEVIN_MANIFEST, devin_manifest())
     write_json_atomic(LOCK_PATH, build_lock())
     print(f"Wrote {LOCK_PATH.relative_to(ROOT)} for {len(vendored_names())} skills.")
     return 0
@@ -742,6 +754,8 @@ def read_optional_state(path: Path) -> dict[str, Any] | None:
     state = load_json(path)
     if state.get("package") != PACKAGE_NAME or not isinstance(state.get("skills"), dict):
         raise ToolkitError("invalid managed installation state")
+    if not isinstance(state.get("external_only", False), bool):
+        raise ToolkitError("invalid external-only installation scope")
     if not isinstance(state.get("external_skills", {}), dict):
         raise ToolkitError("invalid external installation state")
     for name, record in {**state["skills"], **state.get("external_skills", {})}.items():
@@ -1050,7 +1064,17 @@ def command_install(args: argparse.Namespace) -> int:
     state = read_optional_state(state_path)
     if state and state.get("schema_version") == 1 and not args.harness:
         raise ToolkitError("legacy installation: specify --harness explicitly before migration")
+    external_only = args.external_only or (state or {}).get("external_only", False)
+    if external_only and (args.skip_external or args.link):
+        raise ToolkitError("--external-only cannot be combined with --skip-external or --link")
+    if state and args.external_only and not state.get("external_only", False):
+        raise ToolkitError("cannot change a full managed installation to --external-only; reconcile existing ownership first")
+    if external_only and (state or {}).get("skills"):
+        raise ToolkitError("external-only state contains managed toolkit skills; reconcile existing ownership first")
     selection = install_selection(args, state)
+    if external_only:
+        selection["skills"] = []
+        selection["external_only"] = True
     catalog = load_json(CATALOG_PATH)
     selection["dependencies"] = {name: catalog["dependencies"][name] for name in selection["external"]}
     _skills_root, state_path, control_root = target_paths(args)
@@ -1107,6 +1131,8 @@ def command_install(args: argparse.Namespace) -> int:
                  "packs": selection["packs"], "external": selection["external"],
                  "mode": "link" if args.link else "copy", "skills": desired,
                  "external_skills": (state or {}).get("external_skills", {})}
+    if external_only:
+        new_state["external_only"] = True
     comparable = {key: value for key, value in (state or {}).items()
                   if key not in {"installed_at", "last_backup"}}
     if not changed and not removed and new_state == comparable:
@@ -1252,6 +1278,7 @@ def command_package(args: argparse.Namespace) -> int:
         portable = temp / "portable" / PACKAGE_NAME
         portable.mkdir(parents=True)
         shutil.copy2(PORTABLE_MANIFEST, portable / "plugin.json")
+        write_json_atomic(portable / ".devin-plugin/plugin.json", devin_manifest(portable_selection["skills"]))
         shutil.copy2(ROOT / "LICENSE", portable / "LICENSE")
         for name in portable_selection["skills"]:
             shutil.copytree(SKILLS_ROOT / name, portable / "skills" / name)
@@ -1341,6 +1368,7 @@ def build_parser() -> argparse.ArgumentParser:
             subparser.add_argument("--adopt-identical", action="store_true", help="manage exact existing copies after comparing every file")
             subparser.add_argument("--backup-conflicts", action="store_true", help="explicitly replace differing copies after review, retaining a recoverable backup")
             subparser.add_argument("--link", action="store_true", help="development-only symlink install")
+            subparser.add_argument("--external-only", action="store_true", help="install only selected external skills; retained by subsequent upgrades")
             subparser.add_argument("--skip-external", action="store_true", help="explicit offline/vendor-only install; skip automatic external skill provisioning")
         else:
             subparser.add_argument("--harness")

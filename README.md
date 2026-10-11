@@ -98,6 +98,21 @@ only with the compatibility pack, including `--profile all`, because the
 catalog does not record a license for that repository. Start a fresh task
 afterward and verify that your assistant can discover the skills.
 
+For **Devin**, choose [native Git plugin + managed extras, or complete managed
+installation](docs/installation.md#devin-choose-one-toolkit-owner). The native
+source is the plugin subdirectory:
+
+```bash
+devin plugins install "digitalpilipinas/rogemar-agent-toolkit#plugins/rogemar-agent-toolkit"
+```
+
+Its generated Devin manifest exposes compatible portable skills through
+`/rogemar-agent-toolkit:<skill>`. Install third-party skill files separately with
+`--harness agent-skills --profile all --external-only` in each receiving
+environment. For complete managed installation, use `--harness agent-skills`
+without the native plugin or `--external-only`; add `--profile all` for the full
+setup. Avoid installing the same toolkit through both routes.
+
 Want only the basics? Omit both `--pack` options to install the six-skill core.
 Forge and Integrated Workflow belong to the optional engineering pack. On an
 existing installation, explicit profile/pack options replace its saved selection;
@@ -298,7 +313,7 @@ contains native execution qualification requirements; the live Claude pilot is
 | Codex | `codex-forge` | `forge-setup` configures preferences; `plan-model-router` qualifies worker profiles. |
 | Cursor | `cursor-forge` | `cursor-forge-setup` supplies native mappings. The universal router is the fallback. Shared `forge-*` skills are the method. Upstream PStack stays installed and unchanged. |
 | Claude | `claude-forge` | `claude-forge-setup` qualifies the live Claude catalogue. |
-| Factory/Droid and other compatible assistants | `universal-forge` | `universal-plan-model-router` uses the assistant's available native models and controls, with defaults when selection controls are absent. |
+| Devin, Factory/Droid and other compatible assistants | `universal-forge` | `universal-plan-model-router` uses the assistant's available native models and controls, with defaults when selection controls are absent. |
 
 Factory/Droid installs to `.factory/skills`. It uses the portable engineering
 route and observed native capabilities, not Codex model IDs. When worker controls

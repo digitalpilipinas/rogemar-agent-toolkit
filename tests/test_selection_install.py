@@ -45,6 +45,23 @@ class SelectionInstallTests(unittest.TestCase):
     def state(self, project):
         return Path(project) / '.agents/rogemar-agent-toolkit.lock.json'
 
+    def test_devin_manifest_matches_portable_selection_and_drift_fails(self):
+        expected = toolkit.resolve_selection('agent-skills', 'all', [])['skills']
+        manifest = toolkit.load_json(toolkit.DEVIN_MANIFEST)
+        self.assertEqual(manifest['skills'], ['skills/' + name for name in sorted(expected)])
+        for path in manifest['skills']:
+            self.assertTrue((toolkit.PLUGIN_ROOT / path / 'SKILL.md').is_file())
+        self.assertFalse(set(manifest) & {'requiredPlugins', 'hooks', 'mcpServers', 'agents', 'rules'})
+        with tempfile.TemporaryDirectory() as temporary:
+            drift = Path(temporary) / 'plugin.json'
+            toolkit.write_json_atomic(drift, {**manifest, 'skills': ['../escape']})
+            with patch.object(toolkit, 'DEVIN_MANIFEST', drift):
+                self.assertIn('Devin manifest is stale; run toolkit.py lock', toolkit.structural_errors())
+                self.assertEqual(toolkit.main(['lock']), 0)
+                self.assertEqual(toolkit.load_json(drift), manifest)
+                drift.unlink()
+                self.assertTrue(any('missing required file' in e for e in toolkit.structural_errors()))
+
     def test_core_on_every_harness_excludes_native_and_optional_workflows(self):
         catalog = toolkit.load_json(toolkit.CATALOG_PATH)
         for harness in catalog['harnesses']:
@@ -355,6 +372,13 @@ class SelectionInstallTests(unittest.TestCase):
                 with zipfile.ZipFile(archive) as data:
                     receipt = json.loads(data.read('rogemar-agent-toolkit/release-selection.json'))
                     self.assertEqual(len(receipt['skills']), 6)
+                    prefix = 'rogemar-agent-toolkit/'
+                    if 'codex-marketplace' in archive.name:
+                        prefix += 'plugins/rogemar-agent-toolkit/'
+                    manifest = json.loads(data.read(prefix + '.devin-plugin/plugin.json'))
+                    self.assertEqual(manifest['skills'], ['skills/' + n for n in sorted(receipt['skills'])])
+                    for skill in manifest['skills']:
+                        self.assertIn(prefix + skill + '/SKILL.md', data.namelist())
                     self.assertFalse(any('/codex-forge/SKILL.md' in n for n in data.namelist()))
                     if 'codex-marketplace' in archive.name:
                         extracted = Path(temporary) / 'extracted'
@@ -389,6 +413,10 @@ class SelectionInstallTests(unittest.TestCase):
                 else:
                     self.assertNotIn('codex-forge', receipt['skills'])
                     self.assertNotIn('plan-model-router', receipt['skills'])
+                manifest = json.loads((skillroot.parent / '.devin-plugin/plugin.json').read_text())
+                compatible = set(toolkit.resolve_selection('agent-skills', 'all', [])['skills'])
+                exposed = {path.removeprefix('skills/') for path in manifest['skills']}
+                self.assertEqual(exposed, set(receipt['skills']) & compatible)
                 for name, expected in receipt['skills'].items():
                     self.assertEqual(toolkit.tree_digest(skillroot / name)[0], expected['sha256'], name)
                     for document in (skillroot / name).rglob('*.md'):

@@ -68,6 +68,22 @@ new installer `--harness` ID or assume native controls from a product name.
 
 These paths combine official format support and the local inventory's observed user layouts. They are delivery adapters, not certification of every harness version. For a harness whose installed version differs, use its documented skill import path and verify discovery; do not copy into runtime builtin/plugin cache directories. Use only one primary managed installation per shared root. Project overlays are never inferred from global skills.
 
+## Devin plugin and managed routes
+
+Devin uses the existing `agent-skills` adapter for project or user `.agents/skills`;
+there is no `--harness devin`. Alternatively, its native Git plugin uses the
+`plugins/rogemar-agent-toolkit` subdirectory and the generated
+`.devin-plugin/plugin.json`. This manifest selects only compatible portable
+skills, including Universal Forge. The source plugin exposes the full portable
+selection; release archives restrict it to compatible skills actually packaged.
+`toolkit.py lock` regenerates the manifest, and `toolkit.py verify` rejects drift.
+
+Use managed `--external-only` installation alongside the native plugin for pinned
+third-party skill files. A complete managed installation is the alternative;
+do not combine it with the same native toolkit. Native plugin discovery,
+managed file/hash checks, managed skill discovery and cloud execution are
+separate evidence. Follow the [Devin installation and verification steps](installation.md#devin-choose-one-toolkit-owner).
+
 ## Evidence levels
 
 - Local catalogue, content, packaging and installer tests verify static structure and simulated target layouts.
