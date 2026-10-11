@@ -5953,8 +5953,8 @@
       "sha256": "4f6e4f6de44a67dd2d28e4cb80c498481baa6f5035f59661756108ce78cf4e32"
     },
     "workflow-orchestrator": {
-      "file_count": 18,
-      "sha256": "4952ad5bd5e0e22741fcaa40259e20340b0f78849625658482ddcc58d0e69874"
+      "file_count": 24,
+      "sha256": "b5b31c22999fdece8039a5ea5a1325911d11b83c31beef278453c80dd7c7d2cc"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

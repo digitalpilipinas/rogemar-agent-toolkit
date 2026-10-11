@@ -65,6 +65,13 @@ needed. A concise view never replaces authoritative state or the full coverage
 audit. Native compaction may free space while losing detail; verify critical
 state and evidence after uncertain recovery.
 
+The continuity record identifies the task owner, goal, allowed scope,
+repository/worktree and branch/commit; completed work with evidence; unfinished
+work; open decisions, blockers and gotchas; running jobs; and the next action.
+On resume, reconcile the record with current source, job and delivery state
+before acting. Preserve unresolved failures and missing acceptance gates.
+Update the existing record rather than creating competing summaries.
+
 ## Retained knowledge
 
 Reuse relevant source-linked synthesis when it is authorized, available, and
