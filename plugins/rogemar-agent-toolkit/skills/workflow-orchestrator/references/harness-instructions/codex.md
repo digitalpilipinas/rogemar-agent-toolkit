@@ -13,8 +13,12 @@ identity honestly and keep unresolved work with the main agent when necessary.
 
 For Codex work with an explicitly selected Forge mode (`default`, `peak`, `balanced`,
 `lean`, `economy`; legacy aliases `supreme`, `optimize`, `budget`, `sprint`), the mode's permitted
-profiles supersede these default parent ceilings. Explicit user limits and actual
-runtime availability still apply. `workflow-orchestrator` owns dispatch and
+profiles remain subject to the actual accepted parent's model and reasoning
+ceilings and the mode's limits. Only qualified hard-role exceptions in the router
+may exceed normal ceilings. Reconcile a different desired parent through the
+router's accepted-fallback or verified-switch procedure before dispatch; report
+unsupported profiles instead of bypassing qualification. Explicit user limits
+and actual runtime availability still apply. `workflow-orchestrator` owns dispatch and
 `plan-model-router` qualifies every justified Forge worker assignment. Keep the
 model catalog, role mappings and resolver details in the router skill.
 
