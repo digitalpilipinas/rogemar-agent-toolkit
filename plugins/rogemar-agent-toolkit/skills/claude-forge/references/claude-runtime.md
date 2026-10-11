@@ -52,6 +52,11 @@ Use a naming field only when the live tool exposes one. Mode stays out of the na
 
 ## Capability translation
 
+For a selected dynamic workflow, follow [the native workflow binding](dynamic-workflows.md).
+It executes the same orchestrator-owned plan with bounded phases and agents.
+Do not equate installed instructions or normal Agent-tool access with a working
+Workflow runtime; qualify that surface separately.
+
 | Upstream operation | Claude execution |
 | --- | --- |
 | Task, background delegate, model panel | Bounded request to the orchestrator. It calls the subagent tool this session actually exposes, with arguments from that tool's schema. If the tool has no background flag, the parent waits or does the work itself. |

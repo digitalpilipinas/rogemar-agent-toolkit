@@ -151,6 +151,32 @@ class InteractionTests(unittest.TestCase):
         out = W.retry_decision(dict(attempts_used=0, attempt_limit=4, failure_kind='authority'))
         self.assertEqual(out['decision'], 'resolve-authority-no-retry')
 
+    def test_dynamic_round_plateau_stops_without_changing_ordinary_retry(self):
+        base = dict(attempts_used=1, attempt_limit=8, failure_kind='implementation')
+        for rounds in (0, 1):
+            self.assertEqual(W.retry_decision(dict(base, no_progress_rounds=rounds))['decision'],
+                             'eligible-for-scoped-correction')
+        for rounds in (2, 3):
+            result = W.retry_decision(dict(base, no_progress_rounds=rounds))
+            self.assertEqual(result['decision'], 'stop-no-progress')
+            self.assertFalse(result['grants_authority'])
+        self.assertEqual(W.retry_decision(base)['decision'], 'eligible-for-scoped-correction')
+
+    def test_dynamic_round_counter_rejects_invalid_values(self):
+        for value in (True, -1, 1.5, '2', None):
+            with self.subTest(value=value), self.assertRaises(W.ContractError):
+                W.retry_decision(dict(attempts_used=1, attempt_limit=8,
+                                      failure_kind='implementation', no_progress_rounds=value))
+
+    def test_dynamic_plateau_preserves_authority_cancellation_and_budget_stops(self):
+        base = dict(attempts_used=1, attempt_limit=8, failure_kind='implementation', no_progress_rounds=2)
+        for change, expected in [({'cancelled': True}, 'stop-and-preserve'),
+                                 ({'failure_kind': 'authority'}, 'resolve-authority-no-retry'),
+                                 ({'attempts_used': 8}, 'budget-exhausted-reclassify'),
+                                 ({'other_budget_exhausted': True}, 'budget-exhausted-reclassify')]:
+            with self.subTest(change=change):
+                self.assertEqual(W.retry_decision(dict(base, **change))['decision'], expected)
+
     def test_cancellation_and_budget(self):
         base = dict(attempts_used=0, attempt_limit=3, failure_kind='implementation')
         self.assertEqual(W.retry_decision(dict(base, cancelled=True))['decision'], 'stop-and-preserve')

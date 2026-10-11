@@ -163,6 +163,12 @@ when the next phase needs materially different live capabilities.
 
 ## Delegation policy
 
+For an authorized broad audit, independent migration packages or an actual backlog
+of failing checks, select [bounded dynamic workflows](references/dynamic-workflows.md)
+when repeatable coordination earns its cost. Keep small or coupled work on the
+ordinary route. The native executor implements this owner's approved assignments;
+it is not a second coordinator. Preserve existing model, authority and review gates.
+
 For every justified new sub-agent, in default operation or any Forge route,
 follow [sub-agent naming](references/subagent-naming.md) after native profile
 qualification: role, task, model and native reasoning in the supported naming

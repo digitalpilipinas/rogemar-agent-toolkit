@@ -10,6 +10,13 @@ when a worker would not add independent evidence.
 
 Read the runtime for the active entry. Do not load a second router.
 
+For selected broad audits, independent migrations or repeated-check work, use
+[bounded dynamic workflows](dynamic-workflows.md). All Forge adapters share the
+method; only a verified native executor supplies runtime behavior. Keep existing
+mode qualification and parent/user limits. A missing Claude runtime does not
+prevent another harness from using its own authorized workers, but that fallback
+must not be described as a Claude workflow run.
+
 | Active entry | What to read and use |
 | --- | --- |
 | `codex-forge`, or a Codex session whose entry is Codex Forge | The installed `codex-forge` runtime contract and `plan-model-router` |

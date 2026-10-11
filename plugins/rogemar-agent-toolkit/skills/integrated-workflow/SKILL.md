@@ -43,6 +43,7 @@ not open every file linked from this skill at the start.
 | CodeRabbit or a ready-PR review | [CodeRabbit review](references/coderabbit-review.md) |
 | A selected tool is missing | [Capability fallbacks](references/capability-fallbacks.md) |
 | Swift, Xcode, or an end-to-end journey | [Route readiness](../workflow-orchestrator/references/route-readiness.md) |
+| Broad audit, independent migration packages, or repeated failing-check remediation | [Bounded dynamic workflows](../workflow-orchestrator/references/dynamic-workflows.md), only when coordination earns its cost |
 
 `e2e`, the SwiftUI skills, and `opendesign` are selected only for those situations.
 They install with the `web`, `mobile`, `swift`, `ios`, and `opendesign` packs.

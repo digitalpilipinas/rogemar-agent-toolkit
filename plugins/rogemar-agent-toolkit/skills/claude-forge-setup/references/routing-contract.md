@@ -57,6 +57,12 @@ Main-owned coordinator and integration roles stay with the parent. Skill hints
 do not grant tools. Panel size follows useful independent questions, not the
 number of configured models.
 
+For native dynamic workflows, qualify the actual workflow-agent API separately
+from the ordinary Agent tool using [the Claude workflow binding](../../claude-forge/references/dynamic-workflows.md).
+Reuse valid mappings, but never silently drop unsupported settings or bypass pins.
+Report native model substitutions and requalify task fit and owner limits before
+acceptance; an unverified or incompatible profile cannot satisfy a required gate.
+
 Fallback applies when the adapter, configuration, or role mapping is absent, or
 when an optional capability is genuinely unavailable. It does not apply to a
 validation rejection or a missing permission. Carry explicit constraints into

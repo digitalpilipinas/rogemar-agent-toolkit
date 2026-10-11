@@ -182,12 +182,16 @@ def retry_decision(record: Any) -> dict[str, Any]:
     require(kind in FAILURES, 'invalid failure classification')
     require(type(record.get('cancelled', False)) is bool, 'cancelled must be boolean')
     require(type(record.get('other_budget_exhausted', False)) is bool, 'budget flag must be boolean')
+    stalled = record.get('no_progress_rounds', 0)
+    require(type(stalled) is int and stalled >= 0, 'no_progress_rounds must be a nonnegative integer')
     if record.get('cancelled'):
         decision = 'stop-and-preserve'
     elif kind == 'authority':
         decision = 'resolve-authority-no-retry'
     elif used >= limit or record.get('other_budget_exhausted'):
         decision = 'budget-exhausted-reclassify'
+    elif stalled >= 2:
+        decision = 'stop-no-progress'
     elif kind != 'implementation':
         decision = 'diagnose-before-retry'
     else:
