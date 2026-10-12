@@ -139,3 +139,44 @@ explicit-only behavior.
 CodeRabbit remains standalone: use its own installed skill and full review of
 the selected candidate. Shared review reconciliation does not replace or shorten
 its provider workflow. No new login or installation follows from discovery alone.
+
+## Native metadata across harnesses
+
+The toolkit keeps one canonical skill tree and generates native wrappers from its
+portable `plugin.json`. These wrappers identify a bundle; they do not install
+providers, authenticate tools or verify execution.
+
+| Harness | Plugin metadata | Repository discovery |
+| --- | --- | --- |
+| Codex | `.codex-plugin/plugin.json` | `.agents/plugins/marketplace.json` |
+| Cursor | `.cursor-plugin/plugin.json` | `.cursor-plugin/marketplace.json` |
+| Devin | `.devin-plugin/plugin.json` | Git repository plus plugin subdirectory |
+| Claude Code | `.claude-plugin/plugin.json` | `.claude-plugin/marketplace.json` |
+| Factory/Droid | `.factory-plugin/plugin.json` | `.factory-plugin/marketplace.json` |
+| Gemini CLI | `gemini-extension.json` | Local extension directory |
+| Antigravity | Root `plugin.json` in the matching selected archive | Extracted archive directory |
+
+Paths in the plugin-metadata column are relative to
+`plugins/rogemar-agent-toolkit`; repository discovery paths are at the repository
+root. `toolkit.py lock` generates the wrappers and `verify` rejects metadata drift.
+There is no universal native manifest schema. The portable root metadata remains
+the shared source; each harness reads its own supported format.
+
+Antigravity requires the archive generated with `package --harness antigravity`.
+Its root manifest contains only `name` and `description`; the raw source tree's
+portable manifest contains additional fields outside Antigravity's native schema.
+
+Claude Code's `skills` field adds to its default directory scan. Factory uses
+`skills/<name>/SKILL.md`, and Gemini/Antigravity also discover bundled skills.
+Installing the raw source tree through these routes exposes the source skill
+directory, including other harnesses' adapters. Use a matching selected archive
+or the managed installer for a filtered set. Cursor and Devin retain their
+existing explicit skill lists. See [native setup](installation.md#native-manifests-for-other-harnesses).
+
+Format references: [Claude Code](https://code.claude.com/docs/en/plugins-reference),
+[Factory](https://docs.factory.com/harness/plugins),
+[Gemini CLI](https://geminicli.com/docs/extensions/reference/), and
+[Antigravity CLI](https://www.antigravity.google/docs/plugins?tab=cli).
+The existing managed Antigravity paths above retain legacy compatibility. Current
+CLI plugin paths and IDE discovery are separate surfaces; verify the receiving
+version's [skill locations](https://www.antigravity.google/docs/skills?tab=ide).

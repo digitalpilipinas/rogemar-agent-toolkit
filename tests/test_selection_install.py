@@ -87,6 +87,53 @@ class SelectionInstallTests(unittest.TestCase):
                 self.assertEqual(toolkit.main(['lock']), 0)
                 self.assertEqual(toolkit.load_json(path), marketplace)
 
+    def test_native_metadata_drift_is_rejected_and_lock_repairs_it(self):
+        for attribute, label, build in (
+            ('CLAUDE_MANIFEST', 'Claude', toolkit.native_plugin_manifest),
+            ('FACTORY_MANIFEST', 'Factory', toolkit.native_plugin_manifest),
+            ('GEMINI_MANIFEST', 'Gemini', toolkit.gemini_manifest),
+            ('CLAUDE_MARKETPLACE', 'Claude marketplace', toolkit.native_marketplace),
+            ('FACTORY_MARKETPLACE', 'Factory marketplace', toolkit.native_marketplace),
+        ):
+            with self.subTest(manifest=attribute), tempfile.TemporaryDirectory() as temporary:
+                expected = build()
+                self.assertEqual(toolkit.load_json(getattr(toolkit, attribute)), expected)
+                path = Path(temporary) / 'manifest.json'
+                toolkit.write_json_atomic(path, {**expected, 'name': 'wrong-package'})
+                with patch.object(toolkit, attribute, path):
+                    self.assertIn(label + ' manifest is stale; run toolkit.py lock', toolkit.structural_errors())
+                    self.assertEqual(toolkit.main(['lock']), 0)
+                    self.assertEqual(toolkit.load_json(path), expected)
+                if 'plugins' in expected:
+                    self.assertEqual((toolkit.ROOT / expected['plugins'][0]['source']).resolve(), toolkit.PLUGIN_ROOT)
+                else:
+                    self.assertFalse(set(expected) & {'skills', 'hooks', 'mcpServers', 'agents'})
+
+    @unittest.skipIf(SELECTED_DISTRIBUTION, 'cross-harness archives require the source catalog')
+    def test_native_archives_filter_the_scanned_skill_directory(self):
+        for harness, manifest_path in (
+            ('claude', '.claude-plugin/plugin.json'),
+            ('droid', '.factory-plugin/plugin.json'),
+            ('gemini', 'gemini-extension.json'),
+            ('antigravity', 'plugin.json'),
+        ):
+            with self.subTest(harness=harness), tempfile.TemporaryDirectory() as temporary:
+                code, _, error = self.cli('package', '--harness', harness, '--pack', 'engineering', '--output', temporary)
+                self.assertEqual(code, 0, error)
+                archive = next(Path(temporary).glob('*agent-plugin*.zip'))
+                with zipfile.ZipFile(archive) as data:
+                    prefix = 'rogemar-agent-toolkit/'
+                    expected = set(toolkit.resolve_selection(harness, 'core', ['engineering'])['skills'])
+                    scanned = {name.split('/')[2] for name in data.namelist() if name.startswith(prefix + 'skills/') and name.endswith('/SKILL.md')}
+                    self.assertEqual(scanned, expected)
+                    manifest = json.loads(data.read(prefix + manifest_path))
+                    self.assertEqual(manifest['name'], toolkit.PACKAGE_NAME)
+                    self.assertNotIn('skills', manifest)
+                    self.assertNotIn('codex-forge', scanned)
+                    self.assertEqual('claude-forge' in scanned, harness == 'claude')
+                    if harness == 'antigravity':
+                        self.assertEqual(set(manifest), {'name', 'description'})
+
     def test_core_on_every_harness_excludes_native_and_optional_workflows(self):
         catalog = toolkit.load_json(toolkit.CATALOG_PATH)
         for harness in catalog['harnesses']:

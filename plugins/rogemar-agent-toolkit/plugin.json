@@ -7,10 +7,17 @@
     "name": "Rogemar"
   },
   "license": "Proprietary",
+  "homepage": "https://digitalpilipinas.github.io/rogemar-agent-toolkit/",
+  "repository": "https://github.com/digitalpilipinas/rogemar-agent-toolkit",
   "keywords": [
     "agent-skills",
     "codex",
     "cursor",
+    "claude-code",
+    "devin",
+    "factory-droid",
+    "antigravity",
+    "gemini-cli",
     "engineering-workflows"
   ]
 }

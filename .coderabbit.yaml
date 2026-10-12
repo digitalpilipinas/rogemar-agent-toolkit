@@ -1,0 +1,6 @@
+inheritance: true
+reviews:
+  path_filters:
+    - "**/*.svg"
+    - "**/*.png"
+    - "**/*.gif"
