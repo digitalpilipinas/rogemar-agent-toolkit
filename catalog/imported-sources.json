@@ -1966,14 +1966,6 @@
           "sha256": "07db1d30ce52356884b9c7005ad473434c6104257eee0252e3487209e59d0da9",
           "executable": false
         },
-        "scripts/__pycache__/export_svg.cpython-312.pyc": {
-          "sha256": "cf3beabd6a906e3769da7ca66b3f44a173aca5871a873e00b809edb053a8b62e",
-          "executable": false
-        },
-        "scripts/__pycache__/self_check.cpython-312.pyc": {
-          "sha256": "0f2645a45907c72a77edf62e7c0bd99284cb15a9a71219b7a7dda507c6bbfecb",
-          "executable": false
-        },
         "scripts/drawio_extract.py": {
           "sha256": "2a9e52ca9565046735e6231f293d245b5811b25f235a1325d1997174cadcd073",
           "executable": false

@@ -2081,8 +2081,6 @@
         "references/type-venn.md",
         "references/type-wardley.md",
         "references/type-waterfall.md",
-        "scripts/__pycache__/export_svg.cpython-312.pyc",
-        "scripts/__pycache__/self_check.cpython-312.pyc",
         "scripts/drawio_extract.py",
         "scripts/excalidraw_extract.py",
         "scripts/export_svg.py",
