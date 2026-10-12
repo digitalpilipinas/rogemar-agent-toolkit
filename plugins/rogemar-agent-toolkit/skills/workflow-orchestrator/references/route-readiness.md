@@ -27,6 +27,20 @@ A primary and review alternative can cooperate for a concrete coverage gap. Reco
 that reason; don't load both routinely. PStack's explicit invocation flags still
 apply to its raw native skills. Portable Forge uses adapted shared methods.
 
+## Diagram artifacts
+
+Select `diagram-design` for a polished shareable diagram or a semantic redraw.
+Use task tags `diagram-artifact` or `diagram-redraw`; compact Mermaid, interactive
+explainers, scientific plots and unrelated work keep their existing routes.
+Require source-fidelity and rendered-artifact evidence, not a diagram on every task.
+Static resolution uses no authentication. Imports/self-check/SVG export use Python
+3.10+; PNG additionally needs approved Python Playwright and usable Chromium.
+Check those only for the selected operation; an importable package is not a
+successful render. Missing tools block that output format, not unrelated work.
+Project profiles resolve read-only; no installed cache or shared brand file changes.
+Use offline self-check and system-font export by default. Existing external tool
+setup authority and the current task owner remain unchanged.
+
 ## Check only the selected route
 
 The installed `scripts/select_methods.py` accepts repeated `--method ID` and one

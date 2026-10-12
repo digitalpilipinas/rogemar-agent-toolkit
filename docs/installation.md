@@ -431,3 +431,29 @@ accounts and paid services remain conditional runtime integrations. Entries with
 only a repository link or runtime-managed provenance remain references, not a
 promise of copied skill files. Run comparisons for affected sources at maintenance
 time; ordinary tasks reuse installed, qualified methods.
+
+## Diagram Design
+
+The `design` pack and `--profile all` include the attributed Diagram Design
+adaptation. Invoke `diagram-design` for a polished artifact or redraw; import,
+export, profile and diagnostic operations are instructions under that one entry,
+not six promised native slash commands. Existing native-plugin users update their
+toolkit plugin; avoid a second standalone copy of the same skill.
+
+Project branding lives in `.diagram-design-profile.md`, using the shipped style
+guide structure. The resolver accepts existing upstream markers read-only and
+fails on missing explicit profiles. Installed skills and plugin caches stay
+immutable. New artifacts use system fonts with no external requests; explicitly
+chosen web fonts have their own privacy/availability consequences. Original
+upstream examples may still reference web fonts.
+
+Static instructions need no login. Python 3.10+ is required for diagram helpers,
+and Python Playwright plus Chromium for PNG rendering. These requirements do not
+change the toolkit installer's Python minimum. No tools or accounts are installed
+by this skill. `self_check.py --offline` checks markup, not visual correctness.
+Inspect actual renders and source fidelity. Unsupported SVG exports fail clearly.
+
+Maintenance uses the pinned source in `catalog/imported-sources.json` and the
+existing read-only `upstream_compare.py --source cathrynlavery/diagram-design`.
+Review the recorded adaptations before accepting an upstream update; do not
+automatically replace project profiles or installed resources.

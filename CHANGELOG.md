@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0 — Diagram Design
+
+- Add one pinned portable diagram specialist to the design/full selections.
+- Keep project branding separate from installed skills, with offline defaults.
+- Route polished artifacts conditionally and preserve simple diagram alternatives.
+
+
 ## Open the files a task needs (unreleased)
 
 - Integrated Workflow opens each file for a situation that is active now.

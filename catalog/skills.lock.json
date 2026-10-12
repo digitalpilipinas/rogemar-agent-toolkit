@@ -3145,7 +3145,8 @@
           "motion-animation-engineer",
           "accessibility-auditor",
           "visual-qa",
-          "vector-asset-pipeline"
+          "vector-asset-pipeline",
+          "diagram-design"
         ]
       },
       "engineering": {
@@ -3721,6 +3722,22 @@
       ]
     },
     "develop-web-game": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "diagram-design": {
       "requires": [],
       "targets": [
         "agent-skills",
@@ -5564,6 +5581,10 @@
       "file_count": 7,
       "sha256": "a4b34ddda7562a6ef206c3bc9d0f2382e4d83511e1ddbba3623f1e82e4e960d3"
     },
+    "diagram-design": {
+      "file_count": 284,
+      "sha256": "6e82c619ec3d35de0fea2ceb5a9a0ece7347e2283d40bce0ff3b10e75725ccf0"
+    },
     "dream-team": {
       "file_count": 7,
       "sha256": "822be590a7ca05cbf186efef05a23231ed8f9856ccc7a44b3eb717359b898302"
@@ -5786,7 +5807,7 @@
     },
     "integrated-workflow": {
       "file_count": 10,
-      "sha256": "f308e0cd0fd0476573d538b8c2c1cec85bb33cffb05cf88b462c9dd0c84548f3"
+      "sha256": "fefc3a0a0f52514adca53539d5e8c01a2f07708cf3e47a73d6c497f173b7a410"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -5942,7 +5963,7 @@
     },
     "vector-asset-pipeline": {
       "file_count": 2,
-      "sha256": "39bd20f4431c17b655881db1d3d8d3c2369adbf86b818f0437b96df735caf8d1"
+      "sha256": "b025a5c676c47ab04149892aa3e793f380fd3b36f7d67eaaa062c54abb8371a1"
     },
     "vercel-deploy": {
       "file_count": 6,
@@ -5954,7 +5975,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 25,
-      "sha256": "2d048a8efca8e8d2f244a20bb299dbc968a9d7533e2d473d1721f52ee6e8c730"
+      "sha256": "af47c04ba3601062d6feb240e6c628afb7e0b31b9830105421c255b4595641fd"
     },
     "xcode-build-benchmark": {
       "file_count": 6,
@@ -5977,5 +5998,5 @@
       "sha256": "e32e660ce521c92819734054a948b8dbbc5398e5ce492dc9559a6b13fc31f479"
     }
   },
-  "version": "1.0.0"
+  "version": "1.1.0"
 }

@@ -26,6 +26,7 @@
     "skills/design-brief",
     "skills/design-system-steward",
     "skills/develop-web-game",
+    "skills/diagram-design",
     "skills/dream-team",
     "skills/e2e",
     "skills/engineering-playbooks",
@@ -127,5 +128,5 @@
     "skills/xcode-compilation-analyzer",
     "skills/xcode-project-analyzer"
   ],
-  "version": "1.0.0"
+  "version": "1.1.0"
 }
