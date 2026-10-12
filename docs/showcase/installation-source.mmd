@@ -1,0 +1,10 @@
+flowchart TD
+    accTitle: Install and verify in each receiving environment
+    accDescr: A reviewed repository revision is installed locally or inside a cloud environment. Each installation needs file verification, agent discovery and applicable runtime evidence.
+    source["Reviewed revision<br/>+ catalog pins"] --> local["This machine<br/>Install / upgrade"]
+    source --> cloud["Cloud environment<br/>Install / upgrade"]
+    local --> files["Verify files, hashes<br/>and resources"]
+    cloud --> files
+    files --> discovery["Verify agent discovery"]
+    discovery --> runtime["Check needed tools<br/>and service access"]
+    runtime --> proof["Run the actual task<br/>and retain evidence"]

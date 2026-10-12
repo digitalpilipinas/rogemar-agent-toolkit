@@ -6,7 +6,10 @@
 
 **One coordinated workflow. The right skills for the work. Evidence before done.**
 
-![Connected cyan and coral toolkit modules for planning, building, inspecting, verifying and packaging, arranged around a central hub.](docs/assets/readme/hero.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/ownership-dark.png">
+  <img src="docs/assets/readme/ownership-light.png" alt="Planning informs Integrated Workflow; one orchestrator selects the Forge adapter and applicable specialists under the same owner.">
+</picture>
 
 <p>
   <a href="#choose-your-assistant-and-mode"><img src="docs/assets/readme/codex.svg" alt="Codex" height="28"></a>
@@ -27,6 +30,28 @@ It starts with six core skills. Optional packs add engineering, design, mobile,
 data and release work. Installing a pack also copies the pinned third-party
 skill repositories that pack uses, on every harness those skills support.
 Your assistant still uses its own models, tools and accounts.
+
+## See the workflow
+
+[**Explore the interactive showcase →**](https://digitalpilipinas.github.io/rogemar-agent-toolkit/)
+Choose a diagram, switch themes, or step through one task. The gallery works
+without JavaScript too; its controls do not start agents or change settings.
+
+<details>
+<summary><strong>Watch a short illustrated task loop</strong> — plays once</summary>
+
+![Illustrated workflow: select or reuse methods, check prerequisites, execute, verify, record evidence, and continue. This is not a live agent recording.](docs/assets/readme/workflow-demo.gif)
+
+An illustrated workflow demonstration, not a recording of agent execution.
+[View the complete static diagram](docs/assets/readme/task-loop-dark.png) or
+[use playback controls in the gallery](https://digitalpilipinas.github.io/rogemar-agent-toolkit/#task-loop).
+
+</details>
+
+| Ownership | Continuous task loop | Receiving environments |
+| --- | --- | --- |
+| [![Ownership diagram](docs/assets/readme/ownership-light.png)](https://digitalpilipinas.github.io/rogemar-agent-toolkit/#ownership) | [![Task-loop diagram](docs/assets/readme/task-loop-light.png)](https://digitalpilipinas.github.io/rogemar-agent-toolkit/#task-loop) | [![Installation diagram](docs/assets/readme/installation-light.png)](https://digitalpilipinas.github.io/rogemar-agent-toolkit/#installation) |
+| One owner, selected methods. | Keep valid evidence and continue. | Install and verify in each environment. |
 
 ## Table of contents
 
@@ -98,6 +123,9 @@ only with the compatibility pack, including `--profile all`, because the
 catalog does not record a license for that repository. Start a fresh task
 afterward and verify that your assistant can discover the skills.
 
+<details>
+<summary><strong>Native plugin installation: Cursor and Devin</strong></summary>
+
 For **Cursor's native plugin route**, add the repository URL
 `https://github.com/digitalpilipinas/rogemar-agent-toolkit` as a marketplace.
 The root Cursor marketplace points to the existing nested plugin; its generated
@@ -120,6 +148,9 @@ Its generated Devin manifest exposes compatible portable skills through
 environment. For complete managed installation, use `--harness agent-skills`
 without the native plugin or `--external-only`; add `--profile all` for the full
 setup. Avoid installing the same toolkit through both routes.
+
+
+</details>
 
 Want only the basics? Omit both `--pack` options to install the six-skill core.
 Forge and Integrated Workflow belong to the optional engineering pack. On an
