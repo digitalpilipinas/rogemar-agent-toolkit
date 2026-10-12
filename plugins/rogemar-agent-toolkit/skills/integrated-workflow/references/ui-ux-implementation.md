@@ -19,6 +19,7 @@ useful skill set and any justified workers. No extra coordinator or agent panel.
 | Feedback, microcopy, loading/error states and touch ergonomics | interaction-polish |
 | Existing or requested motion/gesture behavior | motion-animation-engineer, including reduced-motion alternatives |
 | Rendered layouts, themes, wrapping and visual regressions | visual-qa with available browser/device tools |
+| Polished explanatory diagram or semantic redraw | vector-asset-pipeline with its optional upstream Diagram Design integration; check source fidelity and rendering, retaining simpler alternatives |
 | Actual OpenDesign project, scenario, resources or export workflow | opendesign only when its native application services are needed |
 
 Select only methods relevant to the change; keep specialists separate and read

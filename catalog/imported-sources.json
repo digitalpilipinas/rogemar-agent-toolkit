@@ -60,6 +60,10 @@
       "commit": "f99e80ebc04f8194f967244198783db871390e06",
       "sha256": "3acdaf2269020bfd8110a6a58584d44b6f07212465b575ec223ade9edfe2e935",
       "bytes": 3948158
+    },
+    {
+      "repository": "cathrynlavery/diagram-design",
+      "commit": "7a2e22170ee838e859d8142ba825d83f8b6375e6"
     }
   ],
   "skills": [
@@ -943,6 +947,29 @@
         "plugins/rogemar-agent-toolkit/skills/code-review-tests/upstream-notices/mattpocock-LICENSE",
         "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/upstream-notices/mattpocock-LICENSE",
         "plugins/rogemar-agent-toolkit/skills/codex-forge/upstream-notices/mattpocock-LICENSE"
+      ]
+    },
+    {
+      "repository": "cathrynlavery/diagram-design",
+      "commit": "7a2e22170ee838e859d8142ba825d83f8b6375e6",
+      "methods": [
+        "semantic diagram selection",
+        "source-fidelity ledger",
+        "accessible vector checks"
+      ],
+      "paths": [
+        "skills/diagram-design/SKILL.md",
+        "skills/diagram-design/references/import-mermaid.md",
+        "skills/diagram-design/references/export.md",
+        "skills/diagram-design/references/profiles.md"
+      ],
+      "owners": [
+        "vector-asset-pipeline",
+        "visual-qa"
+      ],
+      "changes": "Small integration reference and existing vector/visual methods only. Upstream plugin, templates, examples and scripts remain separately installed and upstream-owned.",
+      "notices": [
+        "plugins/rogemar-agent-toolkit/skills/vector-asset-pipeline/upstream-notices/diagram-design-LICENSE"
       ]
     }
   ]

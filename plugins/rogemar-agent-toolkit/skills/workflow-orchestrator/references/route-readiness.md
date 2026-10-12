@@ -27,6 +27,16 @@ A primary and review alternative can cooperate for a concrete coverage gap. Reco
 that reason; don't load both routinely. PStack's explicit invocation flags still
 apply to its raw native skills. Portable Forge uses adapted shared methods.
 
+## Diagram artifacts
+
+For polished artifacts or source-faithful redraws, select `vector-asset-pipeline`
+and, when that optional skill is installed, read its `references/diagram-design.md`.
+Read the actual surfaced upstream skill when available. The toolkit does not
+bundle that skill or register its native plugin. Keep simple Mermaid, interactive
+explainers and scientific plots on their existing routes. Verify the selected
+operation's prerequisites, source fidelity and rendered output without requiring
+diagrams on unrelated tasks. Reuse one owner and installed-source observation.
+
 ## Check only the selected route
 
 The installed `scripts/select_methods.py` accepts repeated `--method ID` and one

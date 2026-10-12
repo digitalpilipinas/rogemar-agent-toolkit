@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0 — Optional Diagram Design integration
+
+- Add a small routing and verification guide for the separately installed upstream plugin.
+- Reuse existing vector and visual-QA methods; keep the upstream library outside the toolkit.
+- Document installation ownership, offline output and actual runtime evidence.
+
 ## Open the files a task needs (unreleased)
 
 - Integrated Workflow opens each file for a situation that is active now.

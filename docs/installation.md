@@ -431,3 +431,39 @@ accounts and paid services remain conditional runtime integrations. Entries with
 only a repository link or runtime-managed provenance remain references, not a
 promise of copied skill files. Run comparisons for affected sources at maintenance
 time; ordinary tasks reuse installed, qualified methods.
+
+## Diagram Design
+
+Diagram Design is an optional, separately installed upstream plugin/skill. The
+`design` pack includes a small integration guide through `vector-asset-pipeline`;
+it does not vendor the upstream example library or register its native plugin.
+Use one upstream installation per receiving harness, separate from the toolkit.
+
+For Codex, use the upstream marketplace (leave sparse paths empty):
+
+```sh
+codex plugin marketplace add cathrynlavery/diagram-design
+codex plugin add diagram-design@diagram-design
+```
+
+Check existing marketplaces/plugins first to avoid duplicates. For native Claude
+or Droid installation, follow the [upstream instructions](https://github.com/cathrynlavery/diagram-design).
+Where no supported native route is available, including the documented Cursor
+standalone route, install the unmodified upstream Agent Skill with `npx skills add
+cathrynlavery/diagram-design`, selecting only the intended harness and copy layout.
+Native command wrappers are not included in a standalone skill installation.
+
+Native plugin and standalone skill updates are separate from toolkit updates.
+Use the installed upstream version's update command, inspect its actual source,
+and test required operations. The integration was reviewed against revision
+`7a2e22170ee838e859d8142ba825d83f8b6375e6` (2.6.74); that observation does not pin
+an independently updated plugin forever. Do not install another copy when the
+same capability is already supplied by a working plugin.
+
+Reuse project tokens and upstream-supported separate profiles; do not edit an
+installed skill or plugin cache. Prefer system fonts and no external requests.
+Static guidance needs no login. Reviewed Python helpers need Python 3.10+; PNG
+needs Python Playwright/Chromium or a separately verified browser capture route.
+Resource presence, native discovery and actual execution are separate checks.
+Repeat setup and verification inside each receiving cloud environment; no local
+plugin update establishes cloud adoption.

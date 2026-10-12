@@ -9,6 +9,11 @@ Use this skill for vector assets. Native ImageGen remains responsible for raster
 generation and photo-like editing unless the task explicitly needs SVG or icon
 source.
 
+For polished explanatory diagrams or redraws, follow the optional
+[Diagram Design integration](references/diagram-design.md). Its upstream plugin
+owns templates and helpers; keep compact Mermaid and plotting/interactive routes
+when more suitable. Do not install duplicate copies or start another dispatcher.
+
 ## Workflow
 
 1. Identify the asset purpose: icon, logo, illustration, marker, diagram,

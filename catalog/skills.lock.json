@@ -1736,6 +1736,25 @@
           "droid"
         ]
       },
+      "diagram-design": {
+        "activation": "Conditional. Verify a single upstream installation in the receiving environment; toolkit installation does not register or update its native plugin.",
+        "install": "Prefer the upstream native plugin where supported; otherwise install its unmodified Agent Skill through the upstream standalone route. See docs/installation.md#diagram-design.",
+        "integration": "plugins/rogemar-agent-toolkit/skills/vector-asset-pipeline/references/diagram-design.md",
+        "kind": "native-plugin",
+        "name": "Diagram Design",
+        "purpose": "Optional upstream-owned specialist for polished explanatory diagrams and source-faithful redraws; not vendored in the toolkit.",
+        "repository": "https://github.com/cathrynlavery/diagram-design",
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "claude",
+          "droid",
+          "gemini"
+        ],
+        "upstream_commit": "7a2e22170ee838e859d8142ba825d83f8b6375e6",
+        "version_observed": "2.6.74 reviewed source"
+      },
       "expo": {
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
         "auto_install": {
@@ -3135,6 +3154,9 @@
       },
       "design": {
         "description": "Design brief, reference fidelity, UI/UX, frontend implementation, Taste, polish, motion and visual verification.",
+        "external": [
+          "diagram-design"
+        ],
         "skills": [
           "design-brief",
           "reference-design-contract",
@@ -5786,7 +5808,7 @@
     },
     "integrated-workflow": {
       "file_count": 10,
-      "sha256": "f308e0cd0fd0476573d538b8c2c1cec85bb33cffb05cf88b462c9dd0c84548f3"
+      "sha256": "45444d9f64695f20068d832d53a85ce716a9425e358d3795ae9bdb21d4805c81"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -5941,8 +5963,8 @@
       "sha256": "2a670b5f4300fea85a4f1259af7a44caac4f6a58299e1da4eeef9448efd70abb"
     },
     "vector-asset-pipeline": {
-      "file_count": 2,
-      "sha256": "39bd20f4431c17b655881db1d3d8d3c2369adbf86b818f0437b96df735caf8d1"
+      "file_count": 4,
+      "sha256": "578be2a7aaf8b0ca8d90069269d86eb44468c9f641c6a90071d62198f6fcdf09"
     },
     "vercel-deploy": {
       "file_count": 6,
@@ -5950,11 +5972,11 @@
     },
     "visual-qa": {
       "file_count": 2,
-      "sha256": "4f6e4f6de44a67dd2d28e4cb80c498481baa6f5035f59661756108ce78cf4e32"
+      "sha256": "d0409cbbdaeb48b01a8563777f7629234d5539238d5d0f0f3d9fa9ceba9d488d"
     },
     "workflow-orchestrator": {
       "file_count": 25,
-      "sha256": "2d048a8efca8e8d2f244a20bb299dbc968a9d7533e2d473d1721f52ee6e8c730"
+      "sha256": "0c368083b10483fc21faae85baab44a8ad7212575464726a255837b7f47379c8"
     },
     "xcode-build-benchmark": {
       "file_count": 6,
@@ -5977,5 +5999,5 @@
       "sha256": "e32e660ce521c92819734054a948b8dbbc5398e5ce492dc9559a6b13fc31f479"
     }
   },
-  "version": "1.0.0"
+  "version": "1.1.0"
 }

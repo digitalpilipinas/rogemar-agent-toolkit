@@ -4927,13 +4927,16 @@
       "targets": []
     },
     "vector-asset-pipeline": {
-      "trigger": "Use for SVG, icon, logo, vector illustration, symbol, map marker, app icon source, themable vector asset, density variant, export pipeline, optimization, accessibility, provenance, and render verification work.",
+      "trigger": "Use for SVG, icon, logo, vector illustration, symbol, map marker, app icon source, themable vector asset, density variant, export pipeline, optimization, accessibility, provenance, and render verification work. For polished diagram artifacts or redraws, use the optional upstream Diagram Design route when available.",
       "outcome": "Task-relevant implementation and visible/export evidence",
       "boundary": "No decorative work or generated assets when they do not improve the requested outcome",
       "activation": "conditional",
       "source": "vector-asset-pipeline/SKILL.md",
       "kind": "vendored",
-      "required_resources": [],
+      "required_resources": [
+        "references/diagram-design.md",
+        "upstream-notices/diagram-design-LICENSE"
+      ],
       "required_skills": [],
       "targets": []
     },
