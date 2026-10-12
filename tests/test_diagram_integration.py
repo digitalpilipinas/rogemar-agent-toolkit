@@ -10,7 +10,7 @@ class DiagramIntegrationTests(unittest.TestCase):
     def test_upstream_is_declared_separately_and_never_copied_as_toolkit_skill(self):
         catalog=toolkit.load_json(toolkit.CATALOG_PATH)
         if 'design' not in catalog['packs']:self.skipTest('design omitted from package')
-        for harness in ('codex','cursor','claude','droid','agent-skills'):
+        for harness in ('codex','cursor','claude','droid','agent-skills','gemini'):
             selected=toolkit.resolve_selection(harness,'core',['design'])
             self.assertIn('diagram-design',selected['external'])
             self.assertIn('vector-asset-pipeline',selected['skills'])
