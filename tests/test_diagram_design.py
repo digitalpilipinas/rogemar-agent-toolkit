@@ -38,6 +38,8 @@ class DiagramDesignTests(unittest.TestCase):
             self.assertNotIn('diagram-design', core)
         entry = next(x for x in catalog['vendored'] if x['name'] == 'diagram-design')
         for name in entry['required_resources']:
+            self.assertNotIn('__pycache__', name)
+            self.assertFalse(name.endswith('.pyc'))
             self.assertTrue((SKILL / name).is_file(), name)
         self.assertEqual(len(list(SKILL.rglob('SKILL.md'))), 1)
 
