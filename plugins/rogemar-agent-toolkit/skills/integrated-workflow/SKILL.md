@@ -48,7 +48,8 @@ not open every file linked from this skill at the start.
 `e2e`, the SwiftUI skills, and `opendesign` are selected only for those situations.
 They install with the `web`, `mobile`, `swift`, `ios`, and `opendesign` packs.
 `plan-model-router` is the Codex router. Cursor uses `cursor-forge-setup`, Claude
-uses `claude-forge-setup`, and every other harness uses `universal-plan-model-router`.
+uses `claude-forge-setup`, Devin uses the saved mapping inside `devin-forge`, and
+every other harness uses `universal-plan-model-router`.
 
 ## Scope and ownership
 
@@ -147,6 +148,7 @@ Through the existing orchestrator, select one compatible route:
 | Codex | `codex-forge` and shared `forge-*` methods | `plan-model-router` |
 | Cursor | `cursor-forge` and shared `forge-*` methods. Upstream PStack only when those skills are absent | `cursor-forge-setup`. Universal router only as a constraint-preserving fallback |
 | Claude | `claude-forge` and shared `forge-*` methods | `claude-forge-setup` |
+| Devin | `devin-forge` and shared `forge-*` methods | Saved mode→`devin_mode` mapping inside `devin-forge`. `universal-plan-model-router` only as a constraint-preserving fallback |
 | Other or unknown | `universal-forge` and shared `forge-*` methods. Shared `engineering-playbooks` if those skills are unavailable | `universal-plan-model-router` using observed native capabilities |
 
 Honor compatible explicit choices. Reassess task fit, capabilities and applicable

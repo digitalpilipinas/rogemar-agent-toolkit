@@ -1791,6 +1791,24 @@
       "required_skills": [],
       "targets": []
     },
+    "devin-forge": {
+      "trigger": "Run shared Forge engineering methods natively in Devin using Devin's own agent modes, child sessions, and tools. Use for Devin Forge, substantive implementation, diagnosis, refactoring, review, or verification in Devin. codex-forge, cursor-forge, claude-forge and universal-forge are separate entries.",
+      "outcome": "Engineering methods and matched native/portable execution",
+      "boundary": "Do not invoke an additional Forge entry or overwrite PStack or sibling Forge ownership",
+      "activation": "conditional",
+      "source": "devin-forge/SKILL.md",
+      "kind": "vendored",
+      "required_resources": [],
+      "required_skills": [
+        "workflow-orchestrator",
+        "engineering-playbooks",
+        "universal-forge",
+        "universal-plan-model-router"
+      ],
+      "targets": [
+        "agent-skills"
+      ]
+    },
     "dream-team": {
       "trigger": "Use for Rogemar's optional persona-based routing and explanation layer across coding projects. Trigger when the user asks for Dream Team help, names a Dream Team persona or squad, requests plain-language translation, or wants coordinated planning, design, implementation, review, or release guidance.",
       "outcome": "Use observed launch capabilities and bounded existing assignment/result contracts",

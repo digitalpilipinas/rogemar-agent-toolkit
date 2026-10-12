@@ -362,6 +362,29 @@
       }
     },
     {
+      "name": "devin-forge",
+      "source": "approved Devin Forge binding, 2026-10-12",
+      "requires": [
+        "workflow-orchestrator",
+        "engineering-playbooks",
+        "universal-forge",
+        "universal-plan-model-router"
+      ],
+      "targets": [
+        "agent-skills"
+      ],
+      "author": "Rogemar (Devin adapter); Lauren Tan (upstream PStack methods)",
+      "license": "Repository license for adapter additions; MIT for upstream PStack methods",
+      "license_evidence": "LICENSE.txt",
+      "upstream_repository": "https://github.com/cursor/plugins/tree/e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a/pstack",
+      "routing": {
+        "trigger": "Run shared Forge engineering methods natively in Devin using Devin's own agent modes, child sessions, and tools. Use for Devin Forge, substantive implementation, diagnosis, refactoring, review, or verification in Devin. codex-forge, cursor-forge, claude-forge and universal-forge are separate entries.",
+        "outcome": "Engineering methods and matched native/portable execution",
+        "boundary": "Do not invoke an additional Forge entry or overwrite PStack or sibling Forge ownership",
+        "activation": "conditional"
+      }
+    },
+    {
       "name": "dream-team",
       "source": "approved local user-level snapshot",
       "routing": {
@@ -3400,7 +3423,7 @@
       ]
     },
     "engineering": {
-      "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor, Claude and Universal Forge routes.",
+      "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor, Claude, Devin and Universal Forge routes.",
       "skills": [
         "agent-map",
         "claude-forge",
@@ -3408,6 +3431,7 @@
         "codex-forge",
         "cursor-forge",
         "cursor-forge-setup",
+        "devin-forge",
         "engineering-playbooks",
         "forge-architect",
         "forge-arena",

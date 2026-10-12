@@ -42,6 +42,25 @@
 - Apply the Forge mode contract on Claude as well as Codex, Cursor, and
   Universal Forge.
 
+## Devin Forge (unreleased)
+
+- Add `devin-forge` as the Devin execution entry for the shared Forge methods,
+  installed through the `agent-skills` (`.devin-plugin`) manifest only.
+- Carry a saved Forge-mode→`devin_mode` mapping (Peak → Fusion parent +
+  SWE-2 High→Max workers; Balanced → Normal + SWE-2 Medium→High; Lean →
+  SWE-2 High + Lite; Sprint → Lite) plus a per-role assignment table:
+  judgment workers at the band's top, implementation workers banded, clerical
+  roles on Lite, and Lean/Sprint judgment kept parent-owned.
+- Prefer Devin-native routes over child sessions where they fit: in-session
+  `testing_agent` for interactive UI QA and `devin_review_manage` for PR-diff
+  review. Workers dispatch through `devin_session_create` with bounded briefs
+  and structured receipts; parent model stays `unverified`, accepted
+  `devin_mode` is reported, underlying model stays `effective model
+  unverified`.
+- Route Devin explicitly in `integrated-workflow` and the Universal Forge
+  runtime-selection table; `universal-forge` remains the fallback for other
+  harnesses.
+
 ## Claude Forge (unreleased)
 
 - Add `claude-forge` and `claude-forge-setup` for the Claude harness. The 23
