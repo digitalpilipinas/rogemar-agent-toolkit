@@ -122,6 +122,22 @@ For Cursor, replace `codex` with `cursor`. For Claude, use `claude`; for Factory
 assistant, see the
 [available installation targets](docs/compatibility.md#harness-adapters). Use
 `--target user` instead of the project options for a personal installation.
+
+For a quick install of every toolkit skill into an assistant's skill
+directories, without clone, pack selection or managed state, the
+[`skills`](https://github.com/vercel-labs/skills) CLI reads this repository
+directly:
+
+```bash
+npx skills@latest add digitalpilipinas/rogemar-agent-toolkit --skill '*' --agent '*'
+```
+
+Add `-g` for a user-level (global) install or `--list` to preview the skill
+inventory first, and run `npx skills update` later to pick up new revisions.
+This route copies skill files only: it does not select packs, write managed
+installation state, generate manifests or provision external dependencies —
+use the managed installation above or a native plugin route for those.
+
 The engineering pack copies pinned Unlazy and Ponytail skills onto every
 harness, and pinned PStack skills onto Cursor. CodeRabbit skill files copy
 only with the compatibility pack, including `--profile all`, because the
