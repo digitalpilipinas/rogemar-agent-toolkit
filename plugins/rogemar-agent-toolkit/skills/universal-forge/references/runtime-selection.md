@@ -5,6 +5,7 @@
 | Codex | codex-forge; its existing plan-model-router and catalogue |
 | Cursor | cursor-forge if installed; otherwise native PStack/poteto-mode |
 | Claude | claude-forge and claude-forge-setup when installed |
+| Devin | devin-forge when installed; its saved mode→devin_mode mapping |
 | Other or unknown | universal-forge and universal-plan-model-router |
 
 Explicitly requested entry points take precedence over these defaults, subject

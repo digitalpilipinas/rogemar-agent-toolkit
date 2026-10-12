@@ -3171,7 +3171,7 @@
         ]
       },
       "engineering": {
-        "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor, Claude and Universal Forge routes.",
+        "description": "23 engineering playbooks, approved delivery, testing and performance, with Codex, Cursor, Claude, Devin and Universal Forge routes.",
         "external": [
           "pstack",
           "unlazy",
@@ -3184,6 +3184,7 @@
           "codex-forge",
           "cursor-forge",
           "cursor-forge-setup",
+          "devin-forge",
           "engineering-playbooks",
           "forge-architect",
           "forge-arena",
@@ -3756,6 +3757,17 @@
         "z-code",
         "claude",
         "droid"
+      ]
+    },
+    "devin-forge": {
+      "requires": [
+        "workflow-orchestrator",
+        "engineering-playbooks",
+        "universal-forge",
+        "universal-plan-model-router"
+      ],
+      "targets": [
+        "agent-skills"
       ]
     },
     "dream-team": {
@@ -5586,6 +5598,10 @@
       "file_count": 7,
       "sha256": "a4b34ddda7562a6ef206c3bc9d0f2382e4d83511e1ddbba3623f1e82e4e960d3"
     },
+    "devin-forge": {
+      "file_count": 2,
+      "sha256": "97121a17235ed75bf3bd2e6907ac19c0a8e22af2fdba920f60545f7653831ab2"
+    },
     "dream-team": {
       "file_count": 7,
       "sha256": "822be590a7ca05cbf186efef05a23231ed8f9856ccc7a44b3eb717359b898302"
@@ -5808,7 +5824,7 @@
     },
     "integrated-workflow": {
       "file_count": 10,
-      "sha256": "45444d9f64695f20068d832d53a85ce716a9425e358d3795ae9bdb21d4805c81"
+      "sha256": "15118af5ae6badc06e744e7c087d6a56034f98bc2c8f5c4f5d935e8fa9ac29e6"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -5952,7 +5968,7 @@
     },
     "universal-forge": {
       "file_count": 5,
-      "sha256": "7942e5d7aea8947bbbe656e126d352f4de628c07b48f7138714aad1455470743"
+      "sha256": "e00b45cb7b57983d67a4de08da6ae4544c5ad3ba18e6894bdcf3ae755979b099"
     },
     "universal-plan-model-router": {
       "file_count": 2,
@@ -5976,7 +5992,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 25,
-      "sha256": "0c368083b10483fc21faae85baab44a8ad7212575464726a255837b7f47379c8"
+      "sha256": "386874f8ee318c178f21bc8edf66b16e18ebc8c9ac99a61281f980c9afd8344a"
     },
     "xcode-build-benchmark": {
       "file_count": 6,
