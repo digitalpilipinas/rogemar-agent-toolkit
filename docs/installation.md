@@ -434,26 +434,36 @@ time; ordinary tasks reuse installed, qualified methods.
 
 ## Diagram Design
 
-The `design` pack and `--profile all` include the attributed Diagram Design
-adaptation. Invoke `diagram-design` for a polished artifact or redraw; import,
-export, profile and diagnostic operations are instructions under that one entry,
-not six promised native slash commands. Existing native-plugin users update their
-toolkit plugin; avoid a second standalone copy of the same skill.
+Diagram Design is an optional, separately installed upstream plugin/skill. The
+`design` pack includes a small integration guide through `vector-asset-pipeline`;
+it does not vendor the upstream example library or register its native plugin.
+Use one upstream installation per receiving harness, separate from the toolkit.
 
-Project branding lives in `.diagram-design-profile.md`, using the shipped style
-guide structure. The resolver accepts existing upstream markers read-only and
-fails on missing explicit profiles. Installed skills and plugin caches stay
-immutable. New artifacts use system fonts with no external requests; explicitly
-chosen web fonts have their own privacy/availability consequences. Original
-upstream examples may still reference web fonts.
+For Codex, use the upstream marketplace (leave sparse paths empty):
 
-Static instructions need no login. Python 3.10+ is required for diagram helpers,
-and Python Playwright plus Chromium for PNG rendering. These requirements do not
-change the toolkit installer's Python minimum. No tools or accounts are installed
-by this skill. `self_check.py --offline` checks markup, not visual correctness.
-Inspect actual renders and source fidelity. Unsupported SVG exports fail clearly.
+```sh
+codex plugin marketplace add cathrynlavery/diagram-design
+codex plugin add diagram-design@diagram-design
+```
 
-Maintenance uses the pinned source in `catalog/imported-sources.json` and the
-existing read-only `upstream_compare.py --source cathrynlavery/diagram-design`.
-Review the recorded adaptations before accepting an upstream update; do not
-automatically replace project profiles or installed resources.
+Check existing marketplaces/plugins first to avoid duplicates. For native Claude
+or Droid installation, follow the [upstream instructions](https://github.com/cathrynlavery/diagram-design).
+Where no supported native route is available, including the documented Cursor
+standalone route, install the unmodified upstream Agent Skill with `npx skills add
+cathrynlavery/diagram-design`, selecting only the intended harness and copy layout.
+Native command wrappers are not included in a standalone skill installation.
+
+Native plugin and standalone skill updates are separate from toolkit updates.
+Use the installed upstream version's update command, inspect its actual source,
+and test required operations. The integration was reviewed against revision
+`7a2e22170ee838e859d8142ba825d83f8b6375e6` (2.6.74); that observation does not pin
+an independently updated plugin forever. Do not install another copy when the
+same capability is already supplied by a working plugin.
+
+Reuse project tokens and upstream-supported separate profiles; do not edit an
+installed skill or plugin cache. Prefer system fonts and no external requests.
+Static guidance needs no login. Reviewed Python helpers need Python 3.10+; PNG
+needs Python Playwright/Chromium or a separately verified browser capture route.
+Resource presence, native discovery and actual execution are separate checks.
+Repeat setup and verification inside each receiving cloud environment; no local
+plugin update establishes cloud adoption.

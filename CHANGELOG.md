@@ -1,11 +1,10 @@
 # Changelog
 
-## 1.1.0 — Diagram Design
+## 1.1.0 — Optional Diagram Design integration
 
-- Add one pinned portable diagram specialist to the design/full selections.
-- Keep project branding separate from installed skills, with offline defaults.
-- Route polished artifacts conditionally and preserve simple diagram alternatives.
-
+- Add a small routing and verification guide for the separately installed upstream plugin.
+- Reuse existing vector and visual-QA methods; keep the upstream library outside the toolkit.
+- Document installation ownership, offline output and actual runtime evidence.
 
 ## Open the files a task needs (unreleased)
 

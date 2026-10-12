@@ -1736,6 +1736,24 @@
           "droid"
         ]
       },
+      "diagram-design": {
+        "activation": "Conditional. Verify a single upstream installation in the receiving environment; toolkit installation does not register or update its native plugin.",
+        "install": "Prefer the upstream native plugin where supported; otherwise install its unmodified Agent Skill through the upstream standalone route. See docs/installation.md#diagram-design.",
+        "integration": "plugins/rogemar-agent-toolkit/skills/vector-asset-pipeline/references/diagram-design.md",
+        "kind": "native-plugin",
+        "name": "Diagram Design",
+        "purpose": "Optional upstream-owned specialist for polished explanatory diagrams and source-faithful redraws; not vendored in the toolkit.",
+        "repository": "https://github.com/cathrynlavery/diagram-design",
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "claude",
+          "droid"
+        ],
+        "upstream_commit": "7a2e22170ee838e859d8142ba825d83f8b6375e6",
+        "version_observed": "2.6.74 reviewed source"
+      },
       "expo": {
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
         "auto_install": {
@@ -3135,6 +3153,9 @@
       },
       "design": {
         "description": "Design brief, reference fidelity, UI/UX, frontend implementation, Taste, polish, motion and visual verification.",
+        "external": [
+          "diagram-design"
+        ],
         "skills": [
           "design-brief",
           "reference-design-contract",
@@ -3145,8 +3166,7 @@
           "motion-animation-engineer",
           "accessibility-auditor",
           "visual-qa",
-          "vector-asset-pipeline",
-          "diagram-design"
+          "vector-asset-pipeline"
         ]
       },
       "engineering": {
@@ -3722,22 +3742,6 @@
       ]
     },
     "develop-web-game": {
-      "requires": [],
-      "targets": [
-        "agent-skills",
-        "codex",
-        "cursor",
-        "gemini",
-        "antigravity",
-        "grok-build",
-        "junie",
-        "command-code",
-        "z-code",
-        "claude",
-        "droid"
-      ]
-    },
-    "diagram-design": {
       "requires": [],
       "targets": [
         "agent-skills",
@@ -5581,10 +5585,6 @@
       "file_count": 7,
       "sha256": "a4b34ddda7562a6ef206c3bc9d0f2382e4d83511e1ddbba3623f1e82e4e960d3"
     },
-    "diagram-design": {
-      "file_count": 284,
-      "sha256": "6e82c619ec3d35de0fea2ceb5a9a0ece7347e2283d40bce0ff3b10e75725ccf0"
-    },
     "dream-team": {
       "file_count": 7,
       "sha256": "822be590a7ca05cbf186efef05a23231ed8f9856ccc7a44b3eb717359b898302"
@@ -5807,7 +5807,7 @@
     },
     "integrated-workflow": {
       "file_count": 10,
-      "sha256": "fefc3a0a0f52514adca53539d5e8c01a2f07708cf3e47a73d6c497f173b7a410"
+      "sha256": "45444d9f64695f20068d832d53a85ce716a9425e358d3795ae9bdb21d4805c81"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -5962,8 +5962,8 @@
       "sha256": "2a670b5f4300fea85a4f1259af7a44caac4f6a58299e1da4eeef9448efd70abb"
     },
     "vector-asset-pipeline": {
-      "file_count": 2,
-      "sha256": "b025a5c676c47ab04149892aa3e793f380fd3b36f7d67eaaa062c54abb8371a1"
+      "file_count": 4,
+      "sha256": "578be2a7aaf8b0ca8d90069269d86eb44468c9f641c6a90071d62198f6fcdf09"
     },
     "vercel-deploy": {
       "file_count": 6,
@@ -5971,11 +5971,11 @@
     },
     "visual-qa": {
       "file_count": 2,
-      "sha256": "4f6e4f6de44a67dd2d28e4cb80c498481baa6f5035f59661756108ce78cf4e32"
+      "sha256": "d0409cbbdaeb48b01a8563777f7629234d5539238d5d0f0f3d9fa9ceba9d488d"
     },
     "workflow-orchestrator": {
       "file_count": 25,
-      "sha256": "77f89cefa60bb9bacb6a305bb6052f56ff40984bda2a16c9817732a793fd72f7"
+      "sha256": "901d0a00dec7edc4f91cb7b299287ace8b08af6c305121a03f191cda7f951880"
     },
     "xcode-build-benchmark": {
       "file_count": 6,
