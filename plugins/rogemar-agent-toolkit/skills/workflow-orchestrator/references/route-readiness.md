@@ -30,7 +30,7 @@ apply to its raw native skills. Portable Forge uses adapted shared methods.
 ## Diagram artifacts
 
 For polished artifacts or source-faithful redraws, select `vector-asset-pipeline`
-and its [optional upstream Diagram Design route](../../vector-asset-pipeline/references/diagram-design.md).
+and, when that optional skill is installed, read its `references/diagram-design.md`.
 Read the actual surfaced upstream skill when available. The toolkit does not
 bundle that skill or register its native plugin. Keep simple Mermaid, interactive
 explainers and scientific plots on their existing routes. Verify the selected
