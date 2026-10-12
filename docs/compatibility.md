@@ -154,13 +154,17 @@ providers, authenticate tools or verify execution.
 | Claude Code | `.claude-plugin/plugin.json` | `.claude-plugin/marketplace.json` |
 | Factory/Droid | `.factory-plugin/plugin.json` | `.factory-plugin/marketplace.json` |
 | Gemini CLI | `gemini-extension.json` | Local extension directory |
-| Antigravity | Root `plugin.json` | Local plugin directory |
+| Antigravity | Root `plugin.json` in the matching selected archive | Extracted archive directory |
 
 Paths in the plugin-metadata column are relative to
 `plugins/rogemar-agent-toolkit`; repository discovery paths are at the repository
 root. `toolkit.py lock` generates the wrappers and `verify` rejects metadata drift.
 There is no universal native manifest schema. The portable root metadata remains
 the shared source; each harness reads its own supported format.
+
+Antigravity requires the archive generated with `package --harness antigravity`.
+Its root manifest contains only `name` and `description`; the raw source tree's
+portable manifest contains additional fields outside Antigravity's native schema.
 
 Claude Code's `skills` field adds to its default directory scan. Factory uses
 `skills/<name>/SKILL.md`, and Gemini/Antigravity also discover bundled skills.
@@ -172,7 +176,7 @@ existing explicit skill lists. See [native setup](installation.md#native-manifes
 Format references: [Claude Code](https://code.claude.com/docs/en/plugins-reference),
 [Factory](https://docs.factory.com/harness/plugins),
 [Gemini CLI](https://geminicli.com/docs/extensions/reference/), and
-[Antigravity CLI](https://antigravity.google/docs/cli/plugins).
+[Antigravity CLI](https://www.antigravity.google/docs/plugins?tab=cli).
 The existing managed Antigravity paths above retain legacy compatibility. Current
 CLI plugin paths and IDE discovery are separate surfaces; verify the receiving
 version's [skill locations](https://www.antigravity.google/docs/skills?tab=ide).

@@ -134,9 +134,10 @@ See [Cursor's plugin format](https://cursor.com/docs/reference/plugins).
 ## Native manifests for other harnesses
 
 The repository also contains native Claude and Factory marketplace catalogs,
-Gemini extension metadata, and the existing portable Antigravity marker. All
-refer to the same skill source. Keep one toolkit owner in each environment; a
-new manifest does not require replacing an existing managed installation.
+Gemini extension metadata, and Antigravity-compatible metadata in matching
+selected archives. All refer to the same skill source. Keep one toolkit owner in
+each environment; a new manifest does not require replacing an existing managed
+installation.
 
 For a selected native bundle, run the existing packager with the receiving
 harness. Core remains the six-skill default. For example:
@@ -156,9 +157,11 @@ Codex-marketplace ZIP retains its Codex-specific route. Review the
 
 For Claude, the extracted directory supports `claude --plugin-dir <directory>`.
 For Gemini CLI, its native local route is `gemini extensions install <directory>`.
-For Antigravity CLI, use `agy plugin validate <directory>` before an authorized
-`agy plugin install <directory>`. Factory uses a marketplace entry; its source
-can point to the extracted directory in an operator-maintained local marketplace.
+For Antigravity CLI, use an authorized `agy plugin install <directory>` with the
+extracted Antigravity archive. Its root `plugin.json` matches the native schema;
+the raw source tree's portable manifest does not. Factory uses a marketplace
+entry; its source can point to the extracted directory in an operator-maintained
+local marketplace.
 These are optional operator actions, not steps performed by `package`.
 
 The repository-root Claude/Factory marketplaces point at the full source plugin.
