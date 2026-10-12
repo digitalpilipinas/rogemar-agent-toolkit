@@ -1,6 +1,7 @@
 """Generated diagram consistency, portable assets and source fidelity."""
 import importlib.util
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -27,6 +28,15 @@ class ShowcaseTests(unittest.TestCase):
             self.builder.build(output);self.builder.update_gallery(output)
             for p in output.iterdir():self.assertEqual(p.read_bytes(),(SHOWCASE/'diagrams'/p.name).read_bytes(),p.name)
             self.assertEqual((Path(temp)/'index.html').read_bytes(),(SHOWCASE/'index.html').read_bytes())
+
+    def test_generation_is_independent_of_process_text_encoding(self):
+        with tempfile.TemporaryDirectory() as temp:
+            target=Path(temp)
+            shutil.copy2(SHOWCASE/'index.html',target/'index.html')
+            env={**os.environ,'LC_ALL':'C','PYTHONUTF8':'0','PYTHONCOERCECLOCALE':'0'}
+            result=subprocess.run([sys.executable,str(ROOT/'scripts/build_showcase.py'),'--output',str(target/'diagrams')],env=env,capture_output=True)
+            self.assertEqual(result.returncode,0,result.stderr)
+            self.assertEqual((target/'index.html').read_bytes(),(SHOWCASE/'index.html').read_bytes())
 
     def test_accessible_offline_figures_and_theme_pairs(self):
         ns={'s':'http://www.w3.org/2000/svg'}

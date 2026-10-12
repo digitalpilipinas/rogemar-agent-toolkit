@@ -53,7 +53,7 @@ const output = path.resolve(process.argv[2] || path.join(root, 'dist/showcase-ev
       assert.equal(await page.locator('#step-status').innerText(),paused);
       await page.click('#reset'); assert.equal(await page.locator('.active-step').count(),0);
       assert.equal(await page.locator('#play').innerText(),'Play');
-      await page.click('#play'); await page.waitForTimeout(6000); assert.match(await page.locator('#step-status').innerText(),/Step 6 of 6/); assert.equal(await page.locator('#play').innerText(),'Play'); await page.click('#play'); await page.click('[data-view="ownership"]'); assert.equal(await page.locator('#play').innerText(),'Play');
+      await page.click('#play'); await page.waitForFunction(() => document.querySelector('#step-status').textContent.startsWith('Step 6 of 6') && document.querySelector('#play').textContent === 'Play', null, {timeout:15000}); assert.match(await page.locator('#step-status').innerText(),/Step 6 of 6/); assert.equal(await page.locator('#play').innerText(),'Play'); await page.click('#play'); await page.click('[data-view="ownership"]'); assert.equal(await page.locator('#play').innerText(),'Play');
       assert.deepEqual(requests,[]); reports.push({width,checks:'themes, selection, downloads, layout, keyboard step, pause, reset, switch stops playback',externalRequests:0}); await page.close();
     }
     const reduced=await open({reducedMotion:'reduce'}); await reduced.page.click('[data-view="task-loop"]');

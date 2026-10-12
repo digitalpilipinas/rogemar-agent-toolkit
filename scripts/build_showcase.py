@@ -45,9 +45,9 @@ def build(output):
  output.mkdir(parents=True,exist_ok=True)
  for name,d in DIAGRAMS.items():
   for theme in PALETTES:
-   figure=svg(name,theme);(output/f'{name}-{theme}.svg').write_text(figure)
+   figure=svg(name,theme);(output/f'{name}-{theme}.svg').write_bytes(figure.encode('utf-8'))
    html='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>'+escape(d['title'])+'</title><style>body{margin:0;background:'+PALETTES[theme]['paper']+'}main{overflow-x:auto}svg{display:block;width:100%;min-width:760px}</style></head><body><main>'+figure+'</main></body></html>'
-   (output/f'{name}-{theme}.html').write_text(html)
+   (output/f'{name}-{theme}.html').write_bytes(html.encode('utf-8'))
 
 def update_gallery(output):
  gallery=output.parent/'index.html'
@@ -63,8 +63,8 @@ def update_gallery(output):
   blocks.append('</div><div class="diagram-actions"><p>Editable SVG · complete static meaning</p>'+f'<a data-download="{name}" href="diagrams/{name}-light.svg" download>Download SVG ↓</a></div>')
   if name=='task-loop': blocks.append('<div class="playback" hidden><div class="playback-buttons"><button type="button" id="play" aria-pressed="false">Play</button><button type="button" id="step">Next step</button><button type="button" id="reset">Reset</button></div><p class="step-status" id="step-status" aria-live="polite"></p><p class="motion-note" id="motion-note"></p></div>')
   blocks.append('</section>')
- text=gallery.read_text(); start=text.index('<!-- DIAGRAMS:START -->')+len('<!-- DIAGRAMS:START -->'); end=text.index('<!-- DIAGRAMS:END -->')
- gallery.write_text(text[:start]+'\n'+'\n'.join(blocks)+'\n '+text[end:])
+ text=gallery.read_bytes().decode('utf-8'); start=text.index('<!-- DIAGRAMS:START -->')+len('<!-- DIAGRAMS:START -->'); end=text.index('<!-- DIAGRAMS:END -->')
+ gallery.write_bytes((text[:start]+'\n'+'\n'.join(blocks)+'\n '+text[end:]).encode('utf-8'))
 
 if __name__=='__main__':
  parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,default=Path(__file__).resolve().parents[1]/'docs/showcase/diagrams'); args=parser.parse_args();build(args.output);update_gallery(args.output)
