@@ -32,6 +32,11 @@ PORTABLE_MANIFEST = PLUGIN_ROOT / "plugin.json"
 DEVIN_MANIFEST = PLUGIN_ROOT / ".devin-plugin" / "plugin.json"
 CURSOR_MANIFEST = PLUGIN_ROOT / ".cursor-plugin" / "plugin.json"
 CURSOR_MARKETPLACE = ROOT / ".cursor-plugin" / "marketplace.json"
+CLAUDE_MANIFEST = PLUGIN_ROOT / ".claude-plugin" / "plugin.json"
+FACTORY_MANIFEST = PLUGIN_ROOT / ".factory-plugin" / "plugin.json"
+GEMINI_MANIFEST = PLUGIN_ROOT / "gemini-extension.json"
+CLAUDE_MARKETPLACE = ROOT / ".claude-plugin" / "marketplace.json"
+FACTORY_MARKETPLACE = ROOT / ".factory-plugin" / "marketplace.json"
 MARKETPLACE_MANIFEST = ROOT / ".agents" / "plugins" / "marketplace.json"
 README_PATH = ROOT / "README.md"
 PACKAGE_NAME = "rogemar-agent-toolkit"
@@ -249,6 +254,24 @@ def cursor_marketplace() -> dict[str, Any]:
                          "description": portable["description"]}]}
 
 
+def native_plugin_manifest() -> dict[str, Any]:
+    portable = load_json(PORTABLE_MANIFEST)
+    return {key: portable[key] for key in
+            ("name", "version", "description", "author", "license", "keywords", "homepage", "repository")}
+
+
+def gemini_manifest() -> dict[str, Any]:
+    portable = load_json(PORTABLE_MANIFEST)
+    return {key: portable[key] for key in ("name", "version", "description")}
+
+
+def native_marketplace() -> dict[str, Any]:
+    marketplace = cursor_marketplace()
+    marketplace["description"] = load_json(PORTABLE_MANIFEST)["description"]
+    marketplace["plugins"][0]["source"] = f"./plugins/{PACKAGE_NAME}"
+    return marketplace
+
+
 def structural_errors(check_lock: bool = True) -> list[str]:
     errors: list[str] = []
     try:
@@ -462,6 +485,15 @@ def structural_errors(check_lock: bool = True) -> list[str]:
                     errors.append(f"{label} manifest is stale; run toolkit.py lock")
             if load_json(CURSOR_MARKETPLACE) != cursor_marketplace():
                 errors.append("Cursor marketplace is stale; run toolkit.py lock")
+            for path, label, expected in (
+                (CLAUDE_MANIFEST, "Claude", native_plugin_manifest()),
+                (FACTORY_MANIFEST, "Factory", native_plugin_manifest()),
+                (GEMINI_MANIFEST, "Gemini", gemini_manifest()),
+                (CLAUDE_MARKETPLACE, "Claude marketplace", native_marketplace()),
+                (FACTORY_MARKETPLACE, "Factory marketplace", native_marketplace()),
+            ):
+                if load_json(path) != expected:
+                    errors.append(f"{label} manifest is stale; run toolkit.py lock")
             expected = build_lock()
             actual = load_json(LOCK_PATH)
             if actual != expected:
@@ -480,6 +512,11 @@ def command_lock(_args: argparse.Namespace) -> int:
     write_json_atomic(DEVIN_MANIFEST, selected_plugin_manifest("agent-skills"))
     write_json_atomic(CURSOR_MANIFEST, selected_plugin_manifest("cursor"))
     write_json_atomic(CURSOR_MARKETPLACE, cursor_marketplace())
+    for path in (CLAUDE_MANIFEST, FACTORY_MANIFEST):
+        write_json_atomic(path, native_plugin_manifest())
+    write_json_atomic(GEMINI_MANIFEST, gemini_manifest())
+    for path in (CLAUDE_MARKETPLACE, FACTORY_MARKETPLACE):
+        write_json_atomic(path, native_marketplace())
     write_json_atomic(LOCK_PATH, build_lock())
     print(f"Wrote {LOCK_PATH.relative_to(ROOT)} for {len(vendored_names())} skills.")
     return 0
@@ -1293,6 +1330,12 @@ def command_package(args: argparse.Namespace) -> int:
         portable = temp / "portable" / PACKAGE_NAME
         portable.mkdir(parents=True)
         shutil.copy2(PORTABLE_MANIFEST, portable / "plugin.json")
+        if args.harness == "antigravity":
+            manifest = load_json(PORTABLE_MANIFEST)
+            write_json_atomic(portable / "plugin.json", {key: manifest[key] for key in ("name", "description")})
+        for path in (CLAUDE_MANIFEST, FACTORY_MANIFEST, GEMINI_MANIFEST):
+            write_json_atomic(portable / path.relative_to(PLUGIN_ROOT),
+                              gemini_manifest() if path == GEMINI_MANIFEST else native_plugin_manifest())
         write_json_atomic(portable / ".devin-plugin/plugin.json", selected_plugin_manifest("agent-skills", portable_selection["skills"]))
         write_json_atomic(portable / ".cursor-plugin/plugin.json", selected_plugin_manifest("cursor", portable_selection["skills"]))
         shutil.copy2(ROOT / "LICENSE", portable / "LICENSE")

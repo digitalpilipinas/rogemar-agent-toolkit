@@ -1,43 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 560" role="img" aria-labelledby="installation-light-title installation-light-desc">
 <title id="installation-light-title">Install there. Verify there.</title>
 <desc id="installation-light-desc">A reviewed revision installs locally or inside a cloud environment. Each receiving environment verifies files, discovery, required tools and actual task evidence independently.</desc>
-<defs><marker id="installation-light-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10" fill="#527487"/></marker></defs>
-<rect width="1024" height="560" fill="#f4f7fa"/>
-<text x="48" y="42" fill="#10283f" font-family="system-ui,sans-serif" font-size="24" font-weight="700">Install there. Verify there.</text>
+<defs><marker id="installation-light-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10" fill="#53688c"/></marker></defs>
+<rect width="1024" height="560" fill="#f5f8ff"/>
+<text x="48" y="42" fill="#14203e" font-family="system-ui,sans-serif" font-size="24" font-weight="700">Install there. Verify there.</text>
 
-<path d="M298 168 H336 Q344 168 344 160 V136 Q344 128 352 128 H392" fill="none" stroke="#527487" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
-<path d="M298 208 H336 Q344 208 344 216 V288 Q344 296 352 296 H392" fill="none" stroke="#527487" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
-<path d="M632 128 H672 Q680 128 680 136 V160 Q680 168 688 168 H736" fill="none" stroke="#527487" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
-<path d="M632 296 H696 Q704 296 704 288 V216 Q704 208 712 208 H736" fill="none" stroke="#527487" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
-<path d="M856 240 V392" fill="none" stroke="#527487" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
-<path d="M736 440 H632" fill="none" stroke="#527487" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
-<path d="M392 440 H298" fill="none" stroke="#527487" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
-<g data-step="0"><rect x="48" y="144" width="250" height="96" rx="8" fill="#ffffff" stroke="#006b7d" stroke-width="2"/>
-<text x="64" y="168" fill="#006b7d" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">SOURCE</text>
-<text x="64" y="196" fill="#10283f" font-family="system-ui,sans-serif" font-size="19" font-weight="650">Reviewed revision</text>
-<text x="64" y="222" fill="#506678" font-family="system-ui,sans-serif" font-size="13">Toolkit and catalog pins</text></g>
-<g data-step="1"><rect x="392" y="80" width="240" height="96" rx="8" fill="#ffffff" stroke="#527487" stroke-width="2"/>
-<text x="408" y="104" fill="#527487" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">RECEIVER</text>
-<text x="408" y="132" fill="#10283f" font-family="system-ui,sans-serif" font-size="19" font-weight="650">This machine</text>
-<text x="408" y="158" fill="#506678" font-family="system-ui,sans-serif" font-size="13">Install or upgrade</text></g>
-<g data-step="2"><rect x="392" y="248" width="240" height="96" rx="8" fill="#ffffff" stroke="#527487" stroke-width="2"/>
-<text x="408" y="272" fill="#527487" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">RECEIVER</text>
-<text x="408" y="300" fill="#10283f" font-family="system-ui,sans-serif" font-size="19" font-weight="650">Cloud environment</text>
-<text x="408" y="326" fill="#506678" font-family="system-ui,sans-serif" font-size="13">Install or upgrade in place</text></g>
-<g data-step="3"><rect x="736" y="144" width="240" height="96" rx="8" fill="#ffffff" stroke="#527487" stroke-width="2"/>
-<text x="752" y="168" fill="#527487" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">FILES</text>
-<text x="752" y="196" fill="#10283f" font-family="system-ui,sans-serif" font-size="19" font-weight="650">Verify content</text>
-<text x="752" y="222" fill="#506678" font-family="system-ui,sans-serif" font-size="13">Hashes and resources</text></g>
-<g data-step="4"><rect x="736" y="392" width="240" height="96" rx="8" fill="#ffffff" stroke="#527487" stroke-width="2"/>
-<text x="752" y="416" fill="#527487" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">DISCOVERY</text>
-<text x="752" y="444" fill="#10283f" font-family="system-ui,sans-serif" font-size="19" font-weight="650">Verify agent access</text>
-<text x="752" y="470" fill="#506678" font-family="system-ui,sans-serif" font-size="13">Check the actual source</text></g>
-<g data-step="5"><rect x="392" y="392" width="240" height="96" rx="8" fill="#ffffff" stroke="#527487" stroke-width="2"/>
-<text x="408" y="416" fill="#527487" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">CAPABILITY</text>
-<text x="408" y="444" fill="#10283f" font-family="system-ui,sans-serif" font-size="19" font-weight="650">Check needed tools</text>
-<text x="408" y="470" fill="#506678" font-family="system-ui,sans-serif" font-size="13">And applicable service access</text></g>
-<g data-step="6"><rect x="48" y="392" width="250" height="96" rx="8" fill="#ffffff" stroke="#a13c2b" stroke-width="2"/>
-<text x="64" y="416" fill="#a13c2b" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">EVIDENCE</text>
-<text x="64" y="444" fill="#10283f" font-family="system-ui,sans-serif" font-size="19" font-weight="650">Run the actual task</text>
-<text x="64" y="470" fill="#506678" font-family="system-ui,sans-serif" font-size="13">Retain observed results</text></g>
-<text x="48" y="536" fill="#506678" font-family="system-ui,sans-serif" font-size="14">Repeat these checks inside each environment. A local update is not cloud proof.</text></svg>
+<path d="M298 168 H336 Q344 168 344 160 V136 Q344 128 352 128 H392" fill="none" stroke="#53688c" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
+<path d="M298 208 H336 Q344 208 344 216 V288 Q344 296 352 296 H392" fill="none" stroke="#53688c" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
+<path d="M632 128 H672 Q680 128 680 136 V160 Q680 168 688 168 H736" fill="none" stroke="#53688c" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
+<path d="M632 296 H696 Q704 296 704 288 V216 Q704 208 712 208 H736" fill="none" stroke="#53688c" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
+<path d="M856 240 V392" fill="none" stroke="#53688c" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
+<path d="M736 440 H632" fill="none" stroke="#53688c" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
+<path d="M392 440 H298" fill="none" stroke="#53688c" stroke-width="2" marker-end="url(#installation-light-arrow)"/>
+<g data-step="0"><rect x="48" y="144" width="250" height="96" rx="8" fill="#ffffff" stroke="#006b86" stroke-width="2"/>
+<text x="64" y="168" fill="#006b86" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">SOURCE</text>
+<text x="64" y="196" fill="#14203e" font-family="system-ui,sans-serif" font-size="19" font-weight="650">Reviewed revision</text>
+<text x="64" y="222" fill="#4e5d7c" font-family="system-ui,sans-serif" font-size="13">Toolkit and catalog pins</text></g>
+<g data-step="1"><rect x="392" y="80" width="240" height="96" rx="8" fill="#ffffff" stroke="#53688c" stroke-width="2"/>
+<text x="408" y="104" fill="#53688c" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">RECEIVER</text>
+<text x="408" y="132" fill="#14203e" font-family="system-ui,sans-serif" font-size="19" font-weight="650">This machine</text>
+<text x="408" y="158" fill="#4e5d7c" font-family="system-ui,sans-serif" font-size="13">Install or upgrade</text></g>
+<g data-step="2"><rect x="392" y="248" width="240" height="96" rx="8" fill="#ffffff" stroke="#53688c" stroke-width="2"/>
+<text x="408" y="272" fill="#53688c" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">RECEIVER</text>
+<text x="408" y="300" fill="#14203e" font-family="system-ui,sans-serif" font-size="19" font-weight="650">Cloud environment</text>
+<text x="408" y="326" fill="#4e5d7c" font-family="system-ui,sans-serif" font-size="13">Install or upgrade in place</text></g>
+<g data-step="3"><rect x="736" y="144" width="240" height="96" rx="8" fill="#ffffff" stroke="#53688c" stroke-width="2"/>
+<text x="752" y="168" fill="#53688c" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">FILES</text>
+<text x="752" y="196" fill="#14203e" font-family="system-ui,sans-serif" font-size="19" font-weight="650">Verify content</text>
+<text x="752" y="222" fill="#4e5d7c" font-family="system-ui,sans-serif" font-size="13">Hashes and resources</text></g>
+<g data-step="4"><rect x="736" y="392" width="240" height="96" rx="8" fill="#ffffff" stroke="#53688c" stroke-width="2"/>
+<text x="752" y="416" fill="#53688c" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">DISCOVERY</text>
+<text x="752" y="444" fill="#14203e" font-family="system-ui,sans-serif" font-size="19" font-weight="650">Verify agent access</text>
+<text x="752" y="470" fill="#4e5d7c" font-family="system-ui,sans-serif" font-size="13">Check the actual source</text></g>
+<g data-step="5"><rect x="392" y="392" width="240" height="96" rx="8" fill="#ffffff" stroke="#53688c" stroke-width="2"/>
+<text x="408" y="416" fill="#53688c" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">CAPABILITY</text>
+<text x="408" y="444" fill="#14203e" font-family="system-ui,sans-serif" font-size="19" font-weight="650">Check needed tools</text>
+<text x="408" y="470" fill="#4e5d7c" font-family="system-ui,sans-serif" font-size="13">And applicable service access</text></g>
+<g data-step="6"><rect x="48" y="392" width="250" height="96" rx="8" fill="#ffffff" stroke="#514ab0" stroke-width="2"/>
+<text x="64" y="416" fill="#514ab0" font-family="system-ui,sans-serif" font-size="11" letter-spacing="1">EVIDENCE</text>
+<text x="64" y="444" fill="#14203e" font-family="system-ui,sans-serif" font-size="19" font-weight="650">Run the actual task</text>
+<text x="64" y="470" fill="#4e5d7c" font-family="system-ui,sans-serif" font-size="13">Retain observed results</text></g>
+<text x="48" y="536" fill="#4e5d7c" font-family="system-ui,sans-serif" font-size="14">Repeat these checks inside each environment. A local update is not cloud proof.</text></svg>

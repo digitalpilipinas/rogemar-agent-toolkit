@@ -131,6 +131,47 @@ Cursor selection; other archive selections may omit Cursor-native methods.
 The generated manifest always references only compatible skills in that archive.
 See [Cursor's plugin format](https://cursor.com/docs/reference/plugins).
 
+## Native manifests for other harnesses
+
+The repository also contains native Claude and Factory marketplace catalogs,
+Gemini extension metadata, and the existing portable Antigravity marker. All
+refer to the same skill source. Keep one toolkit owner in each environment; a
+new manifest does not require replacing an existing managed installation.
+
+For a selected native bundle, run the existing packager with the receiving
+harness. Core remains the six-skill default. For example:
+
+```sh
+python3 scripts/toolkit.py package --harness claude --pack engineering --output dist/claude
+python3 scripts/toolkit.py package --harness droid --profile all --output dist/droid
+python3 scripts/toolkit.py package --harness gemini --pack engineering --output dist/gemini
+python3 scripts/toolkit.py package --harness antigravity --pack engineering --output dist/antigravity
+```
+
+Extract the **agent-plugin ZIP** from the matching output directory. Its
+`rogemar-agent-toolkit/` directory is the plugin/extension root, and its actual
+`skills/` directory contains only that catalog selection. The separate
+Codex-marketplace ZIP retains its Codex-specific route. Review the
+`release-selection.json` receipt before importing a bundle.
+
+For Claude, the extracted directory supports `claude --plugin-dir <directory>`.
+For Gemini CLI, its native local route is `gemini extensions install <directory>`.
+For Antigravity CLI, use `agy plugin validate <directory>` before an authorized
+`agy plugin install <directory>`. Factory uses a marketplace entry; its source
+can point to the extracted directory in an operator-maintained local marketplace.
+These are optional operator actions, not steps performed by `package`.
+
+The repository-root Claude/Factory marketplaces point at the full source plugin.
+Claude adds manifest `skills` paths to its default `skills/` scan; Factory loads
+skills from that directory. Native metadata alone does not exclude other harness
+adapters from the raw source tree. Prefer selected archives or managed
+`install --harness claude|droid|gemini|antigravity` for a compatible set.
+The native plugin does not provision pinned external packs; those retain the
+existing managed `--external-only` route. Installation, discovery, authentication
+and workflow execution remain separate evidence.
+
+See the [native compatibility table and official format references](compatibility.md#native-metadata-across-harnesses).
+
 ## Devin: choose one toolkit owner
 
 Devin supports both native Git plugins and `.agents/skills`. Use one of these

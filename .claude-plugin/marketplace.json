@@ -1,0 +1,14 @@
+{
+  "description": "Portable, versioned engineering and delivery skills for compatible agent harnesses.",
+  "name": "rogemar-agent-toolkit",
+  "owner": {
+    "name": "Rogemar"
+  },
+  "plugins": [
+    {
+      "description": "Portable, versioned engineering and delivery skills for compatible agent harnesses.",
+      "name": "rogemar-agent-toolkit",
+      "source": "./plugins/rogemar-agent-toolkit"
+    }
+  ]
+}

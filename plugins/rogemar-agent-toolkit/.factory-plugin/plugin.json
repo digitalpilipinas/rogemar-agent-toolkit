@@ -1,0 +1,22 @@
+{
+  "author": {
+    "name": "Rogemar"
+  },
+  "description": "Portable, versioned engineering and delivery skills for compatible agent harnesses.",
+  "homepage": "https://digitalpilipinas.github.io/rogemar-agent-toolkit/",
+  "keywords": [
+    "agent-skills",
+    "codex",
+    "cursor",
+    "claude-code",
+    "devin",
+    "factory-droid",
+    "antigravity",
+    "gemini-cli",
+    "engineering-workflows"
+  ],
+  "license": "Proprietary",
+  "name": "rogemar-agent-toolkit",
+  "repository": "https://github.com/digitalpilipinas/rogemar-agent-toolkit",
+  "version": "1.1.0"
+}

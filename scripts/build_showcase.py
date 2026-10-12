@@ -5,8 +5,8 @@ from html import escape
 import argparse
 
 PALETTES = {
- 'light':dict(paper='#f4f7fa',panel='#ffffff',ink='#10283f',muted='#506678',line='#527487',cyan='#006b7d',coral='#a13c2b'),
- 'dark':dict(paper='#091827',panel='#11263b',ink='#eaf5fa',muted='#abc0ce',line='#90b6c8',cyan='#68d7e5',coral='#ffaf99')}
+ 'light':dict(paper='#f5f8ff',panel='#ffffff',ink='#14203e',muted='#4e5d7c',line='#53688c',cyan='#006b86',coral='#514ab0'),
+ 'dark':dict(paper='#091122',panel='#121d36',ink='#f5f8ff',muted='#b4c0dc',line='#8195ba',cyan='#36d9ff',coral='#a5a8ff')}
 
 # Coordinates encode the approved relationships, not runtime status.
 DIAGRAMS = {

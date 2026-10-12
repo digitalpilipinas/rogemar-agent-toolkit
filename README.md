@@ -6,6 +6,8 @@
 
 **One coordinated workflow. The right skills for the work. Evidence before done.**
 
+![Original toolkit illustration: connected modules on a midnight navy surface. Decorative artwork.](docs/assets/readme/hero.png)
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/ownership-dark.png">
   <img src="docs/assets/readme/ownership-light.png" alt="Planning informs Integrated Workflow; one orchestrator selects the Forge adapter and applicable specialists under the same owner.">
@@ -16,6 +18,9 @@
   <a href="#choose-your-assistant-and-mode"><img src="docs/assets/readme/cursor.svg" alt="Cursor" height="28"></a>
   <a href="#choose-your-assistant-and-mode"><img src="docs/assets/readme/claude.svg" alt="Claude" height="28"></a>
   <a href="#choose-your-assistant-and-mode"><img src="docs/assets/readme/droid.svg" alt="Factory / Droid" height="28"></a>
+  <a href="docs/installation.md#native-manifests-for-other-harnesses"><img src="docs/assets/readme/devin.svg" alt="Devin" height="28"></a>
+  <a href="docs/installation.md#native-manifests-for-other-harnesses"><img src="docs/assets/readme/gemini.svg" alt="Gemini CLI" height="28"></a>
+  <a href="docs/installation.md#native-manifests-for-other-harnesses"><img src="docs/assets/readme/antigravity.svg" alt="Antigravity" height="28"></a>
 </p>
 
 [Get started](#get-started) · [Choose your entry](#everyday-use) · [Understand the workflow](#how-delivery-works) · [Browse every skill](#complete-skill-inventory)
