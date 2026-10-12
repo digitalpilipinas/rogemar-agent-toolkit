@@ -5634,7 +5634,8 @@
         "codex",
         "cursor",
         "claude",
-        "droid"
+        "droid",
+        "gemini"
       ],
       "repository": "https://github.com/cathrynlavery/diagram-design",
       "upstream_commit": "7a2e22170ee838e859d8142ba825d83f8b6375e6",
