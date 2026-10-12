@@ -50,8 +50,9 @@ worker receipts.
   session, apply the contract's clarify-a-different-parent step once and record
   the accepted fallback — never claim an unapplied switch.
 - **Workers**: `devin_session_create` child sessions. Each gets its own VM and a
-  fresh clone — push a branch/PR before dispatching review or implementation
-  work. Give a bounded brief: purpose, scope/files, non-goals, required checks,
+  fresh clone of the remote — a child sees only what has been pushed, so push a
+  branch/PR first only when the worker needs your uncommitted or local-only
+  commits. Give a bounded brief: purpose, scope/files, non-goals, required checks,
   stop conditions, expected evidence. Read-only reviewers must not commit,
   push, comment on PRs or merge.
 - **Worker modes** (`devin_mode`): `swe-2-medium`, `swe-2-high`, `swe-2-max`,
@@ -113,6 +114,10 @@ from the portable library when the task matches.
 
 ## Saved mode → Devin profile mapping (owner preference)
 
+This table is the saved-preference rung for Devin: it supplies the routing
+default when no explicit or task mode resolves. When a mode is resolved
+(any source), route per its row here.
+
 | Mode | Desired parent | Workers |
 | --- | --- | --- |
 | Peak | Fusion | SWE-2 High → SWE-2 Max |
@@ -137,7 +142,7 @@ ceilings below.
 | Role group | Roles | Peak | Balanced | Lean | Sprint |
 | --- | --- | --- | --- | --- | --- |
 | Parent-owned (never a worker) | parent-coordinator, workflow-coordinator, integration-owner | desired parent: fusion | desired parent: normal | desired parent: swe-2-high | unchanged |
-| Judgment workers (independent-context reviews, judges, synthesis, design) | correctness-reviewer, scope-reviewer, acceptance-auditor, goal-judge, interrogate-reviewers, how-critics, reflect-judgment, judgment-and-prose, why-synthesizer, how-explainer, bug-triager, architect-runners, arena-cross-judge-pool, design-system-reviewer, visual-reviewer, ux-flow-designer, ui-designer, interaction-designer | swe-2-max | swe-2-high | parent-owned (escalate to swe-2-high only when independence is the point) | parent-owned or lite |
+| Judgment workers (independent-context reviews, judges, synthesis, design) | correctness-reviewer, scope-reviewer, acceptance-auditor, goal-judge, interrogate-reviewers, how-critics, reflect-judgment, judgment-and-prose, why-synthesizer, how-explainer, bug-triager, architect-runners, arena-cross-judge-pool, design-system-reviewer, visual-reviewer, ux-flow-designer, ui-designer, interaction-designer | swe-2-max | swe-2-high | parent-owned (escalate to swe-2-high only when independence is the point) | parent-owned |
 | Implementation workers (bounded writes/verification) | feature, refactoring, bug-fix, perf-issue, hillclimb, hardest-tasks, how-explorer, why-investigators, validation-runner, qa-runner, simulator-qa, emulator-qa | swe-2-high (routine) → swe-2-max (hardest slices) | swe-2-medium (routine) → swe-2-high (harder slices) | lite | lite |
 | Clerical / monitoring (support receipts, no judgment claims) | findings-consolidator, reflect-synthesizer, reflect-tooling, reflect-divergent, status-monitor, learning-curator, goal-scout, browser-qa, physical-device-qa, accessibility-reviewer | lite | lite | lite | lite |
 | Task-fit participants | swarm-workers, arena-runners | resolve each participant's actual function into the rows above | | | |

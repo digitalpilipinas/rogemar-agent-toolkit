@@ -5600,7 +5600,7 @@
     },
     "devin-forge": {
       "file_count": 2,
-      "sha256": "9270143f83ceac12a2ee243f431375755725875ad43cdbb179e6472c64e9af77"
+      "sha256": "97121a17235ed75bf3bd2e6907ac19c0a8e22af2fdba920f60545f7653831ab2"
     },
     "dream-team": {
       "file_count": 7,
@@ -5992,7 +5992,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 25,
-      "sha256": "78412b14d2b8415c7c3ec95f72fe3aefd0981ceb5eed313f3caa55fcddaff8f4"
+      "sha256": "386874f8ee318c178f21bc8edf66b16e18ebc8c9ac99a61281f980c9afd8344a"
     },
     "xcode-build-benchmark": {
       "file_count": 6,
