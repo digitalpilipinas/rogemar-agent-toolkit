@@ -9,10 +9,10 @@ Use this skill for vector assets. Native ImageGen remains responsible for raster
 generation and photo-like editing unless the task explicitly needs SVG or icon
 source.
 
-For polished architecture, workflow or data-model diagrams, select `diagram-design`
-when installed. Retain Mermaid for compact repository diagrams and plotting or
-interactive tools for their own surfaces. This skill still owns vector accessibility,
-provenance and export checks; do not start a second dispatcher.
+For polished explanatory diagrams or redraws, follow the optional
+[Diagram Design integration](references/diagram-design.md). Its upstream plugin
+owns templates and helpers; keep compact Mermaid and plotting/interactive routes
+when more suitable. Do not install duplicate copies or start another dispatcher.
 
 ## Workflow
 

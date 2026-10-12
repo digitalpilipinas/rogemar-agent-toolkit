@@ -29,17 +29,13 @@ apply to its raw native skills. Portable Forge uses adapted shared methods.
 
 ## Diagram artifacts
 
-Select `diagram-design` for a polished shareable diagram or a semantic redraw.
-Use task tags `diagram-artifact` or `diagram-redraw`; compact Mermaid, interactive
-explainers, scientific plots and unrelated work keep their existing routes.
-Require source-fidelity and rendered-artifact evidence, not a diagram on every task.
-Static resolution uses no authentication. Imports/self-check/SVG export use Python
-3.10+; PNG additionally needs approved Python Playwright and usable Chromium.
-Check those only for the selected operation; an importable package is not a
-successful render. Missing tools block that output format, not unrelated work.
-Project profiles resolve read-only; no installed cache or shared brand file changes.
-Use offline self-check and system-font export by default. Existing external tool
-setup authority and the current task owner remain unchanged.
+For polished artifacts or source-faithful redraws, select `vector-asset-pipeline`
+and its [optional upstream Diagram Design route](../../vector-asset-pipeline/references/diagram-design.md).
+Read the actual surfaced upstream skill when available. The toolkit does not
+bundle that skill or register its native plugin. Keep simple Mermaid, interactive
+explainers and scientific plots on their existing routes. Verify the selected
+operation's prerequisites, source fidelity and rendered output without requiring
+diagrams on unrelated tasks. Reuse one owner and installed-source observation.
 
 ## Check only the selected route
 

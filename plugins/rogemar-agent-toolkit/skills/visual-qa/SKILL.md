@@ -19,6 +19,12 @@ description: Use for visual QA of web or mobile interfaces, screenshot review, s
 - Screens should support repeated real-world use, not just polished hero screenshots.
 - Visual delight should serve the workflow.
 
+For explanatory diagrams, also inspect label/connector collisions, readable
+source relationships, accessible SVG names, and export fidelity. Keep the original
+source and report meaningful omissions. An attractive diagram is not proof of
+its factual claims. These checks adapt Diagram Design's methods; see the
+[vector integration and attribution](../vector-asset-pipeline/references/diagram-design.md).
+
 ## Output
 
 Give prioritized UI defects, exact screen/state, suggested fix, and whether a visual re-test is needed.
