@@ -2,7 +2,7 @@
   "schema_version": 1,
   "baseline_head": "3cdfb485dd8d9bbfd0caeff3c8f091c0479dda16",
   "remote_main_observed": "475ae282a086cc6932b82f3044cb66f3978de605",
-  "state": "uncommitted-publication-authorized-host-blocked",
+  "state": "source-published-to-pr; local-git-uncommitted",
   "scope": "All intended changed tracked and untracked repository files, including preserved earlier edits and content from newer remote main. Handoff status files excluded to avoid self-reference. This identifies contents, not a completed Git integration or review approval.",
   "files": [
     {
@@ -829,5 +829,15 @@
       "path": "tests/test_watch_deadline_model.py",
       "sha256": "97ad2cd4f06c2d6810827706bdafc1014140ae80323029edae56c7d80b29becf"
     }
-  ]
+  ],
+  "publication": {
+    "pull_request": "https://github.com/digitalpilipinas/rogemar-agent-toolkit/pull/29",
+    "branch": "toolkit/workflow-verification-20261024",
+    "source_commit": "497bdfc490fd9605799260c8dffe990f7c729b48",
+    "source_tree": "8a05e1ba22f66c0c7c1a1ce67acc97d6c05a9992",
+    "local_coderabbit": "temporarily-waived-by-operator",
+    "cloud_reviews": "pending",
+    "ci": "pending",
+    "note": "This receipt is a later documentation-only commit. Query live PR head for current cloud evidence."
+  }
 }

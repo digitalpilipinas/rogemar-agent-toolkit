@@ -1,6 +1,6 @@
 # Toolkit integration and publication
 
-- Status: preparing an open PR through the authorized GitHub connector; local validation passed with explicit tool-dependent skips; local CodeRabbit temporarily waived by the operator.
+- Status: published to PR #29 through the authorized GitHub connector; local CodeRabbit temporarily waived; cloud reviews and CI pending. Local Git metadata remains unsynchronized.
 - As-of: 2026-10-24.
 - Authority: the operator explicitly requested the necessary updates, committing all intended changes, and aligning local and GitHub using Integrated Workflow. This supersedes earlier local-only boundaries. It does not request plugin installation or a change to auto-update settings.
 - Owner: main maintainer, using Integrated Workflow and Codex Forge skill-maintenance methods. Peak / GPT-6 Astra High remains requested but not observed or switched; no qualified worker dispatch is claimed.
@@ -248,3 +248,29 @@ The GitHub publication receipt will record the actual branch, commit and PR once
 verified. Until then, this paragraph records intent rather than successful delivery.
 Local HEAD remains the old main commit until a permitted Git session synchronizes
 it; matching file contents and matching local Git history are separate checks.
+
+## Verified GitHub publication receipt
+
+- PR: [#29 — Strengthen toolkit workflows and add formal verification methods](https://github.com/digitalpilipinas/rogemar-agent-toolkit/pull/29).
+- Branch: `toolkit/workflow-verification-20261024`.
+- Base: `475ae282a086cc6932b82f3044cb66f3978de605` (`main`).
+- Source commit: `497bdfc490fd9605799260c8dffe990f7c729b48`.
+- Source tree: `8a05e1ba22f66c0c7c1a1ce67acc97d6c05a9992`.
+- Source commit comparison: 144 changed files; all 1,375 repository files and modes
+  exactly matched the prepared local manifest. No remote files were omitted.
+- This receipt follows in a documentation-only commit. The PR's current head is
+  authoritative for cloud CI/review; the source commit above identifies the tested
+  implementation. Confirm live head/base before acting on review evidence.
+
+The PR was initially created as a draft to attach this final receipt before
+requesting full cloud reviews. Ready status and provider progress must be read from
+GitHub, not inferred from this creation record. Keep the PR open; merging, release
+tagging and plugin installation are not performed by this delivery.
+
+Task records are now published with the candidate on the PR branch, rather than
+being available only on this machine. Default-branch availability begins only after
+a separately completed merge. This local working directory still has HEAD
+`3cdfb485dd8d9bbfd0caeff3c8f091c0479dda16` and uncommitted files because its Git
+metadata is protected. Do not describe it as a clean checkout or synchronized Git
+history. In a permitted session, preserve the local changes, fetch the PR branch
+and verify content equivalence before changing the checkout.

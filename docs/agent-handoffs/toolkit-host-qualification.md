@@ -89,3 +89,13 @@ Codex Forge Peak requested with GPT-6 Astra / High; effective parent model/effor
 unverified. The router reported missing active-parent metadata, so no qualified
 worker dispatch or parent switch is claimed. Integrated Workflow retains its
 required gates. Local fixtures are not native multi-host qualification.
+
+## Publication and review disposition
+
+The operator temporarily waived local CodeRabbit for this PR. Do not retry that
+layer during this delivery. Source and handoffs are published on
+[PR #29](https://github.com/digitalpilipinas/rogemar-agent-toolkit/pull/29).
+GitHub reviews/CI and native host qualification remain distinct pending evidence.
+The local Git metadata is still unsynchronized; see `toolkit-publication.md` for
+the source commit and current delivery scope. Earlier local-only and blocked-local-
+review statements above describe the earlier attempts, not the current PR scope.

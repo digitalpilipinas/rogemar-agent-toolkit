@@ -3,7 +3,7 @@
 This is the resume index for the current authorized toolkit improvement and publication task.
 Read repository `AGENTS.md`, the selected task record, and actual Git state before
 continuing. These records own this local task status; they do not replace a future
-GoalBuddy board or independently grant publication authority. The latest operator request explicitly authorizes committing all intended changes and aligning GitHub; see the publication record for current blockers. The current PR publication status and cloud location are recorded in `toolkit-publication.md`.
+GoalBuddy board or independently grant publication authority. The latest operator request explicitly authorizes committing all intended changes and aligning GitHub; see the publication record for current blockers. The changes and these handoffs are published on [PR #29](https://github.com/digitalpilipinas/rogemar-agent-toolkit/pull/29); see `toolkit-publication.md` for exact source identity and local Git limitations.
 
 | Task | Record | Dependency |
 | --- | --- | --- |
