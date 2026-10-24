@@ -50,6 +50,10 @@ jobs:
         if: steps.owner_checks.outputs.needs_bun == 'true'
         working-directory: plugins/rogemar-agent-toolkit/skills/codex-forge/scripts
         run: bun install --frozen-lockfile --ignore-scripts
+      - name: Set up Node for owner suites
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4; observed in action-pins.json
+        with:
+          node-version: 26.12.0
       - name: Run change-relevant owner suites
         env:
           PR_BASE: ${{ github.event.pull_request.base.sha }}

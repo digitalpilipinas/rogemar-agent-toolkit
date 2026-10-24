@@ -49,7 +49,7 @@ If the checkout doesn't build or start as-is, fix that first (or report it preci
 
 Write `.agents/skills/verify-<app>/SKILL.md` with YAML frontmatter (`name: verify-<app>` and a `description` that names the app, the surface, and when to reach for it — without frontmatter the skill never registers) and these sections, each grounded in what the interview actually found (no placeholders left):
 
-- **Launch:** the exact command that starts the app for verification, and how to tell it's ready (a log line, a port answering, a prompt). Include teardown. For a short-lived CLI or TUI there is no server to keep alive: launch means build the binary (or install deps) once, then start each drive in its own isolated PTY or tmux session.
+- **Launch:** the exact command that starts the app for verification, and how to prove it is usable (completed initialization plus an affected user operation; an answering port alone is insufficient). Include teardown. For a short-lived CLI or TUI there is no server to keep alive: launch means build the binary (or install deps) once, then start each drive in its own isolated PTY or tmux session.
 - **Doctor:** one read-only check that answers "is this instance worth driving?" — process up, right version/build, port owned by us, auth valid. An agent runs this first whenever anything looks off.
 - **Drive:** the harness recipe with real selectors/commands from this repo, not examples. Prefer stable handles (ARIA labels, data attributes, prompt strings, route paths) over coordinates and tab order.
 - **Evidence:** what to capture for a proof and where it goes. State the proof standards: exercise the real user path, not internal setters or test-only endpoints; capture the action and the resulting state, not just the final screen; verify side effects (files written, rows inserted, messages sent) alongside what's visible; mocks only where a production boundary already isolates the external system. When the safe path is a dry-run or test mode, verify what it actually skips by observing (files, network, git refs) rather than trusting its name: some dry-runs still touch the network or open a browser.
@@ -72,3 +72,22 @@ Record all untested features/platforms as not run, and retain blocked prerequisi
 Point the user at `$forge-maintain-verification-skill` for keeping the map honest as the app changes. Suggest a cadence only if they ask.
 
 Startup repairs, dependency installation, credentials and real external side effects must fit the approved scope. Use isolated test data and existing tools. If the required runtime cannot be exercised, return a validated draft plus the precise execution blocker; do not claim the generated verifier is proven.
+
+## Fresh-data startup and journey prerequisites
+
+During creation, or when initialization changes, exercise the documented launch
+from isolated fresh test data. Confirm migrations, seed/setup work and required
+background initialization finish before driving a representative affected journey.
+Record data ownership and cleanup; never reset an existing user database to obtain
+this proof. If a safe fresh-data environment is unavailable, retain the blocker
+and limit the claim to the environment actually exercised.
+
+For each journey, name required accounts, roles, fixtures, entitlements and external
+state. Missing prerequisites remain blocked or failed as observed; do not delete
+the journey or substitute a convenient route to make the verifier pass.
+
+When a substitute environment supplies setup automatically, list exactly which
+steps it supplied, which target setup commands were exercised and what remains
+unverified on the real target. A pre-seeded instance does not prove fresh startup.
+For unchanged recipes, reuse matching startup evidence instead of resetting data
+on every run. Recheck when build, initialization, schema or fixtures invalidate it.

@@ -97,3 +97,8 @@ runtime support; do not install a wrapper, hook, service or new dependency here.
 
 Informed by GitHub's [complete-task efficiency analysis](https://github.blog/ai-and-ml/github-copilot/how-we-make-ai-coding-more-cost-efficient-without-sacrificing-task-quality/).
 Its Copilot measurements are not measured savings for this toolkit.
+
+When consolidating instructions, preserve unique examples, rationale, caveats and
+completion evidence that change decisions. Move exact shared rules to their owner
+and keep discoverable links. Do not use a word-reduction target or assume shorter
+text improves quality; compare completed outcomes before claiming savings.

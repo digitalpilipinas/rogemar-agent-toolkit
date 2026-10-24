@@ -21,6 +21,7 @@ CHECKS = {
                  S + 'agent-collaboration-terminal/tests', '-v'],
     'forge-plan': ['node', '--test', S + 'codex-forge/scripts/check-plan.test.mjs'],
     'forge-native': ['bun', 'run', 'test'],
+    'formal-statechart': ['node', '--test', S + 'statechart-verification/scripts/test/statechart.test.mjs'],
 }
 
 
@@ -37,6 +38,8 @@ def select(paths):
             selected.add('forge-plan')
         if path.startswith(S + 'codex-forge/scripts/') and path.endswith(('.ts', 'package.json', 'bun.lock')):
             selected.add('forge-native')
+        if path.startswith(S + 'statechart-verification/scripts/'):
+            selected.add('formal-statechart')
         # These root tests exercise shared executable contracts used by owner suites.
         if path in {'tests/test_alignment_contracts.py', 'tests/test_learning_lifecycle.py'}:
             selected.add('learning')

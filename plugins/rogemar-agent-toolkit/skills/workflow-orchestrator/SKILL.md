@@ -91,6 +91,11 @@ repository; preserve local differences and verify loading separately from copyin
    main agent to repeat work that an authorized worker can complete safely.
 5. Separate facts, assumptions, decisions, open questions, and evidence.
 
+At task entry or a harness switch, apply [task handoff discovery](references/task-handoff-discovery.md)
+before selecting a new plan. Briefly identify the loaded task record and next
+action, or the bounded search and remaining gap. Integrated Workflow owns updates
+to those records; discovery alone starts no programme or publication.
+
 ## Shared methods and native harness bindings
 
 Use the shared `engineering-playbooks` method for substantive engineering work when installed. In Codex, prefer the complete installed `codex-forge` implementation of that method. In Cursor, prefer installed `cursor-forge`, otherwise native PStack with reconciled dispatch ownership. On Claude, prefer installed `claude-forge` with `claude-forge-setup`. Elsewhere prefer `universal-forge` with `universal-plan-model-router`, falling back to the shared method if absent. Honor an explicit compatible entry choice and a declared `Harness: <name>`; a name does not prove live capabilities. Other harnesses use their own exposed models and tools. Select one execution owner; do not run the native and portable workflows twice.
@@ -216,12 +221,12 @@ the active harness's profile controls when a profile is needed; Codex uses insta
 - Assign search, QA, build, and test work to workers when a separate context
   helps. Those workers may read and write inside `allowed_files`. A worker that
   only looks, or only judges a diff, stays read-only. The parent supervises,
-  integrates, and remains a writer. Isolate concurrent writers, permit
+  integrates, and remains a writer. Apply the shared writer policy, permit
   sequential workers when dependencies require them, and never allow two writers
   to edit the same file or surface at the same time.
-- In a shared worktree, serialize writers, including the main agent. Parallel
-  implementation uses separate worktrees with explicit ownership; separation
-  does not isolate shared databases, generated outputs or runtime resources.
+- Follow [writer isolation](references/writer-isolation.md) for shared-worktree
+  eligibility, isolated worktrees and serialization. Account for the main agent
+  and shared databases, generated outputs and runtime resources.
   Preserve unrelated work in every lane. Report conflicts rather than reverting
   others' edits. The main agent inspects and reconciles the combined diff and
   performs or directs final integrated validation.
@@ -378,6 +383,12 @@ Every phase handoff should carry:
 - Required capability, preferred route, observed availability, fallback, and
   any authorization still needed when a live integration affects the next
   phase.
+
+For a catch-up or decision handoff, include every pending human decision in the
+current authorized scope. For each, give the recommendation, alternatives, relevant
+evidence, consequence of delay and the work it blocks. Group duplicates without
+losing distinct decisions. Separate agent-owned next actions from owner decisions;
+do not turn routine reversible work into a question. If none remain, say so.
 
 Every worker handoff must additionally carry:
 

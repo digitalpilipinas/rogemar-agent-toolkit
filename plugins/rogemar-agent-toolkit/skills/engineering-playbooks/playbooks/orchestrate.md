@@ -12,11 +12,11 @@ apply [bounded dynamic workflows](../../workflow-orchestrator/references/dynamic
 Reuse this plan and receipt for package/reviewer pairs, finding challenges and
 coverage gaps. Use the active harness's supported executor; no second owner.
 
-Define the completion oracle, scope, dependencies, current slice, acceptance and stop conditions. The main agent can own implementation directly. Parallelize independent research or reviews; parallel repository writers require isolated worktrees and reconciliation. Cap concurrency at the lower of the runtime limit and three by default. Avoid a coordinator layer when the main agent can drain the work itself. No worker creates descendants without an explicit bounded exception from the orchestrator.
+Define the completion oracle, scope, dependencies, current slice, acceptance and stop conditions. The main agent can own implementation directly. Parallelize independent research or reviews; parallel repository writers follow [writer isolation](../../workflow-orchestrator/references/writer-isolation.md) and require reconciliation. Cap concurrency at the lower of the runtime limit and three by default. Avoid a coordinator layer when the main agent can drain the work itself. No worker creates descendants without an explicit bounded exception from the orchestrator.
 
 ## Brief contract
 
-Every assignment names goal, owner, allowed files or symbols, exclusions, acceptance, non-goals, upstream inputs, verification command, stop condition, output location, and concise receipt format. Include relevant standing constraints or a readable authoritative reference, not a full transcript. Tell writers they share the codebase, must preserve unrelated edits, and must report conflicts. The router resolves the role hint at dispatch under both parent ceilings, including saved role pins. A changed profile needs a fresh bounded assignment.
+Every assignment names goal, owner, allowed files or symbols, exclusions, acceptance, non-goals, upstream inputs, verification command, stop condition, output location, and concise receipt format. Include relevant standing constraints or a readable authoritative reference, not a full transcript. Tell writers they share the codebase, must preserve unrelated edits, and must report conflicts. The router resolves the role hint at dispatch under the active routing policy, including saved role pins. A changed profile needs a fresh bounded assignment.
 
 ## Optional local store
 

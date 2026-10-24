@@ -75,7 +75,10 @@
     "skills/forge-typescript-best-practices",
     "skills/forge-unslop",
     "skills/forge-why",
+    "skills/formal-verification-create",
+    "skills/formal-verification-maintain",
     "skills/frontend-design",
+    "skills/fsearch",
     "skills/gh-address-comments",
     "skills/gh-fix-ci",
     "skills/integrated-workflow",
@@ -103,6 +106,7 @@
     "skills/sora",
     "skills/speech",
     "skills/spm-build-analysis",
+    "skills/statechart-verification",
     "skills/supabase",
     "skills/supabase-guardian",
     "skills/swift-concurrency",
@@ -126,5 +130,5 @@
     "skills/xcode-compilation-analyzer",
     "skills/xcode-project-analyzer"
   ],
-  "version": "1.1.0"
+  "version": "1.2.0"
 }

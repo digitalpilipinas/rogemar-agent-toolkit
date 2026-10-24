@@ -511,3 +511,38 @@ needs Python Playwright/Chromium or a separately verified browser capture route.
 Resource presence, native discovery and actual execution are separate checks.
 Repeat setup and verification inside each receiving cloud environment; no local
 plugin update establishes cloud adoption.
+
+## Updating an installed toolkit
+
+A GitHub push updates the source repository. It does not establish that an installed
+plugin, a copied skill directory, or a running agent has loaded that revision.
+Record the source, tracked ref, installed version and a successful fresh-session
+discovery check for each receiving harness. Version `1.2.0` is prepared locally;
+its presence in a manifest is not proof of publication or installation.
+
+| Installation route | Update behavior and verification |
+| --- | --- |
+| ChatGPT/Codex workspace marketplace imported from GitHub | New workspace imports have daily sync enabled. An admin can use **Sync now**. A tracked branch receives newer commits; a fixed commit remains pinned. Verify the import result and start a fresh session before checking discovery. |
+| Personal/local Codex marketplace or plugin | Use the installed Codex version's supported marketplace/plugin refresh controls. Do not infer workspace daily sync applies to this route. Confirm the installed version and resource contents in a new session. |
+| Claude Code marketplace | Auto-update is a per-marketplace setting, off by default for third-party and local marketplaces. Enable it in `/plugin` → Marketplaces, or update the installed plugin explicitly. Reload plugins or start a new session to load an update. Refreshing a marketplace list alone is not an installed-plugin update. |
+| Cursor team marketplace imported from GitHub | With the GitHub App configured, **Enable Auto Refresh** reindexes pushes on the tracked branch, at most once every ten minutes. Otherwise use **Refresh**. Running Cloud Agents keep their starting version; start a new agent. Other Cursor installation routes need their own observed update behavior. |
+| Toolkit installer, archives, copied Agent Skills, other harnesses | These files have no update daemon. Refresh the authorized source, review the change and rerun the existing supported installation/update route for the same selection. Preserve local modifications; never overwrite an unmanaged copy blindly. |
+
+An update receipt should distinguish source publication, marketplace sync, installed
+files and runtime loading. Verify representative required resources and one safe
+invocation; discovery alone does not qualify the workflow. Toolkit updates do not
+update independently installed dependencies, credentials, MCP services or models.
+No installation or auto-update setting is changed merely by maintaining this repo.
+
+Sources reviewed on 2026-10-24: [OpenAI workspace marketplace sync](https://help.openai.com/en/articles/20001504-importing-and-syncing-plugin-marketplaces-from-github),
+[Claude plugin updates](https://code.claude.com/docs/en/discover-plugins), and
+[Cursor plugins](https://prod.cursor.com/docs/plugins). Recheck native behavior
+when the receiving harness or installation route changes.
+
+The local Codex CLI observed during this update is `0.161.0`. Its help exposes
+`codex plugin marketplace upgrade <marketplace-name>` to refresh a configured Git
+marketplace snapshot. Discover the actual configured name with the supported list
+command; do not assume the marketplace name equals the repository name. This
+command was inspected, not executed. A refreshed snapshot still needs installed
+content and fresh-session verification; the help output does not establish
+automatic updates or hot reload of the running session.

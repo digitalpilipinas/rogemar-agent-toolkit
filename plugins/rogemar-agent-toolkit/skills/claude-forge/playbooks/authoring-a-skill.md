@@ -12,7 +12,7 @@ Check that descriptions, body instructions, invocation policy, routing and porta
 3. Test cases if structural; skip if subjective.
 4. Prepare **Opening a PR** only within explicit publication authority.
 
-When in doubt, delete; prose earns its keep by changing a decision. Tell it to do the thing and skip the reason. Explain only when the rule is confusing without one. Match tone to scope. Point at structural sources (types, READMEs, config); hardcoded details go stale (the **encode-lessons-in-structure** principle skill). Delegate to other skills by path; don't restate. A workflow you keep hitting but isn't captured → propose a new skill.
+Resolve conflicts and exact duplication while preserving unique examples, rationale, caveats and evidence requirements. Prefer direct instructions, but keep explanations that help an agent make the right decision. Shorter wording alone is not evidence of better quality or lower complete-task cost. Match tone to scope. Point at structural sources (types, READMEs, config); hardcoded details go stale (the **encode-lessons-in-structure** principle skill). Delegate to other skills by path; don't restate. A workflow you keep hitting but isn't captured → propose a new skill.
 
 For agent-facing instructions, make each step end in an observable completion
 condition. Keep one authoritative definition and conditional links that name the

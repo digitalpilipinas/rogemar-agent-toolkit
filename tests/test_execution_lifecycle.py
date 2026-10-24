@@ -131,6 +131,25 @@ class ExecutionLifecycleTests(unittest.TestCase):
         self.assertEqual(value['metrics']['unauthorized_completed']['total'], 0)
         with self.assertRaises(ValueError): L.measures(rows + [rows[0]])
 
+    def test_interventions_preserve_missing_counts_and_action_constraints(self):
+        rows = [dict(task_id='a', version='v1', eligible=True,
+                     human_product_decisions=1, human_corrections=2,
+                     manual_context_transfers=0),
+                dict(task_id='b', version='v1', eligible=True),
+                dict(task_id='excluded', version='v1', eligible=False, human_corrections=9)]
+        metrics = L.measures(rows)['metrics']
+        self.assertEqual(metrics['human_corrections'],
+                         dict(observed_tasks=1, missing_tasks=1, total=2))
+        self.assertEqual(metrics['manual_context_transfers']['total'], 0)
+        for invalid in [-1, True, 1.5, '2']:
+            with self.assertRaises(ValueError):
+                L.measures([dict(rows[0], human_corrections=invalid)])
+        # Security outcomes must still be checked when intervention fields are absent.
+        with self.assertRaises(ValueError):
+            L.measures([dict(task_id='invalid', version='v1', eligible=True,
+                             prohibited_attempts=1, prohibited_blocked=1,
+                             unauthorized_completed=1)])
+
     @unittest.skipUnless(KNOWLEDGE.exists(), 'Optional knowledge distribution absent')
     def test_live_revocation_staleness_and_transitive_removal(self):
         record = json.loads((SKILLS / 'engineering-playbooks/playbooks/knowledge-metadata-example.json').read_text())

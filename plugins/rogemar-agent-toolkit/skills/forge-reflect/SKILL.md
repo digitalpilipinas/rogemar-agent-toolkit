@@ -20,11 +20,11 @@ Use the supplied current conversation or a verified task-specific transcript map
 
 ## 2. Apply independent lenses
 
-Use judgment, tooling and divergent lenses from `references/judgment-reviewer.md`, `references/tooling-reviewer.md`, and `references/divergent-reviewer.md`. Ask the orchestrator for read-only reviewers only where independent work helps; it selects a bounded panel and resolves `reflect-judgment` and `reflect-tooling` preferences under the active routing policy. A missing connector is an evidence gap, never a reason to grant write access. Reviewers return cited findings without file edits, messages, or nested delegation.
+Apply the [shared review contract](references/review-contract.md) with the relevant judgment, tooling or divergent lens from `references/judgment-reviewer.md`, `references/tooling-reviewer.md`, and `references/divergent-reviewer.md`. Include that contract and essential assignment limits in any handoff. Ask the orchestrator for read-only reviewers only where independent work helps; it selects a bounded panel and resolves `reflect-judgment` and `reflect-tooling` preferences under the active routing policy. A missing connector is an evidence gap, never a reason to grant write access. Reviewers return cited findings without file edits, messages, or nested delegation.
 
 ## 3. Synthesize and route
 
-Use `references/synthesizer.md` to produce Accepted, Rejected, and Backlog findings, including evidence and destination. The parent may synthesize directly. Prefer an existing owner skill. If a lint rule, metadata flag, script or runtime check can enforce the lesson more reliably than prose, route it to structural work. Do not convert one-off preferences into permanent policy.
+Use `references/synthesizer.md` to produce Accepted, Rejected, and Backlog findings, including evidence and destination. Here Accepted means a review recommendation, not learning acceptance or edit authority. The parent may synthesize directly. Prefer an existing owner skill. If a lint rule, metadata flag, script or runtime check can enforce the lesson more reliably than prose, route it to structural work. Do not convert one-off preferences into permanent policy or force a finding from an already-covered session.
 
 ## 4. Apply authorized changes
 

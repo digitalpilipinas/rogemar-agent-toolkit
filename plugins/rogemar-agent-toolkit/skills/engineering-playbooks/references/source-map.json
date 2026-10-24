@@ -5,7 +5,7 @@
     {
       "method": "authoring-a-skill",
       "source": "codex-forge/playbooks/authoring-a-skill.md",
-      "source_sha256": "c0f199dd64e304271761000a0f886f855e93661fb55cd2a22d1cca057dafd2f3",
+      "source_sha256": "d681614ba2404151ba5cf8289312c273af6142aecd5082dd9749c42faa34ee2a",
       "portable": "playbooks/authoring-a-skill.md",
       "trigger": "Create or revise an actual reusable skill",
       "outcome": "Inspect its existing owner, instructions, references and distribution; verify changed behavior",
@@ -14,7 +14,7 @@
     {
       "method": "autonomous-run",
       "source": "codex-forge/playbooks/autonomous-run.md",
-      "source_sha256": "edae742c4f60a1d7556386ce8a67bc4c76cf52e3472a280c1707ab95d498e24d",
+      "source_sha256": "d459f31e9003d082502430abc1a777be49a9a8ffd0e99698e909948fa3d65742",
       "portable": "playbooks/autonomous-run.md",
       "trigger": "Authorized work needs sustained independent progress",
       "outcome": "Bounded units, resource/budget checks, proof and recovery",
@@ -32,7 +32,7 @@
     {
       "method": "autopilot-stack",
       "source": "codex-forge/playbooks/autopilot-stack.md",
-      "source_sha256": "43ecf6102d6e8caf8c1d620fede16be3798e2202d92b0c663945e001c3ecb1ae",
+      "source_sha256": "6320b1efeba021b68b5b118fc15f34d849445d27760c183a15ecb55b8144c36f",
       "portable": "playbooks/autopilot-stack.md",
       "trigger": "Work crosses a real stack or dependent set of changes",
       "outcome": "Preserve dependency order and integrated acceptance",
@@ -68,7 +68,7 @@
     {
       "method": "feature",
       "source": "codex-forge/playbooks/feature.md",
-      "source_sha256": "b7944be4f8105411b5dec11260e8456506b213f84e72be33887d152bac4745df",
+      "source_sha256": "62cd89060814c593e874adbc110fbd0e6ad071261e0b7afbd6b305704f89cf1f",
       "portable": "playbooks/feature.md",
       "trigger": "An approved new behavior is being implemented",
       "outcome": "User-visible acceptance, dependencies and focused checks",
@@ -95,7 +95,7 @@
     {
       "method": "multi-phase-plan",
       "source": "codex-forge/playbooks/multi-phase-plan.md",
-      "source_sha256": "136839850c2319b8055b3f7c5875d80e4880929d7c7377cdef4e633dbc723efd",
+      "source_sha256": "75d47df1f60cc2f3888befc611d19a782679ceac61314a1977d49d06a41ac476",
       "portable": "playbooks/multi-phase-plan.md",
       "trigger": "Substantial work needs ordered coherent phases",
       "outcome": "Reuse create-plan and accepted IDs with dependencies and evidence",
@@ -113,7 +113,7 @@
     {
       "method": "orchestrate",
       "source": "codex-forge/playbooks/orchestrate.md",
-      "source_sha256": "c7d899ee94587753a6f22cf3e494a5412875b6bc77f9290ff93456319631c183",
+      "source_sha256": "9978ed4195f632e106bb03a711b5d87766add0ca0eaa59e137e15be80e9534ff",
       "portable": "playbooks/orchestrate.md",
       "trigger": "Distinct dependent or specialist work warrants coordination",
       "outcome": "One workflow-orchestrator, bounded roles, shared authority and one acceptance owner",

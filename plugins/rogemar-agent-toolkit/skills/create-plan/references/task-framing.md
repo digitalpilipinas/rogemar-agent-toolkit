@@ -58,6 +58,15 @@ must not silently import outside conclusions.
 
 ## Reuse and evaluate
 
+When a request supplies a ticket, resolve its actual tracker/repository identity,
+title, type and current body before planning implementation. Distinguish research
+or decision tickets from implementation-ready work. If publishing an authorized
+breakdown, create actual ticket IDs first, then wire dependency and parent links;
+never turn temporary labels such as T1 into guessed issue numbers. Prefer native
+relationships when supported and preserve one authoritative dependency record.
+An unavailable tracker leaves identity unresolved; use an explicitly supplied
+local brief only with its limitations stated.
+
 Keep one plan and original requirement record. A materially changed requirement
 needs reconciliation, not silent rewriting. Skip recursive refinement and redundant
 plans. Compare original and refined briefs on equivalent held-out tasks, including
@@ -65,3 +74,16 @@ intent fidelity, successful authorized work, missed constraints, review effort,
 clarification burden, latency and total cost. Retain failures as evidence. Do not
 claim this procedure trained model weights or that a prompt file applied runtime
 permissions.
+
+## Optional rigor check
+
+When the brief lacks a decisive method or evidence, ask internally:
+
+1. What would an experienced practitioner add to this method?
+2. Which original evidence should the investigation start from?
+3. Which available tools and concrete methods fit the task?
+4. What independently observable result would establish correctness?
+
+Use the answers to repair the existing brief, not to expand its goal, require
+another approval round or create a recursive prompt-refinement task. Skip this
+lens when the current brief already answers the material questions.

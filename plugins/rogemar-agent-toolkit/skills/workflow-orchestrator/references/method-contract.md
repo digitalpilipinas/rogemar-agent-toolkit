@@ -5,6 +5,11 @@ stage/scope change and acceptance.
 It applies to the selected skills and playbooks across harnesses and reasoning
 settings. Keep one plan, dispatcher, implementation owner and acceptance record.
 
+Before planning or execution at entry/resume, follow
+[task handoff discovery](task-handoff-discovery.md). Check existing repository
+records, reconcile the relevant task, and briefly communicate what was loaded
+or what continuity evidence is missing. Reuse a still-valid discovery result.
+
 1. Restore the task outcome, mode, authority, candidate, accepted task IDs and
    unfinished gates. Refresh changed facts; reuse still-valid evidence.
 2. Select or deliberately reuse the smallest applicable methods from skill descriptions and the
@@ -73,3 +78,39 @@ boundaries. Agent-readable contracts do not sandbox an unrestricted shell.
 
 For Swift/E2E alternatives, portable maintenance and mechanical validation, use
 [selected route and readiness](route-readiness.md) when that scope applies.
+
+## Observable application
+
+For substantial work, extend the existing task receipt with one entry per selected
+method: selection reason, instruction path plus revision/content identity, resources
+actually read, applicable required outputs, prerequisite result/fallback, and the
+current candidate's evidence references. Track selected, read, applied, verified,
+blocked or not-applicable distinctly. Naming a method is not application; a file
+resolver verifies paths, not semantic selection or execution. A read is not proof
+that the required behavior occurred. Inspect the resulting artifact or observation.
+
+Reassess at meaningful handoffs, scope changes and resume. Reuse unchanged method
+identities and valid evidence; invalidate only affected claims. Do not emit a
+second report for routine tasks. For evaluation, include tasks where no specialist
+is useful, relevant-method omissions, misleading keyword matches and unavailable
+prerequisites. Judge task outcomes and unnecessary work as well as selection.
+
+Conditional extensions stay with their owners:
+
+| Condition | Method |
+| --- | --- |
+| Several possibly related bug reports | `bug-triage`, correlate before dispatch |
+| Broken-variant regression evidence | `code-review-tests`, mutation evidence |
+| Consequential state/concurrency invariant | `code-review-tests`, optional bounded formal verification |
+| Repeated failures across completed outcomes | `engineering-playbooks`, bounded completed-work review |
+| Catch-up or decision handoff | Existing orchestrator handoff contract, complete pending decisions |
+
+These routes do not activate a whole skill family, grant external actions or
+replace explicit-only upstream commands with automatic execution.
+
+During Integrated Workflow execution, persist continuity through its existing
+`integrated-workflow/references/durable-handoffs.md` contract when installed.
+A core-only installation still discovers existing handoffs; it does not invent
+the missing programme owner or claim its maintenance workflow ran.
+Keep every planned, active and completed task discoverable without duplicating
+the board or treating a local snapshot as verified cloud state.

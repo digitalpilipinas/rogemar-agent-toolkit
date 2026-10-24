@@ -20,8 +20,8 @@ Do not run Claude Forge and Universal Forge as two execution owners.
 Each hint carries objective, exact owned scope, non-goals, read and write limits,
 isolation, evidence, the reason independence is useful, and a stop condition.
 The main agent remains an implementer and integrator. It keeps coupled work and
-may execute a package directly. Default to no worker for serial work. Independent
-writes need separate worktrees. A worker does not spawn descendants unless that
+may execute a package directly. Default to no worker for serial work. Concurrent
+writes follow [writer isolation](../../workflow-orchestrator/references/writer-isolation.md). A worker does not spawn descendants unless that
 assignment was separately approved.
 
 ## Profiles and dispatch
@@ -59,7 +59,7 @@ Workflow runtime; qualify that surface separately.
 
 | Upstream operation | Claude execution |
 | --- | --- |
-| Task, background delegate, model panel | Bounded request to the orchestrator. It calls the subagent tool this session actually exposes, with arguments from that tool's schema. If the tool has no background flag, the parent waits or does the work itself. |
+| Task, background delegate, model panel | Bounded request to the orchestrator. It calls the subagent tool this session actually exposes, with arguments from that tool's schema. Follow the tool’s documented completion notifications and resume support; a missing background flag does not establish blocking behavior. |
 | poteto-mode, `/setup-pstack`, Cursor `Task` model slugs | Do not call them. They belong to Cursor. Use this package and the live Claude tool schema. |
 | `~/.cursor/cursor-forge.json` | `~/.claude/claude-forge.json` for this adapter only. |
 | AskQuestion | Use the session's user-input tool only for an unresolved owner decision. Otherwise ask in the reply and continue reversible work. |
@@ -72,6 +72,33 @@ Workflow runtime; qualify that surface separately.
 A missing optional tool narrows evidence. A missing required tool blocks that
 operation and names the dependency. Do not build a substitute service. After two
 failed attempts on the same route, stop retrying and record the blocker.
+
+### Qualify the actual native route
+
+- Read the selected installed instruction file when the native skill invocation
+  tool cannot invoke it and the current invocation policy permits that use.
+  Do not use reading as a bypass for an explicit-only policy. A matching reviewed
+  toolkit adaptation may have its own conditional route. Use the installed skill
+  name/namespace exposed by this session rather than inventing slash commands.
+- Check tool access inside each worker. A general-purpose worker may receive MCP
+  tools while another agent type does not; neither parent access nor a role name
+  establishes worker readiness. Missing required access blocks its operation.
+- A read-only agent type may still expose shell writes. Supply the read-only
+  contract and inspect the post-review diff against the actual initial dirty and
+  untracked state. Report unexpected mutations; preserve them for reconciliation
+  instead of blindly resetting the workspace. Instructions are not sandboxing.
+- Use completion notifications or status tools actually exposed. Absence of a
+  background flag does not imply that the host blocks. If no resume capability
+  exists, provide a new worker the durable task record, prior result and current
+  candidate, then verify that it can access them. A new worker is not the old
+  process resumed, and old capability observations require rechecking.
+- Validate adapter/resource links in each selected package, skill names against
+  discovery metadata, and source/generated-manifest agreement. Then run a native
+  discovery and bounded execution trial. Package tests alone are not host proof.
+
+These bindings adapt PStack's Claude guide at
+`9580c23696ac8d7abed0c166f2f9918800afb819`. Retain exact task identity for history
+recovery and required-evidence blocking when unsupported operations are needed.
 
 ## Authority and state
 

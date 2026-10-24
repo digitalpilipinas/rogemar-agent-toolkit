@@ -153,9 +153,16 @@ def validate_assignments(record: Any) -> dict[str, Any]:
             require(not set(left.get('exclusive_resources', [])) & set(right.get('exclusive_resources', [])),
                     'concurrent assignments share an exclusive runtime resource')
             if left.get('writes') and right.get('writes'):
-                require(left['workspace'] != right['workspace'], 'serialize writers in a shared worktree')
-                require(not any(overlap(a, b) for a in left['writes'] for b in right['writes']),
-                        'parallel writers have overlapping source ownership')
+                shared_paths = any(overlap(a, b) for a in left['writes'] for b in right['writes'])
+                if left['workspace'] == right['workspace']:
+                    require(not shared_paths, 'parallel writers have overlapping source ownership')
+                    for writer in (left, right):
+                        text(writer.get('independence_evidence'), 'shared-worktree independence evidence')
+                elif shared_paths:
+                    for writer in (left, right):
+                        text(writer.get('integration_plan'), 'isolated overlapping-writer integration plan')
+                    require(left['integration_plan'] == right['integration_plan'],
+                            'isolated overlapping writers need the same integration plan')
     return {'status': 'declared-state-valid', 'order': order,
             'limitations': 'Does not discover missing semantic dependencies, attest evidence, or isolate processes.'}
 

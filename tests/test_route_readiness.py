@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 from datetime import datetime, timezone
 import tempfile
+import shutil
 import unittest
 from unittest.mock import patch
 
@@ -47,6 +48,31 @@ class SelectedReadinessTests(unittest.TestCase):
             self.assertNotEqual(self.route(method)['status'], 'blocked')
             self.context['task_tags'] = ['unrelated-copy-edit']
             self.assertEqual(self.route(method)['status'], 'blocked')
+
+    def test_formal_routes_are_conditional_and_missing_import_blocks_readiness(self):
+        for name, tag in [('formal-verification-create', 'concurrency'),
+                          ('formal-verification-maintain', 'verification-drift'),
+                          ('statechart-verification', 'statechart')]:
+            if name not in self.index['skills']:
+                self.skipTest('Formal methods not selected in this distribution')
+            self.context['task_tags'] = [tag]
+            self.assertNotEqual(self.route(name)['status'], 'blocked')
+            self.context['task_tags'] = ['small-doc-fix']
+            self.assertEqual(self.route(name)['status'], 'blocked')
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            shutil.copytree(SKILLS / 'statechart-verification', root / 'statechart-verification')
+            (root / 'code-review-tests').mkdir()
+            (root / 'code-review-tests/SKILL.md').write_text('fixture dependency')
+            self.context['task_tags'] = ['statechart']
+            def resolve():
+                return SELECT.resolve(self.index, ['statechart-verification'], root,
+                                      context=self.context)['methods'][0]
+            self.assertNotEqual(resolve()['status'], 'blocked')
+            (root / 'statechart-verification/scripts/chart-edges.mjs').unlink()
+            result = resolve()
+            self.assertEqual(result['status'], 'blocked')
+            self.assertIn('missing resource: scripts/chart-edges.mjs', result['issues'])
 
     def test_static_source_needs_no_auth_but_runtime_needs_current_observation(self):
         self.context['readiness'] = {}

@@ -28,3 +28,5 @@ When debugging, do not paper over symptoms. Trace every problem to its root caus
 Code doesn't change between runs. State does. When something "fails after restart," suspect stale persistent state first: config files, caches, lock files, serialized state. If clearing a state file restores behavior, prioritize state validation as the fix.
 
 Trace related instances to understand the mechanism, but edit only the approved scope. Propose unrelated repairs separately and preserve compatibility checks until their invariant is established.
+
+After an expensive investigation, use the existing [diagnostic evidence method](../bug-triage/SKILL.md#regression-and-diagnostic-evidence) to propose a cheap signal that would distinguish the next occurrence. Preserve task scope and avoid noisy or private telemetry.

@@ -11,6 +11,10 @@ Read [the shared Forge runtime](../workflow-orchestrator/references/forge-runtim
 
 Recover relevant prior decisions and progress without crossing task or workspace boundaries.
 
+First apply [repository handoff discovery](../workflow-orchestrator/references/task-handoff-discovery.md),
+including when no handoff was explicitly supplied. Prefer the relevant durable
+record before expanding authorized chat history, and report the recovered resume point.
+
 1. Start with the current task's supplied context and named handoff. Use the available memory policy when relevant; memory is routing context, not authority.
 2. If more history is needed, discover an exposed task-history tool or an exact local transcript mapping supplied by the runtime or user. Verify task identity, workspace and requested time window before reading. Do not infer a task from the newest file or scan all personal projects. If no verified mapping exists, work from the current context or a supplied digest and state the gap.
 3. Read metadata and the most recent decision points first. Expand only around a relevant change, unresolved question, or evidence pointer. For a long authorized history, request a bounded read-only extraction through the orchestrator; do not duplicate its scan.

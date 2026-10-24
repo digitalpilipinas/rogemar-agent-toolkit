@@ -2,7 +2,7 @@
   "schema_version": 2,
   "package": {
     "name": "rogemar-agent-toolkit",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "default_profile": "core",
     "supported_platforms": [
       "macos",
@@ -90,70 +90,10 @@
       "name": "bug-triage",
       "source": "approved local user-level snapshot",
       "routing": {
-        "trigger": "Use when investigating errors, logs, failed tests, crashes, CI failures, production incidents, bug reports, or confusing runtime behavior that needs hypotheses, reproduction steps, and prioritized fixes.",
+        "trigger": "Use when investigating errors, logs, failed tests, crashes, CI failures, production incidents, bug reports, correlated incoming reports, or confusing runtime behavior that needs hypotheses, reproduction steps, and prioritized fixes.",
         "outcome": "Focused diagnosis and behavior/measurement evidence",
         "boundary": "No unrelated optimization or speculative rewrite",
         "activation": "conditional"
-      }
-    },
-    {
-      "name": "cloudflare-deploy",
-      "source": "approved local user-level snapshot",
-      "license_evidence": "LICENSE.txt",
-      "routing": {
-        "trigger": "Deploy applications and infrastructure to Cloudflare using Workers, Pages, and related platform services. Use when the user asks to deploy, host, publish, or set up a project on Cloudflare.",
-        "outcome": "Choose the actual target and applicable release proof",
-        "boundary": "A PR-to-main request does not deploy or release to every platform",
-        "activation": "conditional"
-      }
-    },
-    {
-      "name": "code-review-and-quality",
-      "source": "approved local user-level snapshot",
-      "requires": [
-        "code-review-tests"
-      ],
-      "routing": {
-        "trigger": "Review a code change across correctness, readability, architecture, security, and performance. Use for an independent review, quality assessment, or reconciliation of reviewer findings; own one evidence-based verdict while native reviewers and CodeRabbit remain optional provider routes.",
-        "outcome": "One finding disposition owner; focused tests; architecture support only for real evidence-design uncertainty",
-        "boundary": "Do not add a panel or architecture exercise for an obvious unit check",
-        "activation": "conditional"
-      }
-    },
-    {
-      "name": "code-review-tests",
-      "source": "approved local user-level snapshot",
-      "routing": {
-        "trigger": "Check a change's test evidence, regression coverage, and relevant counterexamples. Use as the testing lens within one code review or for a focused verification review; contribute findings without starting a duplicate quality review.",
-        "outcome": "One finding disposition owner; focused tests; architecture support only for real evidence-design uncertainty",
-        "boundary": "Do not add a panel or architecture exercise for an obvious unit check",
-        "activation": "conditional"
-      }
-    },
-    {
-      "name": "codebase-design",
-      "source": "Adapted pinned source: mattpocock/skills@24fe0ef7737efae15c87225755e9f6f5965e4888",
-      "upstream_repository": "https://github.com/mattpocock/skills",
-      "upstream_commit": "24fe0ef7737efae15c87225755e9f6f5965e4888",
-      "license": "MIT",
-      "license_evidence": "upstream-notices/LICENSE",
-      "required_resources": [
-        "DEEPENING.md",
-        "DESIGN-IT-TWICE.md",
-        "agents/openai.yaml",
-        "upstream-notices/LICENSE"
-      ],
-      "routing": {
-        "trigger": "Material module or interface design decision",
-        "outcome": "Project-specific evidence using the matching references and available tools",
-        "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
-        "activation": "conditional",
-        "task_tags_any": [
-          "architecture"
-        ],
-        "required_evidence": [
-          "affected-behavior"
-        ]
       }
     },
     {
@@ -199,6 +139,66 @@
         "outcome": "Existing maintainer and native adaptation, with AQ-01/UP-01 where applicable",
         "boundary": "Selection grants no new install, watcher, credentials or configuration authority",
         "activation": "conditional"
+      }
+    },
+    {
+      "name": "cloudflare-deploy",
+      "source": "approved local user-level snapshot",
+      "license_evidence": "LICENSE.txt",
+      "routing": {
+        "trigger": "Deploy applications and infrastructure to Cloudflare using Workers, Pages, and related platform services. Use when the user asks to deploy, host, publish, or set up a project on Cloudflare.",
+        "outcome": "Choose the actual target and applicable release proof",
+        "boundary": "A PR-to-main request does not deploy or release to every platform",
+        "activation": "conditional"
+      }
+    },
+    {
+      "name": "code-review-and-quality",
+      "source": "approved local user-level snapshot",
+      "requires": [
+        "code-review-tests"
+      ],
+      "routing": {
+        "trigger": "Review a code change across correctness, readability, architecture, security, and performance. Use for an independent review, quality assessment, or reconciliation of reviewer findings; own one evidence-based verdict while native reviewers and CodeRabbit remain optional provider routes.",
+        "outcome": "One finding disposition owner; focused tests; architecture support only for real evidence-design uncertainty",
+        "boundary": "Do not add a panel or architecture exercise for an obvious unit check",
+        "activation": "conditional"
+      }
+    },
+    {
+      "name": "code-review-tests",
+      "source": "approved local user-level snapshot",
+      "routing": {
+        "trigger": "Check a change's test evidence, regression coverage, mutation sensitivity, and relevant counterexamples, including optional bounded verification of consequential state or concurrency invariants. Use as the testing lens within one code review or for a focused verification review; contribute findings without starting a duplicate quality review.",
+        "outcome": "One finding disposition owner; focused tests; architecture support only for real evidence-design uncertainty",
+        "boundary": "Do not add a panel or architecture exercise for an obvious unit check",
+        "activation": "conditional"
+      }
+    },
+    {
+      "name": "codebase-design",
+      "source": "Adapted pinned source: mattpocock/skills@24fe0ef7737efae15c87225755e9f6f5965e4888",
+      "upstream_repository": "https://github.com/mattpocock/skills",
+      "upstream_commit": "24fe0ef7737efae15c87225755e9f6f5965e4888",
+      "license": "MIT",
+      "license_evidence": "upstream-notices/LICENSE",
+      "required_resources": [
+        "DEEPENING.md",
+        "DESIGN-IT-TWICE.md",
+        "agents/openai.yaml",
+        "upstream-notices/LICENSE"
+      ],
+      "routing": {
+        "trigger": "Material module or interface design decision",
+        "outcome": "Project-specific evidence using the matching references and available tools",
+        "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
+        "activation": "conditional",
+        "task_tags_any": [
+          "architecture"
+        ],
+        "required_evidence": [
+          "affected-behavior"
+        ]
       }
     },
     {
@@ -439,7 +439,7 @@
         "workflow-orchestrator"
       ],
       "routing": {
-        "trigger": "Apply a reusable engineering playbook for features, bug fixes, investigation, refactoring, performance, experiments, phased delivery, PR stacks, or session recovery across agent harnesses. Select one matching method; keep model and tool routing with the active harness.",
+        "trigger": "Apply a reusable engineering playbook for features, bug fixes, investigation, refactoring, performance, experiments, phased delivery, PR stacks, session recovery, or bounded review of completed outcomes across agent harnesses. Select one matching method; keep model and tool routing with the active harness.",
         "outcome": "Engineering methods and matched native/portable execution",
         "boundary": "Do not invoke an additional Forge entry or overwrite PStack ownership",
         "activation": "conditional"
@@ -1132,7 +1132,10 @@
         "boundary": "No raw transcript capture, second learning writer or automatic promotion",
         "activation": "conditional",
         "fallback": "engineering-playbooks/references/companion-methods.md#reflect"
-      }
+      },
+      "required_resources": [
+        "references/review-contract.md"
+      ]
     },
     {
       "name": "forge-setup",
@@ -1300,6 +1303,64 @@
       }
     },
     {
+      "name": "formal-verification-create",
+      "source": "Adapted pinned PStack source",
+      "upstream_repository": "https://github.com/cursor/plugins",
+      "upstream_commit": "9580c23696ac8d7abed0c166f2f9918800afb819",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "required_resources": [
+        "LICENSE.txt",
+        "agents/openai.yaml",
+        "assets/verify-skill-template.md"
+      ],
+      "requires": [
+        "code-review-tests",
+        "statechart-verification"
+      ],
+      "routing": {
+        "trigger": "Create executable verification of consequential concurrency, retry, state, parser or data invariants beyond ordinary examples.",
+        "outcome": "Executable verification artifacts, code correspondence, counterexamples and explicit limits",
+        "boundary": "Conditional specialist under the current orchestrator; missing tools block dependent checks; installation requires existing authority.",
+        "activation": "conditional",
+        "task_tags_any": [
+          "formal-verification",
+          "concurrency"
+        ],
+        "required_evidence": [
+          "affected-behavior"
+        ]
+      }
+    },
+    {
+      "name": "formal-verification-maintain",
+      "source": "Adapted pinned PStack source",
+      "upstream_repository": "https://github.com/cursor/plugins",
+      "upstream_commit": "9580c23696ac8d7abed0c166f2f9918800afb819",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "required_resources": [
+        "LICENSE.txt",
+        "agents/openai.yaml"
+      ],
+      "requires": [
+        "formal-verification-create"
+      ],
+      "routing": {
+        "trigger": "Reconcile formal verification after merges, refactors, changed assumptions or newly introduced writers of guarded state.",
+        "outcome": "Executable verification artifacts, code correspondence, counterexamples and explicit limits",
+        "boundary": "Conditional specialist under the current orchestrator; missing tools block dependent checks; installation requires existing authority.",
+        "activation": "conditional",
+        "task_tags_any": [
+          "formal-verification",
+          "verification-drift"
+        ],
+        "required_evidence": [
+          "affected-behavior"
+        ]
+      }
+    },
+    {
       "name": "frontend-design",
       "source": "reviewed portable adaptation, 2026-09-07",
       "author": "Rogemar; upstream notices preserved",
@@ -1310,6 +1371,16 @@
         "trigger": "Build or redesign working web interfaces with a clear visual direction, usable interaction states and responsive craft. Use for artifact or UI implementation after the task and design direction are understood; use the existing product system where one exists.",
         "outcome": "Respect existing tokens, components and framework choices",
         "boundary": "No new design system or dependency solely because a skill exists",
+        "activation": "conditional"
+      }
+    },
+    {
+      "name": "fsearch",
+      "source": "Original optional standalone CLI adapter maintained by Rogemar",
+      "routing": {
+        "trigger": "Invoke an already installed noahdunnagan/fsearch CLI on macOS for fuzzy file discovery and indexed content search within a chosen folder. Use when explicitly requested or locating files across repositories; keep rg and direct reads for exhaustive checks and current-source verification.",
+        "outcome": "Bounded file and content locations verified against current files",
+        "boundary": "Optional macOS CLI; no automatic install, broader indexing authority, or replacement for exhaustive repository checks",
         "activation": "conditional"
       }
     },
@@ -1363,7 +1434,11 @@
         "outcome": "Lifecycle, sole dispatcher and evidence discipline respectively",
         "boundary": "No three competing coordinators or mandatory heavy process for small tasks",
         "activation": "conditional"
-      }
+      },
+      "required_resources": [
+        "references/durable-handoffs.md",
+        "assets/task-handoff-template.md"
+      ]
     },
     {
       "name": "interaction-polish",
@@ -1658,6 +1733,56 @@
         ],
         "runtime_platforms": [
           "darwin"
+        ]
+      }
+    },
+    {
+      "name": "statechart-verification",
+      "source": "Adapted pinned PStack source",
+      "upstream_repository": "https://github.com/cursor/plugins",
+      "upstream_commit": "9580c23696ac8d7abed0c166f2f9918800afb819",
+      "license": "MIT",
+      "license_evidence": "LICENSE.txt",
+      "required_resources": [
+        "LICENSE.txt",
+        "agents/openai.yaml",
+        "references/dependencies.md",
+        "scripts/bug-states.mjs",
+        "scripts/chart-edges.mjs",
+        "scripts/chart-parts.mjs",
+        "scripts/chart-to-tla.mjs",
+        "scripts/compare-charts.mjs",
+        "scripts/lib.mjs",
+        "scripts/map-view.mjs",
+        "scripts/property-loop.mjs",
+        "scripts/read-check.mjs",
+        "scripts/regions-chart.mjs",
+        "scripts/render.mjs",
+        "scripts/rule-book.mjs",
+        "scripts/second-replay.mjs",
+        "scripts/snapshot.mjs",
+        "scripts/spec-text.mjs",
+        "scripts/statechart-help.mjs",
+        "scripts/statechart.mjs",
+        "scripts/tlc-to-chart-args.mjs",
+        "scripts/tlc-to-chart.mjs",
+        "scripts/tlc-tools.mjs",
+        "scripts/ways-in.mjs"
+      ],
+      "requires": [
+        "code-review-tests"
+      ],
+      "routing": {
+        "trigger": "Translate TLA+ or agreed statecharts into models and explain model-check results, reachability and counterexample paths.",
+        "outcome": "Executable verification artifacts, code correspondence, counterexamples and explicit limits",
+        "boundary": "Conditional specialist under the current orchestrator; missing tools block dependent checks; installation requires existing authority.",
+        "activation": "conditional",
+        "task_tags_any": [
+          "formal-verification",
+          "statechart"
+        ],
+        "required_evidence": [
+          "affected-behavior"
         ]
       }
     },
@@ -2081,7 +2206,10 @@
         "outcome": "Lifecycle, sole dispatcher and evidence discipline respectively",
         "boundary": "No three competing coordinators or mandatory heavy process for small tasks",
         "activation": "conditional"
-      }
+      },
+      "required_resources": [
+        "references/task-handoff-discovery.md"
+      ]
     },
     {
       "name": "xcode-build-benchmark",
@@ -3486,12 +3614,17 @@
         "universal-forge",
         "universal-plan-model-router",
         "codebase-design",
-        "codex-capability-maintainer"
+        "codex-capability-maintainer",
+        "fsearch",
+        "formal-verification-create",
+        "formal-verification-maintain",
+        "statechart-verification"
       ],
       "external": [
         "pstack",
         "unlazy",
-        "ponytail"
+        "ponytail",
+        "formal-verification-toolchain"
       ]
     },
     "design": {
@@ -5667,6 +5800,27 @@
       "install": "Prefer the upstream native plugin where supported; otherwise install its unmodified Agent Skill through the upstream standalone route. See docs/installation.md#diagram-design.",
       "activation": "Conditional. Verify a single upstream installation in the receiving environment; toolkit installation does not register or update its native plugin.",
       "integration": "plugins/rogemar-agent-toolkit/skills/vector-asset-pipeline/references/diagram-design.md"
+    },
+    "formal-verification-toolchain": {
+      "name": "Formal verification toolchain",
+      "kind": "runtime",
+      "purpose": "Optional Java/TLC checking and Pele/resvg rendering; no runtime binaries are vendored.",
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ],
+      "install": "Use existing dependencies or authorized preparation in statechart-verification/references/dependencies.md.",
+      "activation": "Only for selected checking/rendering; no automatic installation by default.",
+      "repository": "https://github.com/tlaplus/tlaplus"
     }
   }
 }

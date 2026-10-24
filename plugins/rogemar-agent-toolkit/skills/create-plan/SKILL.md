@@ -16,6 +16,10 @@ Produce one actionable plan that another capable implementer can use without
 reconstructing the conversation. Reuse an existing approved plan and its task
 IDs rather than creating a competing plan, board, or execution workflow.
 
+Before drafting or replacing a plan, check [existing task handoffs](../workflow-orchestrator/references/task-handoff-discovery.md).
+Reuse their settled decisions and accepted task IDs after reconciling current
+source and authority; briefly communicate what continuity record was loaded.
+
 ## Match the depth to the work
 
 - For an obvious, reversible change, skip formal planning unless requested. A

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maintain Formal Verification"
+  short_description: "Reconcile verification with changed code and state writers"
+  default_prompt: "Use $formal-verification-maintain for the relevant property and report executable evidence and limits."

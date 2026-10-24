@@ -369,6 +369,10 @@ async function pollUntilTerminal<V>(args: {
 }): Promise<V | T.BlockerVerdict | T.TimeoutVerdict> {
   let failures = 0;
   const started = args.dependencies.clock.now();
+  const boundedSleep = (seconds: number): number =>
+    args.options.timeout > 0
+      ? Math.min(seconds, Math.max(0, args.options.timeout - (args.dependencies.clock.now() - started)))
+      : seconds;
   while (true) {
     let result: StepResult<V>;
     try {
@@ -379,10 +383,10 @@ async function pollUntilTerminal<V>(args: {
       failures += 1;
       if (!error.failure.retryable || failures >= args.options.maxQueryErrors)
         return statusQueryVerdict(args.stamp, failures, error.failure);
-      const retryInSeconds = queryBackoffSeconds(
+      const retryInSeconds = boundedSleep(queryBackoffSeconds(
         args.options.interval,
         failures
-      );
+      ));
       args.dependencies.emit(
         args.stamp({
           kind: "RETRY",
@@ -409,7 +413,7 @@ async function pollUntilTerminal<V>(args: {
         deadlinePassed(started, args.options, args.dependencies.clock.now())
       )
         return result.onDeadline();
-      await args.dependencies.clock.sleep(result.seconds);
+      await args.dependencies.clock.sleep(boundedSleep(result.seconds));
     }
   }
 }

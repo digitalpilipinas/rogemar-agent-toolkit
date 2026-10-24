@@ -17,6 +17,10 @@ validation commands, affected platforms and recorded exclusions. Read relevant
 lockfiles, environment-variable names and nearby patterns without exposing secrets.
 Preserve unrelated, ignored, private, generated and control files.
 
+Read or update the [durable task handoff](durable-handoffs.md) at task transitions
+and before a harness switch. Reconcile source and cloud availability before resume;
+keep planned and completed tasks discoverable through the same index.
+
 With GoalBuddy, follow its execution contract and `state.yaml`: only the PM selects
 the next active task or completes the goal. Goal Prep prepares the board and stops.
 Without a board, resume the first incomplete dependency-ready approved increment.
