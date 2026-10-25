@@ -232,14 +232,29 @@ function group(cuts, m) {
 const inSecond = (l) => `${within} ${L}, ${l}`;
 const modelEdges = new Map(now.edges);
 if (secondQ)
-  for (const [id, e] of secondQ.edges)
-    if (!modelEdges.has(id))
+  for (const [id, e] of secondQ.edges) {
+    const primary = now.edges.get(id);
+    if (!primary) {
       modelEdges.set(id, {
         ...e,
         labels: new Set([...e.labels].map(inSecond)),
         guards: new Map([...e.guards].map(([l, words]) => [inSecond(l), words])),
         secondOnly: true,
       });
+      continue;
+    }
+    const merged = { ...primary, labels: new Set(primary.labels), guards: new Map(primary.guards) };
+    for (const label of e.labels) {
+      const before = primary.guards.get(label) ?? new Set();
+      const after = e.guards.get(label) ?? new Set();
+      if (primary.labels.has(label) && before.size === after.size && [...after].every(w => before.has(w))) continue;
+      const attributed = inSecond(label);
+      merged.labels.add(attributed);
+      merged.guards.set(attributed, after);
+    }
+    modelEdges.set(id, merged);
+  }
+
 const withPath = (c, m) => {
   const path = readerPath(c.trace, m, m.key);
   return { ...c, path, end: path[path.length - 1].key };

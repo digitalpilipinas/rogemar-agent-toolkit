@@ -1,7 +1,7 @@
 # Toolkit integration and publication
 
-- Status: published to PR #29 through the authorized GitHub connector; local CodeRabbit temporarily waived; cloud reviews and CI pending. Local Git metadata remains unsynchronized.
-- As-of: 2026-10-24.
+- Status: PR #29 remediation in progress after both initial cloud reviews completed; initial CI passed. Operator now authorizes safe merge to main. Local CodeRabbit remains temporarily waived; local Git metadata remains unsynchronized.
+- As-of: 2026-10-25 (Asia/Manila).
 - Authority: the operator explicitly requested the necessary updates, committing all intended changes, and aligning local and GitHub using Integrated Workflow. This supersedes earlier local-only boundaries. It does not request plugin installation or a change to auto-update settings.
 - Owner: main maintainer, using Integrated Workflow and Codex Forge skill-maintenance methods. Peak / GPT-6 Astra High remains requested but not observed or switched; no qualified worker dispatch is claimed.
 
@@ -274,3 +274,92 @@ a separately completed merge. This local working directory still has HEAD
 metadata is protected. Do not describe it as a clean checkout or synchronized Git
 history. In a permitted session, preserve the local changes, fetch the PR branch
 and verify content equivalence before changing the checkout.
+
+
+## Merge continuation, 2026-10-25 (Asia/Manila)
+
+The operator explicitly instructed continuing Integrated Workflow until merge to
+main. This supersedes the earlier open-PR/stop-before-merge boundary. Existing
+local CLI waiver remains task-specific; no credentials or host settings changed.
+Current reviewed head is `aa6ab15ee21269c4725317d01b3cd76994abb29f`, base
+`475ae282a086cc6932b82f3044cb66f3978de605`. All four platform/Python validation
+jobs and showcase validation passed. Showcase publish was skipped on the PR.
+Main is unprotected and the repository ruleset list is empty; workflow gates still
+apply. Direct annotation retrieval was unavailable through the connector. The
+Ubuntu validation log shows the hosted runner's Node 20 action deprecation warning
+and successful forced Node 24 execution, not a failed check. Updating action
+majors is deferred to a separately tested dependency maintenance change.
+
+Both initial full reviews completed before finding validation/remediation:
+
+- CodeRabbit review 5638882744, run `53e97cb3-d019-41b7-9fa0-400dbb15bc10`,
+  CHANGES_REQUESTED, all 144 files from base to head.
+- Codex review 5638879077 and completed summary 6386296442, same head,
+  full-scope manual request 6386298693. Initial auto-ready activity and the manual
+  request may represent separate accepted runs; the visible summary was overwritten.
+  Keep that uncertainty; do not assume another unused slot without reconciliation.
+
+Consolidated findings, one correction batch:
+
+| Comment | Contract / correction | Disposition |
+| --- | --- | --- |
+| 4367662419 (Codex) | Preserve quoted TLC constants and lexical context during config splitting | Confirmed; behavioral regression failed before correction and passes after |
+| 4367662420 (Codex) | Preserve second-model labels and guards on shared transition endpoints | Confirmed; behavioral regression failed before correction and passes after |
+| 4367665660 (CodeRabbit) | Recompute retry sleep after progress emission consumes time | Confirmed; new synthetic-clock test failed before fix and passes after |
+| 4367665663 (CodeRabbit) | Separate model sensitivity, correspondence/replay and implementation-level mutation evidence | Confirmed by contradictory requirements; creation/template/maintenance corrected |
+| 4367665668 (CodeRabbit) | Unusable mapping imports must produce exit 2 | Confirmed; behavioral regression failed before correction and passes after |
+
+CodeRabbit's docstring-coverage warning is optional, not a repository-required
+check. Do not add bulk docstrings to imported upstream code merely to meet an
+advisory percentage. Revisit where an actual unclear contract warrants explanation.
+Its hostile-input hardening proposal is deferred: current executable mappings are
+trusted inputs, not a sandbox. Revisit if untrusted execution is introduced.
+
+Selected methods: Integrated Workflow execution/review contracts, shared method
+contract, Code Review and Quality, and skill-creator maintenance guidance. Source
+and targeted regressions establish findings; provider labels alone do not.
+One bounded statechart implementation worker owns only its script/test subtree;
+parent owns watcher/formal guidance and later generated catalogs and publication.
+No shared writer output or Git writes; parent integrates after worker completion.
+
+Merge preflight must recheck current base/head, due review coverage and CI, threads,
+and repository rules. Existing main-branch showcase automation deploys GitHub Pages
+when this PR's README/assets paths change. Inspect and resolve that deployment
+boundary before merge; do not disable the workflow or infer a plugin installation.
+
+
+The operator subsequently requested README and GitHub Pages updates only where
+applicable. README now explains durable handoffs and the optional formal lifecycle,
+and its learning diagram names the authoritative Project Learning checkpoint.
+The showcase already accurately illustrates ownership, the task loop and per-host
+installation, so no additional page redesign or diagram regeneration is needed.
+Existing README/artwork changes trigger its scoped Pages publication after merge;
+that applicable publication is now authorized. No plugin installation or release
+tagging follows from this grant.
+
+
+### Correction batch validation
+
+All five confirmed findings are corrected locally and awaiting publication. The
+statechart worker changed only its three assigned script/test files; parent
+inspected the combined source diff and kept the single correction wave.
+
+- Root suite: 263 passed (210.276 seconds).
+- Native Forge: 111 passed; strict TypeScript passed. Three new emission-delay
+  cases supplement the prior deadline tests, including emission beyond the deadline.
+- Statechart: 54 passed, 100 external-tool skips, 0 failed (154 total). Three new
+  dependency-free CLI regressions each failed on the original implementation.
+  The fake TLC transport checks exact configuration serialization and command
+  behavior; it is not evidence that a real TLC model check ran.
+- Project Learning: 21 passed. Unchanged parser and terminal fixtures retain their
+  prior 7/47 passing evidence; cloud change-relevant checks will run as configured.
+- README inventory, Forge inventory, bundle lock/verification, whitespace and
+  five showcase consistency checks passed. Core/full package results recorded
+  in the PR publication receipt after completion.
+- No native host qualification, real TLC/rendering, or installed-plugin update
+  is claimed. The local CodeRabbit waiver still applies.
+
+The README clarification changes no diagram geometry or web interaction. Existing
+showcase source and generated assets are unchanged by this batch and pass their
+consistency tests. No running Chromium target or default Playwright module was
+available; no new browser-run result is claimed for this documentation update.

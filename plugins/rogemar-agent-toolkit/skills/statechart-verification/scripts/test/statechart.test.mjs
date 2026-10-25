@@ -6859,3 +6859,101 @@ test("no file in scripts/ passes 1000 lines", () => {
   assert.deepEqual(long, [], "move cohesive parts of each listed file into their own modules");
 });
 
+
+// A transport fixture records exactly what the CLI gives TLC; it does not model-check.
+function recordedTlc(dir) {
+  const graph = `digraph G {
+1 [label="s = \\"Ready\\"",style=filled];
+2 [label="s = \\"Done\\""];
+1 -> 2 [label="Pay"];
+}\n`;
+  const java = join(dir, "record-tlc.mjs");
+  const jar = join(dir, "fixture.jar");
+  const log = join(dir, "configs.jsonl");
+  writeFileSync(jar, "transport fixture, not a TLC jar");
+  writeFileSync(java, `#!${process.execPath}
+import fs from 'node:fs';
+const args = process.argv.slice(2);
+fs.appendFileSync(${JSON.stringify(log)}, JSON.stringify(fs.readFileSync(args[args.indexOf('-config') + 1], 'utf8')) + '\\n');
+if (args.includes('-dump')) fs.writeFileSync(args[args.indexOf('-dump') + 2], ${JSON.stringify(graph)});
+console.log('TLC2 Version fixture\\nModel checking completed. No error has been found.');
+`, { mode: 0o755 });
+  writeFileSync(join(dir, "Pay.tla"), '---- MODULE Pay ----\nVARIABLE s\nSpec == TRUE\nSafe == TRUE\nEventually == TRUE\n====\n');
+  writeFileSync(join(dir, "Pay.cfg"), "SPECIFICATION Spec\n");
+  writeFileSync(join(dir, "Pay.map.mjs"), 'export const state = v => v.s;\n');
+  return { env: { JAVA: java, TLA2TOOLS: jar }, log };
+}
+
+test("TLC configuration preserves quoted values, escapes and comment-like keywords", () => {
+  const dir = mkdtempSync(join(tmpdir(), "statechart-config-"));
+  try {
+    const { env, log } = recordedTlc(dir);
+    const constants = String.raw`CONSTANTS
+  Input = "two  spaces"
+  Marker = "(* INVARIANT fake *) PROPERTY alsoFake"
+  Slash = "\\* INVARIANT notARule"
+  Quote = "escaped \" INVARIANT stillText"
+`;
+    writeFileSync(join(dir, "Pay.cfg"), `SPECIFICATION Spec\n${constants}INVARIANTS Safe\n(* INVARIANT ignored (* nested *) PROPERTY ignoredToo *)\nPROPERTIES Eventually\nCHECK_DEADLOCK FALSE\n`);
+    const r = node("statechart.mjs", ["from-spec", "Pay.tla"], dir, env);
+    assert.equal(r.status, 0, r.stderr);
+    const configs = readFileSync(log, "utf8").trim().split("\n").map(JSON.parse);
+    assert.equal(configs.length, 3, "one invariant, one property and the graph run");
+    for (const cfg of configs) {
+      assert.ok(cfg.includes(constants), cfg);
+      assert.match(cfg, /CHECK_DEADLOCK FALSE/);
+    }
+    assert.match(configs[0], /INVARIANT Safe\nCONSTRAINT Safe/);
+    assert.match(configs[1], /PROPERTY Eventually\n/);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("shared transition endpoints retain second-model labels and changed guards", () => {
+  const dir = mkdtempSync(join(tmpdir(), "statechart-edges-"));
+  try {
+    const dot = (actions) => `digraph G {
+1 [label="s = \\"Ready\\"",style=filled];
+2 [label="s = \\"Done\\""];
+${actions.map(action => `1 -> 2 [label="${action}"];`).join("\n")}
+}\n`;
+    writeFileSync(join(dir, "now.dot"), dot(["Pay", "Same", "GuardOld"]));
+    writeFileSync(join(dir, "second.dot"), dot(["Refund", "Same", "GuardNew"]));
+    writeFileSync(join(dir, "map.mjs"), `export const state = v => v.s;
+export const step = action => action.startsWith('Guard') ? 'Continue' : action;
+export const guard = action => action === 'GuardOld' ? 'old condition' : action === 'GuardNew' ? 'new condition' : '';
+`);
+    for (const [role, prefix] of [["fixed", "with the fix"], ["against", "in the spec"]]) {
+      const r = node("tlc-to-chart.mjs", ["--dot", "now.dot", `--${role}-dot`, "second.dot", "--map", "map.mjs", "--full-labels", "--out", "chart.mmd"], dir);
+      assert.equal(r.status, 0, r.stderr);
+      const chart = readFileSync(join(dir, "chart.mmd"), "utf8").replaceAll("<br/>", " ");
+      assert.ok(chart.includes(`${prefix}, Refund`), chart);
+      assert.ok(chart.includes(`${prefix}, Continue [new condition]`), chart);
+      assert.ok(chart.includes("Continue [old condition]"), chart);
+      assert.ok(chart.includes("Pay"), chart);
+      assert.equal(chart.includes(`${prefix}, Same`), false, "identical behavior needs no duplicate label");
+    }
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("unusable mapping imports exit 2 and identify the mapping and original error", () => {
+  const dir = mkdtempSync(join(tmpdir(), "statechart-map-"));
+  try {
+    const { env } = recordedTlc(dir);
+    for (const [body, error] of [
+      ["export const state = ;", /Unexpected token/],
+      ["throw new Error('mapping unavailable');", /mapping unavailable/],
+    ]) {
+      writeFileSync(join(dir, "Pay.map.mjs"), body);
+      const r = node("statechart.mjs", ["from-spec", "Pay.tla"], dir, env);
+      assert.equal(r.status, 2, r.stderr);
+      assert.match(r.stderr, /cannot use the mapping Pay\.map\.mjs:/);
+      assert.match(r.stderr, error);
+    }
+    rmSync(join(dir, "Pay.map.mjs"));
+    writeFileSync(join(dir, "pay.mmd"), "stateDiagram-v2\n  [*] --> Ready\n  Ready --> Done : Pay\n");
+    const missing = node("statechart.mjs", ["from-chart", "pay.mmd"], dir, env);
+    assert.equal(missing.status, 2, missing.stderr);
+    assert.match(missing.stderr, /cannot use the mapping Pay\.map\.mjs:/);
+    assert.match(missing.stderr, /Cannot find module/);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});

@@ -124,29 +124,66 @@ const KEYWORD =
   /^(SPECIFICATION|INIT|NEXT|CONSTANTS?|INVARIANTS?|PROPERTY|PROPERTIES|SYMMETRY|VIEW|CONSTRAINTS?|ACTION_CONSTRAINTS?|CHECK_DEADLOCK|POSTCONDITION|ALIAS)$/;
 
 function splitRules(cfg) {
-  const words = cfg
-    .replace(/\(\*[^]*?\*\)/g, " ")
-    .replace(/\\\*.*/g, " ")
-    .split(/\s+/)
-    .filter(Boolean);
-  const kept = [];
+  // Keep source slices intact: whitespace, comment markers and keywords inside strings
+  // are model data. Only unquoted section tokens can delimit the rules we extract.
+  const tokens = [];
+  for (let i = 0; i < cfg.length;) {
+    if (/\s/.test(cfg[i])) { i++; continue; }
+    if (cfg.startsWith("\\*", i)) {
+      while (i < cfg.length && !/[\r\n]/.test(cfg[i])) i++;
+      continue;
+    }
+    if (cfg.startsWith("(*", i)) {
+      let depth = 1;
+      i += 2;
+      while (i < cfg.length && depth) {
+        if (cfg.startsWith("(*", i)) { depth++; i += 2; }
+        else if (cfg.startsWith("*)", i)) { depth--; i += 2; }
+        else i++;
+      }
+      if (depth) throw new CannotFinish("unclosed block comment in TLC configuration");
+      continue;
+    }
+    const start = i;
+    const quoted = cfg[i] === '"';
+    if (quoted) {
+      i++;
+      while (i < cfg.length && cfg[i] !== '"') i += cfg[i] === "\\" ? 2 : 1;
+      if (i >= cfg.length) throw new CannotFinish("unclosed string in TLC configuration");
+      i++;
+    } else {
+      do { i++; } while (i < cfg.length && !/\s|"/.test(cfg[i]) &&
+        !cfg.startsWith("\\*", i) && !cfg.startsWith("(*", i));
+    }
+    tokens.push({ text: cfg.slice(start, i), start, quoted });
+  }
   const rules = [];
   const properties = [];
+  const removed = [];
   let section = "";
-  for (const w of words) {
-    if (KEYWORD.test(w)) section = w;
-    const list = /^INVARIANTS?$/.test(section)
-      ? rules
-      : /^PROPERT(Y|IES)$/.test(section)
-        ? properties
-        : null;
-    if (!list) kept.push(KEYWORD.test(w) && kept.length ? `\n${w}` : w);
-    else if (w !== section && !list.includes(w)) list.push(w);
+  let ruleStart;
+  for (const { text, start, quoted } of tokens) {
+    if (!quoted && KEYWORD.test(text)) {
+      if (ruleStart !== undefined) removed.push([ruleStart, start]);
+      section = text;
+      ruleStart = /^(INVARIANTS?|PROPERT(Y|IES))$/.test(section) ? start : undefined;
+      continue;
+    }
+    const list = /^INVARIANTS?$/.test(section) ? rules : /^PROPERT(Y|IES)$/.test(section) ? properties : null;
+    if (list && !list.includes(text)) list.push(text);
   }
+  if (ruleStart !== undefined) removed.push([ruleStart, cfg.length]);
+  let cfgWithoutRules = "";
+  let from = 0;
+  for (const [start, end] of removed) {
+    cfgWithoutRules += cfg.slice(from, start) + "\n";
+    from = end;
+  }
+  cfgWithoutRules += cfg.slice(from) + "\n";
   // TLC takes only a state predicate as an INVARIANT, and checks a state predicate given as a
   // PROPERTY only in the initial states, which the INVARIANT run checks too.
   return {
-    cfgWithoutRules: `${kept.join(" ")}\n`,
+    cfgWithoutRules,
     rules,
     properties: properties.filter((p) => !rules.includes(p)),
   };
@@ -374,7 +411,12 @@ async function draw({ now, other, uncited, map, work, out, title, comparing, cov
       `${rel(huge.spec)}: TLC's state graph ${huge.stopped ? `passed ${limit} bytes, the most that the command can read, so the command stopped TLC and draws no chart` : `has ${huge.dotBytes.toLocaleString("en-US")} bytes, more than the ${limit} that the command can read, so it draws no chart`}. The rule results above stand. Smaller constants make a smaller graph.`,
     );
   const shown = published(work, out);
-  const mapping = await import(pathToFileURL(path.resolve(map)).href);
+  let mapping;
+  try {
+    mapping = await import(pathToFileURL(path.resolve(map)).href);
+  } catch (e) {
+    throw new CannotFinish(`cannot use the mapping ${rel(map)}: ${e instanceof Error ? e.message : String(e)}`);
+  }
   const from = ["--dot", now.dot, "--broken", now.dumpOut, "--map", map, "--spec", now.copy];
   for (const m of [now, other]) if (m?.next) from.push("--next", m.next);
   from.push(...now.traces.flatMap((t) => ["--traces", t.file]));

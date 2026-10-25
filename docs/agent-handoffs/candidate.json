@@ -2,7 +2,7 @@
   "schema_version": 1,
   "baseline_head": "3cdfb485dd8d9bbfd0caeff3c8f091c0479dda16",
   "remote_main_observed": "475ae282a086cc6932b82f3044cb66f3978de605",
-  "state": "source-published-to-pr; local-git-uncommitted",
+  "state": "review-remediation-prepared; local-git-uncommitted",
   "scope": "All intended changed tracked and untracked repository files, including preserved earlier edits and content from newer remote main. Handoff status files excluded to avoid self-reference. This identifies contents, not a completed Git integration or review approval.",
   "files": [
     {
@@ -39,7 +39,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "e0fbd646519b5e3a724fcacdd72d83bbf86b0b15102ca4297bdcf130b2c67283"
+      "sha256": "a123420d94912cc0f75528d0ae0ed952e065e561fb31cca4acb6d8cb8c6ff0c6"
     },
     {
       "path": "catalog/imported-sources.json",
@@ -47,7 +47,7 @@
     },
     {
       "path": "catalog/skills.lock.json",
-      "sha256": "6d7398dd417cc89360d6eb994b86e6009aaf48f290fdcf6df76ba70c54d77d2c"
+      "sha256": "8f0ff0b598264a4d4e37c9744307b52d6e775904ca80a068a8373b7bcb412eb0"
     },
     {
       "path": "catalog/skills.yaml",
@@ -227,7 +227,7 @@
     },
     {
       "path": "docs/watch-deadline-model.md",
-      "sha256": "aacaeb5df97db0c111d00ee3eb4184902afbe336130cdd2cfcaa7874806d943f"
+      "sha256": "6972bb421244f62469013e46f22731b83b0720f656bf311702d5c88ede11d40c"
     },
     {
       "path": "plugins/rogemar-agent-toolkit/.claude-plugin/plugin.json",
@@ -355,11 +355,11 @@
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/deadline.test.ts",
-      "sha256": "5e2d003e92ea0976eb74e52751f17833a7e51766dd2763b0c2d6c9c1f4540598"
+      "sha256": "eeeeeef445215bd48a9b05664b616d4e0f39ec54c6321745947277de9c4d6e4e"
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/policy.ts",
-      "sha256": "02bd52cbb63e666fe7b8ec0db34e7aa0646e9f89b2e0d8c1cfb8429b1f686593"
+      "sha256": "62462d189ba1633684fdbac86a0374585a95314d986c108ba7953d1fc605e693"
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/create-plan/SKILL.md",
@@ -483,7 +483,7 @@
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/formal-verification-create/SKILL.md",
-      "sha256": "b6467524222a94ab2090ac1629eb01567b2f5d021216b211055eec318152b0ef"
+      "sha256": "1e66b47fe0518f0ca8790e6c3d0d5614fb08dc4d68b99e5723daecbe93452c41"
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/formal-verification-create/agents/openai.yaml",
@@ -491,7 +491,7 @@
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/formal-verification-create/assets/verify-skill-template.md",
-      "sha256": "0b591af961e43e17a8f08b2564d146784a0d8dedbf8badae038a47d289c3870a"
+      "sha256": "d7d45ce0b131d97a40a6eec619a60b906e3b4f028469be07976db6ab9e1cc27e"
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/formal-verification-maintain/LICENSE.txt",
@@ -499,7 +499,7 @@
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/formal-verification-maintain/SKILL.md",
-      "sha256": "f63f77f31244db945a04b137f9861340cac28f1a19ed4f9020bae4b14dacb9ed"
+      "sha256": "2d0d6d02d6770fe9f95bf1eae7ea20150f682f0f369d92b951dbfb3b2c02586c"
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/formal-verification-maintain/agents/openai.yaml",
@@ -619,7 +619,7 @@
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/statechart.mjs",
-      "sha256": "5a28f24e2b137e76ba09c7f63231ee77aa8cd0071d1dbbe8d3d36e3de2b8738b"
+      "sha256": "6f6c592d11f15b9b4cb92d59cfd501294860f29a4aa5979e45095e5d2915ae8d"
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/test/band.mmd",
@@ -631,7 +631,7 @@
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/test/statechart.test.mjs",
-      "sha256": "4515ab4316589e15fef43155b65aaf4676ee465e5475a61825bd1bf3c5be055a"
+      "sha256": "dcb533ca749bc71565dcd94a47095647a283dc460e45d7a12ebdc191b9ad9219"
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/test/sync.mmd",
@@ -647,7 +647,7 @@
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/tlc-to-chart.mjs",
-      "sha256": "c26741fc1cb9c53715500b50868d5fdbef46865ac9ccf0eacd8c8ed51373abc9"
+      "sha256": "4fe087fc91875ab38e9ba36a75c3bb9dde9eae8c71fbc5b2dd7159fb9b9e3ed2"
     },
     {
       "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/tlc-tools.mjs",
@@ -839,5 +839,18 @@
     "cloud_reviews": "pending",
     "ci": "pending",
     "note": "This receipt is a later documentation-only commit. Query live PR head for current cloud evidence."
+  },
+  "review_remediation": {
+    "base_head": "aa6ab15ee21269c4725317d01b3cd76994abb29f",
+    "findings": [
+      4367662419,
+      4367662420,
+      4367665660,
+      4367665663,
+      4367665668
+    ],
+    "status": "validated locally; publication and due cloud evidence pending",
+    "merge_authorized": true,
+    "applicable_pages_publication_authorized": true
   }
 }

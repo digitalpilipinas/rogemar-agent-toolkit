@@ -30,8 +30,13 @@ This is an authoring template. Replace all placeholders before qualification.
    from violated safety rules.
 5. Replay counterexamples through <actual implementation entry points> and
    inspect observable outcomes. Classify model drift, product defect or blocker.
-6. Confirm sensitivity with <isolated real-code mutation and expected failure>.
-   Inspect the mutation, restore it, and confirm the initial product verdict.
+6. For a model-only route, confirm checker sensitivity with <isolated model or
+   property mutation and expected violation>. This does not establish implementation
+   coverage; preserve the separate correspondence and replay evidence from step 5.
+   If an implementation-level verifier or harness is included, also require
+   <isolated real-code mutation and expected failure> through that layer.
+   Inspect each mutation against its pristine baseline, restore only that mutation,
+   and confirm the original verdict. Record the layer exercised and any limits.
 
 ## Record and maintain
 

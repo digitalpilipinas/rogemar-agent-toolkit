@@ -71,6 +71,30 @@ describe("polling deadline", () => {
     expect(now).toBe(5);
   });
 
+  for (const emitDelay of [0.5, 1, 2]) {
+    it(`bounds retry sleep after a ${emitDelay}s progress emission`, async () => {
+      let now = 0;
+      const sleeps: number[] = [];
+      const base = fakeReader({ fastPath: { kind: "checks", checks: [pendingCheck()] } });
+      const result = await runSimple({
+        contexts: [context], mode: "single", statusOnly: false,
+        options: { interval: 60, timeout: 1, sweepInterval: 300, maxQueryErrors: 5, allowDraft: false },
+        dependencies: {
+          reader: { ...base, async pullRequest() {
+            throw new WatcherQueryError({ kind: "checks-unavailable", retryable: true, detail: "temporary failure" });
+          } },
+          clock: { now: () => now, observedAt: () => "2026-10-25", async sleep(seconds) {
+            expect(seconds).toBeLessThanOrEqual(1 - now);
+            sleeps.push(seconds); now += seconds;
+          } },
+          emit(event) { if (event.kind === "RETRY") now += emitDelay; },
+        },
+      });
+      expect(result.kind).toBe("TIMEOUT");
+      expect(sleeps).toEqual(emitDelay < 1 ? [1 - emitDelay] : []);
+    });
+  }
+
   it("keeps timeout zero unbounded", async () => {
     let now = 0;
     const sleeps: number[] = [];

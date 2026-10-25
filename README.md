@@ -264,6 +264,13 @@ briefs. Reuse valid preparation instead of auditing every tool on every task.
 
 ## How delivery works
 
+Before planning, resuming or switching harnesses, agents discover existing task
+handoffs and reconcile them with current source and instructions. Integrated
+Workflow keeps indexed records for planned, active and completed tasks, including
+decisions, verification, blockers and next actions. Records travel with authorized
+Git commits; a local record is not available to another environment until published.
+See [durable handoffs](plugins/rogemar-agent-toolkit/skills/integrated-workflow/references/durable-handoffs.md).
+
 A **vertical slice** is one complete piece of user-facing behavior—for example,
 creating, saving and reopening a saved search. It can span several sprints and
 commits while staying on one branch and optional draft PR.
@@ -312,7 +319,7 @@ flowchart TD
     follow --> finish
     due -->|"Allowance exhausted"| blocked["Report review gap; do not merge"]
     due -->|"No"| handoff["Hand off, or merge only when authorized"]
-    handoff -. "Verified completion; enrolled only" .-> learn["Inactive lesson candidate; optional knowledge upkeep"]
+    handoff -. "Verified completion; enrolled only" .-> learn["Project Learning checkpoint; optional knowledge upkeep"]
 ```
 
 For substantive work, Integrated Workflow requires local CodeRabbit review of the
@@ -432,6 +439,17 @@ File installation and live execution are different checks. See
 harness-specific paths; support for every assistant/version is not implied.
 
 </details>
+
+## Formal verification when the property needs it
+
+The engineering pack includes `formal-verification-create`,
+`formal-verification-maintain` and `statechart-verification`. Use them selectively
+for consequential state, concurrency or retry properties: create a runnable
+project check, maintain its correspondence with code, and explain model results
+and counterexamples. Model-checker sensitivity, implementation replay and
+implementation-level mutation checks provide different evidence. A bounded model
+pass does not prove the whole application correct; external TLC and rendering
+tools require their own preparation and execution evidence.
 
 ## Design and app testing
 

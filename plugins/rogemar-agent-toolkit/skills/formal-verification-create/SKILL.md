@@ -22,7 +22,7 @@ Pick the tool that answers the question at the lowest cost: a model checker, a p
 ## What makes it good
 
 - **True to the code.** Every part of the model or proof points to code that a reviewer can open. What the verification treats as one indivisible step is one indivisible step in the code. Names come from this repo.
-- **Able to fail.** A check that you have never seen fail proves nothing. Show each property failing on a broken variant of the code it guards, such as a removed check or a reordered step.
+- **Able to fail.** A check that you have never seen fail proves nothing. For a model-only check, show each property failing on an intentional model or property mutation, such as a removed guard or a reordered step. For an implementation-level verifier or test harness, show the corresponding real-code mutation failing. Checker sensitivity and implementation coverage are separate evidence.
 - **Findings stay findings.** When the current code breaks the property, report it with the counterexample in the code's terms. Do not weaken the property or the model until it passes, and do not change product code unless the user asks.
 - **Honest about scope.** Say what is verified, under which bounds and assumptions, and what is left out. A pass covers the model or the bound, not the whole system.
 - **Readable without the tool.** State the property and the harm in one plain sentence each. Tell a counterexample as a short sequence of steps in the code's words.
@@ -37,7 +37,7 @@ If the check is a TLA+ model, tell the next agent to read every result with the 
 
 ## Prove it before you hand off
 
-Follow the generated skill once, as the next agent would, on a scratch change that breaks the property in the real code. It must catch the break. Then drop the scratch change and confirm that the check is back where it started: passing, or failing only on the findings you will report. A verify skill that was never run is a draft. If the skill misses the break or a step does not run, fix the skill or the verification, not the scratch change.
+Follow the generated skill once, as the next agent would. For a model-only route such as TLA+, make an isolated model or property mutation that introduces the intended violation and confirm the checker detects it. Inspect the mutation against the pristine baseline. Separately review code correspondence and replay counterexamples against real implementation behavior; a model mutation alone does not establish implementation coverage. Require a real-code mutation to fail when an implementation-level verifier or executable harness is included. Record which layer caught which break, restore only the intentional mutation, and confirm the original verdict: passing, or failing only on the findings you will report. A verify skill that was never run is a draft. If the intended layer misses the break or a step does not run, fix the skill or verification, not the scratch mutation.
 
 ## Hand off
 

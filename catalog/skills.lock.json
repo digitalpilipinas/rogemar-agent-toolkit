@@ -5657,7 +5657,7 @@
     },
     "codex-forge": {
       "file_count": 69,
-      "sha256": "eeae1cece56a88ac43543e41dc78a178f6bd5afa04d6cef0b4db2c435e438f95"
+      "sha256": "24ff0fb89dcf473b9cebb8e5f773414a5d1f1112537cfa67fca02e3e390ab964"
     },
     "create-plan": {
       "file_count": 6,
@@ -5905,11 +5905,11 @@
     },
     "formal-verification-create": {
       "file_count": 4,
-      "sha256": "a13f030603d88ac6077981c49dca1618e5b4f2d834ae8a48bbc071e2f9b25c0b"
+      "sha256": "e4b97a821bf920b9783add4106fa2eeedc4443c53baab009f93f60a1d3f8c73e"
     },
     "formal-verification-maintain": {
       "file_count": 3,
-      "sha256": "6eaaa4eda46c445fee77febdcb882ecbd0ddc7023e6db93cb6c7e712d7a388fb"
+      "sha256": "48ea1573e45c3ccd9c7e8117f43b47656e553bf33d8c5ebe3c421747d050031a"
     },
     "frontend-design": {
       "file_count": 6,
@@ -6037,7 +6037,7 @@
     },
     "statechart-verification": {
       "file_count": 30,
-      "sha256": "468c477714a82ef43f20d3b8cd2e8f20d3419bfa1443da18d607b3f227e8fab2"
+      "sha256": "1a98b477bf723af42586b14d63494cfb041ce3711dad02d4925d3146a44d1d94"
     },
     "supabase": {
       "file_count": 4,

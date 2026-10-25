@@ -403,7 +403,7 @@ async function pollUntilTerminal<V>(args: {
           exitCode: 5,
           reason: { kind: "status-unavailable", failure: error.failure },
         });
-      await args.dependencies.clock.sleep(retryInSeconds);
+      await args.dependencies.clock.sleep(boundedSleep(retryInSeconds));
       continue;
     }
     if (result.kind === "terminal") return result.verdict;
