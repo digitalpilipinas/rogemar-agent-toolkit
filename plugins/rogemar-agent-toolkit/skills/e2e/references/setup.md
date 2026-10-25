@@ -144,6 +144,10 @@ or `E2E_USER_ADMIN_PASSWORD` first, or defer to fill time with
   cannot record (one notice), a target or test mode requires it
   (`UNSUPPORTED_ARTIFACT`); a retry mode with `retries: 0` prints a notice;
   neither invalidates the replay cache.
+- Routine iterations choose explicit `video: 'off'` and `trace: 'off'`; a
+  required claim or focused diagnosis opts in. Upstream defaults stay as
+  documented above; these are usage recommendations, not changed SDK defaults. See
+  [verification efficiency](../../workflow-orchestrator/references/verification-efficiency.md).
 
 ## The app under test
 

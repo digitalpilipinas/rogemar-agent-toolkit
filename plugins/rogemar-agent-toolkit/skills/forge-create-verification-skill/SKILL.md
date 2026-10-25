@@ -10,7 +10,9 @@ license: MIT
 This entry is shared by Codex, Cursor, Claude and Universal Forge. Read
 [the shared Forge runtime](../workflow-orchestrator/references/forge-runtime.md)
 before dispatch. `workflow-orchestrator` alone selects specialists and dispatches
-workers. Keep one delivery owner and acceptance record.
+workers. Keep one delivery owner and acceptance record. Give generated skills
+evidence-selection and teardown rules from
+[verification efficiency](../workflow-orchestrator/references/verification-efficiency.md).
 
 Select this method automatically only when changed behavior needs new coverage,
 a recipe breaks, relevant dependencies change, or the owner requests an update.

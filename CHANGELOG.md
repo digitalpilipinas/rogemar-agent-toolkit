@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.1 — Focused verification and evidence lifecycle
+
+- Select simulator and UI checks by changed behavior and acceptance boundary, not commit or review-comment count.
+- Diagnose repeated unexplained failures before another broad run.
+- Choose explicit video/trace settings for routine work and targeted diagnostics; distinguish captured artifacts from inspected evidence.
+- Preserve required proof through teardown, with project-owned retention, protected pins and separately approved cleanup.
+- Keep all existing review providers, required gates and external runtime dependencies unchanged.
+
 ## 1.2.0 — Workflow reliability and verification (prepared, unpublished)
 
 - Reconcile current GitHub content with local improvements while preserving existing edits.

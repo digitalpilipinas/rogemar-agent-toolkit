@@ -115,6 +115,8 @@ appropriate rather than creating separate Judges for every implementation or QA 
 Run focused checks during work and the repository-native checks covering the final
 integrated diff before slice acceptance. Distinguish pre-existing failures from
 regressions. Preserve required checks even for the small-change exception.
+For cadence, failure classification and evidence reuse, see
+[verification efficiency](../../workflow-orchestrator/references/verification-efficiency.md).
 
 With publication authority, meaningful intermediate commits and feature-branch
 pushes may accumulate while the slice is branch-only or draft. Inspect/stage only

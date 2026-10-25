@@ -5625,7 +5625,7 @@
     },
     "bug-triage": {
       "file_count": 3,
-      "sha256": "29954494b093de18ded7e7160c26fa2c3f11aa790969d94dee31f2684d824469"
+      "sha256": "fa92e38424af8e256ac071cf07c158801d7985508b72d0c3caf71c3fc3136116"
     },
     "claude-forge": {
       "file_count": 30,
@@ -5705,7 +5705,7 @@
     },
     "e2e": {
       "file_count": 11,
-      "sha256": "0df7b5d8e0f5eab3e19beb865588239fc57926455a8149e57357e71089aba1ed"
+      "sha256": "2b650793b7e82cff0352f120a7cca0b48ec89b585bfb2c04479a29d4da0ac6f6"
     },
     "engineering-playbooks": {
       "file_count": 61,
@@ -5741,7 +5741,7 @@
     },
     "forge-create-verification-skill": {
       "file_count": 6,
-      "sha256": "fa86f4bc2c7a1aa35503a82a709b85322b36659c2bfcc8d2d75c0ecc8aaab0cd"
+      "sha256": "05fa36745a8c3ff6d01478365eacba7b77542fa391d61794a93f69e56f2550b2"
     },
     "forge-figure-it-out": {
       "file_count": 3,
@@ -5757,7 +5757,7 @@
     },
     "forge-maintain-verification-skill": {
       "file_count": 3,
-      "sha256": "5045446c329022bb0aa327b657af9813a907c5b3655e213fa114cab4847a54a5"
+      "sha256": "058c0e0a3b03f914954b333aa8679a2df640bce4a6b3945be9fc29e5cdfa458e"
     },
     "forge-make-bot-ui": {
       "file_count": 3,
@@ -5933,7 +5933,7 @@
     },
     "integrated-workflow": {
       "file_count": 12,
-      "sha256": "ec6e0509642da544b5159c0ae71ddd2ac20296e51cf6e73cd27455dac321c616"
+      "sha256": "72baaedfd85176824757026d259c61c6ba9c0a63b7b9d0ac18e434b6f7b12436"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -6073,7 +6073,7 @@
     },
     "test-architecture-engineer": {
       "file_count": 2,
-      "sha256": "1363b8af602a434973b252397c84bee78a17911b557943afe28ac6a943b8cfee"
+      "sha256": "5655d1c586e91cfc36e00c4210a7a3de4da87bca543a18f9a4e67adc71a9e822"
     },
     "transcribe": {
       "file_count": 7,
@@ -6101,11 +6101,11 @@
     },
     "visual-qa": {
       "file_count": 2,
-      "sha256": "d0409cbbdaeb48b01a8563777f7629234d5539238d5d0f0f3d9fa9ceba9d488d"
+      "sha256": "5586d54c903bfbbe563e49d882818f6fed8b186729ba3b7c3cc6ed802e7f1125"
     },
     "workflow-orchestrator": {
-      "file_count": 27,
-      "sha256": "7195a3ae94a58bbca20b160b5731cf1dc1659b43309fd720006e49e134e02392"
+      "file_count": 28,
+      "sha256": "4eb87b09f044ebfd4e0c7219794b366b319a60382a85b46806f7917c2e27ec84"
     },
     "xcode-build-benchmark": {
       "file_count": 6,
@@ -6128,5 +6128,5 @@
       "sha256": "e32e660ce521c92819734054a948b8dbbc5398e5ce492dc9559a6b13fc31f479"
     }
   },
-  "version": "1.2.0"
+  "version": "1.2.1"
 }

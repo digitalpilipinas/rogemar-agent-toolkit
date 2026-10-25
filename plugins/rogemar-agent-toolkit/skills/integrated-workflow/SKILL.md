@@ -115,6 +115,8 @@ as status authority and select only the next relevant task record on resume.
 ## Choose proportional checks
 
 Classify by effects and risk, not line count, file type or project size.
+For run cadence, repeated-failure discipline and evidence reuse, see
+[verification efficiency](../workflow-orchestrator/references/verification-efficiency.md).
 
 - **Small bounded correction:** localized, reversible, understood behavior with
   limited impact and focused verification. Inspect the actual diff and affected

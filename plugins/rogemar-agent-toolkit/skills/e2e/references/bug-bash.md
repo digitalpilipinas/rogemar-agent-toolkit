@@ -44,7 +44,9 @@ prove each bug. Report confirmed bugs only, each with its failing test.
 - On a mobile target, declare one target per device and give each explorer
   and verifier its own (topic `setup`).
 - Skip `--headed`. On an engine that records, `--video` gives each run a
-  replay for any confirmed bug.
+  replay for any confirmed bug. Video is a diagnostic choice here, not a
+  routine default; see
+  [verification efficiency](../../workflow-orchestrator/references/verification-efficiency.md).
 
 A bug-bash config, left untracked, spreads the project's config and
 overrides what a bug bash needs. Typing the import as `E2EConfig` keeps

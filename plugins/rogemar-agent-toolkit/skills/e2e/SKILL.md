@@ -41,6 +41,8 @@ Run the pinned local CLI through the project's package manager. Inspect the actu
 `report.json`, traces/screenshots and exit status. Confirm selected and executed
 counts, required assertions and no silently skipped required journey. Exit zero alone
 is insufficient: skipped or flaky coverage is not proof of the required outcome.
+For routine-iteration versus diagnostic recording choices, see
+[verification efficiency](../workflow-orchestrator/references/verification-efficiency.md).
 A failing assertion must remain failed; missing device/authentication/capabilities
 or exhausted budgets remain blocked, never successful. Keep deterministic browser,
 mobile, AI-driven, accessibility and physical-device evidence distinct.

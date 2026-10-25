@@ -27,7 +27,8 @@ its factual claims. These checks adapt Diagram Design's methods; see the
 
 ## Output
 
-Give prioritized UI defects, exact screen/state, suggested fix, and whether a visual re-test is needed.
+Give prioritized UI defects, exact screen/state, suggested fix, and whether a visual re-test is needed. For targeted versus routine capture, see
+[verification efficiency](../workflow-orchestrator/references/verification-efficiency.md).
 
 ## Optional delegation guidance
 
