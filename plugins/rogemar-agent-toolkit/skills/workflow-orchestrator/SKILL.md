@@ -98,6 +98,9 @@ to those records; discovery alone starts no programme or publication.
 
 ## Shared methods and native harness bindings
 
+For check cadence, repeated-failure discipline and evidence reuse, see
+[verification efficiency](references/verification-efficiency.md).
+
 Use the shared `engineering-playbooks` method for substantive engineering work when installed. In Codex, prefer the complete installed `codex-forge` implementation of that method. In Cursor, prefer installed `cursor-forge`, otherwise native PStack with reconciled dispatch ownership. On Claude, prefer installed `claude-forge` with `claude-forge-setup`. Elsewhere prefer `universal-forge` with `universal-plan-model-router`, falling back to the shared method if absent. Honor an explicit compatible entry choice and a declared `Harness: <name>`; a name does not prove live capabilities. Other harnesses use their own exposed models and tools. Select one execution owner; do not run the native and portable workflows twice.
 
 This orchestrator alone dispatches specialists and workers. For Codex, classify

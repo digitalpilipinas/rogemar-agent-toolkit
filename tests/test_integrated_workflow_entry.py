@@ -49,6 +49,18 @@ class IntegratedWorkflowEntryTests(unittest.TestCase):
         self.assertIn("Name\n   the playbook and the skills in that brief.", contract)
         self.assertIn("does not choose another\n   playbook", contract)
 
+    def test_verification_efficiency_reference_is_linked(self):
+        """Proportional checks route through the shared verification-efficiency method."""
+        path = SKILLS / "integrated-workflow/SKILL.md"
+        loop_path = SKILLS / "integrated-workflow/references/execution-loop.md"
+        if not (path.is_file() and loop_path.is_file()):
+            self.skipTest("Integrated Workflow was not selected for this distribution")
+        text = path.read_text()
+        self.assertIn("Choose proportional checks", text)
+        self.assertIn("verification-efficiency.md", text)
+        self.assertIn("verification-efficiency.md", loop_path.read_text())
+        self.assertIn("CodeRabbit", text)
+
     def test_forge_mode_includes_claude(self):
         """Forge mode applies on Claude as well as Codex, Cursor, and Universal."""
         text = (SKILLS / "workflow-orchestrator/SKILL.md").read_text()

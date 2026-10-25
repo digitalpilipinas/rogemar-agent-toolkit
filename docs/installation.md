@@ -517,8 +517,8 @@ plugin update establishes cloud adoption.
 A GitHub push updates the source repository. It does not establish that an installed
 plugin, a copied skill directory, or a running agent has loaded that revision.
 Record the source, tracked ref, installed version and a successful fresh-session
-discovery check for each receiving harness. Version `1.2.0` is prepared locally;
-its presence in a manifest is not proof of publication or installation.
+discovery check for each receiving harness. A version recorded in a manifest is
+not proof that it was published, installed or loaded by a running session.
 
 | Installation route | Update behavior and verification |
 | --- | --- |

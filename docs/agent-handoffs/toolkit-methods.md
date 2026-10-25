@@ -1,5 +1,23 @@
 # toolkit-methods: Align reusable methods and preserve useful detail
 
+## Verification-efficiency follow-up — 2026-10-26
+
+The operator approved a governed verification-efficiency update covering source,
+review, PR delivery, patch release and existing consumer adoption. This follow-up
+keeps reviewer requirements and acceptance standards unchanged. Earlier
+local-only restrictions and task-specific review waivers below are historical,
+not this follow-up's delivery authority.
+
+The canonical method is
+[`verification-efficiency.md`](../../plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/verification-efficiency.md).
+It covers phase-based checks, discriminating reruns, selective capture, inspected
+evidence, safe reuse and owner-controlled retention. Project runtime matrices,
+reservations and retention durations remain project-owned.
+
+Source implementation is in progress. No release, consumer update or native
+adoption is established by this record. Record reviewed source and delivery
+results in the corresponding PR/external receipt before claiming completion.
+
 - Status: completed at implementation/local-check boundary; aggregate acceptance blocked
 - As-of UTC: 2026-10-24T13:25:33.451158+00:00
 - Authority/status source: active operator-approved toolkit update and harness-handoff request; this task record is the local status source.

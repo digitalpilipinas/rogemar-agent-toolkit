@@ -2,7 +2,7 @@
   "schema_version": 2,
   "package": {
     "name": "rogemar-agent-toolkit",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "default_profile": "core",
     "supported_platforms": [
       "macos",

@@ -32,6 +32,8 @@ evidence is enough for this change?"
 - Do not delete or loosen failing tests unless the intended behavior changed and
   the new contract is explicit.
 - Keep tests deterministic and scoped to the behavior under review.
+- Route check cadence, failure triage and evidence reuse through
+  [verification efficiency](../workflow-orchestrator/references/verification-efficiency.md).
 
 ## Output
 

@@ -56,6 +56,8 @@ without device tooling retain the existing blocked/deferred evidence boundary.
    assistive-technology behavior; automation alone cannot prove accessibility.
    Use required browser/simulator/device checks under the programme's existing
    policy. Screenshots, interaction tests and physical-device proof are distinct.
+   For capture-versus-inspection and targeted screenshot selection, see
+   [verification efficiency](../../workflow-orchestrator/references/verification-efficiency.md).
 6. Record defects in the existing finding record. The implementation owner
    validates and fixes in-scope defects, then reruns affected checks on the
    updated candidate. Apply the existing convergence and scope rules; optional

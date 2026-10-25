@@ -35,6 +35,8 @@ It adds no mandatory hypothesis count, human checkpoint, or production access.
 - Do not guess from a stack trace alone when code or logs are available.
 - Do not erase local state, migrations, caches, or user changes unless explicitly asked.
 - Distinguish environment/tooling availability issues from application bugs before changing product code.
+- Classify each failed attempt and stop after two similar unexplained failures; see
+  [verification efficiency](../workflow-orchestrator/references/verification-efficiency.md).
 
 ## Optional delegation guidance
 
