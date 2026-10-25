@@ -1,5 +1,6 @@
 """Contract checks for the shared verification-efficiency method."""
 from pathlib import Path
+import json
 import re
 import unittest
 
@@ -26,18 +27,21 @@ LINKED = [
 class VerificationEfficiencyTests(unittest.TestCase):
     def test_every_entry_resolves_a_real_link(self):
         """Each listed entry contains a markdown link that resolves to the reference."""
-        if not REF.is_file():
+        selected = {entry['name'] for entry in json.loads((ROOT / 'catalog/skills.yaml').read_text())['vendored']}
+        if 'workflow-orchestrator' not in selected:
             self.skipTest("workflow-orchestrator not in this distribution")
+        self.assertTrue(REF.is_file())
         resolved_any = 0
         for rel in LINKED:
             path = SKILLS / rel
-            if not path.is_file():
+            if rel.split('/', 1)[0] not in selected:
                 continue
+            self.assertTrue(path.is_file(), rel)
             text = path.read_text()
-            match = re.search(r"\]\(([^)]+verification-efficiency\.md)\)", text)
-            self.assertIsNotNone(match, rel)
-            resolved = (path.parent / match.group(1)).resolve()
-            self.assertEqual(resolved, REF.resolve(), rel)
+            targets = re.findall(r"\]\(([^)]+verification-efficiency\.md)\)", text)
+            self.assertTrue(targets, rel)
+            for target in targets:
+                self.assertEqual((path.parent / target).resolve(), REF.resolve(), rel)
             resolved_any += 1
         self.assertGreater(resolved_any, 0)
 
