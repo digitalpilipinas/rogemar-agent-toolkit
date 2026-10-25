@@ -77,3 +77,25 @@ side effects. They do not prove independently protected policy, native Codex/Cur
 dispatch, model quality, owner identity or deployed sandbox behavior. Enroll that
 stronger tier only after the actual host protects its callbacks, state, producer,
 policy and verifier from candidate writes and passes its own boundary trials.
+
+## Verification limits and human intervention
+
+For AQ-01, state what verification establishes, consequential outcomes it cannot
+observe, whether harm would be detected before affecting users, and which effects
+can actually be reversed. Bind these limits to the exercised task/action/environment.
+Passing tests do not make irreversible effects reversible or grant new authority.
+Host qualification needs actual protected execution trials; instructions and local
+fixtures do not establish that an integration enforces them.
+
+ME-01 optionally records nonnegative per-task counts:
+
+- `human_product_decisions`: necessary choices of product intent or tradeoffs.
+- `human_corrections`: avoidable corrections of agent mistakes or missed constraints.
+- `manual_context_transfers`: avoidable relays of context or diagnostic results
+  that an available authorized tool could have supplied.
+
+Count each intervention once under its primary reason; do not count tokens,
+messages or agent-requested confirmations as interchangeable units. Missing counts
+stay null, not zero. Preserve failed attempts and compare equivalent task types,
+versions and observation windows. Store counts only, not private message contents.
+A reduction in messages alone does not establish better autonomy or quality.

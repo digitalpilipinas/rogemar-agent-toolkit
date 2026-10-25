@@ -24,6 +24,9 @@ class CheckSelectionTests(unittest.TestCase):
                  SELECT.S + 'codex-forge/scripts/check-plan.mjs']
         self.assertEqual(SELECT.select(paths), ['forge-plan', 'terminal'])
 
+    def test_statechart_change_selects_executable_owner_suite(self):
+        self.assertEqual(SELECT.select([SELECT.S + 'statechart-verification/scripts/tlc-tools.mjs']), ['formal-statechart'])
+
     def test_shared_contract_changes_include_learning_dependency(self):
         self.assertEqual(SELECT.select(['tests/test_alignment_contracts.py']), ['learning'])
 

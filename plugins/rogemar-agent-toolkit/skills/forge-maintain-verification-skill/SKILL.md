@@ -70,3 +70,9 @@ requests that scope; never call targeted coverage a complete map audit.
 Keep concise run notes (features covered, unreachable prerequisites, confirmed drift, outcome) in a scratch location; don't commit them.
 
 Group source inspections into the smallest useful assignments through the orchestrator and its concurrency cap. A worker does not spawn another worker. Runtime verification needs the matching surface; a verified prerequisite is not a verified feature. Apply local authorized corrections; a PR is only created with publication authority.
+
+For launch, initialization or fixture drift, apply the creator's
+[fresh-data startup contract](../forge-create-verification-skill/SKILL.md#fresh-data-startup-and-journey-prerequisites).
+Keep missing journey prerequisites visible and distinguish substitute-environment
+setup from target proof. Report a product initialization defect without editing
+product code under this maintainer's scope.

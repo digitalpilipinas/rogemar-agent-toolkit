@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/cursor/plugins",
+  "commit": "9580c23696ac8d7abed0c166f2f9918800afb819",
+  "purpose": "Exact upstream blobs for the adapted statechart executable payload. Local content digests belong to skills.lock.json; this does not claim byte identity after adaptation.",
+  "files": [
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/bug-states.mjs",
+      "git_blob_sha": "3c8e9f21f6046393903a5b496e65c5e93bf4727a",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/bug-states.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/chart-edges.mjs",
+      "git_blob_sha": "0f0db11dc51dbf10ab20715820861a682893789f",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/chart-edges.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/chart-parts.mjs",
+      "git_blob_sha": "eaa391d4e634b096d3625337f288627afb2e3427",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/chart-parts.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/chart-to-tla.mjs",
+      "git_blob_sha": "911c58698d7abf8c459134f0112a47750d317c1c",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/chart-to-tla.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/compare-charts.mjs",
+      "git_blob_sha": "730698be4e1dfadb4866ff5f61e6cba2b37fe6ce",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/compare-charts.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/lib.mjs",
+      "git_blob_sha": "238f1745e561aa5668cd09ec7a694836bf6b7156",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/lib.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/map-view.mjs",
+      "git_blob_sha": "e7e844b6d1fd6534408e94ac7f96fd7384ca5650",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/map-view.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/property-loop.mjs",
+      "git_blob_sha": "47bf0372f89f27251e8639445ef1716dd243ea94",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/property-loop.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/read-check.mjs",
+      "git_blob_sha": "18c52b6d1447583c0d3b4e0dbd01c0ffc701e47b",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/read-check.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/regions-chart.mjs",
+      "git_blob_sha": "95d746021468883e6a4adab5d82dc34d4f2c4082",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/regions-chart.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/render.mjs",
+      "git_blob_sha": "4c90c58531d8f99ccb28fa659df1e85e868e0c9c",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/render.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/rule-book.mjs",
+      "git_blob_sha": "3ea545228f7908394f903734b40157a23565e6b4",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/rule-book.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/second-replay.mjs",
+      "git_blob_sha": "1dba571c2c23d4648f0f15ffcf9359558e8de1be",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/second-replay.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/snapshot.mjs",
+      "git_blob_sha": "ebaf35573fb2208d9f3f29aca81669602d25171c",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/snapshot.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/spec-text.mjs",
+      "git_blob_sha": "ddfc8d10c9b22dd6bae3a4e4d950384bd0033574",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/spec-text.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/statechart-help.mjs",
+      "git_blob_sha": "1a900fc51f985a0e9b774bfc0fc6e0c4e484ff04",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/statechart-help.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/statechart.mjs",
+      "git_blob_sha": "555f10b8c83d98e7e5de07224b99cc339ba75935",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/statechart.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/test/band.mmd",
+      "git_blob_sha": "83af5860141f7d6ed4d0f323d1b3eef4303954ee",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/test/band.mmd"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/test/regions.mmd",
+      "git_blob_sha": "d241e24ff73c292e5fc62a81fd7ff17c189a5354",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/test/regions.mmd"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/test/statechart.test.mjs",
+      "git_blob_sha": "543fe8d67e3c7f5da3d54b678a48b05c8f7de820",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/test/statechart.test.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/test/sync.mmd",
+      "git_blob_sha": "c780c2e4336925b66e79c2bd107c045c69e54355",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/test/sync.mmd"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/test/upload.mmd",
+      "git_blob_sha": "dcfafa73793e4475427a6897466debd40c4e3f8f",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/test/upload.mmd"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/tlc-to-chart-args.mjs",
+      "git_blob_sha": "a2e0a3124641af13770fd7e4dc3e76c17f1ce347",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/tlc-to-chart-args.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/tlc-to-chart.mjs",
+      "git_blob_sha": "7aefe44be6e60425fd061d04379adb256b06f75d",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/tlc-to-chart.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/tlc-tools.mjs",
+      "git_blob_sha": "09d46de4a62173348de802643944bd54a1298e71",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/tlc-tools.mjs"
+    },
+    {
+      "upstream_path": "pstack/skills/statechart/scripts/ways-in.mjs",
+      "git_blob_sha": "e94658c804f62065b7bf4c7e0ae8c6854d1f0d69",
+      "local_path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/ways-in.mjs"
+    }
+  ]
+}

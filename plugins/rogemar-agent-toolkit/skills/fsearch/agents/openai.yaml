@@ -1,0 +1,4 @@
+interface:
+  display_name: "FSearch"
+  short_description: "Optional indexed file search on macOS"
+  default_prompt: "Use $fsearch to locate files within the relevant folder, then verify useful matches against current files."

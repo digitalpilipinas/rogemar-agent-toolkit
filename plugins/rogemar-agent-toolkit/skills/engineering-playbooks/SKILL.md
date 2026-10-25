@@ -1,6 +1,6 @@
 ---
 name: engineering-playbooks
-description: Apply a reusable engineering playbook for features, bug fixes, investigation, refactoring, performance, experiments, phased delivery, PR stacks, or session recovery across agent harnesses. Select one matching method; keep model and tool routing with the active harness.
+description: Apply a reusable engineering playbook for features, bug fixes, investigation, refactoring, performance, experiments, phased delivery, PR stacks, session recovery, or bounded review of completed outcomes across agent harnesses. Select one matching method; keep model and tool routing with the active harness.
 license: MIT
 ---
 # Engineering playbooks
@@ -62,6 +62,9 @@ These additions are separate from the 23 retained native playbook mappings:
   source-grounded findings, bounded coverage, actual execution isolation.
 - [External collaboration](playbooks/external-collaboration.md): native provider
   handoff with explicit identity, permissions, full agreed review and recovery.
+
+- [Completed-work review](references/completed-work-review.md): bounded outcome
+  sampling when recurring failures or an explicit process-review request warrant it.
 
 Select only the method needed. These entries do not install services, start
 background tasks, grant writes, or dispatch another coordinator.

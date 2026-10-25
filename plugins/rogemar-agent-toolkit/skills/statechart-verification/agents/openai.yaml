@@ -1,0 +1,4 @@
+interface:
+  display_name: "Statechart Verification"
+  short_description: "Check state models and explain counterexample paths"
+  default_prompt: "Use $statechart-verification for the relevant property and report executable evidence and limits."

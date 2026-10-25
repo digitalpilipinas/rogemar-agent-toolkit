@@ -2160,6 +2160,27 @@
           "codex"
         ]
       },
+      "formal-verification-toolchain": {
+        "activation": "Only for selected checking/rendering; no automatic installation by default.",
+        "install": "Use existing dependencies or authorized preparation in statechart-verification/references/dependencies.md.",
+        "kind": "runtime",
+        "name": "Formal verification toolchain",
+        "purpose": "Optional Java/TLC checking and Pele/resvg rendering; no runtime binaries are vendored.",
+        "repository": "https://github.com/tlaplus/tlaplus",
+        "targets": [
+          "agent-skills",
+          "codex",
+          "cursor",
+          "gemini",
+          "antigravity",
+          "grok-build",
+          "junie",
+          "command-code",
+          "z-code",
+          "claude",
+          "droid"
+        ]
+      },
       "hosting-clis": {
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
         "install": "Use the selected provider official CLI or surfaced connector; do not install all hosts.",
@@ -3175,7 +3196,8 @@
         "external": [
           "pstack",
           "unlazy",
-          "ponytail"
+          "ponytail",
+          "formal-verification-toolchain"
         ],
         "skills": [
           "agent-map",
@@ -3239,7 +3261,11 @@
           "universal-forge",
           "universal-plan-model-router",
           "codebase-design",
-          "codex-capability-maintainer"
+          "codex-capability-maintainer",
+          "fsearch",
+          "formal-verification-create",
+          "formal-verification-maintain",
+          "statechart-verification"
         ]
       },
       "expo": {
@@ -4672,7 +4698,60 @@
         "droid"
       ]
     },
+    "formal-verification-create": {
+      "requires": [
+        "code-review-tests",
+        "statechart-verification"
+      ],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "formal-verification-maintain": {
+      "requires": [
+        "formal-verification-create"
+      ],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
     "frontend-design": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
+    "fsearch": {
       "requires": [],
       "targets": [
         "agent-skills",
@@ -5137,6 +5216,24 @@
         "droid"
       ]
     },
+    "statechart-verification": {
+      "requires": [
+        "code-review-tests"
+      ],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
     "supabase": {
       "requires": [],
       "targets": [
@@ -5528,11 +5625,11 @@
     },
     "bug-triage": {
       "file_count": 3,
-      "sha256": "b96a591d19f4baac0bda4267a07774de0fdaef186c69f922ea3dafacb0d19169"
+      "sha256": "29954494b093de18ded7e7160c26fa2c3f11aa790969d94dee31f2684d824469"
     },
     "claude-forge": {
       "file_count": 30,
-      "sha256": "82e0dc2fcc0a47408a0d7c21fea78014160bc402f80e9526484f81bb89f4278d"
+      "sha256": "fd691c9f8ac46aad1478d653eb0dd24e1bd903a6966785146fac6c1ae12469ca"
     },
     "claude-forge-setup": {
       "file_count": 5,
@@ -5544,11 +5641,11 @@
     },
     "code-review-and-quality": {
       "file_count": 1,
-      "sha256": "459ca4b9bda82af7f75a0a7d3a2ee74e769a42374a12adbda77053e2f8b1a2df"
+      "sha256": "88b6c4b392a8320e7e8374c8ffa3a52200fb03ccf76b78f00115e4a295d2dbc6"
     },
     "code-review-tests": {
-      "file_count": 3,
-      "sha256": "1b6b35cccb620d711a30dca1b01e89a0f0e6b2c93de14ccee2cc72a2e7c96cf9"
+      "file_count": 5,
+      "sha256": "ba0b6bee2dca0e4e2840911e8d5b702ed880a0914fa1d8d74bae91112eaecdf4"
     },
     "codebase-design": {
       "file_count": 5,
@@ -5559,12 +5656,12 @@
       "sha256": "a43528bd05657396b2529f795fe62afb7ab59e8d6a21b66cf952c9ce955b24ae"
     },
     "codex-forge": {
-      "file_count": 68,
-      "sha256": "f65d468d3e88f732636c63035b478eb1e31c5e52604acf50d1f68e2e3ef1147d"
+      "file_count": 69,
+      "sha256": "24ff0fb89dcf473b9cebb8e5f773414a5d1f1112537cfa67fca02e3e390ab964"
     },
     "create-plan": {
       "file_count": 6,
-      "sha256": "a5829f781097e35a32ca91f168bd28e1975e149f60d573d7d0a77aa80b310959"
+      "sha256": "811eaf90b417dfcfa079ee5f4cb34dca0446e465a1155d512e81869e1d76e26b"
     },
     "csv-analytics-reporter": {
       "file_count": 2,
@@ -5600,7 +5697,7 @@
     },
     "devin-forge": {
       "file_count": 2,
-      "sha256": "97121a17235ed75bf3bd2e6907ac19c0a8e22af2fdba920f60545f7653831ab2"
+      "sha256": "e01b3603a33d5d1cbfab357fb0cebf7c18a6333d4c910ec8add340cdc91edcd8"
     },
     "dream-team": {
       "file_count": 7,
@@ -5611,8 +5708,8 @@
       "sha256": "0df7b5d8e0f5eab3e19beb865588239fc57926455a8149e57357e71089aba1ed"
     },
     "engineering-playbooks": {
-      "file_count": 60,
-      "sha256": "dd7e4935381fc569990145f0663ef0cc9b4d2bcb013b048e0d6cfeb9eaacd763"
+      "file_count": 61,
+      "sha256": "1428a45b9942c4c2c584bb2de64423759e96f5bdd84dadf980aa58c573d8e933"
     },
     "figma": {
       "file_count": 8,
@@ -5644,7 +5741,7 @@
     },
     "forge-create-verification-skill": {
       "file_count": 6,
-      "sha256": "276019fd1e3bd24fc1611144cb9a44ca5edf79f7543c6c1cceb419b5b59e1cd6"
+      "sha256": "fa86f4bc2c7a1aa35503a82a709b85322b36659c2bfcc8d2d75c0ecc8aaab0cd"
     },
     "forge-figure-it-out": {
       "file_count": 3,
@@ -5660,7 +5757,7 @@
     },
     "forge-maintain-verification-skill": {
       "file_count": 3,
-      "sha256": "a607a4c8a219fa87fe8d9135154d8831690573f8c42eaa18cafb483dae0a884d"
+      "sha256": "5045446c329022bb0aa327b657af9813a907c5b3655e213fa114cab4847a54a5"
     },
     "forge-make-bot-ui": {
       "file_count": 3,
@@ -5696,7 +5793,7 @@
     },
     "forge-principle-fix-root-causes": {
       "file_count": 3,
-      "sha256": "dd6e84709f90a0096efe9d877b73feb298b6193c146c59bfe074f65a1a92597e"
+      "sha256": "ab2ae4c672a319c42a67db145f19703af2a1a9c4fcfc6c25e521565e0b6f2463"
     },
     "forge-principle-foundational-thinking": {
       "file_count": 3,
@@ -5764,11 +5861,11 @@
     },
     "forge-recall": {
       "file_count": 3,
-      "sha256": "e19735dae862c8fe2a18457d11ec633d01c12179739b6af3c3159d8eafbabded"
+      "sha256": "bb28097889656542384bcef932f1d2840a6e33be47900e4caf948c07a010cb64"
     },
     "forge-reflect": {
-      "file_count": 7,
-      "sha256": "cab734463110ae367e9cdeb1c645e5a849626ee6010edb29f4ff13811118a27f"
+      "file_count": 8,
+      "sha256": "50798d6716575f1614418a9cd7ba45a4faee9d4172cc2ffbe1028f6ef5ceb924"
     },
     "forge-setup": {
       "file_count": 3,
@@ -5806,9 +5903,21 @@
       "file_count": 15,
       "sha256": "07507eac8ebbc1010f6a48436c411a4af2311d39f5f591d21ce9e316e8e0f33f"
     },
+    "formal-verification-create": {
+      "file_count": 4,
+      "sha256": "e4b97a821bf920b9783add4106fa2eeedc4443c53baab009f93f60a1d3f8c73e"
+    },
+    "formal-verification-maintain": {
+      "file_count": 3,
+      "sha256": "48ea1573e45c3ccd9c7e8117f43b47656e553bf33d8c5ebe3c421747d050031a"
+    },
     "frontend-design": {
       "file_count": 6,
       "sha256": "b8ebf6c6927a8745f0daf1a7ceedc40392d21f0e30c48876563c467da9402ad1"
+    },
+    "fsearch": {
+      "file_count": 2,
+      "sha256": "8db068f5540ce492214880c6a6be2ab25bee32b3655f5916a18679b40c2cf0d0"
     },
     "gh-address-comments": {
       "file_count": 6,
@@ -5823,8 +5932,8 @@
       "sha256": "fb9fbd76638be6d7b9ce978d0c0983b0f0672d67132bdb101c475f70704b7051"
     },
     "integrated-workflow": {
-      "file_count": 10,
-      "sha256": "15118af5ae6badc06e744e7c087d6a56034f98bc2c8f5c4f5d935e8fa9ac29e6"
+      "file_count": 12,
+      "sha256": "ec6e0509642da544b5159c0ae71ddd2ac20296e51cf6e73cd27455dac321c616"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -5926,6 +6035,10 @@
       "file_count": 6,
       "sha256": "856382f8ffac46278725332b66c1ce4b3c2ec1eaf7f44263c5fc6cc195a30de7"
     },
+    "statechart-verification": {
+      "file_count": 30,
+      "sha256": "1a98b477bf723af42586b14d63494cfb041ce3711dad02d4925d3146a44d1d94"
+    },
     "supabase": {
       "file_count": 4,
       "sha256": "8eff81cfcfed45d97798b9958d278e87498c2432318cf4a1efc54c6bd3685378"
@@ -5968,7 +6081,7 @@
     },
     "universal-forge": {
       "file_count": 5,
-      "sha256": "e00b45cb7b57983d67a4de08da6ae4544c5ad3ba18e6894bdcf3ae755979b099"
+      "sha256": "7305820abd91f8ee7d3a128d93fafa1a30eace4b99cfdaa1a1e01ec0cbc62e61"
     },
     "universal-plan-model-router": {
       "file_count": 2,
@@ -5991,8 +6104,8 @@
       "sha256": "d0409cbbdaeb48b01a8563777f7629234d5539238d5d0f0f3d9fa9ceba9d488d"
     },
     "workflow-orchestrator": {
-      "file_count": 25,
-      "sha256": "386874f8ee318c178f21bc8edf66b16e18ebc8c9ac99a61281f980c9afd8344a"
+      "file_count": 27,
+      "sha256": "7195a3ae94a58bbca20b160b5731cf1dc1659b43309fd720006e49e134e02392"
     },
     "xcode-build-benchmark": {
       "file_count": 6,
@@ -6015,5 +6128,5 @@
       "sha256": "e32e660ce521c92819734054a948b8dbbc5398e5ce492dc9559a6b13fc31f479"
     }
   },
-  "version": "1.1.0"
+  "version": "1.2.0"
 }

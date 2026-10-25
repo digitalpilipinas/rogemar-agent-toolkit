@@ -13,14 +13,14 @@ and other incidental writes (for example, use Python's `-B` option).
 
 | Event | Next action |
 | --- | --- |
-| Start/resume | Restore scope, candidate and unfinished gates. Read relevant accepted lessons and feature-map entries before diagnosing a vague report. |
+| Start/resume | Apply [handoff discovery](../../workflow-orchestrator/references/task-handoff-discovery.md), briefly report the relevant record or gap, and restore scope, candidate and unfinished gates. Read relevant accepted lessons and feature-map entries before diagnosing a vague report. |
 | Unfamiliar subsystem, multi-file impact, callers | Use an existing agent-map after its freshness check; one bounded query, then current source/tests. Missing, stale, unsupported or ambiguous results fall back to direct search. Missing edges never prove absence. Skip known-file work. |
 | Mapped behavior | Select affected journeys and meaningful failure cases before editing. Shared-code changes require all affected features, not just the reported screen. |
 | Missing recipe | Record a coverage gap. Discover and reuse an existing verifier; use forge-create-verification-skill only to create/extend within authorized scope. |
 | Draft verifier | Attempt its initial proof when prerequisites and authority permit; keep draft/blocked until observed success. One successful journey does not prove the map. |
 | Behavior/driver drift | Record updated, unchanged with reason, or coverage gap. Re-prove affected recipes; use forge-maintain-verification-skill for a full map audit when warranted. A partial repair is not completed maintenance. |
 | Acceptance/readiness | Run selected checks; validate their receipt against current candidate, required features/platforms and surviving artifacts. |
-| Verified completion | In enrolled projects, assess one evidenced candidate per native source turn through project-learning. Capture remains inactive; show only its due review reminder. |
+| Verified completion | Apply Project Learning's [enrolled workflow checkpoint](../../project-learning/SKILL.md#enrolled-workflow-checkpoint) when installed and enrolled. That owner determines capture, acceptance and due review reminders; learning errors never block delivery. |
 
 A feature map describes expected behavior; a navigation index locates code; a
 verifier drives it; accepted lessons guide future work. Keep one maintained feature
@@ -87,5 +87,6 @@ provider completion barrier and per-provider allowances.
 
 Keep handoffs to scope, candidate, selected checks, evidence/blockers and next action.
 Read accepted lessons, never pending candidates, as guidance. Learning failures do
-not block delivery. No background collector, automatic promotion, new hook or
-native model policy follows from these checkpoints.
+not block delivery. Checkpoint selection does not enroll a project or change
+Project Learning's acceptance policy, install a hook or collector, or alter
+native model policy.

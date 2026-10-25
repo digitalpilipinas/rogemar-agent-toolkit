@@ -37,7 +37,7 @@ It validates the declared dependency graph and overlapping running writers. It d
 not discover omitted dependencies, resolve aliases to physical worktrees, attest
 execution or isolate processes. Use actual host/worktree identity and inspect shared
 contracts, databases, generated output, credentials and runtime resources before
-parallel dispatch. Serialize writers in a shared worktree; separate worktrees alone
+parallel dispatch. Apply [writer isolation](writer-isolation.md); separate worktrees alone
 do not isolate a shared service.
 
 Before changing a completed producer, compute its affected descendants from the

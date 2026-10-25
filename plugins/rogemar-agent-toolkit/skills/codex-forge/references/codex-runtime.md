@@ -16,8 +16,8 @@ Each hint carries objective, exact owned scope, non-goals, read/write limits,
 isolation, evidence, independence reason, and stop condition. The main agent is
 an active implementer and integrator. It keeps coupled/shared work and may
 execute a package directly. Default to no worker for serial work and at most
-the lower of the runtime limit and three workers. Independent writes require
-separate worktrees. A worker cannot spawn descendants without a separately
+the lower of the runtime limit and three workers. Concurrent writes follow
+[writer isolation](../../workflow-orchestrator/references/writer-isolation.md). A worker cannot spawn descendants without a separately
 approved bounded assignment.
 
 `forge-agent` is an implementation-capable role under its assigned permissions;

@@ -174,7 +174,8 @@ def advance_update(record, event, observed_source, *, owner_decision=None):
 
 BOOLEAN_MEASURES = ('verified_success', 'false_completion', 'recurring_defect', 'stale_lesson_use',
                     'inappropriate_lesson_use', 'useful_knowledge_reuse')
-COUNT_MEASURES = ('prohibited_attempts', 'prohibited_blocked', 'unauthorized_completed')
+ACTION_COUNTS = ('prohibited_attempts', 'prohibited_blocked', 'unauthorized_completed')
+COUNT_MEASURES = ACTION_COUNTS + ('human_product_decisions', 'human_corrections', 'manual_context_transfers')
 COSTS = ('latency_seconds', 'tokens', 'usd', 'review_minutes', 'retrieval_minutes',
          'ingestion_minutes', 'storage_usd', 'recovery_minutes')
 
@@ -193,7 +194,7 @@ def measures(observations):
             require(item.get(field) is None or type(item[field]) is bool, 'Invalid boolean observation')
         for field in COUNT_MEASURES:
             require(item.get(field) is None or type(item[field]) is int and item[field] >= 0, 'Invalid action count')
-        if all(item.get(k) is not None for k in COUNT_MEASURES):
+        if all(item.get(k) is not None for k in ACTION_COUNTS):
             require(item['prohibited_blocked'] + item['unauthorized_completed'] <= item['prohibited_attempts'],
                     'Action outcomes exceed observed attempts')
         costs = item.get('costs', {})

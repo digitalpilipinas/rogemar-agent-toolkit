@@ -115,12 +115,22 @@ an actionable partial report; it does not erase valid independent work.
 
 ## Learning and knowledge
 
-In enrolled projects, assess at most the allowed evidenced learning candidate at the
-verified checkpoint. Capture is inactive; review can be a compact batch. Accepted
-rules remain scoped, revisable and revocable. Useful research may be retained through
-a separately enrolled ingest/query/lint method, with original-source lineage and
-privacy. Neither route changes permissions or shared policy automatically.
+Project Learning's [mode and enrollment rules](../plugins/rogemar-agent-toolkit/skills/project-learning/SKILL.md#select-a-mode)
+own capture and acceptance. Explicit captures remain pending for review; an enrolled
+workflow can accept a qualifying repository-backed lesson at a verified checkpoint.
+Other candidates and shared-skill proposals remain pending. Accepted rules stay
+scoped, revisable and revocable. Useful research may be retained through a separately
+enrolled ingest/query/lint method, with original-source lineage and privacy. Neither
+route changes permissions or shared policy automatically.
 
 See [workflow diagram source](diagrams/everyday-workflow.mmd) and
 [implementation status](alignment/implementation-spec.md). Diagram rendering and
 live host qualification are distinct validation steps, not implied by this document.
+
+## Cross-harness continuity
+
+Integrated Workflow maintains repository task handoffs for planned, active and
+completed work. See its [durable handoff contract](../plugins/rogemar-agent-toolkit/skills/integrated-workflow/references/durable-handoffs.md).
+For this toolkit update, start at the [task index](agent-handoffs/README.md).
+GitHub availability follows the authorized Git route; local-only records are not
+cloud-synchronized merely because they exist.

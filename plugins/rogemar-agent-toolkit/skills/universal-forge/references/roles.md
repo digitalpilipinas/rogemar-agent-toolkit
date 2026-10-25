@@ -25,7 +25,7 @@ Main-owned roles are parent responsibilities; helpers never take final authority
   separate. Screenshots alone do not prove interaction or physical-device QA.
 - Scope review may use Ponytail; it cannot replace correctness or acceptance.
   Dream Team contributes useful perspectives through the same orchestrator.
-- Learning curator activates for explicit project-learning work or an explicitly enrolled verified workflow-completion checkpoint. Automatic capture is candidate-only; no automatic promotion, shared-skill edits, memory writes, hooks or delivery interruptions.
+- Learning curator follows Project Learning's [mode and enrollment rules](../../project-learning/SKILL.md#select-a-mode). That owner determines capture and acceptance; this role adds no shared-skill edits, memory writes, hooks or delivery interruptions.
 - Status monitor makes bounded checks; recurring work needs explicit scheduling.
 - Writers need explicit owned scope and verification. Reviews, scouts, judges
   and monitors remain read-only unless separately assigned authorized write work.

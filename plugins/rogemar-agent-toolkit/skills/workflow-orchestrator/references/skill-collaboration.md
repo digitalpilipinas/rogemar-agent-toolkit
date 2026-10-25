@@ -1,9 +1,10 @@
 # Specialist skill collaboration contract
 
 This contract defines how a specialist skill recommends collaboration to
-`workflow-orchestrator`. It does not give a specialist permission to invoke
-another skill, spawn a worker, change model ceilings, or make final readiness
-claims.
+`workflow-orchestrator`. A specialist may apply a narrower supporting method
+within its assignment under the [method contract](method-contract.md). It may
+not start another playbook, dispatch workers, change model ceilings, or make
+final readiness claims.
 
 ## Collaboration hint
 
@@ -43,7 +44,9 @@ Each optional hint should provide:
 
 ## Ownership and sequencing
 
-1. `AGENTS.md` directs non-trivial work to `workflow-orchestrator`.
+1. Follow the repository's actual instructions and selected entry; use
+   `workflow-orchestrator` when coordination is needed. Do not assume every
+   repository's `AGENTS.md` already names this toolkit.
 2. The orchestrator classifies the lifecycle phase, affected surfaces, and risks.
 3. At each task handoff, the orchestrator selects or deliberately reuses applicable
    methods under [the shared contract](method-contract.md). Pass essential instructions,
@@ -52,15 +55,15 @@ Each optional hint should provide:
 5. The orchestrator may run authorized independent evidence streams in parallel.
    Bounded implementation packages require existing user-authorized execution
    and worker scope; planning-only approval or main-agent assignment cannot
-   create write authority. Concurrent writers require proven-disjoint scopes
-   and isolated worktrees.
+   create write authority. Concurrent writers follow [writer isolation](writer-isolation.md);
+   prove independent scopes or isolate/sequence the affected work.
 6. The main agent reconciles findings and Worker diffs and owns the final
    decision and integrated validation.
 
-Specialist skills should not invoke one another directly. A specialist may
-recommend a follow-up skill or worker by returning a collaboration hint, but
-the orchestrator remains responsible for ordering, deduplication, permissions,
-budgets, model ceilings, and reconciliation.
+Apply an in-scope narrower method without changing task ownership. Return a
+collaboration hint for a new assignment, broader scope or another worker. The
+orchestrator retains ordering, deduplication, permissions, budgets, model
+qualification and reconciliation.
 
 A role profile is a desired routing input, not a fixed override. The
 orchestrator selects a surfaced agent type, then the active harness profile policy

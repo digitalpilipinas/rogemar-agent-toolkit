@@ -17,6 +17,11 @@ changes since its merge base with the intended base unless the user specifies
 another comparison. For local work, identify which staged, unstaged, and new
 files are in scope; preserve unrelated and private material.
 
+Discover repository and affected-subtree coding standards, including
+`CODING_STANDARDS.md` and `CONTRIBUTING.md` when present. Resolve scope and
+precedence with applicable repository instructions; do not assume a familiar
+filename is the only source. Carry relevant standards into reviewer briefs.
+
 Inspect the whole in-scope diff, relevant tests, and enough surrounding code and
 callers to understand the changed paths. Continue after the first finding. If
 the target is empty or unavailable, report that state rather than inventing a

@@ -73,7 +73,7 @@ Those workers may read and write inside the assignment in either strategy.
 An assignment does not expand the user's grant, host permissions, or release
 authority. A worker that only judges a diff stays read-only. A worker assigned
 to build, fix, or add tests writes the files it owns. Two writers do not edit
-the same file at the same time. That file rule is separate from the sprint strategy.
+the same file at the same time. Apply the authoritative [writer-isolation policy](../workflow-orchestrator/references/writer-isolation.md) to shared state, generated outputs and Git operations as well. That policy is separate from the sprint strategy.
 
 Default to `AGILE_FOCUSED`: one vertical slice, or one task inside that slice,
 is active in the sprint. The parent and its workers finish that slice or task
@@ -97,6 +97,20 @@ read [supporting methods](references/supporting-methods.md) only when relevant.
 They add methods to the existing owner, not another board, reviewer hierarchy or
 mandatory cycle. Documentation and tooling increments need proof of their own
 outcome, not an unrelated app build or deployment.
+
+## Durable task continuity
+
+At entry/resume, first apply [handoff discovery](../workflow-orchestrator/references/task-handoff-discovery.md).
+Tell the user which task record was loaded, its verified resume point and any
+material gap; do not silently start a competing plan.
+
+Maintain [durable task handoffs](references/durable-handoffs.md) for every approved
+planned, in-progress and completed task. Reuse the existing task documents/index
+where possible; update at meaningful transitions and before a harness switch.
+Keep local and GitHub copies on the same authorized Git history, with remote
+availability verified explicitly. A handoff never grants publication authority or
+makes unpushed code accessible to another machine. Preserve the existing plan/board
+as status authority and select only the next relevant task record on resume.
 
 ## Choose proportional checks
 

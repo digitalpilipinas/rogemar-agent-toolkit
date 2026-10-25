@@ -1,6 +1,6 @@
 ---
 name: code-review-tests
-description: Check a change's test evidence, regression coverage, and relevant counterexamples. Use as the testing lens within one code review or for a focused verification review; contribute findings without starting a duplicate quality review.
+description: Check a change's test evidence, regression coverage, mutation sensitivity, and relevant counterexamples, including optional bounded verification of consequential state or concurrency invariants. Use as the testing lens within one code review or for a focused verification review; contribute findings without starting a duplicate quality review.
 ---
 
 # Code Review Tests
@@ -71,3 +71,17 @@ first; agent-driven steps require the existing approved provider, authentication
 and bounded execution. Keep unit, UI, accessibility and device evidence separate.
 Missing devices, unavailable authentication and failed assertions remain explicit;
 never replace a failed journey with a source-only completion claim.
+
+## Consequential test boundaries
+
+When choosing a seam that supports a consequential acceptance claim, state what
+it catches and what it misses. For example, a fake-clock polling test detects
+excessive scheduled sleeps but cannot prove network-call cancellation or deployed
+clock behavior. Match each remaining required claim to an appropriate check;
+keep unavailable coverage explicit rather than treating mocks as runtime proof.
+
+For deliberately broken variants, use
+[mutation evidence](references/mutation-evidence.md). For consequential retry,
+concurrency or state-machine invariants whose interleavings exceed ordinary
+examples, consider [bounded formal verification](references/formal-verification.md).
+Neither method is required for a routine edit with adequate direct evidence.

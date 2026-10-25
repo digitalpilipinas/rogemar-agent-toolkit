@@ -971,6 +971,58 @@
       "notices": [
         "plugins/rogemar-agent-toolkit/skills/vector-asset-pipeline/upstream-notices/diagram-design-LICENSE"
       ]
+    },
+    {
+      "repository": "cursor/plugins",
+      "commit": "9580c23696ac8d7abed0c166f2f9918800afb819",
+      "paths": [
+        "pstack/skills/create-formal-verification-skill",
+        "pstack/skills/maintain-formal-verification-skill",
+        "pstack/skills/statechart",
+        "pstack/docs/harness/claude-code.md",
+        "pstack/skills/create-verification-skill",
+        "pstack/skills/sharpen",
+        "pstack/skills/poteto-mode/scripts/check-plan.mjs",
+        "pstack/skills/poteto-mode/scripts/watch-pr/policy.ts"
+      ],
+      "owners": [
+        "formal-verification-create",
+        "formal-verification-maintain",
+        "statechart-verification",
+        "claude-forge",
+        "forge-create-verification-skill",
+        "create-plan",
+        "codex-forge"
+      ],
+      "changes": "Selective lifecycle and statechart additions; installation opt-in; ownership and candidate identity; Claude capability checks; startup, framing, fence parsing and bounded polling. No complete repin.",
+      "notices": [
+        "plugins/rogemar-agent-toolkit/skills/statechart-verification/LICENSE.txt"
+      ],
+      "validation": "See docs/agent-handoffs/toolkit-publication.md; native qualification is separate.",
+      "file_manifest": "catalog/statechart-source-manifest.json"
+    },
+    {
+      "repository": "mattpocock/skills",
+      "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+      "paths": [
+        "skills/engineering/diagnosing-bugs",
+        "skills/engineering/tdd",
+        "skills/engineering/code-review",
+        "skills/engineering/implement",
+        "skills/engineering/to-tickets",
+        "skills/engineering/wayfinder"
+      ],
+      "owners": [
+        "bug-triage",
+        "code-review-tests",
+        "code-review-and-quality",
+        "create-plan"
+      ],
+      "changes": "Selective mutation/seam evidence, standards discovery and ticket/dependency identity; preserve task authority and proportional delegation. No wholesale import.",
+      "notices": [
+        "plugins/rogemar-agent-toolkit/skills/code-review-tests/upstream-notices/mattpocock-LICENSE"
+      ],
+      "validation": "See docs/agent-handoffs/toolkit-publication.md; no native tracker execution claim."
     }
   ]
 }

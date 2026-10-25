@@ -56,6 +56,11 @@ Find existing verification before adding a recipe. For a recurring coverage gap,
 name the observable behavior, prerequisites, driver, failure cases, artifact and
 cleanup. Implement the smallest reusable recipe in the current verification
 owner. Keep it draft until an actual authorized execution proves it.
+Prove usable initialization with isolated fresh test data when generating or
+changing launch/setup: migrations, seed work and an affected journey, not just an
+answering port. Keep missing prerequisites blocked, preserve evidence through
+cleanup, and disclose setup supplied by a substitute environment. Reuse matching
+startup evidence for unchanged recipes.
 
 ## Figure it out
 
@@ -109,6 +114,10 @@ volatile branch, file, permission and runtime facts before reuse. Avoid broad
 private-history searches and never promote an old summary above current evidence.
 
 ## Reflect
+
+For patterns across completed outcomes, use the bounded
+[completed-work review](completed-work-review.md) when authorized. It supplements
+required per-change review and preserves Project Learning ownership.
 
 Compare an observed result with its intended outcome. Classify implementation,
 environment, verifier, context, routing and authority causes before proposing a

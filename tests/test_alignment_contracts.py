@@ -122,6 +122,33 @@ class AssignmentTests(unittest.TestCase):
                 W.validate_assignments(plan(task('a', state='running', writes=a, workspace=wa),
                                              task('b', state='running', writes=b, workspace=wb)))
 
+    def test_shared_worktree_requires_disjoint_scopes_and_independence_evidence(self):
+        a = task('a', state='running', writes=['src/a.py'], workspace='shared')
+        b = task('b', state='running', writes=['src/b.py'], workspace='shared')
+        for item in (a, b):
+            item['independence_evidence'] = 'reviewed-scope-and-resource-record'
+        self.assertEqual(W.validate_assignments(plan(a, b))['order'], ['a', 'b'])
+        b['writes'] = ['src']
+        with self.assertRaisesRegex(W.ContractError, 'overlapping'):
+            W.validate_assignments(plan(a, b))
+        b['writes'] = ['src/b.py']; b['independence_evidence'] = ''
+        with self.assertRaises(W.ContractError):
+            W.validate_assignments(plan(a, b))
+
+    def test_isolated_competing_changes_require_one_explicit_integration_plan(self):
+        a = task('a', state='running', writes=['src/a.py'], workspace='candidate-a')
+        b = task('b', state='running', writes=['src/a.py'], workspace='candidate-b')
+        for item in (a, b):
+            item['integration_plan'] = 'owner-reviewed-candidate-comparison'
+        self.assertEqual(W.validate_assignments(plan(a, b))['order'], ['a', 'b'])
+        b['integration_plan'] = 'different-plan'
+        with self.assertRaisesRegex(W.ContractError, 'same integration plan'):
+            W.validate_assignments(plan(a, b))
+        b['integration_plan'] = a['integration_plan']
+        a['exclusive_resources'] = b['exclusive_resources'] = ['shared-database']
+        with self.assertRaisesRegex(W.ContractError, 'exclusive runtime resource'):
+            W.validate_assignments(plan(a, b))
+
     def test_shared_resources_even_read_only_workers(self):
         a, b = task('a', state='running'), task('b', state='running')
         a['exclusive_resources'] = b['exclusive_resources'] = ['fixture-database']

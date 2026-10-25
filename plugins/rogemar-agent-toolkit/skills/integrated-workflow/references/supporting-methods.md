@@ -30,12 +30,11 @@ at start/resume, affected behavior, acceptance and completion. Reuse a project v
 create only missing authorized coverage. Use full maintenance for a due full map audit,
 not every small fix. During frozen QA do not refresh generated navigation metadata.
 
-Read accepted project lessons when relevant. `project-learning` captures on an
-explicit request or an enrolled workflow completion checkpoint. A lesson whose
-evidence is a file, test file, or commit in the repository is accepted in that
-checkpoint. Chat decisions, adaptations, and skill proposals stay pending.
-Enrollment does not authorize shared-skill edits, memory writes, hooks, or
-background collection. Capture failures are nonblocking.
+Read relevant accepted lessons. Use Project Learning's
+[mode and enrollment rules](../../project-learning/SKILL.md#select-a-mode) and
+[workflow checkpoint](../../project-learning/SKILL.md#enrolled-workflow-checkpoint)
+for capture and acceptance. Keep that skill as the sole learning writer; its
+enrollment, evidence and persistence boundaries remain authoritative.
 
 ## Bounded retro
 

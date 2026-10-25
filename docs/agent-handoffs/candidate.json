@@ -1,0 +1,856 @@
+{
+  "schema_version": 1,
+  "baseline_head": "3cdfb485dd8d9bbfd0caeff3c8f091c0479dda16",
+  "remote_main_observed": "475ae282a086cc6932b82f3044cb66f3978de605",
+  "state": "review-remediation-prepared; local-git-uncommitted",
+  "scope": "All intended changed tracked and untracked repository files, including preserved earlier edits and content from newer remote main. Handoff status files excluded to avoid self-reference. This identifies contents, not a completed Git integration or review approval.",
+  "files": [
+    {
+      "path": ".claude-plugin/marketplace.json",
+      "sha256": "101ed4fa8a1b2917cede2658bb526afeb0833c256b60e168846ef4535cbda92d"
+    },
+    {
+      "path": ".coderabbit.yaml",
+      "sha256": "7386a2985fce638d2eb5530f06166e40ce9bd64e4b4d5527c95504c83f1333c8"
+    },
+    {
+      "path": ".cursor-plugin/marketplace.json",
+      "sha256": "210ea780b405288d4a7875806b9448bb8d673fe4215317f08e9654d524567f19"
+    },
+    {
+      "path": ".factory-plugin/marketplace.json",
+      "sha256": "101ed4fa8a1b2917cede2658bb526afeb0833c256b60e168846ef4535cbda92d"
+    },
+    {
+      "path": ".github/workflows/showcase.yml",
+      "sha256": "f55a696eb61eff76e0a5189b01a6a655ce7b2afb8cb22deccba84e15e07bbffb"
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "sha256": "ef3cbecc8660a34b008c733df683cb15254d75cce16908ee398abfc204650b6a"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "632778719638deb170f4e7fb0981467ab1c9c0d63de37bbaa56182cc7b62549b"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "1ada7c53b1b471e48829052cd4851342027e8d7e99f95e48b945e848cd76bdf4"
+    },
+    {
+      "path": "README.md",
+      "sha256": "a123420d94912cc0f75528d0ae0ed952e065e561fb31cca4acb6d8cb8c6ff0c6"
+    },
+    {
+      "path": "catalog/imported-sources.json",
+      "sha256": "eb7e5278948ffe3b7e07f4d91720b5fef8276854ecf1b655547494809be83f01"
+    },
+    {
+      "path": "catalog/skills.lock.json",
+      "sha256": "8f0ff0b598264a4d4e37c9744307b52d6e775904ca80a068a8373b7bcb412eb0"
+    },
+    {
+      "path": "catalog/skills.yaml",
+      "sha256": "22f1f550a5a465b3a74a16c25bfa84d5a0d0b0a3d1601fbf861f6ca05c886361"
+    },
+    {
+      "path": "catalog/statechart-source-manifest.json",
+      "sha256": "123edcdaec4036da5e7f3c5cf16cb186f77cc13344b1c365879263a199ec1026"
+    },
+    {
+      "path": "docs/alignment/action-pins.json",
+      "sha256": "3f9e6074781eaa6db9376acee223edda4900e8a10a905ecdedb42854c5771249"
+    },
+    {
+      "path": "docs/assets/readme/README.md",
+      "sha256": "645cedf5e8e5ab029bd2743a4594314b8fecb8c869d7b2c0dead65289cf528ff"
+    },
+    {
+      "path": "docs/assets/readme/antigravity.svg",
+      "sha256": "9d75b4f4e237c9d0a8d4e7fc22de3614cece25fd22c3cd243ddb932acc13c37e"
+    },
+    {
+      "path": "docs/assets/readme/claude.svg",
+      "sha256": "585fa0ed250a1dc00d4a0c0a1797126e72dc5adfd03b6364f32798c2627046f8"
+    },
+    {
+      "path": "docs/assets/readme/codex.svg",
+      "sha256": "3171b0ceb6e61b3991c2a751230f954b5545b6025ac07494da5ec08f922bebe2"
+    },
+    {
+      "path": "docs/assets/readme/cursor.svg",
+      "sha256": "be9ab78e45311b17ba4e9408648f8fbc5e43a899c842b0a235513bb04131684a"
+    },
+    {
+      "path": "docs/assets/readme/devin.svg",
+      "sha256": "b750d2e1637b621e7f2c6e70d8d7f15ebf51cd195260e9af30036f1e10e0c571"
+    },
+    {
+      "path": "docs/assets/readme/droid.svg",
+      "sha256": "97cc1a90166a6bd000024d97e29abb2887d49600f3efd43edfe2998636365dd2"
+    },
+    {
+      "path": "docs/assets/readme/gemini.svg",
+      "sha256": "80557a31a49fdb84cb5dac396adace4c9a4e51cc11f96eb0804996ce3d2cb1d3"
+    },
+    {
+      "path": "docs/assets/readme/hero.png",
+      "sha256": "3ce45f2245dc5c5fccdff840bf92dccddb60390217a29f6c4785cd23782ed0e0"
+    },
+    {
+      "path": "docs/assets/readme/installation-dark.png",
+      "sha256": "34714a17090821ebb4715a7f4ea1f61d1a6444c45561528be0428d2f26039153"
+    },
+    {
+      "path": "docs/assets/readme/installation-light.png",
+      "sha256": "9058cea6953f780915feb2ffe67ab09d5ca93a9ff220b5dbd45d2932de9a6899"
+    },
+    {
+      "path": "docs/assets/readme/ownership-dark.png",
+      "sha256": "46925502d0c91239e8a02a68bcd2d0ec6f4cdac70a7040fb88849b0fea09b521"
+    },
+    {
+      "path": "docs/assets/readme/ownership-light.png",
+      "sha256": "17c12bf65b940688a9ba3e587b2be82a0d4c0a30ce91cad6f47daaf1b351d27f"
+    },
+    {
+      "path": "docs/assets/readme/task-loop-dark.png",
+      "sha256": "05b02a8d1aba96ac2eb35feb21fc9f0444ca4b39448110295b0de55cbb64b658"
+    },
+    {
+      "path": "docs/assets/readme/task-loop-light.png",
+      "sha256": "21f7dd5f656f501f33abec9cd341ad77cfbf269fb781ef1d36f67a6bce8fbc62"
+    },
+    {
+      "path": "docs/assets/readme/toolkit-mark.svg",
+      "sha256": "3e4e867e87d1956cd32120b18427d53e513a6fb05e88202c518398cc6daa6fee"
+    },
+    {
+      "path": "docs/assets/readme/workflow-demo.gif",
+      "sha256": "7d9759a4490f4575d5fc066dd2ebaed7f16eaac6e0db6a811622526c7d788e4a"
+    },
+    {
+      "path": "docs/compatibility.md",
+      "sha256": "2a5048eb4e49ff2ad153da9abeab2404034659198bbd83833d832b498c397516"
+    },
+    {
+      "path": "docs/dynamic-workflows.md",
+      "sha256": "9134351f5ae26a3792cb0847563b1928c21f34db3cf78ad76921f72708eccb86"
+    },
+    {
+      "path": "docs/everyday-workflow.md",
+      "sha256": "5c40688c68c74a087ae7aa31bbf19539b516aaf2b482ebcf6e31a9bc63e50440"
+    },
+    {
+      "path": "docs/installation.md",
+      "sha256": "50bd020a97badd764fa3b4dc506cd4c0c2be6388bae74447b1841c97375e2c6e"
+    },
+    {
+      "path": "docs/showcase/FIDELITY.md",
+      "sha256": "e348a9e63bdd53605962fc91d9cd859ce1fca4a7c076548177dcc1318ebc681e"
+    },
+    {
+      "path": "docs/showcase/README.md",
+      "sha256": "83c29ea67ce4f7394ae572a17cd4eb72d152e9b1c6510fc0beecd231d6b38e0d"
+    },
+    {
+      "path": "docs/showcase/diagrams/installation-dark.html",
+      "sha256": "0e1c736a762bac56f0820cc4002bafce077868237222a439e5f79a4d5eb887d2"
+    },
+    {
+      "path": "docs/showcase/diagrams/installation-dark.svg",
+      "sha256": "cf8c5af639fc7d6d52328caf127175b6848c0e6f528a175f38d255cc708a286f"
+    },
+    {
+      "path": "docs/showcase/diagrams/installation-light.html",
+      "sha256": "73c5455bee5f52a117e50284887a61c9c74192651e82507febe86ca39e012880"
+    },
+    {
+      "path": "docs/showcase/diagrams/installation-light.svg",
+      "sha256": "7b587a5187f87ef5fc6feb91b177d49c5803fddd6a91edb4424404d977bba9b5"
+    },
+    {
+      "path": "docs/showcase/diagrams/ownership-dark.html",
+      "sha256": "114cd7a0f252f8139d752f3db60eb424c478dd161358e112fc2eaec5f10cc175"
+    },
+    {
+      "path": "docs/showcase/diagrams/ownership-dark.svg",
+      "sha256": "7843ea262df7c27a260af6906bc18c4126e62ba829566bcccc94aac4133b6a3a"
+    },
+    {
+      "path": "docs/showcase/diagrams/ownership-light.html",
+      "sha256": "add5abb6fa8781eb72bf3ddf9ec8d17439f7a227fdfa0ba4d8e9a3e0a9cb5918"
+    },
+    {
+      "path": "docs/showcase/diagrams/ownership-light.svg",
+      "sha256": "d58c46e65254594e7b263aafa7ebc5dc2cc625a7c51f9fbb9da9cd510e609a34"
+    },
+    {
+      "path": "docs/showcase/diagrams/task-loop-dark.html",
+      "sha256": "993ab6e8983b759f4dc6dc1dafec35f62ba7191e2f83f677fec0a896925320c9"
+    },
+    {
+      "path": "docs/showcase/diagrams/task-loop-dark.svg",
+      "sha256": "f77ac915edb101a2b6b2da63946d7f8a79a3a1e1573dda330f2a77a7f5ee40c8"
+    },
+    {
+      "path": "docs/showcase/diagrams/task-loop-light.html",
+      "sha256": "7ccfb1597ffd6258466ac18d1613c44e9995974429a1a727628296f19a5c3dc9"
+    },
+    {
+      "path": "docs/showcase/diagrams/task-loop-light.svg",
+      "sha256": "95d09d4592d6099c5b7fdac05d04a488d0e4998feee227f06f5f0e63d87c3bd3"
+    },
+    {
+      "path": "docs/showcase/hero.png",
+      "sha256": "3ce45f2245dc5c5fccdff840bf92dccddb60390217a29f6c4785cd23782ed0e0"
+    },
+    {
+      "path": "docs/showcase/index.html",
+      "sha256": "de8414292e3fd644c65e80078e5f07446dd4b62254841cd921f360653f19322c"
+    },
+    {
+      "path": "docs/showcase/installation-source.mmd",
+      "sha256": "1d3819efcfcc2d84c603f9277df6497050433d27a7c196e22c4c1be39381c519"
+    },
+    {
+      "path": "docs/showcase/showcase.css",
+      "sha256": "6aa98507db47f2aa87a017906b132bebf888258b8a620c5f345c76d82664ec42"
+    },
+    {
+      "path": "docs/showcase/showcase.js",
+      "sha256": "9e62083a5bb6ee52625dcc9a60513c80020777959ac2e3a02e021606c5263b79"
+    },
+    {
+      "path": "docs/showcase/toolkit-mark.svg",
+      "sha256": "5faa060692830c00f562e2da6d7d6960cf73bf2fec93779dcba95806f45bc315"
+    },
+    {
+      "path": "docs/watch-deadline-model.md",
+      "sha256": "6972bb421244f62469013e46f22731b83b0720f656bf311702d5c88ede11d40c"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/.claude-plugin/plugin.json",
+      "sha256": "d1e2acc47257b35bd318aea282b8d1e3167b670fa0f1e10bca9ba364a4c02048"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/.codex-plugin/plugin.json",
+      "sha256": "9855cf8bd8ec93be98443388e85babf04524b3dd86736800ff8f323fafe21157"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/.cursor-plugin/plugin.json",
+      "sha256": "77e40c5ef2404f0c396c0e5d3ee017a0743729c0257f1f52b0f070da5a85fe1d"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/.devin-plugin/plugin.json",
+      "sha256": "29b7be8de1bde174260ba00147bad2c24773b1237effc70b66e42d87891c8af8"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/.factory-plugin/plugin.json",
+      "sha256": "d1e2acc47257b35bd318aea282b8d1e3167b670fa0f1e10bca9ba364a4c02048"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/gemini-extension.json",
+      "sha256": "b7114fb9292b1b0ae38454f1673c549416ce7822b8653d0fdc20d32436baa72b"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/plugin.json",
+      "sha256": "7a7129722a787ae0021bb11688c4904d819533474cce305ee3bcba40b9faf90d"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/bug-triage/SKILL.md",
+      "sha256": "9d18e0348ed310c3b22e7b9b2b7469cc528c41f1bc73301a92483f99fe57e80a"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/claude-forge-setup/references/routing-contract.md",
+      "sha256": "a4b3d6b895cacf8feec4ff8cb27d5b736caa2843eaaf3312a627aad6429d08e3"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/claude-forge/playbooks/authoring-a-skill.md",
+      "sha256": "9a3eb91d979f2160846f6178eeafe3f426709fc1daf6f1fccccc0a6098c137ac"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/claude-forge/playbooks/autonomous-run.md",
+      "sha256": "f2bc170eabf4a1ff583a15c9cc3ca5da33693158fd74ae12f533f3e1d9c813c8"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/claude-forge/playbooks/autopilot-stack.md",
+      "sha256": "d321118292e81384165f7dca087b5adb3d48f0922a912f3cc80d3cdefc766540"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/claude-forge/playbooks/eval.md",
+      "sha256": "51f33ac36b4bb05d1683b53bd4060d10fbacfe10764271989ac4994da959d3da"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/claude-forge/playbooks/feature.md",
+      "sha256": "fc4258fd41fdff42f149dd97a1d92df75dbf4fb2c81cc8b188eff985beb027b4"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/claude-forge/playbooks/multi-phase-plan.md",
+      "sha256": "977f60e1933790b192b62f7d1896c98ee9201f263aa6647a9bb6b48f12240177"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/claude-forge/playbooks/orchestrate.md",
+      "sha256": "1092ae28e26863335b6f2986ac39da93fb8609c2478edd5b9b44836cca0f50ef"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/claude-forge/references/claude-runtime.md",
+      "sha256": "9503e6d888faededd34fc27396d565a82cad16d1512e3303ba4dd05273dccc46"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/claude-forge/references/dynamic-workflows.md",
+      "sha256": "ed0b6b076294d9b417469490b5e2cf8fd21c657db7de1f05ab74eca07d6ab8d6"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/code-review-and-quality/SKILL.md",
+      "sha256": "8b82bee31a345f32462949a9c180d8690482e775ece7608093d012220a6e16d4"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/code-review-tests/SKILL.md",
+      "sha256": "5fe00af12dda8366a4502f767ee57cfef63bdfc35bd6fa1b78dfe4e4bb30ae43"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/code-review-tests/references/formal-verification.md",
+      "sha256": "96ae6a512d1308415b3594a3b8dfc28baca240642e123bc844ac993bc901e565"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/code-review-tests/references/mutation-evidence.md",
+      "sha256": "fe38a854b148709671bc0a864501cee562b8dcaf8bc08e2b46b17e5b95c8e0c3"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/authoring-a-skill.md",
+      "sha256": "d681614ba2404151ba5cf8289312c273af6142aecd5082dd9749c42faa34ee2a"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/autonomous-run.md",
+      "sha256": "d459f31e9003d082502430abc1a777be49a9a8ffd0e99698e909948fa3d65742"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/autopilot-stack.md",
+      "sha256": "6320b1efeba021b68b5b118fc15f34d849445d27760c183a15ecb55b8144c36f"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/feature.md",
+      "sha256": "62cd89060814c593e874adbc110fbd0e6ad071261e0b7afbd6b305704f89cf1f"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/multi-phase-plan.md",
+      "sha256": "75d47df1f60cc2f3888befc611d19a782679ceac61314a1977d49d06a41ac476"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/playbooks/orchestrate.md",
+      "sha256": "9978ed4195f632e106bb03a711b5d87766add0ca0eaa59e137e15be80e9534ff"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/references/codex-runtime.md",
+      "sha256": "3323d73ca4b6f506ec011863f8aa9218bf6643b631be60c0d9603bb9f5347b4c"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/check-plan.mjs",
+      "sha256": "f33f67fe0b4bce275c051db7d2a4117380b8e38f9cf7b14abe4cc9c0c5ab2737"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/check-plan.test.mjs",
+      "sha256": "67c0b50808d72201210e1ab73c8f590e02c20090d4aad127ccab33fca3f3dd98"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/deadline.test.ts",
+      "sha256": "eeeeeef445215bd48a9b05664b616d4e0f39ec54c6321745947277de9c4d6e4e"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/codex-forge/scripts/watch-pr/policy.ts",
+      "sha256": "62462d189ba1633684fdbac86a0374585a95314d986c108ba7953d1fc605e693"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/create-plan/SKILL.md",
+      "sha256": "5df6261b2514af5dbb2b8021d79b2f98a167ee1ac476cd8e8b85cd6ac0c7d618"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/create-plan/references/task-framing.md",
+      "sha256": "7368dbeb6ee02f7ae0edf22a9238ed2da621e7625aa7f2b353c6302333ff8510"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/devin-forge/LICENSE.txt",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/devin-forge/SKILL.md",
+      "sha256": "bba756e2a26e4aaa36e11649c844184232f6fe5dfd665f5aae84ef60ff3a61a5"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/SKILL.md",
+      "sha256": "732cf0c21325cbffc616b2b6a88f79c68fd4cf3d3f0c5abf20722e0489b660c8"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/authoring-a-skill.md",
+      "sha256": "0ca391a433cbf462b3a6dcb063ace908273aa8132f470ea997ed0d6365136ee3"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/autonomous-run.md",
+      "sha256": "15d0dbe72e228cdc4c5f98d0352e7100b7a86bf9476dcba6d423eb1447b83a5b"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/autopilot-stack.md",
+      "sha256": "7f9aa79618a25be0872d110c5f86db706eda5aa165e9b092ad6f9298840d083e"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/eval.md",
+      "sha256": "721a11b00e331aa6c1c63b49989ac55770fc7dc275b91d51ab16bdc2bfbb526f"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/feature.md",
+      "sha256": "c0118a6ac11f1d65d4f6006cbbf626898509638ff5e7e0e24c8f3a02ab5f82ae"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/multi-phase-plan.md",
+      "sha256": "c49040236bab9a2d35fc7dec90ff51310c3363e47b04b7586a7c577f93304867"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/playbooks/orchestrate.md",
+      "sha256": "35a67b406e6310deac2eee8c6471df6775ba83ee691a5acbe4d5d538f05e8cc5"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/references/agent-friendly-workflow.md",
+      "sha256": "2c22858cd8847b2219edafaff89a64f1b5b8ab1a8943ab3130f4795723edf15f"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/references/companion-methods.md",
+      "sha256": "58ab8c5587ad48f7c94462086fcf961ae72eb1a8df423012deb585562a6b59f7"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/references/completed-work-review.md",
+      "sha256": "4b34881e4ba87e259e6d988d3fa7e0447f69bc21cc3c5b5a0c022dbaa22a685a"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/references/principles/exhaust-the-design-space.md",
+      "sha256": "5d5ab3a119172454f5c91ee5e65d5a7ddfc85c843d68bfbfe325ad2772b52c14"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/references/principles/fix-root-causes.md",
+      "sha256": "4bd7b243c173cd50f3e66eb1429ba3bb792ca332fb84906bbbd0c8b3756bd74c"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/engineering-playbooks/references/source-map.json",
+      "sha256": "8fe14fbb0d0b2b73a6d4c5447963d9e3681892b2944c670b9fa5424bf5a62d94"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-create-verification-skill/SKILL.md",
+      "sha256": "42fddd5cd2fa0ddeb8d6dcc5b5a41b74b953ac8295b12237f68250af907c7ce6"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-maintain-verification-skill/SKILL.md",
+      "sha256": "82323853de11c868e3dca707d155776b97c738806c92e9543f9c63d8567ef17a"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-principle-fix-root-causes/SKILL.md",
+      "sha256": "338ee65b94d418498cd8eceeea93dd3a6741ffc08082ec036d1f000b8634a2fc"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-recall/SKILL.md",
+      "sha256": "24b48dcaf314aa9c23d3598c7c956fe408711041b7c1bd5f7d53aaaa3b90732f"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-reflect/SKILL.md",
+      "sha256": "70a3b79fdda41b1ca556c5b44d581805acc74025da58ad70da5095b8615a6b5b"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/divergent-reviewer.md",
+      "sha256": "b3843d49c32160ad75b1339c42d1c29b7a00333da2bb3ff08ec457a1738d98f2"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/judgment-reviewer.md",
+      "sha256": "f73aacd71f04db14e762f18e693c7792670e4610e68f10e00168fc17b946cb99"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/review-contract.md",
+      "sha256": "f8ac5ccbc99d60774659c181a9d1cd6b6fd9d99936bb3bb6c497b6b9ca5b3198"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/synthesizer.md",
+      "sha256": "ef71134419190c092267228757f8fae8d6cc0e1089fa33c74271139f1b8db451"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-reflect/references/tooling-reviewer.md",
+      "sha256": "3bf23bcd8dcd5cd1ef24f0f351299133a7e5551ba43f1deab6781d0ddf0a3b02"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/forge-swarm/SKILL.md",
+      "sha256": "bd8ecb8b4c24079e04361a430a1e42e0e03b528960a5b7afbd27ef98607af6f2"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/formal-verification-create/LICENSE.txt",
+      "sha256": "19c1837d12ed22077c7894bfa8d6670e17ae0c6bb5271e952122e0facd5775de"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/formal-verification-create/SKILL.md",
+      "sha256": "1e66b47fe0518f0ca8790e6c3d0d5614fb08dc4d68b99e5723daecbe93452c41"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/formal-verification-create/agents/openai.yaml",
+      "sha256": "7490c42b1f44e551bcf9b4be4832203b0e5ef38b173e489dfa8e50e9f465a16a"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/formal-verification-create/assets/verify-skill-template.md",
+      "sha256": "d7d45ce0b131d97a40a6eec619a60b906e3b4f028469be07976db6ab9e1cc27e"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/formal-verification-maintain/LICENSE.txt",
+      "sha256": "19c1837d12ed22077c7894bfa8d6670e17ae0c6bb5271e952122e0facd5775de"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/formal-verification-maintain/SKILL.md",
+      "sha256": "2d0d6d02d6770fe9f95bf1eae7ea20150f682f0f369d92b951dbfb3b2c02586c"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/formal-verification-maintain/agents/openai.yaml",
+      "sha256": "8eb3174bdd4b34d3c2cd2cb6bc9bc9f3034c29292aac1269a1cf50380a7985ca"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/fsearch/SKILL.md",
+      "sha256": "3efcd1f79e028067adfd32371bfab30c0d0baf461abdcb31623d0d709dcd6225"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/fsearch/agents/openai.yaml",
+      "sha256": "3c7f5f4c06ff46302c1f3d5c6e75feb0d95213310e1d8b913981ad9d2cb659c2"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/integrated-workflow/SKILL.md",
+      "sha256": "62fc0b9fe8c96bcbe2a6f673f85d988404567b2f06ed1ad6c12570906feaa52d"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/integrated-workflow/assets/task-handoff-template.md",
+      "sha256": "894aed7158cacee6a8737d24ae60e8241048fd35ffd0f6336be02decaddb5e7b"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/integrated-workflow/references/durable-handoffs.md",
+      "sha256": "4343579bc8675439dca83d45894a49906a59409136e71b9d776024b6336cbbc3"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/integrated-workflow/references/execution-loop.md",
+      "sha256": "2f8b4e92f0f1c2194e3a7ed873775ab5f761fade345be7477e417e2ab1921e6b"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/integrated-workflow/references/supporting-methods.md",
+      "sha256": "a98b77f7666c59c79aa7a7845d9740067d68abe6b10a69da99305c45e52d43e8"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/integrated-workflow/references/ui-ux-implementation.md",
+      "sha256": "b3b8133bd3834daad158cda28509df2845a320438cf7310df571a2c9e929b434"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/LICENSE.txt",
+      "sha256": "19c1837d12ed22077c7894bfa8d6670e17ae0c6bb5271e952122e0facd5775de"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/SKILL.md",
+      "sha256": "07a9201c4bda78c7aa4ecd3dcabae57a917401c68816eb1603d79aee6ed7c254"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/agents/openai.yaml",
+      "sha256": "3ede8268a3aab6eb08afbb1a31e46dfe84a92d05921bc49998cdfcd25782173a"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/references/dependencies.md",
+      "sha256": "e7103e13db2bcfc9e51e2216039800953f25441f2afbea8aae6860e57cd504af"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/bug-states.mjs",
+      "sha256": "856c927b3e59b7db184683611819b662fff44f54781afb454f0d098e6f756cb3"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/chart-edges.mjs",
+      "sha256": "fd52f9a0ebebc35ab9c10fe1f3bc7c60c0329ebf86471b0681245585b43c9910"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/chart-parts.mjs",
+      "sha256": "6a0e05ab6f9b0171736fabc0ef0b99cc908dde2e7f7522dcb76447b20a6a022b"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/chart-to-tla.mjs",
+      "sha256": "9d296feb384722fb0efab4a53d6d2ccd4f2f5126c3c43a4df40241f99d049ebb"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/compare-charts.mjs",
+      "sha256": "f8328130ea092ea0f16294f2aa3b86a005c223ca201b042040aec89e8c40aa27"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/lib.mjs",
+      "sha256": "6154ad4a4ac62b6be698d36da9c6d3ff98cbec9d96d91c20e4e1a0f83d50be00"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/map-view.mjs",
+      "sha256": "97f76821f850f215a227427ee2402bd0388ba4c9800e687283a6c340ce787ff4"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/property-loop.mjs",
+      "sha256": "2dfae5552ef586002d8fef33f7aa2c1284a0e8b7a083851c0d2b02bca4d87ec2"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/read-check.mjs",
+      "sha256": "73c9a6971080970a191ae0a534832c41d8349386febaa80809717702b07cc5ea"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/regions-chart.mjs",
+      "sha256": "57ac5b891ef6c239eb740ba6bf9269bb02289dfc5c436a78a7cf7c7a035c5f10"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/render.mjs",
+      "sha256": "947634e8bbc20117ddcd32a486c111d08894c773d13681398354e1d8352febc8"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/rule-book.mjs",
+      "sha256": "fd631f6d70f78769eafacaa1037b8b82bb16fd3d214422f27008e65058a9fb4c"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/second-replay.mjs",
+      "sha256": "ea899a9a786df774ff19d246b6acff6a926d9b5abca5049d68a218f12b2dd679"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/snapshot.mjs",
+      "sha256": "91bc5b7722d8425cde04d6ee049c3fe939560d42275c3f6eefc28a23d68d28a2"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/spec-text.mjs",
+      "sha256": "1d146c63f3b70d898c253481b5ea2d9e4677c2e70c419c9b5c8c24c83a833584"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/statechart-help.mjs",
+      "sha256": "edbc54a1ba33907d2f33d0aa3ba17a618346e485b2e978bce3764084d637e0ba"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/statechart.mjs",
+      "sha256": "6f6c592d11f15b9b4cb92d59cfd501294860f29a4aa5979e45095e5d2915ae8d"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/test/band.mmd",
+      "sha256": "66253e252e6462a95d0bd6fd41e916a603fd1e893d4c54d9bc6edc48f45cb77b"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/test/regions.mmd",
+      "sha256": "5463bc0d670fc292738172528ab932bff3cc7e7fb8d299fc5a516edbe1b77738"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/test/statechart.test.mjs",
+      "sha256": "dcb533ca749bc71565dcd94a47095647a283dc460e45d7a12ebdc191b9ad9219"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/test/sync.mmd",
+      "sha256": "391ad159407b9cc3fb841309e866ddb15e231caa148a8c48fbd2b604c4967454"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/test/upload.mmd",
+      "sha256": "c7b9e201650aa5c7bc10b7b0bf08c7f2d8e415294ccb8e110bc66bbee4558294"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/tlc-to-chart-args.mjs",
+      "sha256": "cd458aaa2e33043215dcbd12747ed21a832ec190c0a27974a8a119c09466cbb5"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/tlc-to-chart.mjs",
+      "sha256": "4fe087fc91875ab38e9ba36a75c3bb9dde9eae8c71fbc5b2dd7159fb9b9e3ed2"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/tlc-tools.mjs",
+      "sha256": "8cb706099ae1294df80adea67879e9c43f6820fe2b0781b8e5a8bc9e1377a4f3"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/statechart-verification/scripts/ways-in.mjs",
+      "sha256": "39eb8f1e5ca0ae216e2541bdf726108d65cfad224184473ae911bc189fa026e4"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/universal-forge/references/roles.md",
+      "sha256": "7e8a6ca6d5bea88b68953f0e7feba1917c8f9d54c2a982d0130c6e4e8b4f2884"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/universal-forge/references/runtime-selection.md",
+      "sha256": "89fdd4dc4b73181808e9d8a788d64e1d940ed392c9fbb09939de5c6b6c99c3f7"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/vector-asset-pipeline/SKILL.md",
+      "sha256": "fa3fb395e998ec87893cbb2ca08ae15e2ab87fb5307228ab4d25dd2bbeb0b2cc"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/vector-asset-pipeline/references/diagram-design.md",
+      "sha256": "0b02affab93325f8d29833f028ba940ff438e859f07c3edeaf388f6c1998e2de"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/vector-asset-pipeline/upstream-notices/diagram-design-LICENSE",
+      "sha256": "bb7e12e91fecef43024111123ff784cec6c485585561d8b552557c0173b3ed29"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/visual-qa/SKILL.md",
+      "sha256": "0ab3fbe8126b2af60fd2b61e1af7262982fc7bfc120c2c7d5bb26322c2d3b0f8"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/SKILL.md",
+      "sha256": "0212d01689b6e98c84d0373c32791133c2960beb67b3c8b33dd6b6efa1cddade"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/capability-lifecycle.md",
+      "sha256": "b2b0517654f910508f83c04e4e16e183ceee997f299448c5f873147ef9fba301"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/context-efficiency.md",
+      "sha256": "37ad9a5193c599f6d41e4e4a2b6bdd40bd0584f5a57bdc16600bc2f9fbf06002"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/dynamic-workflows.md",
+      "sha256": "4a6a2594bb153bd125b8e9175e610ac48512e579f642b17812c99c5bc7c76c97"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/forge-runtime.md",
+      "sha256": "c93f26668172ab079b7ccd70d8705f1cf9523ce52d96ca7355c4334293dcb136"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/global-working-instructions.md",
+      "sha256": "e1ed09340138a4deea95c26320554c18e7eb4e59e6729415f4e22ba62d20f36d"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/harness-instructions/bitrig.md",
+      "sha256": "2a250b25244d0925f3aefb73ec4def1817eeb4c77340c84cd7b0bc08dd3ea8f8"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/harness-instructions/claude.md",
+      "sha256": "9a1a66e6519854b7f455b614a51f497a1ed6d3def7fbf0d23c69b105d62c2586"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/harness-instructions/codex.md",
+      "sha256": "2e62dafea1367c8031c64a2f92901a3bd93dabeb9ea76dbbb55a330e6e1c2707"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/harness-instructions/cursor.md",
+      "sha256": "64218467a5cd0828bc37267c7fc042e602c149984c9fe60d8ca935de66ddee8e"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/harness-instructions/devin.md",
+      "sha256": "89cda4dd887cd23d9f493c0ecc2cf75d1fd3c49ce8dccdcd2b09dc7e6b56d342"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/method-contract.md",
+      "sha256": "49581dd1bf6a169d6c4ae7e636f4b4bab0681613f3d7419d8aa5452765c6b58e"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/operating-contracts.md",
+      "sha256": "65567c91acec2845152c373a3a06737960485510deda999843cb40f6412b4ad0"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/route-readiness.md",
+      "sha256": "64f456412496aa4f3b4d4720c7a0790a034292222350e11cf14f95784038c80f"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/skill-collaboration.md",
+      "sha256": "adc5386ebce76be00489d123bea8ee538138b9ff659753725f8452c51db7d4dd"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/skill-routing.json",
+      "sha256": "62f9d33fba92a5e63f4c6fd1b87673cc2f238876ea4c6f6a1b35c55486717837"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/task-handoff-discovery.md",
+      "sha256": "0e35518a5980e0e56be7e9cc5abbea55da6d6219c79e085eef2f064e6b138fac"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/writer-isolation.md",
+      "sha256": "d115805692535c13c51f9e526312603973b1913cc5e3040013f6bc91ef4ace18"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/scripts/capability_lifecycle.py",
+      "sha256": "acac5713af4a3f3d79dd19f652d21efa810aba9906f1b03382cc48363bbde0d4"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/scripts/select_methods.py",
+      "sha256": "c14ea4125a380958084888aa99db79682339f6a67d52fa1ea8a7e31dd90ca77e"
+    },
+    {
+      "path": "plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/scripts/workflow_contracts.py",
+      "sha256": "49196f1537b5b7123c82f22670de0cd7ef7b2ae42d4d14d0037e83adacb97daf"
+    },
+    {
+      "path": "scripts/build_showcase.py",
+      "sha256": "dea442e048428bdd75ec7032ef2df3d9d373ac172a197d8162e2cf8d66ddbd04"
+    },
+    {
+      "path": "scripts/build_showcase_demo.py",
+      "sha256": "3b58ebfc57974c95ca568447b2174ef561259f3924107817bff632cfce2b5507"
+    },
+    {
+      "path": "scripts/check_showcase.cjs",
+      "sha256": "cac74d6bf8f1ab0f0e54401f72b26a2cfa279021ba3a21de8ed7d90ee3ad5b3c"
+    },
+    {
+      "path": "scripts/select_checks.py",
+      "sha256": "2e144fba07fb7dc939f2299b24d473eb959feb9ec36fcbc90082631e3729fcad"
+    },
+    {
+      "path": "scripts/toolkit.py",
+      "sha256": "b9af3c19707f11aa7c088399cc63b1ec361050a02c5373d5a6c7b7dfe96b2acd"
+    },
+    {
+      "path": "tests/test_alignment_contracts.py",
+      "sha256": "84c304f1e845331d266752503550e2f9bb629c3632d5a10840fe5c41421450eb"
+    },
+    {
+      "path": "tests/test_check_selection.py",
+      "sha256": "1bc67e4f9d395df4c7b5d1c1c5ce27022095c65438ba31f527e747d3cca5ac07"
+    },
+    {
+      "path": "tests/test_claude_forge.py",
+      "sha256": "454ab3a56b1bb4bafd53dcb95f652505a446d85ab618a4abaa7d50139879693f"
+    },
+    {
+      "path": "tests/test_diagram_integration.py",
+      "sha256": "6f0031b0d7701ac6460047a359929ee7273329bfc6f42f9daa46d0b6481e023d"
+    },
+    {
+      "path": "tests/test_execution_lifecycle.py",
+      "sha256": "329b999efcc6f49a89e4c6dc267f4ad9ed15314c4772dba6b36d7163b09f838c"
+    },
+    {
+      "path": "tests/test_external_only.py",
+      "sha256": "ffc37b9a6a75f96cd5212a59b40e21fcc8ddab27618e40abdd1b4c5410486ad7"
+    },
+    {
+      "path": "tests/test_integrated_workflow_entry.py",
+      "sha256": "108423641f1fe44bc2ff708723dacba1543f04cbd836737fb3c34e60461e90e6"
+    },
+    {
+      "path": "tests/test_route_readiness.py",
+      "sha256": "81ceb4305440850fd340ae4140b0141c9e08d123ed65404a5e546fe3556b9d65"
+    },
+    {
+      "path": "tests/test_selection_install.py",
+      "sha256": "76687ff7874c9f6b2373ece282412e1a9b8320685d13908e863d032d100cfbdd"
+    },
+    {
+      "path": "tests/test_showcase.py",
+      "sha256": "52a734c8f9e97adf36412f636861e871354418c294351c37ff31f34dbc855b5a"
+    },
+    {
+      "path": "tests/test_watch_deadline_model.py",
+      "sha256": "97ad2cd4f06c2d6810827706bdafc1014140ae80323029edae56c7d80b29becf"
+    }
+  ],
+  "publication": {
+    "pull_request": "https://github.com/digitalpilipinas/rogemar-agent-toolkit/pull/29",
+    "branch": "toolkit/workflow-verification-20261024",
+    "source_commit": "497bdfc490fd9605799260c8dffe990f7c729b48",
+    "source_tree": "8a05e1ba22f66c0c7c1a1ce67acc97d6c05a9992",
+    "local_coderabbit": "temporarily-waived-by-operator",
+    "cloud_reviews": "pending",
+    "ci": "pending",
+    "note": "This receipt is a later documentation-only commit. Query live PR head for current cloud evidence."
+  },
+  "review_remediation": {
+    "base_head": "aa6ab15ee21269c4725317d01b3cd76994abb29f",
+    "findings": [
+      4367662419,
+      4367662420,
+      4367665660,
+      4367665663,
+      4367665668
+    ],
+    "status": "validated locally; publication and due cloud evidence pending",
+    "merge_authorized": true,
+    "applicable_pages_publication_authorized": true
+  }
+}

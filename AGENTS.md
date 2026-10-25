@@ -12,3 +12,11 @@
   `toolkit.py verify`, the unit tests, and both release-package checks.
 - Do not commit, push, tag, publish, register a marketplace, or install the
   plugin without explicit operator authorization.
+
+## Task continuity
+
+Before planning, resuming, or switching harnesses, check
+`docs/agent-handoffs/README.md` and the relevant task record when present.
+Reconcile the record with current Git state and instructions, then briefly state
+what was loaded and the next action. Keep records current at meaningful task
+transitions; they do not override this file or authorize commits/publication.

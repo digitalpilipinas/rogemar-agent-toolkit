@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.0 — Workflow reliability and verification (prepared, unpublished)
+
+- Reconcile current GitHub content with local improvements while preserving existing edits.
+- Fix fenced-plan parsing and polling deadlines; retain executable regression evidence.
+- Establish one writer-isolation policy, durable task discovery and source/application evidence.
+- Add formal-verification creation, maintenance and executable statechart methods, retaining upstream MIT licenses and detailed guidance.
+- Strengthen startup, mutation, test-boundary, correlated intake and completed-work methods.
+- Refine Claude continuation, worker capability and packaging checks; add standards and ticket-identity discovery.
+- Record selective upstream provenance and installation-specific update behavior.
+- Native multi-harness qualification, required provider review and publication remain separate pending gates.
+
 ## 1.1.0 — Optional Diagram Design integration
 
 - Add a small routing and verification guide for the separately installed upstream plugin.

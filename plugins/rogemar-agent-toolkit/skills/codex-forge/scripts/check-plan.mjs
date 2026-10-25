@@ -4,9 +4,25 @@ import { pathToFileURL } from 'node:url';
 
 export function parseContract(text) {
   if (text.trimStart().startsWith('{')) return JSON.parse(text);
-  const blocks = [...text.matchAll(/^```forge-contract\s*\n([\s\S]*?)^```\s*$/gm)];
+  const blocks = [];
+  let fence = null;
+  for (const line of text.split(/\r?\n/)) {
+    if (fence) {
+      const close = line.match(/^ {0,3}(`{3,}|~{3,})[ \t]*$/);
+      if (close && close[1][0] === fence.character && close[1].length >= fence.length) {
+        if (fence.contract) blocks.push(fence.lines.join('\n'));
+        fence = null;
+      } else if (fence.contract) fence.lines.push(line);
+      continue;
+    }
+    const open = line.match(/^ {0,3}(`{3,}|~{3,})(.*)$/);
+    if (!open || (open[1][0] === '`' && open[2].includes('`'))) continue;
+    fence = {character: open[1][0], length: open[1].length,
+      contract: open[2].trim() === 'forge-contract', lines: []};
+  }
+  if (fence?.contract) throw new Error('Unclosed forge-contract fence.');
   if (blocks.length !== 1) throw new Error('Expected one forge-contract JSON block, or a JSON file.');
-  return JSON.parse(blocks[0][1]);
+  return JSON.parse(blocks[0]);
 }
 export function validateContract(c) {
   const errors = [];

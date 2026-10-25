@@ -647,7 +647,7 @@
       "required_resources": []
     },
     "bug-triage": {
-      "trigger": "Use when investigating errors, logs, failed tests, crashes, CI failures, production incidents, bug reports, or confusing runtime behavior that needs hypotheses, reproduction steps, and prioritized fixes.",
+      "trigger": "Use when investigating errors, logs, failed tests, crashes, CI failures, production incidents, bug reports, correlated incoming reports, or confusing runtime behavior that needs hypotheses, reproduction steps, and prioritized fixes.",
       "outcome": "Focused diagnosis and behavior/measurement evidence",
       "boundary": "No unrelated optimization or speculative rewrite",
       "activation": "conditional",
@@ -745,7 +745,7 @@
       "targets": []
     },
     "code-review-tests": {
-      "trigger": "Check a change's test evidence, regression coverage, and relevant counterexamples. Use as the testing lens within one code review or for a focused verification review; contribute findings without starting a duplicate quality review.",
+      "trigger": "Check a change's test evidence, regression coverage, mutation sensitivity, and relevant counterexamples, including optional bounded verification of consequential state or concurrency invariants. Use as the testing lens within one code review or for a focused verification review; contribute findings without starting a duplicate quality review.",
       "outcome": "One finding disposition owner; focused tests; architecture support only for real evidence-design uncertainty",
       "boundary": "Do not add a panel or architecture exercise for an obvious unit check",
       "activation": "conditional",
@@ -2060,7 +2060,7 @@
       ]
     },
     "engineering-playbooks": {
-      "trigger": "Apply a reusable engineering playbook for features, bug fixes, investigation, refactoring, performance, experiments, phased delivery, PR stacks, or session recovery across agent harnesses. Select one matching method; keep model and tool routing with the active harness.",
+      "trigger": "Apply a reusable engineering playbook for features, bug fixes, investigation, refactoring, performance, experiments, phased delivery, PR stacks, session recovery, or bounded review of completed outcomes across agent harnesses. Select one matching method; keep model and tool routing with the active harness.",
       "outcome": "Engineering methods and matched native/portable execution",
       "boundary": "Do not invoke an additional Forge entry or overwrite PStack ownership",
       "activation": "conditional",
@@ -3165,7 +3165,9 @@
       "fallback": "engineering-playbooks/references/companion-methods.md#reflect",
       "source": "forge-reflect/SKILL.md",
       "kind": "vendored",
-      "required_resources": [],
+      "required_resources": [
+        "references/review-contract.md"
+      ],
       "required_skills": [
         "workflow-orchestrator"
       ],
@@ -3299,12 +3301,71 @@
       ],
       "targets": []
     },
+    "formal-verification-create": {
+      "trigger": "Create executable verification of consequential concurrency, retry, state, parser or data invariants beyond ordinary examples.",
+      "outcome": "Executable verification artifacts, code correspondence, counterexamples and explicit limits",
+      "boundary": "Conditional specialist under the current orchestrator; missing tools block dependent checks; installation requires existing authority.",
+      "activation": "conditional",
+      "task_tags_any": [
+        "formal-verification",
+        "concurrency"
+      ],
+      "required_evidence": [
+        "affected-behavior"
+      ],
+      "source": "formal-verification-create/SKILL.md",
+      "kind": "vendored",
+      "required_resources": [
+        "LICENSE.txt",
+        "agents/openai.yaml",
+        "assets/verify-skill-template.md"
+      ],
+      "required_skills": [
+        "code-review-tests",
+        "statechart-verification"
+      ],
+      "targets": []
+    },
+    "formal-verification-maintain": {
+      "trigger": "Reconcile formal verification after merges, refactors, changed assumptions or newly introduced writers of guarded state.",
+      "outcome": "Executable verification artifacts, code correspondence, counterexamples and explicit limits",
+      "boundary": "Conditional specialist under the current orchestrator; missing tools block dependent checks; installation requires existing authority.",
+      "activation": "conditional",
+      "task_tags_any": [
+        "formal-verification",
+        "verification-drift"
+      ],
+      "required_evidence": [
+        "affected-behavior"
+      ],
+      "source": "formal-verification-maintain/SKILL.md",
+      "kind": "vendored",
+      "required_resources": [
+        "LICENSE.txt",
+        "agents/openai.yaml"
+      ],
+      "required_skills": [
+        "formal-verification-create"
+      ],
+      "targets": []
+    },
     "frontend-design": {
       "trigger": "Build or redesign working web interfaces with a clear visual direction, usable interaction states and responsive craft. Use for artifact or UI implementation after the task and design direction are understood; use the existing product system where one exists.",
       "outcome": "Respect existing tokens, components and framework choices",
       "boundary": "No new design system or dependency solely because a skill exists",
       "activation": "conditional",
       "source": "frontend-design/SKILL.md",
+      "kind": "vendored",
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
+    },
+    "fsearch": {
+      "trigger": "Invoke an already installed noahdunnagan/fsearch CLI on macOS for fuzzy file discovery and indexed content search within a chosen folder. Use when explicitly requested or locating files across repositories; keep rg and direct reads for exhaustive checks and current-source verification.",
+      "outcome": "Bounded file and content locations verified against current files",
+      "boundary": "Optional macOS CLI; no automatic install, broader indexing authority, or replacement for exhaustive repository checks",
+      "activation": "conditional",
+      "source": "fsearch/SKILL.md",
       "kind": "vendored",
       "required_resources": [],
       "required_skills": [],
@@ -3370,7 +3431,10 @@
       "activation": "conditional",
       "source": "integrated-workflow/SKILL.md",
       "kind": "vendored",
-      "required_resources": [],
+      "required_resources": [
+        "references/durable-handoffs.md",
+        "assets/task-handoff-template.md"
+      ],
       "required_skills": [
         "workflow-orchestrator",
         "create-plan",
@@ -4377,6 +4441,51 @@
       "required_skills": [],
       "targets": []
     },
+    "statechart-verification": {
+      "trigger": "Translate TLA+ or agreed statecharts into models and explain model-check results, reachability and counterexample paths.",
+      "outcome": "Executable verification artifacts, code correspondence, counterexamples and explicit limits",
+      "boundary": "Conditional specialist under the current orchestrator; missing tools block dependent checks; installation requires existing authority.",
+      "activation": "conditional",
+      "task_tags_any": [
+        "formal-verification",
+        "statechart"
+      ],
+      "required_evidence": [
+        "affected-behavior"
+      ],
+      "source": "statechart-verification/SKILL.md",
+      "kind": "vendored",
+      "required_resources": [
+        "LICENSE.txt",
+        "agents/openai.yaml",
+        "references/dependencies.md",
+        "scripts/bug-states.mjs",
+        "scripts/chart-edges.mjs",
+        "scripts/chart-parts.mjs",
+        "scripts/chart-to-tla.mjs",
+        "scripts/compare-charts.mjs",
+        "scripts/lib.mjs",
+        "scripts/map-view.mjs",
+        "scripts/property-loop.mjs",
+        "scripts/read-check.mjs",
+        "scripts/regions-chart.mjs",
+        "scripts/render.mjs",
+        "scripts/rule-book.mjs",
+        "scripts/second-replay.mjs",
+        "scripts/snapshot.mjs",
+        "scripts/spec-text.mjs",
+        "scripts/statechart-help.mjs",
+        "scripts/statechart.mjs",
+        "scripts/tlc-to-chart-args.mjs",
+        "scripts/tlc-to-chart.mjs",
+        "scripts/tlc-tools.mjs",
+        "scripts/ways-in.mjs"
+      ],
+      "required_skills": [
+        "code-review-tests"
+      ],
+      "targets": []
+    },
     "supabase": {
       "trigger": "Connector-independent Supabase skill and CLI/documentation fallback. Use when the namespaced Supabase plugin or its live tools are unavailable or unauthenticated, when the user explicitly requests the local skill/CLI route, or when declarative-schema guidance is required. Prefer the installed Supabase plugin when it is healthy.",
       "outcome": "Prefer available official/native integration and existing connector-independent fallback as appropriate",
@@ -5015,7 +5124,9 @@
       "activation": "conditional",
       "source": "workflow-orchestrator/SKILL.md",
       "kind": "vendored",
-      "required_resources": [],
+      "required_resources": [
+        "references/task-handoff-discovery.md"
+      ],
       "required_skills": [],
       "targets": []
     },

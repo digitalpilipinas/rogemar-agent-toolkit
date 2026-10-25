@@ -173,7 +173,7 @@ ask only for material unresolved owner decisions. A playbook invocation grants
 no new external-action authority. Keep an unavailable service or required
 runtime check visibly blocked and continue independent authorized work.
 
-Keep scope discipline: one writer per worktree, read-only reviewers stay
+Keep scope discipline under [writer isolation](../workflow-orchestrator/references/writer-isolation.md); read-only reviewers stay
 read-only, no publication/merge without its own authority. Repository
 instructions and the active plan override this file. Reconcile the actual diff,
 executable evidence, and independently useful review before acceptance. Never

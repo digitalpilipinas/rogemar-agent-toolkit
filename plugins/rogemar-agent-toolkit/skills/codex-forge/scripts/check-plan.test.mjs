@@ -14,3 +14,25 @@ test('rejects missing evidence and duplicate or cyclic dependencies',()=>{
 test('does not accept model pins as a planning-time routing decision',()=>{
  const c=valid();c.tasks[0].profile='gpt-6-astra';assert.ok(validateContract(c).length);
 });
+test('ignores a contract inside an enclosing Markdown example',()=>{
+ const sample='````markdown\n```forge-contract\n'+JSON.stringify(valid())+'\n```\n````\n';
+ assert.throws(()=>parseContract(sample),/Expected one/);
+ const live=valid();live.goal='Actual task';
+ assert.equal(parseContract(sample+'```forge-contract\n'+JSON.stringify(live)+'\n```\n').goal,'Actual task');
+});
+test('supports matching fence characters, lengths, indentation and CRLF',()=>{
+ for(const fence of ['```','````','~~~','~~~~']){
+  const input='   '+fence+'forge-contract\r\n'+JSON.stringify(valid())+'\r\n   '+fence+'\r\n';
+  assert.deepEqual(parseContract(input),valid());
+ }
+});
+test('does not close on short or mismatched fences or accept unclosed contracts',()=>{
+ for(const close of ['```','~~~~','```` trailing']){
+  assert.throws(()=>parseContract('````forge-contract\n'+JSON.stringify(valid())+'\n'+close+'\n'),/Unclosed/);
+ }
+});
+test('rejects multiple actual contracts and ignores non-contract fences',()=>{
+ const block='```forge-contract\n'+JSON.stringify(valid())+'\n```\n';
+ assert.throws(()=>parseContract(block+block),/Expected one/);
+ assert.deepEqual(parseContract('~~~text\n```forge-contract\nnot json\n```\n~~~\n'+block),valid());
+});
