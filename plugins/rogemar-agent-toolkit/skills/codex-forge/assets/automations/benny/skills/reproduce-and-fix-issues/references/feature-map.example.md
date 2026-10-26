@@ -202,6 +202,6 @@ Lets a user change personal preferences.
 - No selector uses generated classes or DOM position.
 - Relevant interaction, loading, empty, error, selected, and expanded states are covered.
 - Auth, fixtures, permissions, flags, and services are explicit.
-- Selected evidence and underlying cross-check requirements are explicit; video has a named justification or is marked not needed.
+- Selected evidence and underlying cross-check requirements are explicit; selected video names its justification or acceptance requirement, bounded sequence, owned stop operation and inspection observation. Otherwise mark video not needed.
 - Wrong surfaces, dead ends, and safe environment translations are listed.
 - Implementation details remain runtime discoveries.

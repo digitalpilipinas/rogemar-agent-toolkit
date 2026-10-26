@@ -174,4 +174,4 @@ Before enabling the repro automation, run one harmless adapter check:
 8. If recording is selected for this adapter, record and inspect a short clip, then stop the owned capture. Otherwise record this capability check as not applicable.
 9. Clean up.
 
-Enable repro work only when all applicable steps succeed and no source-channel Slack post is involved.
+Complete this harmless setup check without posting to Slack. Enable repro work only when all applicable setup steps succeed. Later reproduction reporting follows the workflow's separate authorization and immutable-source-thread preflight; this setup check grants no messaging authority.

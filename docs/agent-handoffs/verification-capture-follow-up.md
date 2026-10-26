@@ -39,8 +39,7 @@ Completed evidence:
 
 - Lock generation followed by bundle verification: 131 skills, version 1.2.1.
 - Seven focused tests pass. The new test executes the actual published bug-bash
-  shell block with a local CLI probe, confirming both charters receive video/trace
-  off. It launches no application and makes no network call.
+  shell block with a local CLI probe, confirming both charters run with video and tracing disabled. It launches no application and makes no network call.
 - A mutation in an extracted temporary package reintroduced unconditional video;
   the new command test rejected it. Source files were not mutated.
 - Core/full portable and Codex packages build; checksums verified. Extracted
@@ -86,7 +85,7 @@ candidate identity in the PR delivery receipt. The connector route leaves protec
 local Git metadata unchanged. Separate global-instruction work remains excluded.
 
 The intended delivery candidate contains 13 files relative to merged 1.2.1. Its
-handoff index omits the local global-instruction-alignment row because that separate
+handoff index omits the local row named `global-instruction-alignment` because that separate
 record and helper are excluded from this PR. The local index retains that row.
 Release version remains 1.2.1 with unreleased follow-up notes; no release tag,
 consumer installation, artifact deletion or measured resource savings is claimed.

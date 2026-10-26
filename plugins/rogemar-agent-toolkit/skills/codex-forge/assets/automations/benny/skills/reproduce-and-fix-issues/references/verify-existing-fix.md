@@ -44,7 +44,7 @@ Through the configured control adapter:
 3. Run the reported path through real UI actions.
 4. Observe the discriminating symptom.
 5. Reset and repeat it.
-6. Capture baseline action/outcome evidence and a read-only state check. Use a targeted screenshot for appearance; select video only for a named temporal or diagnostic question under the control-adapter contract.
+6. Capture baseline action/outcome evidence and a read-only state check. Use a targeted screenshot for appearance; select video for an explicit acceptance requirement or a named temporal or diagnostic question under the control-adapter contract.
 
 If the symptom does not appear twice on the baseline, there is no baseline. Do not claim that the fix works.
 
