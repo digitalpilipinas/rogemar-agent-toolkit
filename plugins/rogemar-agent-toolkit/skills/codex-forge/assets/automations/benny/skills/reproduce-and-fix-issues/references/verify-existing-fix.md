@@ -44,7 +44,7 @@ Through the configured control adapter:
 3. Run the reported path through real UI actions.
 4. Observe the discriminating symptom.
 5. Reset and repeat it.
-6. Capture baseline recording, screenshot, and state check.
+6. Capture baseline action/outcome evidence and a read-only state check. Use a targeted screenshot for appearance; select video for an explicit acceptance requirement or a named temporal or diagnostic question under the control-adapter contract.
 
 If the symptom does not appear twice on the baseline, there is no baseline. Do not claim that the fix works.
 
@@ -56,7 +56,7 @@ Build and run the pull request or fix commit with the same environment and data.
 2. Repeat it twice.
 3. Confirm that the broken state is gone.
 4. Confirm the expected state appears.
-5. Capture after recording, screenshot, and the same state check.
+5. Capture comparable after evidence and the same state check. Reuse the baseline evidence-selection rationale; record what was inspected, not just saved.
 
 Do not stop at compilation or tests. The after result must come from a running patched app.
 

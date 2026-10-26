@@ -120,12 +120,14 @@ time budget before judging a single result.
 
 ## 3. Fan out
 
-One `e2e explore` per charter with its own output directory:
-`--output .e2e/bugbash/<slug>` writes `report.json` and `artifacts/` there,
+One `e2e explore` per charter with its own output directory inside a fresh
+run directory. `--output "$BUGBASH_RUN_DIR/<slug>"` writes `report.json` and `artifacts/` there,
 and `--reporter list,markdown` adds `summary.md`. `e2e init` gitignores
-specific `.e2e/` paths, not `.e2e/bugbash/`: add it to `.gitignore` or
-delete it when done, and delete it before a new bug bash. `charters.txt` and
-the logs under it are yours; the rest is the runner's output, read only.
+specific `.e2e/` paths, not `.e2e/bugbash/`: add it to `.gitignore`.
+Use a fresh run directory for subsequent batches; preserve prior evidence until
+it is eligible under the approved retention policy. Do not delete a previous
+batch merely to start another. `charters.txt` and the logs under it are yours;
+the rest is the runner's output, read only.
 
 Run them as background shell jobs, four at a time, not as subagents. One
 line per charter, `slug|target|agent|charter`, the agent naming its persona,
@@ -133,15 +135,23 @@ then (`xargs -0 -P` is a GNU and BSD extension, present on macOS and Linux):
 
 ```bash
 mkdir -p .e2e/bugbash
-cat > .e2e/bugbash/charters.txt <<'CHARTERS'
+BUGBASH_RUN_DIR=$(mktemp -d .e2e/bugbash/run-XXXXXX)
+export BUGBASH_RUN_DIR
+cat > "$BUGBASH_RUN_DIR/charters.txt" <<'CHARTERS'
 cart|web|skeptic|Starting at /cart, change quantities and apply a coupon; check every price, total, and label against the rest of the page
 account|web|fuzzer|Starting at /settings/profile, submit each field empty, a 300-character value, unicode, and leading spaces; report validation that is missing or wrong
 CHARTERS
 while IFS='|' read -r slug target agent charter; do
   [ -n "$slug" ] && printf '%s\0%s\0%s\0%s\0' "$slug" "$target" "$agent" "$charter"
-done < .e2e/bugbash/charters.txt | xargs -0 -n 4 -P 4 sh -c \
-  'npx e2e explore "$4" --config e2e.bugbash.config.ts --target "$2" --agent "$3" --output ".e2e/bugbash/$1" --max-steps 6 --video --reporter list,markdown < /dev/null > ".e2e/bugbash/$1.log" 2>&1' _
+done < "$BUGBASH_RUN_DIR/charters.txt" | xargs -0 -n 4 -P 4 sh -c \
+  'npx e2e explore "$4" --config e2e.bugbash.config.ts --target "$2" --agent "$3" --output "$BUGBASH_RUN_DIR/$1" --max-steps 6 --video=off --trace=off --reporter list,markdown < /dev/null > "$BUGBASH_RUN_DIR/$1.log" 2>&1' _
 ```
+
+For a selected timing/flicker diagnosis, rerun only the affected charter into a
+fresh output directory, replacing `--video=off --trace=off` with
+`--video=on --trace=off`. For a trace-specific question use
+`--video=off --trace=on` instead. Record the question before running and inspect
+the resulting artifact. Do not enable both without a reason for each.
 
 The log's summary prints `AI` (cost) and `Duration`. Exit code `1` means
 issues were reported: read the log either way. Exit codes `2` and `3` are
@@ -150,8 +160,8 @@ setup and environment problems; fix them and rerun that charter alone.
 ## 4. Merge
 
 Read each log's `Findings` section (topic `explore`); `summary.md` holds the
-same, and `report.json` has the record under `run.explore`. The video is in
-the attempt's `video/` directory under `.e2e/bugbash/<slug>/artifacts/`.
+same, and `report.json` has the record under `run.explore`. If selected, video is in
+the attempt's `video/` directory under `$BUGBASH_RUN_DIR/<slug>/artifacts/`.
 
 Merge findings that describe one defect: same path, same broken behavior.
 Keep the clearest reproduction and every charter that hit it. Keep warnings

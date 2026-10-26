@@ -63,7 +63,7 @@ The adapter must expose ways to:
 - Interact with default, hover, focus-visible, active, disabled, loading, empty, error, selected, open, expanded, and feature-specific states when they apply.
 - Arrange a state through safe fixture data, permissions, flags, service responses, or supported test controls.
 - Reset the feature for a second independent repro attempt.
-- Capture the screenshot, video, and read-only cross-check named by the feature map.
+- Capture the selected evidence and read-only cross-check named by the feature map; video is conditional, not a universal requirement.
 
 Use roles, accessible names, ARIA relationships, stable component markers, and purpose-named data attributes. Never use generated CSS or StyleX classes, dynamic hashes, child indexes, or brittle DOM position.
 
@@ -99,7 +99,12 @@ The screenshot must show enough app chrome to prove that the correct app is unde
 
 ### Recording
 
-Start and stop a screen recording around the full repro path.
+Follow [verification efficiency](../../../../../../../workflow-orchestrator/references/verification-efficiency.md). Screen video is off by default.
+Select a short recording only for an explicit acceptance requirement or a named
+motion, timing or diagnostic question that other evidence cannot settle. A
+missing optional recorder does not block an otherwise sufficient proof. For a
+selected recording, name its owned handle and stop operation before starting;
+stop it on success, failure or interruption.
 
 Return:
 
@@ -107,6 +112,7 @@ Return:
 - Start and stop times
 - Captured window or region
 - Whether audio or sensitive overlays were omitted
+- Inspection status and the observation that answers the named question
 
 The recording must show the discriminating final state, not only setup or a loading screen.
 
@@ -120,7 +126,7 @@ Remove disposable:
 - Temporary workspaces
 - Test accounts or fixtures when the adapter created them
 - Debug ports and tunnels
-- Captures past their retention window
+- Captures eligible under an approved retention policy, with protected pins excluded
 
 Return what was stopped, removed, retained, or left for a person.
 
@@ -165,7 +171,7 @@ Before enabling the repro automation, run one harmless adapter check:
 5. Exercise one disposable state through mapped adapter actions.
 6. Inspect the resulting state.
 7. Capture a screenshot.
-8. Record a short clip.
+8. If recording is selected for this adapter, record and inspect a short clip, then stop the owned capture. Otherwise record this capability check as not applicable.
 9. Clean up.
 
-Enable repro work only when all nine steps succeed and no source-channel Slack post is involved.
+Complete this harmless setup check without posting to Slack. Enable repro work only when all applicable setup steps succeed. Later reproduction reporting follows the workflow's separate authorization and immutable-source-thread preflight; this setup check grants no messaging authority.

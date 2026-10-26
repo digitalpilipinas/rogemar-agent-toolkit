@@ -1,12 +1,17 @@
 # Toolkit update handoffs
 
-This is the resume index for the current authorized toolkit improvement and publication task.
-Read repository `AGENTS.md`, the selected task record, and actual Git state before
-continuing. These records own this local task status; they do not replace a future
-GoalBuddy board or independently grant publication authority. The latest operator request explicitly authorizes committing all intended changes and aligning GitHub; see the publication record for current blockers. The changes and these handoffs are published on [PR #29](https://github.com/digitalpilipinas/rogemar-agent-toolkit/pull/29); see `toolkit-publication.md` for exact source identity and local Git limitations.
+This index tracks toolkit work across sessions. Read repository `AGENTS.md`, the
+relevant task record and current Git state before continuing. Records carry
+status and evidence; they do not independently grant publication authority.
+
+PR #29 (1.2.0) and PR #31 (1.2.1) are merged on GitHub. The current local
+capture follow-up is recorded below; its record distinguishes source files from
+protected local Git metadata. Older publication and review-waiver statements
+belong to their recorded task, not every future change.
 
 | Task | Record | Dependency |
 | --- | --- | --- |
+| Verification capture follow-up | [verification-capture-follow-up](verification-capture-follow-up.md) | Merged 1.2.1 source; local source reconciliation |
 | Integration and publication | [toolkit-publication](toolkit-publication.md) | Current local work and latest GitHub main |
 | Reliability repairs | [toolkit-reliability](toolkit-reliability.md) | None |
 | Methods and evidence | [toolkit-methods](toolkit-methods.md) | Reliability repairs |
@@ -21,9 +26,7 @@ with acceptance and dependencies; do not invent tasks merely to fill every statu
 Required local commands are `python3 -B scripts/toolkit.py lock`, then `verify`,
 `python3 -B -m unittest discover -s tests -v`, the Project Learning tests, Forge
 verification, watcher tests, and core/full package checks. Exact results belong
-in the task records. The operator reports host-terminal authentication is complete; CodeRabbit review
-is temporarily waived for this PR by the operator. Authentication/network diagnosis remains in the qualification record; do not retry local CLI review for this delivery.
-
-PR publication is authorized through the GitHub connector; verify remote revision and file contents before
-claiming another machine can read them. Resume after interrupted local tests by
-inspecting their actual outcome or rerunning only affected checks.
+in the task records. Historical authentication, provider waivers and delivery authority remain in the
+corresponding task records. Reconcile them with the current request rather than
+reusing a past PR's exception. After interrupted checks, inspect their actual
+outcome or rerun only affected checks.
