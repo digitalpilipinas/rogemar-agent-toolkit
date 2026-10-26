@@ -93,7 +93,12 @@ owner who may release a pin. Required final proof, unresolved failures and audit
 or legal evidence remain pinned. Project policy decides eligibility duration;
 missing acceptance or delivery facts do not make an artifact disposable.
 
-Deletion batches need separate approval. Verify an accessible replacement
+Cleanup may run within an existing explicit owner-approved policy covering the
+artifact paths, eligibility and pins; do not request approval again for each
+covered batch. Without that authority, preview candidates and obtain scoped
+approval before deletion. Use the [project retention template](evidence-retention-template.md)
+when a project has no policy. A template alone grants no deletion authority.
+Verify an accessible replacement
 archive before retiring a needed local copy; a hash cannot replace the artifact.
 Never prune inside opaque result bundles blindly. Replay caches have their own
 validity/privacy lifecycle and are not media cleanup.

@@ -5657,7 +5657,7 @@
     },
     "codex-forge": {
       "file_count": 69,
-      "sha256": "24ff0fb89dcf473b9cebb8e5f773414a5d1f1112537cfa67fca02e3e390ab964"
+      "sha256": "5204f07b9c06f6df83e305b73bbb9397602e9994f87cccb11fa274063af65968"
     },
     "create-plan": {
       "file_count": 6,
@@ -5697,7 +5697,7 @@
     },
     "devin-forge": {
       "file_count": 2,
-      "sha256": "e01b3603a33d5d1cbfab357fb0cebf7c18a6333d4c910ec8add340cdc91edcd8"
+      "sha256": "23925a348c049c23e77eb40094b32f0a0cfd78d8302866f410026c7502c7511c"
     },
     "dream-team": {
       "file_count": 7,
@@ -5705,7 +5705,7 @@
     },
     "e2e": {
       "file_count": 11,
-      "sha256": "2b650793b7e82cff0352f120a7cca0b48ec89b585bfb2c04479a29d4da0ac6f6"
+      "sha256": "a294c6519da8525225ffb309b72c84cc0ad7a3caed906d5e023eddd814c09dc5"
     },
     "engineering-playbooks": {
       "file_count": 61,
@@ -6104,8 +6104,8 @@
       "sha256": "5586d54c903bfbbe563e49d882818f6fed8b186729ba3b7c3cc6ed802e7f1125"
     },
     "workflow-orchestrator": {
-      "file_count": 28,
-      "sha256": "4eb87b09f044ebfd4e0c7219794b366b319a60382a85b46806f7917c2e27ec84"
+      "file_count": 29,
+      "sha256": "ab4c4417c9e095b099598f9c31c8ffc69ef4e33193dd287af850bf67aadfb162"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

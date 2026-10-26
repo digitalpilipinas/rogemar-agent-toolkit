@@ -67,7 +67,12 @@ worker receipts.
   when they fit the role):
   - Interactive UI verification (browser/simulator/emulator/device QA, visual
     review of a running app) → the in-session `testing_agent`, which owns its
-    own setup and produces annotated recordings. Use a child session only when
+    own setup and produces annotated recordings. Apply
+    [verification efficiency](../workflow-orchestrator/references/verification-efficiency.md):
+    request bounded capture when supported, avoid duplicate capture, and report
+    provider-controlled recording when no supported off switch exists. Do not
+    claim that guidance disabled native capture or that saved media was inspected.
+    Use a child session only when
     isolation or concurrency is the point.
   - PR-diff review → `devin_review_manage` (Devin Review) is the native review
     route for an open PR. Child-session reviewers remain for pre-PR artifacts,

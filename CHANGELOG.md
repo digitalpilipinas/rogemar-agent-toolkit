@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — Verification capture follow-up
+
+- Make Benny recording conditional and E2E exploration examples explicitly disable routine video and traces.
+- Add a project-owned retention template and recognize already approved cleanup scope.
+- Clarify provider-controlled Devin capture and correct historical publication status.
+
 ## 1.2.1 — Focused verification and evidence lifecycle
 
 - Select simulator and UI checks by changed behavior and acceptance boundary, not commit or review-comment count.
@@ -8,7 +14,7 @@
 - Preserve required proof through teardown, with project-owned retention, protected pins and separately approved cleanup.
 - Keep all existing review providers, required gates and external runtime dependencies unchanged.
 
-## 1.2.0 — Workflow reliability and verification (prepared, unpublished)
+## 1.2.0 — Workflow reliability and verification
 
 - Reconcile current GitHub content with local improvements while preserving existing edits.
 - Fix fenced-plan parsing and polling deadlines; retain executable regression evidence.
@@ -17,7 +23,7 @@
 - Strengthen startup, mutation, test-boundary, correlated intake and completed-work methods.
 - Refine Claude continuation, worker capability and packaging checks; add standards and ticket-identity discovery.
 - Record selective upstream provenance and installation-specific update behavior.
-- Native multi-harness qualification, required provider review and publication remain separate pending gates.
+- PR #29 merged as `ea51d8d` after required reviews; native multi-harness qualification and consumer adoption remain separately evidenced.
 
 ## 1.1.0 — Optional Diagram Design integration
 

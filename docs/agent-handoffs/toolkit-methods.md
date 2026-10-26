@@ -14,9 +14,17 @@ It covers phase-based checks, discriminating reruns, selective capture, inspecte
 evidence, safe reuse and owner-controlled retention. Project runtime matrices,
 reservations and retention durations remain project-owned.
 
-Source implementation is in progress. No release, consumer update or native
-adoption is established by this record. Record reviewed source and delivery
-results in the corresponding PR/external receipt before claiming completion.
+Source 1.2.1 merged through PR #31 as `3c9d7ecb39fb506e4b2975660c685b579dfab0f2`.
+The final PR candidate `cf011ed` passed Validate toolkit CI; PR #31 records
+local/package checks and completed CodeRabbit/Codex reviews. Release-tag status,
+consumer installation and fresh-session adoption are separate facts, not inferred
+from the merge. See [capture follow-up](verification-capture-follow-up.md) for
+remaining recipe/retention changes.
+
+## Historical 1.2.0 implementation record
+
+The status and local-only statements below describe earlier checkpoints, not
+current GitHub availability. PR #29 merged as `ea51d8d`.
 
 - Status: completed at implementation/local-check boundary; aggregate acceptance blocked
 - As-of UTC: 2026-10-24T13:25:33.451158+00:00
