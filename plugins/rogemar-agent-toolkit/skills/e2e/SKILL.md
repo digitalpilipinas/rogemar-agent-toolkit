@@ -38,7 +38,8 @@ do not weaken assertions to make a test pass. Preserve the project's test data a
 cleanup contract. See the appropriate engine and assertion references only as needed.
 
 Run the pinned local CLI through the project's package manager. Inspect the actual
-`report.json`, traces/screenshots and exit status. Confirm selected and executed
+`report.json` and exit status, plus relevant traces/screenshots when captured and
+applicable. Confirm selected and executed
 counts, required assertions and no silently skipped required journey. Exit zero alone
 is insufficient: skipped or flaky coverage is not proof of the required outcome.
 For routine-iteration versus diagnostic recording choices, see

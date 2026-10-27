@@ -25,6 +25,13 @@ It adds no mandatory hypothesis count, human checkpoint, or production access.
 
 ## Output
 
+Use the project's existing findings record; when Integrated Workflow is available,
+follow its `references/findings-tracking.md` contract in that skill.
+If that optional skill is absent, apply the core `workflow-orchestrator` findings
+fallback: reuse a tracker or, with repository-write authority, use
+`docs/quality/findings.md`; otherwise use an authorized task receipt. Preserve
+distinct attempts, report sources and uncertain recurrence. Do not install it.
+
 - Root cause if known.
 - Evidence and reproduction path.
 - Fix implemented or proposed.

@@ -64,6 +64,25 @@ or video file existing does not mean it was inspected. Describe the actual
 observation and its limitations. Pixels do not prove data integrity; text and
 accessibility assertions do not prove every visual property.
 
+## Human evidence handoff
+
+At completion, pause, a blocked handoff or an owner decision, include only
+relevant screenshots and recordings in the existing human-facing report. Give a
+descriptive clickable file or authorized artifact link, the claim or question,
+and the feature, platform, state and candidate/build when needed. Label each
+`inspected`, `partially inspected` or `captured but not inspected`; state the
+actual observation and limitation. Name the retention disposition and relevant
+finding ID where applicable. A saved file is not an inspected observation.
+
+Check that a local file exists before linking it; use the host's supported link
+format. Report missing, expired or inaccessible artifacts, including those not
+accessible to a receiving host. Do not claim a link is usable without checking
+what the current environment can verify. Do not upload, capture extra media, or
+share private paths, credentials or sensitive logs merely for a handoff. Prefer
+authorized durable links in versionable records; use local links only in an
+appropriate private report. An inline preview is optional, not a substitute for an
+accessible link where supported.
+
 ## Safe reuse and invalidation
 
 Reuse only within valid source and dirty-snapshot, test, fixture, toolchain,
@@ -102,6 +121,11 @@ Verify an accessible replacement
 archive before retiring a needed local copy; a hash cannot replace the artifact.
 Never prune inside opaque result bundles blindly. Replay caches have their own
 validity/privacy lifecycle and are not media cleanup.
+Human review does not release a protected pin. Before an authorized cleanup,
+recheck ownership, active writes and pins, then report deleted, retained and
+failed items. Mark deleted evidence unavailable in its finding/receipt, preserving
+its description, resolution history and cleanup receipt. Missing authority or
+uncertain eligibility means retain and report.
 
 ## Instruction scenarios to check
 

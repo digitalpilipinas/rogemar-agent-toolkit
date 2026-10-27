@@ -1,7 +1,7 @@
 ---
 name: devin-forge
 description: Run shared Forge engineering methods natively in Devin using Devin's own agent modes, child sessions, and tools. Use for Devin Forge, substantive implementation, diagnosis, refactoring, review, or verification in Devin. codex-forge, cursor-forge, claude-forge and universal-forge are separate entries.
-license: MIT
+license: See LICENSE.adapter.txt and LICENSE.txt
 ---
 # Devin Forge
 
@@ -147,9 +147,9 @@ ceilings below.
 | Role group | Roles | Peak | Balanced | Lean | Sprint |
 | --- | --- | --- | --- | --- | --- |
 | Parent-owned (never a worker) | parent-coordinator, workflow-coordinator, integration-owner | desired parent: fusion | desired parent: normal | desired parent: swe-2-high | unchanged |
-| Judgment workers (independent-context reviews, judges, synthesis, design) | correctness-reviewer, scope-reviewer, acceptance-auditor, goal-judge, interrogate-reviewers, how-critics, reflect-judgment, judgment-and-prose, why-synthesizer, how-explainer, bug-triager, architect-runners, arena-cross-judge-pool, design-system-reviewer, visual-reviewer, ux-flow-designer, ui-designer, interaction-designer | swe-2-max | swe-2-high | parent-owned (escalate to swe-2-high only when independence is the point) | parent-owned |
-| Implementation workers (bounded writes/verification) | feature, refactoring, bug-fix, perf-issue, hillclimb, hardest-tasks, how-explorer, why-investigators, validation-runner, qa-runner, simulator-qa, emulator-qa | swe-2-high (routine) → swe-2-max (hardest slices) | swe-2-medium (routine) → swe-2-high (harder slices) | lite | lite |
-| Clerical / monitoring (support receipts, no judgment claims) | findings-consolidator, reflect-synthesizer, reflect-tooling, reflect-divergent, status-monitor, learning-curator, goal-scout, browser-qa, physical-device-qa, accessibility-reviewer | lite | lite | lite | lite |
+| Judgment workers (independent-context reviews, judges, synthesis, design) | correctness-reviewer, scope-reviewer, acceptance-auditor, goal-judge, interrogate-reviewers, how-critics, reflect-judgment, judgment-and-prose, why-synthesizer, how-explainer, bug-triager, architect-runners, arena-cross-judge-pool, design-system-reviewer, visual-reviewer, ux-flow-designer, ui-designer, interaction-designer, accessibility-reviewer | swe-2-max | swe-2-high | parent-owned (escalate to swe-2-high only when independence is the point) | parent-owned |
+| Implementation workers (bounded writes/verification) | feature, refactoring, bug-fix, perf-issue, hillclimb, hardest-tasks, how-explorer, why-investigators, validation-runner, qa-runner, simulator-qa, emulator-qa, browser-qa, physical-device-qa | swe-2-high (routine) → swe-2-max (hardest slices) | swe-2-medium (routine) → swe-2-high (harder slices) | lite | lite |
+| Clerical / monitoring (support receipts, no judgment claims) | findings-consolidator, reflect-synthesizer, reflect-tooling, reflect-divergent, status-monitor, learning-curator, goal-scout | lite | lite | lite | lite |
 | Task-fit participants | swarm-workers, arena-runners | resolve each participant's actual function into the rows above | | | |
 
 Rules of application:

@@ -22,7 +22,9 @@ toolkit = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(toolkit)
 
 
-SKILL_COUNT = len(json.loads((REPOSITORY_ROOT / "catalog/skills.yaml").read_text())["vendored"])
+CATALOG = json.loads((REPOSITORY_ROOT / "catalog/skills.yaml").read_text())
+SKILL_COUNT = len(CATALOG["vendored"])
+SELECTED_DISTRIBUTION = "distribution_selection" in CATALOG["package"]
 
 
 class ToolkitTests(unittest.TestCase):
@@ -30,7 +32,8 @@ class ToolkitTests(unittest.TestCase):
         stdout = StringIO()
         stderr = StringIO()
         with redirect_stdout(stdout), redirect_stderr(stderr):
-            result = toolkit.main(list(arguments))
+            options = ["--trust-unversioned-source"] if arguments[0] == "package" and SELECTED_DISTRIBUTION else []
+            result = toolkit.main(list(arguments) + options)
         return result, stdout.getvalue(), stderr.getvalue()
 
     def test_verify_clean_bundle(self) -> None:

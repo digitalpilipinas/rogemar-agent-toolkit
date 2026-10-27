@@ -8,6 +8,17 @@
 6. Report fresh target-harness discovery, Linux/WSL execution, OpenDesign runtime/rendering and device evidence separately. A local simulated layout is not a cloud smoke test.
 7. Publish a reviewed commit/release only within the operator's publication authority. Use a pinned tag or commit for cloud setup; never silently track main as a reproducibility guarantee.
 
+Packaging reads Git-tracked files from the working tree, including their current
+uncommitted contents; review the tracked diff and candidate before distribution.
+Untracked or ignored files are excluded unless explicitly named, one file per
+`--include-source path` argument. Intended new skill files must be named or added
+to the Git index so their locked skill digest matches. Symlinks, excluded cache
+paths, secret-like files and out-of-scope paths are rejected. A source tree without
+Git metadata fails closed; only after inspecting and trusting its complete eligible
+contents may the operator pass `--trust-unversioned-source`. This flag deliberately
+includes eligible files from that Git-less tree; it is not a privacy filter. The
+same explicit flag is needed when repackaging an extracted release archive.
+
 Default archives expose the six-skill core. The portable archive contains compatible selected skill trees plus the selection/hash receipt. The Codex marketplace archive contains a selected, self-validating source distribution, including the installer and full Forge provenance manifest. Its optional packs are limited to the contents of that archive; use the full source checkout to add other packs.
 
 Version 1.0 changes installation state and defaults. Legacy state migration requires an explicit harness. Subsequent breaking names, required dependencies or state schemas require a major version. Additive optional packs use a minor version; compatible corrections use a patch version.

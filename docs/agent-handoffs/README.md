@@ -11,6 +11,7 @@ belong to their recorded task, not every future change.
 
 | Task | Record | Dependency |
 | --- | --- | --- |
+| Findings and evidence handoff | [findings-evidence-handoff](findings-evidence-handoff.md) | Merged capture follow-up; 1.2.2 delivery |
 | Verification capture follow-up | [verification-capture-follow-up](verification-capture-follow-up.md) | Merged 1.2.1 source; local source reconciliation |
 | Integration and publication | [toolkit-publication](toolkit-publication.md) | Current local work and latest GitHub main |
 | Reliability repairs | [toolkit-reliability](toolkit-reliability.md) | None |
@@ -22,6 +23,10 @@ belong to their recorded task, not every future change.
 Read status and next action from each task record rather than maintaining a second
 status table here. Retain completed records. Add an approved future task as planned
 with acceptance and dependencies; do not invent tasks merely to fill every status.
+
+The project [findings tracker](../quality/findings.md) records in-scope issues,
+recommendations and their source/disposition evidence; historical coverage gaps
+remain explicit in its linked task receipt.
 
 Required local commands are `python3 -B scripts/toolkit.py lock`, then `verify`,
 `python3 -B -m unittest discover -s tests -v`, the Project Learning tests, Forge

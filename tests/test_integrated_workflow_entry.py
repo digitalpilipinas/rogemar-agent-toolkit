@@ -61,6 +61,18 @@ class IntegratedWorkflowEntryTests(unittest.TestCase):
         self.assertIn("verification-efficiency.md", loop_path.read_text())
         self.assertIn("CodeRabbit", text)
 
+    def test_findings_contract_and_template_are_packaged(self):
+        skill = SKILLS / "integrated-workflow"
+        if not skill.is_dir():
+            self.skipTest("Integrated Workflow was not selected for this distribution")
+        contract = skill / "references/findings-tracking.md"
+        template = skill / "assets/findings-template.md"
+        self.assertTrue(contract.is_file())
+        self.assertTrue(template.is_file())
+        self.assertIn("../assets/findings-template.md", contract.read_text())
+        for ref in ("references/execution-loop.md", "references/durable-handoffs.md"):
+            self.assertIn("findings-tracking.md", (skill / ref).read_text())
+
     def test_forge_mode_includes_claude(self):
         """Forge mode applies on Claude as well as Codex, Cursor, and Universal."""
         text = (SKILLS / "workflow-orchestrator/SKILL.md").read_text()

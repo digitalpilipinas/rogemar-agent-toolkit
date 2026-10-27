@@ -262,6 +262,10 @@ rules to reduce noise.
 
 ### Findings and minimum sufficient corrections
 
+Use [findings tracking](findings-tracking.md) for local failures, CI, human and
+provider reports, recurrence and the human handoff. Reuse the existing tracker;
+do not introduce a second review owner or change the cloud completion barrier.
+
 Keep one canonical disposition per root cause/contract/failure scenario in the
 existing board, receipt, working state or PR conversation. Retain canonical and
 duplicate comment IDs, current-head evidence, necessity/impact, proposed minimal

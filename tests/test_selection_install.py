@@ -39,7 +39,10 @@ class SelectionInstallTests(unittest.TestCase):
         out, err = io.StringIO(), io.StringIO()
         with redirect_stdout(out), redirect_stderr(err):
             # Managed-install tests are offline; external fetching has its own fixtures.
-            code = toolkit.main(list(args) + (["--skip-external"] if args[0] in {"install", "upgrade"} else []))
+            options = ["--skip-external"] if args[0] in {"install", "upgrade"} else []
+            if args[0] == "package" and SELECTED_DISTRIBUTION:
+                options.append("--trust-unversioned-source")
+            code = toolkit.main(list(args) + options)
         return code, out.getvalue(), err.getvalue()
 
     def state(self, project):
