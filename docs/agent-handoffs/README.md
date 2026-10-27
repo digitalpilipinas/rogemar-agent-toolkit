@@ -11,7 +11,7 @@ belong to their recorded task, not every future change.
 
 | Task | Record | Dependency |
 | --- | --- | --- |
-| Findings and evidence handoff | [findings-evidence-handoff](findings-evidence-handoff.md) | Merged capture follow-up; historical backfill and release preparation |
+| Findings and evidence handoff | [findings-evidence-handoff](findings-evidence-handoff.md) | Merged capture follow-up; 1.2.2 delivery |
 | Verification capture follow-up | [verification-capture-follow-up](verification-capture-follow-up.md) | Merged 1.2.1 source; local source reconciliation |
 | Integration and publication | [toolkit-publication](toolkit-publication.md) | Current local work and latest GitHub main |
 | Reliability repairs | [toolkit-reliability](toolkit-reliability.md) | None |

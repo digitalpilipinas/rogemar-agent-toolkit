@@ -11,6 +11,9 @@ See [backfill receipt](../agent-handoffs/findings-evidence-handoff.md) for cover
 | [PR33-LOCAL-002](#pr33-local-002) | Secret-like directory components may enter package inputs | Packaging / major | awaiting publication | 1 / unknown / unknown | Verify delivery of component checks and regression coverage |
 | [PR33-LOCAL-003](#pr33-local-003) | Untracked optional drafts can block unrelated packages | Packaging / major | awaiting publication | 1 / unknown / unknown | Verify delivery of selected-input lock checks |
 | [PR33-LOCAL-004](#pr33-local-004) | Design Brief inventory has unsupported Appllama attribution | Provenance / minor | awaiting publication | 1 / unknown / unknown | Verify corrected attribution in the released inventory |
+| [PR33-LOCAL-005](#pr33-local-005) | Task index still names deferred backfill as a dependency | Handoff / minor | awaiting publication | 1 / unknown / unknown | Verify corrected index on delivery |
+| [PR33-LOCAL-006](#pr33-local-006) | Historical CI summary conflicts with its disposition | Tracker / minor | awaiting publication | 1 / unknown / unknown | Verify the historical status and limits remain clear |
+| [PR33-LOCAL-007](#pr33-local-007) | Package errors omit the selected-source diagnostics | Packaging / minor | awaiting publication | 2 / unknown / unknown | Verify diagnostic output and delivery |
 | [CI-WARN-001](#ci-warn-001) | Deprecated Node 20 GitHub Actions forced onto Node 24 | CI warning / optional | deferred | at least 319 / unknown / unknown | Update action majors in a separately tested dependency task |
 | [ISSUE-30](#issue-30) | Statechart comparison may miss changed never rules | Product / P2 | open | 1 / unknown / unknown | Reproduce at current candidate and assess the existing issue |
 | [REVIEW-001](#review-001) | Codex PR reviews rejected by provider usage limits | Provider / assess | untriaged | at least 7 reports / unknown / unknown | Preserve each review's waiver or subsequent completion separately |
@@ -162,7 +165,7 @@ See [backfill receipt](../agent-handoffs/findings-evidence-handoff.md) for cover
 | [PR32-C4377652553](#pr32-c4377652553) | Do not block repro work for an authorized thread reply | Review / provider priority; assess | fixed | 1 / unknown / unknown | Reconcile against original evidence and current scope |
 | [PR32-C4377652583](#pr32-c4377652583) | Require the complete recording contract in the checklist | Review / provider priority; assess | fixed | 1 / unknown / unknown | Reconcile against original evidence and current scope |
 | [PR32-C4377652588](#pr32-c4377652588) | Include explicit acceptance requirements in the video rule | Review / provider priority; assess | fixed | 1 / unknown / unknown | Reconcile against original evidence and current scope |
-| [CI-001](#ci-001) | macOS project-learning path containment test failed | CI / assess | untriaged | unknown / at least 1 / unknown | Inspect history and targeted verification |
+| [CI-001](#ci-001) | macOS project-learning path containment test failed | CI / historical | fixed | unknown / at least 1 / unknown | Retain historical fixture and CI evidence; current behavior is separate |
 | [CI-002](#ci-002) | Generated README inventory was stale | CI / assess | untriaged | unknown / at least 1 / unknown | Inspect history and targeted verification |
 | [CI-003](#ci-003) | Extracted core suite lacked the Integrated Workflow entry | CI / assess | untriaged | unknown / at least 1 / unknown | Inspect history and targeted verification |
 | [CI-004](#ci-004) | Diagram Design resource list included Python cache files | CI / assess | untriaged | unknown / at least 1 / unknown | Inspect history and targeted verification |
@@ -1436,3 +1439,18 @@ See [backfill receipt](../agent-handoffs/findings-evidence-handoff.md) for cover
 
 - **Source:** the same full local review reported an unsupported Appllama attribution on Design Brief. Its existing provenance identifies OpenDesign as the source. One source report; this is not a legal conclusion.
 - **Disposition:** awaiting publication. Restored the pre-existing author attribution, regenerated the inventory, and added a focused metadata check.
+
+### PR33-LOCAL-005
+
+- **Source:** full local CodeRabbit follow-up review of PR #33 candidate `d8f09f7a1c78a7b1072eb394f7bb9efcafb9dfa9`; one report. The task index still named historical backfill as a dependency after the owner deferred it.
+- **Disposition:** awaiting publication. The index now names the capture follow-up and 1.2.2 delivery; the historical gap remains visible in this record.
+
+### PR33-LOCAL-006
+
+- **Source:** the same local review identified a mismatch between CI-001's index and its detail; one report.
+- **Disposition:** awaiting publication. The index now records the historical fixture correction while keeping current behavior separate. The source receipt and limitations remain in CI-001.
+
+### PR33-LOCAL-007
+
+- **Source:** two reports in the same local review identified the same missing selected-source validation diagnostics. Two reports do not imply two runtime failures.
+- **Disposition:** awaiting publication. Package failure now includes the selected-source errors rather than referring only to the whole-tree verifier. A focused test checks the surfaced message.

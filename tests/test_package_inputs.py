@@ -1,5 +1,6 @@
 """Exercise package input selection against real temporary Git and Git-less trees."""
 import importlib.util
+import argparse
 import shutil
 import subprocess
 import tempfile
@@ -74,6 +75,13 @@ class PackageInputsTests(unittest.TestCase):
         self.init_git()
         with self.assertRaisesRegex(toolkit.ToolkitError, "only for"):
             toolkit.package_source_paths(self.root, [], True)
+
+    def test_package_reports_selected_source_verification_errors(self):
+        args = argparse.Namespace(include_source=[], trust_unversioned_source=False)
+        with patch.object(toolkit, "package_source_paths", return_value={"docs/tracked.md"}), \
+             patch.object(toolkit, "structural_errors", return_value=["skills.lock.json is stale"]):
+            with self.assertRaisesRegex(toolkit.ToolkitError, "skills.lock.json is stale"):
+                toolkit.command_package(args)
 
 
 if __name__ == "__main__":

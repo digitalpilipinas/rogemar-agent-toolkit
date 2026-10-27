@@ -1413,8 +1413,9 @@ def copy_package_tree(source: Path, destination: Path, allowed_paths: set[str]) 
 
 def command_package(args: argparse.Namespace) -> int:
     allowed_paths = package_source_paths(ROOT, args.include_source, args.trust_unversioned_source)
-    if structural_errors(check_lock=True, eligible_paths=allowed_paths):
-        raise ToolkitError("selected source verification failed; check tracked/explicit inputs and run toolkit.py verify")
+    errors = structural_errors(check_lock=True, eligible_paths=allowed_paths)
+    if errors:
+        raise ToolkitError("selected source verification failed; check tracked/explicit inputs:\n" + "\n".join(errors))
     locked_skills = load_json(LOCK_PATH)["skills"]
     for required in ("README.md", "AGENTS.md", "CHANGELOG.md", "LICENSE",
                      ".agents/plugins/marketplace.json", "catalog/skills.yaml", "catalog/skills.lock.json",
