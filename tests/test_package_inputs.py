@@ -56,6 +56,20 @@ class PackageInputsTests(unittest.TestCase):
         with self.assertRaisesRegex(toolkit.ToolkitError, "symlink"):
             toolkit.package_source_paths(self.root, ["docs/link.md"], False)
 
+        secret_dir = self.root / "docs/.env.local"
+        secret_dir.mkdir()
+        (secret_dir / "credentials.json").write_text("synthetic\n")
+        with self.assertRaisesRegex(toolkit.ToolkitError, "secret-like"):
+            toolkit.package_source_paths(self.root, ["docs/.env.local/credentials.json"], False)
+
+    def test_skill_digest_ignores_unselected_drafts(self):
+        skill = self.root / "docs"
+        with patch.object(toolkit, "ROOT", self.root):
+            before = toolkit.tree_digest(skill, eligible_paths={"docs/tracked.md"})
+            (skill / "draft.md").write_text("untracked draft\n")
+            self.assertEqual(before, toolkit.tree_digest(skill, eligible_paths={"docs/tracked.md"}))
+            self.assertNotEqual(before, toolkit.tree_digest(skill))
+
     def test_trust_flag_cannot_bypass_git_selection(self):
         self.init_git()
         with self.assertRaisesRegex(toolkit.ToolkitError, "only for"):

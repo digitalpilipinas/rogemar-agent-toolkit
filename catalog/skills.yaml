@@ -329,7 +329,7 @@
     {
       "name": "design-brief",
       "source": "reviewed portable adaptation, 2026-09-07",
-      "author": "Rogemar; selected methods adapted from Appllama; upstream notices preserved",
+      "author": "Rogemar; upstream notices preserved",
       "upstream_repository": "https://github.com/digitalpilipinas/open-design",
       "license": "Apache-2.0; per-reference notices preserved",
       "license_evidence": "LICENSE.txt",

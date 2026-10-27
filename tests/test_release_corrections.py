@@ -28,6 +28,8 @@ class ReleaseCorrectionsTests(unittest.TestCase):
     def test_inventory_exposes_all_appllama_notices_without_relicensing_snapshots(self):
         catalog = json.loads((ROOT / "catalog/skills.yaml").read_text())
         entries = {item["name"]: item for item in catalog["vendored"]}
+        if "design-brief" in entries:
+            self.assertNotIn("Appllama", entries["design-brief"].get("author", ""))
         spec = importlib.util.spec_from_file_location("release_inventory", ROOT / "scripts/inventory_readme.py")
         inventory = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(inventory)

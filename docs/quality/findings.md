@@ -7,6 +7,10 @@ See [backfill receipt](../agent-handoffs/findings-evidence-handoff.md) for cover
 
 | ID | Finding | Category / priority | Status | Reports / observed failures / post-fix recurrences | Next action |
 | --- | --- | --- | --- | --- | --- |
+| [PR33-LOCAL-001](#pr33-local-001) | Handoff link names guidance rather than the task's record | Workflow / minor | awaiting publication | 1 / unknown / unknown | Verify delivery of corrected handoff guidance |
+| [PR33-LOCAL-002](#pr33-local-002) | Secret-like directory components may enter package inputs | Packaging / major | awaiting publication | 1 / unknown / unknown | Verify delivery of component checks and regression coverage |
+| [PR33-LOCAL-003](#pr33-local-003) | Untracked optional drafts can block unrelated packages | Packaging / major | awaiting publication | 1 / unknown / unknown | Verify delivery of selected-input lock checks |
+| [PR33-LOCAL-004](#pr33-local-004) | Design Brief inventory has unsupported Appllama attribution | Provenance / minor | awaiting publication | 1 / unknown / unknown | Verify corrected attribution in the released inventory |
 | [CI-WARN-001](#ci-warn-001) | Deprecated Node 20 GitHub Actions forced onto Node 24 | CI warning / optional | deferred | at least 319 / unknown / unknown | Update action majors in a separately tested dependency task |
 | [ISSUE-30](#issue-30) | Statechart comparison may miss changed never rules | Product / P2 | open | 1 / unknown / unknown | Reproduce at current candidate and assess the existing issue |
 | [REVIEW-001](#review-001) | Codex PR reviews rejected by provider usage limits | Provider / assess | untriaged | at least 7 reports / unknown / unknown | Preserve each review's waiver or subsequent completion separately |
@@ -1412,3 +1416,23 @@ See [backfill receipt](../agent-handoffs/findings-evidence-handoff.md) for cover
 - **Evidence/limits:** 1 distinct review report(s); runtime failures and post-fix recurrence counts unknown. Review original comments and checks for the full recommendation, candidate and environment.
 - **Next:** confirm source disposition and relevant current behavior before acting. No fix authority is implied.
 - **Historical verification:** [PR #32 delivery receipt](https://github.com/digitalpilipinas/rogemar-agent-toolkit/pull/32#issuecomment-6418383653); reviewed merge and tests were recorded there.
+
+### PR33-LOCAL-001
+
+- **Source:** full local CodeRabbit review of PR #33 candidate `be24dd74edcf1a1dceb33fa8b1fd3952763501b9`; one report. The earlier link led to the tracking instructions rather than the actual task record.
+- **Disposition:** awaiting publication. Handoff guidance and template now link the actual record when accessible and otherwise use an authorized receipt and identify the gap. The associated entry contract check passed; no live agent adoption is claimed.
+
+### PR33-LOCAL-002
+
+- **Source:** the same full local review reported that a secret-like directory component could contain an otherwise ordinary filename and bypass input validation. One source report; no external disclosure established.
+- **Disposition:** awaiting publication. Package selection validates every path component; a synthetic nested secret-directory regression passed. No secret or existing evidence was used in the test.
+
+### PR33-LOCAL-003
+
+- **Source:** the same full local review reported that an untracked optional-skill draft could cause global lock drift before input filtering, blocking a core package that would exclude it. One source report.
+- **Disposition:** awaiting publication. Package verification computes skill lock hashes and scans skill files over eligible source paths; ordinary `verify` still validates the full tree. Focused digest tests and an actual core package probe with a synthetic untracked optional draft passed.
+
+### PR33-LOCAL-004
+
+- **Source:** the same full local review reported an unsupported Appllama attribution on Design Brief. Its existing provenance identifies OpenDesign as the source. One source report; this is not a legal conclusion.
+- **Disposition:** awaiting publication. Restored the pre-existing author attribution, regenerated the inventory, and added a focused metadata check.

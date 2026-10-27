@@ -35,9 +35,11 @@ fields. Keep short tasks short, but give every approved task a record.
   and remaining acceptance gates. Separate local tests, CI, provider review and
   native runtime observations. Link shareable evidence; label unavailable local
   artifacts instead of claiming another host can access them.
-- Link the existing [findings tracker](findings-tracking.md) and summarize relevant
-  new, fixed, deferred, blocked and recurring items. At a human handoff, provide
-  selected media links and inspection/retention status under verification efficiency.
+- Follow the [findings-tracking contract](findings-tracking.md): link the task's
+  actual tracker when accessible, or an authorized receipt and the record gap,
+  and summarize relevant new, fixed, deferred, blocked and recurring items. At a
+  human handoff, provide selected media links and inspection/retention status
+  under verification efficiency.
 - Blockers, pending owner decisions with recommendation/consequence, exact next
   safe action, rollback/recovery and task-owned running operations. Record their
   side-effect status before another agent might repeat them.

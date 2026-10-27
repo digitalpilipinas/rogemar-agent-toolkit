@@ -99,11 +99,13 @@ def should_ignore(path: Path) -> bool:
     return any(part in IGNORED_PARTS for part in path.parts) or path.suffix in IGNORED_SUFFIXES
 
 
-def skill_files(skill_dir: Path) -> list[Path]:
+def skill_files(skill_dir: Path, eligible_paths: set[str] | None = None) -> list[Path]:
     files: list[Path] = []
     for path in skill_dir.rglob("*"):
         relative = path.relative_to(skill_dir)
         if should_ignore(relative):
+            continue
+        if eligible_paths is not None and path.relative_to(ROOT).as_posix() not in eligible_paths:
             continue
         if path.is_symlink():
             raise ToolkitError(f"symlink is not portable: {path}")
@@ -112,9 +114,9 @@ def skill_files(skill_dir: Path) -> list[Path]:
     return sorted(files, key=lambda item: item.relative_to(skill_dir).as_posix())
 
 
-def tree_digest(skill_dir: Path, *, legacy: bool = False) -> tuple[str, int]:
+def tree_digest(skill_dir: Path, *, legacy: bool = False, eligible_paths: set[str] | None = None) -> tuple[str, int]:
     digest = hashlib.sha256()
-    files = skill_files(skill_dir)
+    files = skill_files(skill_dir, eligible_paths)
     for path in files:
         relative = path.relative_to(skill_dir).as_posix().encode("utf-8")
         digest.update(relative)
@@ -213,11 +215,11 @@ def parse_frontmatter(skill_path: Path) -> tuple[str | None, bool]:
     return (match.group(1).strip() if match else None), has_description
 
 
-def build_lock() -> dict[str, Any]:
+def build_lock(eligible_paths: set[str] | None = None) -> dict[str, Any]:
     catalog = load_json(CATALOG_PATH)
     skills: dict[str, Any] = {}
     for name in sorted(vendored_names()):
-        digest, file_count = tree_digest(SKILLS_ROOT / name)
+        digest, file_count = tree_digest(SKILLS_ROOT / name, eligible_paths=eligible_paths)
         skills[name] = {"sha256": digest, "file_count": file_count}
     return {
         "schema_version": 2,
@@ -272,7 +274,7 @@ def native_marketplace() -> dict[str, Any]:
     return marketplace
 
 
-def structural_errors(check_lock: bool = True) -> list[str]:
+def structural_errors(check_lock: bool = True, eligible_paths: set[str] | None = None) -> list[str]:
     errors: list[str] = []
     try:
         portable = load_json(PORTABLE_MANIFEST)
@@ -339,7 +341,11 @@ def structural_errors(check_lock: bool = True) -> list[str]:
         errors.append(f"invalid selection catalogue: {exc}")
 
     tree_names = sorted(
-        path.name for path in SKILLS_ROOT.iterdir() if path.is_dir() and not path.is_symlink()
+        path.name for path in SKILLS_ROOT.iterdir()
+        if path.is_dir() and not path.is_symlink()
+        and (eligible_paths is None or any(
+            p.startswith(path.relative_to(ROOT).as_posix() + "/") for p in eligible_paths
+        ))
     ) if SKILLS_ROOT.exists() else []
     if sorted(names) != tree_names:
         missing = sorted(set(names) - set(tree_names))
@@ -390,7 +396,8 @@ def structural_errors(check_lock: bool = True) -> list[str]:
             relative = Path(resource)
             if relative.is_absolute() or ".." in relative.parts or not (skill_dir / relative).is_file():
                 errors.append(f"{name}: missing or unsafe required resource {resource}")
-        if len(list(skill_dir.rglob("SKILL.md"))) != 1:
+        if len([p for p in skill_dir.rglob("SKILL.md") if eligible_paths is None
+                or p.relative_to(ROOT).as_posix() in eligible_paths]) != 1:
             errors.append(f"{name}: duplicate or missing discovery entry")
         license_evidence = entry_by_name[name].get("license_evidence")
         if license_evidence and not (skill_dir / str(license_evidence)).is_file():
@@ -404,7 +411,7 @@ def structural_errors(check_lock: bool = True) -> list[str]:
                 if relative.is_absolute() or ".." in relative.parts or not (skill_dir / relative).is_file():
                     errors.append(f"{name}: missing or unsafe additional license evidence {notice}")
         try:
-            files = skill_files(skill_dir)
+            files = skill_files(skill_dir, eligible_paths)
         except ToolkitError as exc:
             errors.append(str(exc))
             continue
@@ -502,7 +509,7 @@ def structural_errors(check_lock: bool = True) -> list[str]:
             ):
                 if load_json(path) != expected:
                     errors.append(f"{label} manifest is stale; run toolkit.py lock")
-            expected = build_lock()
+            expected = build_lock(eligible_paths)
             actual = load_json(LOCK_PATH)
             if actual != expected:
                 errors.append("skills.lock.json is stale; run toolkit.py lock")
@@ -1340,8 +1347,9 @@ def package_source_paths(root: Path, additions: list[str], trust_unversioned: bo
         relative = Path(value)
         if not value or relative.is_absolute() or ".." in relative.parts or not allowed(relative):
             raise ToolkitError(f"unsafe or out-of-scope package source: {value}")
-        if (should_ignore(relative) or relative.name.lower() in SECRET_FILENAMES
-                or relative.name.lower().startswith(".env.") or relative.suffix.lower() in SECRET_SUFFIXES):
+        if (should_ignore(relative) or any(part.lower() in SECRET_FILENAMES
+                or part.lower().startswith(".env.") or Path(part).suffix.lower() in SECRET_SUFFIXES
+                for part in relative.parts)):
             raise ToolkitError(f"excluded or secret-like package source: {value}")
         path = root / relative
         if any((root / part).is_symlink() for part in (relative, *relative.parents) if str(part) != "."):
@@ -1404,9 +1412,9 @@ def copy_package_tree(source: Path, destination: Path, allowed_paths: set[str]) 
 
 
 def command_package(args: argparse.Namespace) -> int:
-    if structural_errors(check_lock=True):
-        raise ToolkitError("bundle verification failed; run toolkit.py verify")
     allowed_paths = package_source_paths(ROOT, args.include_source, args.trust_unversioned_source)
+    if structural_errors(check_lock=True, eligible_paths=allowed_paths):
+        raise ToolkitError("selected source verification failed; check tracked/explicit inputs and run toolkit.py verify")
     locked_skills = load_json(LOCK_PATH)["skills"]
     for required in ("README.md", "AGENTS.md", "CHANGELOG.md", "LICENSE",
                      ".agents/plugins/marketplace.json", "catalog/skills.yaml", "catalog/skills.lock.json",
