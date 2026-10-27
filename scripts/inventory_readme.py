@@ -183,8 +183,12 @@ def vendored_section(catalog: dict[str, Any]) -> list[str]:
         else:
             source = local
         evidence = entry.get("license_evidence")
-        if evidence:
-            license_info = f"Evidence: `{md(str(evidence))}`; review terms before redistribution"
+        additional = entry.get("additional_license_evidence", [])
+        notices = ([evidence] if evidence else []) + list(additional)
+        if notices:
+            rendered = ", ".join(f"`{md(str(item))}`" for item in notices)
+            qualifier = entry.get("license_status")
+            license_info = f"Evidence: {rendered}; " + (str(qualifier) if qualifier else "review terms before redistribution")
         else:
             license_info = str(
                 entry.get("license_status")

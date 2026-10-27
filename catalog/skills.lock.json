@@ -5625,7 +5625,7 @@
     },
     "bug-triage": {
       "file_count": 3,
-      "sha256": "fa92e38424af8e256ac071cf07c158801d7985508b72d0c3caf71c3fc3136116"
+      "sha256": "60a082d2054d0c868fb6544836c788cd80ec086346307e90e685de525b9a178d"
     },
     "claude-forge": {
       "file_count": 30,
@@ -5641,7 +5641,7 @@
     },
     "code-review-and-quality": {
       "file_count": 1,
-      "sha256": "88b6c4b392a8320e7e8374c8ffa3a52200fb03ccf76b78f00115e4a295d2dbc6"
+      "sha256": "ac268e935e8c8b7472f9692ecb83ee27f39c75904bf6e95e6a9d9c4028cd7e86"
     },
     "code-review-tests": {
       "file_count": 5,
@@ -5657,7 +5657,7 @@
     },
     "codex-forge": {
       "file_count": 69,
-      "sha256": "93d0a53f9e28e0a7df6d3b2c076220e8e8bffade92b56b1b628c6f467721da1b"
+      "sha256": "4710d19377fe393fb42b1594ae058ae1947f2da3a571336daaafc25561a5b510"
     },
     "create-plan": {
       "file_count": 6,
@@ -5696,8 +5696,8 @@
       "sha256": "a4b34ddda7562a6ef206c3bc9d0f2382e4d83511e1ddbba3623f1e82e4e960d3"
     },
     "devin-forge": {
-      "file_count": 2,
-      "sha256": "23925a348c049c23e77eb40094b32f0a0cfd78d8302866f410026c7502c7511c"
+      "file_count": 3,
+      "sha256": "ee925c68ed7d3745b4b759e34e26ff3416802148ac7730412ec045c8659745e5"
     },
     "dream-team": {
       "file_count": 7,
@@ -5705,7 +5705,7 @@
     },
     "e2e": {
       "file_count": 11,
-      "sha256": "a294c6519da8525225ffb309b72c84cc0ad7a3caed906d5e023eddd814c09dc5"
+      "sha256": "7a642cace923e5c5db8f251998f93111f9eff2e247f805f1e319408f75a73d61"
     },
     "engineering-playbooks": {
       "file_count": 61,
@@ -5741,7 +5741,7 @@
     },
     "forge-create-verification-skill": {
       "file_count": 6,
-      "sha256": "05fa36745a8c3ff6d01478365eacba7b77542fa391d61794a93f69e56f2550b2"
+      "sha256": "38dfb869a48632ecb3b089d4412d502213e65a9929d832b04bee30a1570bd21e"
     },
     "forge-figure-it-out": {
       "file_count": 3,
@@ -5932,8 +5932,8 @@
       "sha256": "fb9fbd76638be6d7b9ce978d0c0983b0f0672d67132bdb101c475f70704b7051"
     },
     "integrated-workflow": {
-      "file_count": 12,
-      "sha256": "72baaedfd85176824757026d259c61c6ba9c0a63b7b9d0ac18e434b6f7b12436"
+      "file_count": 14,
+      "sha256": "caf81f22b9702ef201156345142994411e3576c1e435041407e5eb73eb629766"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -6105,7 +6105,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 29,
-      "sha256": "ab4c4417c9e095b099598f9c31c8ffc69ef4e33193dd287af850bf67aadfb162"
+      "sha256": "379397b968cba5f75519e7f6010adca6309bb7b488469aed4cef81da52cc6b18"
     },
     "xcode-build-benchmark": {
       "file_count": 6,
@@ -6128,5 +6128,5 @@
       "sha256": "e32e660ce521c92819734054a948b8dbbc5398e5ce492dc9559a6b13fc31f479"
     }
   },
-  "version": "1.2.1"
+  "version": "1.2.2"
 }

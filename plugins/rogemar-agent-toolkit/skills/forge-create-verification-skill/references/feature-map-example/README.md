@@ -23,7 +23,10 @@ This directory is the maintained source for verifying the user-facing behavior o
 ## Proof and skip reporting
 
 - Capture the user action and the resulting state, not only the final screen.
-- UI proof includes an ARIA snapshot and a screenshot with the app identity visible.
+- For browser UI, use an ARIA snapshot when relevant to the claim. Select a
+  screenshot for a visual claim or explicit acceptance requirement; show app
+  identity when the screenshot is used as proof. Native UI uses its available
+  accessibility evidence rather than assuming a browser ARIA snapshot.
 - CLI proof includes the command, stdout, stderr, and exit code.
 - Mutation proof includes a read-only second view of the stored value.
 - Record the feature ID and entry point used with every artifact.

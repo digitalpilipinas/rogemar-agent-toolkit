@@ -13,6 +13,7 @@ Keep project paths and durations out of the reusable toolkit contract.
 - Cleanup operator and authority: `<who may run covered batches; approval scope>`
 - Review date: `<when to review unresolved pins and storage growth>`
 - Receipt: `<candidate paths, eligibility facts, pins excluded, deleted/retained results>`
+- Human handoff: `<relevant artifact link or unavailable; finding ID; inspection and retention disposition>`
 
 Before a covered batch, resolve paths inside the approved roots and reject symlinks
 or traversal outside them. Exclude active writes, unresolved failures, required
@@ -27,3 +28,6 @@ unless separately covered by explicit authority and their own lifecycle rules.
 Preview and record the eligible set, recheck ownership/pins before deleting, and
 report the outcome. Existing approval covers only its stated scope; obtain approval
 for any expansion. Creating this policy does not schedule a cleanup job.
+Human review alone does not release a pin. For deleted eligible media, retain the
+finding and its resolution history, record the artifact as unavailable and link the
+cleanup receipt. Report retained and failed items as well as deletions.

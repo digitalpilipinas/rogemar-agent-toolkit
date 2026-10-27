@@ -20,6 +20,9 @@ changed/new files; preserved unrelated work; task-owned jobs and side-effect sta
 and candidate binding; accessible evidence references; failures, missing evidence,
 remaining gates. For planned tasks, specify acceptance and mark execution not started.>
 
+<Findings tracker link and relevant new/fixed/deferred/blocked/recurring items;
+selected human-accessible evidence links, inspection and retention status.>
+
 ## Next action and decisions
 
 <Exact safe next action; blocker and recovery; pending owner decisions with evidence,

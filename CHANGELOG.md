@@ -1,7 +1,12 @@
 # Changelog
 
-## Unreleased — Verification capture follow-up
+## 1.2.2 — Release candidate: findings and evidence handoff
 
+- Package Git-tracked inputs plus explicit new files; require explicit trust for Git-less source trees.
+- Surface Appllama and other per-skill notice evidence, and clarify Devin adapter licensing and QA-role routing.
+- Add project-local findings tracking with source-linked dispositions and distinct recurrence counts.
+- Include accessible evidence links, inspection status and retention disposition in human handoffs.
+- Clarify claim-driven capture and keep eligible media cleanup separate from finding history.
 - Make Benny recording conditional and E2E exploration examples explicitly disable routine video and traces.
 - Add a project-owned retention template and recognize already approved cleanup scope.
 - Clarify provider-controlled Devin capture and correct historical publication status.

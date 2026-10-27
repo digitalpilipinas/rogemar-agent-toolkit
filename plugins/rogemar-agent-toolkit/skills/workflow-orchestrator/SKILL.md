@@ -357,6 +357,16 @@ Include positive and negative cases as applicable: malformed, unauthorized,
 legacy, duplicate, concurrent, offline, disabled, private, boundary, and
 rollback inputs. Do not treat automated checks as proof of manual or device QA.
 
+When findings arise, reuse the project's tracker. If none is suitable, keep one
+`docs/quality/findings.md` when repository writes are authorized, otherwise use
+an existing authorized task receipt and report the durable-record gap. Preserve
+stable IDs, source links, evidence, status, disposition and next action; count
+distinct reports, observed failures and verified post-fix recurrences separately.
+Do not equate duplicate reports with failures or make an unknown count zero.
+When installed, Integrated Workflow's `references/findings-tracking.md` owns the
+full contract, including its ready-PR cloud review barrier. Otherwise this core
+fallback applies without installing a skill or creating an external issue.
+
 ### 5. Release and operate
 
 Use `deploy-checklist` and any target-specific release skill only when release

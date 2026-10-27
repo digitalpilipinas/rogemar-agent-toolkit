@@ -90,8 +90,13 @@ this reviewer does not reset the allowance or start another provider loop.
 Local/pre-ready and standalone reviews retain their existing reconciliation,
 agreed scope and applicable evidence requirements without this cloud barrier.
 
-Use the existing plan or PR finding ledger if present; otherwise a concise list
-in the review is enough. Combine reports about the same cause into one entry,
+Use the existing project finding ledger; when Integrated Workflow is available,
+follow its `references/findings-tracking.md` contract in that skill.
+If that optional skill is absent, apply the core `workflow-orchestrator` findings
+fallback: reuse a tracker or, with repository-write authority, use
+`docs/quality/findings.md`; otherwise use an authorized task receipt. Do not
+install a missing skill or duplicate an existing tracker.
+Combine reports about the same cause into one entry,
 retaining provider IDs, evidence, and any disagreement. Do not restart a full
 review for each contributing skill or silently replace an existing finding ID.
 

@@ -49,7 +49,7 @@ Mark states that do not apply.
 
 #### Evidence and cross-check
 
-- Screenshot: `<app identity, feature, and discriminating state>`
+- Screenshot: `<not needed, or app identity, feature, and discriminating visual state>`
 - Video: `<not needed, or named question/explicit requirement, bounded sequence, owned stop operation and inspection observation>`
 - Cross-check: `<read-only state or value that confirms the UI>`
 
@@ -89,7 +89,9 @@ Lets a user enter the task app.
 
 #### Evidence and cross-check
 
-- Record landing page through item list. Check read-only session state.
+- Document the actions and observed result from landing page through item list;
+  check read-only session state. Select a recording only for a named temporal
+  question or explicit requirement.
 
 #### Gotchas
 

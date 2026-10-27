@@ -395,6 +395,14 @@ def structural_errors(check_lock: bool = True) -> list[str]:
         license_evidence = entry_by_name[name].get("license_evidence")
         if license_evidence and not (skill_dir / str(license_evidence)).is_file():
             errors.append(f"{name}: missing license evidence {license_evidence}")
+        additional_notices = entry_by_name[name].get("additional_license_evidence", [])
+        if not isinstance(additional_notices, list):
+            errors.append(f"{name}: additional license evidence must be a list")
+        else:
+            for notice in additional_notices:
+                relative = Path(notice) if isinstance(notice, str) else Path("..")
+                if relative.is_absolute() or ".." in relative.parts or not (skill_dir / relative).is_file():
+                    errors.append(f"{name}: missing or unsafe additional license evidence {notice}")
         try:
             files = skill_files(skill_dir)
         except ToolkitError as exc:
@@ -1315,9 +1323,98 @@ def release_receipt(selection: dict[str, Any]) -> dict[str, Any]:
                              for name in selection["external"]}}
 
 
+def package_source_paths(root: Path, additions: list[str], trust_unversioned: bool) -> set[str]:
+    """Select tracked source files plus explicitly named additions, without reading private extras."""
+    roots = ("scripts", "docs", "tests", "catalog", "plugins/rogemar-agent-toolkit/skills")
+    fixed = {"README.md", "AGENTS.md", "CHANGELOG.md", "LICENSE",
+             ".agents/plugins/marketplace.json",
+             "plugins/rogemar-agent-toolkit/plugin.json",
+             "plugins/rogemar-agent-toolkit/.codex-plugin/plugin.json",
+             "plugins/rogemar-agent-toolkit/.claude-plugin/plugin.json",
+             "plugins/rogemar-agent-toolkit/.factory-plugin/plugin.json",
+             "plugins/rogemar-agent-toolkit/gemini-extension.json"}
+    def allowed(relative: Path) -> bool:
+        return relative.as_posix() in fixed or any(relative == Path(x) or Path(x) in relative.parents for x in roots)
+
+    def validate(value: str) -> str:
+        relative = Path(value)
+        if not value or relative.is_absolute() or ".." in relative.parts or not allowed(relative):
+            raise ToolkitError(f"unsafe or out-of-scope package source: {value}")
+        if (should_ignore(relative) or relative.name.lower() in SECRET_FILENAMES
+                or relative.name.lower().startswith(".env.") or relative.suffix.lower() in SECRET_SUFFIXES):
+            raise ToolkitError(f"excluded or secret-like package source: {value}")
+        path = root / relative
+        if any((root / part).is_symlink() for part in (relative, *relative.parents) if str(part) != "."):
+            raise ToolkitError(f"symlink package source is not permitted: {value}")
+        if not path.is_file():
+            raise ToolkitError(f"package source is not a file: {value}")
+        return relative.as_posix()
+
+    try:
+        result = subprocess.run(["git", "-C", str(root), "rev-parse", "--show-toplevel"],
+                                capture_output=True, text=True, check=False)
+    except FileNotFoundError:
+        result = None
+    git_root = bool(result and result.returncode == 0 and Path(result.stdout.strip()).resolve() == root.resolve())
+    if git_root:
+        if trust_unversioned:
+            raise ToolkitError("--trust-unversioned-source is only for a source tree without Git metadata")
+        conflicts = subprocess.run(["git", "-C", str(root), "ls-files", "--unmerged", "-z"],
+                                   capture_output=True, check=False)
+        if conflicts.returncode:
+            raise ToolkitError("could not inspect Git conflicts for packaging")
+        if conflicts.stdout:
+            raise ToolkitError("resolve unmerged Git entries before packaging")
+        tracked = subprocess.run(["git", "-C", str(root), "ls-files", "--cached", "-z"],
+                                 capture_output=True, check=False)
+        if tracked.returncode:
+            raise ToolkitError("could not enumerate Git-tracked package sources")
+        paths = {os.fsdecode(value) for value in tracked.stdout.split(b"\0") if value}
+        paths = {name for name in paths if allowed(Path(name)) and not should_ignore(Path(name)) and (root / name).is_file()}
+    elif trust_unversioned:
+        paths = {name for name in fixed if (root / name).is_file()}
+        for name in roots:
+            directory = root / name
+            if directory.is_dir():
+                for current, dirs, files in os.walk(directory, followlinks=False):
+                    current_path = Path(current)
+                    dirs[:] = [d for d in dirs if d not in IGNORED_PARTS and not (current_path / d).is_symlink()]
+                    for filename in files:
+                        path = current_path / filename
+                        relative = path.relative_to(root)
+                        if path.is_file() and not should_ignore(relative):
+                            paths.add(relative.as_posix())
+    else:
+        raise ToolkitError("Git metadata is unavailable; inspect the source and pass --trust-unversioned-source to package it explicitly")
+    paths.update(validate(value) for value in additions)
+    return {validate(value) for value in paths}
+
+
+def copy_package_tree(source: Path, destination: Path, allowed_paths: set[str]) -> None:
+    destination.mkdir(parents=True, exist_ok=True)
+    prefix = source.relative_to(ROOT).as_posix() + "/"
+    for name in sorted(allowed_paths):
+        if not name.startswith(prefix):
+            continue
+        path = ROOT / name
+        relative = Path(name[len(prefix):])
+        target = destination / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(path, target)
+
+
 def command_package(args: argparse.Namespace) -> int:
     if structural_errors(check_lock=True):
         raise ToolkitError("bundle verification failed; run toolkit.py verify")
+    allowed_paths = package_source_paths(ROOT, args.include_source, args.trust_unversioned_source)
+    locked_skills = load_json(LOCK_PATH)["skills"]
+    for required in ("README.md", "AGENTS.md", "CHANGELOG.md", "LICENSE",
+                     ".agents/plugins/marketplace.json", "catalog/skills.yaml", "catalog/skills.lock.json",
+                     "plugins/rogemar-agent-toolkit/plugin.json", "plugins/rogemar-agent-toolkit/.codex-plugin/plugin.json",
+                     "plugins/rogemar-agent-toolkit/.claude-plugin/plugin.json", "plugins/rogemar-agent-toolkit/.factory-plugin/plugin.json",
+                     "plugins/rogemar-agent-toolkit/gemini-extension.json"):
+        if required not in allowed_paths:
+            raise ToolkitError(f"required package source excluded: {required}; add it to Git or use --include-source")
     output = Path(args.output or (ROOT / "dist")).expanduser().resolve()
     output.mkdir(parents=True, exist_ok=True)
     version = package_version()
@@ -1340,7 +1437,9 @@ def command_package(args: argparse.Namespace) -> int:
         write_json_atomic(portable / ".cursor-plugin/plugin.json", selected_plugin_manifest("cursor", portable_selection["skills"]))
         shutil.copy2(ROOT / "LICENSE", portable / "LICENSE")
         for name in portable_selection["skills"]:
-            shutil.copytree(SKILLS_ROOT / name, portable / "skills" / name)
+            copy_package_tree(SKILLS_ROOT / name, portable / "skills" / name, allowed_paths)
+            if tree_digest(portable / "skills" / name)[0] != locked_skills[name]["sha256"]:
+                raise ToolkitError(f"{name}: excluded skill source; add intended files to Git or use --include-source")
         write_json_atomic(portable / "release-selection.json", release_receipt(portable_selection))
         archive_files(iter_archive_tree(portable, PACKAGE_NAME), portable_archive)
 
@@ -1353,7 +1452,7 @@ def command_package(args: argparse.Namespace) -> int:
         for name in ("README.md", "AGENTS.md", "CHANGELOG.md", "LICENSE"):
             shutil.copy2(ROOT / name, bundle / name)
         for name in ("scripts", "docs", "tests", "catalog"):
-            shutil.copytree(ROOT / name, bundle / name, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+            copy_package_tree(ROOT / name, bundle / name, allowed_paths)
         manifest_destination = bundle / ".agents/plugins/marketplace.json"
         manifest_destination.parent.mkdir(parents=True)
         shutil.copy2(MARKETPLACE_MANIFEST, manifest_destination)
@@ -1364,7 +1463,9 @@ def command_package(args: argparse.Namespace) -> int:
         shutil.copy2(CODEX_MANIFEST, plugin / ".codex-plugin/plugin.json")
         selected = set(codex_selection["skills"])
         for name in sorted(selected):
-            shutil.copytree(SKILLS_ROOT / name, plugin / "skills" / name)
+            copy_package_tree(SKILLS_ROOT / name, plugin / "skills" / name, allowed_paths)
+            if tree_digest(plugin / "skills" / name)[0] != locked_skills[name]["sha256"]:
+                raise ToolkitError(f"{name}: excluded skill source; add intended files to Git or use --include-source")
         catalog = load_json(CATALOG_PATH)
         catalog["package"]["distribution_selection"] = codex_selection
         catalog["vendored"] = [entry for entry in catalog["vendored"] if entry["name"] in selected]
@@ -1434,6 +1535,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     package_parser = subparsers.add_parser("package", help="build portable and Codex release archives")
     package_parser.add_argument("--output")
+    package_parser.add_argument("--include-source", action="append", default=[], metavar="PATH",
+                                help="include one explicitly selected new source file; repeat as needed")
+    package_parser.add_argument("--trust-unversioned-source", action="store_true",
+                                help="explicitly trust all eligible files in a source tree without Git metadata")
     selection_options(package_parser)
     resources_parser = subparsers.add_parser("resources", help="import the complete optional OpenDesign library from pinned local Git objects")
     resources_parser.add_argument("--source", required=True)
