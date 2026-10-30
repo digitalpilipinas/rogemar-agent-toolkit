@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased (after 1.2.2)
+## 1.3.0 — Project readiness, method receipts and per-harness packaging (pending tag after the compliance runs)
 
 - Retire managed external skills their upstream no longer ships (for example argent's renamed `argent-create-flow` and `argent-qa-flows`): unedited copies move to the install backup and leave the state; edited copies are preserved and reported.
 
