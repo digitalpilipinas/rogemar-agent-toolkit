@@ -52,8 +52,19 @@ def project_root(data):
 
 
 def cache_path(root):
-    folder = Path(os.environ.get('PROJECT_READINESS_CACHE', tempfile.gettempdir())) / 'project-readiness'
+    user = getattr(os, 'getuid', lambda: os.environ.get('USERNAME', 'user'))()
+    folder = Path(os.environ.get('PROJECT_READINESS_CACHE', tempfile.gettempdir())) / ('project-readiness-%s' % user)
     return folder / (hashlib.sha256(str(root).encode()).hexdigest()[:16] + '.json')
+
+
+def private(path):
+    """True when a cache file or folder is ours: not a symlink, owned by this user."""
+    try:
+        info = path.lstat()
+    except OSError:
+        return False
+    owner = getattr(os, 'getuid', None)
+    return not path.is_symlink() and (owner is None or info.st_uid == owner())
 
 
 def session_start(data):
@@ -63,8 +74,9 @@ def session_start(data):
     plan = readiness.plan(root, index)
     rows = situation_rows(root, index, readiness)
     path = cache_path(root)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps({'status': plan['status'], 'rows': rows}))
+    path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    if private(path.parent) and (not path.exists() or private(path)):
+        path.write_text(json.dumps({'status': plan['status'], 'rows': rows}))
     lines = ['Project readiness: %s (plan %s). %s' % (plan['status'], plan['plan_id'][:12], plan['next_action'])]
     if rows:
         lines.append('Situation map (technology -> skills that may apply):')
@@ -87,8 +99,11 @@ def situation_rows(root, index, readiness):
 
 def prompt_note(data):
     root = project_root(data)
+    path = cache_path(root)
+    if not (private(path.parent) and private(path)):
+        return ''  # never read a cache another user could have planted
     try:
-        cached = json.loads(cache_path(root).read_text())
+        cached = json.loads(path.read_text())
     except (OSError, ValueError):
         return ''
     text = str(data.get('prompt', '')).lower()

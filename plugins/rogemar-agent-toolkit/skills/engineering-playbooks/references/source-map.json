@@ -214,13 +214,13 @@
     {
       "method": "attack-the-premise",
       "source": "forge-principle-attack-the-premise/SKILL.md",
-      "source_sha256": "4df66b9a362d48f99c9f2afa3a08da402ea30b834e3ec77af9ed9fb03de44e97",
+      "source_sha256": "54210ece5241e1653407d996f8bbafc35fcfdd47fc40f84f2a0ea9edb4b6f845",
       "portable": "references/principles/attack-the-premise.md"
     },
     {
       "method": "test-behavior-not-implementation",
       "source": "forge-principle-test-behavior-not-implementation/SKILL.md",
-      "source_sha256": "2a815612d9edf76d0d683094d76e7bf6d569195be2708efe3fa89c59e872de3f",
+      "source_sha256": "8accf7e5cfd2ec25b7fab5f5ba1ee83e425bced2190cf973837a590dbb5b3c93",
       "portable": "references/principles/test-behavior-not-implementation.md"
     }
   ]

@@ -228,7 +228,7 @@ def pins(policy, validator, provenance=None):
 
 
 CI_TEMPLATE = """# Method-receipt check for pull requests. Owner-approved starting point; adapt before use.
-# The validator, policy and routing index come from the protected base branch, never the PR head.
+# The checkpoint, its routing index and the policy come from the protected base branch, never the PR head.
 name: Method receipt
 on: pull_request
 permissions:
@@ -242,12 +242,14 @@ jobs:
           fetch-depth: 0
       - name: Trusted copies from the base branch
         run: |
-          mkdir -p "$RUNNER_TEMP/trusted"
-          git show "origin/${{ github.base_ref }}:{checkpoint}" > "$RUNNER_TEMP/trusted/checkpoint.py"
-          git show "origin/${{ github.base_ref }}:{policy}" > "$RUNNER_TEMP/trusted/policy.json"
+          T="$RUNNER_TEMP/trusted"
+          mkdir -p "$T/integrated-workflow/scripts" "$T/workflow-orchestrator/references"
+          git show "origin/${{ github.base_ref }}:{skills}/integrated-workflow/scripts/checkpoint.py" > "$T/integrated-workflow/scripts/checkpoint.py"
+          git show "origin/${{ github.base_ref }}:{skills}/workflow-orchestrator/references/skill-routing.json" > "$T/workflow-orchestrator/references/skill-routing.json"
+          git show "origin/${{ github.base_ref }}:{policy}" > "$T/policy.json"
       - name: Check the receipt
         run: |
-          python3 -B "$RUNNER_TEMP/trusted/checkpoint.py" --root "$GITHUB_WORKSPACE" \\
+          python3 -B "$RUNNER_TEMP/trusted/integrated-workflow/scripts/checkpoint.py" --root "$GITHUB_WORKSPACE" \\
             --base "origin/${{ github.base_ref }}" --phase accept --receipt {receipt} \\
             --trusted-policy "$RUNNER_TEMP/trusted/policy.json" \\
             --policy-sha256 "${{ vars.RECEIPT_POLICY_SHA256 }}" \\
@@ -255,8 +257,8 @@ jobs:
 """
 
 
-def ci_template(checkpoint, policy, receipt):
-    return CI_TEMPLATE.replace('{checkpoint}', checkpoint).replace('{policy}', policy).replace('{receipt}', receipt)
+def ci_template(skills, policy, receipt):
+    return CI_TEMPLATE.replace('{skills}', skills.rstrip('/')).replace('{policy}', policy).replace('{receipt}', receipt)
 
 
 def main(argv=None):
@@ -271,7 +273,7 @@ def main(argv=None):
     sub.choices['map'].add_argument('--skills-root', type=Path, default=HERE.parents[2],
                                     help='Installed skills folder; defaults to the one holding this skill')
     c = sub.add_parser('ci', help='Print a method-receipt CI job for the owner to review; writes nothing')
-    c.add_argument('--checkpoint', default='<path to integrated-workflow/scripts/checkpoint.py>')
+    c.add_argument('--skills', default='<repository path of the installed skills folder>')
     c.add_argument('--policy', default='<path to the reviewed policy JSON>')
     c.add_argument('--receipt', default='<path to the task receipt JSON>')
     p = sub.add_parser('pins')
@@ -281,7 +283,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         if args.command == 'ci':
-            sys.stdout.write(ci_template(args.checkpoint, args.policy, args.receipt))
+            sys.stdout.write(ci_template(args.skills, args.policy, args.receipt))
             return 0
         if args.command == 'pins':
             print(json.dumps(pins(args.policy, args.validator, args.provenance), indent=2))

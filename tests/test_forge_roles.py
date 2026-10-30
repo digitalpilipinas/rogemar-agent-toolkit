@@ -18,7 +18,7 @@ r=importlib.util.module_from_spec(spec);spec.loader.exec_module(r)
 class RoleEvidenceTests(unittest.TestCase):
     def test_qualifications_trace_exact_profiles_and_passing_artifacts(self):
         answers, batches = {}, {}
-        for path in sorted((FILE.parents[1]/'references').glob('validation-v*.json')):
+        for path in sorted((ROOT/'docs/evidence/plan-model-router').glob('validation-v*.json')):
             data = json.loads(path.read_text())
             answers.update({a['id']: a for a in data.get('answers', [])})
             for batch in data.get('batches', []):

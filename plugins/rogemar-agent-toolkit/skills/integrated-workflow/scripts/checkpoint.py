@@ -252,7 +252,8 @@ def check(root, base, phase, receipt, mapping, required_gates=(), boundary="acce
         errors.append('required behavior has a coverage gap')
     # Method receipt: enforced at Integrated Workflow acceptance unless the receipt is a
     # small bounded correction or the trusted policy opts the project into report-only.
-    report_only = (policy or {}).get('methods') == 'report-only' or scope.get('size') == 'small'
+    small = scope.get('size') == 'small' and len(paths) <= (policy or {}).get('small_max_paths', 3)
+    report_only = (policy or {}).get('methods') == 'report-only' or small
     if required is None:
         if not report_only:
             errors.append('method receipt unavailable: ' + result['methods']['error'])

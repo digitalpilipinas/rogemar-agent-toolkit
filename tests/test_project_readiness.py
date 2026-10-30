@@ -40,6 +40,15 @@ class ReadinessTests(unittest.TestCase):
             subprocess.run(['git', 'init', '-q', str(root)], check=True)
         return root
 
+    def owners(self, *names):
+        """A skills folder with stand-in owners, independent of what this package installs."""
+        folder = Path(tempfile.mkdtemp())
+        self.addCleanup(lambda: subprocess.run(['rm', '-rf', str(folder)]))
+        for name in names:
+            (folder / name).mkdir()
+            (folder / name / 'SKILL.md').write_text('---\nname: %s\n---\n' % name)
+        return folder
+
     def items(self, plan):
         return {i['id']: i for i in plan['items']}
 
@@ -52,7 +61,7 @@ class ReadinessTests(unittest.TestCase):
 
     def test_tracked_record_under_an_ignored_folder_needs_the_owner(self):
         root = self.repo({'.gitignore': '.agents/*\n', 'AGENTS.md': 'Run `project-readiness` first.\n'})
-        plan = readiness.plan(root, INDEX)
+        plan = readiness.plan(root, INDEX, skills_root=self.owners('forge-create-verification-skill'))
         item = self.items(plan)['footprint:.agents/verification.json']
         self.assertEqual((item['state'], item['kind']), ('needs-owner', 'ignore-rule'))
         self.assertIn('Unignore', item['action'])
@@ -82,9 +91,10 @@ class ReadinessTests(unittest.TestCase):
         self.assertNotIn('footprint:.agents/verification.json', ids)
 
     def test_ignore_rules_only_for_tools_in_use(self):
-        unused = self.items(readiness.plan(self.repo({}), INDEX))
+        owners = self.owners('project-learning')
+        unused = self.items(readiness.plan(self.repo({}), INDEX, skills_root=owners))
         self.assertNotEqual(unused['footprint:.codex/project-learning/state/']['state'], 'needs-owner')
-        used = self.items(readiness.plan(self.repo({'.codex/project-learning/config.json': '{}'}), INDEX))
+        used = self.items(readiness.plan(self.repo({'.codex/project-learning/config.json': '{}'}), INDEX, skills_root=owners))
         self.assertEqual(used['footprint:.codex/project-learning/state/']['state'], 'needs-owner')
 
     def test_instruction_line_and_approval_make_the_project_ready(self):
@@ -151,6 +161,9 @@ class ReadinessTests(unittest.TestCase):
         self.assertEqual(out['policy_sha256'], hashlib.sha256(b'{}').hexdigest())
         self.assertEqual(out['validator_sha256'], hashlib.sha256(b'print(1)').hexdigest())
         self.assertIn('--trusted-policy', out['command'])
+        job = readiness.ci_template('.claude/skills', 'policy.json', 'receipt.json')
+        self.assertIn('workflow-orchestrator/references/skill-routing.json', job)  # the index travels with the checkpoint
+        self.assertIn('$RUNNER_TEMP/trusted/integrated-workflow/scripts/checkpoint.py', job)
 
     @unittest.skipUnless(checkpoint, 'integrated-workflow is not in this selection')
     def test_checkpoint_start_includes_readiness_and_never_blocks_on_it(self):

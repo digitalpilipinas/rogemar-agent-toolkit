@@ -362,8 +362,9 @@ The receipt's `methods` array holds those records: `{"id", "state", "reason"}`, 
 records and the parent merges them. `checkpoint.py` derives the required methods from
 the changed paths and the receipt's `scope.tags`: each skill with matching
 `receipt_tags` needs one record per alternative group. Acceptance fails on a missing
-record, an unreasoned non-used state or missing evidence, unless the receipt's
-`scope.size` is `small` or the trusted policy sets `"methods": "report-only"`.
+record, an unreasoned non-used state or missing evidence, unless the trusted policy
+sets `"methods": "report-only"`, or the receipt's `scope.size` is `small` and the
+candidate changes no more paths than the policy's `small_max_paths` (default 3).
 
 For direct-main delivery, verify target identity/policy, pass required local gates,
 commit/push intentional content and verify the remote target contains the intended

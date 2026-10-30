@@ -87,6 +87,8 @@ class MethodReceiptTests(unittest.TestCase):
         errors, result = self.accept(self.with_methods(size='small'))
         self.assertEqual(errors, [])
         self.assertFalse(result['methods']['enforced'])
+        errors, _ = self.accept(self.with_methods(size='small'), {'small_max_paths': 0})
+        self.assertTrue(errors)  # a receipt cannot exempt a change larger than the policy allows
         errors, result = self.accept(self.receipt, {'methods': 'report-only'})
         self.assertEqual(errors, [])
         self.assertTrue(result['methods']['errors'])

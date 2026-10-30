@@ -95,7 +95,7 @@ class SelectionInstallTests(unittest.TestCase):
             ('CLAUDE_MANIFEST', 'Claude', toolkit.native_plugin_manifest),
             ('FACTORY_MANIFEST', 'Factory', toolkit.native_plugin_manifest),
             ('GEMINI_MANIFEST', 'Gemini', toolkit.gemini_manifest),
-            ('CLAUDE_MARKETPLACE', 'Claude marketplace', toolkit.native_marketplace),
+            ('CLAUDE_MARKETPLACE', 'Claude marketplace', toolkit.claude_marketplace),
             ('FACTORY_MARKETPLACE', 'Factory marketplace', toolkit.native_marketplace),
         ):
             with self.subTest(manifest=attribute), tempfile.TemporaryDirectory() as temporary:
@@ -107,7 +107,14 @@ class SelectionInstallTests(unittest.TestCase):
                     self.assertIn(label + ' manifest is stale; run toolkit.py lock', toolkit.structural_errors())
                     self.assertEqual(toolkit.main(['lock']), 0)
                     self.assertEqual(toolkit.load_json(path), expected)
-                if 'plugins' in expected:
+                if attribute == 'CLAUDE_MARKETPLACE':
+                    # Root source plus an explicit list: Claude loads only these skills.
+                    entry = expected['plugins'][0]
+                    self.assertEqual((toolkit.ROOT / entry['source']).resolve(), toolkit.ROOT.resolve())
+                    self.assertTrue(entry['skills'])
+                    for skill in entry['skills']:
+                        self.assertTrue((toolkit.ROOT / skill).resolve().is_relative_to(toolkit.PLUGIN_ROOT), skill)
+                elif 'plugins' in expected:
                     self.assertEqual((toolkit.ROOT / expected['plugins'][0]['source']).resolve(), toolkit.PLUGIN_ROOT)
                 else:
                     self.assertFalse(set(expected) & {'skills', 'hooks', 'mcpServers', 'agents'})

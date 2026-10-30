@@ -10,10 +10,10 @@ receipts, opt-in harness hooks and compliance measurement, on the owner's
 condition that each addition be optimized, value-adding and not redundant;
 the prompt hook was then approved explicitly.
 
-Delivery: Integrated Workflow, branch + PR + safe merge. Slices 1 and 2 shipped as
-PRs #35 and #36; slices 3–9 ship as one PR, with focused tests and a local
-CodeRabbit review per slice and one full CI run plus one cloud review wave at the
-end (owner, 2026-10-30). All nine slices form one 1.3.0 release tagged
+Delivery: slices 1 and 2 shipped as PRs #35 and #36. For slices 3–9 the owner
+first chose one PR, then authorized direct commits to `main` (2026-10-30) to save
+cloud-review allowance: focused tests while building, then one local CodeRabbit
+review and one full local CI run before pushing; no cloud review wave. All nine slices form one 1.3.0 release tagged
 once at the end (owner, 2026-10-30), starting on `claude/toolkit-1-3-0-readiness`. The branch starts stacked on
 PR #34 (`ee30ab4`) and is rebased onto `main` once #34 merges. No new provider,
 deployment or installation authority. Release tagging stays a separate owner

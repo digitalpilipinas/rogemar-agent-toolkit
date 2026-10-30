@@ -5761,7 +5761,7 @@
     },
     "engineering-playbooks": {
       "file_count": 61,
-      "sha256": "90990bd05a9a4f70bd726dabd5011092788538ad7644b30bce3095bb9e5398b5"
+      "sha256": "60ce7de23abbe3bfdb2a14575c231ff583b1368da15d79a42464c4cbd6e20552"
     },
     "figma": {
       "file_count": 8,
@@ -5985,7 +5985,7 @@
     },
     "integrated-workflow": {
       "file_count": 14,
-      "sha256": "ebc9ddd4d9a97b72478b4ae8e2b683ac2c6afef984a31bca2ea56780f3fbc9d3"
+      "sha256": "351edff8ed18cdaacb96fe8ee6d9799d9f5b75f144e85bf8bf7de9467c68daa4"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -6053,7 +6053,7 @@
     },
     "project-readiness": {
       "file_count": 4,
-      "sha256": "7dc2405325b52d2bc67f2a106ea64fbabff78fb8bdb0cd66814cb412b1202d04"
+      "sha256": "75b48dbb62d4b9d8df7437c80d65c41dcd2fac452fb56b6d114dc6a5fc0f46b3"
     },
     "reference-design-contract": {
       "file_count": 7,
