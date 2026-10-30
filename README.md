@@ -1,17 +1,11 @@
-<p align="center">
-  <img src="docs/assets/readme/toolkit-mark.svg" width="72" height="72" alt="Rogemar Agent Toolkit: connected modules around a shared center">
-</p>
-
 # Rogemar Agent Toolkit
 
-**One coordinated workflow. The right skills for the work. Evidence before done.**
-
-![Original toolkit illustration: connected modules on a midnight navy surface. Decorative artwork.](docs/assets/readme/hero.png)
-
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/ownership-dark.png">
-  <img src="docs/assets/readme/ownership-light.png" alt="Planning informs Integrated Workflow; one orchestrator selects the Forge adapter and applicable specialists under the same owner.">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/v13/hero-dark.svg">
+  <img src="docs/assets/readme/v13/hero-light.svg" alt="Rogemar Agent Toolkit: one coordinated workflow, the right skills for the work, evidence before done. A central orchestrator connects planning, building, review, verification, design and merge." width="100%">
 </picture>
+
+**One coordinated workflow. The right skills for the work. Evidence before done.**
 
 <p>
   <a href="#choose-your-assistant-and-mode"><img src="docs/assets/readme/codex.svg" alt="Codex" height="28"></a>
@@ -23,18 +17,49 @@
   <a href="docs/installation.md#native-manifests-for-other-harnesses"><img src="docs/assets/readme/antigravity.svg" alt="Antigravity" height="28"></a>
 </p>
 
-[Get started](#get-started) · [Choose your entry](#everyday-use) · [Understand the workflow](#how-delivery-works) · [Browse every skill](#complete-skill-inventory)
+[Get started](#get-started) · [Use three skills](#use-three-skills-the-rest-follows) · [Understand the workflow](#how-delivery-works) · [Read the user guide](docs/user-guide.md) · [Browse every skill](#complete-skill-inventory)
 
 Reusable skills that help an AI coding assistant plan work, build features, check
 its results and handle code reviews. Describe the outcome you want; the assistant
 selects the relevant methods and tools without making you remember every skill.
 
-The toolkit provides installation routes for Codex, Cursor, Claude, Factory/Droid
-and other compatible assistants.
+The toolkit provides installation routes for Codex, Cursor, Claude, Devin,
+Factory/Droid and other compatible assistants.
 It starts with seven core skills. Optional packs add engineering, design, mobile,
 data and release work. Installing a pack also copies the pinned third-party
 skill repositories that pack uses, on every harness those skills support.
 Your assistant still uses its own models, tools and accounts.
+
+New here? The [user guide](docs/user-guide.md) walks through installing, your
+first session and a worked example task in plain language.
+
+## Use three skills; the rest follows
+
+You only need to remember three entry points. Everything else is selected for you. The plugins
+include all three; a managed install needs the engineering pack for the Forge entry
+and `integrated-workflow`, since the seven-skill core has only `create-plan`.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/v13/three-entries-dark.svg">
+  <img src="docs/assets/readme/v13/three-entries-light.svg" alt="Three entry skills, create-plan, your harness Forge entry and integrated-workflow, feed one workflow-orchestrator. It selects specialist skills for engineering, design, web and mobile, and data and security. Every task ends in evidence: a method receipt, an independent review and a verified merge." width="100%">
+</picture>
+
+| Entry | Use it to | Notes |
+| --- | --- | --- |
+| `create-plan` | Plan a substantial change before building it. | Reads the repository, settles meaningful choices and returns one proportionate plan. |
+| Your harness's Forge entry: `claude-forge`, `codex-forge`, `cursor-forge`, `devin-forge` or `universal-forge` | Build or fix something with the full coordinated approach. | Pick the one for your assistant; Factory/Droid, Gemini and other assistants use `universal-forge`. |
+| `integrated-workflow` | Carry out an approved plan slice by slice through review and merge. | Invoking it to execute approved work authorizes its documented branch-and-PR route; see [Everyday use](#everyday-use). |
+
+`project-readiness` is not a fourth thing to remember. It runs automatically at
+the start or resume of every task: a quick, read-only check that tells you what
+the project needs and which skills apply. You can also invoke it directly when you
+want to see the situation without starting work: `/rogemar-agent-toolkit:project-readiness`
+in Claude, or `$project-readiness` in Codex. Other assistants use their own skill
+picker or the skill name.
+
+You do not need to invoke the orchestrator, the model router or any specialist
+yourself. The orchestrator picks the methods; the entry skill hands them to
+workers when that earns its cost.
 
 ## See the workflow
 
@@ -60,13 +85,18 @@ An illustrated workflow demonstration, not a recording of agent execution.
 
 ## Table of contents
 
+- [Use three skills; the rest follows](#use-three-skills-the-rest-follows)
 - [What it helps you do](#what-it-helps-you-do)
 - [Get started](#get-started)
 - [Everyday use](#everyday-use)
+- [What happens on every task](#what-happens-on-every-task)
+- [Independent review](#independent-review)
 - [Who does what](#who-does-what)
 - [How delivery works](#how-delivery-works)
 - [Bounded dynamic workflows](#bounded-dynamic-workflows)
 - [Choose your assistant and mode](#choose-your-assistant-and-mode)
+- [Optional readiness hooks](#optional-readiness-hooks)
+- [Formal verification when the property needs it](#formal-verification-when-the-property-needs-it)
 - [Design and app testing](#design-and-app-testing)
 - [Local and cloud environments](#local-and-cloud-environments)
 - [Update an installation](#update-an-installation)
@@ -74,11 +104,16 @@ An illustrated workflow demonstration, not a recording of agent execution.
 - [Credits and upstream sources](#credits-and-upstream-sources)
 - [Validation and releases](#validation-and-releases)
 
+More reading: [user guide](docs/user-guide.md) ·
+[installation and recovery](docs/installation.md) ·
+[everyday workflow](docs/everyday-workflow.md) ·
+[compatibility](docs/compatibility.md) · [changelog](CHANGELOG.md)
+
 ## What it helps you do
 
 | Plan | Build | Verify | Continue |
 | --- | --- | --- | --- |
-| Investigate the request, settle meaningful decisions and define success. | Select applicable engineering, design and domain methods. | Exercise affected behavior and challenge review findings. | Carry decisions and evidence across approved tasks, sprints and PRs. |
+| Investigate the request, settle meaningful decisions and define success. | Select applicable engineering, design and domain methods. | Exercise affected behavior, record which methods ran and challenge review findings. | Carry decisions and evidence across approved tasks, sprints and PRs. |
 
 A **skill** is a reusable set of instructions. A **pack** groups related skills.
 A **harness** means the assistant environment, such as Codex, Cursor or Claude.
@@ -95,11 +130,99 @@ Native apps, accounts and plugin registration stay separate.
 See [installation and recovery](docs/installation.md#automatic-external-skill-provisioning)
 and [third-party sources](#credits-and-upstream-sources).
 
+### Start small, add packs
+
+A fresh install is the seven-skill core. Add a pack only when the project needs it.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/v13/packs-dark.svg">
+  <img src="docs/assets/readme/v13/packs-light.svg" alt="The seven-skill core is installed by default: workflow-orchestrator, create-plan, first-time-right-delivery, bug-triage, code-review-and-quality, code-review-tests and project-readiness. Optional packs add engineering, design, web, mobile, data and security, release, content and research work." width="100%">
+</picture>
+
 ## Get started
 
 You need Git, Python 3.9 or later, and an assistant that can load skills. Choose a
 reviewed commit or tag from this repository and replace `REVIEWED_COMMIT` below.
-Using a specific revision keeps installations repeatable.
+Using a specific revision keeps installations repeatable. Pick **one** route per
+environment; installing the same toolkit through two routes creates duplicate
+skills.
+
+| Route | Best when | Gives you |
+| --- | --- | --- |
+| [Native plugin](#route-1-native-plugin) | Your assistant has a plugin marketplace and you want the quickest start. | The toolkit's skills, kept current by the plugin system. |
+| [Managed installer](#route-2-managed-installer) | You want packs you choose, repeatable upgrades and third-party skills in one step. | Selected skills plus pinned third-party skill files, with backups and rollback. |
+| [`npx skills`](#route-3-npx-skills) | You want every skill copied quickly, with no clone or pack selection. | Skill files only. |
+
+### Route 1: native plugin
+
+Add the repository to your assistant's plugin marketplace. The plugin carries the
+toolkit's skills; pinned third-party skills still come from the managed installer's
+`--external-only` mode (below).
+
+**Claude Code and Claude Desktop.** The plugin carries the whole skill folder,
+because claude.ai's update check rejected a filtered entry. Seven adapters for other
+assistants (`codex-forge`, `cursor-forge`, `cursor-forge-setup`, `devin-forge`,
+`forge-setup`, `plan-model-router`, `hatch-pet`) are therefore visible but stop when
+run outside their assistant. The managed installer (`--harness claude`) installs the
+filtered set.
+
+```text
+/plugin marketplace add digitalpilipinas/rogemar-agent-toolkit
+/plugin install rogemar-agent-toolkit@rogemar-agent-toolkit
+```
+
+Start a fresh session, then try `/rogemar-agent-toolkit:create-plan`. Marketplace
+auto-update is off by default for third-party marketplaces; see
+[update an installation](#update-an-installation).
+
+**Cursor.** Add the repository URL as a marketplace in Cursor's Customize controls,
+or register it with the Cursor Agent CLI:
+
+```text
+https://github.com/digitalpilipinas/rogemar-agent-toolkit
+```
+
+```bash
+agent plugin marketplace add https://github.com/digitalpilipinas/rogemar-agent-toolkit
+```
+
+**Devin.** Install the plugin from its subdirectory, not the repository root:
+
+```bash
+devin plugins install "digitalpilipinas/rogemar-agent-toolkit#plugins/rogemar-agent-toolkit"
+```
+
+<details>
+<summary><strong>Native plugin installation: Cursor and Devin details</strong></summary>
+
+For **Cursor's native plugin route**, add the repository URL
+`https://github.com/digitalpilipinas/rogemar-agent-toolkit` as a marketplace.
+The root Cursor marketplace points to the existing nested plugin; its generated
+manifest selects Cursor-compatible skills. Refresh an existing marketplace
+instead of adding another copy. See [Cursor plugin setup](docs/installation.md#cursor-native-plugin-and-managed-extras)
+for managed third-party extras and verification. Choose this route **or** the
+complete managed installation below for toolkit skills.
+
+For **Devin**, choose [native Git plugin + managed extras, or complete managed
+installation](docs/installation.md#devin-choose-one-toolkit-owner). The native
+source is the plugin subdirectory shown above.
+
+Its generated Devin manifest exposes compatible portable skills through
+`/rogemar-agent-toolkit:<skill>`. Install third-party skill files separately with
+`--harness agent-skills --profile all --external-only` in each receiving
+environment. For complete managed installation, use `--harness agent-skills`
+without the native plugin or `--external-only`; add `--profile all` for the full
+setup. Avoid installing the same toolkit through both routes.
+
+</details>
+
+**Codex, Factory, Gemini and Antigravity.** Build a selected archive with
+`toolkit.py package --harness <name>` and register the extracted directory with
+your assistant's own plugin controls. Factory and Gemini read every skill in a
+plugin folder and cannot filter, so prefer a selected archive or the managed
+installer for them. See [native setup for other harnesses](docs/installation.md#native-manifests-for-other-harnesses).
+
+### Route 2: managed installer
 
 ```bash
 git clone https://github.com/digitalpilipinas/rogemar-agent-toolkit.git
@@ -123,6 +246,37 @@ assistant, see the
 [available installation targets](docs/compatibility.md#harness-adapters). Use
 `--target user` instead of the project options for a personal installation.
 
+The engineering pack copies pinned Unlazy and Ponytail skills onto every
+harness, and pinned PStack skills onto Cursor. CodeRabbit skill files copy
+only with the compatibility pack, including `--profile all`, because the
+catalog does not record a license for that repository. Start a fresh task
+afterward and verify that your assistant can discover the skills.
+
+Want only the basics? Omit both `--pack` options to install the seven-skill core.
+Forge and Integrated Workflow belong to the optional engineering pack, so the
+three-entry workflow needs that pack (plugins include it). On an
+existing installation, explicit profile/pack options replace its saved selection;
+preview changes first. See [installation and recovery](docs/installation.md) for
+pack choices, plugin archives, backups and rollback.
+
+**Plugin plus managed third-party skills.** If you use a native plugin for the
+toolkit's own skills, install only the pinned third-party skill files with
+`--external-only` (see the Devin example above). To switch an existing full
+managed installation to that arrangement, preview and then run the conversion:
+
+```bash
+python3 scripts/toolkit.py upgrade --harness agent-skills --target project --project-root /path/to/project --convert-external-only --dry-run
+python3 scripts/toolkit.py upgrade --harness agent-skills --target project --project-root /path/to/project --convert-external-only
+```
+
+`--convert-external-only` backs up and removes the managed toolkit skills and keeps
+the managed external ones. It refuses locally edited copies unless you pass
+`--backup-conflicts`, and `rollback` restores the previous state. It needs an
+existing full managed installation. See
+[updating and checking each route](docs/installation.md#updating-and-checking-each-route).
+
+### Route 3: `npx skills`
+
 For a quick install of every toolkit skill into an assistant's skill
 directories, without clone, pack selection or managed state, the
 [`skills`](https://github.com/vercel-labs/skills) CLI reads this repository
@@ -137,47 +291,6 @@ inventory first, and run `npx skills update` later to pick up new revisions.
 This route copies skill files only: it does not select packs, write managed
 installation state, generate manifests or provision external dependencies —
 use the managed installation above or a native plugin route for those.
-
-The engineering pack copies pinned Unlazy and Ponytail skills onto every
-harness, and pinned PStack skills onto Cursor. CodeRabbit skill files copy
-only with the compatibility pack, including `--profile all`, because the
-catalog does not record a license for that repository. Start a fresh task
-afterward and verify that your assistant can discover the skills.
-
-<details>
-<summary><strong>Native plugin installation: Cursor and Devin</strong></summary>
-
-For **Cursor's native plugin route**, add the repository URL
-`https://github.com/digitalpilipinas/rogemar-agent-toolkit` as a marketplace.
-The root Cursor marketplace points to the existing nested plugin; its generated
-manifest selects Cursor-compatible skills. Refresh an existing marketplace
-instead of adding another copy. See [Cursor plugin setup](docs/installation.md#cursor-native-plugin-and-managed-extras)
-for managed third-party extras and verification. Choose this route **or** the
-complete managed installation above for toolkit skills.
-
-For **Devin**, choose [native Git plugin + managed extras, or complete managed
-installation](docs/installation.md#devin-choose-one-toolkit-owner). The native
-source is the plugin subdirectory:
-
-```bash
-devin plugins install "digitalpilipinas/rogemar-agent-toolkit#plugins/rogemar-agent-toolkit"
-```
-
-Its generated Devin manifest exposes compatible portable skills through
-`/rogemar-agent-toolkit:<skill>`. Install third-party skill files separately with
-`--harness agent-skills --profile all --external-only` in each receiving
-environment. For complete managed installation, use `--harness agent-skills`
-without the native plugin or `--external-only`; add `--profile all` for the full
-setup. Avoid installing the same toolkit through both routes.
-
-
-</details>
-
-Want only the basics? Omit both `--pack` options to install the seven-skill core.
-Forge and Integrated Workflow belong to the optional engineering pack. On an
-existing installation, explicit profile/pack options replace its saved selection;
-preview changes first. See [installation and recovery](docs/installation.md) for
-pack choices, plugin archives, backups and rollback.
 
 Installation does not start agents, authenticate services, install provider apps,
 register monitors or spend provider credits. Tool and account prerequisites are checked for the selected task;
@@ -202,6 +315,7 @@ Codex's `$skill-name` notation; other assistants may present skills differently.
 | Engineering in Factory/Droid or another compatible assistant | `universal-forge` |
 | Plan a substantial change before building | `create-plan` |
 | Carry out an approved multi-step programme | `integrated-workflow` |
+| See what the project needs and which skills apply | `project-readiness` (also runs automatically) |
 
 ```text
 $codex-forge Fix the login failure. Reproduce it, find the cause,
@@ -239,6 +353,67 @@ available, qualified profiles for those jobs; Codex presets use qualified Luna
 routes for monitoring and consolidation. Keeping a finding in the summary does not mean accepting it.
 [Review handoffs](plugins/rogemar-agent-toolkit/skills/workflow-orchestrator/references/provider-routing.md#review-support-and-decision-roles)
 preserve mode limits and the existing local/ready-PR review cadence.
+
+## What happens on every task
+
+The same loop runs whether the task is a one-line fix or a multi-sprint plan; small
+tasks simply skip the heavier steps. Nothing here needs you to name a skill.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/v13/task-loop-dark.svg">
+  <img src="docs/assets/readme/v13/task-loop-light.svg" alt="The task loop in six steps: readiness, with one approval from you, then plan, build, method receipt, independent review and merge. The loop returns to readiness for the next slice, and one acceptance record carries valid evidence forward." width="100%">
+</picture>
+
+1. **Readiness and one approval.** `project-readiness` checks the project
+   read-only. If something needs your decision, such as an ignore rule for a path
+   skills write or a one-line project instruction, it shows **one** setup plan.
+   Nothing is applied until you approve it, and a declined plan is not repeated
+   until it changes.
+2. **Plan, situation map and announcement.** A substantial change starts from
+   `create-plan` or an already approved plan. The agent keeps a short map of which
+   skills apply to this project and, at the start of each slice, says in one line
+   which playbook and skills it will use and which are unavailable, blocked or not
+   applicable, with reasons.
+3. **Build with focused tests.** The slice is built as one coherent piece of
+   behavior, with tests run as behavior changes rather than a full suite after every edit.
+4. **Method receipt.** Before acceptance, each method the changed files call for
+   is recorded as **used** (with evidence), **unavailable**, **blocked** or
+   **not applicable**, and every state except *used* carries a reason. A skipped
+   review is therefore visible, not silent. The check derives required methods from
+   the changed paths, exempts small corrections, and a project can opt out in its
+   trusted policy; `readiness.py ci` prints an optional pull-request job that runs
+   the same check from the protected base branch.
+5. **Independent review.** One independent full review of the exact candidate;
+   see [Independent review](#independent-review). The review is recorded in the
+   receipt only after it has run, and the receipt is checked at acceptance.
+6. **Merge.** A safe merge once required gates pass, inside the delivery route you
+   chose. The loop then continues with the next approved slice.
+
+## Independent review
+
+Review is provider-neutral: what matters is that someone other than the builder
+reviewed the exact candidate in full.
+
+- Every substantive slice needs **one independent, full review** of the exact
+  candidate at acceptance.
+- **CodeRabbit is preferred** when it is installed and signed in. It is never
+  required.
+- Otherwise a **fresh-context reviewer**, meaning a separate agent or session that
+  did not build the slice, runs `code-review-and-quality` on the candidate. A
+  project can instead use another review tool it already relies on.
+- **Readiness records the project's review route**, and a project can fix it with
+  `review_route` in its readiness record.
+- **The method receipt records which reviewer ran**, so you can see what actually
+  happened.
+- **Skipping review still blocks acceptance.** A review that did not run is never
+  recorded as passed, and an owner waiver stays a waiver.
+- **Cloud PR reviews are optional, per project.** Where a repository has GitHub
+  CodeRabbit and Codex reviews configured, a ready PR also requests them, and
+  all due reviews finish before findings are consolidated. Projects that do not use
+  them are not blocked.
+
+Small, bounded, reversible corrections take a lighter path with relevant checks.
+See the [review routes contract](plugins/rogemar-agent-toolkit/skills/integrated-workflow/references/coderabbit-review.md#review-routes).
 
 ## Who does what
 
@@ -310,11 +485,12 @@ flowchart TD
     plan["Approved scope and delivery authority"] --> build["Build the complete slice; test as you go"]
     build -. "Visible or interactive changes" .-> ui["Existing design methods; scoped UI evidence"]
     ui -. "Same acceptance record" .-> local
-    build --> local["Review the full slice locally"]
+    build --> local["One independent full review of the exact candidate"]
     local --> fixes["Consolidate feedback; fix validated defects"]
-    fixes --> ready["Mark the PR ready for review"]
-    ready --> cloud["Full initial GitHub CodeRabbit and Codex reviews"]
-    cloud --> both["Wait for BOTH reviews to complete"]
+    fixes --> receipt["Record the method receipt"]
+    receipt --> ready["Mark the PR ready for review"]
+    ready --> cloud["Where the project uses them: full initial GitHub CodeRabbit and Codex reviews"]
+    cloud --> both["Wait for ALL due cloud reviews to complete"]
     both --> finish["Consolidate, validate findings, fix and check"]
     finish --> due{"Required review coverage needs refresh?"}
     due -->|"Within allowance or explicit extension"| follow["Request due follow-up; wait for all reviews in that wave"]
@@ -324,15 +500,20 @@ flowchart TD
     handoff -. "Verified completion; enrolled only" .-> learn["Project Learning checkpoint; optional knowledge upkeep"]
 ```
 
-For substantive work, Integrated Workflow requires local CodeRabbit review of the
-complete slice, plus any selected additional reviewers, before the ready-PR handoff.
-It does not require a full external-review cycle for every commit. GitHub CodeRabbit
-and Codex then provide separate full initial reviews of the ready PR. Both must
-finish before findings are consolidated, validated or fixed. Each cloud provider
-has an initial review plus at most one justified follow-up by default; additional
-runs need an explicit owner extension. Equivalent automatic reviews count, and
-commits or resumed sessions do not reset the allowance. Exhaustion never waives
-required evidence or permits an unsafe merge. See the
+For substantive work, Integrated Workflow requires one independent full review of
+the complete slice, plus any selected additional reviewers, before the ready-PR
+handoff. The review goes through the project's [review route](plugins/rogemar-agent-toolkit/skills/integrated-workflow/references/coderabbit-review.md#review-routes):
+local CodeRabbit when installed and signed in, otherwise a fresh-context
+reviewer or another tool the project uses. It does not require a full external-review
+cycle for every commit.
+
+Cloud PR reviews are optional per project. Where a project uses GitHub CodeRabbit
+and Codex, they provide separate full initial reviews of the ready PR, and all due
+reviews must finish before findings are consolidated, validated or fixed. Each
+cloud provider has an initial review plus at most one justified follow-up by
+default; additional runs need an explicit owner extension. Equivalent automatic
+reviews count, and commits or resumed sessions do not reset the allowance.
+Exhaustion never waives required evidence or permits an unsafe merge. See the
 [cloud review contract](plugins/rogemar-agent-toolkit/skills/integrated-workflow/references/coderabbit-review.md#ready-pr-coderabbit-and-codex).
 
 Local review cadence stays unchanged. Whenever CodeRabbit or an explicitly selected
@@ -378,18 +559,31 @@ contains native execution qualification requirements; the live Claude pilot is
 
 ## Choose your assistant and mode
 
-| Assistant | Engineering entry | Model selection |
-| --- | --- | --- |
-| Codex | `codex-forge` | `forge-setup` configures preferences; `plan-model-router` qualifies worker profiles. |
-| Cursor | `cursor-forge` | `cursor-forge-setup` supplies native mappings. The universal router is the fallback. Shared `forge-*` skills are the method. Upstream PStack stays installed and unchanged. |
-| Claude | `claude-forge` | `claude-forge-setup` qualifies the live Claude catalogue. |
-| Devin | `devin-forge` | `devin-forge` carries a saved mode→`devin_mode` mapping for `devin_session_create` workers; `universal-plan-model-router` is the fallback. |
-| Factory/Droid and other compatible assistants | `universal-forge` | `universal-plan-model-router` uses the assistant's available native models and controls, with defaults when selection controls are absent. |
+Each assistant has its own Forge entry and model-selection route. Packaging also
+differs: some plugin systems can list only compatible skills, others load a whole
+folder.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/v13/harness-support-dark.svg">
+  <img src="docs/assets/readme/v13/harness-support-light.svg" alt="Six assistants and what each receives. Cursor and Devin native plugins list only compatible skills, the Claude plugin carries the whole folder, and Codex uses a selected marketplace archive. Factory and Gemini load the whole plugin folder and cannot filter, so use a selected archive or the managed installer." width="100%">
+</picture>
+
+| Assistant | Engineering entry | Native plugin route | Managed installer | Model selection |
+| --- | --- | --- | --- | --- |
+| Codex | `codex-forge` | Marketplace archive of selected skills | `--harness codex` | `forge-setup` configures preferences; `plan-model-router` qualifies worker profiles. |
+| Cursor | `cursor-forge` | Marketplace lists Cursor-compatible skills | `--harness cursor` | `cursor-forge-setup` supplies native mappings. The universal router is the fallback. Shared `forge-*` skills are the method. Upstream PStack stays installed and unchanged. |
+| Claude | `claude-forge` | Plugin carries every skill; the managed installer filters | `--harness claude` | `claude-forge-setup` qualifies the live Claude catalogue. |
+| Devin | `devin-forge` | Git plugin from the plugin subdirectory | `--harness agent-skills` (there is no separate `devin` installer harness) | `devin-forge` carries a saved mode→`devin_mode` mapping for `devin_session_create` workers; `universal-plan-model-router` is the fallback. |
+| Factory/Droid and other compatible assistants | `universal-forge` | Factory loads every skill in the plugin folder and cannot filter | `--harness droid` | `universal-plan-model-router` uses the assistant's available native models and controls, with defaults when selection controls are absent. |
+| Gemini CLI | `universal-forge` | Extension loads every skill in its folder and cannot filter | `--harness gemini` | Same as Universal Forge. |
 
 Factory/Droid installs to `.factory/skills`. It uses the portable engineering
 route and observed native capabilities, not Codex model IDs. When worker controls
 are unavailable, suitable work may stay with the current agent; a sequential pass
-does not supply required independent review.
+does not supply required independent review. For Factory, Gemini and Antigravity,
+prefer a selected archive or the managed installer over the raw source plugin, which
+exposes every harness's adapters. Installation, discovery and a completed workflow
+are separate checks; see [compatibility and evidence](docs/compatibility.md).
 
 <details>
 <summary><strong>Model modes, setup and execution limits</strong></summary>
@@ -442,6 +636,26 @@ harness-specific paths; support for every assistant/version is not implied.
 
 </details>
 
+## Optional readiness hooks
+
+Hooks are optional and **opt-in**. They run whether or not the model chooses to open
+a skill, which makes them the strongest way to keep routing in front of the
+assistant. Nothing installs them without your explicit consent.
+
+| Event | What it does |
+| --- | --- |
+| Session start | Runs readiness and adds its status and the situation map to the session. |
+| Each prompt | Adds only the situation rows the request mentions, 600 characters at most. |
+| Finish | Warns, without blocking, when changed files call for methods the receipt has not recorded. A loop guard keeps it from repeating. |
+
+Claude Code is the first supported harness: `claude-forge-setup` prints the settings
+snippet, you review it, and it is applied only after you approve. The hooks read
+only the project and its Git state and never fail the session. Other harnesses
+(Codex, Cursor and others) stay unqualified until their hook formats are verified
+against a real session; they rely on the entry skills, the slice-start announcement
+and the method receipt. Removing the three entries removes the hooks. See the
+[readiness hooks reference](plugins/rogemar-agent-toolkit/skills/claude-forge-setup/references/readiness-hooks.md).
+
 ## Formal verification when the property needs it
 
 The engineering pack includes `formal-verification-create`,
@@ -453,6 +667,13 @@ implementation-level mutation checks provide different evidence. A bounded model
 pass does not prove the whole application correct; external TLC and rendering
 tools require their own preparation and execution evidence.
 
+For state-heavy work the sequence is: statechart design, then
+`formal-verification-create` once code exists, then `formal-verification-maintain`
+on any candidate that touches covered code. TLC remains the default engine. Set
+`STATECHART_ENGINE=tla-ts` to use the optional `tla-ts` engine (MIT), which needs no
+Java, with a local `TLA_TS` executable or an authorized installation. Its results are
+labelled unverified until a corpus comparison with TLC is recorded.
+
 ## Design and app testing
 
 | Work | Relevant methods | What still needs a runtime |
@@ -461,6 +682,7 @@ tools require their own preparation and execution evidence.
 | Interface design | Briefs, reference design, journeys, components, accessibility, motion and visual QA. | The actual rendered interface and applicable interaction/device checks. |
 | Browser and mobile E2E | TesterArmy `e2e` for suitable new journeys when the project pins it or the owner authorizes the dependency; otherwise extend existing tests and project conventions. | Browser/device engines, fixtures and actual assertion artifacts. Model-driven steps additionally need an approved provider. |
 | App and backend work | Selected Expo, Argent, Convex, Supabase and other pinned methods. | The corresponding tools and service access when that task requires them. |
+| Code-rendered video | `programmatic-video` in the content pack: brief, storyboard, a deterministic timeline, frame rendering, ffmpeg encoding and contact-sheet checks. It prefers an installed video plugin when one fits. | ffmpeg and a renderer in the receiving environment; asset licensing stays your decision. |
 
 The Swift routes use AvdLee guidance for primary SwiftUI/concurrency implementation
 and diagnostics, and twostraws methods for focused review when useful. SwiftData and
@@ -553,6 +775,13 @@ See [recovery and duplicate copies](docs/installation.md#updates-and-recovery)
 before adopting or replacing existing files. Keep one managed installation per
 shared root; avoid loading the same skills from both a plugin and personal copies.
 
+Native plugins update through their own system, not the installer. In Claude Code,
+marketplace auto-update is off by default for third-party marketplaces: enable it in
+`/plugin` → Marketplaces or update the installed plugin explicitly, then reload
+plugins or start a new session. Refreshing a marketplace list alone does not update
+an installed plugin. See [updating an installed toolkit](docs/installation.md#updating-an-installed-toolkit)
+for each route, and the [user guide](docs/user-guide.md#troubleshooting) for common problems.
+
 ## Complete skill inventory
 
 Expand this reference when you need the full list of skills, pack membership,
@@ -561,7 +790,7 @@ not a promise that every listed service is installed or active. Generated counts
 cover different kinds of records and should not be added into one skill total.
 
 <details>
-<summary>Browse all skills, packs, dependencies and runtime records</summary>
+<summary><strong>Complete skill inventory</strong>: all skills, packs, dependencies and runtime records</summary>
 
 <!-- BEGIN GENERATED SKILL INVENTORY -->
 <!-- This section is generated by scripts/inventory_readme.py; edit the catalog or SKILL.md instead. -->
@@ -907,7 +1136,8 @@ The checks cover selection, packaging, content integrity, installation and recov
 They do not replace a fresh assistant session, authenticated provider review or
 real browser/device test. Archives contain checksums and a record of their selected
 contents. Follow [the release procedure](docs/releasing.md) for changes to sources,
-licenses, versions and publication.
+licenses, versions and publication. The method-compliance runs that gate a release
+are described in the [changelog](CHANGELOG.md).
 
 This README describes the revision you are viewing. Local edits and draft work do
 not update the GitHub default branch until explicitly published there.

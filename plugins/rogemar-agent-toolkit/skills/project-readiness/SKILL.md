@@ -29,6 +29,11 @@ cheap and read-only, and it does nothing visible when the project is already rea
 4. Continue with the entry skill that invoked you: task-handoff discovery, then
    planning or execution.
 
+The plan also reports the project's review route: local CodeRabbit when its CLI is
+installed, otherwise a fresh-context review with `code-review-and-quality`. A
+project can fix the route with `review_route` in its readiness record. CodeRabbit
+is preferred, never required.
+
 The readiness record may also declare `locations` that override a footprint's default
 path, such as an agent-map output folder outside the repository. Declared locations
 win. Connection state for MCP servers and plugins is observed by the agent at runtime

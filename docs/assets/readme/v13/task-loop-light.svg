@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-labelledby="t d" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<title id="t">The task loop</title>
+<desc id="d">Six steps in a loop. Readiness, with one approval from you, then plan, build, method receipt, independent review and merge. The loop returns to readiness for the next slice, and one acceptance record carries evidence forward.</desc>
+<defs>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#475569" stroke-opacity="0.09" stroke-width="1"/></pattern>
+<linearGradient id="beam" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0891B2"/><stop offset="1" stop-color="#7C3AED"/></linearGradient>
+<marker id="ah-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#0891B2"/></marker>
+<marker id="ah-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#7C3AED"/></marker>
+
+</defs>
+<rect width="1280" height="640" fill="#F8FAFC"/>
+<g aria-hidden="true">
+<rect width="1280" height="640" fill="url(#grid)"/>
+<path d="M0,580 L40,580 L70,610 L150,610 L180,640" fill="none" stroke="#0891B2" stroke-width="1.4" stroke-opacity="0.45" stroke-linejoin="round"/>
+<circle cx="180" cy="640" r="3.5" fill="none" stroke="#0891B2" stroke-opacity="0.45" stroke-width="1.4"/>
+<path d="M0,530 L24,530 L44,550 L44,580" fill="none" stroke="#7C3AED" stroke-width="1.4" stroke-opacity="0.45" stroke-linejoin="round"/>
+<circle cx="44" cy="580" r="3.5" fill="none" stroke="#7C3AED" stroke-opacity="0.45" stroke-width="1.4"/>
+<path d="M1280,50 L1220,50 L1190,80 L1190,130 L1160,160" fill="none" stroke="#7C3AED" stroke-width="1.4" stroke-opacity="0.45" stroke-linejoin="round"/>
+<circle cx="1160" cy="160" r="3.5" fill="none" stroke="#7C3AED" stroke-opacity="0.45" stroke-width="1.4"/>
+<path d="M1280,100 L1250,100 L1230,120" fill="none" stroke="#0891B2" stroke-width="1.4" stroke-opacity="0.45" stroke-linejoin="round"/>
+<circle cx="1230" cy="120" r="3.5" fill="none" stroke="#0891B2" stroke-opacity="0.45" stroke-width="1.4"/>
+<path d="M1080,640 L1080,616 L1110,586 L1190,586 L1220,556 L1280,556" fill="none" stroke="#0891B2" stroke-width="1.4" stroke-opacity="0.45" stroke-linejoin="round"/>
+<circle cx="1280" cy="556" r="3.5" fill="none" stroke="#0891B2" stroke-opacity="0.45" stroke-width="1.4"/>
+</g>
+<rect x="95" y="112" width="290" height="124" rx="14" fill="#FFFFFF" stroke="#0891B2" stroke-width="1.6"/>
+<rect x="109" y="112" width="38" height="3" rx="1.5" fill="#0891B2"/>
+<text x="113" y="160.76" font-size="18" font-weight="700" fill="#0E7490" text-anchor="start">1  Readiness</text>
+<text x="113" y="187.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Read-only check of the project.</text>
+<text x="113" y="208.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">One setup plan to approve.</text>
+<rect x="495" y="112" width="290" height="124" rx="14" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.6"/>
+<rect x="509" y="112" width="38" height="3" rx="1.5" fill="#7C3AED"/>
+<text x="513" y="160.76" font-size="18" font-weight="700" fill="#6D28D9" text-anchor="start">2  Plan and announce</text>
+<text x="513" y="187.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Situation map of skills;</text>
+<text x="513" y="208.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">slice-start announcement.</text>
+<rect x="895" y="112" width="290" height="124" rx="14" fill="#FFFFFF" stroke="#0891B2" stroke-width="1.6"/>
+<rect x="909" y="112" width="38" height="3" rx="1.5" fill="#0891B2"/>
+<text x="913" y="160.76" font-size="18" font-weight="700" fill="#0E7490" text-anchor="start">3  Build</text>
+<text x="913" y="187.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Complete slice, with focused</text>
+<text x="913" y="208.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">tests as behavior changes.</text>
+<rect x="895" y="372" width="290" height="124" rx="14" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.6"/>
+<rect x="909" y="372" width="38" height="3" rx="1.5" fill="#7C3AED"/>
+<text x="913" y="420.76" font-size="18" font-weight="700" fill="#6D28D9" text-anchor="start">4  Receipt</text>
+<text x="913" y="447.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Each method: used, unavailable,</text>
+<text x="913" y="468.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">blocked or not applicable.</text>
+<rect x="495" y="372" width="290" height="124" rx="14" fill="#FFFFFF" stroke="#0891B2" stroke-width="1.6"/>
+<rect x="509" y="372" width="38" height="3" rx="1.5" fill="#0891B2"/>
+<text x="513" y="420.76" font-size="18" font-weight="700" fill="#0E7490" text-anchor="start">5  Independent review</text>
+<text x="513" y="447.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">One full review of the exact</text>
+<text x="513" y="468.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">candidate, by a fresh reviewer.</text>
+<rect x="95" y="372" width="290" height="124" rx="14" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.6"/>
+<rect x="109" y="372" width="38" height="3" rx="1.5" fill="#7C3AED"/>
+<text x="113" y="420.76" font-size="18" font-weight="700" fill="#6D28D9" text-anchor="start">6  Merge</text>
+<text x="113" y="447.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Safe merge once gates pass,</text>
+<text x="113" y="468.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">within your delivery route.</text>
+<path d="M385,174.0 L491,174.0" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-cyan)"/>
+<path d="M785,174.0 L891,174.0" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-violet)"/>
+<path d="M1185,174.0 H1240 V434.0 H1189" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-cyan)"/>
+<path d="M895,434.0 L789,434.0" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-violet)"/>
+<path d="M495,434.0 L389,434.0" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-cyan)"/>
+<path d="M95,434.0 H48 V174.0 H91" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 6" marker-end="url(#ah-violet)"/>
+<text x="30" y="316" font-size="14" font-weight="600" fill="#6D28D9" text-anchor="middle" transform="rotate(-90 30 316)">next slice</text>
+<path d="M440.0,157.0 L457.0,174.0 L440.0,191.0 L423.0,174.0 Z" fill="#F8FAFC" stroke="#7C3AED" stroke-width="2.2"/>
+<circle cx="440.0" cy="174.0" r="4.5" fill="#7C3AED"/>
+<text x="440.0" y="138.0" font-size="15" font-weight="700" fill="#6D28D9" text-anchor="middle">You approve</text>
+<text x="440.0" y="220.0" font-size="15" font-weight="700" fill="#6D28D9" text-anchor="middle">once</text>
+<rect x="400" y="268" width="480" height="82" rx="16" fill="#EEF2FF" stroke="url(#beam)" stroke-width="2"/>
+<text x="640" y="302" font-size="19" font-weight="700" fill="#0F172A" text-anchor="middle">One acceptance record</text>
+<text x="640" y="328" font-size="15" font-weight="400" fill="#475569" text-anchor="middle">Valid evidence is carried forward, not redone.</text>
+<text x="640" y="566" font-size="15" font-weight="400" fill="#475569" text-anchor="middle">You choose the delivery route: local only, branch and pull request, or stop before merge.</text>
+<text x="640" y="592" font-size="15" font-weight="600" fill="#0E7490" text-anchor="middle">Skipping the independent review still blocks acceptance.</text>
+</svg>

@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / 'plugins/rogemar-agent-toolkit/skills'
@@ -112,6 +113,16 @@ class ReadinessTests(unittest.TestCase):
         self.assertEqual(self.items(changed)['instruction']['state'], 'satisfied')
         self.assertNotEqual(changed['plan_id'], plan['plan_id'])
         self.assertEqual(changed['status'], 'ready')  # applying the last item makes it ready
+
+    def test_review_route_falls_back_without_coderabbit_and_honors_the_record(self):
+        root = self.repo({})
+        with mock.patch.object(readiness.shutil, 'which', return_value=None):
+            self.assertEqual(readiness.plan(root, INDEX)['review_route']['route'], 'fresh-context')
+        with mock.patch.object(readiness.shutil, 'which', return_value='/usr/local/bin/coderabbit'):
+            self.assertEqual(readiness.plan(root, INDEX)['review_route']['route'], 'coderabbit')
+        (root / '.agents').mkdir()
+        (root / '.agents/readiness.json').write_text(json.dumps({'review_route': 'team-reviewer'}))
+        self.assertEqual(readiness.plan(root, INDEX)['review_route']['route'], 'team-reviewer')
 
     def test_outside_git_is_never_ready_even_when_approved(self):
         root = self.repo({'AGENTS.md': 'project-readiness'}, git=False)

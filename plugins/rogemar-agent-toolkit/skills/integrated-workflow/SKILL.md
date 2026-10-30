@@ -127,13 +127,16 @@ For run cadence, repeated-failure discipline and evidence reuse, see
   are optional unless repository policy or the approved contract requires them.
   Do not start a programme, board, reviewer panel or delivery ceremony for it.
 - **Substantive work:** an ordinary feature, vertical slice or meaningful bug fix
-  requires scoped implementation evidence, `code-review-and-quality`, and local
-  CodeRabbit at slice acceptance. Branch delivery also requires separate GitHub
-  CodeRabbit and Codex reviews once the complete slice is ready for review.
-  Start both with full-PR coverage and wait for both to complete before
-  consolidating, validating findings or fixing. Follow the shared
-  [cloud review allowance](references/coderabbit-review.md#cloud-review-allowance);
-  local review cadence remains unchanged and invoked local providers review fully.
+  requires scoped implementation evidence, `code-review-and-quality`, and one
+  independent full review of the complete slice at acceptance, through the
+  project's [review route](references/coderabbit-review.md#review-routes): local
+  CodeRabbit when it is installed and authenticated, otherwise a fresh-context
+  reviewer or another review tool the project uses. Where the project uses cloud
+  PR reviews (GitHub CodeRabbit and Codex), branch delivery also requests them once
+  the complete slice is ready: start them with full-PR coverage and wait for all
+  due reviews before consolidating, validating findings or fixing, within the shared
+  [cloud review allowance](references/coderabbit-review.md#cloud-review-allowance).
+  Invoked local providers review fully.
 - **Sensitive work:** add the independent domain evidence warranted by changed
   authorization, privacy, data integrity, migrations, concurrency, compatibility
   or recovery. A tiny sensitive edit is not automatically a small correction.
@@ -256,11 +259,12 @@ Physical-device QA: REQUIRED BEFORE MERGE | DEFERRED UNTIL BUILD | NOT APPLICABL
   action and request its specific authorization.
 - Direct commit and push to the verified target branch require the owner's
   explicit instruction and repository-policy permission. Small or personal
-  projects do not imply this choice. Preserve applicable local checks and local
-  CodeRabbit for substantive work; PR-only gates are not applicable on this route.
+  projects do not imply this choice. Preserve applicable local checks and the
+  independent local review for substantive work; PR-only gates are not applicable
+  on this route.
 - `Independent external review` controls additional independent providers. It
-  does not silently disable the substantive local CodeRabbit and ready-PR
-  CodeRabbit/Codex requirements above. A separate explicit owner waiver or
+  does not silently disable the substantive independent review, or the ready-PR
+  cloud reviews a project uses, above. A separate explicit owner waiver or
   stricter project contract must be recorded at the affected gate.
 - Database scope is the maximum authorized environment, not permission for
   unrelated or destructive operations. Production and deployment authority
@@ -280,7 +284,8 @@ Do not create another PR merely because a sprint ended.
 A draft PR is already an open GitHub PR. Treat **ready for review** as the cloud
 QA handoff. With publication authority, push incremental commits to the feature
 branch and optionally maintain its draft. Run proportionate local checks as work
-progresses. The final full local CodeRabbit review belongs at slice acceptance,
+progresses. The final independent full review (local CodeRabbit or the project's other
+review route) belongs at slice acceptance,
 before creating a ready PR or converting the draft; do not require a full review
 of every intermediate commit. Any stricter recorded checkpoint still applies.
 
@@ -321,7 +326,8 @@ agent retains final acceptance. This adds no review cycle or mandatory agent pan
 
 When authorized branch delivery reaches a ready PR, the active workflow includes
 monitoring and resolving its review/check results through the allowed boundary.
-Observe GitHub CodeRabbit and Codex as separate reviewers, plus all applicable
+Observe each cloud reviewer the project uses, such as GitHub CodeRabbit and Codex, as
+a separate reviewer, plus all applicable
 human, bot, conversation, inline-thread and check-annotation surfaces. Optional
 selected providers feed the same process. A posted request is not a completed review.
 
@@ -332,7 +338,7 @@ requesting missing due reviews. Reuse a valid equivalent review where the
 provider and repository allow it, without passing stale evidence forward.
 
 For an active ready-PR cloud review wave with substantive or explicitly required
-coverage, wait for both full initial cloud reviews to complete before consolidating,
+coverage, wait for every due full initial cloud review to complete before consolidating,
 validating findings or fixing. For later waves, wait for every due review in the
 wave and retain only still-valid prior coverage under the
 [shared completion barrier and allowance](references/coderabbit-review.md#ready-pr-coderabbit-and-codex).

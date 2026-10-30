@@ -57,6 +57,16 @@ This record grants no commit, push, merge or installation authority.
   checks on 3.11, owner suites, both packages and `claude plugin validate`;
   then GitHub CI on `main` at `4e5d6f8`: 4/4 jobs passed (run 41058627184).
 
+- 1.3.0 docs and review gate (2026-10-30, direct to `main`): provider-neutral
+  review route (`readiness.py` reports `review_route`), the cloud barrier waits only
+  for configured reviewers, CHANGELOG tidy, README rewrite, `docs/user-guide.md` and
+  `docs/assets/readme/v13` infographics. Two local CodeRabbit runs (5 findings, all
+  fixed); full local suite 323 tests, verify, packages and `claude plugin validate`.
+- Claude marketplace entry reverted to the plugin-folder source (version kept):
+  Claude Desktop could not check for updates after slice 5's root source with a
+  skill list. Owner to confirm the Desktop update; seven other-assistant adapters
+  are now visible in the Claude plugin, and the managed installer still filters.
+
 ## Still open
 
 - Slice 9 runs: the compliance protocol (`docs/quality/method-compliance-protocol.md`)
@@ -70,4 +80,5 @@ This record grants no commit, push, merge or installation authority.
 
 ## Next action
 
-Owner decides commit/PR, the proposals above, and the local duplicate cleanup.
+Owner confirms the Claude Desktop update to 1.3.0, then runs the compliance
+protocol and EVERSO pilot before tagging 1.3.0.

@@ -5681,7 +5681,7 @@
     },
     "claude-forge": {
       "file_count": 30,
-      "sha256": "e46cdda299ed5dbf98cadc022a61da71b23b7d451f47ab6367afd0b0c818bac6"
+      "sha256": "ac157b766c216d8ff48ddb17f4db363fca9c0c0903c6b0aa0fe06371960aa286"
     },
     "claude-forge-setup": {
       "file_count": 6,
@@ -5709,7 +5709,7 @@
     },
     "codex-forge": {
       "file_count": 69,
-      "sha256": "d030c296c8e373e822006d6dd953e23fc940401ee977621d04954f2a81ab12da"
+      "sha256": "34e53c0c6d785fcf51cbcc2b47185f25494d754e7d3566c04dbd2b41835c8067"
     },
     "create-plan": {
       "file_count": 6,
@@ -5761,7 +5761,7 @@
     },
     "engineering-playbooks": {
       "file_count": 61,
-      "sha256": "60ce7de23abbe3bfdb2a14575c231ff583b1368da15d79a42464c4cbd6e20552"
+      "sha256": "52fba8d5dd70148ab0cea8ff6f45413b6e2c8c59cf71e6c34552c4d5d8d0c52e"
     },
     "figma": {
       "file_count": 8,
@@ -5985,7 +5985,7 @@
     },
     "integrated-workflow": {
       "file_count": 14,
-      "sha256": "351edff8ed18cdaacb96fe8ee6d9799d9f5b75f144e85bf8bf7de9467c68daa4"
+      "sha256": "2c60a6b2e1af784ae87bcc267f980032baf4ba38213c7c23a2ef40f943f348e4"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -6053,7 +6053,7 @@
     },
     "project-readiness": {
       "file_count": 4,
-      "sha256": "75b48dbb62d4b9d8df7437c80d65c41dcd2fac452fb56b6d114dc6a5fc0f46b3"
+      "sha256": "596ae5de955da73ea7857cf15fdf50b18fb3e4a7b56301f746eee430f925e148"
     },
     "reference-design-contract": {
       "file_count": 7,
@@ -6165,7 +6165,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 29,
-      "sha256": "3dd995daefa71e019e5ab303c94e479cd75c442e574807217c719d8903a66e42"
+      "sha256": "46a7f9c25cc4228e4e065ac41c4996b4637c088d461f567a7f786dc4967de525"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

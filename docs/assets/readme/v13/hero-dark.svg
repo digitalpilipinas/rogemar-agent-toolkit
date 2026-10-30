@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400" role="img" aria-labelledby="t d" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<title id="t">Rogemar Agent Toolkit</title>
+<desc id="d">Banner: Rogemar Agent Toolkit, one coordinated workflow, the right skills for the work, evidence before done. A central orchestrator connects plan, build, review, verify, design and merge.</desc>
+<defs>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#22D3EE" stroke-opacity="0.07" stroke-width="1"/></pattern>
+<linearGradient id="beam" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+<marker id="ah-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#22D3EE"/></marker>
+<marker id="ah-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#8B5CF6"/></marker>
+<filter id="glow" filterUnits="userSpaceOnUse" x="0" y="0" width="1280" height="400"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1280" height="400" fill="#0B1020"/>
+<g aria-hidden="true">
+<rect width="1280" height="400" fill="url(#grid)"/>
+<path d="M0,340 L40,340 L70,370 L150,370 L180,400" fill="none" stroke="#22D3EE" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="180" cy="400" r="3.5" fill="none" stroke="#22D3EE" stroke-opacity="0.38" stroke-width="1.4"/>
+<path d="M0,290 L24,290 L44,310 L44,340" fill="none" stroke="#8B5CF6" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="44" cy="340" r="3.5" fill="none" stroke="#8B5CF6" stroke-opacity="0.38" stroke-width="1.4"/>
+<path d="M1280,50 L1220,50 L1190,80 L1190,130 L1160,160" fill="none" stroke="#8B5CF6" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="1160" cy="160" r="3.5" fill="none" stroke="#8B5CF6" stroke-opacity="0.38" stroke-width="1.4"/>
+<path d="M1280,100 L1250,100 L1230,120" fill="none" stroke="#22D3EE" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="1230" cy="120" r="3.5" fill="none" stroke="#22D3EE" stroke-opacity="0.38" stroke-width="1.4"/>
+<path d="M1080,400 L1080,376 L1110,346 L1190,346 L1220,316 L1280,316" fill="none" stroke="#22D3EE" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="1280" cy="316" r="3.5" fill="none" stroke="#22D3EE" stroke-opacity="0.38" stroke-width="1.4"/>
+</g>
+<text x="64" y="92" font-size="14" font-weight="700" fill="#67E8F9" text-anchor="start" letter-spacing="2">SKILLS FOR AI CODING ASSISTANTS</text>
+<text x="64" y="156" font-size="46" font-weight="700" fill="#EAF0FA" text-anchor="start">Rogemar Agent Toolkit</text>
+<text x="64" y="208" font-size="22" font-weight="400" fill="#EAF0FA" text-anchor="start">One coordinated workflow.</text>
+<text x="64" y="240" font-size="22" font-weight="400" fill="#EAF0FA" text-anchor="start">The right skills for the work.</text>
+<text x="64" y="272" font-size="22" font-weight="600" fill="#67E8F9" text-anchor="start">Evidence before done.</text>
+<rect x="64" y="318" width="151" height="38" rx="19" fill="#111A33" stroke="#22D3EE" stroke-width="1.5"/>
+<text x="139.5" y="342" font-size="15" font-weight="600" fill="#67E8F9" text-anchor="middle">3 entry skills</text>
+<rect x="229" y="318" width="143" height="38" rx="19" fill="#111A33" stroke="#8B5CF6" stroke-width="1.5"/>
+<text x="300.5" y="342" font-size="15" font-weight="600" fill="#C4B5FD" text-anchor="middle">7 core skills</text>
+<rect x="386" y="318" width="218" height="38" rx="19" fill="#111A33" stroke="#22D3EE" stroke-width="1.5"/>
+<text x="495.0" y="342" font-size="15" font-weight="600" fill="#67E8F9" text-anchor="middle">Receipts, not promises</text>
+<ellipse cx="950" cy="200" rx="235" ry="135" fill="none" stroke="#8B5CF6" stroke-opacity="0.45" stroke-dasharray="3 8" stroke-width="1.6"/>
+<path d="M950,200 L746,132" fill="none" stroke="#22D3EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+<path d="M950,200 L950,65" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+<path d="M950,200 L1154,132" fill="none" stroke="#22D3EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+<path d="M950,200 L1154,268" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+<path d="M950,200 L950,335" fill="none" stroke="#22D3EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+<path d="M950,200 L746,268" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+<rect x="868" y="164" width="164" height="72" rx="16" fill="#172350" stroke="url(#beam)" stroke-width="2"/>
+<text x="950" y="197" font-size="19" font-weight="700" fill="#EAF0FA" text-anchor="middle">Orchestrator</text>
+<text x="950" y="221" font-size="14" font-weight="400" fill="#B4C0DA" text-anchor="middle">one owner</text>
+<rect x="690" y="112" width="112" height="42" rx="21" fill="#111A33" stroke="#22D3EE" stroke-width="1.6"/>
+<text x="746" y="138" font-size="17" font-weight="600" fill="#67E8F9" text-anchor="middle">Plan</text>
+<rect x="894" y="44" width="112" height="42" rx="21" fill="#111A33" stroke="#8B5CF6" stroke-width="1.6"/>
+<text x="950" y="71" font-size="17" font-weight="600" fill="#C4B5FD" text-anchor="middle">Build</text>
+<rect x="1098" y="112" width="112" height="42" rx="21" fill="#111A33" stroke="#22D3EE" stroke-width="1.6"/>
+<text x="1154" y="138" font-size="17" font-weight="600" fill="#67E8F9" text-anchor="middle">Review</text>
+<rect x="1098" y="246" width="112" height="42" rx="21" fill="#111A33" stroke="#8B5CF6" stroke-width="1.6"/>
+<text x="1154" y="274" font-size="17" font-weight="600" fill="#C4B5FD" text-anchor="middle">Verify</text>
+<rect x="894" y="314" width="112" height="42" rx="21" fill="#111A33" stroke="#22D3EE" stroke-width="1.6"/>
+<text x="950" y="341" font-size="17" font-weight="600" fill="#67E8F9" text-anchor="middle">Design</text>
+<rect x="690" y="246" width="112" height="42" rx="21" fill="#111A33" stroke="#8B5CF6" stroke-width="1.6"/>
+<text x="746" y="274" font-size="17" font-weight="600" fill="#C4B5FD" text-anchor="middle">Merge</text>
+</svg>

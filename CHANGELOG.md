@@ -1,6 +1,12 @@
 # Changelog
 
+All notable changes to the toolkit are documented here. Versions follow
+Semantic Versioning.
+
 ## 1.3.0 — Project readiness, method receipts and per-harness packaging (pending tag after the compliance runs)
+
+- Make the review gate provider-neutral: substantive work needs one independent full review through the project's review route — local CodeRabbit when installed, otherwise a fresh-context `code-review-and-quality` review or another tool the project uses. `project-readiness` reports the route (or reads `review_route` from the readiness record). Cloud PR reviews (GitHub CodeRabbit, Codex) are used where configured, not required; the completion barrier waits only for the cloud reviewers a project configures. Skipping review still blocks acceptance.
+- Tidy the CHANGELOG: fold the formerly loose "unreleased" sections into the releases that shipped them (1.1.0, and Devin Forge in 1.2.0), using commit ancestry; no content removed.
 
 - Retire managed external skills their upstream no longer ships (for example argent's renamed `argent-create-flow` and `argent-qa-flows`): unedited copies move to the install backup and leave the state; edited copies are preserved and reported.
 
@@ -12,7 +18,7 @@
 
 - Add tla-ts (`tla-ts@0.0.3`, MIT) as an opt-in statechart engine that needs no Java: `STATECHART_ENGINE=tla-ts` with a local `TLA_TS` executable or authorized installation. TLC stays the default; tla-ts results are labelled unverified until a corpus comparison with TLC is recorded.
 
-- Generate the root Claude marketplace entry with the marketplace root as source and an explicit list of the 125 Claude-compatible skills, so Claude no longer loads Codex-, Cursor- or Devin-only skills (validated with `claude plugin validate`). Cursor already lists its own set; Factory and Gemini read the whole folder and cannot filter. A test keeps every harness's links inside its own selection.
+- Claude marketplace: a root source with an explicit list of Claude-compatible skills was tried and passed `claude plugin validate`, but Claude Desktop could no longer check for updates, so the entry is back to the plugin-folder source with its version. The Claude plugin therefore shows seven other assistants' adapters, which stop when run outside their assistant; the managed installer still filters. Cursor lists its own set; Factory and Gemini read the whole folder. A test keeps every harness's links inside its own selection.
 - Add `install`/`upgrade --convert-external-only`: converts a full managed installation to external-only (native plugin plus managed extras), removing managed toolkit skills with the normal backup, local-edit checks and rollback.
 
 - Move `plan-model-router`'s historical validation evidence (`validation-v3`–`v6.json`, 5.7 MB) to `docs/evidence/plan-model-router/`; the shipped router keeps its runtime catalog and the tested 225-decision ledger, and its docs link the repository copies.
@@ -64,49 +70,7 @@
 - Record selective upstream provenance and installation-specific update behavior.
 - PR #29 merged as `ea51d8d` after required reviews; native multi-harness qualification and consumer adoption remain separately evidenced.
 
-## 1.1.0 — Optional Diagram Design integration
-
-- Add a small routing and verification guide for the separately installed upstream plugin.
-- Reuse existing vector and visual-QA methods; keep the upstream library outside the toolkit.
-- Document installation ownership, offline output and actual runtime evidence.
-
-## Open the files a task needs (unreleased)
-
-- Integrated Workflow opens each file for a situation that is active now.
-  It leaves a file closed only when that situation is absent.
-
-## Forge method selection (unreleased)
-
-- Integrated Workflow names the `forge-*` method for each common situation.
-  The owner does not have to invoke it. Only the matching method is opened.
-- The parent names the playbook and the skills in the worker brief. The worker
-  applies that set and does not start a second selector.
-- A missing app recipe uses the create method. A drifted recipe uses the
-  maintain method.
-
-## Legitimate learning acceptance (unreleased)
-
-- An enrolled workflow capture accepts a lesson when every evidence item is a
-  file, a test file, or a commit in the repository.
-- Chat decisions, adaptations, and skill proposals stay pending for review.
-
-## Sprint strategy and supervised writers (unreleased)
-
-- The parent supervises, integrates, and writes. Sub-agents may search, review,
-  build, and test, and they may write the files they own.
-- `AGILE_FOCUSED` means one vertical slice, or one task inside that slice, is
-  active in the sprint.
-- `AGILE_CONTROLLED_PARALLEL` means more than one slice or task is active in
-  the same sprint when they do not conflict.
-
-## Integrated Workflow selection map (unreleased)
-
-- Tell the agent which single file to open for the current task. Leave review,
-  UI, and delivery files closed for a small correction.
-- Apply the Forge mode contract on Claude as well as Codex, Cursor, and
-  Universal Forge.
-
-## Devin Forge (unreleased)
+### Devin Forge
 
 - Add `devin-forge` as the Devin execution entry for the shared Forge methods,
   installed through the `agent-skills` (`.devin-plugin`) manifest only.
@@ -125,7 +89,51 @@
   runtime-selection table; `universal-forge` remains the fallback for other
   harnesses.
 
-## Claude Forge (unreleased)
+## 1.1.0 — Optional Diagram Design integration
+
+- Add a small routing and verification guide for the separately installed upstream plugin.
+- Reuse existing vector and visual-QA methods; keep the upstream library outside the toolkit.
+- Document installation ownership, offline output and actual runtime evidence.
+
+Also shipped in 1.1.0 (recorded at the time as unreleased):
+
+### Open the files a task needs
+
+- Integrated Workflow opens each file for a situation that is active now.
+  It leaves a file closed only when that situation is absent.
+
+### Forge method selection
+
+- Integrated Workflow names the `forge-*` method for each common situation.
+  The owner does not have to invoke it. Only the matching method is opened.
+- The parent names the playbook and the skills in the worker brief. The worker
+  applies that set and does not start a second selector.
+- A missing app recipe uses the create method. A drifted recipe uses the
+  maintain method.
+
+### Legitimate learning acceptance
+
+- An enrolled workflow capture accepts a lesson when every evidence item is a
+  file, a test file, or a commit in the repository.
+- Chat decisions, adaptations, and skill proposals stay pending for review.
+
+### Sprint strategy and supervised writers
+
+- The parent supervises, integrates, and writes. Sub-agents may search, review,
+  build, and test, and they may write the files they own.
+- `AGILE_FOCUSED` means one vertical slice, or one task inside that slice, is
+  active in the sprint.
+- `AGILE_CONTROLLED_PARALLEL` means more than one slice or task is active in
+  the same sprint when they do not conflict.
+
+### Integrated Workflow selection map
+
+- Tell the agent which single file to open for the current task. Leave review,
+  UI, and delivery files closed for a small correction.
+- Apply the Forge mode contract on Claude as well as Codex, Cursor, and
+  Universal Forge.
+
+### Claude Forge
 
 - Add `claude-forge` and `claude-forge-setup` for the Claude harness. The 23
   playbooks are generated from the shared engineering playbooks, and Claude
@@ -134,7 +142,7 @@
   `codex-forge` and `forge-setup` stay on Codex. When PStack and a `forge-*`
   skill are both installed, follow the `forge-*` skill.
 
-## Maintained sources and bounded supporting methods (unreleased)
+### Maintained sources and bounded supporting methods
 
 - Refresh pinned CodeRabbit, Argent, Expo, Convex and Ponytail skill instructions
   and resource metadata; preserve separate runtime and authentication boundaries.
@@ -143,7 +151,7 @@
 - Adapt attributed grilling, retro, writing, domain, diagnosis, testing and handoff
   methods inside existing owners with settled decisions and proportional checks.
 
-## Continuous method selection (unreleased)
+### Continuous method selection
 
 - Select or deliberately reuse applicable methods at each approved task and worker
   handoff, carrying changed prerequisites, authority, evidence and the next action
@@ -155,7 +163,7 @@
 - Detect changed external instructions and missing worker runtime prerequisites
   without confusing file integrity, native discovery or execution evidence.
 
-## Toolkit alignment (unreleased; native host qualification remains scoped)
+### Toolkit alignment — native host qualification remains scoped
 
 - Add catalog-generated contextual routes for all 110 skills, original-skill fallbacks, and concise entry/resume/acceptance contracts.
 - Add bounded workflow/action adapters, scoped qualification (AQ-01), controlled update transitions (UP-01), effectiveness observations (ME-01), and optional protected execution-observation comparison.
@@ -166,28 +174,28 @@
 - Add regression tests, change-relevant owner-suite selection, an everyday workflow, editable Mermaid sources and explicit qualification limits.
 - See docs/alignment/implementation-spec.md for implemented code versus pending integration and host qualification.
 
-## Bounded cloud review and full initial coverage (unreleased)
+### Bounded cloud review and full initial coverage
 
 - Begin a substantive or explicitly required ready-PR cloud review with full CodeRabbit and Codex coverage, and wait for both completed reports before consolidation, finding validation or remediation.
 - Limit each cloud provider to the initial review and one justified follow-up by default, preserving counts across pushes/resumes and requiring explicit extensions without weakening merge gates.
 - Preserve local invocation cadence while requiring full agreed-candidate review from CodeRabbit and each selected terminal code reviewer.
 - Align review handoffs, native and portable Forge monitoring, and PR helper integration; preserve provider-owned packages and repository trigger settings.
 
-## Shared sub-agent naming (unreleased)
+### Shared sub-agent naming
 
 - Prefer concise task labels, with readable separators where native free-text names support them and underscore encoding in Codex.
 
 - Name new assignments by role, task, native model and reasoning across Codex, Cursor and Universal Forge; retain mode and runtime evidence in existing status and receipts.
 - Share one convention with native naming controls and a handoff fallback, without changing role IDs, profile arguments, routing policy or review gates.
 
-## Trigger and design updates (unreleased)
+### Trigger and design updates
 
 - Add scoped design craft supplements and an optional shadcn pack on top of the merged mobile design methods.
 - Correct portable helper paths and clarify delegated/provider authority without trimming workflow entrypoints.
 - Preserve standalone full CodeRabbit reviews and document receiving-harness invocation controls and duplicate selection.
 - Align the previously approved capability maintainer policy and refresh inventory/install guidance.
 
-## Unreleased
+### Workflow, Forge and README updates
 
 - Update Codex Forge to Default, Peak, Balanced, Lean and Economy with GPT-6 Sol/Luna, exact-generation evidence, parent limits and scoped consultant exceptions.
 - Include the 225 role/mode decisions, preserved historical qualification records, 714-case benchmark summary and focused paired validation, with provisional limits disclosed.
@@ -220,9 +228,6 @@
 - Declare complete Argent, current Expo, iOS/Android/web and security dependencies without automatically installing runtimes.
 - Add managed drift checks, exact-copy adoption, recoverable removals/rollback, and selected release artifacts with provenance.
 - Installation state schema and default selection change; legacy updates require an explicit harness. Native/cloud readiness is verified separately.
-
-All notable changes to the toolkit are documented here. Versions follow
-Semantic Versioning.
 
 ## 0.2.0 - 2026-08-30
 

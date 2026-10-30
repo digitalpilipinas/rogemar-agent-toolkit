@@ -121,7 +121,7 @@ For cadence, failure classification and evidence reuse, see
 With publication authority, meaningful intermediate commits and feature-branch
 pushes may accumulate while the slice is branch-only or draft. Inspect/stage only
 intentional content and run applicable commit-time checks. Do not claim slice
-acceptance, start PR monitoring or require a full local CodeRabbit run per commit.
+acceptance, start PR monitoring or require a full independent review per commit.
 A stricter project checkpoint still applies. Local full-slice review must pass
 before ready-for-review, substantive direct-main publication or final local-only
 slice acceptance, unless the owner explicitly waives that layer.
@@ -149,11 +149,12 @@ because the change is high-risk. A waived or deferred requirement retains the
 owner's disposition and never becomes `passed`. Required failures remain binding;
 continue safe independent work but do not cross the affected boundary.
 
-Record local CodeRabbit, GitHub CodeRabbit and GitHub Codex separately. Resolve
-requirements from the entry skill, route and stronger project rules: substantive
-local review is required; substantive ready-PR cloud CodeRabbit and Codex are
-required; the small-change exception makes those layers optional unless otherwise
-mandated. PR-only layers are not applicable to explicitly authorized direct-main
+Record the local review (and which [review route](coderabbit-review.md#review-routes)
+ran), GitHub CodeRabbit and GitHub Codex separately. Resolve requirements from the
+entry skill, route and stronger project rules: one substantive independent local
+review is required; substantive ready-PR cloud CodeRabbit and Codex are required
+where the project uses them; the small-change exception makes those layers optional
+unless otherwise mandated. PR-only layers are not applicable to explicitly authorized direct-main
 or local-only delivery. Additional external providers are governed by their exact
 selection, data/usage authority and named boundary. `DISABLED` for additional
 providers does not cancel the default CodeRabbit/Codex layers.
@@ -200,12 +201,12 @@ For a ready PR, active authorized delivery includes observing review/check
 progress and bounded remediation. Use available native events or bounded waits;
 avoid repeated full inventories and unchanged status narration. Inventory the
 complete conversation, review submissions/states, inline threads/replies, all
-reviewers and relevant check annotations, including auto-resolved items. GitHub
-CodeRabbit and Codex are required distinct layers for substantive PRs; additional
-named providers contribute to the same record.
+reviewers and relevant check annotations, including auto-resolved items. Where a
+project uses GitHub CodeRabbit and Codex, they are distinct layers for substantive
+PRs; additional named providers contribute to the same record.
 
 Follow the [full initial requests, completion barrier and cloud allowance](coderabbit-review.md#ready-pr-coderabbit-and-codex).
-Both initial cloud reviews cover the full PR; equivalent automatic full reviews
+Each due initial cloud review covers the full PR; equivalent automatic full reviews
 count without duplicate tags. Preserve the per-provider allowance across pushes
 and resumes. Verify the actual response, scope and head; a request alone is not
 evidence. Apply [external-provider handling](supporting-methods.md#external-review-providers)
@@ -226,9 +227,9 @@ The completion barrier below applies to active ready-PR **cloud** review waves.
 Local and pre-ready reviews reuse the consolidation, validation and minimum-fix
 methods without waiting for cloud reviews; their existing cadence is unchanged.
 
-1. **Collect and wait:** obtain both full initial cloud reviews for the intended
+1. **Collect and wait:** obtain every due full initial cloud review for the intended
    candidate/base before consolidating, validating findings or applying fixes.
-   While either is pending, collect raw artifacts and monitor status only; no
+   While any is pending, collect raw artifacts and monitor status only; no
    early finding triage or remediation. For follow-up waves, wait for every due
    review in that wave while retaining still-valid prior coverage. Follow the
    completion barrier above for unavailable, partial or stale results; a timeout

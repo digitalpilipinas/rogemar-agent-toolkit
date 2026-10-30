@@ -164,9 +164,12 @@ entry; its source can point to the extracted directory in an operator-maintained
 local marketplace.
 These are optional operator actions, not steps performed by `package`.
 
-The repository-root Claude marketplace lists only Claude-compatible skills: its entry
-uses the marketplace root as `source`, which Claude documents as loading only the
-listed `skills` and skipping the default `skills/` scan. The Factory marketplace
+The Claude marketplace entry points at the plugin folder and carries its version,
+which drives update detection in Claude Desktop. A repository-root source with an
+explicit `skills` list filtered out other assistants' adapters and passed
+`claude plugin validate`, but claude.ai could no longer check for updates, so 1.3.0
+returned to the folder source. Use `install --harness claude` for a filtered set.
+The Factory marketplace
 points at the full source plugin, and Factory loads every skill in that folder;
 Gemini does the same, so neither can exclude other harness adapters. Prefer selected archives or managed
 `install --harness claude|droid|gemini|antigravity` for a compatible set.

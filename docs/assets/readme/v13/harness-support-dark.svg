@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 700" width="1280" height="700" role="img" aria-labelledby="t d" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<title id="t">Harness support</title>
+<desc id="d">Six assistants and what each receives. Cursor and Devin native plugins list only compatible skills; the Claude plugin carries the whole folder. Codex uses a selected marketplace archive. Factory and Gemini load the whole plugin folder and cannot filter, so use a selected archive or the managed installer.</desc>
+<defs>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#22D3EE" stroke-opacity="0.07" stroke-width="1"/></pattern>
+<linearGradient id="beam" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+<marker id="ah-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#22D3EE"/></marker>
+<marker id="ah-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#8B5CF6"/></marker>
+<filter id="glow" filterUnits="userSpaceOnUse" x="0" y="0" width="1280" height="700"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1280" height="700" fill="#0B1020"/>
+<g aria-hidden="true">
+<rect width="1280" height="700" fill="url(#grid)"/>
+<path d="M0,640 L40,640 L70,670 L150,670 L180,700" fill="none" stroke="#22D3EE" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="180" cy="700" r="3.5" fill="none" stroke="#22D3EE" stroke-opacity="0.38" stroke-width="1.4"/>
+<path d="M0,590 L24,590 L44,610 L44,640" fill="none" stroke="#8B5CF6" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="44" cy="640" r="3.5" fill="none" stroke="#8B5CF6" stroke-opacity="0.38" stroke-width="1.4"/>
+<path d="M1280,50 L1220,50 L1190,80 L1190,130 L1160,160" fill="none" stroke="#8B5CF6" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="1160" cy="160" r="3.5" fill="none" stroke="#8B5CF6" stroke-opacity="0.38" stroke-width="1.4"/>
+<path d="M1280,100 L1250,100 L1230,120" fill="none" stroke="#22D3EE" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="1230" cy="120" r="3.5" fill="none" stroke="#22D3EE" stroke-opacity="0.38" stroke-width="1.4"/>
+<path d="M1080,700 L1080,676 L1110,646 L1190,646 L1220,616 L1280,616" fill="none" stroke="#22D3EE" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="1280" cy="616" r="3.5" fill="none" stroke="#22D3EE" stroke-opacity="0.38" stroke-width="1.4"/>
+</g>
+<text x="50" y="58" font-size="26" font-weight="700" fill="#EAF0FA" text-anchor="start">Same skills, packaged per assistant</text>
+<text x="50" y="88" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Every route carries the seven core skills, including project-readiness. Each assistant gets its own Forge entry.</text>
+<rect x="50" y="118" width="360" height="222" rx="14" fill="#111A33" stroke="#22D3EE" stroke-width="1.6"/>
+<rect x="64" y="118" width="38" height="3" rx="1.5" fill="#22D3EE"/>
+<text x="70" y="160" font-size="24" font-weight="700" fill="#67E8F9" text-anchor="start">Claude</text>
+<path d="M70,176 H390" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1"/>
+<text x="70" y="208" font-size="15" font-weight="400" fill="#EAF0FA" text-anchor="start">Entry: claude-forge, claude-forge-setup</text>
+<text x="70" y="238" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Plugin carries the whole skill folder</text>
+<text x="70" y="268" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Opt-in readiness hooks, with consent</text>
+<rect x="70" y="288" width="185" height="32" rx="16" fill="#172350" stroke="#22D3EE" stroke-width="1.4"/>
+<text x="162.5" y="309" font-size="14" font-weight="700" fill="#67E8F9" text-anchor="middle">Full skill folder</text>
+<rect x="460" y="118" width="360" height="222" rx="14" fill="#111A33" stroke="#22D3EE" stroke-width="1.6"/>
+<rect x="474" y="118" width="38" height="3" rx="1.5" fill="#22D3EE"/>
+<text x="480" y="160" font-size="24" font-weight="700" fill="#67E8F9" text-anchor="start">Codex</text>
+<path d="M480,176 H800" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1"/>
+<text x="480" y="208" font-size="15" font-weight="400" fill="#EAF0FA" text-anchor="start">Entry: codex-forge, forge-setup</text>
+<text x="480" y="238" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Model routing: plan-model-router</text>
+<text x="480" y="268" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Marketplace archive of selected skills</text>
+<rect x="480" y="288" width="161" height="32" rx="16" fill="#172350" stroke="#22D3EE" stroke-width="1.4"/>
+<text x="560.5" y="309" font-size="14" font-weight="700" fill="#67E8F9" text-anchor="middle">Selected archive</text>
+<rect x="870" y="118" width="360" height="222" rx="14" fill="#111A33" stroke="#22D3EE" stroke-width="1.6"/>
+<rect x="884" y="118" width="38" height="3" rx="1.5" fill="#22D3EE"/>
+<text x="890" y="160" font-size="24" font-weight="700" fill="#67E8F9" text-anchor="start">Cursor</text>
+<path d="M890,176 H1210" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1"/>
+<text x="890" y="208" font-size="15" font-weight="400" fill="#EAF0FA" text-anchor="start">Entry: cursor-forge, cursor-forge-setup</text>
+<text x="890" y="238" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Lists only Cursor-compatible skills</text>
+<text x="890" y="268" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Add the repository URL as marketplace</text>
+<rect x="890" y="288" width="185" height="32" rx="16" fill="#172350" stroke="#22D3EE" stroke-width="1.4"/>
+<text x="982.5" y="309" font-size="14" font-weight="700" fill="#67E8F9" text-anchor="middle">Filtered skill list</text>
+<rect x="50" y="368" width="360" height="222" rx="14" fill="#111A33" stroke="#22D3EE" stroke-width="1.6"/>
+<rect x="64" y="368" width="38" height="3" rx="1.5" fill="#22D3EE"/>
+<text x="70" y="410" font-size="24" font-weight="700" fill="#67E8F9" text-anchor="start">Devin</text>
+<path d="M70,426 H390" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1"/>
+<text x="70" y="458" font-size="15" font-weight="400" fill="#EAF0FA" text-anchor="start">Entry: devin-forge</text>
+<text x="70" y="488" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Git plugin from the plugin subdirectory</text>
+<text x="70" y="518" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Invoke: /rogemar-agent-toolkit:&lt;skill&gt;</text>
+<rect x="70" y="538" width="185" height="32" rx="16" fill="#172350" stroke="#22D3EE" stroke-width="1.4"/>
+<text x="162.5" y="559" font-size="14" font-weight="700" fill="#67E8F9" text-anchor="middle">Filtered skill list</text>
+<rect x="460" y="368" width="360" height="222" rx="14" fill="#111A33" stroke="#8B5CF6" stroke-width="1.6"/>
+<rect x="474" y="368" width="38" height="3" rx="1.5" fill="#8B5CF6"/>
+<text x="480" y="410" font-size="24" font-weight="700" fill="#C4B5FD" text-anchor="start">Factory</text>
+<path d="M480,426 H800" stroke="#8B5CF6" stroke-opacity="0.35" stroke-width="1"/>
+<text x="480" y="458" font-size="15" font-weight="400" fill="#EAF0FA" text-anchor="start">Entry: universal-forge</text>
+<text x="480" y="488" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Loads every skill in the plugin folder</text>
+<text x="480" y="518" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Selected archive or managed install</text>
+<rect x="480" y="538" width="194" height="32" rx="16" fill="#172350" stroke="#8B5CF6" stroke-width="1.4"/>
+<text x="577.0" y="559" font-size="14" font-weight="700" fill="#C4B5FD" text-anchor="middle">Cannot filter skills</text>
+<rect x="870" y="368" width="360" height="222" rx="14" fill="#111A33" stroke="#8B5CF6" stroke-width="1.6"/>
+<rect x="884" y="368" width="38" height="3" rx="1.5" fill="#8B5CF6"/>
+<text x="890" y="410" font-size="24" font-weight="700" fill="#C4B5FD" text-anchor="start">Gemini</text>
+<path d="M890,426 H1210" stroke="#8B5CF6" stroke-opacity="0.35" stroke-width="1"/>
+<text x="890" y="458" font-size="15" font-weight="400" fill="#EAF0FA" text-anchor="start">Entry: universal-forge</text>
+<text x="890" y="488" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Loads every skill in the plugin folder</text>
+<text x="890" y="518" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Selected archive or managed install</text>
+<rect x="890" y="538" width="194" height="32" rx="16" fill="#172350" stroke="#8B5CF6" stroke-width="1.4"/>
+<text x="987.0" y="559" font-size="14" font-weight="700" fill="#C4B5FD" text-anchor="middle">Cannot filter skills</text>
+<text x="640" y="640" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="middle">Claude, Factory and Gemini plugins carry the whole folder; the managed installer filters.</text>
+<text x="640" y="664" font-size="15" font-weight="600" fill="#67E8F9" text-anchor="middle">Install, discovery and a completed workflow are separate checks; verify each in a fresh session.</text>
+</svg>

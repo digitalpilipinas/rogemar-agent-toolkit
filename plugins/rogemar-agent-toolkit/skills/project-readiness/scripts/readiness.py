@@ -16,6 +16,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 
@@ -128,6 +129,16 @@ def instruction_item(root):
             'action': 'Add this line: ' + INSTRUCTION_LINE}
 
 
+def review_route(data):
+    """Which independent review route this project has; an observation, never an approval item."""
+    declared = data.get('review_route')
+    if declared:
+        return {'route': str(declared), 'source': 'readiness record'}
+    if shutil.which('coderabbit'):
+        return {'route': 'coderabbit', 'source': 'CLI found; confirm authentication before the review'}
+    return {'route': 'fresh-context', 'source': 'no CodeRabbit CLI; a separate reviewer runs code-review-and-quality'}
+
+
 def load_record(root, record):
     path = root / (record or DEFAULT_RECORD)
     if not path.is_file():
@@ -177,6 +188,7 @@ def plan(root, index, record=None, skills_root=HERE.parents[2]):
         status = 'declined' if declined else 'needs-owner'
     return {'schema_version': 1, 'plan_id': plan_id, 'grants_authority': False, 'status': status,
             'approved': approved, 'detected_tags': tags, 'scan_truncated': truncated,
+            'review_route': review_route(data),
             'items': items,
             'next_action': ('None; readiness is current.' if status == 'ready' else
                             'None this session; the owner declined this plan. Ask again only when it changes.'
@@ -299,6 +311,7 @@ def main(argv=None):
         else:
             print('Readiness: %s (plan %s)' % (result['status'], result['plan_id'][:12]))
             print('Detected: ' + (', '.join(sorted(result['detected_tags'])) or 'none'))
+            print('Review route: %(route)s (%(source)s)' % result['review_route'])
             if result['scan_truncated']:
                 print('Note: the scan stopped at %d paths; detected technologies may be incomplete.' % MAX_FILES)
             for item in result['items']:

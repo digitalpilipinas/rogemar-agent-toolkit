@@ -18,14 +18,14 @@ HARNESS_ONLY = {'codex-forge', 'cursor-forge', 'devin-forge', 'plan-model-router
 @unittest.skipIf(json.loads((ROOT / 'catalog/skills.yaml').read_text()).get('package', {}).get('distribution_selection'),
                  'Harness packaging is checked in the canonical checkout')
 class HarnessPackagingTests(unittest.TestCase):
-    def test_claude_marketplace_lists_only_claude_skills(self):
+    def test_claude_marketplace_uses_the_plugin_folder_and_versioned_entry(self):
+        # claude.ai's marketplace sync rejected a root source with a skill list, so
+        # Claude's plugin carries the whole folder; the managed installer still filters.
         entry = json.loads((ROOT / '.claude-plugin/marketplace.json').read_text())['plugins'][0]
-        self.assertEqual(entry['source'], './')  # root source: Claude loads only the listed skills
-        listed = {path.rsplit('/', 1)[1] for path in entry['skills']}
-        self.assertEqual(listed, set(toolkit.resolve_selection('claude', 'all', [])['skills']))
-        self.assertFalse(listed & HARNESS_ONLY - {'claude-forge-setup'})
-        for path in entry['skills']:
-            self.assertTrue((ROOT / path / 'SKILL.md').is_file(), path)
+        self.assertEqual(entry['source'], './plugins/rogemar-agent-toolkit')
+        self.assertNotIn('skills', entry)
+        self.assertEqual(entry['version'], json.loads(
+            (SKILLS.parent / '.claude-plugin/plugin.json').read_text())['version'])
 
     def test_links_stay_inside_each_harness_selection(self):
         for harness in ('claude', 'cursor', 'codex', 'agent-skills'):

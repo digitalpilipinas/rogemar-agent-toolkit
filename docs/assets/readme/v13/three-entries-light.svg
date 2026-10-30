@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" width="1200" height="650" role="img" aria-labelledby="t d" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<title id="t">Three entry skills</title>
+<desc id="d">Three entry skills, create-plan, your harness Forge entry and integrated-workflow, feed one workflow-orchestrator. It selects specialist skills, and every task ends in evidence: a method receipt, an independent review and a verified merge.</desc>
+<defs>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#475569" stroke-opacity="0.09" stroke-width="1"/></pattern>
+<linearGradient id="beam" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0891B2"/><stop offset="1" stop-color="#7C3AED"/></linearGradient>
+<marker id="ah-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#0891B2"/></marker>
+<marker id="ah-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#7C3AED"/></marker>
+
+</defs>
+<rect width="1200" height="650" fill="#F8FAFC"/>
+<g aria-hidden="true">
+<rect width="1200" height="650" fill="url(#grid)"/>
+<path d="M0,590 L40,590 L70,620 L150,620 L180,650" fill="none" stroke="#0891B2" stroke-width="1.4" stroke-opacity="0.45" stroke-linejoin="round"/>
+<circle cx="180" cy="650" r="3.5" fill="none" stroke="#0891B2" stroke-opacity="0.45" stroke-width="1.4"/>
+<path d="M0,540 L24,540 L44,560 L44,590" fill="none" stroke="#7C3AED" stroke-width="1.4" stroke-opacity="0.45" stroke-linejoin="round"/>
+<circle cx="44" cy="590" r="3.5" fill="none" stroke="#7C3AED" stroke-opacity="0.45" stroke-width="1.4"/>
+<path d="M1200,50 L1140,50 L1110,80 L1110,130 L1080,160" fill="none" stroke="#7C3AED" stroke-width="1.4" stroke-opacity="0.45" stroke-linejoin="round"/>
+<circle cx="1080" cy="160" r="3.5" fill="none" stroke="#7C3AED" stroke-opacity="0.45" stroke-width="1.4"/>
+<path d="M1200,100 L1170,100 L1150,120" fill="none" stroke="#0891B2" stroke-width="1.4" stroke-opacity="0.45" stroke-linejoin="round"/>
+<circle cx="1150" cy="120" r="3.5" fill="none" stroke="#0891B2" stroke-opacity="0.45" stroke-width="1.4"/>
+<path d="M1000,650 L1000,626 L1030,596 L1110,596 L1140,566 L1200,566" fill="none" stroke="#0891B2" stroke-width="1.4" stroke-opacity="0.45" stroke-linejoin="round"/>
+<circle cx="1200" cy="566" r="3.5" fill="none" stroke="#0891B2" stroke-opacity="0.45" stroke-width="1.4"/>
+</g>
+<rect x="60" y="66" width="330" height="110" rx="14" fill="#FFFFFF" stroke="#0891B2" stroke-width="1.6"/>
+<rect x="74" y="66" width="38" height="3" rx="1.5" fill="#0891B2"/>
+<text x="78" y="107.76" font-size="18" font-weight="700" fill="#0E7490" text-anchor="start">create-plan</text>
+<text x="78" y="134.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Plan a substantial change</text>
+<text x="78" y="155.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">before building it</text>
+<rect x="435" y="66" width="330" height="110" rx="14" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.6"/>
+<rect x="449" y="66" width="38" height="3" rx="1.5" fill="#7C3AED"/>
+<text x="453" y="97.26" font-size="18" font-weight="700" fill="#6D28D9" text-anchor="start">Your harness Forge entry</text>
+<text x="453" y="124.25999999999999" font-size="14" font-weight="400" fill="#475569" text-anchor="start">claude-forge, codex-forge,</text>
+<text x="453" y="145.26" font-size="14" font-weight="400" fill="#475569" text-anchor="start">cursor-forge, devin-forge,</text>
+<text x="453" y="166.26" font-size="14" font-weight="400" fill="#475569" text-anchor="start">or universal-forge</text>
+<rect x="810" y="66" width="330" height="110" rx="14" fill="#FFFFFF" stroke="#0891B2" stroke-width="1.6"/>
+<rect x="824" y="66" width="38" height="3" rx="1.5" fill="#0891B2"/>
+<text x="828" y="107.76" font-size="18" font-weight="700" fill="#0E7490" text-anchor="start">integrated-workflow</text>
+<text x="828" y="134.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Deliver an approved plan</text>
+<text x="828" y="155.76" font-size="14" font-weight="400" fill="#475569" text-anchor="start">slice by slice</text>
+<rect x="60" y="246" width="1080" height="84" rx="14" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.6"/>
+<rect x="74" y="246" width="38" height="3" rx="1.5" fill="#7C3AED"/>
+<text x="78" y="285.26" font-size="18" font-weight="700" fill="#6D28D9" text-anchor="start">workflow-orchestrator</text>
+<text x="78" y="312.26" font-size="14" font-weight="400" fill="#475569" text-anchor="start">project-readiness runs first, automatically. The orchestrator then selects only the methods this task needs.</text>
+<rect x="60" y="390" width="255" height="84" rx="14" fill="#FFFFFF" stroke="#0891B2" stroke-width="1.6"/>
+<rect x="74" y="390" width="38" height="3" rx="1.5" fill="#0891B2"/>
+<text x="78" y="429.26" font-size="18" font-weight="700" fill="#0E7490" text-anchor="start">Engineering</text>
+<text x="78" y="456.26" font-size="14" font-weight="400" fill="#475569" text-anchor="start">forge playbooks, testing</text>
+<rect x="335" y="390" width="255" height="84" rx="14" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.6"/>
+<rect x="349" y="390" width="38" height="3" rx="1.5" fill="#7C3AED"/>
+<text x="353" y="429.26" font-size="18" font-weight="700" fill="#6D28D9" text-anchor="start">Design</text>
+<text x="353" y="456.26" font-size="14" font-weight="400" fill="#475569" text-anchor="start">UX, accessibility, visual QA</text>
+<rect x="610" y="390" width="255" height="84" rx="14" fill="#FFFFFF" stroke="#0891B2" stroke-width="1.6"/>
+<rect x="624" y="390" width="38" height="3" rx="1.5" fill="#0891B2"/>
+<text x="628" y="429.26" font-size="18" font-weight="700" fill="#0E7490" text-anchor="start">Web and mobile</text>
+<text x="628" y="456.26" font-size="14" font-weight="400" fill="#475569" text-anchor="start">browser, Swift, Expo</text>
+<rect x="885" y="390" width="255" height="84" rx="14" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.6"/>
+<rect x="899" y="390" width="38" height="3" rx="1.5" fill="#7C3AED"/>
+<text x="903" y="429.26" font-size="18" font-weight="700" fill="#6D28D9" text-anchor="start">Data and security</text>
+<text x="903" y="456.26" font-size="14" font-weight="400" fill="#475569" text-anchor="start">database, privacy, review</text>
+<rect x="60" y="534" width="1080" height="84" rx="14" fill="#EEF2FF" stroke="url(#beam)" stroke-width="2"/>
+<rect x="84" y="556" width="330" height="40" rx="20" fill="#FFFFFF" stroke="#0891B2" stroke-width="1.5"/>
+<text x="249.0" y="582" font-size="17" font-weight="600" fill="#0E7490" text-anchor="middle">Method receipt</text>
+<rect x="438" y="556" width="330" height="40" rx="20" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.5"/>
+<text x="603.0" y="582" font-size="17" font-weight="600" fill="#6D28D9" text-anchor="middle">Independent review</text>
+<rect x="792" y="556" width="330" height="40" rx="20" fill="#FFFFFF" stroke="#0891B2" stroke-width="1.5"/>
+<text x="957.0" y="582" font-size="17" font-weight="600" fill="#0E7490" text-anchor="middle">Verified merge</text>
+<path d="M225.0,176 L225.0,246" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-cyan)"/>
+<path d="M600.0,176 L600.0,246" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-violet)"/>
+<path d="M975.0,176 L975.0,246" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-cyan)"/>
+<path d="M187.5,330 L187.5,390" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-cyan)"/>
+<path d="M187.5,474 L187.5,534" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-cyan)"/>
+<path d="M462.5,330 L462.5,390" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-violet)"/>
+<path d="M462.5,474 L462.5,534" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-violet)"/>
+<path d="M737.5,330 L737.5,390" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-cyan)"/>
+<path d="M737.5,474 L737.5,534" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-cyan)"/>
+<path d="M1012.5,330 L1012.5,390" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-violet)"/>
+<path d="M1012.5,474 L1012.5,534" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah-violet)"/>
+<text x="60" y="52" font-size="14" font-weight="700" fill="#0E7490" text-anchor="start" letter-spacing="1.5" stroke="#F8FAFC" stroke-width="8" stroke-linejoin="round" paint-order="stroke">1  YOU INVOKE ONE OF THREE</text>
+<text x="60" y="232" font-size="14" font-weight="700" fill="#0E7490" text-anchor="start" letter-spacing="1.5" stroke="#F8FAFC" stroke-width="8" stroke-linejoin="round" paint-order="stroke">2  ONE ORCHESTRATOR DECIDES WHAT APPLIES</text>
+<text x="60" y="376" font-size="14" font-weight="700" fill="#0E7490" text-anchor="start" letter-spacing="1.5" stroke="#F8FAFC" stroke-width="8" stroke-linejoin="round" paint-order="stroke">3  SPECIALISTS SUPPLY METHODS</text>
+<text x="60" y="520" font-size="14" font-weight="700" fill="#0E7490" text-anchor="start" letter-spacing="1.5" stroke="#F8FAFC" stroke-width="8" stroke-linejoin="round" paint-order="stroke">4  EVERY TASK ENDS IN EVIDENCE</text>
+</svg>

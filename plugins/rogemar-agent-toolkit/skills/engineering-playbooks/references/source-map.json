@@ -41,7 +41,7 @@
     {
       "method": "babysit",
       "source": "codex-forge/playbooks/babysit.md",
-      "source_sha256": "ad38bd367f2ad414c2388e109b1a9951a54da4f0042ab1f3964527df37f2b9e2",
+      "source_sha256": "2592087d0d37d78eae62fdbe780a1d2215319fa5f0594af9ba81584c0e3f209c",
       "portable": "playbooks/babysit.md",
       "trigger": "An already authorized asynchronous job or PR needs monitoring",
       "outcome": "Observe the actual job, bounded polling, reconcile failures",

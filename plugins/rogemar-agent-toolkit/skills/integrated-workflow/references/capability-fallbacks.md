@@ -30,8 +30,8 @@ actions before proceeding.
 | Need | Preferred capability | Fallback |
 | --- | --- | --- |
 | Long-running control | GoalBuddy `state.yaml` and execution contract | Existing board plus manual checker/PM handling, or an approved plan with native plan tracking; do not claim GoalBuddy automation passed |
-| Local code review | CodeRabbit CLI at the applicable slice boundary | Separately labeled native review plus tests; cannot satisfy a required CodeRabbit layer without explicit owner disposition |
-| Ready-PR cloud review | Separate GitHub CodeRabbit and Codex reviews | Record the unavailable layer and continue other safe work; required cloud evidence remains unmet |
+| Local code review | CodeRabbit CLI at the applicable slice boundary | Fresh-context `code-review-and-quality` review of the exact candidate, or another review tool the project uses; record the route that ran ([review routes](coderabbit-review.md#review-routes)) |
+| Ready-PR cloud review | Separate GitHub CodeRabbit and Codex reviews, where the project uses them | Projects without cloud reviews rely on the local review; where they are configured but unavailable, record the gap and continue other safe work |
 | Independent review | Authorized external provider or read-only sub-agent | Native verification reviewer or main-agent review; never invent independence |
 | Security/privacy | Relevant Codex Security and domain skills | Repository security checks, secret scan, server-authority, privacy, RLS/migration, and domain counterexamples |
 | React Native QA | Expo and Argent | Repository build/tests; mark simulator QA blocked or deferred if exact runtime provenance cannot be established |
@@ -42,7 +42,7 @@ actions before proceeding.
 
 ## Fallback rules
 
-- Resolve requirements once from the [gate contract](execution-loop.md#gate-and-evidence-contract). Optional capability failure does not block safe in-scope work, even for a high-risk change. Required evidence without an accepted equivalent fallback blocks only its named boundary. The small-change exception does not weaken existing project gates; substantive local CodeRabbit and ready-PR CodeRabbit/Codex are distinct default requirements.
+- Resolve requirements once from the [gate contract](execution-loop.md#gate-and-evidence-contract). Optional capability failure does not block safe in-scope work, even for a high-risk change. Required evidence without an accepted equivalent fallback blocks only its named boundary. The small-change exception does not weaken existing project gates; substantive work requires one independent full review through the selected [review route](coderabbit-review.md#review-routes), and a ready PR waits only for the cloud reviewers the project uses.
 - A fallback is a new evidence source, not a relabeling of the failed provider.
 - Do not silently install or authenticate integrations, expose additional files, spend credits, weaken a gate, or change scope to make a capability appear available.
 - Use the smallest relevant capability set. Do not invoke every installed reviewer, security scanner, platform plugin, or external model for routine changes.

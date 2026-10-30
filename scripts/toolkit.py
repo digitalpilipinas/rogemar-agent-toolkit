@@ -275,19 +275,15 @@ def native_marketplace() -> dict[str, Any]:
 
 
 def claude_marketplace() -> dict[str, Any]:
-    """Claude loads only listed skills when an entry's source is the marketplace root.
+    """Point Claude at the plugin folder, the shape claude.ai's marketplace sync accepts.
 
-    A plugin manifest's `skills` field only adds to the default scan, so this entry is
-    the documented way to give Claude its compatible skills and no other harness's.
+    A repository-root source with an explicit `skills` list filtered out other
+    harnesses' adapters and passed `claude plugin validate`, but Claude Desktop could
+    no longer check for updates. The entry version drives update detection there.
     """
-    portable = load_json(PORTABLE_MANIFEST)
-    skills = sorted(resolve_selection("claude", "all", [])["skills"])
-    entry = {"name": PACKAGE_NAME, "source": "./", "strict": False,
-             "description": portable["description"], "version": portable["version"],
-             "author": portable["author"], "license": portable["license"],
-             "skills": [f"./plugins/{PACKAGE_NAME}/skills/{name}" for name in skills]}
-    return {"name": PACKAGE_NAME, "owner": portable["author"],
-            "description": portable["description"], "plugins": [entry]}
+    marketplace = native_marketplace()
+    marketplace["plugins"][0]["version"] = load_json(PORTABLE_MANIFEST)["version"]
+    return marketplace
 
 
 def structural_errors(check_lock: bool = True, eligible_paths: set[str] | None = None) -> list[str]:

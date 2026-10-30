@@ -1,11 +1,34 @@
 # CodeRabbit Review
 
-Preserve two separate evidence layers for substantive branch delivery:
-**local CodeRabbit on the complete slice**, then **GitHub CodeRabbit on the ready
-PR**, alongside the separate GitHub Codex review. The entry skill's small-change
-exception and explicit owner/project gates govern applicability. Direct-main and
-local-only delivery retain substantive local review; PR-only layers do not apply.
-No layer replaces tests, domain acceptance or required independent evidence.
+Substantive work needs **one independent full review of the complete slice**,
+through the project's review route below. Where the project uses cloud PR reviews,
+a ready PR also gets each cloud reviewer the project configures: **GitHub CodeRabbit**,
+the separate **GitHub Codex** review, or both.
+The entry skill's small-change exception and explicit owner/project gates govern
+applicability. Direct-main and local-only delivery retain the substantive local
+review; PR-only layers do not apply. No layer replaces tests, domain acceptance or
+required independent evidence.
+
+## Review routes
+
+Choose the first available route and record it in the receipt's review gate:
+
+1. **Local CodeRabbit**, when the CLI is installed and authenticated. Preferred.
+2. **Fresh-context review**: a reviewer that did not build the slice (a separate
+   agent or session) runs `code-review-and-quality` on the exact candidate, with
+   the diff and acceptance criteria but not the builder's reasoning.
+3. **Another review tool the project already uses**, run in full on the candidate.
+
+`project-readiness` reports which route the project has, and the project may
+declare it as `review_route` in its readiness record. A missing CodeRabbit is not
+a failure: the next route applies. Skipping review entirely still blocks
+acceptance, and a review that did not run is never recorded as passed.
+
+Cloud PR reviews (GitHub CodeRabbit and Codex) are used where the repository has
+them configured; they add independent coverage but are not required to install
+or use the toolkit. The **due cloud reviewers** are the ones the project
+configures: one, both or none. The barrier and allowance rules below apply to the
+due reviewers only; never wait for a reviewer the project does not use.
 
 ## Availability, scope and identity
 
@@ -62,8 +85,8 @@ Do not automatically run both uncommitted and branch reviews on equivalent
 contents. If the first complete review already covers the same aggregate diff,
 baseline, dependencies and scope, record content equivalence after commit and
 reuse it where repository policy permits. If scope differs or materially changed,
-obtain the missing review coverage. This reuse never removes the separate GitHub
-CodeRabbit or GitHub Codex layer required on a substantive ready PR.
+obtain the missing review coverage. This reuse never removes a due GitHub
+CodeRabbit or GitHub Codex layer on a substantive ready PR.
 
 Record completion and validate findings against current behavior. Classify
 required defects, beneficial optional improvements, false positives and out-of-scope
@@ -85,7 +108,7 @@ Do not launch or poll a cloud-review monitor for a draft. Draft state does not
 promise that configured bots or CI stay silent; do not disable repository checks.
 
 At the ready transition, verify PR head/base and inventory existing reviews.
-The initial GitHub CodeRabbit and GitHub Codex reviews must both cover the full
+Each due initial cloud review (GitHub CodeRabbit, GitHub Codex) must cover the full
 agreed PR diff against its base, including relevant surrounding code. Start with
 full review; do not save it for a final pass after a series of standard reviews.
 When an initial request is due, use the supported provider command, separately:
@@ -110,11 +133,11 @@ automatic or earlier incremental result is full. Post only missing due requests
 within comment authority. Preserve repository triggers, including PR-open plus
 manual-tag configurations; a push or commit does not itself prove a review starts.
 
-### Both-reviewers completion barrier
+### Due-reviewers completion barrier
 
 Before consolidating, validating findings or making reviewer-driven fixes, require
-completed full initial reviews from **both GitHub CodeRabbit and GitHub Codex**
-for the same intended candidate/base. While either is pending, only collect raw
+completed full initial reviews from **every due cloud reviewer** (GitHub CodeRabbit,
+GitHub Codex, or both) for the same intended candidate/base. While any is pending, only collect raw
 artifacts and monitor status; do not start partial synthesis, finding validation,
 thread disposition or remediation from the faster provider. Ordinary configured
 CI and unrelated safe work may continue without changing the review candidate.
@@ -157,7 +180,7 @@ or uncertain dispatch without a retry loop; inspect whether a run was accepted
 before any retry. A rejected request is not completed evidence or permission to
 try repeatedly. Wait for the actual prerequisite or obtain an owner disposition.
 
-After both initial reviews complete, consolidate and validate all findings, batch
+After every due initial review completes, consolidate and validate all findings, batch
 required fixes, run affected checks/local reviews as warranted, and publish one
 correction wave. Use the remaining slot only for a provider whose required coverage
 needs refreshing; do not automatically retag both or request another run for pure

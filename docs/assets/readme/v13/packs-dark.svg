@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 680" width="1280" height="680" role="img" aria-labelledby="t d" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<title id="t">Core and optional packs</title>
+<desc id="d">A fresh install is the seven-skill core: workflow-orchestrator, create-plan, first-time-right-delivery, bug-triage, code-review-and-quality, code-review-tests and project-readiness. Optional packs add engineering, design, web, mobile, data and security, content, release and research work.</desc>
+<defs>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#22D3EE" stroke-opacity="0.07" stroke-width="1"/></pattern>
+<linearGradient id="beam" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+<marker id="ah-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#22D3EE"/></marker>
+<marker id="ah-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#8B5CF6"/></marker>
+<filter id="glow" filterUnits="userSpaceOnUse" x="0" y="0" width="1280" height="680"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1280" height="680" fill="#0B1020"/>
+<g aria-hidden="true">
+<rect width="1280" height="680" fill="url(#grid)"/>
+<path d="M0,620 L40,620 L70,650 L150,650 L180,680" fill="none" stroke="#22D3EE" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="180" cy="680" r="3.5" fill="none" stroke="#22D3EE" stroke-opacity="0.38" stroke-width="1.4"/>
+<path d="M0,570 L24,570 L44,590 L44,620" fill="none" stroke="#8B5CF6" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="44" cy="620" r="3.5" fill="none" stroke="#8B5CF6" stroke-opacity="0.38" stroke-width="1.4"/>
+<path d="M1280,50 L1220,50 L1190,80 L1190,130 L1160,160" fill="none" stroke="#8B5CF6" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="1160" cy="160" r="3.5" fill="none" stroke="#8B5CF6" stroke-opacity="0.38" stroke-width="1.4"/>
+<path d="M1280,100 L1250,100 L1230,120" fill="none" stroke="#22D3EE" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="1230" cy="120" r="3.5" fill="none" stroke="#22D3EE" stroke-opacity="0.38" stroke-width="1.4"/>
+<path d="M1080,680 L1080,656 L1110,626 L1190,626 L1220,596 L1280,596" fill="none" stroke="#22D3EE" stroke-width="1.4" stroke-opacity="0.38" stroke-linejoin="round"/>
+<circle cx="1280" cy="596" r="3.5" fill="none" stroke="#22D3EE" stroke-opacity="0.38" stroke-width="1.4"/>
+</g>
+<text x="50" y="58" font-size="26" font-weight="700" fill="#EAF0FA" text-anchor="start">Start with seven. Add packs when the project needs them.</text>
+<rect x="50" y="96" width="470" height="540" rx="18" fill="#172350" stroke="url(#beam)" stroke-width="2.4"/>
+<text x="78" y="146" font-size="30" font-weight="700" fill="#EAF0FA" text-anchor="start">Core</text>
+<text x="78" y="176" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Installed by default, 7 skills</text>
+<rect x="74" y="206" width="422" height="42" rx="21" fill="#111A33" stroke="#22D3EE" stroke-width="1.5"/>
+<text x="98" y="233" font-size="17" font-weight="600" fill="#67E8F9" text-anchor="start">workflow-orchestrator</text>
+<rect x="74" y="260" width="422" height="42" rx="21" fill="#111A33" stroke="#22D3EE" stroke-width="1.5"/>
+<text x="98" y="287" font-size="17" font-weight="600" fill="#67E8F9" text-anchor="start">create-plan</text>
+<rect x="74" y="314" width="422" height="42" rx="21" fill="#111A33" stroke="#22D3EE" stroke-width="1.5"/>
+<text x="98" y="341" font-size="17" font-weight="600" fill="#67E8F9" text-anchor="start">first-time-right-delivery</text>
+<rect x="74" y="368" width="422" height="42" rx="21" fill="#111A33" stroke="#22D3EE" stroke-width="1.5"/>
+<text x="98" y="395" font-size="17" font-weight="600" fill="#67E8F9" text-anchor="start">bug-triage</text>
+<rect x="74" y="422" width="422" height="42" rx="21" fill="#111A33" stroke="#22D3EE" stroke-width="1.5"/>
+<text x="98" y="449" font-size="17" font-weight="600" fill="#67E8F9" text-anchor="start">code-review-and-quality</text>
+<rect x="74" y="476" width="422" height="42" rx="21" fill="#111A33" stroke="#22D3EE" stroke-width="1.5"/>
+<text x="98" y="503" font-size="17" font-weight="600" fill="#67E8F9" text-anchor="start">code-review-tests</text>
+<rect x="74" y="530" width="422" height="42" rx="21" fill="#111A33" stroke="#8B5CF6" stroke-width="1.5"/>
+<text x="98" y="557" font-size="17" font-weight="600" fill="#C4B5FD" text-anchor="start">project-readiness</text>
+<path d="M520,366.0 L568,366.0" fill="none" stroke="#22D3EE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+<circle cx="568" cy="366.0" r="5" fill="#8B5CF6"/>
+<text x="590" y="120" font-size="14" font-weight="700" fill="#67E8F9" text-anchor="start" letter-spacing="1.5">OPTIONAL PACKS</text>
+<rect x="590" y="136" width="316" height="92" rx="14" fill="#111A33" stroke="#22D3EE" stroke-width="1.6"/>
+<rect x="604" y="136" width="38" height="3" rx="1.5" fill="#22D3EE"/>
+<text x="608" y="179.26" font-size="18" font-weight="700" fill="#67E8F9" text-anchor="start">engineering</text>
+<text x="608" y="206.26" font-size="14" font-weight="400" fill="#B4C0DA" text-anchor="start">Forge, delivery, testing</text>
+<rect x="924" y="136" width="316" height="92" rx="14" fill="#111A33" stroke="#8B5CF6" stroke-width="1.6"/>
+<rect x="938" y="136" width="38" height="3" rx="1.5" fill="#8B5CF6"/>
+<text x="942" y="179.26" font-size="18" font-weight="700" fill="#C4B5FD" text-anchor="start">design</text>
+<text x="942" y="206.26" font-size="14" font-weight="400" fill="#B4C0DA" text-anchor="start">Briefs, UX, accessibility, visual QA</text>
+<rect x="590" y="242" width="316" height="92" rx="14" fill="#111A33" stroke="#22D3EE" stroke-width="1.6"/>
+<rect x="604" y="242" width="38" height="3" rx="1.5" fill="#22D3EE"/>
+<text x="608" y="285.26" font-size="18" font-weight="700" fill="#67E8F9" text-anchor="start">web</text>
+<text x="608" y="312.26" font-size="14" font-weight="400" fill="#B4C0DA" text-anchor="start">Browser checks and web helpers</text>
+<rect x="924" y="242" width="316" height="92" rx="14" fill="#111A33" stroke="#8B5CF6" stroke-width="1.6"/>
+<rect x="938" y="242" width="38" height="3" rx="1.5" fill="#8B5CF6"/>
+<text x="942" y="285.26" font-size="18" font-weight="700" fill="#C4B5FD" text-anchor="start">mobile, ios, android</text>
+<text x="942" y="312.26" font-size="14" font-weight="400" fill="#B4C0DA" text-anchor="start">Lifecycle, Swift, device checks</text>
+<rect x="590" y="348" width="316" height="92" rx="14" fill="#111A33" stroke="#22D3EE" stroke-width="1.6"/>
+<rect x="604" y="348" width="38" height="3" rx="1.5" fill="#22D3EE"/>
+<text x="608" y="391.26" font-size="18" font-weight="700" fill="#67E8F9" text-anchor="start">data, security</text>
+<text x="608" y="418.26" font-size="14" font-weight="400" fill="#B4C0DA" text-anchor="start">Database, privacy and review</text>
+<rect x="924" y="348" width="316" height="92" rx="14" fill="#111A33" stroke="#8B5CF6" stroke-width="1.6"/>
+<rect x="938" y="348" width="38" height="3" rx="1.5" fill="#8B5CF6"/>
+<text x="942" y="391.26" font-size="18" font-weight="700" fill="#C4B5FD" text-anchor="start">release</text>
+<text x="942" y="418.26" font-size="14" font-weight="400" fill="#B4C0DA" text-anchor="start">Deploy checklists and host adapters</text>
+<rect x="590" y="454" width="316" height="92" rx="14" fill="#111A33" stroke="#22D3EE" stroke-width="1.6"/>
+<rect x="604" y="454" width="38" height="3" rx="1.5" fill="#22D3EE"/>
+<text x="608" y="497.26" font-size="18" font-weight="700" fill="#67E8F9" text-anchor="start">content</text>
+<text x="608" y="524.26" font-size="14" font-weight="400" fill="#B4C0DA" text-anchor="start">Writing, media, programmatic-video</text>
+<rect x="924" y="454" width="316" height="92" rx="14" fill="#111A33" stroke="#8B5CF6" stroke-width="1.6"/>
+<rect x="938" y="454" width="38" height="3" rx="1.5" fill="#8B5CF6"/>
+<text x="942" y="497.26" font-size="18" font-weight="700" fill="#C4B5FD" text-anchor="start">research</text>
+<text x="942" y="524.26" font-size="14" font-weight="400" fill="#B4C0DA" text-anchor="start">Source-grounded synthesis</text>
+<text x="590" y="612" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Packs also cover expo, argent, opendesign, shadcn and more; see the inventory.</text>
+<text x="590" y="636" font-size="15" font-weight="400" fill="#B4C0DA" text-anchor="start">Installing a pack also copies its pinned third-party skills.</text>
+</svg>
