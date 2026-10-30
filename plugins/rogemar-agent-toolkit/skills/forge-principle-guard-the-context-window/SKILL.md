@@ -1,6 +1,7 @@
 ---
 name: forge-principle-guard-the-context-window
 description: "Apply when large outputs, long files, repeated reads or delegation make context handling material. Preserve sufficient evidence and reduce repeated work across the complete task."
+disable-model-invocation: true
 license: MIT
 ---
 # Guard the Context Window

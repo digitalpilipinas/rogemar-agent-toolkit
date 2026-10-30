@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle sequence verifiable units"
   default_prompt: "Use $forge-principle-sequence-verifiable-units for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

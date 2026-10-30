@@ -40,7 +40,7 @@ identical supplied focuses: authorization, hillclimb, retry-safe creation,
 source tracing, bug triage, interaction alternatives, architecture, cross-judging,
 correctness review and independent acceptance. Roles were deduplicated across
 modes. The full packet, its hash, saved answers, five-criterion assessments,
-profile metadata and usage are in [validation-v3.json](validation-v3.json).
+profile metadata and usage are in [validation-v3.json](https://github.com/digitalpilipinas/rogemar-agent-toolkit/blob/main/docs/evidence/plan-model-router/validation-v3.json).
 
 Each worker answered all ten focuses in one batch. This differs from the historical
 single-focus packet: compare fresh profiles within this cohort, not their batch

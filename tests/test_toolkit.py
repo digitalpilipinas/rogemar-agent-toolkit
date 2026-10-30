@@ -107,6 +107,31 @@ class ToolkitTests(unittest.TestCase):
             self.assertIn("refusing to overwrite unmanaged", errors)
             self.assertEqual(marker.read_text(encoding="utf-8"), "unmanaged\n")
 
+    def test_convert_full_install_to_external_only_is_recoverable(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            project = Path(temporary)
+            target = ("--target", "project", "--project-root", str(project))
+            self.assertEqual(self.run_cli("install", *target)[0], 0)
+            skill = project / ".agents" / "skills" / "create-plan" / "SKILL.md"
+            state_path = project / ".agents" / "rogemar-agent-toolkit.lock.json"
+            self.assertTrue(skill.is_file())
+            skill.write_text(skill.read_text(encoding="utf-8") + "\nlocal edit\n", encoding="utf-8")
+            result, _output, errors = self.run_cli("upgrade", *target, "--convert-external-only")
+            self.assertEqual(result, 1)
+            self.assertIn("local edits", errors)
+            result, output, errors = self.run_cli("upgrade", *target, "--convert-external-only", "--backup-conflicts")
+            self.assertEqual(result, 0, errors)
+            self.assertIn("removed", output)
+            self.assertFalse(skill.exists())
+            state = json.loads(state_path.read_text(encoding="utf-8"))
+            self.assertTrue(state["external_only"])
+            self.assertEqual(state["skills"], {})
+            result, _output, errors = self.run_cli("upgrade", *target, "--convert-external-only")
+            self.assertEqual(result, 1)
+            self.assertIn("needs an existing full managed installation", errors)
+            self.assertEqual(self.run_cli("rollback", *target)[0], 0)
+            self.assertTrue(skill.is_file())
+
     def test_update_backup_and_rollback_are_recoverable(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             project = Path(temporary)

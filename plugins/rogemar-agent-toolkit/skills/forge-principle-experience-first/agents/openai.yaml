@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle experience first"
   default_prompt: "Use $forge-principle-experience-first for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

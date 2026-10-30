@@ -1,6 +1,7 @@
 ---
 name: forge-principle-exhaust-the-design-space
 description: "Compare credible alternatives for a consequential uncertain design. Prototype only when it resolves a material question; there is no fixed candidate count."
+disable-model-invocation: true
 license: MIT
 ---
 # Exhaust the relevant design space

@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle fix root causes"
   default_prompt: "Use $forge-principle-fix-root-causes for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

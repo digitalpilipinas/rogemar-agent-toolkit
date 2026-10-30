@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle subtract before you add"
   default_prompt: "Use $forge-principle-subtract-before-you-add for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

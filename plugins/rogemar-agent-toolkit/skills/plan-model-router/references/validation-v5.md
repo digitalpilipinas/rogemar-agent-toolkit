@@ -34,7 +34,7 @@ candidate identities or usage. The main agent reconciled concrete defects agains
 source and checks. Candidate code was never repaired for promotion.
 
 The locked packets, source, answers, criteria, native-profile evidence, checks and
-usage are preserved in [validation-v5.json](validation-v5.json). Worker models and
+usage are preserved in [validation-v5.json](https://github.com/digitalpilipinas/rogemar-agent-toolkit/blob/main/docs/evidence/plan-model-router/validation-v5.json). Worker models and
 efforts were verified from native runtime records. This does not test parent
 coordination or switch the running parent. Scout has no matching higher-parent
 comparison on the new packet; its bounded qualification is not a causal cost claim.

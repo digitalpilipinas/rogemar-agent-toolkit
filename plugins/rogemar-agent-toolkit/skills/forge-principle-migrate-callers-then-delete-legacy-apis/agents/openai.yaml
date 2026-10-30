@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle migrate callers then delete legacy "
   default_prompt: "Use $forge-principle-migrate-callers-then-delete-legacy-apis for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

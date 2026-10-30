@@ -1,6 +1,7 @@
 ---
 name: forge-principle-test-behavior-not-implementation
 description: "Apply when adding or reviewing tests. Identify the meaningful defect a test detects and assert a public result or required contract without deleting valid negative or static tests."
+disable-model-invocation: true
 license: MIT
 ---
 # Test Behavior, Not Implementation

@@ -194,12 +194,14 @@ method and the next incomplete increment until the approved slice is accepted.
 | A bug with a cheap regression test | `forge-tdd` |
 | Useful friction at a verified milestone | `forge-reflect` |
 | Docs, a pull request, or a commit message | `forge-technical-writing`, then `forge-unslop` |
-| Before calling the slice done | `forge-principle-prove-it-works` |
-| The same correction appears twice | `forge-principle-encode-lessons-in-structure` |
+| Before calling the slice done | [prove-it-works](../engineering-playbooks/references/principles/prove-it-works.md) |
+| The same correction appears twice | [encode-lessons-in-structure](../engineering-playbooks/references/principles/encode-lessons-in-structure.md) |
 | No reusable app recipe exists | `forge-create-verification-skill` |
 | An existing app recipe has drifted | `forge-maintain-verification-skill` |
 
-Apply the matching `forge-principle-*` when its trigger fits the current edit.
+Apply the matching principle from the [principle index](../engineering-playbooks/references/principles.md)
+when its trigger fits the current edit; the `forge-principle-*` skills are
+explicit-only, as in upstream PStack, so read the principle file directly.
 A principle guides that edit. It does not start another agent. `forge-automate-me`,
 `forge-make-bot-ui`, and `forge-bro` stay off unless the task is a personal mode,
 a bot page, or a plain restatement. `benchmark-checklist`, `correct`, and

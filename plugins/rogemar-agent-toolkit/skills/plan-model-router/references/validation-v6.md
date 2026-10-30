@@ -69,7 +69,7 @@ Original packets, output answers, native records, two assessments, adjudications
 
 Pricing sources retrieved for this cohort: [OpenAI API pricing](https://developers.openai.com/api/docs/pricing), [Codex pricing and usage](https://help.openai.com/en/articles/11481834), and [ChatGPT credit usage](https://help.openai.com/en/articles/12642688-using-credits-for-flexible-usage-in-chatgpt-freegopluspro-sora). Published Standard equivalents are estimates; account and service-tier effects are disclosed separately.
 
-[Role mapping](role-mapping.md) · [225-decision ledger](role-evidence.json) · [Paired evidence and benchmark summary](validation-v6.json)
+[Role mapping](role-mapping.md) · [225-decision ledger](role-evidence.json) · [Paired evidence and benchmark summary](https://github.com/digitalpilipinas/rogemar-agent-toolkit/blob/main/docs/evidence/plan-model-router/validation-v6.json)
 
 ## Observed usage and overhead
 

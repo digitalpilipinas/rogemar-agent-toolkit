@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle prove it works"
   default_prompt: "Use $forge-principle-prove-it-works for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

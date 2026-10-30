@@ -1,6 +1,7 @@
 ---
 name: forge-principle-build-the-lever
 description: "Use a repeatable tool when repeated operations, observations or a meaningful verification gap justify it. Reuse existing instruments; keep a direct route for simple work."
+disable-model-invocation: true
 license: MIT
 ---
 # Build the lever

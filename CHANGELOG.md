@@ -2,6 +2,13 @@
 
 ## Unreleased (after 1.2.2)
 
+- Generate the root Claude marketplace entry with the marketplace root as source and an explicit list of the 125 Claude-compatible skills, so Claude no longer loads Codex-, Cursor- or Devin-only skills (validated with `claude plugin validate`). Cursor already lists its own set; Factory and Gemini read the whole folder and cannot filter. A test keeps every harness's links inside its own selection.
+- Add `install`/`upgrade --convert-external-only`: converts a full managed installation to external-only (native plugin plus managed extras), removing managed toolkit skills with the normal backup, local-edit checks and rollback.
+
+- Move `plan-model-router`'s historical validation evidence (`validation-v3`–`v6.json`, 5.7 MB) to `docs/evidence/plan-model-router/`; the shipped router keeps its runtime catalog and the tested 225-decision ledger, and its docs link the repository copies.
+
+- Make the 23 `forge-principle-*` skills explicit-only again, matching upstream PStack's `disable-model-invocation`: their descriptions no longer load into every session, they stay invocable by name, and agents apply principles from the shared principle index. The Codex Forge 47-skill mapping is unchanged.
+
 - Enforce a method receipt at Integrated Workflow acceptance: `checkpoint.py` derives required methods from changed paths and declared tags through a small set of `receipt_tags`, requires one record per alternative group (used with existing evidence, or unavailable, blocked or not applicable with a reason), exempts small corrections, and honors a trusted-policy `report-only` opt-out. `readiness.py ci` prints a pull-request job that runs it from the protected base branch.
 
 - Add `project-readiness` to the core pack: a read-only start-of-task check that detects technologies, checks declared footprints with Git, prints one setup plan with a stable `plan_id` for a single owner approval, generates a situation map of applicable skills, lists installed but unmanaged skills, and prints acceptance pins. Every entry skill and task-handoff discovery run it at start or resume; `checkpoint.py --phase start` includes its summary. The core pack is now seven skills.

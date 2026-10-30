@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle type system discipline"
   default_prompt: "Use $forge-principle-type-system-discipline for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

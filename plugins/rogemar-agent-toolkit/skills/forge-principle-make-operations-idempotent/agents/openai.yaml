@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle make operations idempotent"
   default_prompt: "Use $forge-principle-make-operations-idempotent for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

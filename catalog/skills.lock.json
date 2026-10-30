@@ -5664,7 +5664,7 @@
     },
     "claude-forge": {
       "file_count": 30,
-      "sha256": "ec6376d6693c9f7d9d11b2471f0269a94c333e13b9fd9020a284fbf5f191bf8f"
+      "sha256": "e46cdda299ed5dbf98cadc022a61da71b23b7d451f47ab6367afd0b0c818bac6"
     },
     "claude-forge-setup": {
       "file_count": 5,
@@ -5804,95 +5804,95 @@
     },
     "forge-principle-attack-the-premise": {
       "file_count": 3,
-      "sha256": "1d710777ec34554adacc4447a204e1d36eecefa830af6579e781b3f9a501c30d"
+      "sha256": "f199c4f011a2435d04923d4f365c61e1a88ee049f0e478dc37d1a5c70b2c4746"
     },
     "forge-principle-boundary-discipline": {
       "file_count": 3,
-      "sha256": "eb366f17cb51faef69532fa545bd0e7ff4398f355cf2e63a4c70465162157f97"
+      "sha256": "28fa2d93bdaf94093714c90814fd5533b20d0c5d3b023c59a9c09e8776e3c103"
     },
     "forge-principle-build-the-lever": {
       "file_count": 3,
-      "sha256": "b1136311593af3d1f8c7474189ca310359a1b1d6bf5effb8774561b0347cc0ee"
+      "sha256": "c87a767fa5382ceb0416d47dbc80e6a78a5c359b061e9e13ec8a1447408a0db3"
     },
     "forge-principle-encode-lessons-in-structure": {
       "file_count": 3,
-      "sha256": "a4eb52adb604ebd736bd0d559583469312f640d527349607925df3e5a2d78642"
+      "sha256": "cfdbd41e9cb14b8a24f56015a6418a01da267e1cabccf1e0b0aae331b96d2146"
     },
     "forge-principle-exhaust-the-design-space": {
       "file_count": 3,
-      "sha256": "d593884fa86008b3012e0346d962fef45ed0d4ca3f78380e4ad128395e2711fe"
+      "sha256": "af1de6981633d65b56f787fc6b001bb9a92d12e3d846f758e0adac7cd7969410"
     },
     "forge-principle-experience-first": {
       "file_count": 3,
-      "sha256": "03db3b41632d2c29afcb4e745acf1605f00441b1b1f86607d2993787a2730df1"
+      "sha256": "707ae1638920431f0ead12dada519586272e64875a8cc20643ed5404de358bab"
     },
     "forge-principle-fix-root-causes": {
       "file_count": 3,
-      "sha256": "ab2ae4c672a319c42a67db145f19703af2a1a9c4fcfc6c25e521565e0b6f2463"
+      "sha256": "d1337eac0524b2591edec26f4159e64962f59966f9a04b5d26a98f3b1618fddc"
     },
     "forge-principle-foundational-thinking": {
       "file_count": 3,
-      "sha256": "6ea22aaab20928c7a6fb45b8a8191577cf8dfbd7135f4ceec08c2b43d38ebb74"
+      "sha256": "729bfbdaad02b25e6262dfb18386a2c915394eee786ce96944d15593b7304f2a"
     },
     "forge-principle-guard-the-context-window": {
       "file_count": 3,
-      "sha256": "a025f8d316067c67adfd8b3e2a0e573be2d451d8ed5a8db0c3e2b66a18e27527"
+      "sha256": "23ea156e0f66483c1798efd382fece5d6fb4a7bd0d0567d67a8043fc38673462"
     },
     "forge-principle-laziness-protocol": {
       "file_count": 3,
-      "sha256": "ad79aeb6eba99c9ac70cf03c2037df22363e851c85e5b7ca733d8efb187c3da2"
+      "sha256": "6b9b8cc34fbb0b0e3133f2f5bb39b3883a5bf7f58b06cdab272304aaa71f5204"
     },
     "forge-principle-make-operations-idempotent": {
       "file_count": 3,
-      "sha256": "642fdbc9b42e587d4a89d3de206b5741ca34cfae2b727bb2f0b89e705d435c67"
+      "sha256": "a7ebeeafa6840f14ea9f70dc4ccd7d1a0892a8e1189bfb0f5201626905ba7a95"
     },
     "forge-principle-migrate-callers-then-delete-legacy-apis": {
       "file_count": 3,
-      "sha256": "255c8f3c81e76a02c1ba35569e9f39f2452b7a48cb218c3ce1f33f1e0993047b"
+      "sha256": "5998d80aac0aa84f1aff1ebf30192f795e566c799f34f2c857a3bbdb87a00c86"
     },
     "forge-principle-minimize-reader-load": {
       "file_count": 3,
-      "sha256": "9b6562d663404b02e03594b6cd4cae61c982d184190827e8a81c01d7f3c234cb"
+      "sha256": "5b98f508deda290defe06feb1ac9deec26aa168d41dc702de99a9ac34e63ad79"
     },
     "forge-principle-model-the-domain": {
       "file_count": 3,
-      "sha256": "bbd3597aea7f809de229af1fce207460d73cb36b88d93c0407bc09ab3f4057a0"
+      "sha256": "5b534d331e130600a618db32ca9c0a60f92e48b05acd6c877acbf7ffd585cf79"
     },
     "forge-principle-never-block-on-the-human": {
       "file_count": 3,
-      "sha256": "23c2811c8b09f1fea43b096e14440549d23da22ce323f1a3c1d7d501517819ef"
+      "sha256": "b5699e882198d22dd3172b1b22dd0c66df049f2c8abfe61d35c00ba4444497dc"
     },
     "forge-principle-outcome-oriented-execution": {
       "file_count": 3,
-      "sha256": "ad14556d1d6a6f9bf4f13f445dbf2c0bbdba49f4da6a1bc332017ab077a9924e"
+      "sha256": "b4c9fb1de6c0486df4ed75202f141e434562aa49f83ffcdb16775c088e3e56b9"
     },
     "forge-principle-prove-it-works": {
       "file_count": 3,
-      "sha256": "9a84bc174665a1a571fad4ec2ea0d916d6d7aa96b8f745c4edd06e99b9e3f6ea"
+      "sha256": "aa15d9f22179a42cd0bcb55095ff7776c6e82f3fe16631b0239495d7baae7ae9"
     },
     "forge-principle-redesign-from-first-principles": {
       "file_count": 3,
-      "sha256": "d101b46fb3615160d02a4af297991357f846028d8b7906bb1dbde31d7a4fde6e"
+      "sha256": "13138674efb4ae990268aeb3669f2d6b078397de1da0c14eb191eac5dae5fbe9"
     },
     "forge-principle-separate-before-serializing-shared-state": {
       "file_count": 3,
-      "sha256": "2a2f979c1200e8ae6ee9a50d40b3db4228f01319966dbfebc9bfb0a84c9a0deb"
+      "sha256": "9b8bb173202ffbc86a64a1b295d4ffb9b7ac34fac2c0af7933f53df05859b310"
     },
     "forge-principle-sequence-verifiable-units": {
       "file_count": 3,
-      "sha256": "d0a4d4523221d644a3dba0683e7153f9fd75b1a4a569b394bc29c4ac0205e6a7"
+      "sha256": "35461c74a49999b448d5d80dbef33239eb4863afeb7ba5af02a1b85a1f1f029f"
     },
     "forge-principle-subtract-before-you-add": {
       "file_count": 3,
-      "sha256": "4a73a87f647fa93a3186fb7a9e07b08c20fd7459fc56da0710d12dcd7c133bcb"
+      "sha256": "1d80f927cd947c95c049918d6e8b75ed507a4ff7ff1ce90808ea9d94974ffd83"
     },
     "forge-principle-test-behavior-not-implementation": {
       "file_count": 3,
-      "sha256": "ab9f38fe4c33e8f8f1a2a8adbfca9b21e94b691ce358793be19364e02441512a"
+      "sha256": "87641feac7873b8ce6b81d7fa812310083bce635d17acb631a9d0b05442f8df0"
     },
     "forge-principle-type-system-discipline": {
       "file_count": 3,
-      "sha256": "4ceff5405fc80f7017ac5e628f19f31ba66c4420779370eb761e757057a794a4"
+      "sha256": "be2eb7938414576ab63166016edc1c6638f4a2b563609c992e3e04f0d31da5d1"
     },
     "forge-recall": {
       "file_count": 3,
@@ -5968,7 +5968,7 @@
     },
     "integrated-workflow": {
       "file_count": 14,
-      "sha256": "a73d4491571e999730dc9e065af1e5ed4f52c4a2ce9366d5b286f2938fca2534"
+      "sha256": "ebc9ddd4d9a97b72478b4ae8e2b683ac2c6afef984a31bca2ea56780f3fbc9d3"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -6015,8 +6015,8 @@
       "sha256": "da143ea70c6e44c476a3fc4deffa9b543a0f42e8cccee19530696821ba91ab70"
     },
     "plan-model-router": {
-      "file_count": 18,
-      "sha256": "92efc37dea820947196399cbf9daceb7dca13bb301e53f748f99fe17712b67c8"
+      "file_count": 14,
+      "sha256": "d72ecb140da5aa262fd830a80b29257d6908ff59e1bb40865f26c88916e37478"
     },
     "playwright": {
       "file_count": 9,
@@ -6144,7 +6144,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 29,
-      "sha256": "b274a49b1232f5d0ec069cff8bcf196059e37ed11b142435ba66679e07e3fa1e"
+      "sha256": "74ce6fc38ce3be485608392fbb6cd0f5394ee6257a450c81921b5f4acb545d23"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

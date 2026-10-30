@@ -1,6 +1,7 @@
 ---
 name: forge-principle-attack-the-premise
 description: "Apply after two or more fixes sharing a premise fail the same check. Name the premise and run a discriminating experiment before another fix."
+disable-model-invocation: true
 license: MIT
 ---
 # Attack the Premise

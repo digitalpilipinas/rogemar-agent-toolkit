@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle never block on the human"
   default_prompt: "Use $forge-principle-never-block-on-the-human for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

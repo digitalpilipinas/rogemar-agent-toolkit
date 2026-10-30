@@ -1,6 +1,7 @@
 ---
 name: forge-principle-migrate-callers-then-delete-legacy-apis
 description: "Migrate controlled API callers and remove proven dead paths while preserving supported clients, persisted formats and staged compatibility contracts."
+disable-model-invocation: true
 license: MIT
 ---
 # Migrate callers, then delete legacy APIs

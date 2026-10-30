@@ -164,10 +164,11 @@ entry; its source can point to the extracted directory in an operator-maintained
 local marketplace.
 These are optional operator actions, not steps performed by `package`.
 
-The repository-root Claude/Factory marketplaces point at the full source plugin.
-Claude adds manifest `skills` paths to its default `skills/` scan; Factory loads
-skills from that directory. Native metadata alone does not exclude other harness
-adapters from the raw source tree. Prefer selected archives or managed
+The repository-root Claude marketplace lists only Claude-compatible skills: its entry
+uses the marketplace root as `source`, which Claude documents as loading only the
+listed `skills` and skipping the default `skills/` scan. The Factory marketplace
+points at the full source plugin, and Factory loads every skill in that folder;
+Gemini does the same, so neither can exclude other harness adapters. Prefer selected archives or managed
 `install --harness claude|droid|gemini|antigravity` for a compatible set.
 The native plugin does not provision pinned external packs; those retain the
 existing managed `--external-only` route. Installation, discovery, authentication
@@ -252,9 +253,11 @@ python3 scripts/toolkit.py upgrade --harness agent-skills --target project --pro
 ```
 
 Upgrades retain the saved external-only/full mode and pack selection. Existing
-installation states remain full installations. A full managed installation cannot
-be converted with `--external-only`; reconcile its ownership before switching
-routes. Omitting the flag on an external-only installation **does not** convert
+installation states remain full installations. To switch a full managed installation
+to a native plugin plus managed extras, run `upgrade --convert-external-only` (with
+`--dry-run` first): it backs up and removes the managed toolkit skills, keeps the
+managed external skills, refuses local edits unless `--backup-conflicts` is given,
+and `rollback` restores the previous state. Omitting the flag on an external-only installation **does not** convert
 it to full mode. `--skip-external` and `--link` conflict with external-only mode,
 including when that mode comes from saved state. Dry runs do not fetch or write.
 Rollback uses the existing command and restores the preceding transaction; each

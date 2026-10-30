@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle laziness protocol"
   default_prompt: "Use $forge-principle-laziness-protocol for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

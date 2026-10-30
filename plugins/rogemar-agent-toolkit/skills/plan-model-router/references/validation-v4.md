@@ -9,7 +9,7 @@ Default, parent targets, legacy aliases and saved preferences are unchanged.
 This report describes the v4 candidate and evidence. The earlier
 [validation-v3 report](validation-v3.md) documents the superseded release, not
 current routing. [All 225 decisions](role-evidence.json), [readable mapping](role-mapping.md)
-and [new evidence](validation-v4.json) are the reviewable sources.
+and [new evidence](https://github.com/digitalpilipinas/rogemar-agent-toolkit/blob/main/docs/evidence/plan-model-router/validation-v4.json) are the reviewable sources.
 
 ## What changed in the mappings
 
@@ -40,7 +40,7 @@ its parent fallback carries the unresolved defects rather than a quality guarant
 Seven profiles received the identical 31-focus Harbor Notes packet and SQLite coding
 exercise, twice each: 14 workers, 434 focused answers, 14 complete coding artifacts.
 The full packet, SHA256, answers, runtime identities and checks are in
-[validation-v4.json](validation-v4.json). Existing matching v3 pairs were reused for
+[validation-v4.json](https://github.com/digitalpilipinas/rogemar-agent-toolkit/blob/main/docs/evidence/plan-model-router/validation-v4.json). Existing matching v3 pairs were reused for
 focuses outside this cohort; new failures invalidate conflicting older qualifications.
 The historical 42-focus corpus and v3 ten-focus packet were not modified.
 

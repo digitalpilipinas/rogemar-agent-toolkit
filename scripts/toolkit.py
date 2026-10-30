@@ -274,6 +274,22 @@ def native_marketplace() -> dict[str, Any]:
     return marketplace
 
 
+def claude_marketplace() -> dict[str, Any]:
+    """Claude loads only listed skills when an entry's source is the marketplace root.
+
+    A plugin manifest's `skills` field only adds to the default scan, so this entry is
+    the documented way to give Claude its compatible skills and no other harness's.
+    """
+    portable = load_json(PORTABLE_MANIFEST)
+    skills = sorted(resolve_selection("claude", "all", [])["skills"])
+    entry = {"name": PACKAGE_NAME, "source": "./", "strict": False,
+             "description": portable["description"], "version": portable["version"],
+             "author": portable["author"], "license": portable["license"],
+             "skills": [f"./plugins/{PACKAGE_NAME}/skills/{name}" for name in skills]}
+    return {"name": PACKAGE_NAME, "owner": portable["author"],
+            "description": portable["description"], "plugins": [entry]}
+
+
 def structural_errors(check_lock: bool = True, eligible_paths: set[str] | None = None) -> list[str]:
     errors: list[str] = []
     try:
@@ -504,7 +520,7 @@ def structural_errors(check_lock: bool = True, eligible_paths: set[str] | None =
                 (CLAUDE_MANIFEST, "Claude", native_plugin_manifest()),
                 (FACTORY_MANIFEST, "Factory", native_plugin_manifest()),
                 (GEMINI_MANIFEST, "Gemini", gemini_manifest()),
-                (CLAUDE_MARKETPLACE, "Claude marketplace", native_marketplace()),
+                (CLAUDE_MARKETPLACE, "Claude marketplace", claude_marketplace()),
                 (FACTORY_MARKETPLACE, "Factory marketplace", native_marketplace()),
             ):
                 if load_json(path) != expected:
@@ -530,8 +546,8 @@ def command_lock(_args: argparse.Namespace) -> int:
     for path in (CLAUDE_MANIFEST, FACTORY_MANIFEST):
         write_json_atomic(path, native_plugin_manifest())
     write_json_atomic(GEMINI_MANIFEST, gemini_manifest())
-    for path in (CLAUDE_MARKETPLACE, FACTORY_MARKETPLACE):
-        write_json_atomic(path, native_marketplace())
+    write_json_atomic(CLAUDE_MARKETPLACE, claude_marketplace())
+    write_json_atomic(FACTORY_MARKETPLACE, native_marketplace())
     write_json_atomic(LOCK_PATH, build_lock())
     print(f"Wrote {LOCK_PATH.relative_to(ROOT)} for {len(vendored_names())} skills.")
     return 0
@@ -1131,12 +1147,17 @@ def command_install(args: argparse.Namespace) -> int:
     state = read_optional_state(state_path)
     if state and state.get("schema_version") == 1 and not args.harness:
         raise ToolkitError("legacy installation: specify --harness explicitly before migration")
-    external_only = args.external_only or (state or {}).get("external_only", False)
+    converting = bool(getattr(args, "convert_external_only", False))
+    if converting and (not state or state.get("external_only", False)):
+        raise ToolkitError("--convert-external-only needs an existing full managed installation")
+    external_only = converting or args.external_only or (state or {}).get("external_only", False)
     if external_only and (args.skip_external or args.link):
         raise ToolkitError("--external-only cannot be combined with --skip-external or --link")
-    if state and args.external_only and not state.get("external_only", False):
-        raise ToolkitError("cannot change a full managed installation to --external-only; reconcile existing ownership first")
-    if external_only and (state or {}).get("skills"):
+    # Conversion (plugin plus managed extras): remove the managed toolkit skills with the
+    # normal recoverable backup and local-edit checks; external skills stay managed.
+    if state and args.external_only and not converting and not state.get("external_only", False):
+        raise ToolkitError("cannot change a full managed installation to --external-only; use --convert-external-only")
+    if external_only and not converting and (state or {}).get("skills"):
         raise ToolkitError("external-only state contains managed toolkit skills; reconcile existing ownership first")
     selection = install_selection(args, state)
     if external_only:
@@ -1538,6 +1559,8 @@ def build_parser() -> argparse.ArgumentParser:
             subparser.add_argument("--backup-conflicts", action="store_true", help="explicitly replace differing copies after review, retaining a recoverable backup")
             subparser.add_argument("--link", action="store_true", help="development-only symlink install")
             subparser.add_argument("--external-only", action="store_true", help="install only selected external skills; retained by subsequent upgrades")
+            subparser.add_argument("--convert-external-only", action="store_true",
+                                   help="convert a full managed installation to external-only: back up and remove the managed toolkit skills (for a native plugin plus managed extras)")
             subparser.add_argument("--skip-external", action="store_true", help="explicit offline/vendor-only install; skip automatic external skill provisioning")
         else:
             subparser.add_argument("--harness")

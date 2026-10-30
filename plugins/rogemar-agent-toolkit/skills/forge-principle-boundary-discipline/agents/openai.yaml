@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle boundary discipline"
   default_prompt: "Use $forge-principle-boundary-discipline for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

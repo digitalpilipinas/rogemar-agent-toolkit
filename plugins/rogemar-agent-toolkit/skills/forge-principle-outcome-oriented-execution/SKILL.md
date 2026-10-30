@@ -1,6 +1,7 @@
 ---
 name: forge-principle-outcome-oriented-execution
 description: "Apply to approved rewrites and migrations. Converge on the target through verifiable units while preserving required compatibility, data and supported callers."
+disable-model-invocation: true
 license: MIT
 ---
 # Outcome-oriented execution

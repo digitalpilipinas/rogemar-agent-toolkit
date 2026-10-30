@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle build the lever"
   default_prompt: "Use $forge-principle-build-the-lever for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

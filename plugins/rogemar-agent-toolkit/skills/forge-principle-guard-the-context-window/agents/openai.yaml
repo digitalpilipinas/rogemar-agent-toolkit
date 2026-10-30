@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle guard the context window"
   default_prompt: "Use $forge-principle-guard-the-context-window for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

@@ -34,8 +34,8 @@ class SkillRoutingTests(unittest.TestCase):
 
     def test_all_selected_methods_resolve_to_original_working_skills(self):
         names = [n for n in self.index['skills'] if n not in SELECT.ENTRIES and self.index['skills'][n].get('kind') != 'external']
-        result = SELECT.resolve(self.index, names, SKILLS,
-                                explicit=['deliver-approved-programme'])
+        explicit = [n for n in names if self.index['skills'][n].get('activation') == 'explicit-only']
+        result = SELECT.resolve(self.index, names, SKILLS, explicit=explicit)
         self.assertTrue(all(r['route'] == 'source' for r in result['methods']))
         self.assertFalse(result['grants_authority'])
 

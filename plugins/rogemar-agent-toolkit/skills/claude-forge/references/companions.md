@@ -35,7 +35,8 @@ skills are not the procedure when the matching `forge-*` skill is installed.
 | setup | claude-forge-setup | Setup | Mode and profile setup belong to `claude-forge-setup`, not `forge-setup`. |
 | figure it out | forge-figure-it-out | Figure it out | Use it when none of the 23 playbooks match. Keep the same task and evidence. |
 
-Principles install as `forge-principle-*` skills. Read the installed skill when
-it is present. Otherwise read
+Read principles from
 [the shared principle index](../../engineering-playbooks/references/principles.md).
+The `forge-principle-*` skills stay installed for explicit invocation by name, but,
+as in upstream PStack, they are not shown to the model automatically.
 A principle is a decision aid. It does not widen the task.

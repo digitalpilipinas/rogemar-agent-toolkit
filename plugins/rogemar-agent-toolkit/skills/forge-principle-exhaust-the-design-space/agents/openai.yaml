@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle exhaust the design space"
   default_prompt: "Use $forge-principle-exhaust-the-design-space for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

@@ -3,4 +3,4 @@ interface:
   short_description: "Codex engineering: principle outcome oriented execution"
   default_prompt: "Use $forge-principle-outcome-oriented-execution for the requested task."
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

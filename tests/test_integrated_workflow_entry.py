@@ -43,7 +43,7 @@ class IntegratedWorkflowEntryTests(unittest.TestCase):
         self.assertIn("No reusable app recipe exists", text)
         self.assertIn("An existing app recipe has drifted", text)
         self.assertIn("`forge-how`", text)
-        self.assertIn("`forge-principle-prove-it-works`", text)
+        self.assertIn("principles/prove-it-works.md", text)  # explicit-only skill; read the principle file
         self.assertIn("benchmark-checklist", text)
         contract = (SKILLS / "workflow-orchestrator/references/method-contract.md").read_text()
         self.assertIn("Name\n   the playbook and the skills in that brief.", contract)
