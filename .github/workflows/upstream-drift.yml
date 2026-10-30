@@ -11,6 +11,10 @@ permissions:
   contents: read
   issues: write
 
+concurrency:
+  group: upstream-drift
+  cancel-in-progress: false
+
 jobs:
   drift:
     runs-on: ubuntu-latest
@@ -25,7 +29,8 @@ jobs:
         shell: bash
         run: |
           python3 - <<'EOF' > drift.md
-          import json
+          import json, re
+          code = lambda s: '`' + re.sub(r'[`\r\n]', '?', str(s)) + '`'  # upstream names are untrusted
           data = json.load(open('drift.json'))
           drift = {k: v for k, v in sorted(data.items()) if v.get('scope') == 'selected-content'}
           missing = {k: v for k, v in sorted(data.items()) if v['status'] == 'unavailable'}
@@ -34,12 +39,12 @@ jobs:
           for name, v in drift.items():
               print(f"### {name}\n`{(v.get('path_pins') and 'per-path pins') or v['pinned'][:12]}` -> `{v['observed'][:12]}`\n")
               for f in v['selected_files'][:25]:
-                  print(f'- {f}')
+                  print('- ' + code(f))
               if len(v['selected_files']) > 25:
                   print(f"- ...and {len(v['selected_files']) - 25} more")
               print()
           for name, v in missing.items():
-              print(f"### {name} (unavailable)\n{v.get('error', 'no evidence')}\n")
+              print(f"### {name} (unavailable)\n{code(v.get('error', 'no evidence'))}\n")
           EOF
           cat drift.md >> "$GITHUB_STEP_SUMMARY"
           if grep -q '^### ' drift.md; then echo "alert=true" >> "$GITHUB_OUTPUT"; fi
@@ -49,7 +54,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          number=$(gh issue list --state open --search 'Upstream drift in:title' --json number --jq '.[0].number // empty')
+          number=$(gh issue list --state open --search 'Upstream drift in:title' --json number,title \
+            --jq '[.[] | select(.title == "Upstream drift")][0].number // empty')
           if [ -z "$number" ]; then
             gh issue create --title 'Upstream drift' --body-file drift.md
           elif [ "$(gh issue view "$number" --json body,comments --jq '([.body] + [.comments[].body]) | last')" != "$(cat drift.md)" ]; then

@@ -5,6 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import Mock
+from urllib.error import HTTPError
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('upstream_compare', ROOT / 'scripts/upstream_compare.py')
@@ -70,36 +71,56 @@ class UpstreamCompareTests(unittest.TestCase):
             for p, original in before.items(): self.assertEqual(p.read_bytes(), original)
             self.assertEqual(set(root.iterdir()), {root / 'catalog'})
 
-    def trees(self, before, after, truncated=False):
+    def trees(self, before, after, truncated=False, pin_parent=True):
         pin, head = 'a' * 40, 'b' * 40
+        selected = lambda sha: {'tree': [dict(path='selected', type='tree', sha=sha, mode='040000')]}
         responses = {
             'owner/repo/commits/HEAD': {'sha': head},
             f'owner/repo/compare/{pin}...{head}': dict(status='ahead', files=[dict(filename='x', status='modified')] * 300),
-            f'owner/repo/git/trees/{pin}:skills': {'tree': [dict(path='selected', type='tree', sha='old')]},
-            f'owner/repo/git/trees/{head}:skills': {'tree': [dict(path='selected', type='tree', sha='new')]},
+            f'owner/repo/git/trees/{pin}:skills': selected('old') if pin_parent else None,
+            f'owner/repo/git/trees/{head}:skills': selected('new'),
             f'owner/repo/git/trees/{pin}:skills/selected?recursive=1': {'tree': before},
             f'owner/repo/git/trees/{head}:skills/selected?recursive=1': {'tree': after, 'truncated': truncated}}
-        return lambda path: responses[path]
+
+        def request(path):
+            # Unknown URLs fail the test instead of masquerading as unavailable evidence.
+            if path not in responses:
+                raise AssertionError('unexpected request: ' + path)
+            if responses[path] is None:
+                raise HTTPError(path, 404, 'Not Found', {}, None)
+            return responses[path]
+        return request
 
     def test_capped_comparison_diffs_selected_paths_directly(self):
-        blob = lambda name, sha: dict(path=name, type='blob', sha=sha)
+        blob = lambda name, sha, mode='100644': dict(path=name, type='blob', sha=sha, mode=mode)
         result = upstream.compare(self.source, self.trees(
-            [blob('SKILL.md', '1'), blob('old.md', '2')], [blob('SKILL.md', '3'), blob('new.md', '4')]))
+            [blob('SKILL.md', '1'), blob('old.md', '2'), blob('run.sh', '5')],
+            [blob('SKILL.md', '3'), blob('new.md', '4'), blob('run.sh', '5', '100755')]))
         self.assertEqual((result['status'], result['scope'], result['method']), ('changed', 'selected-content', 'tree'))
         self.assertEqual({f['path']: f['status'] for f in result['files']}, {
             'skills/selected/SKILL.md': 'modified', 'skills/selected/old.md': 'removed',
-            'skills/selected/new.md': 'added'})
-        self.assertEqual(upstream.compare(self.source, self.trees([], [], truncated=True))['status'], 'unavailable')
+            'skills/selected/new.md': 'added', 'skills/selected/run.sh': 'modified'})
+
+    def test_tree_gaps_stay_unavailable(self):
+        truncated = upstream.compare(self.source, self.trees([], [], truncated=True))
+        self.assertEqual(truncated['status'], 'unavailable')
+        self.assertIn('Truncated', truncated['error'])
+        # A selected path missing at its pin (or an unreachable pin) is missing evidence, not "no change".
+        missing = upstream.compare(self.source, self.trees([], [], pin_parent=False))
+        self.assertEqual(missing['status'], 'unavailable')
+        self.assertIn('not found at pin', missing['error'])
 
     def test_adaptation_pins_supersede_archive_pins(self):
         source = upstream.sources(ROOT)['mattpocock/skills']
         self.assertIn('skills/productivity/grilling', source['paths'])
         self.assertNotEqual(set(source['path_pins'].values()), {source['pinned']})
-        reviewed = upstream.sources(ROOT)['cursor/plugins']['path_pins']
-        self.assertEqual(set(reviewed.values()), {'4dd1d05818d19792e7cd6e818f1667f95f7e1dbe'})
-        head = {'sha': '4dd1d05818d19792e7cd6e818f1667f95f7e1dbe'}
-        request = Mock(return_value=head)
-        self.assertEqual(upstream.compare(upstream.sources(ROOT)['cursor/plugins'], request)['status'], 'unchanged')
+        catalog = json.loads((ROOT / 'catalog/imported-sources.json').read_text())
+        reviewed = next(a['reviewed'] for a in catalog['adaptations'] if a.get('reviewed'))
+        repository = next(a['repository'] for a in catalog['adaptations'] if a.get('reviewed'))
+        source = upstream.sources(ROOT)[repository]
+        self.assertEqual(set(source['path_pins'].values()), {reviewed})
+        request = Mock(return_value={'sha': reviewed})
+        self.assertEqual(upstream.compare(source, request)['status'], 'unchanged')
         self.assertEqual(request.call_count, 1)
 
     def test_sources_without_skill_rows_conservatively_compare_whole_repository(self):

@@ -88,21 +88,23 @@ def tree_files(source, repo, head, request):
             listings[key] = data
         return listings[key]
 
+    # Entries carry mode so executable-bit and submodule changes stay visible.
     def entry(commit, path):
         if path == '.':
-            return ('tree', listing(commit, '.')['sha'])
+            return ('tree', listing(commit, '.')['sha'], '040000')
         parent, _, name = path.rpartition('/')
         data = listing(commit, parent or '.')
         found = [e for e in (data or {}).get('tree', []) if e['path'] == name]
-        return (found[0]['type'], found[0]['sha']) if found else None
+        return (found[0]['type'], found[0]['sha'], found[0]['mode']) if found else None
 
     def blobs(commit, path, found):
         if found is None:
             return {}
-        if found[0] == 'blob':
-            return {path: found[1]}
+        if found[0] != 'tree':
+            return {path: found[1:]}
         prefix = '' if path == '.' else path + '/'
-        return {prefix + e['path']: e['sha'] for e in listing(commit, path, True)['tree'] if e['type'] == 'blob'}
+        return {prefix + e['path']: (e['sha'], e['mode'])
+                for e in listing(commit, path, True)['tree'] if e['type'] != 'tree'}
 
     files = []
     pins = source.get('path_pins') or dict.fromkeys(source['paths'], source['pinned'])
@@ -110,6 +112,10 @@ def tree_files(source, repo, head, request):
         if not re.fullmatch(r'[0-9a-f]{40}', pin):
             raise ValueError('Source needs an exact reviewed commit')
         old, new = entry(pin, path), entry(head, path)
+        if old is None:
+            # An adapted path must exist at its own pin; a 404 here may also mean the
+            # pinned commit is gone upstream. Either way the evidence is missing.
+            raise ValueError(f'{path} not found at pin {pin[:12]}; inspect manually')
         if old == new:
             continue
         before, after = blobs(pin, path, old), blobs(head, path, new)
