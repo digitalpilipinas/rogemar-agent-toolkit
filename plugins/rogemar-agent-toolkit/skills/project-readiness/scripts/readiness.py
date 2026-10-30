@@ -101,6 +101,10 @@ def footprint_item(root, entry, location):
     if entry['tracking'] == 'tracked' and ignored:
         return dict(item, kind='ignore-rule', state='needs-owner',
                     action='Unignore this path so its records can be committed.')
+    if entry['tracking'] == 'ignored' and tracked:
+        # An ignore rule does not untrack files Git already tracks.
+        return dict(item, kind='ignore-rule', state='needs-owner',
+                    action='Stop tracking this path (git rm -r --cached) and ignore it.')
     parent = Path(path.rstrip('/')).parent
     in_use = exists or (parent != Path('.') and (root / parent).is_dir())
     if entry['tracking'] == 'ignored' and not ignored and in_use:
@@ -260,7 +264,7 @@ def main(argv=None):
                 if item['state'] in ('needs-owner', 'unavailable'):
                     print('- [%s] %s: %s' % (item['state'], item['path'], item['action']))
             print('Next: ' + result['next_action'])
-        return {'ready': 0, 'declined': 0, 'needs-owner': 2}.get(result['status'], 1)
+        return {'ready': 0, 'declined': 0, 'needs-owner': 2, 'approved': 3}.get(result['status'], 1)
     except (OSError, ValueError, KeyError, TypeError) as exc:
         print(json.dumps({'status': 'unavailable', 'error': str(exc), 'grants_authority': False}))
         return 1

@@ -59,6 +59,21 @@ class ReadinessTests(unittest.TestCase):
         self.assertEqual(plan['status'], 'needs-owner')
         self.assertFalse(plan['grants_authority'])
 
+    def test_tracked_files_under_an_ignored_footprint_need_untracking(self):
+        root = self.repo({'.codex/project-learning/state/run.json': '{}'})
+        subprocess.run(['git', '-C', str(root), 'add', '.'], check=True)
+        (root / '.gitignore').write_text('.codex/project-learning/state/\n')
+        item = self.items(readiness.plan(root, INDEX))['footprint:.codex/project-learning/state/']
+        self.assertEqual(item['state'], 'needs-owner')
+        self.assertIn('git rm -r --cached', item['action'])
+
+    def test_approved_status_has_its_own_exit_code(self):
+        root = self.repo({})
+        plan = readiness.plan(root, INDEX)
+        (root / '.agents').mkdir()
+        (root / '.agents/readiness.json').write_text(json.dumps({'approved_plan_id': plan['plan_id']}))
+        self.assertEqual(readiness.main(['plan', '--root', str(root)]), 3)
+
     def test_uninstalled_owners_add_no_items(self):
         root = self.repo({'.gitignore': '.agents/*\n'})
         empty = Path(tempfile.mkdtemp())

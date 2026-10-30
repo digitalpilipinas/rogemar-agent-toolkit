@@ -10,7 +10,8 @@ cheap and read-only, and it does nothing visible when the project is already rea
 
 1. Run `python3 -B <this skill folder>/scripts/readiness.py plan --root <repository root>`. Exit 0 means
    ready (or a declined plan that has not changed); exit 2 means the plan has items
-   for the owner; exit 1 means readiness is unavailable. Report unavailable as unavailable, never as ready.
+   for the owner; exit 3 means the owner approved items you still need to apply;
+   exit 1 means readiness is unavailable. Report unavailable as unavailable, never as ready.
 2. If the status is `needs-owner`, show the owner the `needs-owner` items once, as one
    plan: unignore or ignore rules for paths skills write, and the one-line project
    instruction. Never apply them without approval; the plan grants no authority.
