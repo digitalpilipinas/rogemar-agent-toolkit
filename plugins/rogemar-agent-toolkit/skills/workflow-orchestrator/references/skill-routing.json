@@ -3322,6 +3322,9 @@
       "required_evidence": [
         "affected-behavior"
       ],
+      "receipt_tags": [
+        "formal-verification"
+      ],
       "source": "formal-verification-create/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -3346,6 +3349,10 @@
       ],
       "required_evidence": [
         "affected-behavior"
+      ],
+      "receipt_tags": [
+        "formal-verification",
+        "verification-drift"
       ],
       "source": "formal-verification-maintain/SKILL.md",
       "kind": "vendored",
@@ -4496,6 +4503,10 @@
       "required_evidence": [
         "affected-behavior"
       ],
+      "receipt_tags": [
+        "formal-verification",
+        "statechart"
+      ],
       "source": "statechart-verification/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -4549,6 +4560,9 @@
       "boundary": "No mandatory provider migration or unrequested backend service",
       "activation": "conditional",
       "task_tags_any": [
+        "supabase"
+      ],
+      "receipt_tags": [
         "supabase"
       ],
       "source": "supabase-guardian/SKILL.md",
@@ -4653,6 +4667,9 @@
         "darwin",
         "linux"
       ],
+      "receipt_tags": [
+        "swift-concurrency"
+      ],
       "source": "swift-concurrency/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -4700,6 +4717,9 @@
         "darwin",
         "linux"
       ],
+      "receipt_tags": [
+        "swift-concurrency"
+      ],
       "source": "swift-concurrency-pro/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -4742,6 +4762,9 @@
         "darwin",
         "linux"
       ],
+      "receipt_tags": [
+        "swift-testing"
+      ],
       "source": "swift-testing-pro/SKILL.md",
       "kind": "vendored",
       "required_resources": [
@@ -4774,6 +4797,9 @@
       ],
       "runtime_platforms": [
         "darwin"
+      ],
+      "receipt_tags": [
+        "swiftdata"
       ],
       "source": "swiftdata-pro/SKILL.md",
       "kind": "vendored",
@@ -4808,6 +4834,9 @@
       ],
       "runtime_platforms": [
         "darwin"
+      ],
+      "receipt_tags": [
+        "swiftui"
       ],
       "source": "swiftui-expert-skill/SKILL.md",
       "kind": "vendored",
@@ -4884,6 +4913,9 @@
       ],
       "runtime_platforms": [
         "darwin"
+      ],
+      "receipt_tags": [
+        "swiftui"
       ],
       "source": "swiftui-pro/SKILL.md",
       "kind": "vendored",
@@ -5637,6 +5669,9 @@
       "markers": [
         {
           "glob": "supabase/config.toml"
+        },
+        {
+          "glob": "supabase/**"
         }
       ]
     },

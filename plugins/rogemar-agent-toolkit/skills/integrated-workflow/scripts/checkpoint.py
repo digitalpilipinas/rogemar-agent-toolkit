@@ -31,6 +31,81 @@ def readiness_summary(root):
         return {'status': 'unavailable', 'error': str(exc)}
 
 
+METHOD_STATES = {'used', 'unavailable', 'blocked', 'not-applicable'}
+
+
+def load_index(policy):
+    """Routing index beside the skills, or a policy-pinned copy outside the candidate."""
+    path = policy.get('routing_index')
+    if path:
+        data = Path(path).read_bytes()
+        if hashlib.sha256(data).hexdigest() != policy.get('routing_index_sha256'):
+            raise ValueError('routing index pin mismatch')
+        return json.loads(data)
+    return json.loads((Path(__file__).resolve().parents[2] /
+                       'workflow-orchestrator/references/skill-routing.json').read_text())
+
+
+def candidate_tags(root, paths, index, declared=()):
+    """Tags in play: declared by the receipt scope, or matched by changed paths."""
+    tags = set(declared)
+    for tag, entry in index.get('task_tags', {}).items():
+        for marker in entry.get('markers', []):
+            pattern = marker['glob'].rstrip('/')
+            short = pattern[3:] if pattern.startswith('**/') else pattern
+            hits = [p for p in paths if fnmatch.fnmatchcase(p, pattern) or
+                    ('/' not in short and fnmatch.fnmatchcase(PurePosixPath(p).name, short))]
+            if 'contains' in marker:
+                needle = marker['contains'].encode()
+                hits = [p for p in hits if (root / p).is_file() and needle in (root / p).read_bytes()[:65536]]
+            if hits:
+                tags.add(tag)
+                break
+    return tags
+
+
+def required_methods(index, tags):
+    """One required record per alternative group (or method) whose receipt_tags are in play."""
+    groups = {}
+    for name, route in index.get('skills', {}).items():
+        if set(route.get('receipt_tags', [])) & tags:
+            groups.setdefault(route.get('alternative_group') or name, []).append(name)
+    return {group: sorted(names) for group, names in sorted(groups.items())}
+
+
+def check_methods(root, receipt, required, identity):
+    """Errors for missing or weak method records; `used` must cite existing evidence."""
+    errors, records = [], receipt.get('methods', [])
+    if not isinstance(records, list) or any(not isinstance(r, dict) for r in records):
+        return ['methods must be an array of records']
+    by_id = {r.get('id'): r for r in records}
+    for group, names in required.items():
+        found = [by_id[n] for n in names if n in by_id]
+        if not found:
+            errors.append('method %s: no record (one of %s)' % (group, ', '.join(names)))
+            continue
+        for record in found:
+            prefix = 'method %s: ' % record['id']
+            state = record.get('state')
+            if state not in METHOD_STATES:
+                errors.append(prefix + 'state must be used, unavailable, blocked or not-applicable')
+            elif state != 'used' and not str(record.get('reason', '')).strip():
+                errors.append(prefix + state + ' needs a reason')
+            elif state == 'used':
+                evidence = record.get('evidence', [])
+                if not isinstance(evidence, list) or not evidence:
+                    errors.append(prefix + 'used needs evidence (file path or commit)')
+                for ref in evidence if isinstance(evidence, list) else []:
+                    path = Path(str(ref)) if Path(str(ref)).is_absolute() else root / str(ref)
+                    exists = path.is_file()
+                    if not exists and re.fullmatch(r'[0-9a-f]{7,40}', str(ref)):
+                        exists = subprocess.run(['git', '-C', str(root), 'cat-file', '-e', str(ref) + '^{commit}'],
+                                                capture_output=True).returncode == 0
+                    if not exists:
+                        errors.append(prefix + 'evidence not found: ' + str(ref))
+    return errors
+
+
 def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -139,7 +214,7 @@ def selected_features(mapping, paths, requested):
     return selected, uncovered
 
 
-def check(root, base, phase, receipt, mapping, required_gates=(), boundary="accept"):
+def check(root, base, phase, receipt, mapping, required_gates=(), boundary="accept", policy=None):
     if not isinstance(receipt, dict) or not isinstance(receipt.get('scope', {}), dict) or not isinstance(receipt.get('map_review', {}), dict):
         raise ValueError('receipt, scope and map_review must be objects')
     validate_mapping(root, mapping)
@@ -149,6 +224,14 @@ def check(root, base, phase, receipt, mapping, required_gates=(), boundary="acce
     result = {'phase': phase, 'boundary': boundary, 'candidate': identity, 'changed_paths': paths,
               'selected': [{'id': f['id'], 'recipe': f['recipe'], 'platforms': f['platforms']}
                            for f in selected], 'coverage_gaps': uncovered, 'errors': [], 'deferred': []}
+    try:
+        index = load_index(policy or {})
+        tags = candidate_tags(root, paths, index, scope.get('tags', []))
+        required = required_methods(index, tags)
+        result['methods'] = {'tags': sorted(tags), 'required': required}
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        index, required = None, None
+        result['methods'] = {'status': 'unavailable', 'error': str(exc)}
     if phase == 'start':
         result['readiness'] = readiness_summary(root)
         result['status'] = 'preparation'
@@ -167,6 +250,18 @@ def check(root, base, phase, receipt, mapping, required_gates=(), boundary="acce
             errors.append('expected behavior must remain authoritative; investigate product regressions')
     if uncovered or review.get('disposition') == 'coverage gap':
         errors.append('required behavior has a coverage gap')
+    # Method receipt: enforced at Integrated Workflow acceptance unless the receipt is a
+    # small bounded correction or the trusted policy opts the project into report-only.
+    report_only = (policy or {}).get('methods') == 'report-only' or scope.get('size') == 'small'
+    if required is None:
+        if not report_only:
+            errors.append('method receipt unavailable: ' + result['methods']['error'])
+    else:
+        method_errors = check_methods(root, receipt, required, identity)
+        result['methods']['errors'] = method_errors
+        result['methods']['enforced'] = not report_only
+        if not report_only:
+            errors.extend(method_errors)
     expected = {f["id"] + ':' + p: (f['id'], p) for f in selected for p in f['platforms']}
     for name in required_gates:
         expected.setdefault(name, (None, None))
@@ -337,7 +432,7 @@ def main(argv=None):
             print(json.dumps({'status': 'structure-only', 'runtime': 'unverified', 'policy': a.policy_sha256, 'tree': a.tree}))
             return 0
         receipt = json.loads(a.receipt.read_text()) if a.receipt.exists() else {}
-        result = check(root, a.base, a.phase, receipt, mapping, required, boundary)
+        result = check(root, a.base, a.phase, receipt, mapping, required, boundary, policy)
         if a.phase != 'start':
             check_execution_observations(root, policy, receipt, result)
         print(json.dumps(result, indent=2))

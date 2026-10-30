@@ -75,6 +75,10 @@ def expected_index(root):
     unknown = {tag for route in routes.values() for tag in route.get('task_tags_any', [])} - set(task_tags)
     if unknown:
         raise ValueError('Undeclared task tags: ' + ', '.join(sorted(unknown)))
+    for name, route in routes.items():
+        # receipt_tags: tags that make a method record required at acceptance (a subset of applicability).
+        if set(route.get('receipt_tags', [])) - set(route.get('task_tags_any', [])):
+            raise ValueError(name + ': receipt_tags must be a subset of task_tags_any')
     return {'schema_version': 1, 'generated_by': 'scripts/routing_catalog.py',
             'dispatcher': 'workflow-orchestrator',
             'skills': dict(sorted(routes.items())),

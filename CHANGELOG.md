@@ -2,6 +2,8 @@
 
 ## Unreleased (after 1.2.2)
 
+- Enforce a method receipt at Integrated Workflow acceptance: `checkpoint.py` derives required methods from changed paths and declared tags through a small set of `receipt_tags`, requires one record per alternative group (used with existing evidence, or unavailable, blocked or not applicable with a reason), exempts small corrections, and honors a trusted-policy `report-only` opt-out. `readiness.py ci` prints a pull-request job that runs it from the protected base branch.
+
 - Add `project-readiness` to the core pack: a read-only start-of-task check that detects technologies, checks declared footprints with Git, prints one setup plan with a stable `plan_id` for a single owner approval, generates a situation map of applicable skills, lists installed but unmanaged skills, and prints acceptance pins. Every entry skill and task-handoff discovery run it at start or resume; `checkpoint.py --phase start` includes its summary. The core pack is now seven skills.
 
 - Declare the project paths skills read or write as catalog `footprint` entries, collected into the routing index with a lint test for undeclared paths; add a pinned `task_tags` vocabulary with detection markers.

@@ -34,6 +34,10 @@ path, such as an agent-map output folder outside the repository. Declared locati
 win. Connection state for MCP servers and plugins is observed by the agent at runtime
 and never written to the record or the map.
 
+To enforce the method receipt on pull requests, `readiness.py ci` prints a GitHub
+Actions job for the owner to review and adopt; it reads the validator and policy
+from the protected base branch, never the pull request. It writes nothing.
+
 For acceptance pins, `python3 -B <this skill folder>/scripts/readiness.py pins --policy FILE --validator FILE`
 prints the sha256 values and the exact accept command for the owner's acceptance
 record or trusted CI. It writes nothing.

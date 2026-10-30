@@ -89,8 +89,9 @@ For Swift/E2E alternatives, portable maintenance and mechanical validation, use
 For substantial work, extend the existing task receipt with one entry per selected
 method: selection reason, instruction path plus revision/content identity, resources
 actually read, applicable required outputs, prerequisite result/fallback, and the
-current candidate's evidence references. Track selected, read, applied, verified,
-blocked or not-applicable distinctly. Naming a method is not application; a file
+current candidate's evidence references. Track selected, read, applied and verified
+progress, and record each method's final state as used, unavailable, blocked or
+not applicable, with a reason for each non-used state. Naming a method is not application; a file
 resolver verifies paths, not semantic selection or execution. A read is not proof
 that the required behavior occurred. Inspect the resulting artifact or observation.
 

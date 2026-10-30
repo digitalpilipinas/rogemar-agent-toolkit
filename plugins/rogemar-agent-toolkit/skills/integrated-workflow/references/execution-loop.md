@@ -357,6 +357,14 @@ report from [Forge mode status](../../workflow-orchestrator/references/forge-mod
 and each skipped step with its reason. A missing item stays visibly missing. This
 extends the existing record; it is not another board.
 
+The receipt's `methods` array holds those records: `{"id", "state", "reason"}`, with
+`"evidence"` (existing file paths or commits) for `used`. Workers return their own
+records and the parent merges them. `checkpoint.py` derives the required methods from
+the changed paths and the receipt's `scope.tags`: each skill with matching
+`receipt_tags` needs one record per alternative group. Acceptance fails on a missing
+record, an unreasoned non-used state or missing evidence, unless the receipt's
+`scope.size` is `small` or the trusted policy sets `"methods": "report-only"`.
+
 For direct-main delivery, verify target identity/policy, pass required local gates,
 commit/push intentional content and verify the remote target contains the intended
 result. PR-only reviews and PR monitoring are not applicable. For branch delivery,

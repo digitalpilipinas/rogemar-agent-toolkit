@@ -5744,7 +5744,7 @@
     },
     "engineering-playbooks": {
       "file_count": 61,
-      "sha256": "dbc2048e3dfef3ea94afc491c4b20ed53949bbb6f0bf7a95ea2787af1b1e441b"
+      "sha256": "90990bd05a9a4f70bd726dabd5011092788538ad7644b30bce3095bb9e5398b5"
     },
     "figma": {
       "file_count": 8,
@@ -5968,7 +5968,7 @@
     },
     "integrated-workflow": {
       "file_count": 14,
-      "sha256": "bb9172a5079f1891f346af6b710354734fdb028909b8beef1e3b0182e8b08909"
+      "sha256": "a73d4491571e999730dc9e065af1e5ed4f52c4a2ce9366d5b286f2938fca2534"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -6032,7 +6032,7 @@
     },
     "project-readiness": {
       "file_count": 3,
-      "sha256": "a6b6f6ca9c9453781d226d20447b18dd1c8894c2e6ff623ef97c0f1b5199d9e1"
+      "sha256": "e6a886cd374617753bf52c0e4ca84d5f9282879f9cd4eff05d9ff5348f4e59d3"
     },
     "reference-design-contract": {
       "file_count": 7,
@@ -6144,7 +6144,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 29,
-      "sha256": "ddb690415bd0f268be40e586ac6bede9f5c6f28c7736fa20ccffe122da533fb1"
+      "sha256": "b274a49b1232f5d0ec069cff8bcf196059e37ed11b142435ba66679e07e3fa1e"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

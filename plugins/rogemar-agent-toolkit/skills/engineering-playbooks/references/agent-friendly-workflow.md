@@ -71,6 +71,12 @@ existing approved acceptance record or trusted CI configuration, never derive th
 from candidate-controlled values at acceptance. Policy changes require their own
 review; do not refresh pins merely to make a product candidate pass.
 
+The method receipt uses the routing index installed beside the validator. When the
+validator runs from a separate copy, add `routing_index` (an absolute path outside the
+candidate) and `routing_index_sha256` to the policy; an unpinned or missing index
+makes the receipt unavailable, never passed. `"methods": "report-only"` reports
+without enforcing.
+
 To provision the pins once per project: the owner chooses a location outside the
 candidate checkout; copy `checkpoint.py` and the policy JSON there from a reviewed
 commit, plus the sibling `execution_provenance.py` when the policy has non-empty

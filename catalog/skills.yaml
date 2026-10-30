@@ -1426,6 +1426,9 @@
         ],
         "required_evidence": [
           "affected-behavior"
+        ],
+        "receipt_tags": [
+          "formal-verification"
         ]
       }
     },
@@ -1454,6 +1457,10 @@
         ],
         "required_evidence": [
           "affected-behavior"
+        ],
+        "receipt_tags": [
+          "formal-verification",
+          "verification-drift"
         ]
       }
     },
@@ -1993,6 +2000,10 @@
         ],
         "required_evidence": [
           "affected-behavior"
+        ],
+        "receipt_tags": [
+          "formal-verification",
+          "statechart"
         ]
       }
     },
@@ -2019,6 +2030,9 @@
         "boundary": "No mandatory provider migration or unrequested backend service",
         "activation": "conditional",
         "task_tags_any": [
+          "supabase"
+        ],
+        "receipt_tags": [
           "supabase"
         ]
       }
@@ -2071,6 +2085,9 @@
         "runtime_platforms": [
           "darwin",
           "linux"
+        ],
+        "receipt_tags": [
+          "swift-concurrency"
         ]
       }
     },
@@ -2118,6 +2135,9 @@
         "runtime_platforms": [
           "darwin",
           "linux"
+        ],
+        "receipt_tags": [
+          "swift-concurrency"
         ]
       }
     },
@@ -2157,6 +2177,9 @@
         "runtime_platforms": [
           "darwin",
           "linux"
+        ],
+        "receipt_tags": [
+          "swift-testing"
         ]
       }
     },
@@ -2194,6 +2217,9 @@
         ],
         "runtime_platforms": [
           "darwin"
+        ],
+        "receipt_tags": [
+          "swiftdata"
         ]
       }
     },
@@ -2274,6 +2300,9 @@
         ],
         "runtime_platforms": [
           "darwin"
+        ],
+        "receipt_tags": [
+          "swiftui"
         ]
       }
     },
@@ -2316,6 +2345,9 @@
         ],
         "runtime_platforms": [
           "darwin"
+        ],
+        "receipt_tags": [
+          "swiftui"
         ]
       }
     },
@@ -6197,6 +6229,9 @@
       "markers": [
         {
           "glob": "supabase/config.toml"
+        },
+        {
+          "glob": "supabase/**"
         }
       ]
     },
