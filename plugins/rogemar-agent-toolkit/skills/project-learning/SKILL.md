@@ -77,6 +77,7 @@ The existing workflow owner automatically assesses one candidate at a verified t
 - Keep candidate failures separate from product acceptance. Skip after a bounded lock timeout; never keep a task alive for learning. A nonzero capture exit is a learning error, not a product gate.
 - Inspect pending, accepted and dismissed matches. A settled lesson stays settled; a new independently verified evidence reference may create a separate pending revision linked to it. Similar wording still needs semantic review by the owner.
 - Review reminders appear only when `review_due` is true, once per pending threshold or milestone with new pending material. Reminders do not approve anything.
+- Publish accepted lessons in batches, one change per milestone rather than one per lesson. Where the repository guards its governance paths, ask the owner once for a standing grant limited to the accepted-lesson ledger file; it covers only promoted lessons and grants nothing else.
 
 ### Global improvement proposal
 

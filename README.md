@@ -457,7 +457,7 @@ tools require their own preparation and execution evidence.
 | --- | --- | --- |
 | Swift and Xcode | 12 SwiftUI, concurrency, SwiftData, Swift Testing and Xcode build skills in the `swift` pack and iOS selection. | Compatible compiler/project settings; Xcode and a reachable Mac for Apple build/device evidence. |
 | Interface design | Briefs, reference design, journeys, components, accessibility, motion and visual QA. | The actual rendered interface and applicable interaction/device checks. |
-| Browser and mobile E2E | TesterArmy `e2e` for suitable new journeys; preserve existing tests and project conventions. | Browser/device engines, fixtures and actual assertion artifacts. Model-driven steps additionally need an approved provider. |
+| Browser and mobile E2E | TesterArmy `e2e` for suitable new journeys when the project pins it or the owner authorizes the dependency; otherwise extend existing tests and project conventions. | Browser/device engines, fixtures and actual assertion artifacts. Model-driven steps additionally need an approved provider. |
 | App and backend work | Selected Expo, Argent, Convex, Supabase and other pinned methods. | The corresponding tools and service access when that task requires them. |
 
 The Swift routes use AvdLee guidance for primary SwiftUI/concurrency implementation

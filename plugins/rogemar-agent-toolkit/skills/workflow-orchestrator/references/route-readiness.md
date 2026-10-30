@@ -19,9 +19,15 @@ Use the smallest sufficient selection and retain the active delivery owner.
   dispatcher. Retain optimization changes only with a measured, explained benefit.
 - Architecture/module/interface reasoning: `codebase-design` when useful, without
   imposing its vocabulary or launching an automatic panel.
-- Supported browser/iOS/Android E2E: prefer `e2e` for relevant new journeys, retaining
-  existing coverage and conventions. Static guidance works anywhere; builds, devices
-  and actual journey evidence have their own platform requirements.
+- Supported browser/iOS/Android E2E: prefer `e2e` for relevant new journeys when the
+  project already pins it or the owner authorizes adding the dependency; otherwise
+  extend the project's existing journey framework. Static guidance works anywhere;
+  builds, devices and actual journey evidence have their own platform requirements.
+- State-heavy behavior with a consequential invariant (sync, retry, conflict,
+  consent, lifecycle): design it with `statechart-verification` before code, add
+  `formal-verification-create` once the code exists, and run
+  `formal-verification-maintain` after merges that touch covered code. Record each
+  step as used or not applicable with a reason.
 
 A primary and review alternative can cooperate for a concrete coverage gap. Record
 that reason; don't load both routinely. PStack's explicit invocation flags still

@@ -71,6 +71,14 @@ existing approved acceptance record or trusted CI configuration, never derive th
 from candidate-controlled values at acceptance. Policy changes require their own
 review; do not refresh pins merely to make a product candidate pass.
 
+To provision the pins once per project: the owner chooses a location outside the
+candidate checkout; copy `checkpoint.py` and the policy JSON there from a reviewed
+commit; record each file's sha256 (for example
+`python3 -c "import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],'rb').read()).hexdigest())" FILE`)
+together with the exact accept/close command in the approved acceptance record or
+trusted CI configuration. Until pins exist, accept/close cannot run; report that as
+a missing prerequisite, never as a pass.
+
 Existing acceptance commands invoke this helper. CI uses its protected baseline
 copy/pins and available artifacts. When runtime artifacts exist only locally, CI
 records structural evidence only and the runtime gate stays local/unverified there.

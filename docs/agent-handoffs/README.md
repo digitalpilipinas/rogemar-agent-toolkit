@@ -20,6 +20,7 @@ belong to their recorded task, not every future change.
 | Native qualification | [toolkit-host-qualification](toolkit-host-qualification.md) | Local changes and checks |
 | Interview and upstream re-audit | [toolkit-upstream-reaudit](toolkit-upstream-reaudit.md) | Current local changes and pinned upstream comparison |
 | Upstream adoption review and drift tracking | [toolkit-adoption-review](toolkit-adoption-review.md) | Merged 1.2.2 source |
+| Project readiness and method receipts (1.3.0) | [plan](../plans/project-readiness-and-method-receipts.md) | Adoption review (PR #34) |
 
 Read status and next action from each task record rather than maintaining a second
 status table here. Retain completed records. Add an approved future task as planned
