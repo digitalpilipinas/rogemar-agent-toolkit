@@ -19,7 +19,7 @@ contents may the operator pass `--trust-unversioned-source`. This flag deliberat
 includes eligible files from that Git-less tree; it is not a privacy filter. The
 same explicit flag is needed when repackaging an extracted release archive.
 
-Default archives expose the six-skill core. The portable archive contains compatible selected skill trees plus the selection/hash receipt. The Codex marketplace archive contains a selected, self-validating source distribution, including the installer and full Forge provenance manifest. Its optional packs are limited to the contents of that archive; use the full source checkout to add other packs.
+Default archives expose the seven-skill core. The portable archive contains compatible selected skill trees plus the selection/hash receipt. The Codex marketplace archive contains a selected, self-validating source distribution, including the installer and full Forge provenance manifest. Its optional packs are limited to the contents of that archive; use the full source checkout to add other packs.
 
 Version 1.0 changes installation state and defaults. Legacy state migration requires an explicit harness. Subsequent breaking names, required dependencies or state schemas require a major version. Additive optional packs use a minor version; compatible corrections use a patch version.
 

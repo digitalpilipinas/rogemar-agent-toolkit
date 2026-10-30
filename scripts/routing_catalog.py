@@ -83,7 +83,8 @@ def expected_index(root):
 
 
 FOOTPRINT_CLASSES = {'acceptance-record', 'evidence', 'generated-cache', 'handoff-record',
-                     'learning-record', 'quality-record', 'tool-config', 'verification-asset'}
+                     'learning-record', 'quality-record', 'readiness-record', 'tool-config',
+                     'verification-asset'}
 
 
 def validate_footprint(entry):

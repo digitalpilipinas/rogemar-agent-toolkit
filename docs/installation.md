@@ -6,9 +6,9 @@ reviewed toolkit checkout using Git and Python 3.9 or later.
 
 ## Choose packs
 
-A fresh install starts with six core skills: `workflow-orchestrator`, `create-plan`,
-`first-time-right-delivery`, `bug-triage`, `code-review-and-quality` and
-`code-review-tests`. Add only the packs useful for the project.
+A fresh install starts with seven core skills: `workflow-orchestrator`, `create-plan`,
+`first-time-right-delivery`, `bug-triage`, `code-review-and-quality`,
+`code-review-tests` and `project-readiness`. Add only the packs useful for the project.
 
 | Pack | What it adds |
 | --- | --- |
@@ -140,7 +140,7 @@ each environment; a new manifest does not require replacing an existing managed
 installation.
 
 For a selected native bundle, run the existing packager with the receiving
-harness. Core remains the six-skill default. For example:
+harness. Core remains the seven-skill default. For example:
 
 ```sh
 python3 scripts/toolkit.py package --harness claude --pack engineering --output dist/claude

@@ -2,6 +2,8 @@
 
 ## Unreleased (after 1.2.2)
 
+- Add `project-readiness` to the core pack: a read-only start-of-task check that detects technologies, checks declared footprints with Git, prints one setup plan with a stable `plan_id` for a single owner approval, generates a situation map of applicable skills, lists installed but unmanaged skills, and prints acceptance pins. Every entry skill and task-handoff discovery run it at start or resume; `checkpoint.py --phase start` includes its summary. The core pack is now seven skills.
+
 - Declare the project paths skills read or write as catalog `footprint` entries, collected into the routing index with a lint test for undeclared paths; add a pinned `task_tags` vocabulary with detection markers.
 - Repin argent to `df57cb1`, where upstream renamed `argent-create-flow` / `argent-qa-flows` to `argent-create-e2e` / `argent-qa-e2e` (upstream's `argent init` removes the old skill folders as legacy; toolkit-managed installs may keep stale copies under the old names until removed). Track Appllama for drift, and name GoalBuddy's standalone `goal-prep` install.
 

@@ -4,6 +4,8 @@ description: Run Forge engineering methods on Claude with Claude's own models, s
 ---
 # Claude Forge
 
+At task start or resume, run [`project-readiness`](../project-readiness/SKILL.md) before planning or execution. It is read-only and quick when the project is ready.
+
 Follow the [applicable method contract](../workflow-orchestrator/references/method-contract.md) at entry, every task handoff and delegation,
 material changes, resume and acceptance. Select relevant methods automatically; preserve one owner,
 required evidence and the original working fallback. Query the routing index only

@@ -3169,14 +3169,15 @@
         ]
       },
       "core": {
-        "description": "Six shared owners for planning, execution discipline, diagnosis and review.",
+        "description": "Seven shared owners for readiness, planning, execution discipline, diagnosis and review.",
         "skills": [
           "workflow-orchestrator",
           "create-plan",
           "first-time-right-delivery",
           "bug-triage",
           "code-review-and-quality",
-          "code-review-tests"
+          "code-review-tests",
+          "project-readiness"
         ]
       },
       "data": {
@@ -5074,6 +5075,22 @@
         "droid"
       ]
     },
+    "project-readiness": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
     "reference-design-contract": {
       "requires": [],
       "targets": [
@@ -5647,7 +5664,7 @@
     },
     "claude-forge": {
       "file_count": 30,
-      "sha256": "fd691c9f8ac46aad1478d653eb0dd24e1bd903a6966785146fac6c1ae12469ca"
+      "sha256": "ec6376d6693c9f7d9d11b2471f0269a94c333e13b9fd9020a284fbf5f191bf8f"
     },
     "claude-forge-setup": {
       "file_count": 5,
@@ -5675,11 +5692,11 @@
     },
     "codex-forge": {
       "file_count": 69,
-      "sha256": "4710d19377fe393fb42b1594ae058ae1947f2da3a571336daaafc25561a5b510"
+      "sha256": "d030c296c8e373e822006d6dd953e23fc940401ee977621d04954f2a81ab12da"
     },
     "create-plan": {
       "file_count": 6,
-      "sha256": "811eaf90b417dfcfa079ee5f4cb34dca0446e465a1155d512e81869e1d76e26b"
+      "sha256": "ba4e88edee81e41b637c44e0b0100bf0ac066501f1c236bc1e6af390608b5e76"
     },
     "csv-analytics-reporter": {
       "file_count": 2,
@@ -5687,7 +5704,7 @@
     },
     "cursor-forge": {
       "file_count": 4,
-      "sha256": "cb7f2b3928f1e9e3c7bbe6e127baddfc92b370d02f09e1946b425c2bd9f82d03"
+      "sha256": "fe9c3f5cf4ac2b0601be8ad17b0bb42d509ee8f40de7d63604bd895a4ed9486a"
     },
     "cursor-forge-setup": {
       "file_count": 6,
@@ -5715,7 +5732,7 @@
     },
     "devin-forge": {
       "file_count": 3,
-      "sha256": "ee925c68ed7d3745b4b759e34e26ff3416802148ac7730412ec045c8659745e5"
+      "sha256": "0d21a91b5853788414bccf8d1f5f0893196860f2c949c2f3d18e3e7f84310b9b"
     },
     "dream-team": {
       "file_count": 7,
@@ -5951,7 +5968,7 @@
     },
     "integrated-workflow": {
       "file_count": 14,
-      "sha256": "108e9579b660289bcc63170d2a2e9c7fb2fae1efa54f663446c02064ceda4863"
+      "sha256": "bb9172a5079f1891f346af6b710354734fdb028909b8beef1e3b0182e8b08909"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -6012,6 +6029,10 @@
     "project-learning": {
       "file_count": 18,
       "sha256": "2dd6037069636aa6609e31200763e2956a302a2008e66c90c0f1b873baac871f"
+    },
+    "project-readiness": {
+      "file_count": 3,
+      "sha256": "d2b473646ad00f75febcde18a2ab1f4bb82cfb5a49966f467aa94e00dfe85aa8"
     },
     "reference-design-contract": {
       "file_count": 7,
@@ -6099,7 +6120,7 @@
     },
     "universal-forge": {
       "file_count": 5,
-      "sha256": "7305820abd91f8ee7d3a128d93fafa1a30eace4b99cfdaa1a1e01ec0cbc62e61"
+      "sha256": "bbaabb034e77492008cff0f16264142a4488fdb157245bcaef7962f0fdb3328b"
     },
     "universal-plan-model-router": {
       "file_count": 2,
@@ -6123,7 +6144,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 29,
-      "sha256": "e01e608769056a8c5d92d70e2ef94483f0da4e8d6a94903f1bb5922b76ad3017"
+      "sha256": "cd441cf4b47dd539d8e624f075f9a113f6873e25c0c7837eba42bfa510ddfdfd"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

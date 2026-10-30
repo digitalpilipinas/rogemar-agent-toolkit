@@ -12,7 +12,7 @@ Nested plugin wrappers were excluded; each skill has one discoverable SKILL.md.
 
 The `swift` pack contains four twostraws review/domain methods, AvdLee's SwiftUI
 and concurrency methods, and six cooperating Xcode build methods. `ios` and the
-full profile include all twelve. The six-skill core profile remains unchanged.
+full profile include all twelve. The core profile does not include them.
 Codebase Design belongs to engineering; TesterArmy belongs to web/mobile.
 All methods are portable files. macOS/Xcode/device requirements apply to execution,
 not to reading their instructions on Linux or in a cloud environment.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Readiness"
+  short_description: "Check project setup and map applicable skills"
+  default_prompt: "Use $project-readiness at the start of this task to check readiness and map applicable skills."

@@ -46,6 +46,12 @@ permission to deploy, change protection, spend on new providers, or publish rele
 
 ## What happens automatically
 
+At start or resume, `project-readiness` runs before planning or execution. It is
+read-only: it detects the project's technologies, checks the paths toolkit skills
+write, presents one setup plan only when items need the owner's approval, and
+produces a situation map of the skills that apply. The slice-start announcement
+names the matching rows.
+
 The owner restores the original request, accepted plan, current candidate, effective
 authority and unfinished gates. It selects only the required design, data, security,
 accessibility, testing and review methods. Model selection stays with the active

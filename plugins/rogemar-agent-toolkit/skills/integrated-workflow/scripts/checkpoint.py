@@ -12,6 +12,25 @@ import stat
 import sys
 
 
+def readiness_summary(root):
+    """Read-only project-readiness summary when that core skill is installed beside this one."""
+    skills = Path(__file__).resolve().parents[2]
+    script = skills / 'project-readiness/scripts/readiness.py'
+    if not script.is_file():
+        return {'status': 'not-installed'}
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('project_readiness', script)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        index = json.loads((skills / 'workflow-orchestrator/references/skill-routing.json').read_text())
+        plan = module.plan(root, index)
+        return {'status': plan['status'], 'plan_id': plan['plan_id'],
+                'needs_owner': [i['path'] for i in plan['items'] if i['state'] in ('needs-owner', 'unavailable')]}
+    except Exception as exc:  # readiness is advisory at start; never block or pass on its failure
+        return {'status': 'unavailable', 'error': str(exc)}
+
+
 def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -131,6 +150,7 @@ def check(root, base, phase, receipt, mapping, required_gates=(), boundary="acce
               'selected': [{'id': f['id'], 'recipe': f['recipe'], 'platforms': f['platforms']}
                            for f in selected], 'coverage_gaps': uncovered, 'errors': [], 'deferred': []}
     if phase == 'start':
+        result['readiness'] = readiness_summary(root)
         result['status'] = 'preparation'
         result['next_action'] = 'Read selected expected behavior and accepted lessons; choose checks before editing. Resolve gaps; attempt draft proof when authorized.'
         return result

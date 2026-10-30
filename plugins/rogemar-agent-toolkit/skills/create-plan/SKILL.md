@@ -8,6 +8,8 @@ metadata:
 
 # Create Plan
 
+At task start or resume, run [`project-readiness`](../project-readiness/SKILL.md) before planning or execution. It is read-only and quick when the project is ready.
+
 For intent, source-mode or approval ambiguity, or an explicit grilling request, apply the bounded
 [task-framing method](references/task-framing.md). Reuse accepted framing; do not
 start a new prompt-approval loop inside authorized execution.

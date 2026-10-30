@@ -4270,6 +4270,19 @@
       "required_skills": [],
       "targets": []
     },
+    "project-readiness": {
+      "trigger": "Use at the start or resume of every task in a repository, before planning or execution: detect technologies, check toolkit footprints, produce one setup plan for owner approval and a situation map of applicable skills.",
+      "outcome": "One read-only readiness plan and situation map for the current task",
+      "boundary": "Writes nothing and grants no authority; selection stays with workflow-orchestrator; no live connection state is recorded",
+      "activation": "conditional",
+      "source": "project-readiness/SKILL.md",
+      "kind": "vendored",
+      "required_resources": [
+        "scripts/readiness.py"
+      ],
+      "required_skills": [],
+      "targets": []
+    },
     "recall": {
       "source": "recall/SKILL.md",
       "kind": "external",
@@ -5346,6 +5359,14 @@
       "tracking": "either",
       "class": "tool-config",
       "owner": "codex-forge"
+    },
+    {
+      "path": ".agents/readiness.json",
+      "access": "write",
+      "tracking": "tracked",
+      "class": "readiness-record",
+      "gitignore": "unignore",
+      "owner": "project-readiness"
     },
     {
       "path": ".agents/skills/verify-<app>/",
