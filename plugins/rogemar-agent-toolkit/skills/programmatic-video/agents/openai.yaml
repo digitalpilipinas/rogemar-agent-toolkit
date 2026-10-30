@@ -1,0 +1,4 @@
+interface:
+  display_name: "Programmatic Video"
+  short_description: "Make code-rendered video with frame-level QA"
+  default_prompt: "Use $programmatic-video to plan, render and check this code-rendered video."

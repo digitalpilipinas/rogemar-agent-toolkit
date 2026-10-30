@@ -2,6 +2,8 @@
 
 ## Unreleased (after 1.2.2)
 
+- Add `programmatic-video` to the content pack: a method for code-rendered video (brief, storyboard, deterministic `render(t)` timeline, frame rendering, ffmpeg encoding, contact-sheet QA, asset licensing) that prefers an installed video plugin when it fits. Method informed by ClaudeAnimationBase and lemo-opuscar (both MIT); nothing is copied.
+
 - Add tla-ts (`tla-ts@0.0.3`, MIT) as an opt-in statechart engine that needs no Java: `STATECHART_ENGINE=tla-ts` with a local `TLA_TS` executable or authorized installation. TLC stays the default; tla-ts results are labelled unverified until a corpus comparison with TLC is recorded.
 
 - Generate the root Claude marketplace entry with the marketplace root as source and an explicit list of the 125 Claude-compatible skills, so Claude no longer loads Codex-, Cursor- or Devin-only skills (validated with `claude plugin validate`). Cursor already lists its own set; Factory and Gemini read the whole folder and cannot filter. A test keeps every harness's links inside its own selection.

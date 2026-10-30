@@ -103,6 +103,7 @@
         "./plugins/rogemar-agent-toolkit/skills/performance-profiler",
         "./plugins/rogemar-agent-toolkit/skills/playwright",
         "./plugins/rogemar-agent-toolkit/skills/privacy-safety-review",
+        "./plugins/rogemar-agent-toolkit/skills/programmatic-video",
         "./plugins/rogemar-agent-toolkit/skills/project-learning",
         "./plugins/rogemar-agent-toolkit/skills/project-readiness",
         "./plugins/rogemar-agent-toolkit/skills/reference-design-contract",

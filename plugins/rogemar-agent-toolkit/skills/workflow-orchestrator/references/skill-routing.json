@@ -4266,6 +4266,17 @@
       "required_skills": [],
       "targets": []
     },
+    "programmatic-video": {
+      "trigger": "Use when making a short video from code (HTML, Canvas, SVG, three.js, p5 or Remotion) rendered frame by frame: brief, storyboard, deterministic timeline, frame rendering, encoding and frame-level QA. Not for AI text-to-video models.",
+      "outcome": "A re-renderable video with storyboard, timeline source, render command and asset licenses",
+      "boundary": "No paid API, model calls or system installs by default; prefer an installed video plugin that fits; asset rights verified before use",
+      "activation": "conditional",
+      "source": "programmatic-video/SKILL.md",
+      "kind": "vendored",
+      "required_resources": [],
+      "required_skills": [],
+      "targets": []
+    },
     "project-learning": {
       "trigger": "Initialize and maintain project-local continuous learning, review captured lesson candidates, or adapt accepted lessons between repositories. Use for setup and curation, or enrolled workflow completion capture.",
       "outcome": "Single writer, bounded recall, candidate review and governed promotion",

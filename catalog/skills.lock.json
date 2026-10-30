@@ -3161,6 +3161,7 @@
           "article-creator-2",
           "meeting-notes-task-extractor",
           "pdf",
+          "programmatic-video",
           "seo-content-strategy",
           "social-content-factory",
           "sora",
@@ -5059,6 +5060,22 @@
         "droid"
       ]
     },
+    "programmatic-video": {
+      "requires": [],
+      "targets": [
+        "agent-skills",
+        "codex",
+        "cursor",
+        "gemini",
+        "antigravity",
+        "grok-build",
+        "junie",
+        "command-code",
+        "z-code",
+        "claude",
+        "droid"
+      ]
+    },
     "project-learning": {
       "requires": [],
       "targets": [
@@ -6026,6 +6043,10 @@
       "file_count": 2,
       "sha256": "2c481a79b7db67d3b82455f5b2e311854aad20408991bc23635e4940aeeecf23"
     },
+    "programmatic-video": {
+      "file_count": 2,
+      "sha256": "f196a766d03c6b040f182efba157d62c2a2ee560cc26f021350c024606a9dba7"
+    },
     "project-learning": {
       "file_count": 18,
       "sha256": "2dd6037069636aa6609e31200763e2956a302a2008e66c90c0f1b873baac871f"
@@ -6144,7 +6165,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 29,
-      "sha256": "74ce6fc38ce3be485608392fbb6cd0f5394ee6257a450c81921b5f4acb545d23"
+      "sha256": "3dd995daefa71e019e5ab303c94e479cd75c442e574807217c719d8903a66e42"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

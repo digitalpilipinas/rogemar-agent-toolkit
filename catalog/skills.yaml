@@ -1738,6 +1738,16 @@
       }
     },
     {
+      "name": "programmatic-video",
+      "source": "toolkit-authored (1.3.0)",
+      "routing": {
+        "trigger": "Use when making a short video from code (HTML, Canvas, SVG, three.js, p5 or Remotion) rendered frame by frame: brief, storyboard, deterministic timeline, frame rendering, encoding and frame-level QA. Not for AI text-to-video models.",
+        "outcome": "A re-renderable video with storyboard, timeline source, render command and asset licenses",
+        "boundary": "No paid API, model calls or system installs by default; prefer an installed video plugin that fits; asset rights verified before use",
+        "activation": "conditional"
+      }
+    },
+    {
       "name": "project-learning",
       "source": "approved local Codex snapshot",
       "routing": {
@@ -4041,6 +4051,7 @@
         "article-creator-2",
         "meeting-notes-task-extractor",
         "pdf",
+        "programmatic-video",
         "seo-content-strategy",
         "social-content-factory",
         "sora",
