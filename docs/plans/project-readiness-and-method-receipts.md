@@ -285,6 +285,10 @@ supported or unsupported.
 Acceptance: a recorded before/after comparison per harness; release notes
 state measured results, not assumed ones.
 
+Status: the protocol is in `docs/quality/method-compliance-protocol.md`. The runs
+need installed builds in real Claude, Codex and Cursor sessions and one EVERSO pilot
+slice, so they follow the push and precede the 1.3.0 tag.
+
 ### Not added (already covered)
 
 - Separate per-situation skill packs: the situation map serves that need;
@@ -316,4 +320,6 @@ tagged separately.
 
 ## Next action
 
-Slice 1 merged (PR #35). Slice 2 on `claude/toolkit-1-3-0-slice-2`.
+Slices 1–2 merged (PRs #35, #36). Slices 3–8 committed directly to `main` under the
+owner's direct-commit authorization after local checks. Next: the slice 9 runs with
+installed builds, then the owner tags 1.3.0.
