@@ -45,6 +45,29 @@ This record grants no commit, push, merge or installation authority.
 - Local install: 124 toolkit skills are duplicated in `~/.claude/skills` and
   the Claude plugin; removal needs owner approval.
 
+## Outcome (2026-10-30)
+
+- PR #34 (drift checker, statechart fork) and PR #35 (1.3.0 plan and slice 1
+  docs) merged after GitHub CodeRabbit and Codex reviews; PR #36 (slice 2:
+  footprints, tags, argent repin, Appllama tracking) merged with local
+  substitute evidence for a second cloud review, by owner choice.
+- Slices 3-9 committed directly to `main` under the owner's direct-commit
+  authorization: `320eb00`..`4e5d6f8`. Gate: one full local CodeRabbit review
+  (four minor findings, fixed), full local suite on Python 3.9 plus structural
+  checks on 3.11, owner suites, both packages and `claude plugin validate`;
+  then GitHub CI on `main` at `4e5d6f8`: 4/4 jobs passed (run 41058627184).
+
+## Still open
+
+- Slice 9 runs: the compliance protocol (`docs/quality/method-compliance-protocol.md`)
+  in installed Claude, Codex and Cursor sessions, plus one EVERSO pilot slice.
+  These gate the 1.3.0 tag, which the owner applies.
+- tla-ts parity trial: needs the owner's authorization to download and run
+  `tla-ts@0.0.3`; TLC remains the default until then.
+- Owner's local Claude install: keep the plugin, then run
+  `upgrade --convert-external-only` for `~/.claude` only, with consent.
+- Installed-plugin overlap audit (read-only), approved as a separate task.
+
 ## Next action
 
 Owner decides commit/PR, the proposals above, and the local duplicate cleanup.
