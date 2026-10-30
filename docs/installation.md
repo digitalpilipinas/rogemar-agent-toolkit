@@ -453,6 +453,24 @@ checks. Neither helper fetches or executes upstream code; ordinary verification
 is offline. Reviewed `routing_overrides` record stricter toolkit boundaries
 separately and cannot relax an upstream explicit-only flag.
 
+### Project footprints and task tags
+
+A skill that reads or writes paths inside a project declares them as `footprint`
+entries in `catalog/skills.yaml`, on its vendored entry or on its dependency for
+pinned third-party packs: `path`, `access` (read or write), `tracking` (tracked,
+ignored or either), `class` and an optional `gitignore` hint (ignore or unignore).
+`routing_catalog.py` collects them into the routing index's `footprints` list.
+Project readiness turns that list into one setup plan for the owner; nothing
+writes a project path or ignore rule from this metadata alone.
+
+`task_tags` is the pinned tag vocabulary. Each tag may carry detection `markers`
+(a glob, optionally with a `contains` string) that readiness uses to recognize a
+project's technologies; tags without markers come from the task itself. A skill's
+`task_tags_any` may use only declared tags. `tests/test_footprints.py` fails when
+skill text names a project path that no footprint declares, apart from harness
+or tool configuration that projects own (`.cursor/`, `.claude/`, `.github/` and
+similar).
+
 The routing resolver flags installed instructions that differ from their reviewed
 external hash. Preserve local copies and investigate ownership through the managed
 installer; do not overwrite them to make a readiness check pass. A matched hash

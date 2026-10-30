@@ -65,9 +65,39 @@ def expected_index(root):
                     raise ValueError(name + ': cannot relax upstream explicit invocation')
                 routes[name].update({k: v for k, v in override.items() if k != 'reason'})
                 routes[name]['adaptation'] = override['reason']
+    footprints = [dict(entry, owner=item['name']) for item in catalog['vendored']
+                  for entry in item.get('footprint', [])]
+    footprints += [dict(entry, owner=name) for name, item in catalog['dependencies'].items()
+                   for entry in item.get('footprint', [])]
+    for entry in footprints:
+        validate_footprint(entry)
+    task_tags = catalog.get('task_tags', {})
+    unknown = {tag for route in routes.values() for tag in route.get('task_tags_any', [])} - set(task_tags)
+    if unknown:
+        raise ValueError('Undeclared task tags: ' + ', '.join(sorted(unknown)))
     return {'schema_version': 1, 'generated_by': 'scripts/routing_catalog.py',
             'dispatcher': 'workflow-orchestrator',
-            'skills': dict(sorted(routes.items()))}
+            'skills': dict(sorted(routes.items())),
+            'footprints': sorted(footprints, key=lambda e: (e['path'], e['owner'])),
+            'task_tags': dict(sorted(task_tags.items()))}
+
+
+FOOTPRINT_CLASSES = {'acceptance-record', 'evidence', 'generated-cache', 'handoff-record',
+                     'learning-record', 'quality-record', 'tool-config', 'verification-asset'}
+
+
+def validate_footprint(entry):
+    """Declared project paths a skill reads or writes; readiness turns them into a setup plan."""
+    path = entry.get('path', '')
+    if (not isinstance(path, str) or not path or Path(path).is_absolute()
+            or '..' in Path(path).parts or path.startswith('-')):
+        raise ValueError('Unsafe footprint path: ' + repr(path))
+    if (entry.get('access') not in {'read', 'write'}
+            or entry.get('tracking') not in {'tracked', 'ignored', 'either'}
+            or entry.get('class') not in FOOTPRINT_CLASSES
+            or entry.get('gitignore', 'ignore') not in {'ignore', 'unignore'}
+            or set(entry) - {'path', 'access', 'tracking', 'class', 'gitignore', 'owner'}):
+        raise ValueError('Invalid footprint for ' + entry.get('owner', '?') + ': ' + path)
 
 
 def verify(root=ROOT):
@@ -101,6 +131,9 @@ def verify(root=ROOT):
             # Uninstalled routes remain discovery metadata, never availability.
             actual = dict(actual, skills={name: actual.get('skills', {}).get(name)
                                          for name in expected['skills']})
+            owners = {entry['owner'] for entry in expected['footprints']}
+            actual['footprints'] = [entry for entry in actual.get('footprints', [])
+                                    if entry.get('owner') in owners]
         if actual != expected:
             errors.append('Routing index is stale; run python3 scripts/routing_catalog.py --write')
     except (OSError, ValueError, KeyError, TypeError) as exc:
