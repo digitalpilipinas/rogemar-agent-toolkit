@@ -21,7 +21,8 @@ def load(name, path):
 
 
 readiness = load('readiness', SKILLS / 'project-readiness/scripts/readiness.py')
-checkpoint = load('checkpoint', SKILLS / 'integrated-workflow/scripts/checkpoint.py')
+CHECKPOINT = SKILLS / 'integrated-workflow/scripts/checkpoint.py'
+checkpoint = load('checkpoint', CHECKPOINT) if CHECKPOINT.is_file() else None  # absent from the core archive
 
 
 def snapshot(root):
@@ -58,6 +59,13 @@ class ReadinessTests(unittest.TestCase):
         self.assertEqual(plan['status'], 'needs-owner')
         self.assertFalse(plan['grants_authority'])
 
+    def test_uninstalled_owners_add_no_items(self):
+        root = self.repo({'.gitignore': '.agents/*\n'})
+        empty = Path(tempfile.mkdtemp())
+        self.addCleanup(lambda: subprocess.run(['rm', '-rf', str(empty)]))
+        ids = self.items(readiness.plan(root, INDEX, skills_root=empty))
+        self.assertNotIn('footprint:.agents/verification.json', ids)
+
     def test_ignore_rules_only_for_tools_in_use(self):
         unused = self.items(readiness.plan(self.repo({}), INDEX))
         self.assertNotEqual(unused['footprint:.codex/project-learning/state/']['state'], 'needs-owner')
@@ -73,11 +81,12 @@ class ReadinessTests(unittest.TestCase):
         (root / '.agents/readiness.json').write_text(json.dumps({'approved_plan_id': plan['plan_id']}))
         approved = readiness.plan(root, INDEX)
         self.assertEqual(approved['plan_id'], plan['plan_id'])
-        self.assertEqual(approved['status'], 'ready')
+        self.assertEqual(approved['status'], 'approved')  # approval alone is not readiness
         (root / 'AGENTS.md').write_text('Run the `project-readiness` skill at start.\n')
         changed = readiness.plan(root, INDEX)
         self.assertEqual(self.items(changed)['instruction']['state'], 'satisfied')
         self.assertNotEqual(changed['plan_id'], plan['plan_id'])
+        self.assertEqual(changed['status'], 'ready')  # applying the last item makes it ready
 
     def test_outside_git_is_never_ready_even_when_approved(self):
         root = self.repo({'AGENTS.md': 'project-readiness'}, git=False)
@@ -128,6 +137,7 @@ class ReadinessTests(unittest.TestCase):
         self.assertEqual(out['validator_sha256'], hashlib.sha256(b'print(1)').hexdigest())
         self.assertIn('--trusted-policy', out['command'])
 
+    @unittest.skipUnless(checkpoint, 'integrated-workflow is not in this selection')
     def test_checkpoint_start_includes_readiness_and_never_blocks_on_it(self):
         summary = checkpoint.readiness_summary(self.repo({}))
         self.assertIn(summary['status'], ('ready', 'needs-owner', 'unavailable'))
@@ -137,6 +147,8 @@ class ReadinessTests(unittest.TestCase):
         self.assertIn('project-readiness', core)
         for entry in ('create-plan', 'claude-forge', 'codex-forge', 'cursor-forge', 'devin-forge',
                       'universal-forge', 'integrated-workflow'):
+            if not (SKILLS / entry / 'SKILL.md').is_file():
+                continue  # selected archives carry only their own entries
             with self.subTest(entry=entry):
                 body = (SKILLS / entry / 'SKILL.md').read_text().split('---', 2)[2]
                 self.assertIn('project-readiness', body[:600])

@@ -16,8 +16,9 @@ cheap and read-only, and it does nothing visible when the project is already rea
    instruction. Never apply them without approval; the plan grants no authority.
    After approval, apply them with your normal tools and record the approved
    `plan_id` in the readiness record (default `.agents/readiness.json`, or the
-   project's declared location). Record `declined_plan_id` instead when the owner
-   declines; either one stops repeat prompts until the plan changes.
+   project's declared location); the status is then `approved` until the items are
+   applied, and `ready` once nothing is pending. Record `declined_plan_id` instead
+   when the owner declines; either one stops repeat prompts until the plan changes.
 3. Run `python3 -B <this skill folder>/scripts/readiness.py map --root <repository root>` and keep the
    situation map for this task. At slice start, name the matching rows in the
    one-line announcement the [method contract](../workflow-orchestrator/references/method-contract.md)

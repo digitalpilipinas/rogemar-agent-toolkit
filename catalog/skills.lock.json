@@ -6032,7 +6032,7 @@
     },
     "project-readiness": {
       "file_count": 3,
-      "sha256": "6b0254e7fe1f9ff12de5fa56f60fbb659a66a3675b64396fd93fa35dfcf48feb"
+      "sha256": "fdf7164491e01094a72d4c8f17e86868fe2c6c0dca4f857b2e4895178fb9929f"
     },
     "reference-design-contract": {
       "file_count": 7,
@@ -6144,7 +6144,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 29,
-      "sha256": "cd441cf4b47dd539d8e624f075f9a113f6873e25c0c7837eba42bfa510ddfdfd"
+      "sha256": "ddb690415bd0f268be40e586ac6bede9f5c6f28c7736fa20ccffe122da533fb1"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

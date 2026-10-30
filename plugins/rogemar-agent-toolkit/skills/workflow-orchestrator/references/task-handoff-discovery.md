@@ -27,8 +27,8 @@ create documents, search private history or grant external access.
    If none was found, say which bounded location was checked when continuity is
    relevant, then reconstruct from current authorized sources. A missing handoff
    alone does not block otherwise clear, authorized work.
-6. Then run [`project-readiness`](../../project-readiness/SKILL.md) once for this
-   start or resume, whichever entry skill was invoked. Present its setup plan only
+6. If the entry skill has not already run [`project-readiness`](../../project-readiness/SKILL.md)
+   for this start or resume, run it now; run it once per start or resume. Present its setup plan only
    when items need the owner, and keep its situation map for the slice-start
    announcement.
 

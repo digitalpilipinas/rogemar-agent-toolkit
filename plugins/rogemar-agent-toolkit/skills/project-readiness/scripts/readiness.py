@@ -134,18 +134,22 @@ def load_record(root, record):
     return data
 
 
-def plan(root, index, record=None):
+def plan(root, index, record=None, skills_root=HERE.parents[2]):
     files, truncated = project_files(root)
     tags = detect_tags(root, index.get('task_tags', {}), files)
     data = load_record(root, record)
     locations = data.get('locations', {}) if isinstance(data.get('locations', {}), dict) else {}
     routes = index.get('skills', {})
 
+    def installed(owner):
+        names = [owner] if owner in routes else [n for n, r in routes.items() if r.get('dependency') == owner]
+        return any((skills_root / name / 'SKILL.md').is_file() for name in names)
+
     def relevant(entry):
-        # A footprint applies when its owner applies here, or its path is already in use.
+        # A footprint applies when its owner is installed and applies here, or its path is in use.
         route = routes.get(entry['owner'])
         owner_tags = set(route.get('task_tags_any', [])) if route else None
-        return ((owner_tags is not None and (not owner_tags or owner_tags & set(tags)))
+        return ((installed(entry['owner']) and owner_tags is not None and (not owner_tags or owner_tags & set(tags)))
                 or (root / (locations.get(entry['path']) or entry['path']).split('<')[0].split('*')[0]).exists())
 
     items = [footprint_item(root, entry, locations.get(entry['path']))
@@ -161,8 +165,10 @@ def plan(root, index, record=None):
     declined = data.get('declined_plan_id') == plan_id
     if any(i['state'] == 'unavailable' for i in items):
         status = 'unavailable'  # missing evidence is never ready, approved or not
-    elif not pending or approved:
+    elif not pending:
         status = 'ready'
+    elif approved:
+        status = 'approved'  # owner approved; items still need applying, so not ready
     else:
         status = 'declined' if declined else 'needs-owner'
     return {'schema_version': 1, 'plan_id': plan_id, 'grants_authority': False, 'status': status,
@@ -172,6 +178,7 @@ def plan(root, index, record=None):
                             'None this session; the owner declined this plan. Ask again only when it changes.'
                             if status == 'declined' else
                             'Inspect the unavailable items; readiness cannot be confirmed.' if status == 'unavailable' else
+                            'Apply the approved items; do not ask the owner again.' if status == 'approved' else
                             'Show the owner the needs-owner items once; after approval, apply them '
                             'and record approved_plan_id in ' + (record or DEFAULT_RECORD) + '.')}
 
