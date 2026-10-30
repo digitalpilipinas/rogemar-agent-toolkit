@@ -24,10 +24,11 @@ Use the smallest sufficient selection and retain the active delivery owner.
   extend the project's existing journey framework. Static guidance works anywhere;
   builds, devices and actual journey evidence have their own platform requirements.
 - State-heavy behavior with a consequential invariant (sync, retry, conflict,
-  consent, lifecycle): design it with `statechart-verification` before code, add
-  `formal-verification-create` once the code exists, and run
-  `formal-verification-maintain` after merges that touch covered code. Record each
-  step as used or not applicable with a reason.
+  consent, lifecycle): design it with `statechart-verification` before code and
+  add `formal-verification-create` once the code exists. When a candidate touches
+  covered code, refresh and run the formal checks with `formal-verification-maintain`
+  before merge; post-merge maintenance is a separate step. Record each step as used
+  or not applicable with a reason.
 
 A primary and review alternative can cooperate for a concrete coverage gap. Record
 that reason; don't load both routinely. PStack's explicit invocation flags still

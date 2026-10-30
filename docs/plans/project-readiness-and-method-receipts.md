@@ -1,11 +1,12 @@
-# Plan: portable project readiness and method receipts (1.3.0)
+# Plan: portable project readiness, method receipts and packaging (1.3.0)
 
 Status: approved 2026-10-30 by the owner ("Approve, plan it") after a Forge
 arena comparison; amended the same day to the hybrid readiness entry ("Yes, use
 the hybrid") and to an enforced-by-default method receipt ("Yes, enforce by
 default"). The owner invokes only `create-plan`, the harness Forge entry and
 `integrated-workflow`, and expects agents to follow every routed method. Delivery: Integrated Workflow, branch + PR + safe merge, one
-PR per slice, on `claude/toolkit-1-3-0-readiness`. The branch starts stacked on
+PR per slice for complete reviews, all seven slices in one 1.3.0 release tagged
+once at the end (owner, 2026-10-30), starting on `claude/toolkit-1-3-0-readiness`. The branch starts stacked on
 PR #34 (`ee30ab4`) and is rebased onto `main` once #34 merges. No new provider,
 deployment or installation authority. Release tagging stays a separate owner
 decision.
@@ -81,7 +82,8 @@ Files: `workflow-orchestrator/references/route-readiness.md`,
 `project-learning/SKILL.md`, `CHANGELOG.md`.
 
 - State-heavy sequence: statechart design → formal-verification-create once
-  code exists → formal-verification-maintain after merges touching covered code.
+  code exists → formal-verification-maintain on any candidate touching covered
+  code, before merge.
 - `e2e` only where the project already pins it or the owner authorizes the
   dependency; otherwise extend the existing journey framework.
 - Completion checklist in the final acceptance record: findings, learning
@@ -106,7 +108,7 @@ Acceptance: `toolkit.py lock` and `verify`, full unit suite, both package
 builds, local CodeRabbit on the frozen candidate, PR reviews per Integrated
 Workflow.
 
-### 2. Footprint metadata, lint and tags
+### 2. Footprint metadata, lint, tags and catalog fixes
 
 - `catalog/skills.yaml`: optional per-skill `footprint` entries
   (`path`, `access`, `tracking`, `class`, `gitignore` hint) and expanded
@@ -116,8 +118,16 @@ Workflow.
 - Test: fail when a SKILL.md or reference names a repository path prefix that
   no skill declares.
 
+- Catalog fixes found by the EVERSO audit: reconcile the argent saved-path
+  skill names (`argent-create-e2e` / `argent-qa-e2e` in argent's own rule
+  versus `argent-create-flow` / `argent-qa-flows` in routing) against the
+  pinned upstream; route the installed folders that have no routing entry, or
+  record why they stay unrouted; add `Appllama/appllama-skills` at `dd5caae`
+  to `catalog/imported-sources.json` so drift tracking covers it.
+
 Acceptance: generator check, lint test with a seeded undeclared path, routing
-regression tests for `select_methods.py`.
+regression tests for `select_methods.py`, and an `upstream_compare.py` run that
+includes Appllama.
 
 ### 3. Readiness plan, `project-readiness` skill, entry wiring and pin printer
 
@@ -161,6 +171,61 @@ resolves in every harness package and the core profile includes it.
 Acceptance: checkpoint tests for missing records, empty reasons, a sequence
 chain, alternative groups, the small-correction exemption, and the policy
 opt-out.
+
+### 5. Per-harness packaging and lighter skills
+
+- Each harness's plugin route exposes only skills that target it plus
+  universal ones. Cursor's manifest already lists its 124; Claude adds manifest
+  paths to its default `skills/` scan, and Factory and `npx skills` read the
+  folder directly. Verify each harness's actual plugin rules first, then build
+  the structure that works for all of them; record any harness that cannot
+  filter.
+- Check cross-skill links into skills a harness does not receive (for example
+  `workflow-orchestrator` linking `plan-model-router` docs) and reword or
+  repoint them.
+- Retire the 23 `forge-principle-*` wrappers: their text duplicates the 24
+  files in `engineering-playbooks/references/principles/`. Migrate every caller
+  first (Forge mappings, routing index, tests), linking prove-it-works and
+  encode-lessons-in-structure by path.
+- Move `plan-model-router`'s validation and role evidence JSON (about 7 MB,
+  read only by one repo test and the docs) to `docs/`; keep
+  `scripts/routing_catalog.json`, which the router reads at runtime.
+- Installer: a supported, backed-up command to convert a full managed install
+  to external-only, for the plugin-plus-extras route.
+
+Acceptance: per-harness package and plugin listings show only compatible
+skills; link check passes; principle callers resolve; package size drops;
+conversion tested on a fixture with backup and rollback.
+
+### 6. tla-ts as an optional statechart engine
+
+- Optional TLA+ engine for the statechart-verification fork that needs no
+  Java, pinned at an exact version and fetched only under the existing
+  install-authority gate. TLC stays the default until a trial on the local
+  statechart corpus matches TLC's results.
+
+Acceptance: corpus comparison recorded; both engines selectable; missing
+engine reported, never passed.
+
+### 7. `programmatic-video` method skill
+
+- Our own content-pack method: brief, storyboard, a deterministic `render(t)`
+  timeline, headless-browser frames, ffmpeg mux, contact-sheet QA and a
+  licensing check. Credits JohnHeibel/ClaudeAnimationBase and
+  lemomo-ai/lemo-opuscar (both MIT); routes to Remotion or other installed
+  video plugins when present; no paid API by default.
+
+Acceptance: verify, lock and package checks; one rendered sample journey
+recorded as evidence where the tools exist.
+
+## Separate tasks
+
+- Installed-plugin overlap audit (read-only): classify each installed plugin
+  as adapt-a-method, reference-only or skip, reusing the EVERSO first pass.
+- Local Claude install reconciliation, after slice 5's conversion command:
+  back up `~/.claude/skills` toolkit copies, convert to external-only, keep
+  third-party skills and every other harness untouched. Needs the owner's
+  go-ahead.
 
 ## Risks
 
