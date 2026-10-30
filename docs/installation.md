@@ -462,12 +462,21 @@ Neither proves host discovery, unchanged resource content or authentication.
 ### Comparing selected upstreams
 
 During approved toolkit maintenance, run `python3 scripts/upstream_compare.py
---source coderabbit --source mattpocock/skills` on one line. Select dependency IDs
-or imported repository names from the existing catalogs. The helper performs
-unauthenticated read-only requests to public GitHub; it never installs, repins,
-logs in or executes downloaded code. It reports observed commits, changed paths,
-selected-content relevance, release-metadata-only changes and unavailable or
-incomplete comparisons. Rate limits remain unavailable evidence, not “current.”
+--source coderabbit --source mattpocock/skills` on one line, or `--all`. Select
+dependency IDs or imported repository names from the existing catalogs. The helper
+performs read-only requests to public GitHub, authenticated only when `GITHUB_TOKEN`
+is set; it never installs, repins, logs in or executes downloaded code. It reports
+observed commits, changed paths, selected-content relevance, release-metadata-only
+changes and unavailable or incomplete comparisons. Rate limits remain unavailable
+evidence, not “current.”
+
+Each adapted path is compared from its own adaptation pin. When an adaptation's
+paths have different pins, or GitHub's 300-file compare cap hides them in a large
+repository, the helper diffs those paths' Git trees directly (`method: tree`). An
+adaptation's optional `reviewed` commit records upstream changes inspected and
+deliberately not adopted, with the reason in `divergence`; it does not change
+which upstream files were adapted. The weekly `Upstream drift` workflow runs
+`--all` and opens or updates one issue when adapted paths change.
 
 Review instruction/resource/license changes before updating a recipe and metadata.
 A pinned recipe provisions selected compatible skill files. Native plugins, tools,

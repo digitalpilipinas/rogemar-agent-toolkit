@@ -155,6 +155,9 @@
 
 ## Unreleased
 
+- Compare adapted upstream paths from their own pins and diff Git trees when GitHub's 300-file cap hides them; add `--all`, a `reviewed` adaptation pin and a weekly read-only `Upstream drift` issue workflow.
+- Record the statechart-verification fork: upstream PStack replaced its scripts with a TypeScript compiler without the local chart, comparison and image features, so those are kept and the matching formal-verification sentence is not synced.
+
 - Update Codex Forge to Default, Peak, Balanced, Lean and Economy with GPT-6 Sol/Luna, exact-generation evidence, parent limits and scoped consultant exceptions.
 - Include the 225 role/mode decisions, preserved historical qualification records, 714-case benchmark summary and focused paired validation, with provisional limits disclosed.
 - Keep monitoring and feedback consolidation separate from validation, minimum-scope decisions and implementation; preserve Cursor and Universal catalogues.

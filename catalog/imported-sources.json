@@ -999,7 +999,9 @@
         "plugins/rogemar-agent-toolkit/skills/statechart-verification/LICENSE.txt"
       ],
       "validation": "See docs/agent-handoffs/toolkit-publication.md; native qualification is separate.",
-      "file_manifest": "catalog/statechart-source-manifest.json"
+      "file_manifest": "catalog/statechart-source-manifest.json",
+      "reviewed": "4dd1d05818d19792e7cd6e818f1667f95f7e1dbe",
+      "divergence": "Intentional fork since 2026-10-30; all paths reviewed through the `reviewed` commit. Upstream 34b1b7c (#977) replaced the .mjs statechart scripts with a TypeScript compiler and no longer documents from-chart, --against/--fixed comparison, PNG, cover or readerActions; this toolkit keeps them. The upstream create-formal-verification-skill sentence that dropped 'which of those violations a change fixes' is therefore not synced. Port upstream fixes selectively (for example 740d2c0, qualified action names in traces) after reproducing them locally."
     },
     {
       "repository": "mattpocock/skills",

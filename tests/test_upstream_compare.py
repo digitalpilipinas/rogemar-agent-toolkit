@@ -44,8 +44,7 @@ class UpstreamCompareTests(unittest.TestCase):
         self.assertEqual(result['status'], 'changed')
 
     def test_unavailable_malformed_diverged_and_truncated_stay_unverified(self):
-        for second in [OSError('network unavailable'), {}, {'status': 'behind', 'files': []},
-                       {'status': 'ahead', 'files': [dict(filename='file', status='modified')] * 300}]:
+        for second in [OSError('network unavailable'), {}, {'status': 'behind', 'files': []}]:
             with self.subTest(second=str(second)[:60]):
                 request = Mock(side_effect=[{'sha': 'b' * 40}, second])
                 self.assertEqual(upstream.compare(self.source, request)['status'], 'unavailable')
@@ -71,14 +70,37 @@ class UpstreamCompareTests(unittest.TestCase):
             for p, original in before.items(): self.assertEqual(p.read_bytes(), original)
             self.assertEqual(set(root.iterdir()), {root / 'catalog'})
 
-    def test_adapted_methods_are_selected_for_maintenance(self):
+    def trees(self, before, after, truncated=False):
+        pin, head = 'a' * 40, 'b' * 40
+        responses = {
+            'owner/repo/commits/HEAD': {'sha': head},
+            f'owner/repo/compare/{pin}...{head}': dict(status='ahead', files=[dict(filename='x', status='modified')] * 300),
+            f'owner/repo/git/trees/{pin}:skills': {'tree': [dict(path='selected', type='tree', sha='old')]},
+            f'owner/repo/git/trees/{head}:skills': {'tree': [dict(path='selected', type='tree', sha='new')]},
+            f'owner/repo/git/trees/{pin}:skills/selected?recursive=1': {'tree': before},
+            f'owner/repo/git/trees/{head}:skills/selected?recursive=1': {'tree': after, 'truncated': truncated}}
+        return lambda path: responses[path]
+
+    def test_capped_comparison_diffs_selected_paths_directly(self):
+        blob = lambda name, sha: dict(path=name, type='blob', sha=sha)
+        result = upstream.compare(self.source, self.trees(
+            [blob('SKILL.md', '1'), blob('old.md', '2')], [blob('SKILL.md', '3'), blob('new.md', '4')]))
+        self.assertEqual((result['status'], result['scope'], result['method']), ('changed', 'selected-content', 'tree'))
+        self.assertEqual({f['path']: f['status'] for f in result['files']}, {
+            'skills/selected/SKILL.md': 'modified', 'skills/selected/old.md': 'removed',
+            'skills/selected/new.md': 'added'})
+        self.assertEqual(upstream.compare(self.source, self.trees([], [], truncated=True))['status'], 'unavailable')
+
+    def test_adaptation_pins_supersede_archive_pins(self):
         source = upstream.sources(ROOT)['mattpocock/skills']
-        request = Mock(side_effect=[{'sha': 'b' * 40}, dict(status='ahead', files=[
-            dict(filename='skills/productivity/grilling/SKILL.md', status='modified'),
-            dict(filename='skills/engineering/retro/SKILL.md', status='modified')])])
-        result = upstream.compare(source, request)
-        self.assertEqual(result['scope'], 'selected-content')
-        self.assertEqual(len(result['selected_files']), 2)
+        self.assertIn('skills/productivity/grilling', source['paths'])
+        self.assertNotEqual(set(source['path_pins'].values()), {source['pinned']})
+        reviewed = upstream.sources(ROOT)['cursor/plugins']['path_pins']
+        self.assertEqual(set(reviewed.values()), {'4dd1d05818d19792e7cd6e818f1667f95f7e1dbe'})
+        head = {'sha': '4dd1d05818d19792e7cd6e818f1667f95f7e1dbe'}
+        request = Mock(return_value=head)
+        self.assertEqual(upstream.compare(upstream.sources(ROOT)['cursor/plugins'], request)['status'], 'unchanged')
+        self.assertEqual(request.call_count, 1)
 
     def test_sources_without_skill_rows_conservatively_compare_whole_repository(self):
         source = upstream.sources(ROOT)['tester-army/e2e']

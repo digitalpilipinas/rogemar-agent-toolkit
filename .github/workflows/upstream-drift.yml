@@ -1,0 +1,57 @@
+name: Upstream drift
+
+# Read-only weekly check of pinned upstream skill sources. It never repins,
+# vendors or installs anything; it reports changes for a maintainer to review.
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4; exact tag resolution recorded in docs/alignment/action-pins.json
+      - name: Compare pinned sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/upstream_compare.py --all > drift.json || test $? -eq 2
+      - name: Summarize
+        id: report
+        shell: bash
+        run: |
+          python3 - <<'EOF' > drift.md
+          import json
+          data = json.load(open('drift.json'))
+          drift = {k: v for k, v in sorted(data.items()) if v.get('scope') == 'selected-content'}
+          missing = {k: v for k, v in sorted(data.items()) if v['status'] == 'unavailable'}
+          print('Pinned upstream sources with changes in adapted paths. Review each, then adopt,')
+          print('fork-record, or set the adaptation `reviewed` commit in catalog/imported-sources.json.\n')
+          for name, v in drift.items():
+              print(f"### {name}\n`{(v.get('path_pins') and 'per-path pins') or v['pinned'][:12]}` -> `{v['observed'][:12]}`\n")
+              for f in v['selected_files'][:25]:
+                  print(f'- {f}')
+              if len(v['selected_files']) > 25:
+                  print(f"- ...and {len(v['selected_files']) - 25} more")
+              print()
+          for name, v in missing.items():
+              print(f"### {name} (unavailable)\n{v.get('error', 'no evidence')}\n")
+          EOF
+          cat drift.md >> "$GITHUB_STEP_SUMMARY"
+          if grep -q '^### ' drift.md; then echo "alert=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Open or update the drift issue
+        if: steps.report.outputs.alert == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          number=$(gh issue list --state open --search 'Upstream drift in:title' --json number --jq '.[0].number // empty')
+          if [ -z "$number" ]; then
+            gh issue create --title 'Upstream drift' --body-file drift.md
+          elif [ "$(gh issue view "$number" --json body,comments --jq '([.body] + [.comments[].body]) | last')" != "$(cat drift.md)" ]; then
+            gh issue comment "$number" --body-file drift.md
+          fi
