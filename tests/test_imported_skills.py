@@ -30,7 +30,7 @@ class ImportedSkillsTests(unittest.TestCase):
             self.assertEqual(len(list((SKILLS / name).rglob('SKILL.md'))), 1)
             for resource in entries[name]['required_resources']:
                 self.assertTrue((SKILLS / name / resource).is_file(), (name, resource))
-        self.assertEqual(len(toolkit.resolve_selection('agent-skills', 'core', [])['skills']), 6)
+        self.assertEqual(len(toolkit.resolve_selection('agent-skills', 'core', [])['skills']), 7)
 
     def run_benchmark(self, root, mode='pass', extra=()):
         bindir = root / 'bin'

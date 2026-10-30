@@ -141,7 +141,7 @@ class SelectionInstallTests(unittest.TestCase):
         catalog = toolkit.load_json(toolkit.CATALOG_PATH)
         for harness in catalog['harnesses']:
             selected = toolkit.resolve_selection(harness, 'core', [])
-            self.assertEqual(len(selected['skills']), 6)
+            self.assertEqual(len(selected['skills']), 7)
             self.assertEqual(selected['external'], [])
             self.assertNotIn('codex-forge', selected['skills'])
 
@@ -253,7 +253,7 @@ class SelectionInstallTests(unittest.TestCase):
             code, _, error = self.cli('upgrade', *args, '--profile', 'core')
             self.assertEqual(code, 0, error)
             self.assertFalse(native.exists())
-            self.assertEqual(len(json.loads(self.state(project).read_text())['skills']), 6)
+            self.assertEqual(len(json.loads(self.state(project).read_text())['skills']), 7)
             self.assertEqual(json.loads(self.state(project).read_text())['requested_packs'], [])
             code, _, error = self.cli('rollback', *args)
             self.assertEqual(code, 0, error)
@@ -446,7 +446,7 @@ class SelectionInstallTests(unittest.TestCase):
             for archive in Path(temporary).glob('*.zip'):
                 with zipfile.ZipFile(archive) as data:
                     receipt = json.loads(data.read('rogemar-agent-toolkit/release-selection.json'))
-                    self.assertEqual(len(receipt['skills']), 6)
+                    self.assertEqual(len(receipt['skills']), 7)
                     prefix = 'rogemar-agent-toolkit/'
                     if 'codex-marketplace' in archive.name:
                         prefix += 'plugins/rogemar-agent-toolkit/'

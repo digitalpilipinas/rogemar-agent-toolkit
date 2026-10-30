@@ -79,10 +79,22 @@ class ReadinessTests(unittest.TestCase):
         self.assertEqual(self.items(changed)['instruction']['state'], 'satisfied')
         self.assertNotEqual(changed['plan_id'], plan['plan_id'])
 
-    def test_outside_git_is_never_ready(self):
-        plan = readiness.plan(self.repo({'AGENTS.md': 'project-readiness'}, git=False), INDEX)
-        self.assertEqual(plan['status'], 'needs-owner')
-        self.assertTrue(any(i['state'] == 'unavailable' for i in plan['items']))
+    def test_outside_git_is_never_ready_even_when_approved(self):
+        root = self.repo({'AGENTS.md': 'project-readiness'}, git=False)
+        plan = readiness.plan(root, INDEX)
+        self.assertEqual(plan['status'], 'unavailable')
+        (root / '.agents').mkdir()
+        (root / '.agents/readiness.json').write_text(json.dumps({'approved_plan_id': plan['plan_id']}))
+        self.assertEqual(readiness.plan(root, INDEX)['status'], 'unavailable')
+
+    def test_decline_holds_only_for_the_same_plan(self):
+        root = self.repo({})
+        plan = readiness.plan(root, INDEX)
+        (root / '.agents').mkdir()
+        (root / '.agents/readiness.json').write_text(json.dumps({'declined_plan_id': plan['plan_id']}))
+        self.assertEqual(readiness.plan(root, INDEX)['status'], 'declined')
+        (root / '.gitignore').write_text('.agents/*\n')
+        self.assertEqual(readiness.plan(root, INDEX)['status'], 'needs-owner')
 
     def test_plan_and_map_write_nothing(self):
         root = self.repo({'Package.swift': '', '.gitignore': '.agents/*\n'})
@@ -102,6 +114,8 @@ class ReadinessTests(unittest.TestCase):
         self.assertIn('`swiftui` work', text)
         self.assertIn('`swiftui-expert-skill`', text)
         self.assertIn('not managed by the toolkit: `someone-elses-skill`', text)
+        default = readiness.situation_map(root, INDEX)  # defaults to the installed skills folder
+        self.assertNotIn('`project-readiness`, ', default.split('not managed', 1)[-1])
 
     def test_pins_match_file_digests(self):
         folder = Path(tempfile.mkdtemp())

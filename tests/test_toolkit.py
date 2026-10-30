@@ -85,10 +85,10 @@ class ToolkitTests(unittest.TestCase):
                 "install", "--target", "project", "--project-root", str(project)
             )
             self.assertEqual(result, 0, errors)
-            self.assertIn("Installed 6 managed skills", output)
+            self.assertIn("Installed 7 managed skills", output)
             state_path = project / ".agents" / "rogemar-agent-toolkit.lock.json"
             state = json.loads(state_path.read_text(encoding="utf-8"))
-            self.assertEqual(len(state["skills"]), 6)
+            self.assertEqual(len(state["skills"]), 7)
             self.assertTrue(
                 (project / ".agents" / "skills" / "create-plan" / "SKILL.md").is_file()
             )

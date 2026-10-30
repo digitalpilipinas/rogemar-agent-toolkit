@@ -16,7 +16,7 @@ class DiagramIntegrationTests(unittest.TestCase):
             self.assertIn('vector-asset-pipeline',selected['skills'])
             self.assertNotIn('diagram-design',selected['skills'])
             core=toolkit.resolve_selection(harness,'core',[])
-            self.assertEqual(len(core['skills']),6)
+            self.assertEqual(len(core['skills']),7)
             self.assertNotIn('diagram-design',core['external'])
         self.assertNotIn('auto_install',catalog['dependencies']['diagram-design'])
         self.assertFalse((toolkit.SKILLS_ROOT/'diagram-design').exists())
