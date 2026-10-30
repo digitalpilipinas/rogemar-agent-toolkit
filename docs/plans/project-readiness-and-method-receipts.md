@@ -4,8 +4,14 @@ Status: approved 2026-10-30 by the owner ("Approve, plan it") after a Forge
 arena comparison; amended the same day to the hybrid readiness entry ("Yes, use
 the hybrid") and to an enforced-by-default method receipt ("Yes, enforce by
 default"). The owner invokes only `create-plan`, the harness Forge entry and
-`integrated-workflow`, and expects agents to follow every routed method. Delivery: Integrated Workflow, branch + PR + safe merge, one
-PR per slice for complete reviews, all seven slices in one 1.3.0 release tagged
+`integrated-workflow`, and expects agents to follow every routed method.
+Extended later that day with a situation map, CI-enforced evidence-linked
+receipts, opt-in harness hooks and compliance measurement, on the owner's
+condition that each addition be optimized, value-adding and not redundant;
+the prompt hook was then approved explicitly.
+
+Delivery: Integrated Workflow, branch + PR + safe merge, one PR per slice for
+complete reviews, all nine slices in one 1.3.0 release tagged
 once at the end (owner, 2026-10-30), starting on `claude/toolkit-1-3-0-readiness`. The branch starts stacked on
 PR #34 (`ee30ab4`) and is rebased onto `main` once #34 merges. No new provider,
 deployment or installation authority. Release tagging stays a separate owner
@@ -124,7 +130,9 @@ Workflow.
   skill names (`argent-create-e2e` / `argent-qa-e2e` in argent's own rule
   versus `argent-create-flow` / `argent-qa-flows` in routing) against the
   pinned upstream; route the installed folders that have no routing entry, or
-  record why they stay unrouted; add `Appllama/appllama-skills` at `dd5caae`
+  record why they stay unrouted (resolved: the remaining folders are installed
+  outside the toolkit, such as GoalBuddy's `goal-prep` and the `instabox`
+  skills, so readiness lists them as unmanaged rather than routing them); add `Appllama/appllama-skills` at `dd5caae`
   to `catalog/imported-sources.json` so drift tracking covers it.
 
 Acceptance: generator check, lint test with a seeded undeclared path, routing
@@ -151,6 +159,13 @@ includes Appllama.
   `universal-forge`) and `integrated-workflow`, plus the same step in
   `workflow-orchestrator/references/task-handoff-discovery.md`, which every
   entry reaches. Second-hop links alone are what EVERSO skipped.
+- Situation map: readiness generates a one-page "situation → skills" view from
+  the routing index and the project's detected tags, refreshed when installed
+  skills change, with no live connection state. The slice-start announcement
+  cites its matching row. It is a filtered view, not a second routing source.
+- Entry wording for skimming models: obligations in the first lines of each
+  entry skill body, and descriptions written as triggers ("Use at the start of
+  every task in a repository") rather than summaries.
 - Docs: the README's "six core skills" (two places), its everyday-use and
   delivery sections (readiness runs automatically), `docs/everyday-workflow.md`
   and the generated inventory.
@@ -169,13 +184,26 @@ resolves in every harness package and the core profile includes it.
   group.
 - Enforced by default at Integrated Workflow acceptance: `accept` fails on a
   missing record or an unavailable, blocked or not-applicable record without a
-  reason. Small bounded
-  corrections are exempt; a trusted-policy `methods: report-only` opts a
-  project out. Outside Integrated Workflow the check reports only.
+  reason. Small bounded corrections are exempt; a trusted-policy
+  `methods: report-only` opts a project out. Outside Integrated Workflow the
+  check reports only.
+- Evidence-linked `used`: each `used` record cites an artifact (review output,
+  test file or commit) that the check confirms exists in the candidate.
+- CI enforcement: readiness proposes, for the owner's consent, a CI job that
+  runs the same checkpoint from trusted configuration on every PR, so a
+  required check fails when the receipt is incomplete. It reuses the existing
+  trusted-CI pin route; no new mechanism.
+- Workers: every worker brief carries the exact paths of its assigned skills,
+  so a worker can read them in any harness without inheriting the parent's
+  loaded skills; each worker returns its own method records, which the parent
+  merges into the receipt.
+- Align `method-contract.md`'s pre-existing progress list (selected, read,
+  applied, verified, blocked, not applicable) with the four receipt states.
 
 Acceptance: checkpoint tests for missing records, empty reasons, a sequence
-chain, alternative groups, the small-correction exemption, and the policy
-opt-out.
+chain, alternative groups, the small-correction exemption, the policy
+opt-out, a `used` record whose artifact is missing, and a CI fixture that fails
+on an incomplete receipt.
 
 ### 5. Per-harness packaging and lighter skills
 
@@ -223,6 +251,46 @@ engine reported, never passed.
 Acceptance: verify, lock and package checks; one rendered sample journey
 recorded as evidence where the tools exist.
 
+### 8. Opt-in harness hooks, Claude first
+
+- Through each harness's existing Forge setup (`claude-forge-setup` first,
+  then others whose hooks support it), offer three hooks with owner consent: a
+  session-start hook that runs readiness and injects the situation map; a
+  prompt hook that puts the matching situation row in front of each request;
+  and a finish hook that warns when the method receipt is incomplete. No new skill;
+  harnesses without hooks rely on the other layers.
+- Claude first because the owner observes Claude skipping skills most often,
+  and Claude Code has the strongest hook support.
+- Verify whether Claude sub-agent definitions can preload named skills; where
+  they can, the setup offers it, and worker briefs still carry skill paths.
+
+Acceptance: hooks install only after consent, back up existing settings, are
+removable, and are exercised in a real Claude session; other harnesses record
+supported or unsupported.
+
+### 9. Compliance measurement (release acceptance)
+
+- Replay one EVERSO-like task per harness (Claude, Codex, Cursor) with the
+  existing Eval playbook, before and after slices 3, 4 and 8, and count routed
+  methods recorded as used versus silently skipped. Receipts then give an
+  ongoing record. No new tooling.
+- Pilot one real EVERSO slice before tagging 1.3.0.
+
+Acceptance: a recorded before/after comparison per harness; release notes
+state measured results, not assumed ones.
+
+### Not added (already covered)
+
+- Separate per-situation skill packs: the situation map serves that need;
+  packs stay install bundles.
+- A separate local-review rule: Integrated Workflow already requires local
+  CodeRabbit at slice acceptance and limits cloud reviews per PR.
+
+## Release
+
+One 1.3.0 tag after slice 9. 1.2.2 was merged but never tagged; it is not
+tagged separately.
+
 ## Separate tasks
 
 - Installed-plugin overlap audit (read-only): classify each installed plugin
@@ -242,4 +310,4 @@ recorded as evidence where the tools exist.
 
 ## Next action
 
-Slice 1 on `claude/toolkit-1-3-0-readiness`.
+Slice 1 merged (PR #35). Slice 2 on `claude/toolkit-1-3-0-slice-2`.

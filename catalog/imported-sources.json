@@ -64,6 +64,10 @@
     {
       "repository": "cathrynlavery/diagram-design",
       "commit": "7a2e22170ee838e859d8142ba825d83f8b6375e6"
+    },
+    {
+      "repository": "Appllama/appllama-skills",
+      "commit": "dd5caaec3d5d50ad7fc0324da238119c6b7c3707"
     }
   ],
   "skills": [
@@ -1025,6 +1029,34 @@
         "plugins/rogemar-agent-toolkit/skills/code-review-tests/upstream-notices/mattpocock-LICENSE"
       ],
       "validation": "See docs/agent-handoffs/toolkit-publication.md; no native tracker execution claim."
+    },
+    {
+      "repository": "Appllama/appllama-skills",
+      "commit": "dd5caaec3d5d50ad7fc0324da238119c6b7c3707",
+      "methods": [
+        "mobile navigation semantics",
+        "native controls and touch craft",
+        "motion decision order",
+        "reference research from real screens",
+        "opt-in design count against stated tokens"
+      ],
+      "paths": [
+        "skills/appllama-app-design-skill",
+        "skills/appllama-usage"
+      ],
+      "owners": [
+        "interaction-polish",
+        "motion-animation-engineer",
+        "reference-design-contract",
+        "ux-flow-architect"
+      ],
+      "changes": "Selected methods adapted into existing design owners. The Appllama MCP, account, credits and Expo-only assumptions are not used; no blanket style bans.",
+      "notices": [
+        "plugins/rogemar-agent-toolkit/skills/interaction-polish/LICENSE.appllama.txt",
+        "plugins/rogemar-agent-toolkit/skills/motion-animation-engineer/LICENSE.appllama.txt",
+        "plugins/rogemar-agent-toolkit/skills/reference-design-contract/LICENSE.appllama.txt",
+        "plugins/rogemar-agent-toolkit/skills/ux-flow-architect/LICENSE.appllama.txt"
+      ]
     }
   ]
 }

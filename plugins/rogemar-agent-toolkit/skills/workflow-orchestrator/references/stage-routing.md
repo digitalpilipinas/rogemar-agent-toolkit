@@ -16,7 +16,7 @@ approved dependency-ready tasks within the existing delivery boundary.
 | Stage | User-facing entry | Default internal contract | Output or handoff |
 | --- | --- | --- | --- |
 | Read-only planning | `create-plan` | `workflow-orchestrator`; in Codex when installed, add `plan-model-router` only for multi-PR, sprint, phased, materially mixed-risk, or explicitly routed work | An approved-plan candidate with a capability handoff |
-| Goal compilation | `goalbuddy:goal-prep` | Goal Prep only; it records named capabilities without loading or executing them | `goal.md`, `state.yaml`, task scopes, verification, and stop conditions |
+| Goal compilation | `goalbuddy:goal-prep` (standalone installs: `goal-prep`) | Goal Prep only; it records named capabilities without loading or executing them | `goal.md`, `state.yaml`, task scopes, verification, and stop conditions |
 | Approved programme execution | `integrated-workflow` | `workflow-orchestrator`, one matched native or portable engineering playbook, harness-specific profile selection, and `first-time-right-delivery` | Bounded implementation, evidence, PR handling, and exact-target proof within recorded authority |
 | Small direct implementation | `workflow-orchestrator` or the relevant specialist | Add `first-time-right-delivery` only when the change is non-trivial | The smallest coherent verified change |
 | Standalone specialist work | The named specialist | That specialist only unless a real cross-surface dependency appears | Its documented focused artifact or evidence |

@@ -85,8 +85,8 @@
       "source": "argent-android-emulator-setup/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "8aa785b5e233f5db1720311d6d8ab37bb09e47301c9158b8c45715478df1cb28",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "000c38e8020168fa915699f11f2def12e98293ac635bc0fa702715e507a508aa",
       "trigger": "Set up and connect to an Android emulator using argent MCP tools. Use when starting a new session on Android, booting an emulator, getting a device serial, or before any UI interaction task.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
@@ -106,13 +106,13 @@
       ],
       "required_resources": []
     },
-    "argent-create-flow": {
-      "source": "argent-create-flow/SKILL.md",
+    "argent-create-e2e": {
+      "source": "argent-create-e2e/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "b77b949e45863b79d91c47dad744fdf6903db11ec665972233914f301ee38525",
-      "trigger": "Create, record, edit, replay, or repair reusable Argent flow YAML files. Use when the user asks to record or replay a repeatable device path, set up profiling or an A/B comparison, or invoke the authoring engine behind argent-qa-flows. Also use before repeating three or more interactions. For one-off UI checks, acceptance-driven regression tests, or screen video, use argent-test-ui-flow, argent-qa-flows, or argent-screen-recording respectively.",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "513ba645f34697e006c998115c45a15d64c7247809eb810550f8aac69be9ec4c",
+      "trigger": "Create, record, edit, replay, or repair reusable Argent e2e test YAML files. Use when the user asks to record, replay, or run an e2e test or a repeatable device path, set up profiling or an A/B comparison, or invoke the authoring engine behind argent-qa-e2e. Also use before repeating three or more interactions. For one-off UI checks, acceptance-driven regression tests, or screen video, use argent-test-ui-flow, argent-qa-e2e, or argent-screen-recording respectively.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
       "activation": "conditional",
@@ -130,7 +130,7 @@
         "droid"
       ],
       "required_resources": [
-        "references/flow-yaml.md",
+        "references/e2e-yaml.md",
         "references/live-authoring.md",
         "references/reliability-and-recovery.md"
       ]
@@ -139,8 +139,8 @@
       "source": "argent-device-interact/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "f68674b085ceccdffbd6e27136ed281457d1bfe390f620c24efcfc5c17a3e272",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "d9b41e9aede6ec5240416e89037abefa8edd65100e127c0b910ec9f2c0de8b15",
       "trigger": "Interact with an iOS simulator, Android emulator, or Chromium (CDP) app using argent MCP tools. Use when tapping UI elements, performing gestures, scrolling/swiping, typing text, pressing hardware buttons, launching apps, opening URLs, taking screenshots, waiting for an element to appear or disappear, or checking visible app state after interactions. Not for TV targets.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
@@ -161,6 +161,7 @@
       "required_resources": [
         "references/chromium.md",
         "references/gesture-examples.md",
+        "references/harmonyos.md",
         "references/secrets.md"
       ]
     },
@@ -168,8 +169,8 @@
       "source": "argent-ios-device-interact/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "47fd418bf46ded93dcdab67d981dec42489c7ab204ad6b2110107621acb750cc",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "88043b68304303bd87ce948f7a6ef50a119bd7a942ed5933a92e8f2263dce5f4",
       "trigger": "Drive a physical iPhone through argent. Use when a physical iPhone is involved (a list-devices iOS entry with kind \"device\") and ONLY then; never for a simulator. For cable, trust, or signing problems read argent-ios-device-setup.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
@@ -193,8 +194,8 @@
       "source": "argent-ios-device-setup/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "457ab5e091e919127d6c1ae5978fc0d6a470f14aad7522f7300fe0069dc195be",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "108890c705aba39bcb8a2883dcfe36e47db2d352b484e580d7159eedf43d559d",
       "trigger": "Set up a cabled physical iPhone for argent. Use when a physical iPhone is involved (a list-devices iOS entry with kind \"device\") and ONLY then; never for a simulator.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
@@ -218,7 +219,7 @@
       "source": "argent-ios-simulator-setup/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
       "source_sha256": "11c2a7ab3f42f4873780df310159461933f29d4a56f87d073813b883923d0e00",
       "trigger": "Set up and connect to an iOS simulator using argent MCP tools. Use when starting a new session, booting an iOS simulator, getting an iOS UDID, or before any iOS simulator interaction task.",
       "outcome": "Use applicable upstream method after reading its installed source",
@@ -243,8 +244,8 @@
       "source": "argent-lens/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "4a2ebdaa9604418a35832bf1c62c645a6c83afb5a2a71e968e8fd102a4ad7811",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "2d621b0140429be1ce574b2b0342d1ccda0bbd27856b7d03dfba80f50b97e62b",
       "trigger": "Propose multiple visual design variants for on-screen elements and let the human pick in the Argent Lens window. Use when the user asks for design alternatives / options / A-B choices for a screen or component, or any time you have produced more than one candidate look for an element and want a human decision before committing.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
@@ -268,8 +269,8 @@
       "source": "argent-metro-debugger/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "38075ad2c3e2614c9100f22a899960a1b4acc04fe05695dee23d1665e90b81f0",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "b66be97beea50e05cf1fbd05028ffc695ef659554c15d92537b57f0668733914",
       "trigger": "Debug a JS runtime via CDP using argent debugger tools. Primary path is React Native via Metro (iOS / Android / Vega); a subset of the tools (debugger-connect, debugger-status, debugger-evaluate, debugger-log-registry) also drive a Chromium (CDP) app's renderer (an Electron app, or any Chromium browser exposing CDP) through the same surface. Use when connecting to the runtime, inspecting React components, reading console logs, or evaluating JavaScript.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
@@ -296,8 +297,8 @@
       "source": "argent-native-profiler/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "d1a52888c3f0f74fc493dcd82ec425e39c036b7b713fccfa36eb0af4fadc972d",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "c849527843c85b2f1e080892ac9d2fe411033921e7ce00c86d2d1cb1af75feeb",
       "trigger": "Native profiling for CPU hotspots, UI hangs, memory issues. iOS via xctrace; Android via Perfetto. Use when diagnosing native-level performance issues.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
@@ -317,13 +318,13 @@
       ],
       "required_resources": []
     },
-    "argent-qa-flows": {
-      "source": "argent-qa-flows/SKILL.md",
+    "argent-qa-e2e": {
+      "source": "argent-qa-e2e/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "9728778331e9830415410cd9f357f525b38f0a259f5add69ac812d11d6f7af26",
-      "trigger": "Create repeatable QA regression E2E tests as Argent flows from test cases, tickets, or acceptance criteria. Use when the user asks to generate or preserve an automated regression scenario, with deterministic setup, stable targets, executable structural or visual evidence, and two consecutive full passes. For one-off UI checks or replayable paths without acceptance criteria, use argent-test-ui-flow or argent-create-flow. Supports iOS, Android, Chromium, and Vega (Fire TV), where recorded tv-remote steps replace touch directives. Apple TV and Android TV are unsupported; use argent-tv-interact there and report the limitation.",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "013c2ecee4349432f456c2cf665f12e3b46b91bd966249c8238cbd5e0c21a2e7",
+      "trigger": "Write repeatable QA regression e2e tests from test cases, tickets, or acceptance criteria. Use when the user asks to write, automate, or generate an e2e test or preserve an automated regression scenario, with deterministic setup, stable targets, executable structural or visual evidence, and two consecutive full passes. For one-off UI checks or replayable paths without acceptance criteria, use argent-test-ui-flow or argent-create-e2e. Supports iOS, Android, Chromium, and Vega (Fire TV), where recorded tv-remote steps replace touch directives. Apple TV and Android TV are unsupported; use argent-tv-interact there and report the limitation.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
       "activation": "conditional",
@@ -346,8 +347,8 @@
       "source": "argent-react-native-app-workflow/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "2f847f2a096dc9dfdd27da858c6c99f57c472041e879169f874ce0d816077548",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "a12c10c44a7e0e915abfedefb3e8a2b35f4090dfecdd6322aba5a14437b36d59",
       "trigger": "Step-by-step workflows for developing or debugging React Native apps on iOS simulator or Android emulator. Use when starting the app, debugging Metro, fixing builds, diagnosing runtime errors, or running tests.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
@@ -371,8 +372,8 @@
       "source": "argent-react-native-optimization/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "e4ed682f15010a8e208bc8ba6485254e9a9bc5a35cfbad4d1ef2cfe150971f1e",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "ef69d99ea504d7838c53e58e5a9233ac4a2f0b620bf65fa08ba2a7ce3acdc11a",
       "trigger": "Optimizes a React Native app by profiling first to find real bottlenecks, then sweeping for mechanical issues. Entry-point for all performance work. Use when the app feels slow, user asks to optimize, fix re-renders, reduce jank, or improve startup. Delegates to argent-react-native-profiler for measurement.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
@@ -400,8 +401,8 @@
       "source": "argent-react-native-profiler/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "138069210bbc770b458355a4e913de0627f7328fa6473ebdd26cd74885410d8c",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "bd6be1924c7e61b7935715710c598c65fd4d705cf12041b96ad1ede8e61a2aee",
       "trigger": "Profile a React Native Hermes app to measure re-render and CPU performance using argent profiler tools. Use when optimizing for performance, measuring before/after a fix, spotting slow components, diagnosing re-renders, checking CPU hotspots, or producing a ranked issue report.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
@@ -427,8 +428,8 @@
       "source": "argent-screen-recording/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "c8bcafed903c666d9225ad603270db2ecd858236582442cb2eda828af75ddf7f",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "761cc08436db249ce8ea2326abb26f698214a88d873e0b3d6dfa74924acd381d",
       "trigger": "Record a video of an iOS simulator or Android emulator/device screen using argent MCP tools. Use when the user asks to record the screen, capture a video of a flow, interaction, or animation, produce a screen recording, or document app behavior as a video clip.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
@@ -452,7 +453,7 @@
       "source": "argent-screenshot-diff/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
       "source_sha256": "121eddcf8acacc9d17a634a5d59b3609aefc487f57496f520a9daea66f20b3b4",
       "trigger": "Compare saved or live app screenshots with the argent screenshot-diff tool. Use when testing visual regressions, before/after UI comparisons, screenshot diff checks, visible layout, spacing, color, typography, clipping, overflow, text rendering, or image/icon rendering changes.",
       "outcome": "Use applicable upstream method after reading its installed source",
@@ -477,7 +478,7 @@
       "source": "argent-settings-permissions/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
       "source_sha256": "9d250ce826fbae674c527b308f16d198c0a6e52a7b8171087511683ec0ef5980",
       "trigger": "Grant, deny, or reset an app's runtime permissions (camera, microphone, photos, contacts, notifications, calendar, location, location-always, media-library, motion, reminders) on an iOS simulator or Android device using the argent `settings-permissions` tool - without navigating the system Settings UI. Use when the permission cannot be changed through the app itself - and only then, pre-authorize before the app asks, deny up front, re-enable a permission the user already denied, or reset so the prompt reappears. If the app can flip it - via an in-app toggle or the system permission dialog the app triggers - interact with the app instead.",
       "outcome": "Use applicable upstream method after reading its installed source",
@@ -502,9 +503,9 @@
       "source": "argent-test-ui-flow/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "20da5854e8247489bdb085fa5722e5e85e51fcd598bf90e07a783dbe5ff09723",
-      "trigger": "Autonomously test an app UI (iOS or Android) by running interact-screenshot-verify loops using argent MCP tools. Use when testing UI flows, verifying login works, testing navigation, running end-to-end UI test scenarios, manual QA steps, visible UI changes, or visual behavior.",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "b7ba3ad6fb106ebcc7645833597a7e4c6b72a9a976cf8ad31837d3ea512013b9",
+      "trigger": "Autonomously test an app UI (iOS or Android) by running interact-screenshot-verify loops using argent MCP tools. Use when testing UI flows, verifying login works, testing navigation, running UI test scenarios, manual QA steps, visible UI changes, or visual behavior.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
       "activation": "conditional",
@@ -527,9 +528,9 @@
       "source": "argent-tv-interact/SKILL.md",
       "kind": "external",
       "dependency": "argent",
-      "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
-      "source_sha256": "0348bb321196ee7dcdf1db29678eea1f80d698c5398c6bfe60542bb1d2f90d90",
-      "trigger": "Control and inspect TV apps via argent — Apple TV (tvOS), Android TV (leanback), and Amazon Fire TV (Vega). Boot the target, read focus, navigate with the D-pad remote, type, screenshot, and on Vega debug the JS runtime (evaluate, console logs, network inspector). Use when a task targets a TV (runtimeKind \"tv\", or platform \"vega\"), or mentions Apple TV / tvOS / Android TV / leanback / Vega / Fire TV / VVD.",
+      "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
+      "source_sha256": "c8cceb0cbb21ab2107120f7dc61d28bb0cc6ff60cdb4da275ec40f576d3e2037",
+      "trigger": "Control and inspect TV apps via argent, Apple TV (tvOS), Android TV (leanback), and Amazon Fire TV (Vega). Boot the target, read focus, navigate with the D-pad remote, type, screenshot, and on Vega debug the JS runtime (evaluate, console logs, network inspector). Use when a task targets a TV (runtimeKind \"tv\", or platform \"vega\"), or mentions Apple TV / tvOS / Android TV / leanback / Vega / Fire TV / VVD.",
       "outcome": "Use applicable upstream method after reading its installed source",
       "boundary": "Files do not establish live tools, authentication or permission",
       "activation": "conditional",
@@ -697,6 +698,9 @@
       "outcome": "Choose the actual target and applicable release proof",
       "boundary": "A PR-to-main request does not deploy or release to every platform",
       "activation": "conditional",
+      "task_tags_any": [
+        "cloudflare"
+      ],
       "source": "cloudflare-deploy/SKILL.md",
       "kind": "vendored",
       "required_resources": [],
@@ -3265,6 +3269,9 @@
       "boundary": "Reading a known .ts file does not require a new architecture or test campaign",
       "activation": "conditional",
       "fallback": "engineering-playbooks/references/companion-methods.md#typescript-best-practices",
+      "task_tags_any": [
+        "typescript"
+      ],
       "source": "forge-typescript-best-practices/SKILL.md",
       "kind": "vendored",
       "required_resources": [],
@@ -3354,6 +3361,9 @@
       "outcome": "Respect existing tokens, components and framework choices",
       "boundary": "No new design system or dependency solely because a skill exists",
       "activation": "conditional",
+      "task_tags_any": [
+        "web"
+      ],
       "source": "frontend-design/SKILL.md",
       "kind": "vendored",
       "required_resources": [],
@@ -3542,6 +3552,11 @@
       "outcome": "Choose the actual target and applicable release proof",
       "boundary": "A PR-to-main request does not deploy or release to every platform",
       "activation": "conditional",
+      "task_tags_any": [
+        "android",
+        "expo",
+        "ios"
+      ],
       "source": "mobile-release-manager/SKILL.md",
       "kind": "vendored",
       "required_resources": [],
@@ -3564,6 +3579,9 @@
       "outcome": "Choose the actual target and applicable release proof",
       "boundary": "A PR-to-main request does not deploy or release to every platform",
       "activation": "conditional",
+      "task_tags_any": [
+        "netlify"
+      ],
       "source": "netlify-deploy/SKILL.md",
       "kind": "vendored",
       "required_resources": [],
@@ -3647,6 +3665,9 @@
       "outcome": "Use the relevant subset and actual available view/browser tools",
       "boundary": "Not a mandatory four-skill bundle; no invented screenshot or runtime pass",
       "activation": "conditional",
+      "task_tags_any": [
+        "web"
+      ],
       "source": "playwright/SKILL.md",
       "kind": "vendored",
       "required_resources": [],
@@ -4355,6 +4376,9 @@
       "outcome": "Respect existing tokens, components and framework choices",
       "boundary": "No new design system or dependency solely because a skill exists",
       "activation": "conditional",
+      "task_tags_any": [
+        "shadcn"
+      ],
       "source": "shadcn/SKILL.md",
       "kind": "vendored",
       "required_resources": [],
@@ -4491,6 +4515,9 @@
       "outcome": "Prefer available official/native integration and existing connector-independent fallback as appropriate",
       "boundary": "No mandatory provider migration or unrequested backend service",
       "activation": "conditional",
+      "task_tags_any": [
+        "supabase"
+      ],
       "source": "supabase/SKILL.md",
       "kind": "vendored",
       "required_resources": [],
@@ -4502,6 +4529,9 @@
       "outcome": "Prefer available official/native integration and existing connector-independent fallback as appropriate",
       "boundary": "No mandatory provider migration or unrequested backend service",
       "activation": "conditional",
+      "task_tags_any": [
+        "supabase"
+      ],
       "source": "supabase-guardian/SKILL.md",
       "kind": "vendored",
       "required_resources": [],
@@ -5072,6 +5102,9 @@
       "outcome": "Choose the actual target and applicable release proof",
       "boundary": "A PR-to-main request does not deploy or release to every platform",
       "activation": "conditional",
+      "task_tags_any": [
+        "vercel"
+      ],
       "source": "vercel-deploy/SKILL.md",
       "kind": "vendored",
       "required_resources": [],
@@ -5286,6 +5319,368 @@
       ],
       "required_skills": [],
       "targets": []
+    }
+  },
+  "footprints": [
+    {
+      "path": ".agent-map/",
+      "access": "write",
+      "tracking": "ignored",
+      "class": "generated-cache",
+      "gitignore": "ignore",
+      "owner": "agent-map"
+    },
+    {
+      "path": ".agents/forge-benny/",
+      "access": "write",
+      "tracking": "either",
+      "class": "tool-config",
+      "owner": "codex-forge"
+    },
+    {
+      "path": ".agents/skills/verify-<app>/",
+      "access": "write",
+      "tracking": "tracked",
+      "class": "verification-asset",
+      "gitignore": "unignore",
+      "owner": "forge-create-verification-skill"
+    },
+    {
+      "path": ".agents/verification.json",
+      "access": "write",
+      "tracking": "tracked",
+      "class": "verification-asset",
+      "gitignore": "unignore",
+      "owner": "forge-create-verification-skill"
+    },
+    {
+      "path": ".argent/",
+      "access": "write",
+      "tracking": "either",
+      "class": "tool-config",
+      "owner": "argent"
+    },
+    {
+      "path": ".audit/",
+      "access": "write",
+      "tracking": "either",
+      "class": "evidence",
+      "owner": "forge-show-me-your-work"
+    },
+    {
+      "path": ".build-benchmark/",
+      "access": "write",
+      "tracking": "ignored",
+      "class": "generated-cache",
+      "gitignore": "ignore",
+      "owner": "xcode-build-benchmark"
+    },
+    {
+      "path": ".codex/hooks.json",
+      "access": "write",
+      "tracking": "either",
+      "class": "tool-config",
+      "owner": "project-learning"
+    },
+    {
+      "path": ".codex/hooks/project-learning-stop.py",
+      "access": "write",
+      "tracking": "either",
+      "class": "tool-config",
+      "owner": "project-learning"
+    },
+    {
+      "path": ".codex/project-learning/candidates.jsonl",
+      "access": "write",
+      "tracking": "ignored",
+      "class": "learning-record",
+      "gitignore": "ignore",
+      "owner": "project-learning"
+    },
+    {
+      "path": ".codex/project-learning/config.json",
+      "access": "write",
+      "tracking": "tracked",
+      "class": "learning-record",
+      "owner": "project-learning"
+    },
+    {
+      "path": ".codex/project-learning/state/",
+      "access": "write",
+      "tracking": "ignored",
+      "class": "learning-record",
+      "gitignore": "ignore",
+      "owner": "project-learning"
+    },
+    {
+      "path": ".e2e/",
+      "access": "write",
+      "tracking": "either",
+      "class": "tool-config",
+      "owner": "e2e"
+    },
+    {
+      "path": ".e2e/artifacts/",
+      "access": "write",
+      "tracking": "ignored",
+      "class": "evidence",
+      "gitignore": "ignore",
+      "owner": "e2e"
+    },
+    {
+      "path": ".e2e/cache/",
+      "access": "write",
+      "tracking": "ignored",
+      "class": "generated-cache",
+      "gitignore": "ignore",
+      "owner": "e2e"
+    },
+    {
+      "path": ".e2e/failures/",
+      "access": "write",
+      "tracking": "ignored",
+      "class": "evidence",
+      "gitignore": "ignore",
+      "owner": "e2e"
+    },
+    {
+      "path": ".e2e/logs/",
+      "access": "write",
+      "tracking": "ignored",
+      "class": "evidence",
+      "gitignore": "ignore",
+      "owner": "e2e"
+    },
+    {
+      "path": ".unlazy/",
+      "access": "write",
+      "tracking": "ignored",
+      "class": "acceptance-record",
+      "gitignore": "ignore",
+      "owner": "unlazy"
+    },
+    {
+      "path": "GATES.md",
+      "access": "write",
+      "tracking": "either",
+      "class": "acceptance-record",
+      "owner": "first-time-right-delivery"
+    },
+    {
+      "path": "docs/agent-handoffs/",
+      "access": "write",
+      "tracking": "tracked",
+      "class": "handoff-record",
+      "owner": "integrated-workflow"
+    },
+    {
+      "path": "docs/project-learning/lessons.md",
+      "access": "write",
+      "tracking": "tracked",
+      "class": "learning-record",
+      "owner": "project-learning"
+    },
+    {
+      "path": "docs/quality/findings.md",
+      "access": "write",
+      "tracking": "tracked",
+      "class": "quality-record",
+      "owner": "integrated-workflow"
+    }
+  ],
+  "task_tags": {
+    "android": {
+      "markers": [
+        {
+          "glob": "**/build.gradle"
+        },
+        {
+          "glob": "**/build.gradle.kts"
+        },
+        {
+          "glob": "**/AndroidManifest.xml"
+        }
+      ]
+    },
+    "architecture": {
+      "markers": []
+    },
+    "cloudflare": {
+      "markers": [
+        {
+          "glob": "wrangler.toml"
+        },
+        {
+          "glob": "wrangler.json"
+        },
+        {
+          "glob": "wrangler.jsonc"
+        }
+      ]
+    },
+    "concurrency": {
+      "markers": []
+    },
+    "convex": {
+      "markers": [
+        {
+          "glob": "convex.json"
+        },
+        {
+          "glob": "convex/schema.ts"
+        }
+      ]
+    },
+    "e2e": {
+      "markers": [
+        {
+          "glob": "playwright.config.*"
+        },
+        {
+          "glob": ".e2e/"
+        }
+      ]
+    },
+    "expo": {
+      "markers": [
+        {
+          "glob": "eas.json"
+        },
+        {
+          "glob": "app.config.js"
+        },
+        {
+          "glob": "app.config.ts"
+        }
+      ]
+    },
+    "formal-verification": {
+      "markers": [
+        {
+          "glob": "**/*.tla"
+        }
+      ]
+    },
+    "ios": {
+      "markers": [
+        {
+          "glob": "**/*.xcodeproj"
+        },
+        {
+          "glob": "**/*.xcworkspace"
+        }
+      ]
+    },
+    "netlify": {
+      "markers": [
+        {
+          "glob": "netlify.toml"
+        }
+      ]
+    },
+    "react-native": {
+      "markers": [
+        {
+          "glob": "metro.config.js"
+        },
+        {
+          "glob": "metro.config.cjs"
+        }
+      ]
+    },
+    "shadcn": {
+      "markers": [
+        {
+          "glob": "components.json"
+        }
+      ]
+    },
+    "statechart": {
+      "markers": [
+        {
+          "glob": "**/*.tla"
+        }
+      ]
+    },
+    "supabase": {
+      "markers": [
+        {
+          "glob": "supabase/config.toml"
+        }
+      ]
+    },
+    "swift": {
+      "markers": [
+        {
+          "glob": "Package.swift"
+        },
+        {
+          "glob": "**/*.xcodeproj"
+        }
+      ]
+    },
+    "swift-concurrency": {
+      "markers": []
+    },
+    "swift-testing": {
+      "markers": [
+        {
+          "glob": "**/*.swift",
+          "contains": "import Testing"
+        }
+      ]
+    },
+    "swiftdata": {
+      "markers": [
+        {
+          "glob": "**/*.swift",
+          "contains": "import SwiftData"
+        }
+      ]
+    },
+    "swiftui": {
+      "markers": [
+        {
+          "glob": "**/*.swift",
+          "contains": "import SwiftUI"
+        }
+      ]
+    },
+    "typescript": {
+      "markers": [
+        {
+          "glob": "tsconfig.json"
+        }
+      ]
+    },
+    "vercel": {
+      "markers": [
+        {
+          "glob": "vercel.json"
+        }
+      ]
+    },
+    "verification-drift": {
+      "markers": []
+    },
+    "web": {
+      "markers": [
+        {
+          "glob": "index.html"
+        },
+        {
+          "glob": "vite.config.*"
+        },
+        {
+          "glob": "next.config.*"
+        },
+        {
+          "glob": "astro.config.*"
+        }
+      ]
+    },
+    "xcode-performance": {
+      "markers": []
     }
   }
 }

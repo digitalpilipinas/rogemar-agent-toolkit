@@ -74,7 +74,16 @@
         "outcome": "A scoped current map and source pointers",
         "boundary": "Do not regenerate the whole map after every small edit",
         "activation": "conditional"
-      }
+      },
+      "footprint": [
+        {
+          "path": ".agent-map/",
+          "access": "write",
+          "tracking": "ignored",
+          "class": "generated-cache",
+          "gitignore": "ignore"
+        }
+      ]
     },
     {
       "name": "article-creator-2",
@@ -149,7 +158,10 @@
         "trigger": "Deploy applications and infrastructure to Cloudflare using Workers, Pages, and related platform services. Use when the user asks to deploy, host, publish, or set up a project on Cloudflare.",
         "outcome": "Choose the actual target and applicable release proof",
         "boundary": "A PR-to-main request does not deploy or release to every platform",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "cloudflare"
+        ]
       }
     },
     {
@@ -235,7 +247,15 @@
         "outcome": "Keep one active entry, select the relevant playbook and methods",
         "boundary": "Cursor/universal use their own entry; do not stack coordinators",
         "activation": "conditional"
-      }
+      },
+      "footprint": [
+        {
+          "path": ".agents/forge-benny/",
+          "access": "write",
+          "tracking": "either",
+          "class": "tool-config"
+        }
+      ]
     },
     {
       "name": "create-plan",
@@ -364,7 +384,9 @@
     {
       "name": "devin-forge",
       "source": "approved Devin Forge binding, 2026-10-12",
-      "additional_license_evidence": ["LICENSE.adapter.txt"],
+      "additional_license_evidence": [
+        "LICENSE.adapter.txt"
+      ],
       "license_status": "Repository license for adapter additions; MIT for upstream PStack methods",
       "requires": [
         "workflow-orchestrator",
@@ -428,7 +450,43 @@
           "node",
           "e2e"
         ]
-      }
+      },
+      "footprint": [
+        {
+          "path": ".e2e/",
+          "access": "write",
+          "tracking": "either",
+          "class": "tool-config"
+        },
+        {
+          "path": ".e2e/artifacts/",
+          "access": "write",
+          "tracking": "ignored",
+          "class": "evidence",
+          "gitignore": "ignore"
+        },
+        {
+          "path": ".e2e/cache/",
+          "access": "write",
+          "tracking": "ignored",
+          "class": "generated-cache",
+          "gitignore": "ignore"
+        },
+        {
+          "path": ".e2e/logs/",
+          "access": "write",
+          "tracking": "ignored",
+          "class": "evidence",
+          "gitignore": "ignore"
+        },
+        {
+          "path": ".e2e/failures/",
+          "access": "write",
+          "tracking": "ignored",
+          "class": "evidence",
+          "gitignore": "ignore"
+        }
+      ]
     },
     {
       "name": "engineering-playbooks",
@@ -466,7 +524,15 @@
         "outcome": "Lifecycle, sole dispatcher and evidence discipline respectively",
         "boundary": "No three competing coordinators or mandatory heavy process for small tasks",
         "activation": "conditional"
-      }
+      },
+      "footprint": [
+        {
+          "path": "GATES.md",
+          "access": "write",
+          "tracking": "either",
+          "class": "acceptance-record"
+        }
+      ]
     },
     {
       "name": "forge-architect",
@@ -570,12 +636,28 @@
         "engineering-playbooks"
       ],
       "routing": {
-        "trigger": "Generate a project-local verification skill that drives your app the way a user does \u2014 any language, framework, or platform. Use for $forge-create-verification-skill, \"make a control skill for this repo\", or when a project has no scripted way to prove UI/CLI/service behavior.",
+        "trigger": "Generate a project-local verification skill that drives your app the way a user does — any language, framework, or platform. Use for $forge-create-verification-skill, \"make a control skill for this repo\", or when a project has no scripted way to prove UI/CLI/service behavior.",
         "outcome": "A discoverable behavior-based verification recipe",
         "boundary": "No recipe for every trivial change; preserve the existing verifier owner",
         "activation": "conditional",
         "fallback": "engineering-playbooks/references/companion-methods.md#create-verification-skill"
-      }
+      },
+      "footprint": [
+        {
+          "path": ".agents/skills/verify-<app>/",
+          "access": "write",
+          "tracking": "tracked",
+          "class": "verification-asset",
+          "gitignore": "unignore"
+        },
+        {
+          "path": ".agents/verification.json",
+          "access": "write",
+          "tracking": "tracked",
+          "class": "verification-asset",
+          "gitignore": "unignore"
+        }
+      ]
     },
     {
       "name": "forge-figure-it-out",
@@ -1176,7 +1258,15 @@
         "boundary": "No competing mandatory TSV or activity log for every action",
         "activation": "conditional",
         "fallback": "engineering-playbooks/references/companion-methods.md#show-me-your-work"
-      }
+      },
+      "footprint": [
+        {
+          "path": ".audit/",
+          "access": "write",
+          "tracking": "either",
+          "class": "evidence"
+        }
+      ]
     },
     {
       "name": "forge-swarm",
@@ -1243,7 +1333,7 @@
         "workflow-orchestrator"
       ],
       "routing": {
-        "trigger": "Layered forge-technical-writing standard: Di\u00e1taxis structure, Google developer style sentences, STE instruction rules, Global English syntax. Use for $forge-technical-writing or when writing or reviewing docs, RFCs, readmes, PR descriptions, or commit messages.",
+        "trigger": "Layered forge-technical-writing standard: Diátaxis structure, Google developer style sentences, STE instruction rules, Global English syntax. Use for $forge-technical-writing or when writing or reviewing docs, RFCs, readmes, PR descriptions, or commit messages.",
         "outcome": "Clear structure, concrete terms and checked examples",
         "boundary": "Do not expand a small answer into unnecessary documentation",
         "activation": "conditional",
@@ -1265,7 +1355,10 @@
         "outcome": "Project-consistent types, boundaries and focused validation",
         "boundary": "Reading a known .ts file does not require a new architecture or test campaign",
         "activation": "conditional",
-        "fallback": "engineering-playbooks/references/companion-methods.md#typescript-best-practices"
+        "fallback": "engineering-playbooks/references/companion-methods.md#typescript-best-practices",
+        "task_tags_any": [
+          "typescript"
+        ]
       }
     },
     {
@@ -1373,7 +1466,10 @@
         "trigger": "Build or redesign working web interfaces with a clear visual direction, usable interaction states and responsive craft. Use for artifact or UI implementation after the task and design direction are understood; use the existing product system where one exists.",
         "outcome": "Respect existing tokens, components and framework choices",
         "boundary": "No new design system or dependency solely because a skill exists",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "web"
+        ]
       }
     },
     {
@@ -1440,12 +1536,29 @@
       "required_resources": [
         "references/durable-handoffs.md",
         "assets/task-handoff-template.md"
+      ],
+      "footprint": [
+        {
+          "path": "docs/agent-handoffs/",
+          "access": "write",
+          "tracking": "tracked",
+          "class": "handoff-record"
+        },
+        {
+          "path": "docs/quality/findings.md",
+          "access": "write",
+          "tracking": "tracked",
+          "class": "quality-record"
+        }
       ]
     },
     {
       "name": "interaction-polish",
       "source": "approved local user-level snapshot; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)",
-      "additional_license_evidence": ["LICENSE.appllama.txt", "LICENSE.opendesign.txt"],
+      "additional_license_evidence": [
+        "LICENSE.appllama.txt",
+        "LICENSE.opendesign.txt"
+      ],
       "author": "Original snapshot author not declared; selected methods adapted from Appllama",
       "license_status": "Appllama adaptation: MIT; original snapshot license not declared; other listed notices retain their terms",
       "routing": {
@@ -1493,13 +1606,21 @@
         "trigger": "Use for Expo, React Native, iOS, Android, or other mobile release readiness work involving build profiles, app config, env checks, icons, splash screens, permissions, App Store and Play Store checklists, QA plans, release notes, rollback notes, and production deployment preparation.",
         "outcome": "Choose the actual target and applicable release proof",
         "boundary": "A PR-to-main request does not deploy or release to every platform",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "android",
+          "expo",
+          "ios"
+        ]
       }
     },
     {
       "name": "motion-animation-engineer",
       "source": "approved local user-level snapshot; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)",
-      "additional_license_evidence": ["LICENSE.appllama.txt", "LICENSE.emil.txt"],
+      "additional_license_evidence": [
+        "LICENSE.appllama.txt",
+        "LICENSE.emil.txt"
+      ],
       "author": "Original snapshot author not declared; selected methods adapted from Appllama",
       "license_status": "Appllama adaptation: MIT; original snapshot license not declared; other listed notices retain their terms",
       "routing": {
@@ -1517,7 +1638,10 @@
         "trigger": "Deploy web projects to Netlify using the Netlify CLI (`npx netlify`). Use when the user asks to deploy, host, publish, or link a site/repo on Netlify, including preview and production deploys.",
         "outcome": "Choose the actual target and applicable release proof",
         "boundary": "A PR-to-main request does not deploy or release to every platform",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "netlify"
+        ]
       }
     },
     {
@@ -1586,7 +1710,10 @@
         "trigger": "Use when the task requires automating a real browser from the terminal (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging) via `playwright-cli` or the bundled wrapper script.",
         "outcome": "Use the relevant subset and actual available view/browser tools",
         "boundary": "Not a mandatory four-skill bundle; no invented screenshot or runtime pass",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "web"
+        ]
       }
     },
     {
@@ -1607,12 +1734,54 @@
         "outcome": "Single writer, bounded recall, candidate review and governed promotion",
         "boundary": "Learning remains nonblocking where specified; no raw transcript or silent global mutation",
         "activation": "conditional"
-      }
+      },
+      "footprint": [
+        {
+          "path": ".codex/project-learning/config.json",
+          "access": "write",
+          "tracking": "tracked",
+          "class": "learning-record"
+        },
+        {
+          "path": ".codex/project-learning/candidates.jsonl",
+          "access": "write",
+          "tracking": "ignored",
+          "class": "learning-record",
+          "gitignore": "ignore"
+        },
+        {
+          "path": ".codex/project-learning/state/",
+          "access": "write",
+          "tracking": "ignored",
+          "class": "learning-record",
+          "gitignore": "ignore"
+        },
+        {
+          "path": "docs/project-learning/lessons.md",
+          "access": "write",
+          "tracking": "tracked",
+          "class": "learning-record"
+        },
+        {
+          "path": ".codex/hooks.json",
+          "access": "write",
+          "tracking": "either",
+          "class": "tool-config"
+        },
+        {
+          "path": ".codex/hooks/project-learning-stop.py",
+          "access": "write",
+          "tracking": "either",
+          "class": "tool-config"
+        }
+      ]
     },
     {
       "name": "reference-design-contract",
       "source": "reviewed portable adaptation, 2026-09-07; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)",
-      "additional_license_evidence": ["LICENSE.appllama.txt"],
+      "additional_license_evidence": [
+        "LICENSE.appllama.txt"
+      ],
       "license_status": "Apache-2.0 primary notice; Appllama adaptation: MIT",
       "author": "Rogemar; upstream notices preserved",
       "upstream_repository": "https://github.com/digitalpilipinas/open-design",
@@ -1678,7 +1847,10 @@
         "trigger": "Work with existing shadcn web components or an explicit shadcn setup request, using the project's installed primitives, tokens and customized source. Applies to shadcn configuration and component implementation; not native mobile UI.",
         "outcome": "Respect existing tokens, components and framework choices",
         "boundary": "No new design system or dependency solely because a skill exists",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "shadcn"
+        ]
       }
     },
     {
@@ -1696,7 +1868,7 @@
       "source": "approved local user-level snapshot",
       "license_evidence": "LICENSE.txt",
       "routing": {
-        "trigger": "Use when the user asks to generate, remix, poll, list, download, or delete Sora videos via OpenAI\u2019s video API using the bundled CLI (`scripts/sora.py`), including requests like \u201cgenerate AI video,\u201d \u201cSora,\u201d \u201cvideo remix,\u201d \u201cdownload video/thumbnail/spritesheet,\u201d and batch video generation; requires `OPENAI_API_KEY` and Sora API access.",
+        "trigger": "Use when the user asks to generate, remix, poll, list, download, or delete Sora videos via OpenAI’s video API using the bundled CLI (`scripts/sora.py`), including requests like “generate AI video,” “Sora,” “video remix,” “download video/thumbnail/spritesheet,” and batch video generation; requires `OPENAI_API_KEY` and Sora API access.",
         "outcome": "Use an available authorized provider/runtime and verify the artifact",
         "boundary": "No default paid generation, private upload or application activation",
         "activation": "conditional"
@@ -1804,7 +1976,10 @@
         "trigger": "Connector-independent Supabase skill and CLI/documentation fallback. Use when the namespaced Supabase plugin or its live tools are unavailable or unauthenticated, when the user explicitly requests the local skill/CLI route, or when declarative-schema guidance is required. Prefer the installed Supabase plugin when it is healthy.",
         "outcome": "Prefer available official/native integration and existing connector-independent fallback as appropriate",
         "boundary": "No mandatory provider migration or unrequested backend service",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "supabase"
+        ]
       }
     },
     {
@@ -1814,7 +1989,10 @@
         "trigger": "Use for any project with Supabase work involving RLS audits, migrations, SECURITY DEFINER RPCs, storage policies, auth/session handling, database functions, logs, or sensitive state where client-supplied identity, permissions, counters, rewards, tiers, credits, or ownership must not be trusted.",
         "outcome": "Prefer available official/native integration and existing connector-independent fallback as appropriate",
         "boundary": "No mandatory provider migration or unrequested backend service",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "supabase"
+        ]
       }
     },
     {
@@ -2164,7 +2342,9 @@
     {
       "name": "ux-flow-architect",
       "source": "approved local user-level snapshot; selected Appllama methods @ dd5caaec3d5d50ad7fc0324da238119c6b7c3707 (MIT notice: LICENSE.appllama.txt)",
-      "additional_license_evidence": ["LICENSE.appllama.txt"],
+      "additional_license_evidence": [
+        "LICENSE.appllama.txt"
+      ],
       "author": "Original snapshot author not declared; selected methods adapted from Appllama",
       "license_status": "Appllama adaptation: MIT; original snapshot license not declared; other listed notices retain their terms",
       "routing": {
@@ -2198,7 +2378,10 @@
         "trigger": "Deploy applications and websites to Vercel using the bundled `scripts/deploy.sh` claimable-preview flow. Use when the user asks to deploy to Vercel, wants a preview URL, or says to push a project live on Vercel.",
         "outcome": "Choose the actual target and applicable release proof",
         "boundary": "A PR-to-main request does not deploy or release to every platform",
-        "activation": "conditional"
+        "activation": "conditional",
+        "task_tags_any": [
+          "vercel"
+        ]
       }
     },
     {
@@ -2255,7 +2438,16 @@
         "runtime_platforms": [
           "darwin"
         ]
-      }
+      },
+      "footprint": [
+        {
+          "path": ".build-benchmark/",
+          "access": "write",
+          "tracking": "ignored",
+          "class": "generated-cache",
+          "gitignore": "ignore"
+        }
+      ]
     },
     {
       "name": "xcode-build-fixer",
@@ -2451,7 +2643,7 @@
       "redistribution_status": "External install; not vendored",
       "members": [
         "argent-android-emulator-setup",
-        "argent-create-flow",
+        "argent-create-e2e",
         "argent-device-interact",
         "argent-ios-device-interact",
         "argent-ios-device-setup",
@@ -2459,7 +2651,7 @@
         "argent-lens",
         "argent-metro-debugger",
         "argent-native-profiler",
-        "argent-qa-flows",
+        "argent-qa-e2e",
         "argent-react-native-app-workflow",
         "argent-react-native-optimization",
         "argent-react-native-profiler",
@@ -2890,13 +3082,13 @@
       "notes": "The audit found 17 shared skill links (16 Argent skills plus code-review-and-quality). The package declares UNLICENSED and no public source repository.",
       "members": [
         "argent-android-emulator-setup",
-        "argent-create-flow",
+        "argent-create-e2e",
         "argent-device-interact",
         "argent-ios-simulator-setup",
         "argent-lens",
         "argent-metro-debugger",
         "argent-native-profiler",
-        "argent-qa-flows",
+        "argent-qa-e2e",
         "argent-react-native-app-workflow",
         "argent-react-native-optimization",
         "argent-react-native-profiler",
@@ -4001,7 +4193,7 @@
             },
             "create-verification-skill": {
               "source": "pstack/skills/create-verification-skill",
-              "description": "Generate a project-local verification skill that drives your app the way a user does \u2014 any language, framework, or platform. Use for /create-verification-skill, \"make a control skill for this repo\", or when a project has no scripted way to prove UI/CLI/service behavior.",
+              "description": "Generate a project-local verification skill that drives your app the way a user does — any language, framework, or platform. Use for /create-verification-skill, \"make a control skill for this repo\", or when a project has no scripted way to prove UI/CLI/service behavior.",
               "activation": "explicit-only",
               "skill_sha256": "644f2551403c1bca01a2855b34611b6e7be0ce0dc5b204514c376c0f6a6e6ac4",
               "required_resources": [
@@ -4332,7 +4524,7 @@
             },
             "technical-writing": {
               "source": "pstack/skills/technical-writing",
-              "description": "Layered technical-writing standard: Di\u00e1taxis structure, Google developer style sentences, STE instruction rules, Global English syntax. Use for /technical-writing or when writing or reviewing docs, RFCs, readmes, PR descriptions, or commit messages.",
+              "description": "Layered technical-writing standard: Diátaxis structure, Google developer style sentences, STE instruction rules, Global English syntax. Use for /technical-writing or when writing or reviewing docs, RFCs, readmes, PR descriptions, or commit messages.",
               "activation": "explicit-only",
               "skill_sha256": "f5c512ffeec70bc4e0dee50f7bb4c26742e1be77967a6e8b15d1921e1c209ceb",
               "required_resources": []
@@ -4473,7 +4665,7 @@
       "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
       "members": [
         "argent-android-emulator-setup",
-        "argent-create-flow",
+        "argent-create-e2e",
         "argent-device-interact",
         "argent-ios-device-interact",
         "argent-ios-device-setup",
@@ -4481,7 +4673,7 @@
         "argent-lens",
         "argent-metro-debugger",
         "argent-native-profiler",
-        "argent-qa-flows",
+        "argent-qa-e2e",
         "argent-react-native-app-workflow",
         "argent-react-native-optimization",
         "argent-react-native-profiler",
@@ -4504,10 +4696,10 @@
       ],
       "auto_install": {
         "repository": "https://github.com/software-mansion/argent.git",
-        "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
+        "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
         "skills": {
           "argent-android-emulator-setup": "packages/skills/skills/argent-android-emulator-setup",
-          "argent-create-flow": "packages/skills/skills/argent-create-flow",
+          "argent-create-e2e": "packages/skills/skills/argent-create-e2e",
           "argent-device-interact": "packages/skills/skills/argent-device-interact",
           "argent-ios-device-interact": "packages/skills/skills/argent-ios-device-interact",
           "argent-ios-device-setup": "packages/skills/skills/argent-ios-device-setup",
@@ -4515,7 +4707,7 @@
           "argent-lens": "packages/skills/skills/argent-lens",
           "argent-metro-debugger": "packages/skills/skills/argent-metro-debugger",
           "argent-native-profiler": "packages/skills/skills/argent-native-profiler",
-          "argent-qa-flows": "packages/skills/skills/argent-qa-flows",
+          "argent-qa-e2e": "packages/skills/skills/argent-qa-e2e",
           "argent-react-native-app-workflow": "packages/skills/skills/argent-react-native-app-workflow",
           "argent-react-native-optimization": "packages/skills/skills/argent-react-native-optimization",
           "argent-react-native-profiler": "packages/skills/skills/argent-react-native-profiler",
@@ -4526,22 +4718,22 @@
           "argent-tv-interact": "packages/skills/skills/argent-tv-interact"
         },
         "metadata": {
-          "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
+          "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
           "skills": {
             "argent-android-emulator-setup": {
               "source": "packages/skills/skills/argent-android-emulator-setup",
               "description": "Set up and connect to an Android emulator using argent MCP tools. Use when starting a new session on Android, booting an emulator, getting a device serial, or before any UI interaction task.",
               "activation": "conditional",
-              "skill_sha256": "8aa785b5e233f5db1720311d6d8ab37bb09e47301c9158b8c45715478df1cb28",
+              "skill_sha256": "000c38e8020168fa915699f11f2def12e98293ac635bc0fa702715e507a508aa",
               "required_resources": []
             },
-            "argent-create-flow": {
-              "source": "packages/skills/skills/argent-create-flow",
-              "description": "Create, record, edit, replay, or repair reusable Argent flow YAML files. Use when the user asks to record or replay a repeatable device path, set up profiling or an A/B comparison, or invoke the authoring engine behind argent-qa-flows. Also use before repeating three or more interactions. For one-off UI checks, acceptance-driven regression tests, or screen video, use argent-test-ui-flow, argent-qa-flows, or argent-screen-recording respectively.",
+            "argent-create-e2e": {
+              "source": "packages/skills/skills/argent-create-e2e",
+              "description": "Create, record, edit, replay, or repair reusable Argent e2e test YAML files. Use when the user asks to record, replay, or run an e2e test or a repeatable device path, set up profiling or an A/B comparison, or invoke the authoring engine behind argent-qa-e2e. Also use before repeating three or more interactions. For one-off UI checks, acceptance-driven regression tests, or screen video, use argent-test-ui-flow, argent-qa-e2e, or argent-screen-recording respectively.",
               "activation": "conditional",
-              "skill_sha256": "b77b949e45863b79d91c47dad744fdf6903db11ec665972233914f301ee38525",
+              "skill_sha256": "513ba645f34697e006c998115c45a15d64c7247809eb810550f8aac69be9ec4c",
               "required_resources": [
-                "references/flow-yaml.md",
+                "references/e2e-yaml.md",
                 "references/live-authoring.md",
                 "references/reliability-and-recovery.md"
               ]
@@ -4550,10 +4742,11 @@
               "source": "packages/skills/skills/argent-device-interact",
               "description": "Interact with an iOS simulator, Android emulator, or Chromium (CDP) app using argent MCP tools. Use when tapping UI elements, performing gestures, scrolling/swiping, typing text, pressing hardware buttons, launching apps, opening URLs, taking screenshots, waiting for an element to appear or disappear, or checking visible app state after interactions. Not for TV targets.",
               "activation": "conditional",
-              "skill_sha256": "f68674b085ceccdffbd6e27136ed281457d1bfe390f620c24efcfc5c17a3e272",
+              "skill_sha256": "d9b41e9aede6ec5240416e89037abefa8edd65100e127c0b910ec9f2c0de8b15",
               "required_resources": [
                 "references/chromium.md",
                 "references/gesture-examples.md",
+                "references/harmonyos.md",
                 "references/secrets.md"
               ]
             },
@@ -4561,14 +4754,14 @@
               "source": "packages/skills/skills/argent-ios-device-interact",
               "description": "Drive a physical iPhone through argent. Use when a physical iPhone is involved (a list-devices iOS entry with kind \"device\") and ONLY then; never for a simulator. For cable, trust, or signing problems read argent-ios-device-setup.",
               "activation": "conditional",
-              "skill_sha256": "47fd418bf46ded93dcdab67d981dec42489c7ab204ad6b2110107621acb750cc",
+              "skill_sha256": "88043b68304303bd87ce948f7a6ef50a119bd7a942ed5933a92e8f2263dce5f4",
               "required_resources": []
             },
             "argent-ios-device-setup": {
               "source": "packages/skills/skills/argent-ios-device-setup",
               "description": "Set up a cabled physical iPhone for argent. Use when a physical iPhone is involved (a list-devices iOS entry with kind \"device\") and ONLY then; never for a simulator.",
               "activation": "conditional",
-              "skill_sha256": "457ab5e091e919127d6c1ae5978fc0d6a470f14aad7522f7300fe0069dc195be",
+              "skill_sha256": "108890c705aba39bcb8a2883dcfe36e47db2d352b484e580d7159eedf43d559d",
               "required_resources": []
             },
             "argent-ios-simulator-setup": {
@@ -4582,14 +4775,14 @@
               "source": "packages/skills/skills/argent-lens",
               "description": "Propose multiple visual design variants for on-screen elements and let the human pick in the Argent Lens window. Use when the user asks for design alternatives / options / A-B choices for a screen or component, or any time you have produced more than one candidate look for an element and want a human decision before committing.",
               "activation": "conditional",
-              "skill_sha256": "4a2ebdaa9604418a35832bf1c62c645a6c83afb5a2a71e968e8fd102a4ad7811",
+              "skill_sha256": "2d621b0140429be1ce574b2b0342d1ccda0bbd27856b7d03dfba80f50b97e62b",
               "required_resources": []
             },
             "argent-metro-debugger": {
               "source": "packages/skills/skills/argent-metro-debugger",
               "description": "Debug a JS runtime via CDP using argent debugger tools. Primary path is React Native via Metro (iOS / Android / Vega); a subset of the tools (debugger-connect, debugger-status, debugger-evaluate, debugger-log-registry) also drive a Chromium (CDP) app's renderer (an Electron app, or any Chromium browser exposing CDP) through the same surface. Use when connecting to the runtime, inspecting React components, reading console logs, or evaluating JavaScript.",
               "activation": "conditional",
-              "skill_sha256": "38075ad2c3e2614c9100f22a899960a1b4acc04fe05695dee23d1665e90b81f0",
+              "skill_sha256": "b66be97beea50e05cf1fbd05028ffc695ef659554c15d92537b57f0668733914",
               "required_resources": [
                 "references/failure-scenarios.md",
                 "references/source-maps.md"
@@ -4599,28 +4792,28 @@
               "source": "packages/skills/skills/argent-native-profiler",
               "description": "Native profiling for CPU hotspots, UI hangs, memory issues. iOS via xctrace; Android via Perfetto. Use when diagnosing native-level performance issues.",
               "activation": "conditional",
-              "skill_sha256": "d1a52888c3f0f74fc493dcd82ec425e39c036b7b713fccfa36eb0af4fadc972d",
+              "skill_sha256": "c849527843c85b2f1e080892ac9d2fe411033921e7ce00c86d2d1cb1af75feeb",
               "required_resources": []
             },
-            "argent-qa-flows": {
-              "source": "packages/skills/skills/argent-qa-flows",
-              "description": "Create repeatable QA regression E2E tests as Argent flows from test cases, tickets, or acceptance criteria. Use when the user asks to generate or preserve an automated regression scenario, with deterministic setup, stable targets, executable structural or visual evidence, and two consecutive full passes. For one-off UI checks or replayable paths without acceptance criteria, use argent-test-ui-flow or argent-create-flow. Supports iOS, Android, Chromium, and Vega (Fire TV), where recorded tv-remote steps replace touch directives. Apple TV and Android TV are unsupported; use argent-tv-interact there and report the limitation.",
+            "argent-qa-e2e": {
+              "source": "packages/skills/skills/argent-qa-e2e",
+              "description": "Write repeatable QA regression e2e tests from test cases, tickets, or acceptance criteria. Use when the user asks to write, automate, or generate an e2e test or preserve an automated regression scenario, with deterministic setup, stable targets, executable structural or visual evidence, and two consecutive full passes. For one-off UI checks or replayable paths without acceptance criteria, use argent-test-ui-flow or argent-create-e2e. Supports iOS, Android, Chromium, and Vega (Fire TV), where recorded tv-remote steps replace touch directives. Apple TV and Android TV are unsupported; use argent-tv-interact there and report the limitation.",
               "activation": "conditional",
-              "skill_sha256": "9728778331e9830415410cd9f357f525b38f0a259f5add69ac812d11d6f7af26",
+              "skill_sha256": "013c2ecee4349432f456c2cf665f12e3b46b91bd966249c8238cbd5e0c21a2e7",
               "required_resources": []
             },
             "argent-react-native-app-workflow": {
               "source": "packages/skills/skills/argent-react-native-app-workflow",
               "description": "Step-by-step workflows for developing or debugging React Native apps on iOS simulator or Android emulator. Use when starting the app, debugging Metro, fixing builds, diagnosing runtime errors, or running tests.",
               "activation": "conditional",
-              "skill_sha256": "2f847f2a096dc9dfdd27da858c6c99f57c472041e879169f874ce0d816077548",
+              "skill_sha256": "a12c10c44a7e0e915abfedefb3e8a2b35f4090dfecdd6322aba5a14437b36d59",
               "required_resources": []
             },
             "argent-react-native-optimization": {
               "source": "packages/skills/skills/argent-react-native-optimization",
               "description": "Optimizes a React Native app by profiling first to find real bottlenecks, then sweeping for mechanical issues. Entry-point for all performance work. Use when the app feels slow, user asks to optimize, fix re-renders, reduce jank, or improve startup. Delegates to argent-react-native-profiler for measurement.",
               "activation": "conditional",
-              "skill_sha256": "e4ed682f15010a8e208bc8ba6485254e9a9bc5a35cfbad4d1ef2cfe150971f1e",
+              "skill_sha256": "ef69d99ea504d7838c53e58e5a9233ac4a2f0b620bf65fa08ba2a7ce3acdc11a",
               "required_resources": [
                 "references/fix-reference.md",
                 "references/lint-rules.md",
@@ -4631,7 +4824,7 @@
               "source": "packages/skills/skills/argent-react-native-profiler",
               "description": "Profile a React Native Hermes app to measure re-render and CPU performance using argent profiler tools. Use when optimizing for performance, measuring before/after a fix, spotting slow components, diagnosing re-renders, checking CPU hotspots, or producing a ranked issue report.",
               "activation": "conditional",
-              "skill_sha256": "138069210bbc770b458355a4e913de0627f7328fa6473ebdd26cd74885410d8c",
+              "skill_sha256": "bd6be1924c7e61b7935715710c598c65fd4d705cf12041b96ad1ede8e61a2aee",
               "required_resources": [
                 "references/diagnostic-tools.md"
               ]
@@ -4640,7 +4833,7 @@
               "source": "packages/skills/skills/argent-screen-recording",
               "description": "Record a video of an iOS simulator or Android emulator/device screen using argent MCP tools. Use when the user asks to record the screen, capture a video of a flow, interaction, or animation, produce a screen recording, or document app behavior as a video clip.",
               "activation": "conditional",
-              "skill_sha256": "c8bcafed903c666d9225ad603270db2ecd858236582442cb2eda828af75ddf7f",
+              "skill_sha256": "761cc08436db249ce8ea2326abb26f698214a88d873e0b3d6dfa74924acd381d",
               "required_resources": []
             },
             "argent-screenshot-diff": {
@@ -4659,21 +4852,29 @@
             },
             "argent-test-ui-flow": {
               "source": "packages/skills/skills/argent-test-ui-flow",
-              "description": "Autonomously test an app UI (iOS or Android) by running interact-screenshot-verify loops using argent MCP tools. Use when testing UI flows, verifying login works, testing navigation, running end-to-end UI test scenarios, manual QA steps, visible UI changes, or visual behavior.",
+              "description": "Autonomously test an app UI (iOS or Android) by running interact-screenshot-verify loops using argent MCP tools. Use when testing UI flows, verifying login works, testing navigation, running UI test scenarios, manual QA steps, visible UI changes, or visual behavior.",
               "activation": "conditional",
-              "skill_sha256": "20da5854e8247489bdb085fa5722e5e85e51fcd598bf90e07a783dbe5ff09723",
+              "skill_sha256": "b7ba3ad6fb106ebcc7645833597a7e4c6b72a9a976cf8ad31837d3ea512013b9",
               "required_resources": []
             },
             "argent-tv-interact": {
               "source": "packages/skills/skills/argent-tv-interact",
-              "description": "Control and inspect TV apps via argent \u2014 Apple TV (tvOS), Android TV (leanback), and Amazon Fire TV (Vega). Boot the target, read focus, navigate with the D-pad remote, type, screenshot, and on Vega debug the JS runtime (evaluate, console logs, network inspector). Use when a task targets a TV (runtimeKind \"tv\", or platform \"vega\"), or mentions Apple TV / tvOS / Android TV / leanback / Vega / Fire TV / VVD.",
+              "description": "Control and inspect TV apps via argent, Apple TV (tvOS), Android TV (leanback), and Amazon Fire TV (Vega). Boot the target, read focus, navigate with the D-pad remote, type, screenshot, and on Vega debug the JS runtime (evaluate, console logs, network inspector). Use when a task targets a TV (runtimeKind \"tv\", or platform \"vega\"), or mentions Apple TV / tvOS / Android TV / leanback / Vega / Fire TV / VVD.",
               "activation": "conditional",
-              "skill_sha256": "0348bb321196ee7dcdf1db29678eea1f80d698c5398c6bfe60542bb1d2f90d90",
+              "skill_sha256": "c8cceb0cbb21ab2107120f7dc61d28bb0cc6ff60cdb4da275ec40f576d3e2037",
               "required_resources": []
             }
           }
         }
-      }
+      },
+      "footprint": [
+        {
+          "path": ".argent/",
+          "access": "write",
+          "tracking": "either",
+          "class": "tool-config"
+        }
+      ]
     },
     "expo": {
       "name": "Expo",
@@ -4856,7 +5057,7 @@
             },
             "expo-animation": {
               "source": "plugins/expo/skills/expo-animation",
-              "description": "Build animations in React Native and Expo, making the decisions in the order that determines whether they feel right \u2014 should it animate, which thread it runs on, which properties, spring or timing, how the gesture hands off, how it degrades. Writes the implementation with Reanimated, Gesture Handler, Expo Router and expo-haptics. Use when animating anything in an Expo app, adding gestures, sheets, screen transitions, press feedback or haptics, or fixing motion that stutters on device. For web animation use `animate`.",
+              "description": "Build animations in React Native and Expo, making the decisions in the order that determines whether they feel right — should it animate, which thread it runs on, which properties, spring or timing, how the gesture hands off, how it degrades. Writes the implementation with Reanimated, Gesture Handler, Expo Router and expo-haptics. Use when animating anything in an Expo app, adding gestures, sheets, screen transitions, press feedback or haptics, or fixing motion that stutters on device. For web animation use `animate`.",
               "activation": "conditional",
               "skill_sha256": "915279236d5ff74ad1ca6004d13917ba9792853c28e5e10cfec4e0884bcc3ebf",
               "required_resources": [
@@ -4973,7 +5174,7 @@
             },
             "expo-overview": {
               "source": "plugins/expo/skills/expo-overview",
-              "description": "Entry point and router for every Expo or EAS task. Load this skill first \u2014 before writing code and before choosing another expo-* / eas-* skill \u2014 when the request, PRD, or spec mentions Expo, EAS, Expo Go, or an expo-* package, or the project has an `expo` dependency in `package.json`. Within that gate it also covers app specs and designs to implement (tabs, stacks, maps, lists, navigation, building from a screenshot), and phrasings like 'implement a mobile app', 'make my app look native', 'add navigation', 'fetch some data', 'upgrade my SDK', 'add Expo to my existing native app', 'ship to the App Store', or 'I'm new to Expo, where do I start'. A fully specified request (SDK pinned, libraries named, layout given) still routes through here \u2014 the shared setup rules still apply. Do NOT load it when neither signal is present: a bare React Native project with no `expo` dependency is not Expo work. Detects the real goal, routes to the right expo-* / eas-* skill, and owns the shared setup rules.",
+              "description": "Entry point and router for every Expo or EAS task. Load this skill first — before writing code and before choosing another expo-* / eas-* skill — when the request, PRD, or spec mentions Expo, EAS, Expo Go, or an expo-* package, or the project has an `expo` dependency in `package.json`. Within that gate it also covers app specs and designs to implement (tabs, stacks, maps, lists, navigation, building from a screenshot), and phrasings like 'implement a mobile app', 'make my app look native', 'add navigation', 'fetch some data', 'upgrade my SDK', 'add Expo to my existing native app', 'ship to the App Store', or 'I'm new to Expo, where do I start'. A fully specified request (SDK pinned, libraries named, layout given) still routes through here — the shared setup rules still apply. Do NOT load it when neither signal is present: a bare React Native project with no `expo` dependency is not Expo work. Detects the real goal, routes to the right expo-* / eas-* skill, and owns the shared setup rules.",
               "activation": "conditional",
               "skill_sha256": "5bad914eebeb816e261f8d626ac0119fda2bfcea4e0fba3ac69dd066440edf30",
               "required_resources": [
@@ -4982,7 +5183,7 @@
             },
             "expo-project-structure": {
               "source": "plugins/expo/skills/expo-project-structure",
-              "description": "Folder structure for a new Expo app. Use when scaffolding or laying out a new Expo project with Expo Router, or deciding where a file should live in one. For new projects only \u2014 never restructure an existing app to match.",
+              "description": "Folder structure for a new Expo app. Use when scaffolding or laying out a new Expo project with Expo Router, or deciding where a file should live in one. For new projects only — never restructure an existing app to match.",
               "activation": "conditional",
               "skill_sha256": "6bf6d04335c2f5cedc63bc1bd6b7304ed352ddabf61ce79f95e786abe544b12c",
               "required_resources": [
@@ -5006,7 +5207,7 @@
             },
             "expo-skill-feedback": {
               "source": "plugins/expo/skills/expo-skill-feedback",
-              "description": "Submit feedback on an Expo skill\u2014or Expo itself\u2014and control bundled anonymous usage telemetry (off by default / opt-in). Submit feedback with: npx --yes submit-expo-feedback@latest \"ACTIONABLE_FEEDBACK\". Optionally add either or both: --category \"CATEGORY\" and --subject \"SUBJECT\". Replace the uppercase placeholders before running. Use when a skill was useful, confusing, broken, missing context, or worth improving; when Expo, Expo CLI, EAS CLI, docs, or MCP worked well or fell short; when an AI agent repeatedly failed, got stuck, or needed the user to take over an Expo task (report it as an eval candidate); or when the user explicitly asks to enable or disable telemetry (tracking), check its status, or understand what it collects.",
+              "description": "Submit feedback on an Expo skill—or Expo itself—and control bundled anonymous usage telemetry (off by default / opt-in). Submit feedback with: npx --yes submit-expo-feedback@latest \"ACTIONABLE_FEEDBACK\". Optionally add either or both: --category \"CATEGORY\" and --subject \"SUBJECT\". Replace the uppercase placeholders before running. Use when a skill was useful, confusing, broken, missing context, or worth improving; when Expo, Expo CLI, EAS CLI, docs, or MCP worked well or fell short; when an AI agent repeatedly failed, got stuck, or needed the user to take over an Expo task (report it as an eval candidate); or when the user explicitly asks to enable or disable telemetry (tracking), check its status, or understand what it collects.",
               "activation": "conditional",
               "skill_sha256": "beb2cee5d8649ce1c95db5adaca42e753dc9dd1b5d90fb7aa36e70e5c521a493",
               "required_resources": [
@@ -5018,7 +5219,7 @@
             },
             "expo-ui": {
               "source": "plugins/expo/skills/expo-ui",
-              "description": "Build native UI with the @expo/ui package: real SwiftUI on iOS and Jetpack Compose on Android. Default to @expo/ui for sheets (BottomSheet), pickers, sliders, toggles, menus, and grouped-form sections \u2014 do NOT reach for Reanimated, @gorhom/bottom-sheet, or RN built-in Picker/Switch; use @expo/ui instead. Fall back to RN built-ins only when @expo/ui is missing the component. NOTE: @expo/ui List renders native grouped rows like an iOS Settings screen \u2014 it is NOT a virtualized list; use FlatList/FlashList for large datasets. Covers universal components (Host, Column, Row, Button, Text, List, BottomSheet, FieldGroup, Switch, Slider, Picker, Menu), drop-in replacements for RN community libraries, and platform-specific SwiftUI/Jetpack Compose trees. Not for Expo Router navigation, Reanimated, or data fetching.",
+              "description": "Build native UI with the @expo/ui package: real SwiftUI on iOS and Jetpack Compose on Android. Default to @expo/ui for sheets (BottomSheet), pickers, sliders, toggles, menus, and grouped-form sections — do NOT reach for Reanimated, @gorhom/bottom-sheet, or RN built-in Picker/Switch; use @expo/ui instead. Fall back to RN built-ins only when @expo/ui is missing the component. NOTE: @expo/ui List renders native grouped rows like an iOS Settings screen — it is NOT a virtualized list; use FlatList/FlashList for large datasets. Covers universal components (Host, Column, Row, Button, Text, List, BottomSheet, FieldGroup, Switch, Slider, Picker, Menu), drop-in replacements for RN community libraries, and platform-specific SwiftUI/Jetpack Compose trees. Not for Expo Router navigation, Reanimated, or data fetching.",
               "activation": "conditional",
               "skill_sha256": "2634a4eb1524b43262e9932f3527f3823c82d5be6cf76437c3a05e5753930bf7",
               "required_resources": [
@@ -5171,7 +5372,7 @@
           "skills": {
             "supabase-postgres-best-practices": {
               "source": "skills/supabase-postgres-best-practices",
-              "description": "Postgres best practices maintained by Supabase, for Postgres running anywhere. Load this skill BEFORE writing or changing anything that lives in a Postgres database: creating or altering tables and columns (including choosing column types), schema design, migrations and declarative schema files, RLS policies and the tests that verify them, indexes, triggers, database functions, queues and scheduled jobs (pg_cron, pgmq), vector/semantic search (pgvector), and restoring dumps (pg_restore) or importing data. Also load it when diagnosing slow queries, high CPU, timeouts, EXPLAIN plans, connection exhaustion, locking, bloat, or rows visible to the wrong user or tenant. This is not just a performance guide \u2014 schema, migration, security, and SQL authoring tasks need these rules too, even for a one-column change or a single query.",
+              "description": "Postgres best practices maintained by Supabase, for Postgres running anywhere. Load this skill BEFORE writing or changing anything that lives in a Postgres database: creating or altering tables and columns (including choosing column types), schema design, migrations and declarative schema files, RLS policies and the tests that verify them, indexes, triggers, database functions, queues and scheduled jobs (pg_cron, pgmq), vector/semantic search (pgvector), and restoring dumps (pg_restore) or importing data. Also load it when diagnosing slow queries, high CPU, timeouts, EXPLAIN plans, connection exhaustion, locking, bloat, or rows visible to the wrong user or tenant. This is not just a performance guide — schema, migration, security, and SQL authoring tasks need these rules too, even for a one-column change or a single query.",
               "activation": "conditional",
               "skill_sha256": "ad65e776f45e761bafc609d3f506c77c1032225aa65e0c4c02f241b8071e5855",
               "required_resources": [
@@ -5279,7 +5480,7 @@
           "skills": {
             "convex-add": {
               "source": "skills/convex-add",
-              "description": "Add a capability to the CURRENT Convex app \u2014 consults the served Convex capability catalog for always-current procedures (billing, crons, auth, agent, search, \u2026); falls back to built-in hosting or @convex-dev component search. TRIGGER when the user runs /add, or asks to add hosting/publishing or any backend capability to an existing Convex app.",
+              "description": "Add a capability to the CURRENT Convex app — consults the served Convex capability catalog for always-current procedures (billing, crons, auth, agent, search, …); falls back to built-in hosting or @convex-dev component search. TRIGGER when the user runs /add, or asks to add hosting/publishing or any backend capability to an existing Convex app.",
               "activation": "conditional",
               "skill_sha256": "5d541e39c0ac3135cb2711eff09c830a3ed63dd224cfc9dd9197433c96569142",
               "required_resources": []
@@ -5314,7 +5515,7 @@
             },
             "convex-backup": {
               "source": "skills/convex-backup",
-              "description": "Set up Convex backups and run a restore DRILL that proves recovery \u2014 snapshot, restore into a throwaway preview, assert the data came back \u2014 plus a schedule matched to your RPO and a gated recovery runbook.",
+              "description": "Set up Convex backups and run a restore DRILL that proves recovery — snapshot, restore into a throwaway preview, assert the data came back — plus a schedule matched to your RPO and a gated recovery runbook.",
               "activation": "conditional",
               "skill_sha256": "d95ebe2afe99a6f73e1e9e87e8f21a6ab0ef26ecf90e1af89f20b84bd9fe6f1a",
               "required_resources": []
@@ -5328,7 +5529,7 @@
             },
             "convex-cost": {
               "source": "skills/convex-cost",
-              "description": "Preview Convex spend \u2014 rank functions by bytes/documents-read \u00d7 call-volume from insights, project each cost driver's growth curve, name the cheapest fix; confirm-cost for paid actions.",
+              "description": "Preview Convex spend — rank functions by bytes/documents-read × call-volume from insights, project each cost driver's growth curve, name the cheapest fix; confirm-cost for paid actions.",
               "activation": "conditional",
               "skill_sha256": "833701a5c1b8388d00e0fa85993cfba895930c2d8cfcc5975f758bb96f2523f8",
               "required_resources": []
@@ -5370,7 +5571,7 @@
             },
             "convex-docs": {
               "source": "skills/convex-docs",
-              "description": "Pull version-current Convex docs for the version this project uses \u2014 pin the installed version, fetch page-as-markdown or check node_modules types, freshness hierarchy \u2014 instead of writing a possibly-stale API from memory.",
+              "description": "Pull version-current Convex docs for the version this project uses — pin the installed version, fetch page-as-markdown or check node_modules types, freshness hierarchy — instead of writing a possibly-stale API from memory.",
               "activation": "conditional",
               "skill_sha256": "ce7773ba195dd2b4c247dbe98474c1d321e56ce55f47066346b84268a2992dbf",
               "required_resources": []
@@ -5391,14 +5592,14 @@
             },
             "convex-expert": {
               "source": "skills/convex-expert",
-              "description": "Convex backend specialist. Use this agent for any code inside a `convex/` directory \u2014 function definitions, schemas, indexes, queries, mutations, actions, HTTP endpoints, cron jobs, file storage, auth wiring, and component installation. Knows the object-form function syntax, validator patterns, resource limits, and component ecosystem that generic Claude routinely gets wrong.",
+              "description": "Convex backend specialist. Use this agent for any code inside a `convex/` directory — function definitions, schemas, indexes, queries, mutations, actions, HTTP endpoints, cron jobs, file storage, auth wiring, and component installation. Knows the object-form function syntax, validator patterns, resource limits, and component ecosystem that generic Claude routinely gets wrong.",
               "activation": "conditional",
               "skill_sha256": "dd1023f493d7f914f2875058f003159c59ed7593d3bc37d02eae2c9367a2825e",
               "required_resources": []
             },
             "convex-explain-app": {
               "source": "skills/convex-explain-app",
-              "description": "Explain an existing Convex app \u2014 data model + relationships, public vs internal functions, auth/ownership model, components, a request\u2192data flow \u2014 read from the schema and function surface. Read-only.",
+              "description": "Explain an existing Convex app — data model + relationships, public vs internal functions, auth/ownership model, components, a request→data flow — read from the schema and function surface. Read-only.",
               "activation": "conditional",
               "skill_sha256": "908d349556d4ff1e7b2dfeaadf2595af7f96e4224916b73e2d0f2ffcc8a9735c",
               "required_resources": []
@@ -5412,14 +5613,14 @@
             },
             "convex-insights": {
               "source": "skills/convex-insights",
-              "description": "Query a running Convex app's logs + health in natural language (official MCP): failures, slow/expensive functions, deploy causality \u2014 scoped, evidence-backed, with a dashboard deep link.",
+              "description": "Query a running Convex app's logs + health in natural language (official MCP): failures, slow/expensive functions, deploy causality — scoped, evidence-backed, with a dashboard deep link.",
               "activation": "conditional",
               "skill_sha256": "5e3c1cb9a3603bc3ec4178b1a5c3b7afcf54d2b8566721f1f77ec1c45872b990",
               "required_resources": []
             },
             "convex-launch-readiness": {
               "source": "skills/convex-launch-readiness",
-              "description": "Run every Convex audit (authz, reviewer, advisor, insights) into one scored, deduped readiness report with an ordered fix plan \u2014 Lighthouse for your backend.",
+              "description": "Run every Convex audit (authz, reviewer, advisor, insights) into one scored, deduped readiness report with an ordered fix plan — Lighthouse for your backend.",
               "activation": "conditional",
               "skill_sha256": "ad43c84c0daf53e85431792af532dceeb06f167213f9429e38bbe048a5844093",
               "required_resources": []
@@ -5464,7 +5665,7 @@
             },
             "convex-reviewer": {
               "source": "skills/convex-reviewer",
-              "description": "Convex code reviewer \u2014 security, auth, validators, performance, and pattern checks for code in a convex/ directory. Use to review or audit Convex functions before shipping.",
+              "description": "Convex code reviewer — security, auth, validators, performance, and pattern checks for code in a convex/ directory. Use to review or audit Convex functions before shipping.",
               "activation": "conditional",
               "skill_sha256": "210fca59f179cc50cbb1ff03396f870076b6fbd8133238d217b60e6e3b8f55f5",
               "required_resources": []
@@ -5478,7 +5679,7 @@
             },
             "convex-self-heal": {
               "source": "skills/convex-self-heal",
-              "description": "Production error \u2192 triaged, root-caused, repaired, and certified (tsc + rehearsal + reproduce-then-gone) fix PR for a human to merge \u2014 then confirm the error stops recurring. Never auto-merges.",
+              "description": "Production error → triaged, root-caused, repaired, and certified (tsc + rehearsal + reproduce-then-gone) fix PR for a human to merge — then confirm the error stops recurring. Never auto-merges.",
               "activation": "conditional",
               "skill_sha256": "6b82ea1241fc5e08c475611bdd90f76d322288ab3c29de44227cbb64bd23da3a",
               "required_resources": []
@@ -5492,7 +5693,7 @@
             },
             "convex-suggest": {
               "source": "skills/convex-suggest",
-              "description": "Suggest the matching Convex component when the user hand-rolls a pattern it already solves (crons, sharded-counter, rate-limiter, storage, search, presence, workflow, RAG, prosemirror-sync). Passive \u2014 suggest after the task, never interrupt. Never install without consent.",
+              "description": "Suggest the matching Convex component when the user hand-rolls a pattern it already solves (crons, sharded-counter, rate-limiter, storage, search, presence, workflow, RAG, prosemirror-sync). Passive — suggest after the task, never interrupt. Never install without consent.",
               "activation": "conditional",
               "skill_sha256": "432e34a1af0dfef751367434d658fa7b0ad554cf847565d482cad79f64d6289e",
               "required_resources": []
@@ -5506,7 +5707,7 @@
             },
             "convex-verify": {
               "source": "skills/convex-verify",
-              "description": "Prove a Convex feature works \u2014 seed, drive as multiple mocked users via convex-test, assert behavior including the negative authz cases (wrong user refused, data-scope enforced).",
+              "description": "Prove a Convex feature works — seed, drive as multiple mocked users via convex-test, assert behavior including the negative authz cases (wrong user refused, data-scope enforced).",
               "activation": "conditional",
               "skill_sha256": "b7aff41a73c07d9a95d52ad4a5d76095c45247b1dfbcacd251dc60f423f0b9e6",
               "required_resources": []
@@ -5710,7 +5911,16 @@
             }
           }
         }
-      }
+      },
+      "footprint": [
+        {
+          "path": ".unlazy/",
+          "access": "write",
+          "tracking": "ignored",
+          "class": "acceptance-record",
+          "gitignore": "ignore"
+        }
+      ]
     },
     "ponytail": {
       "name": "Ponytail",
@@ -5834,6 +6044,201 @@
       "install": "Use existing dependencies or authorized preparation in statechart-verification/references/dependencies.md.",
       "activation": "Only for selected checking/rendering; no automatic installation by default.",
       "repository": "https://github.com/tlaplus/tlaplus"
+    }
+  },
+  "task_tags": {
+    "android": {
+      "markers": [
+        {
+          "glob": "**/build.gradle"
+        },
+        {
+          "glob": "**/build.gradle.kts"
+        },
+        {
+          "glob": "**/AndroidManifest.xml"
+        }
+      ]
+    },
+    "architecture": {
+      "markers": []
+    },
+    "cloudflare": {
+      "markers": [
+        {
+          "glob": "wrangler.toml"
+        },
+        {
+          "glob": "wrangler.json"
+        },
+        {
+          "glob": "wrangler.jsonc"
+        }
+      ]
+    },
+    "concurrency": {
+      "markers": []
+    },
+    "convex": {
+      "markers": [
+        {
+          "glob": "convex.json"
+        },
+        {
+          "glob": "convex/schema.ts"
+        }
+      ]
+    },
+    "e2e": {
+      "markers": [
+        {
+          "glob": "playwright.config.*"
+        },
+        {
+          "glob": ".e2e/"
+        }
+      ]
+    },
+    "expo": {
+      "markers": [
+        {
+          "glob": "eas.json"
+        },
+        {
+          "glob": "app.config.js"
+        },
+        {
+          "glob": "app.config.ts"
+        }
+      ]
+    },
+    "formal-verification": {
+      "markers": [
+        {
+          "glob": "**/*.tla"
+        }
+      ]
+    },
+    "ios": {
+      "markers": [
+        {
+          "glob": "**/*.xcodeproj"
+        },
+        {
+          "glob": "**/*.xcworkspace"
+        }
+      ]
+    },
+    "netlify": {
+      "markers": [
+        {
+          "glob": "netlify.toml"
+        }
+      ]
+    },
+    "react-native": {
+      "markers": [
+        {
+          "glob": "metro.config.js"
+        },
+        {
+          "glob": "metro.config.cjs"
+        }
+      ]
+    },
+    "shadcn": {
+      "markers": [
+        {
+          "glob": "components.json"
+        }
+      ]
+    },
+    "statechart": {
+      "markers": [
+        {
+          "glob": "**/*.tla"
+        }
+      ]
+    },
+    "supabase": {
+      "markers": [
+        {
+          "glob": "supabase/config.toml"
+        }
+      ]
+    },
+    "swift": {
+      "markers": [
+        {
+          "glob": "Package.swift"
+        },
+        {
+          "glob": "**/*.xcodeproj"
+        }
+      ]
+    },
+    "swift-concurrency": {
+      "markers": []
+    },
+    "swift-testing": {
+      "markers": [
+        {
+          "glob": "**/*.swift",
+          "contains": "import Testing"
+        }
+      ]
+    },
+    "swiftdata": {
+      "markers": [
+        {
+          "glob": "**/*.swift",
+          "contains": "import SwiftData"
+        }
+      ]
+    },
+    "swiftui": {
+      "markers": [
+        {
+          "glob": "**/*.swift",
+          "contains": "import SwiftUI"
+        }
+      ]
+    },
+    "typescript": {
+      "markers": [
+        {
+          "glob": "tsconfig.json"
+        }
+      ]
+    },
+    "vercel": {
+      "markers": [
+        {
+          "glob": "vercel.json"
+        }
+      ]
+    },
+    "verification-drift": {
+      "markers": []
+    },
+    "web": {
+      "markers": [
+        {
+          "glob": "index.html"
+        },
+        {
+          "glob": "vite.config.*"
+        },
+        {
+          "glob": "next.config.*"
+        },
+        {
+          "glob": "astro.config.*"
+        }
+      ]
+    },
+    "xcode-performance": {
+      "markers": []
     }
   }
 }

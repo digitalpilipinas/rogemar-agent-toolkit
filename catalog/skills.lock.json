@@ -232,7 +232,7 @@
         "license_status": "Not declared locally; verify Software Mansion terms",
         "members": [
           "argent-android-emulator-setup",
-          "argent-create-flow",
+          "argent-create-e2e",
           "argent-device-interact",
           "argent-ios-device-interact",
           "argent-ios-device-setup",
@@ -240,7 +240,7 @@
           "argent-lens",
           "argent-metro-debugger",
           "argent-native-profiler",
-          "argent-qa-flows",
+          "argent-qa-e2e",
           "argent-react-native-app-workflow",
           "argent-react-native-optimization",
           "argent-react-native-profiler",
@@ -668,13 +668,13 @@
         "license_status": "UNLICENSED (package metadata)",
         "members": [
           "argent-android-emulator-setup",
-          "argent-create-flow",
+          "argent-create-e2e",
           "argent-device-interact",
           "argent-ios-simulator-setup",
           "argent-lens",
           "argent-metro-debugger",
           "argent-native-profiler",
-          "argent-qa-flows",
+          "argent-qa-e2e",
           "argent-react-native-app-workflow",
           "argent-react-native-optimization",
           "argent-react-native-profiler",
@@ -1119,27 +1119,27 @@
       "argent": {
         "activation": "Declared dependency; verify installed, exposed and authenticated only when the task needs it.",
         "auto_install": {
-          "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
+          "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
           "metadata": {
-            "commit": "19461cb7a96822b75996a7387ba05d9fade615f5",
+            "commit": "df57cb1e54b054e78e460f8ffdb34bbed40f0697",
             "skills": {
               "argent-android-emulator-setup": {
                 "activation": "conditional",
                 "description": "Set up and connect to an Android emulator using argent MCP tools. Use when starting a new session on Android, booting an emulator, getting a device serial, or before any UI interaction task.",
                 "required_resources": [],
-                "skill_sha256": "8aa785b5e233f5db1720311d6d8ab37bb09e47301c9158b8c45715478df1cb28",
+                "skill_sha256": "000c38e8020168fa915699f11f2def12e98293ac635bc0fa702715e507a508aa",
                 "source": "packages/skills/skills/argent-android-emulator-setup"
               },
-              "argent-create-flow": {
+              "argent-create-e2e": {
                 "activation": "conditional",
-                "description": "Create, record, edit, replay, or repair reusable Argent flow YAML files. Use when the user asks to record or replay a repeatable device path, set up profiling or an A/B comparison, or invoke the authoring engine behind argent-qa-flows. Also use before repeating three or more interactions. For one-off UI checks, acceptance-driven regression tests, or screen video, use argent-test-ui-flow, argent-qa-flows, or argent-screen-recording respectively.",
+                "description": "Create, record, edit, replay, or repair reusable Argent e2e test YAML files. Use when the user asks to record, replay, or run an e2e test or a repeatable device path, set up profiling or an A/B comparison, or invoke the authoring engine behind argent-qa-e2e. Also use before repeating three or more interactions. For one-off UI checks, acceptance-driven regression tests, or screen video, use argent-test-ui-flow, argent-qa-e2e, or argent-screen-recording respectively.",
                 "required_resources": [
-                  "references/flow-yaml.md",
+                  "references/e2e-yaml.md",
                   "references/live-authoring.md",
                   "references/reliability-and-recovery.md"
                 ],
-                "skill_sha256": "b77b949e45863b79d91c47dad744fdf6903db11ec665972233914f301ee38525",
-                "source": "packages/skills/skills/argent-create-flow"
+                "skill_sha256": "513ba645f34697e006c998115c45a15d64c7247809eb810550f8aac69be9ec4c",
+                "source": "packages/skills/skills/argent-create-e2e"
               },
               "argent-device-interact": {
                 "activation": "conditional",
@@ -1147,23 +1147,24 @@
                 "required_resources": [
                   "references/chromium.md",
                   "references/gesture-examples.md",
+                  "references/harmonyos.md",
                   "references/secrets.md"
                 ],
-                "skill_sha256": "f68674b085ceccdffbd6e27136ed281457d1bfe390f620c24efcfc5c17a3e272",
+                "skill_sha256": "d9b41e9aede6ec5240416e89037abefa8edd65100e127c0b910ec9f2c0de8b15",
                 "source": "packages/skills/skills/argent-device-interact"
               },
               "argent-ios-device-interact": {
                 "activation": "conditional",
                 "description": "Drive a physical iPhone through argent. Use when a physical iPhone is involved (a list-devices iOS entry with kind \"device\") and ONLY then; never for a simulator. For cable, trust, or signing problems read argent-ios-device-setup.",
                 "required_resources": [],
-                "skill_sha256": "47fd418bf46ded93dcdab67d981dec42489c7ab204ad6b2110107621acb750cc",
+                "skill_sha256": "88043b68304303bd87ce948f7a6ef50a119bd7a942ed5933a92e8f2263dce5f4",
                 "source": "packages/skills/skills/argent-ios-device-interact"
               },
               "argent-ios-device-setup": {
                 "activation": "conditional",
                 "description": "Set up a cabled physical iPhone for argent. Use when a physical iPhone is involved (a list-devices iOS entry with kind \"device\") and ONLY then; never for a simulator.",
                 "required_resources": [],
-                "skill_sha256": "457ab5e091e919127d6c1ae5978fc0d6a470f14aad7522f7300fe0069dc195be",
+                "skill_sha256": "108890c705aba39bcb8a2883dcfe36e47db2d352b484e580d7159eedf43d559d",
                 "source": "packages/skills/skills/argent-ios-device-setup"
               },
               "argent-ios-simulator-setup": {
@@ -1177,7 +1178,7 @@
                 "activation": "conditional",
                 "description": "Propose multiple visual design variants for on-screen elements and let the human pick in the Argent Lens window. Use when the user asks for design alternatives / options / A-B choices for a screen or component, or any time you have produced more than one candidate look for an element and want a human decision before committing.",
                 "required_resources": [],
-                "skill_sha256": "4a2ebdaa9604418a35832bf1c62c645a6c83afb5a2a71e968e8fd102a4ad7811",
+                "skill_sha256": "2d621b0140429be1ce574b2b0342d1ccda0bbd27856b7d03dfba80f50b97e62b",
                 "source": "packages/skills/skills/argent-lens"
               },
               "argent-metro-debugger": {
@@ -1187,28 +1188,28 @@
                   "references/failure-scenarios.md",
                   "references/source-maps.md"
                 ],
-                "skill_sha256": "38075ad2c3e2614c9100f22a899960a1b4acc04fe05695dee23d1665e90b81f0",
+                "skill_sha256": "b66be97beea50e05cf1fbd05028ffc695ef659554c15d92537b57f0668733914",
                 "source": "packages/skills/skills/argent-metro-debugger"
               },
               "argent-native-profiler": {
                 "activation": "conditional",
                 "description": "Native profiling for CPU hotspots, UI hangs, memory issues. iOS via xctrace; Android via Perfetto. Use when diagnosing native-level performance issues.",
                 "required_resources": [],
-                "skill_sha256": "d1a52888c3f0f74fc493dcd82ec425e39c036b7b713fccfa36eb0af4fadc972d",
+                "skill_sha256": "c849527843c85b2f1e080892ac9d2fe411033921e7ce00c86d2d1cb1af75feeb",
                 "source": "packages/skills/skills/argent-native-profiler"
               },
-              "argent-qa-flows": {
+              "argent-qa-e2e": {
                 "activation": "conditional",
-                "description": "Create repeatable QA regression E2E tests as Argent flows from test cases, tickets, or acceptance criteria. Use when the user asks to generate or preserve an automated regression scenario, with deterministic setup, stable targets, executable structural or visual evidence, and two consecutive full passes. For one-off UI checks or replayable paths without acceptance criteria, use argent-test-ui-flow or argent-create-flow. Supports iOS, Android, Chromium, and Vega (Fire TV), where recorded tv-remote steps replace touch directives. Apple TV and Android TV are unsupported; use argent-tv-interact there and report the limitation.",
+                "description": "Write repeatable QA regression e2e tests from test cases, tickets, or acceptance criteria. Use when the user asks to write, automate, or generate an e2e test or preserve an automated regression scenario, with deterministic setup, stable targets, executable structural or visual evidence, and two consecutive full passes. For one-off UI checks or replayable paths without acceptance criteria, use argent-test-ui-flow or argent-create-e2e. Supports iOS, Android, Chromium, and Vega (Fire TV), where recorded tv-remote steps replace touch directives. Apple TV and Android TV are unsupported; use argent-tv-interact there and report the limitation.",
                 "required_resources": [],
-                "skill_sha256": "9728778331e9830415410cd9f357f525b38f0a259f5add69ac812d11d6f7af26",
-                "source": "packages/skills/skills/argent-qa-flows"
+                "skill_sha256": "013c2ecee4349432f456c2cf665f12e3b46b91bd966249c8238cbd5e0c21a2e7",
+                "source": "packages/skills/skills/argent-qa-e2e"
               },
               "argent-react-native-app-workflow": {
                 "activation": "conditional",
                 "description": "Step-by-step workflows for developing or debugging React Native apps on iOS simulator or Android emulator. Use when starting the app, debugging Metro, fixing builds, diagnosing runtime errors, or running tests.",
                 "required_resources": [],
-                "skill_sha256": "2f847f2a096dc9dfdd27da858c6c99f57c472041e879169f874ce0d816077548",
+                "skill_sha256": "a12c10c44a7e0e915abfedefb3e8a2b35f4090dfecdd6322aba5a14437b36d59",
                 "source": "packages/skills/skills/argent-react-native-app-workflow"
               },
               "argent-react-native-optimization": {
@@ -1219,7 +1220,7 @@
                   "references/lint-rules.md",
                   "references/semantic-checklist.md"
                 ],
-                "skill_sha256": "e4ed682f15010a8e208bc8ba6485254e9a9bc5a35cfbad4d1ef2cfe150971f1e",
+                "skill_sha256": "ef69d99ea504d7838c53e58e5a9233ac4a2f0b620bf65fa08ba2a7ce3acdc11a",
                 "source": "packages/skills/skills/argent-react-native-optimization"
               },
               "argent-react-native-profiler": {
@@ -1228,14 +1229,14 @@
                 "required_resources": [
                   "references/diagnostic-tools.md"
                 ],
-                "skill_sha256": "138069210bbc770b458355a4e913de0627f7328fa6473ebdd26cd74885410d8c",
+                "skill_sha256": "bd6be1924c7e61b7935715710c598c65fd4d705cf12041b96ad1ede8e61a2aee",
                 "source": "packages/skills/skills/argent-react-native-profiler"
               },
               "argent-screen-recording": {
                 "activation": "conditional",
                 "description": "Record a video of an iOS simulator or Android emulator/device screen using argent MCP tools. Use when the user asks to record the screen, capture a video of a flow, interaction, or animation, produce a screen recording, or document app behavior as a video clip.",
                 "required_resources": [],
-                "skill_sha256": "c8bcafed903c666d9225ad603270db2ecd858236582442cb2eda828af75ddf7f",
+                "skill_sha256": "761cc08436db249ce8ea2326abb26f698214a88d873e0b3d6dfa74924acd381d",
                 "source": "packages/skills/skills/argent-screen-recording"
               },
               "argent-screenshot-diff": {
@@ -1254,16 +1255,16 @@
               },
               "argent-test-ui-flow": {
                 "activation": "conditional",
-                "description": "Autonomously test an app UI (iOS or Android) by running interact-screenshot-verify loops using argent MCP tools. Use when testing UI flows, verifying login works, testing navigation, running end-to-end UI test scenarios, manual QA steps, visible UI changes, or visual behavior.",
+                "description": "Autonomously test an app UI (iOS or Android) by running interact-screenshot-verify loops using argent MCP tools. Use when testing UI flows, verifying login works, testing navigation, running UI test scenarios, manual QA steps, visible UI changes, or visual behavior.",
                 "required_resources": [],
-                "skill_sha256": "20da5854e8247489bdb085fa5722e5e85e51fcd598bf90e07a783dbe5ff09723",
+                "skill_sha256": "b7ba3ad6fb106ebcc7645833597a7e4c6b72a9a976cf8ad31837d3ea512013b9",
                 "source": "packages/skills/skills/argent-test-ui-flow"
               },
               "argent-tv-interact": {
                 "activation": "conditional",
-                "description": "Control and inspect TV apps via argent \u2014 Apple TV (tvOS), Android TV (leanback), and Amazon Fire TV (Vega). Boot the target, read focus, navigate with the D-pad remote, type, screenshot, and on Vega debug the JS runtime (evaluate, console logs, network inspector). Use when a task targets a TV (runtimeKind \"tv\", or platform \"vega\"), or mentions Apple TV / tvOS / Android TV / leanback / Vega / Fire TV / VVD.",
+                "description": "Control and inspect TV apps via argent, Apple TV (tvOS), Android TV (leanback), and Amazon Fire TV (Vega). Boot the target, read focus, navigate with the D-pad remote, type, screenshot, and on Vega debug the JS runtime (evaluate, console logs, network inspector). Use when a task targets a TV (runtimeKind \"tv\", or platform \"vega\"), or mentions Apple TV / tvOS / Android TV / leanback / Vega / Fire TV / VVD.",
                 "required_resources": [],
-                "skill_sha256": "0348bb321196ee7dcdf1db29678eea1f80d698c5398c6bfe60542bb1d2f90d90",
+                "skill_sha256": "c8cceb0cbb21ab2107120f7dc61d28bb0cc6ff60cdb4da275ec40f576d3e2037",
                 "source": "packages/skills/skills/argent-tv-interact"
               }
             }
@@ -1271,7 +1272,7 @@
           "repository": "https://github.com/software-mansion/argent.git",
           "skills": {
             "argent-android-emulator-setup": "packages/skills/skills/argent-android-emulator-setup",
-            "argent-create-flow": "packages/skills/skills/argent-create-flow",
+            "argent-create-e2e": "packages/skills/skills/argent-create-e2e",
             "argent-device-interact": "packages/skills/skills/argent-device-interact",
             "argent-ios-device-interact": "packages/skills/skills/argent-ios-device-interact",
             "argent-ios-device-setup": "packages/skills/skills/argent-ios-device-setup",
@@ -1279,7 +1280,7 @@
             "argent-lens": "packages/skills/skills/argent-lens",
             "argent-metro-debugger": "packages/skills/skills/argent-metro-debugger",
             "argent-native-profiler": "packages/skills/skills/argent-native-profiler",
-            "argent-qa-flows": "packages/skills/skills/argent-qa-flows",
+            "argent-qa-e2e": "packages/skills/skills/argent-qa-e2e",
             "argent-react-native-app-workflow": "packages/skills/skills/argent-react-native-app-workflow",
             "argent-react-native-optimization": "packages/skills/skills/argent-react-native-optimization",
             "argent-react-native-profiler": "packages/skills/skills/argent-react-native-profiler",
@@ -1300,11 +1301,19 @@
           "permissions",
           "visual-comparison"
         ],
+        "footprint": [
+          {
+            "access": "write",
+            "class": "tool-config",
+            "path": ".argent/",
+            "tracking": "either"
+          }
+        ],
         "install": "npx @swmansion/argent@latest init -y",
         "kind": "skills-and-runtime",
         "members": [
           "argent-android-emulator-setup",
-          "argent-create-flow",
+          "argent-create-e2e",
           "argent-device-interact",
           "argent-ios-device-interact",
           "argent-ios-device-setup",
@@ -1312,7 +1321,7 @@
           "argent-lens",
           "argent-metro-debugger",
           "argent-native-profiler",
-          "argent-qa-flows",
+          "argent-qa-e2e",
           "argent-react-native-app-workflow",
           "argent-react-native-optimization",
           "argent-react-native-profiler",
@@ -3016,6 +3025,15 @@
             "unlazy": "."
           }
         },
+        "footprint": [
+          {
+            "access": "write",
+            "class": "acceptance-record",
+            "gitignore": "ignore",
+            "path": ".unlazy/",
+            "tracking": "ignored"
+          }
+        ],
         "install": "npx skills add Leonxlnx/unlazy",
         "integration": "plugins/rogemar-agent-toolkit/skills/first-time-right-delivery/references/unlazy.md",
         "kind": "skills",
@@ -6105,7 +6123,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 29,
-      "sha256": "28e8674f32134bda6828a29ebac7e6342fda9018da2a3dc73b642fe154d2a80a"
+      "sha256": "f39641032fb8be3a6fdc2c5f3ba913164f159a02b3d84b4cec9adf6581a4a3cf"
     },
     "xcode-build-benchmark": {
       "file_count": 6,
