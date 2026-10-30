@@ -2,6 +2,8 @@
 
 ## Unreleased (after 1.2.2)
 
+- Add opt-in readiness hooks (`project-readiness/scripts/hooks.py`): session start adds readiness and the situation map, each prompt adds only the matching rows (600 characters at most), and finish warns without blocking when changed files call for unrecorded methods, with a loop guard. `claude-forge-setup` prints the Claude Code settings snippet for the owner's approval; other harnesses stay unqualified until verified.
+
 - Add `programmatic-video` to the content pack: a method for code-rendered video (brief, storyboard, deterministic `render(t)` timeline, frame rendering, ffmpeg encoding, contact-sheet QA, asset licensing) that prefers an installed video plugin when it fits. Method informed by ClaudeAnimationBase and lemo-opuscar (both MIT); nothing is copied.
 
 - Add tla-ts (`tla-ts@0.0.3`, MIT) as an opt-in statechart engine that needs no Java: `STATECHART_ENGINE=tla-ts` with a local `TLA_TS` executable or authorized installation. TLC stays the default; tla-ts results are labelled unverified until a corpus comparison with TLC is recorded.

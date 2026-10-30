@@ -15,7 +15,9 @@ dispatches workers. `claude-forge` calls this route without a separate user
 invocation.
 
 Read [routing-contract.md](references/routing-contract.md) before configuration
-or dispatch. Read `references/roles.json` for role IDs, groups, and skill hints.
+or dispatch. For opt-in readiness hooks (session start, prompt, finish), read
+[readiness-hooks.md](references/readiness-hooks.md); install them only with the
+owner's explicit consent. Read `references/roles.json` for role IDs, groups, and skill hints.
 These are assignments, not permanent agents and not installed tool claims.
 
 Use Peak, Balanced, Lean, and Sprint. Discover the exact model IDs and accepted

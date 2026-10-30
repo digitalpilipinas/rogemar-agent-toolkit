@@ -34,6 +34,11 @@ path, such as an agent-map output folder outside the repository. Declared locati
 win. Connection state for MCP servers and plugins is observed by the agent at runtime
 and never written to the record or the map.
 
+Opt-in hooks run these checks automatically: `scripts/hooks.py` provides session
+start, prompt and finish hooks, and each harness's Forge setup explains how to
+install them with the owner's consent (on Claude, `claude-forge-setup`'s
+`references/readiness-hooks.md`).
+
 To enforce the method receipt on pull requests, `readiness.py ci` prints a GitHub
 Actions job for the owner to review and adopt; it reads the validator and policy
 from the protected base branch, never the pull request. It writes nothing.
