@@ -956,6 +956,9 @@ def external_skill_plan(selection: dict[str, Any], skills_root: Path) -> list[di
                 plan["conflicts"].append(f"{skill}: locally modified copy")
             elif marker["commit"] != recipe["commit"]:
                 plan["upgrade"][skill] = source
+        # Upstream renamed or removed these; unedited managed copies are retired with a backup.
+        plan["retire"] = sorted(skill for skill, item in recorded.items()
+                                if item.get("repository") == recipe["repository"] and skill not in recipe["skills"])
         result.append(plan)
     return result
 
@@ -1024,6 +1027,11 @@ def install_external_skills(selection: dict[str, Any], skills_root: Path, *, ski
     failures = []
     for recipe in external_skill_plan(selection, skills_root):
         failures.extend(recipe["conflicts"])
+        if recipe.get("retire"):
+            try:
+                failures.extend(retire_external_skills(recipe["retire"], skills_root))
+            except (ToolkitError, OSError) as exc:
+                failures.append(f"{recipe['dependency']}: {exc}")
         wanted = {**recipe["missing"], **recipe["upgrade"], **recipe["legacy"]}
         if not wanted:
             continue
@@ -1036,6 +1044,30 @@ def install_external_skills(selection: dict[str, Any], skills_root: Path, *, ski
         print("Native plugins, runtimes and authentication require separate setup/verification: " + ", ".join(runtime))
     if failures:
         raise ToolkitError("External provisioning incomplete; successful installs preserved; conflicts were not overwritten:\n" + "\n".join(failures))
+
+
+def retire_external_skills(names, skills_root):
+    """Back up and untrack managed external copies their upstream no longer ships."""
+    skills_root = skills_root.resolve()
+    state_path = checked_path(skills_root.parent, Path(f"{PACKAGE_NAME}.lock.json"))
+    control_root = checked_path(skills_root.parent, Path(f".{PACKAGE_NAME}"))
+    state = read_optional_state(state_path) or {}
+    state_bytes = state_path.read_bytes() if state_path.exists() else None
+    tracked = state.get("external_skills", {})
+    paths = {name: checked_path(skills_root, Path(name)) for name in names}
+    fingerprints = {name: installed_digest(path) for name, path in paths.items()}
+    edited = [name for name in names if fingerprints[name] is not None and fingerprints[name] != tracked[name]["sha256"]]
+    if edited:
+        return [f"{name}: retired upstream but locally modified; preserved" for name in edited]
+    new_state = dict(state)
+    new_state["external_skills"] = {k: v for k, v in tracked.items() if k not in names}
+    backup = apply_prepared_install(
+        skills_root=skills_root, state_path=state_path, control_root=control_root,
+        state=state, state_bytes=state_bytes, desired={}, sources={}, destinations={},
+        previous_paths=paths, fingerprints=fingerprints, changed=[], removed=list(names),
+        new_state=new_state)
+    print(f"Retired {len(names)} external skills their upstream no longer ships ({', '.join(names)}); recoverable backup: {backup}")
+    return []
 
 
 def install_external_recipe(recipe, skills_root):

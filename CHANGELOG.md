@@ -2,6 +2,8 @@
 
 ## Unreleased (after 1.2.2)
 
+- Retire managed external skills their upstream no longer ships (for example argent's renamed `argent-create-flow` and `argent-qa-flows`): unedited copies move to the install backup and leave the state; edited copies are preserved and reported.
+
 - Add the method-compliance measurement protocol for 1.3.0 release acceptance: blind, identical task per harness and arm, scored from transcripts and artifacts (used, reasoned or skipped). Runs follow installation, before the 1.3.0 tag.
 
 - Add opt-in readiness hooks (`project-readiness/scripts/hooks.py`): session start adds readiness and the situation map, each prompt adds only the matching rows (600 characters at most), and finish warns without blocking when changed files call for unrecorded methods, with a loop guard. `claude-forge-setup` prints the Claude Code settings snippet for the owner's approval; other harnesses stay unqualified until verified.

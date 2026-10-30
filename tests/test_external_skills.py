@@ -58,6 +58,52 @@ class ExternalSkillsTests(unittest.TestCase):
                         self.assertEqual(calls, ["broken"])
                         self.assertEqual((target / "healthy/SKILL.md").read_text(), "preserved local edit")
 
+    def test_skills_upstream_renamed_are_retired_with_a_backup_unless_edited(self):
+        for edited in (False, True):
+            with self.subTest(edited=edited), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                source, target = root / "repo", root / "installed"
+                (source / "skills/old-flow").mkdir(parents=True)
+                target.mkdir()
+                (source / "skills/old-flow/SKILL.md").write_text("---\nname: old-flow\ndescription: old\n---\n")
+
+                def commit():
+                    for command in (["add", "-A"], ["-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid",
+                                                    "commit", "-qm", "fixture"]):
+                        subprocess.run(["git", "-C", str(source), *command], check=True, capture_output=True)
+                    return subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True).strip()
+
+                subprocess.run(["git", "-C", str(source), "init", "-q"], check=True)
+                first = commit()
+                recipe = {"repository": "https://github.com/example/skills.git", "commit": first,
+                          "skills": {"old-flow": "skills/old-flow"}}
+                selection = {"dependencies": {"example": {"kind": "skills", "auto_install": recipe}}}
+
+                def fetch(recipe, destination):
+                    subprocess.run(["git", "clone", "-q", str(source), str(destination)], check=True)
+
+                with patch.object(toolkit, "fetch_external_source", side_effect=fetch):
+                    toolkit.install_external_skills(selection, target)
+                    self.assertTrue((target / "old-flow/SKILL.md").is_file())
+                    # Upstream renames the skill, as argent did with its flow skills.
+                    (source / "skills/old-flow").rename(source / "skills/new-e2e")
+                    (source / "skills/new-e2e/SKILL.md").write_text("---\nname: new-e2e\ndescription: new\n---\n")
+                    recipe.update(commit=commit(), skills={"new-e2e": "skills/new-e2e"})
+                    if edited:
+                        (target / "old-flow/SKILL.md").write_text("personal edit")
+                        with self.assertRaisesRegex(toolkit.ToolkitError, "locally modified; preserved"):
+                            toolkit.install_external_skills(selection, target)
+                        self.assertEqual((target / "old-flow/SKILL.md").read_text(), "personal edit")
+                    else:
+                        toolkit.install_external_skills(selection, target)
+                        self.assertFalse((target / "old-flow").exists())
+                        state = json.loads((root / "rogemar-agent-toolkit.lock.json").read_text())
+                        self.assertNotIn("old-flow", state["external_skills"])
+                        self.assertIn("new-e2e", state["external_skills"])
+                        backups = list((root / ".rogemar-agent-toolkit/backups").glob("*/old-flow"))
+                        self.assertEqual(len(backups), 1)
+                    self.assertTrue((target / "new-e2e/SKILL.md").is_file())
+
     def test_missing_only_preserves_resources_license_and_user_edits(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
