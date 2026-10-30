@@ -5933,7 +5933,7 @@
     },
     "integrated-workflow": {
       "file_count": 14,
-      "sha256": "b6f6add7e83b0028a558d069a7a6692bbe241abd918559d169bcadc4007db245"
+      "sha256": "108e9579b660289bcc63170d2a2e9c7fb2fae1efa54f663446c02064ceda4863"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -6105,7 +6105,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 29,
-      "sha256": "ebca90d57dbe89c020e26cf483a34c67992a1fd78793455589a73645786d4087"
+      "sha256": "28e8674f32134bda6828a29ebac7e6342fda9018da2a3dc73b642fe154d2a80a"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

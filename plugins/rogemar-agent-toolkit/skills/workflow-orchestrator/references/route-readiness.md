@@ -28,8 +28,8 @@ Use the smallest sufficient selection and retain the active delivery owner.
   add `formal-verification-create` once the code exists. When a candidate touches
   covered code, refresh and run the formal checks with `formal-verification-maintain`
   before merge; post-merge maintenance is a separate step. Record each step as used,
-  unavailable or blocked, or not applicable, with a reason; an applicable method that
-  cannot run is unavailable, never not applicable.
+  unavailable, blocked or not applicable, with a reason for each non-used state; an
+  applicable method that cannot run is unavailable or blocked, never not applicable.
 
 A primary and review alternative can cooperate for a concrete coverage gap. Record
 that reason; don't load both routinely. PStack's explicit invocation flags still

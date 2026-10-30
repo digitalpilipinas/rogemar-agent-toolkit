@@ -20,8 +20,9 @@ EVERSO-specific capability map and audits stay in that project.
 In any supported harness and any project, an agent starting work can see,
 before the first task, which repository paths the toolkit's skills will need
 and one consolidated setup plan for the owner to approve once. At acceptance,
-the methods that the changed paths call for are recorded as used or not
-applicable with a reason, so a skipped review is visible rather than silent.
+the methods that the changed paths call for are recorded as used, unavailable,
+blocked or not applicable, with a reason for every state but used, so a skipped
+review is visible rather than silent.
 Nothing in the core names a harness-specific tool, parses a project's own
 policy format, or writes policy, pins or ignore rules without owner authority.
 
@@ -87,8 +88,9 @@ Files: `workflow-orchestrator/references/route-readiness.md`,
 - `e2e` only where the project already pins it or the owner authorizes the
   dependency; otherwise extend the existing journey framework.
 - Completion checklist in the final acceptance record: findings, learning
-  checkpoint, continuity record, selected methods (used / not applicable with a
-  reason), role/model/mode report, skipped steps with reasons.
+  checkpoint, continuity record, selected methods (used, unavailable, blocked or
+  not applicable, with a reason for each non-used state), role/model/mode report,
+  skipped steps with reasons.
 - Reviewer-unavailable substitute: with an explicit owner exception, a full
   local review of the exact head is recorded as `deferred` substitute evidence,
   never as a pass for the missing provider.
@@ -98,7 +100,7 @@ Files: `workflow-orchestrator/references/route-readiness.md`,
 - Entry obligation: read entry skills fully and follow every link the active
   situation routes to; the owner names entries, not specialists.
 - Slice-start announcement: one short line naming the playbook, the selected
-  skills, and those judged not applicable with a reason.
+  skills, and any that are unavailable, blocked or not applicable, with reasons.
 - Each independent ticket or package gets a fresh worker (from
   mattpocock/skills #1341/#1342).
 - Opt-in design count against the project's stated tokens (adapted from
@@ -166,7 +168,8 @@ resolves in every harness package and the core profile includes it.
   sequences such as the slice-1 state-heavy chain; one record per alternative
   group.
 - Enforced by default at Integrated Workflow acceptance: `accept` fails on a
-  missing record or a not-applicable without a reason. Small bounded
+  missing record or an unavailable, blocked or not-applicable record without a
+  reason. Small bounded
   corrections are exempt; a trusted-policy `methods: report-only` opts a
   project out. Outside Integrated Workflow the check reports only.
 

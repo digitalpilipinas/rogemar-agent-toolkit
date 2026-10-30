@@ -351,7 +351,8 @@ At final acceptance the existing acceptance record also states: the findings
 record update, or that there were none; the
 [Project Learning checkpoint](../../project-learning/SKILL.md#enrolled-workflow-checkpoint)
 result when the project is enrolled; the continuity record update; each selected
-method as used, unavailable or blocked, or not applicable, each with a reason; the role, model, effort and mode
+method as used, unavailable, blocked or not applicable, with a reason for each
+non-used state; the role, model, effort and mode
 report from [Forge mode status](../../workflow-orchestrator/references/forge-mode-status.md);
 and each skipped step with its reason. A missing item stays visibly missing. This
 extends the existing record; it is not another board.
