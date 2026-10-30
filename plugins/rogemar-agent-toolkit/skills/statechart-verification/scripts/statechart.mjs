@@ -20,7 +20,7 @@ import { loadRenderer, renderPng, THEMES } from "./render.mjs";
 import { ruleBook } from "./rule-book.mjs";
 import { Inputs } from "./snapshot.mjs";
 import { RULES_INVARIANT, SCAFFOLD, withoutComments, writeRulesModule } from "./spec-text.mjs";
-import { cannotRunTlc, findTlc } from "./tlc-tools.mjs";
+import { cannotRunTlc, engineCommand, findEngine } from "./tlc-tools.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const { MAX_STRING_LENGTH } = constants;
@@ -104,7 +104,10 @@ const cfgOf = (spec) => spec.replace(/\.tla$/, ".cfg");
 
 function findTools() {
   try {
-    return findTlc();
+    const tools = findEngine();
+    if (tools.engine === "tla-ts")
+      console.error("Engine: tla-ts. Its results are not yet verified against TLC for this skill; TLC remains the default.");
+    return tools;
   } catch (e) {
     throw new CannotFinish(e.message);
   }
@@ -225,29 +228,16 @@ async function tlc(tools, spec, cfg, base, { dump, module, workers = "1" } = {})
   const javaTmp = path.join(metadir, "tmp");
   fs.mkdirSync(javaTmp);
   // -deadlock: a system at rest has nothing left to do, which TLC would report as a deadlock.
-  const r = await runJava(
-    tools.java,
-    [
-      "-XX:+UseParallelGC",
-      `-Djava.io.tmpdir=${javaTmp}`,
-      ...(module ? [`-DTLA-Library=${path.dirname(path.resolve(spec))}`] : []),
-      "-cp",
-      tools.jar,
-      "tlc2.TLC",
-      "-workers",
-      workers,
-      "-metadir",
-      metadir,
-      "-deadlock",
-      "-continue",
-      ...(dump ? ["-dump", "dot,actionlabels", path.resolve(dump)] : []),
-      "-config",
-      path.resolve(`${base}.cfg`),
-      module ? path.resolve(module) : path.basename(spec),
-    ],
-    { cwd: path.dirname(path.resolve(spec)) },
-    dump,
-  );
+  const [file, args] = engineCommand(tools, {
+    cfgPath: path.resolve(`${base}.cfg`),
+    specArg: module ? path.resolve(module) : path.basename(spec),
+    workers,
+    dump: dump && path.resolve(dump),
+    metadir,
+    javaTmp,
+    library: module && path.dirname(path.resolve(spec)),
+  });
+  const r = await runJava(file, args, { cwd: path.dirname(path.resolve(spec)) }, dump);
   fs.rmSync(metadir, { recursive: true, force: true });
   if (r.overflowed) {
     fs.writeFileSync(`${base}.out`, r.stdout);

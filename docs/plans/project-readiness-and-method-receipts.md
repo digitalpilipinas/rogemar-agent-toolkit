@@ -242,6 +242,10 @@ conversion tested on a fixture with backup and rollback.
 Acceptance: corpus comparison recorded; both engines selectable; missing
 engine reported, never passed.
 
+Status: the opt-in adapter, its gate and tests are in place. The corpus comparison
+needs the owner's authorization to download and run `tla-ts@0.0.3` from npm; until
+then tla-ts results stay labelled unverified and TLC remains the default.
+
 ### 7. `programmatic-video` method skill
 
 - Our own content-pack method: brief, storyboard, a deterministic `render(t)`

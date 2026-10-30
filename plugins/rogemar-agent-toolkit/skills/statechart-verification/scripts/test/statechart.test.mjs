@@ -6957,3 +6957,37 @@ test("unusable mapping imports exit 2 and identify the mapping and original erro
     assert.match(missing.stderr, /Cannot find module/);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
+
+import { engineCommand, findEngine, TLA_TS_PACKAGE } from "../tlc-tools.mjs";
+
+const engineOptions = { cfgPath: "/m/S.cfg", specArg: "S.tla", workers: "1", dump: "/m/S.dot", metadir: "/meta", javaTmp: "/tmp/j", library: undefined };
+
+test("TLC stays the default engine with its JVM and -continue flags", () => {
+  const [file, args] = engineCommand({ engine: "tlc", java: "/bin/java", jar: "/t.jar" }, engineOptions);
+  assert.equal(file, "/bin/java");
+  assert.deepEqual(args.slice(args.indexOf("tlc2.TLC")), ["tlc2.TLC", "-workers", "1", "-metadir", "/meta", "-deadlock", "-continue", "-dump", "dot,actionlabels", "/m/S.dot", "-config", "/m/S.cfg", "S.tla"]);
+});
+
+test("tla-ts takes TLC's checking options without JVM or metadir flags", () => {
+  const [file, args] = engineCommand({ engine: "tla-ts", command: ["npx", "--yes", TLA_TS_PACKAGE] }, engineOptions);
+  assert.equal(file, "npx");
+  assert.deepEqual(args, ["--yes", TLA_TS_PACKAGE, "-workers", "1", "-deadlock", "-dump", "dot,actionlabels", "/m/S.dot", "-config", "/m/S.cfg", "S.tla"]);
+});
+
+test("choosing tla-ts needs a local copy or install authority", () => {
+  const saved = { ...process.env };
+  try {
+    process.env.STATECHART_ENGINE = "tla-ts";
+    delete process.env.TLA_TS;
+    delete process.env.TOOLKIT_STATECHART_ALLOW_INSTALL;
+    assert.throws(() => findEngine(), /automatic installation is disabled/);
+    process.env.TLA_TS = "/no/such/tla-ts";
+    assert.throws(() => findEngine(), /does not exist/);
+    delete process.env.TLA_TS;
+    process.env.TOOLKIT_STATECHART_ALLOW_INSTALL = "1";
+    assert.deepEqual(findEngine(), { engine: "tla-ts", command: ["npx", "--yes", TLA_TS_PACKAGE] });
+  } finally {
+    for (const key of ["STATECHART_ENGINE", "TLA_TS", "TOOLKIT_STATECHART_ALLOW_INSTALL"]) delete process.env[key];
+    Object.assign(process.env, saved);
+  }
+});

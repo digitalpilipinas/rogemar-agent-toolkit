@@ -65,6 +65,52 @@ export function findTlc() {
   }
 }
 
+// Optional engine: tla-ts, a TLA+ model checker in TypeScript that needs no Java. TLC stays the
+// default until a trial on this skill's corpus matches TLC's results; its results are labelled.
+export const TLA_TS_PACKAGE = "tla-ts@0.0.3";
+
+export function findEngine() {
+  if ((process.env.STATECHART_ENGINE ?? "tlc") !== "tla-ts") return { engine: "tlc", ...findTlc() };
+  const local = process.env.TLA_TS;
+  if (local) {
+    if (!fs.existsSync(local)) throw new Error(`TLA_TS is ${local}, which does not exist.`);
+    return { engine: "tla-ts", command: [local] };
+  }
+  if (process.env.TOOLKIT_STATECHART_ALLOW_INSTALL !== "1")
+    throw new Error(
+      `STATECHART_ENGINE=tla-ts, but tla-ts is unavailable and automatic installation is disabled. Set TLA_TS to a tla-ts executable, or after authorized dependency preparation set TOOLKIT_STATECHART_ALLOW_INSTALL=1 to run npx ${TLA_TS_PACKAGE}.`,
+    );
+  return { engine: "tla-ts", command: ["npx", "--yes", TLA_TS_PACKAGE] };
+}
+
+// The program and arguments for one model check. tla-ts takes TLC's checking options but not
+// its JVM, -metadir or -continue flags, so its run may stop at the first violation.
+export function engineCommand(tools, { cfgPath, specArg, workers, dump, metadir, javaTmp, library }) {
+  const common = ["-workers", workers, "-deadlock", ...(dump ? ["-dump", "dot,actionlabels", dump] : []), "-config", cfgPath];
+  if (tools.engine === "tla-ts") return [tools.command[0], [...tools.command.slice(1), ...common, specArg]];
+  return [
+    tools.java,
+    [
+      "-XX:+UseParallelGC",
+      `-Djava.io.tmpdir=${javaTmp}`,
+      ...(library ? [`-DTLA-Library=${library}`] : []),
+      "-cp",
+      tools.jar,
+      "tlc2.TLC",
+      "-workers",
+      workers,
+      "-metadir",
+      metadir,
+      "-deadlock",
+      "-continue",
+      ...(dump ? ["-dump", "dot,actionlabels", dump] : []),
+      "-config",
+      cfgPath,
+      specArg,
+    ],
+  ];
+}
+
 export function cannotRunTlc({ java, jar }, r) {
   const said = `java exited ${r.status ?? r.signal}:\n${indent(`${r.stderr}${r.stdout}`.trim())}`;
   return `cannot run TLC with ${java} -cp ${jar}: ${r.error?.message ?? said}\nFix that, or ${SET_TLC_VARS}`;

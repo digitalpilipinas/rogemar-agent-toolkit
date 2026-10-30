@@ -2,6 +2,8 @@
 
 ## Unreleased (after 1.2.2)
 
+- Add tla-ts (`tla-ts@0.0.3`, MIT) as an opt-in statechart engine that needs no Java: `STATECHART_ENGINE=tla-ts` with a local `TLA_TS` executable or authorized installation. TLC stays the default; tla-ts results are labelled unverified until a corpus comparison with TLC is recorded.
+
 - Generate the root Claude marketplace entry with the marketplace root as source and an explicit list of the 125 Claude-compatible skills, so Claude no longer loads Codex-, Cursor- or Devin-only skills (validated with `claude plugin validate`). Cursor already lists its own set; Factory and Gemini read the whole folder and cannot filter. A test keeps every harness's links inside its own selection.
 - Add `install`/`upgrade --convert-external-only`: converts a full managed installation to external-only (native plugin plus managed extras), removing managed toolkit skills with the normal backup, local-edit checks and rollback.
 

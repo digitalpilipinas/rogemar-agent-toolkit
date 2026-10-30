@@ -292,6 +292,9 @@ TLC
   in an empty temporary folder, so the mise files around the spec, in a repo, or above TMPDIR do
   not apply, do not change, and need no trust. When mise cannot start or fails, the command prints
   why, the install command, and how to set TLA2TOOLS and JAVA instead.
+  STATECHART_ENGINE=tla-ts selects the optional tla-ts checker, which needs no Java: TLA_TS is
+  its executable, or with TOOLKIT_STATECHART_ALLOW_INSTALL=1 npx fetches tla-ts@0.0.3. TLC
+  stays the default; tla-ts results are labelled unverified until they match TLC's.
   When the command starts, it copies its input files, which Exit codes lists. TLC checks the
   copies, so an edit during the run does not change what TLC checks.
   TLC checks each rule with one worker per CPU. When a rule is broken, TLC checks it again with one
