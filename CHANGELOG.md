@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased (after 1.2.2)
+
+- Compare adapted upstream paths from their own pins and diff Git trees when GitHub's 300-file cap hides them; add `--all`, a `reviewed` adaptation pin and a weekly read-only `Upstream drift` issue workflow.
+- Record the statechart-verification fork: upstream PStack replaced its scripts with a TypeScript compiler without the local chart, comparison and image features, so those are kept and the matching formal-verification sentence is not synced.
+- Pin the Ubuntu validation runner to 24.04, because `ubuntu-latest` (26.04) has no setup-python 3.9 build.
+
 ## 1.2.2 — Release candidate: findings and evidence handoff
 
 - Package Git-tracked inputs plus explicit new files; require explicit trust for Git-less source trees.

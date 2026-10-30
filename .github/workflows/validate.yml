@@ -16,7 +16,7 @@ jobs:
   validate:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-24.04, macos-latest]  # 26.04 (ubuntu-latest) has no setup-python 3.9 build
         python: ["3.9", "3.11"]
     runs-on: ${{ matrix.os }}
     steps:
