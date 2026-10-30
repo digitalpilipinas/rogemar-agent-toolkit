@@ -129,6 +129,13 @@ explicitly changes that requirement. Do not silently bypass this barrier, even
 for an urgent finding; surface the need for an explicit exception. A local Codex
 agent review cannot substitute for the GitHub Codex layer.
 
+When the owner grants that exception for an unavailable provider (rate limit,
+quota or blocked CI), record a full local review of the exact head as substitute
+evidence: gate state `deferred`, the missing provider, the substitute's head,
+scope and report, and the owner's decision. Run local equivalents of blocked CI
+checks the same way. Substitute evidence never records the missing provider as
+passed; request that review again while its boundary is still open.
+
 ### Cloud review allowance
 
 For each PR, allow **two accepted review runs per provider** by default: the

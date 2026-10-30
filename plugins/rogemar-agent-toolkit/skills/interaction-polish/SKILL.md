@@ -17,6 +17,12 @@ For affected mobile behavior, read [mobile-craft.md](references/mobile-craft.md)
 only when relevant. These adapted Appllama methods need no subscription or MCP
 and use the existing task owner and evidence record.
 
+When the brief or design system states its tokens, run a quick count before the
+visual review: accent hues outside the stated palette, corner radii outside the
+stated scale, emoji used as interface icons, gradients with no stated reason, and
+duplicate labels for one intent. Each out-of-spec count is a fix or a recorded
+exception. Without stated tokens, skip the count; it is not a universal ban.
+
 For web control feedback, tooltip continuity or pointer behavior, read
 [web-control-craft.md](references/web-control-craft.md) when relevant.
 

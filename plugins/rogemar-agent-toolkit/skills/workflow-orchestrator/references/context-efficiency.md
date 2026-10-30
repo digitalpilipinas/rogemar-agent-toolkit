@@ -47,8 +47,10 @@ pointers, checks and stop conditions. Prefer a focused assignment over full
 history when it is sufficient; include important constraints explicitly rather
 than assuming a worker can recover the parent's conversation.
 
-Reuse a worker for a coupled follow-up only when its profile, permissions and
-contract still fit. Preserve required review independence. Independent work may
+Give each independent ticket or package a fresh worker; carry forward only the
+brief, not an earlier worker's context. Reuse a worker for a coupled follow-up
+only when its profile, permissions and contract still fit. Preserve required
+review independence. Independent work may
 run in parallel under the orchestrator's side-effect and isolation rules; shared
 writers remain isolated or sequential. Context efficiency changes no model,
 permission, review, publication or completion requirement.

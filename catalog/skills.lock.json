@@ -5709,7 +5709,7 @@
     },
     "engineering-playbooks": {
       "file_count": 61,
-      "sha256": "1428a45b9942c4c2c584bb2de64423759e96f5bdd84dadf980aa58c573d8e933"
+      "sha256": "dbc2048e3dfef3ea94afc491c4b20ed53949bbb6f0bf7a95ea2787af1b1e441b"
     },
     "figma": {
       "file_count": 8,
@@ -5933,11 +5933,11 @@
     },
     "integrated-workflow": {
       "file_count": 14,
-      "sha256": "6ecc3c183a5c29994332e835564687edd6330e3c64617a4b44eaae2b49056479"
+      "sha256": "108e9579b660289bcc63170d2a2e9c7fb2fae1efa54f663446c02064ceda4863"
     },
     "interaction-polish": {
       "file_count": 10,
-      "sha256": "458d2108844588486ecaab81ebc4bfa60ff5a3d0ee6c5e4bc7ce83c3fa3300c6"
+      "sha256": "44e14dede1c0495fb2b9f46f1d4c4a93b1d0df8e578457b09a7f6e026f87f2ea"
     },
     "knowledge-base-answering": {
       "file_count": 2,
@@ -5993,7 +5993,7 @@
     },
     "project-learning": {
       "file_count": 18,
-      "sha256": "5b8dcbfcaa380a14b7fcabc7db16c7eb98795cf5fdd8d40bebef9579e099a589"
+      "sha256": "2dd6037069636aa6609e31200763e2956a302a2008e66c90c0f1b873baac871f"
     },
     "reference-design-contract": {
       "file_count": 7,
@@ -6105,7 +6105,7 @@
     },
     "workflow-orchestrator": {
       "file_count": 29,
-      "sha256": "379397b968cba5f75519e7f6010adca6309bb7b488469aed4cef81da52cc6b18"
+      "sha256": "28e8674f32134bda6828a29ebac7e6342fda9018da2a3dc73b642fe154d2a80a"
     },
     "xcode-build-benchmark": {
       "file_count": 6,

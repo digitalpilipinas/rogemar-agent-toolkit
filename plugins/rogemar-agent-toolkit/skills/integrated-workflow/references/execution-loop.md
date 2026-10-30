@@ -347,6 +347,16 @@ candidate. Only a required blocked review needs owner disposition; optional
 unavailability never becomes a gate. Earlier authorized branch/draft commits may
 continue under their own checkpoints without claiming final acceptance.
 
+At final acceptance the existing acceptance record also states: the findings
+record update, or that there were none; the
+[Project Learning checkpoint](../../project-learning/SKILL.md#enrolled-workflow-checkpoint)
+result when the project is enrolled; the continuity record update; each selected
+method as used, unavailable, blocked or not applicable, with a reason for each
+non-used state; the role, model, effort and mode
+report from [Forge mode status](../../workflow-orchestrator/references/forge-mode-status.md);
+and each skipped step with its reason. A missing item stays visibly missing. This
+extends the existing record; it is not another board.
+
 For direct-main delivery, verify target identity/policy, pass required local gates,
 commit/push intentional content and verify the remote target contains the intended
 result. PR-only reviews and PR monitoring are not applicable. For branch delivery,
