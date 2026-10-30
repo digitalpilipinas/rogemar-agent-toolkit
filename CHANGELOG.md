@@ -3,7 +3,7 @@
 ## Unreleased (after 1.2.2)
 
 - Declare the project paths skills read or write as catalog `footprint` entries, collected into the routing index with a lint test for undeclared paths; add a pinned `task_tags` vocabulary with detection markers.
-- Repin argent to `df57cb1`, where upstream renamed `argent-create-flow` / `argent-qa-flows` to `argent-create-e2e` / `argent-qa-e2e` (old names stay upstream aliases; existing installs may keep stale copies under the old names). Track Appllama for drift, and name GoalBuddy's standalone `goal-prep` install.
+- Repin argent to `df57cb1`, where upstream renamed `argent-create-flow` / `argent-qa-flows` to `argent-create-e2e` / `argent-qa-e2e` (upstream's `argent init` removes the old skill folders as legacy; toolkit-managed installs may keep stale copies under the old names until removed). Track Appllama for drift, and name GoalBuddy's standalone `goal-prep` install.
 
 - Compare adapted upstream paths from their own pins and diff Git trees when GitHub's 300-file cap hides them; add `--all`, a `reviewed` adaptation pin and a weekly read-only `Upstream drift` issue workflow.
 - Record the statechart-verification fork: upstream PStack replaced its scripts with a TypeScript compiler without the local chart, comparison and image features, so those are kept and the matching formal-verification sentence is not synced.
