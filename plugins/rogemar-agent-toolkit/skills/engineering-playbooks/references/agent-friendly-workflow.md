@@ -73,7 +73,9 @@ review; do not refresh pins merely to make a product candidate pass.
 
 To provision the pins once per project: the owner chooses a location outside the
 candidate checkout; copy `checkpoint.py` and the policy JSON there from a reviewed
-commit; record each file's sha256 (for example
+commit, plus the sibling `execution_provenance.py` when the policy has non-empty
+`execution_evidence` (its digest must match the policy's
+`provenance_validator_sha256`); record each provisioned file's sha256 (for example
 `python3 -c "import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],'rb').read()).hexdigest())" FILE`)
 together with the exact accept/close command in the approved acceptance record or
 trusted CI configuration. Until pins exist, accept/close cannot run; report that as

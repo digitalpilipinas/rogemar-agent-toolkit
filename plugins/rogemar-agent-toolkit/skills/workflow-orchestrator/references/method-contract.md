@@ -17,7 +17,7 @@ or what continuity evidence is missing. Reuse a still-valid discovery result.
    and relevant resources. Read entry skills in full and follow every link the
    active situation routes to: the owner names entry skills, not specialists.
    At slice start, state in one short line the playbook, the selected skills,
-   and any routed skill judged not applicable, with its reason.
+   and any routed skill that is unavailable or not applicable, with its reason.
    A method name, installed file or role is not proof of live tools, model
    settings or authority.
 3. Retain the active Forge entry. Principles guide the current work; they do not

@@ -57,7 +57,7 @@ policy format, or writes policy, pins or ignore rules without owner authority.
 | Lesson | Summary | Slice |
 | --- | --- | --- |
 | L1 | Specialist reviews were skipped because routing ran from memory | 1 (record), 4 (check) |
-| L2 | Project setup needs surfaced mid-sprint, three consents | 3 |
+| L2 | Project setup requirements surfaced mid-sprint and needed three consents | 3 |
 | L3 | Skill paths collide with guarded repositories | 2, 3 |
 | L4 | Trusted-policy pins have no setup path | 1 (how-to), 3 (printer) |
 | L5 | Findings lived only in PR merge records | 1 |
@@ -159,7 +159,9 @@ resolves in every harness package and the core profile includes it.
 
 ### 4. Method receipt
 
-- Receipt block `methods: [{id, state: used|not-applicable, reason}]`.
+- Receipt block `methods: [{id, state: used|unavailable|blocked|not-applicable,
+  reason}]`. An applicable method that cannot run is `unavailable` or `blocked`,
+  never `not-applicable`.
   `start` prints the methods the changed paths and tags call for, expanding
   sequences such as the slice-1 state-heavy chain; one record per alternative
   group.
