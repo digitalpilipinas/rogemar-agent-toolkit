@@ -1830,7 +1830,9 @@
       "boundary": "No implicit provider, telemetry, MCP registration or coverage migration",
       "activation": "conditional",
       "task_tags_any": [
-        "e2e"
+        "android",
+        "e2e",
+        "ios"
       ],
       "required_evidence": [
         "journey-run"
@@ -3555,7 +3557,8 @@
       "task_tags_any": [
         "android",
         "expo",
-        "ios"
+        "ios",
+        "react-native"
       ],
       "source": "mobile-release-manager/SKILL.md",
       "kind": "vendored",
@@ -3580,7 +3583,8 @@
       "boundary": "A PR-to-main request does not deploy or release to every platform",
       "activation": "conditional",
       "task_tags_any": [
-        "netlify"
+        "netlify",
+        "web"
       ],
       "source": "netlify-deploy/SKILL.md",
       "kind": "vendored",
@@ -4377,7 +4381,8 @@
       "boundary": "No new design system or dependency solely because a skill exists",
       "activation": "conditional",
       "task_tags_any": [
-        "shadcn"
+        "shadcn",
+        "web"
       ],
       "source": "shadcn/SKILL.md",
       "kind": "vendored",
@@ -4442,6 +4447,7 @@
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
       "task_tags_any": [
+        "swift",
         "xcode-performance"
       ],
       "required_evidence": [
@@ -4620,6 +4626,7 @@
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
       "task_tags_any": [
+        "swift",
         "swift-concurrency"
       ],
       "alternative_group": "swift-concurrency",
@@ -4666,6 +4673,7 @@
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
       "task_tags_any": [
+        "swift",
         "swift-concurrency"
       ],
       "alternative_group": "swift-concurrency",
@@ -4708,6 +4716,7 @@
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
       "task_tags_any": [
+        "swift",
         "swift-testing"
       ],
       "required_evidence": [
@@ -5268,6 +5277,7 @@
       "boundary": "Preserve project conventions and existing authority; static guidance does not prove runtime readiness",
       "activation": "conditional",
       "task_tags_any": [
+        "swift",
         "xcode-performance"
       ],
       "required_evidence": [

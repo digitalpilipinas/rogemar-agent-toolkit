@@ -67,6 +67,19 @@ class FootprintTests(unittest.TestCase):
             for marker in entry['markers']:
                 self.assertFalse(Path(marker['glob']).is_absolute() or '..' in Path(marker['glob']).parts, tag)
 
+    def test_tagged_skills_accept_every_technology_their_trigger_names(self):
+        # A tag list narrower than the trigger blocks legitimate routing (for example a
+        # React Native release task and mobile-release-manager).
+        for name, route in self.index['skills'].items():
+            tags = set(route.get('task_tags_any', []))
+            if not tags or route.get('kind') != 'vendored':
+                continue
+            trigger = route['trigger'].lower()
+            for tag in PINNED_TAGS:
+                if self.index['task_tags'][tag]['markers'] and re.search(r'\b' + re.escape(tag.replace('-', ' ')) + r'\b', trigger):
+                    with self.subTest(skill=name, tag=tag):
+                        self.assertIn(tag, tags)
+
     def test_argent_routes_use_the_upstream_e2e_names(self):
         skills = self.index['skills']
         self.assertIn('argent-create-e2e', skills)
