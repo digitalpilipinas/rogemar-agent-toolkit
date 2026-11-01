@@ -44,7 +44,7 @@ release archives or rewrite the lock from scratch.
 | --- | --- | --- |
 | 1 | `concurrency: validate-${{ github.ref }}` with `cancel-in-progress` for PRs | A new push replaces the running job |
 | 2 | `pull_request` types include `ready_for_review`; jobs skip drafts | Drafts stop spending runs |
-| 3 | PRs and main pushes: ubuntu-24.04 on 3.9 and 3.11. Tags, nightly and manual: add macos-latest | PR evidence drops macOS; the local gate on macOS covers it only while rule 2 receipts are produced |
+| 3 | PRs: ubuntu-24.04 on 3.9 and 3.11. Main pushes, tags, nightly and manual: add macos-latest | PRs get fast feedback; main pushes keep macOS because direct commits are the usual route and post-push CI blocks nobody (restored 2026-11-01 after first applying ubuntu-only to main) |
 | 4 | `timeout-minutes: 15` per job | A hung test cannot hold a runner for six hours |
 | 5 | Remove `paths-ignore` | As applied: release archives package all of `docs/` and `CHANGELOG.md`, and the archive tests run inside them, so no docs path is safe to skip. A docs PR costs one free ubuntu run |
 | 6 | Workflow steps call `scripts/ci.py` instead of listing commands | One entrypoint for every vendor and for local agents |

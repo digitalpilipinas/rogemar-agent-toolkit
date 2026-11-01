@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import subprocess
 import tempfile
@@ -18,14 +19,17 @@ STORE = SKILL_ROOT / "scripts/candidate_store.py"
 VALIDATOR = SKILL_ROOT / "scripts/validate_project.py"
 
 
-def run_command(*args: str, cwd: Path, check: bool = True) -> subprocess.CompletedProcess[str]:
+def run_command(*args: str, cwd: Path, check: bool = True, timeout: float = 60,
+                env: dict | None = None) -> subprocess.CompletedProcess[str]:
+    # The timeout catches a hung child, not a slow one; 15 s expired on a loaded machine.
     return subprocess.run(
         [*args],
         cwd=cwd,
         check=check,
         capture_output=True,
         text=True,
-        timeout=15,
+        timeout=timeout,
+        env=env,
     )
 
 
@@ -94,8 +98,10 @@ class ProjectLearningTest(unittest.TestCase):
         )
         return json.loads(result.stdout)
 
-    def store(self, *args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
-        return run_command("python3", "-I", str(STORE), *args, cwd=self.root, check=check)
+    def store(self, *args: str, check: bool = True, env: dict | None = None,
+              timeout: float = 60) -> subprocess.CompletedProcess[str]:
+        return run_command("python3", "-I", str(STORE), *args, cwd=self.root, check=check,
+                           env=env, timeout=timeout)
 
     def capture_request(
         self,
@@ -184,7 +190,7 @@ class ProjectLearningTest(unittest.TestCase):
             capture_output=True,
             text=True,
             check=True,
-            timeout=10,
+            timeout=60,
         )
 
     def test_initializer_is_idempotent_and_preserves_existing_hook(self) -> None:
@@ -284,7 +290,7 @@ class ProjectLearningTest(unittest.TestCase):
             capture_output=True,
             text=True,
             check=True,
-            timeout=10,
+            timeout=60,
         )
         self.assertEqual(malformed.stdout, "")
 
@@ -421,9 +427,11 @@ class ProjectLearningTest(unittest.TestCase):
         run_command("python3", "-I", str(INITIALIZER), "--root", str(self.root),
                     "--capture-mode", "workflow", cwd=self.root)
 
-    def workflow_capture(self, request: Path, *guards: str, check: bool = True) -> dict:
+    def workflow_capture(self, request: Path, *guards: str, check: bool = True,
+                         env: dict | None = None, timeout: float = 60) -> dict:
         result = self.store("capture", "--root", str(self.root), "--request", str(request),
-                            "--workflow", "--permission-mode", "execution", *guards, check=check)
+                            "--workflow", "--permission-mode", "execution", *guards, check=check,
+                            env=env, timeout=timeout)
         return json.loads(result.stdout)
 
     def snapshot(self) -> dict:
@@ -483,18 +491,40 @@ class ProjectLearningTest(unittest.TestCase):
         self.assertEqual(self.snapshot(), before)
 
     def test_concurrent_capture_is_idempotent(self) -> None:
+        # Correctness under concurrency, not speed: a loaded machine gets a generous
+        # lock budget so no writer is skipped. The busy skip has its own test.
+        patient = {**os.environ, "PROJECT_LEARNING_LOCK_SECONDS": "60"}
+        capture = lambda request: self.workflow_capture(request, env=patient, timeout=90)
         self.enroll()
         request = self.capture_request(1)
         with ThreadPoolExecutor(max_workers=6) as pool:
-            results = list(pool.map(lambda _: self.workflow_capture(request), range(6)))
+            results = list(pool.map(lambda _: capture(request), range(6)))
         store = self.root / ".codex/project-learning/candidates.jsonl"
         self.assertEqual(len(store.read_text().splitlines()), 1)
         self.assertEqual(sum(not result["idempotent"] for result in results), 1)
         requests = [self.capture_request(index) for index in range(2, 8)]
         with ThreadPoolExecutor(max_workers=6) as pool:
-            list(pool.map(self.workflow_capture, requests))
+            list(pool.map(capture, requests))
         self.assertEqual(len(store.read_text().splitlines()), 7)
         self.assertEqual(json.loads(self.store("list", "--root", str(self.root)).stdout)["count"], 7)
+
+    @unittest.skipIf(os.name == "nt", "holds the lock with fcntl")
+    def test_busy_store_skips_capture_without_writing(self) -> None:
+        import fcntl
+        self.enroll()
+        request = self.capture_request(1)
+        state = self.root / ".codex/project-learning/state"
+        state.mkdir(parents=True, exist_ok=True)
+        store = self.root / ".codex/project-learning/candidates.jsonl"
+        with (state / "store.lock").open("a+b") as held:
+            fcntl.flock(held.fileno(), fcntl.LOCK_EX)
+            quick = {**os.environ, "PROJECT_LEARNING_LOCK_SECONDS": "0.2"}
+            result = self.store("capture", "--root", str(self.root), "--request", str(request),
+                                "--workflow", "--permission-mode", "execution", check=False, env=quick)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("learning store busy; skip capture", result.stderr)
+        self.assertFalse(store.exists() and store.read_text().strip())
+        self.assertFalse(self.workflow_capture(request)["idempotent"])  # retried once free
 
     def test_settled_duplicate_stays_settled_and_new_evidence_is_new_candidate(self) -> None:
         self.enroll()

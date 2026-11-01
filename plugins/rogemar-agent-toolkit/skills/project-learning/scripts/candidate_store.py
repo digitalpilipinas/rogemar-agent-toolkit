@@ -1254,6 +1254,20 @@ def add_capture_guards(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--no-learning", action="store_true")
 
 
+def lock_budget() -> float:
+    """Seconds to wait for the store lock before skipping; 2 unless overridden.
+
+    Capture must never hold up delivery, so a busy store is skipped, not awaited.
+    PROJECT_LEARNING_LOCK_SECONDS raises the budget for tests that check
+    concurrency correctness on a loaded machine.
+    """
+    try:
+        value = float(os.environ.get("PROJECT_LEARNING_LOCK_SECONDS", "2"))
+    except ValueError:
+        return 2.0
+    return value if 0 < value <= 300 else 2.0
+
+
 @contextmanager
 def mutation_lock(state_dir: Path):
     # ponytail: one bounded repository lock; shard only if capture throughput matters.
@@ -1276,7 +1290,7 @@ def mutation_lock(state_dir: Path):
                 fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
             def unlock():
                 fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
-        deadline = time.monotonic() + 2
+        deadline = time.monotonic() + lock_budget()
         while True:
             try:
                 lock()

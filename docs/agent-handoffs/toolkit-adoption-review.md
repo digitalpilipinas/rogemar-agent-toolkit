@@ -71,12 +71,16 @@ This record grants no commit, push, merge or installation authority.
 - CI strategy (2026-11-01): `docs/quality/ci-strategy.md`, reviewed by two
   independent reviewers (DevOps lens, then fresh-context Fable 5.1), applied.
   `scripts/ci.py` is the single entrypoint with a receipt; Validate calls it,
-  skips drafts, cancels superseded PR runs, ubuntu-only on PRs and main
-  (macOS on tags, nightly, manual), 15-minute timeout, no paths filter. The
+  skips drafts, cancels superseded PR runs, ubuntu-only on PRs (macOS on main
+  pushes, tags, nightly, manual), 15-minute timeout, no paths filter. The
   execution loop gains "Hosted CI unavailable"; readiness reports the CI
   entrypoint. EVERSO findings (billing lock since about 2026-10-20, guardrail
   trigger noise, CircleCI without filters) are kept out of this public repo
-  and belong to a separate EVERSO task.
+  and belong to a separate EVERSO task. Hosted Validate passed on `079608d`
+  (run 41286854570, both ubuntu jobs).
+- Flaky project-learning tests fixed (2026-11-01): the concurrency test now
+  uses `PROJECT_LEARNING_LOCK_SECONDS=60`; a busy-store test covers the skip;
+  child-process limits are 60 s. Passed on 3.9 and 3.11 at load average ~950.
 
 ## Still open
 
