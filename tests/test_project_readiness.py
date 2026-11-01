@@ -114,6 +114,23 @@ class ReadinessTests(unittest.TestCase):
         self.assertNotEqual(changed['plan_id'], plan['plan_id'])
         self.assertEqual(changed['status'], 'ready')  # applying the last item makes it ready
 
+    def test_ci_entrypoint_is_observed_without_changing_the_plan(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            before = readiness.plan(root, INDEX)
+            self.assertIsNone(before['ci_entrypoint']['entrypoint'])
+            (root / 'Makefile').write_text('build:\n\ttrue\nci:\n\ttrue\n')
+            after = readiness.plan(root, INDEX)
+            self.assertEqual(after['ci_entrypoint']['entrypoint'], 'make ci')
+            self.assertEqual(after['plan_id'], before['plan_id'])
+            (root / '.agents').mkdir()
+            (root / '.agents/readiness.json').write_text(json.dumps({'ci_entrypoint': 'bin/check'}))
+            self.assertEqual(readiness.plan(root, INDEX)['ci_entrypoint']['entrypoint'], 'bin/check')
+            (root / '.agents/readiness.json').write_text('{}')
+            (root / 'scripts').mkdir()
+            (root / 'scripts/ci.py').write_text('')
+            self.assertEqual(readiness.plan(root, INDEX)['ci_entrypoint']['entrypoint'], 'python3 -B scripts/ci.py')
+
     def test_review_route_falls_back_without_coderabbit_and_honors_the_record(self):
         root = self.repo({})
         with mock.patch.object(readiness.shutil, 'which', return_value=None):

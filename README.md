@@ -1121,16 +1121,19 @@ not vendored.
 
 ## Validation and releases
 
-For maintainers, run the repository checks before preparing release archives:
+For maintainers, one command runs every repository check. Hosted CI runs the same
+command. When hosted CI is unavailable, a passing local run counts as merge evidence
+only under Integrated Workflow's "Hosted CI unavailable" rule: a clean worktree on
+the exact commit, the script's receipt, and a change outside its exclusions
+(migrations, access rules, auth, release builds):
 
 ```bash
-python3 scripts/inventory_readme.py --check
-python3 scripts/toolkit.py verify
-python3 scripts/verify_forge.py
-python3 -m unittest discover -s tests
-python3 scripts/toolkit.py package --output dist/core
-python3 scripts/toolkit.py package --profile all --output dist/all
+python3 -B scripts/ci.py --receipt ci-receipt.json
 ```
+
+`--fast` skips the packaging tests and archives (for a pre-push hook). The receipt
+records the commit, a clean-worktree flag, each step's exit code and the toolchain.
+The [CI strategy](docs/quality/ci-strategy.md) explains when hosted CI runs.
 
 The checks cover selection, packaging, content integrity, installation and recovery.
 They do not replace a fresh assistant session, authenticated provider review or

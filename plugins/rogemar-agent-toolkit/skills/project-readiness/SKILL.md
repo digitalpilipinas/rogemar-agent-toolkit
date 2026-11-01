@@ -34,6 +34,15 @@ installed, otherwise a fresh-context review with `code-review-and-quality`. A
 project can fix the route with `review_route` in its readiness record. CodeRabbit
 is preferred, never required.
 
+The plan also reports the project's CI entrypoint: the one command hosted CI, any
+runner vendor and local agents all run (`scripts/ci`, `make ci`, `npm run ci` and
+similar), or `ci_entrypoint` from the readiness record. Without one, recommend
+adding it and ask the owner first; when hosted CI is unavailable, that entrypoint
+is the only route to local merge evidence (`integrated-workflow`'s
+execution loop, "Hosted CI unavailable"). Offer an opt-in Git `pre-push` hook that
+runs its fast subset, with the owner's consent; a hook runs where an instruction
+line gets skipped. Neither changes the plan id or status.
+
 The readiness record may also declare `locations` that override a footprint's default
 path, such as an agent-map output folder outside the repository. Declared locations
 win. Connection state for MCP servers and plugins is observed by the agent at runtime

@@ -28,6 +28,14 @@ when Claude is already continuing because of a stop hook, so it cannot loop.
 
 Removing the three entries removes the hooks.
 
+## Pre-push gate (opt-in)
+
+A Git `pre-push` hook is separate from Claude hooks and works in every harness.
+With the owner's consent, install a Git pre-push hook that runs the project's CI
+entrypoint in its fast mode (for this toolkit, `python3 -B scripts/ci.py --fast`).
+It blocks the push on failure; `git push --no-verify` bypasses it, so record a
+bypass. `project-readiness` reports the entrypoint.
+
 ## Sub-agents
 
 Worker briefs carry the exact paths of their assigned skills, which works in every

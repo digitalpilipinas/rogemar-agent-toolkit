@@ -5685,7 +5685,7 @@
     },
     "claude-forge-setup": {
       "file_count": 6,
-      "sha256": "970caf499f54d6686cb3b904ca7231ccb36906af7b4636f0914a0ed785d69033"
+      "sha256": "ef61391957c60d6a706824253a2efca112701bb96582f3be47e3e829ce397796"
     },
     "cloudflare-deploy": {
       "file_count": 312,
@@ -5985,7 +5985,7 @@
     },
     "integrated-workflow": {
       "file_count": 14,
-      "sha256": "2c60a6b2e1af784ae87bcc267f980032baf4ba38213c7c23a2ef40f943f348e4"
+      "sha256": "ff592cba8ac85158ea36db5c1e187a319547f71075d6513659c5a50e4836b05b"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -6053,7 +6053,7 @@
     },
     "project-readiness": {
       "file_count": 4,
-      "sha256": "596ae5de955da73ea7857cf15fdf50b18fb3e4a7b56301f746eee430f925e148"
+      "sha256": "57bd0ce15a4638fe46a5eebb919a18ac7f751641a2339803361ae48f3a0de871"
     },
     "reference-design-contract": {
       "file_count": 7,

@@ -139,6 +139,40 @@ def review_route(data):
     return {'route': 'fresh-context', 'source': 'no CodeRabbit CLI; a separate reviewer runs code-review-and-quality'}
 
 
+CI_ENTRYPOINTS = ('scripts/ci', 'scripts/ci.py', 'scripts/ci.sh', 'bin/ci')
+
+
+def ci_entrypoint(root, data):
+    """The project's single CI command; an observation, never an approval item."""
+    declared = data.get('ci_entrypoint')
+    if declared:
+        return {'entrypoint': str(declared), 'source': 'readiness record'}
+    def runnable(name):
+        # Report a command that runs even when the file is not executable.
+        if name.endswith('.py'):
+            return 'python3 -B ' + name
+        if not name.endswith('.sh') and os.access(root / name, os.X_OK):
+            return name
+        return 'sh ' + name
+
+    found = [runnable(name) for name in CI_ENTRYPOINTS if (root / name).is_file()]
+    for name, pattern in (('Makefile', 'ci:'), ('justfile', 'ci:')):
+        try:
+            if any(line.startswith(pattern) for line in (root / name).read_text(errors='ignore').splitlines()):
+                found.append(name.lower().replace('file', '') + ' ci')
+        except OSError:
+            pass
+    try:
+        if 'ci' in json.loads((root / 'package.json').read_text()).get('scripts', {}):
+            found.append('npm run ci')
+    except (OSError, ValueError, AttributeError):
+        pass
+    if found:
+        return {'entrypoint': found[0], 'source': 'detected'}
+    return {'entrypoint': None, 'source': 'none found; recommend one command that hosted CI, any runner '
+                                          'and local agents all run, and ask the owner before adding it'}
+
+
 def load_record(root, record):
     path = root / (record or DEFAULT_RECORD)
     if not path.is_file():
@@ -188,7 +222,7 @@ def plan(root, index, record=None, skills_root=HERE.parents[2]):
         status = 'declined' if declined else 'needs-owner'
     return {'schema_version': 1, 'plan_id': plan_id, 'grants_authority': False, 'status': status,
             'approved': approved, 'detected_tags': tags, 'scan_truncated': truncated,
-            'review_route': review_route(data),
+            'review_route': review_route(data), 'ci_entrypoint': ci_entrypoint(root, data),
             'items': items,
             'next_action': ('None; readiness is current.' if status == 'ready' else
                             'None this session; the owner declined this plan. Ask again only when it changes.'
@@ -312,6 +346,8 @@ def main(argv=None):
             print('Readiness: %s (plan %s)' % (result['status'], result['plan_id'][:12]))
             print('Detected: ' + (', '.join(sorted(result['detected_tags'])) or 'none'))
             print('Review route: %(route)s (%(source)s)' % result['review_route'])
+            print('CI entrypoint: %s (%s)' % (result['ci_entrypoint']['entrypoint'] or 'none',
+                                             result['ci_entrypoint']['source']))
             if result['scan_truncated']:
                 print('Note: the scan stopped at %d paths; detected technologies may be incomplete.' % MAX_FILES)
             for item in result['items']:

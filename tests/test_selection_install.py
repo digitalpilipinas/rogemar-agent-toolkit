@@ -12,7 +12,7 @@ import sys
 import tarfile
 import tempfile
 import unittest
-from contextlib import redirect_stdout, redirect_stderr
+from contextlib import ExitStack, redirect_stdout, redirect_stderr
 from unittest.mock import patch
 import zipfile
 
@@ -91,26 +91,31 @@ class SelectionInstallTests(unittest.TestCase):
                 self.assertEqual(toolkit.load_json(path), marketplace)
 
     def test_native_metadata_drift_is_rejected_and_lock_repairs_it(self):
-        for attribute, label, build in (
+        cases = [(attribute, label, build()) for attribute, label, build in (
             ('CLAUDE_MANIFEST', 'Claude', toolkit.native_plugin_manifest),
             ('FACTORY_MANIFEST', 'Factory', toolkit.native_plugin_manifest),
             ('GEMINI_MANIFEST', 'Gemini', toolkit.gemini_manifest),
             ('CLAUDE_MARKETPLACE', 'Claude marketplace', toolkit.claude_marketplace),
             ('FACTORY_MARKETPLACE', 'Factory marketplace', toolkit.native_marketplace),
-        ):
-            with self.subTest(manifest=attribute), tempfile.TemporaryDirectory() as temporary:
-                expected = build()
-                self.assertEqual(toolkit.load_json(getattr(toolkit, attribute)), expected)
-                path = Path(temporary) / 'manifest.json'
-                toolkit.write_json_atomic(path, {**expected, 'name': 'wrong-package'})
-                with patch.object(toolkit, attribute, path):
-                    self.assertIn(label + ' manifest is stale; run toolkit.py lock', toolkit.structural_errors())
-                    self.assertEqual(toolkit.main(['lock']), 0)
-                    self.assertEqual(toolkit.load_json(path), expected)
+        )]
+        # One lock run repairs every stale manifest; a lock per manifest cost about 20 s.
+        with tempfile.TemporaryDirectory() as temporary, ExitStack() as patches:
+            paths = {}
+            for attribute, label, expected in cases:
+                self.assertEqual(toolkit.load_json(getattr(toolkit, attribute)), expected, attribute)
+                paths[attribute] = Path(temporary) / (attribute + '.json')
+                toolkit.write_json_atomic(paths[attribute], {**expected, 'name': 'wrong-package'})
+                patches.enter_context(patch.object(toolkit, attribute, paths[attribute]))
                 if 'plugins' in expected:
                     self.assertEqual((toolkit.ROOT / expected['plugins'][0]['source']).resolve(), toolkit.PLUGIN_ROOT)
                 else:
                     self.assertFalse(set(expected) & {'skills', 'hooks', 'mcpServers', 'agents'})
+            errors = toolkit.structural_errors()
+            for attribute, label, _ in cases:
+                self.assertIn(label + ' manifest is stale; run toolkit.py lock', errors)
+            self.assertEqual(toolkit.main(['lock']), 0)
+            for attribute, label, expected in cases:
+                self.assertEqual(toolkit.load_json(paths[attribute]), expected, attribute)
 
     @unittest.skipIf(SELECTED_DISTRIBUTION, 'cross-harness archives require the source catalog')
     def test_native_archives_filter_the_scanned_skill_directory(self):

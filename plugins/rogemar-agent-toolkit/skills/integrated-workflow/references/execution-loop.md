@@ -165,6 +165,24 @@ check all applicable local gates before opening ready or converting the existing
 draft. Cloud review then governs final-CI/merge or stop-before-merge readiness.
 Never report `requested`, `running`, thread resolution or a provider launch as a pass.
 
+### Hosted CI unavailable
+
+Hosted CI confirms; the local gate decides. When hosted CI cannot run (quota,
+billing lock, outage), the slice continues on local evidence when all of these hold:
+
+1. The project's single CI entrypoint ran, not an improvised subset, on the exact
+   candidate commit from a clean worktree with frozen lockfiles.
+2. A script wrote the receipt: commit, command, exit codes, toolchain and OS.
+   Agent narration is not evidence.
+3. The change touches none of: database migrations or access rules,
+   authentication, a backend stack the local gate does not run, or a release, tag
+   or store build. Those wait for a hosted or self-hosted run.
+4. Hosted CI is recorded as `unavailable:<reason>` at its boundary, never `passed`.
+
+When hosted CI returns, run it on the main branch head before the next merge, and
+fix forward or revert a failure there. A project without a CI entrypoint has no
+local-gate route; record hosted CI as `blocked` instead.
+
 ### Candidate identity and evidence reuse
 
 Identify the exact comparison base, intended paths, file contents and modes,

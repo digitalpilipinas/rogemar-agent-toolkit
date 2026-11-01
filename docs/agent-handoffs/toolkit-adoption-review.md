@@ -64,8 +64,19 @@ This record grants no commit, push, merge or installation authority.
   fixed); full local suite 323 tests, verify, packages and `claude plugin validate`.
 - Claude marketplace entry reverted to the plugin-folder source (version kept):
   Claude Desktop could not check for updates after slice 5's root source with a
-  skill list. Owner to confirm the Desktop update; seven other-assistant adapters
-  are now visible in the Claude plugin, and the managed installer still filters.
+  skill list. The owner reinstalled and confirmed 1.3.0 in Desktop; seven
+  other-assistant adapters are visible in the Claude plugin, and the managed
+  installer still filters.
+
+- CI strategy (2026-11-01): `docs/quality/ci-strategy.md`, reviewed by two
+  independent reviewers (DevOps lens, then fresh-context Fable 5.1), applied.
+  `scripts/ci.py` is the single entrypoint with a receipt; Validate calls it,
+  skips drafts, cancels superseded PR runs, ubuntu-only on PRs and main
+  (macOS on tags, nightly, manual), 15-minute timeout, no paths filter. The
+  execution loop gains "Hosted CI unavailable"; readiness reports the CI
+  entrypoint. EVERSO findings (billing lock since about 2026-10-20, guardrail
+  trigger noise, CircleCI without filters) are kept out of this public repo
+  and belong to a separate EVERSO task.
 
 ## Still open
 
@@ -80,5 +91,6 @@ This record grants no commit, push, merge or installation authority.
 
 ## Next action
 
-Owner confirms the Claude Desktop update to 1.3.0, then runs the compliance
-protocol and EVERSO pilot before tagging 1.3.0.
+Owner runs the compliance protocol and the EVERSO pilot before tagging 1.3.0.
+For EVERSO, the owner first fixes the GitHub billing lock; the EVERSO CI changes
+are a separate task in that repository.
