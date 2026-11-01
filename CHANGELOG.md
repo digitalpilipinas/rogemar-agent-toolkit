@@ -3,10 +3,16 @@
 All notable changes to the toolkit are documented here. Versions follow
 Semantic Versioning.
 
-## 1.3.0 — Project readiness, method receipts and per-harness packaging (pending tag after the compliance runs)
+## 1.3.1 — CI as a backstop, not a blocker (2026-11-01)
 
+- project-learning: git calls allow 30 seconds instead of 5, so setup, validation and capture no longer crash with `TimeoutExpired` when git is slow on a busy machine; a slow-git test covers it.
 - Fix two load-sensitive project-learning tests: the store lock's 2-second budget (unchanged default) can be raised with `PROJECT_LEARNING_LOCK_SECONDS`, so the concurrency test checks correctness rather than machine speed; a new test proves a busy store skips capture without writing; the test helper's child-process limits are 60 s, enough to catch a hang without failing on a loaded machine.
 - Make CI a backstop, not a blocker: one entrypoint, `scripts/ci.py`, runs every check for hosted CI, any runner vendor and local agents, and writes a receipt (commit, clean worktree, exit codes, toolchain). Validate now calls it, skips draft PRs, cancels superseded PR runs, runs ubuntu only on PRs (macOS on main pushes, tags, nightly and manual runs), times out at 15 minutes, and no longer ignores `docs/` or `CHANGELOG.md`, which the archives package. Integrated Workflow's execution loop adds "Hosted CI unavailable": a slice continues on a script-written local receipt for the exact commit, except for migrations, access rules, auth, unrun backend stacks and release builds, and hosted CI is backfilled on main when it returns. `project-readiness` reports the project's CI entrypoint and recommends one, with an opt-in pre-push hook. The manifest-drift test runs one lock instead of five (23 s to 5 s).
+
+## 1.3.0 — Project readiness, method receipts and per-harness packaging (2026-10-30)
+
+Tagged after release; the method-compliance runs and the EVERSO pilot now serve as post-release acceptance.
+
 - Make the review gate provider-neutral: substantive work needs one independent full review through the project's review route — local CodeRabbit when installed, otherwise a fresh-context `code-review-and-quality` review or another tool the project uses. `project-readiness` reports the route (or reads `review_route` from the readiness record). Cloud PR reviews (GitHub CodeRabbit, Codex) are used where configured, not required; the completion barrier waits only for the cloud reviewers a project configures. Skipping review still blocks acceptance.
 - Tidy the CHANGELOG: fold the formerly loose "unreleased" sections into the releases that shipped them (1.1.0, and Devin Forge in 1.2.0), using commit ancestry; no content removed.
 

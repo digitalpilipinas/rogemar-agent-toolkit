@@ -32,6 +32,10 @@ EXPECTED_IGNORE = (
 )
 
 
+# Seconds for a git call: catches a hung git, not a slow one; 5 s failed on a loaded machine.
+GIT_TIMEOUT = 30
+
+
 class ValidationFailure(RuntimeError):
     pass
 
@@ -117,7 +121,7 @@ def main() -> int:
             check=False,
             capture_output=True,
             text=True,
-            timeout=5,
+            timeout=GIT_TIMEOUT,
         )
         require(result.returncode == 0, "candidate store is not ignored by Git")
         state_probe = state_dir / "probe.json"
@@ -126,7 +130,7 @@ def main() -> int:
             check=False,
             capture_output=True,
             text=True,
-            timeout=5,
+            timeout=GIT_TIMEOUT,
         )
         require(result.returncode == 0, "state directory is not ignored by Git")
 

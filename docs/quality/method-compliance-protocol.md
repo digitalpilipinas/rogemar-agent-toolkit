@@ -1,4 +1,4 @@
-# Method compliance measurement (1.3.0 release acceptance)
+# Method compliance measurement (1.3 acceptance)
 
 Purpose: measure whether agents use the skills a task calls for, per harness, before
 and after 1.3.0's readiness entry, enforced receipt and hooks. It follows the Forge
@@ -8,7 +8,7 @@ candidate's workspace.
 
 Status: protocol ready; runs pending. They need installed builds in real Claude,
 Codex and Cursor sessions, so they happen after 1.3.0 is pushed and installed, and
-before the owner tags 1.3.0.
+as acceptance of the tagged 1.3 release (the owner tagged 1.3.0 and released 1.3.1 on 2026-11-01).
 
 ## Fixture
 

@@ -27,6 +27,10 @@ IGNORE_ENTRIES = (
 )
 
 
+# Seconds for a git call: catches a hung git, not a slow one; 5 s failed on a loaded machine.
+GIT_TIMEOUT = 30
+
+
 class InitializationError(RuntimeError):
     pass
 
@@ -38,7 +42,7 @@ def resolve_root(raw_root: str | None) -> Path:
         check=False,
         capture_output=True,
         text=True,
-        timeout=5,
+        timeout=GIT_TIMEOUT,
     )
     if result.returncode != 0:
         raise InitializationError(f"not a Git repository: {cwd}")

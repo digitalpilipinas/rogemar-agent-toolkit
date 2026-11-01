@@ -62,6 +62,10 @@ SECRET_PATTERNS = (
 LEDGER_MARKER = "<!-- PROJECT-LEARNING:ENTRIES -->"
 
 
+# Seconds for a git call: catches a hung git, not a slow one; 5 s failed on a loaded machine.
+GIT_TIMEOUT = 30
+
+
 class StoreError(RuntimeError):
     pass
 
@@ -77,7 +81,7 @@ def resolve_root(raw_root: str | None) -> Path:
         check=False,
         capture_output=True,
         text=True,
-        timeout=5,
+        timeout=GIT_TIMEOUT,
     )
     if result.returncode != 0:
         raise StoreError(f"not a Git repository: {cwd}")
@@ -202,7 +206,7 @@ def project_identity(root: Path) -> str:
     repository requires deliberate provenance reconciliation, not silent merging.
     """
     common = subprocess.check_output(['git', '-C', str(root), 'rev-parse', '--git-common-dir'],
-                                     text=True, timeout=5).strip()
+                                     text=True, timeout=GIT_TIMEOUT).strip()
     path = (root / common).resolve()
     return 'git-common-dir-sha256:' + hashlib.sha256(str(path).encode()).hexdigest()
 
@@ -903,7 +907,7 @@ def legitimacy_hold_reason(root: Path, payload: dict[str, Any]) -> str | None:
                 subprocess.check_output(
                     ["git", "-C", str(resolved_root), "cat-file", "-e", reference + "^{commit}"],
                     stderr=subprocess.DEVNULL,
-                    timeout=5,
+                    timeout=GIT_TIMEOUT,
                 )
             except (subprocess.CalledProcessError, subprocess.TimeoutExpired, OSError):
                 return "evidence-not-in-repository"

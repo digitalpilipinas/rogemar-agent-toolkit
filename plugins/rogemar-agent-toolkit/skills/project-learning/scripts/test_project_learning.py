@@ -81,6 +81,19 @@ class ProjectLearningTest(unittest.TestCase):
     def tearDown(self) -> None:
         self.temp.cleanup()
 
+    def test_initializer_tolerates_a_slow_git(self):
+        # git took over 5 s on a heavily loaded machine; that must not fail setup.
+        real = shutil.which("git")
+        bin_dir = Path(self.temp.name) / "slow-bin"
+        bin_dir.mkdir()
+        wrapper = bin_dir / "git"
+        wrapper.write_text('#!/bin/sh\ncase "$*" in *rev-parse*) sleep 6;; esac\nexec "%s" "$@"\n' % real)
+        wrapper.chmod(0o755)
+        slow = {**os.environ, "PATH": str(bin_dir) + os.pathsep + os.environ["PATH"]}
+        result = run_command("python3", "-I", str(INITIALIZER), "--root", str(self.root), "--check",
+                             cwd=self.root, env=slow, check=False)
+        self.assertEqual(result.returncode, 0, result.stderr[-500:])
+
     def test_portable_explicit_capture_preserves_hooks_without_enrollment(self):
         before = (self.root / ".codex/hooks.json").read_bytes()
         run_command("python3", "-I", str(INITIALIZER), "--root", str(self.root),

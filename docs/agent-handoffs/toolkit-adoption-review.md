@@ -95,6 +95,8 @@ This record grants no commit, push, merge or installation authority.
 
 ## Next action
 
-Owner runs the compliance protocol and the EVERSO pilot before tagging 1.3.0.
-For EVERSO, the owner first fixes the GitHub billing lock; the EVERSO CI changes
-are a separate task in that repository.
+Released 2026-11-01: `v1.3.0` tags `291c210` (what installs received as 1.3.0),
+`v1.3.1` carries the CI work and the learning-test fix, and tags `v0.1.0`..`v1.2.2`
+were backfilled (tags only). The compliance runs and the EVERSO pilot are now
+post-release acceptance. For EVERSO, the owner first fixes the GitHub billing lock;
+its CI changes are a separate task in that repository.
