@@ -198,7 +198,7 @@ method and the next incomplete increment until the approved slice is accepted.
 | Useful friction at a verified milestone | `forge-reflect` |
 | Docs, a pull request, or a commit message | `forge-technical-writing`, then `forge-unslop` |
 | Before calling the slice done | [prove-it-works](../engineering-playbooks/references/principles/prove-it-works.md) |
-| The same correction appears twice | [encode-lessons-in-structure](../engineering-playbooks/references/principles/encode-lessons-in-structure.md) |
+| The same correction appears twice, or a confirmed defect a small lint or check could have caught | [encode-lessons-in-structure](../engineering-playbooks/references/principles/encode-lessons-in-structure.md) |
 | No reusable app recipe exists | `forge-create-verification-skill` |
 | An existing app recipe has drifted | `forge-maintain-verification-skill` |
 

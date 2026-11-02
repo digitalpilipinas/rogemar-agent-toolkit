@@ -3,6 +3,13 @@
 All notable changes to the toolkit are documented here. Versions follow
 Semantic Versioning.
 
+## 1.4.0 — Lessons as rules, regression evals (2026-11-02)
+
+- Encode lessons on the first finding: `encode-lessons-in-structure` now also applies when review, a test or a user finds a defect that a small lint rule, type, file-name convention or build check could have caught. Add the rule with the fix when the project's existing tools support it, and show it failing on the original defect. Integrated Workflow's remediation step asks that question for each fixed defect.
+- Two new engineering principles: context in file paths (name files by the rule their code obeys, such as `*.hot.ts` with no allocation, and lint by path) and budgets in the build (fail the build or CI entrypoint when a measured size or performance budget is exceeded).
+- The Eval playbook (Claude, Codex and portable copies) gains regression evals: a lasting set of 20 to 50 real cases that grows with every bug, cheapest check first, yes-or-no judging per claim, claims checked against the tool calls that actually ran, hand-checking 20 judge verdicts, and pass counts per category.
+- `formal-verification-create`: when a repo has several independent state machines, plan one verify skill per machine and build them in separate runs.
+
 ## 1.3.1 — CI as a backstop, not a blocker (2026-11-01)
 
 - project-learning: git calls allow 30 seconds instead of 5, so setup, validation and capture no longer crash with `TimeoutExpired` when git is slow on a busy machine; a slow-git test covers it.

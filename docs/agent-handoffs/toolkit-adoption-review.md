@@ -100,3 +100,9 @@ Released 2026-11-01: `v1.3.0` tags `291c210` (what installs received as 1.3.0),
 were backfilled (tags only). The compliance runs and the EVERSO pilot are now
 post-release acceptance. For EVERSO, the owner first fixes the GitHub billing lock;
 its CI changes are a separate task in that repository.
+
+1.4.0 (2026-11-02, branch `claude/toolkit-1-4-0-structure-and-evals`, via PR):
+lint on the first finding, context-in-paths and budgets-in-the-build principles,
+regression evals in the Eval playbook, one verify skill per state machine.
+Sources: Lauren Tan's tibo.dog notes, Vaishnavi's evals article, the statechart-art
+site. Local CodeRabbit: 0 findings on 23 files.

@@ -59,7 +59,7 @@
     {
       "method": "eval",
       "source": "codex-forge/playbooks/eval.md",
-      "source_sha256": "fe0a404d74f827c88540c4605445179379358da7e435858ae8a22330d22307c1",
+      "source_sha256": "572e9a79fef10d64cb041147fc8964bd4edda8d7430971bf0ecb825d5fcb47d8",
       "portable": "playbooks/eval.md",
       "trigger": "A material choice requires comparative evidence",
       "outcome": "Comparable tasks, baseline/candidate identity, positive and negative cases",

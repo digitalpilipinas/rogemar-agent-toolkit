@@ -5681,7 +5681,7 @@
     },
     "claude-forge": {
       "file_count": 30,
-      "sha256": "ac157b766c216d8ff48ddb17f4db363fca9c0c0903c6b0aa0fe06371960aa286"
+      "sha256": "bab2dbdb2bb5a8cfce87e75c58ffc78a4e8e9d659abce04135534ab45ae7be4f"
     },
     "claude-forge-setup": {
       "file_count": 6,
@@ -5709,7 +5709,7 @@
     },
     "codex-forge": {
       "file_count": 69,
-      "sha256": "34e53c0c6d785fcf51cbcc2b47185f25494d754e7d3566c04dbd2b41835c8067"
+      "sha256": "8e033ccee487e3d9dec9a21e226d6f53259815adfb962c913bac6b61e0454430"
     },
     "create-plan": {
       "file_count": 6,
@@ -5760,8 +5760,8 @@
       "sha256": "7a642cace923e5c5db8f251998f93111f9eff2e247f805f1e319408f75a73d61"
     },
     "engineering-playbooks": {
-      "file_count": 61,
-      "sha256": "52fba8d5dd70148ab0cea8ff6f45413b6e2c8c59cf71e6c34552c4d5d8d0c52e"
+      "file_count": 63,
+      "sha256": "6fdfbab899e48f580a86586b96188ec404f0c8f226cabe0016b91bfca5d55cad"
     },
     "figma": {
       "file_count": 8,
@@ -5833,7 +5833,7 @@
     },
     "forge-principle-encode-lessons-in-structure": {
       "file_count": 3,
-      "sha256": "cfdbd41e9cb14b8a24f56015a6418a01da267e1cabccf1e0b0aae331b96d2146"
+      "sha256": "4f21ee3b22f1e2ccbcb156f486b44daea74904593d02e36692460d061964bd34"
     },
     "forge-principle-exhaust-the-design-space": {
       "file_count": 3,
@@ -5957,7 +5957,7 @@
     },
     "formal-verification-create": {
       "file_count": 4,
-      "sha256": "e4b97a821bf920b9783add4106fa2eeedc4443c53baab009f93f60a1d3f8c73e"
+      "sha256": "da205d66c4765ab234ce34e2f4bb5d70d91fe3336dcfc381e89a6bb290dcc533"
     },
     "formal-verification-maintain": {
       "file_count": 3,
@@ -5985,7 +5985,7 @@
     },
     "integrated-workflow": {
       "file_count": 14,
-      "sha256": "ff592cba8ac85158ea36db5c1e187a319547f71075d6513659c5a50e4836b05b"
+      "sha256": "48559b643ffa1481d580386bbf4fccdac92527dce25898a18ea61a5d7d569d2a"
     },
     "interaction-polish": {
       "file_count": 10,
@@ -6188,5 +6188,5 @@
       "sha256": "e32e660ce521c92819734054a948b8dbbc5398e5ce492dc9559a6b13fc31f479"
     }
   },
-  "version": "1.3.1"
+  "version": "1.4.0"
 }

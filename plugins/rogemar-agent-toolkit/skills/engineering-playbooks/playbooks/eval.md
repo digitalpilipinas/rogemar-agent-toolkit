@@ -26,4 +26,30 @@ Evals test how a change affects agent behavior before promoting it: a new skill 
 
 **Reply:** variant under test, rubric, per-candidate notes, judge's verdict, your synthesis, and a recommendation for whether to promote the variant.
 
+
+## Regression evals
+
+Use this section when an AI feature, prompt, skill or agent behavior is changed
+repeatedly, not for a one-off comparison.
+
+- **Keep a lasting set.** Start with 20 to 50 real inputs from logs or past
+  tasks, each with a written statement of what a right answer is. Include typos,
+  hostile or confused inputs and edge cases, not only happy paths. Every bug a
+  user or reviewer finds becomes a new case, so it cannot ship twice.
+- **Cheapest check first.** Exact checks in code (valid format, required fields,
+  length, forbidden content), then comparison with known-good answers, then a
+  judge for what code cannot check.
+- **Judge claims, not answers.** Split an output into its claims and ask the
+  judge yes or no for each: is this claim supported by the source? Avoid 1 to 10
+  scores.
+- **Check claims against what ran.** When an output says an action happened,
+  such as a refund, a write or a test run, confirm it in the tool calls or logs.
+  Text alone is not evidence.
+- **Check the judge.** Grade 20 random judge verdicts by hand before trusting
+  the rest, and again when the judge prompt or model changes.
+- **Report per category.** Give pass counts per category, such as "47 of 50",
+  next to the total. A steady total can hide a category that fell.
+- **Run it on every change** to the prompt, model, skill, tools or source
+  documents, and compare with the last accepted run before promoting the change.
+
 Use [Explain the Number](../references/principles/explain-the-number.md) before generalizing an evaluation result. Retain failures, actual trial counts and uncertainty.
