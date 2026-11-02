@@ -1,7 +1,8 @@
 # Upstream adoption review and drift tracking
 
 Date: 2026-10-30. Owner: current toolkit maintainer (Claude Forge, Balanced).
-Worktree branch: `claude/skills-plugin-review-508af3` from `76fea71`.
+Original branch: `claude/skills-plugin-review-508af3` from `76fea71` (historical).
+Later releases each record their own PR branch below; check `git status` on resume.
 This record grants no commit, push, merge or installation authority.
 
 ## Decisions (owner-approved 2026-10-30)
@@ -86,7 +87,8 @@ This record grants no commit, push, merge or installation authority.
 
 - Slice 9 runs: the compliance protocol (`docs/quality/method-compliance-protocol.md`)
   in installed Claude, Codex and Cursor sessions, plus one EVERSO pilot slice.
-  These gate the 1.3.0 tag, which the owner applies.
+  These were planned to gate 1.3.0; since 1.3.0 is released, they are now
+  post-release acceptance for the current version.
 - tla-ts parity trial: needs the owner's authorization to download and run
   `tla-ts@0.0.3`; TLC remains the default until then.
 - Owner's local Claude install: keep the plugin, then run
@@ -97,12 +99,16 @@ This record grants no commit, push, merge or installation authority.
 
 Released 2026-11-01: `v1.3.0` tags `291c210` (what installs received as 1.3.0),
 `v1.3.1` carries the CI work and the learning-test fix, and tags `v0.1.0`..`v1.2.2`
-were backfilled (tags only). The compliance runs and the EVERSO pilot are now
-post-release acceptance. For EVERSO, the owner first fixes the GitHub billing lock;
-its CI changes are a separate task in that repository.
+were backfilled (tags only).
 
-1.4.0 (2026-11-02, branch `claude/toolkit-1-4-0-structure-and-evals`, via PR):
-lint on the first finding, context-in-paths and budgets-in-the-build principles,
-regression evals in the Eval playbook, one verify skill per state machine.
-Sources: Lauren Tan's tibo.dog notes, Vaishnavi's evals article, the statechart-art
-site. Local CodeRabbit: 0 findings on 23 files.
+1.4.0 (2026-11-02) was delivered through PR #37 from the historical branch
+`claude/toolkit-1-4-0-structure-and-evals`. It adds lint on the first finding,
+the context-in-paths and budgets-in-the-build principles, regression evals in the
+Eval playbook, and one verify skill per state machine. Sources: Lauren Tan's
+tibo.dog notes, Vaishnavi's evals article and the statechart-art site. Evidence:
+local CodeRabbit (0 findings on 23 files), full `scripts/ci.py` receipt on
+`8b9b904`, hosted validate, and the Codex and CodeRabbit PR reviews.
+
+Next: run the "Still open" acceptance items against 1.4.0. For EVERSO, the owner
+first fixes the GitHub billing lock; its CI changes are a separate task in that
+repository.
