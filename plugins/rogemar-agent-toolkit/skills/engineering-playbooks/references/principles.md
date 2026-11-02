@@ -25,4 +25,6 @@
 - [attack-the-premise](principles/attack-the-premise.md)
 - [test-behavior-not-implementation](principles/test-behavior-not-implementation.md)
 
+- [Context in file paths](principles/encode-context-in-paths.md): name files by the rule their code obeys, and lint by path.
+- [Budgets in the build](principles/enforce-budgets-in-the-build.md): fail the build when a measured size or performance budget is exceeded.
 - [Explain the Number](principles/explain-the-number.md): verify executed work, errors, variability and the measured limiter.

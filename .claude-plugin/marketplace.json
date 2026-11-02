@@ -9,7 +9,7 @@
       "description": "Portable, versioned engineering and delivery skills for compatible agent harnesses.",
       "name": "rogemar-agent-toolkit",
       "source": "./plugins/rogemar-agent-toolkit",
-      "version": "1.3.1"
+      "version": "1.4.0"
     }
   ]
 }

@@ -263,6 +263,9 @@ methods without waiting for cloud reviews; their existing cadence is unchanged.
    smallest sufficient solution and run affected checks/local review as warranted
    before publishing. Multiple commits may form one push. If no required change
    exists, record dispositions and proceed; do not invent a fix wave or rereview.
+   For each fixed defect, ask whether a small lint rule, type or check in the
+   project's existing tools would have caught it; if so, add it in the same wave
+   ([first finding](../../engineering-playbooks/references/principles/encode-lessons-in-structure.md#first-finding)).
 4. **Verify and rereview:** verify the remote head and publish one concise update
    with correction scope and validation. Recheck affected UI/runtime behavior.
    Obtain only due, proportionate rereview within the shared per-provider cloud
